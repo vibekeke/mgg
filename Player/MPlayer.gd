@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var _animated_sprite = $AnimatedSprite
+onready var _animation_player = $AnimationPlayer
 
 export var movementSpeed = 10
 export var gravityPower = 10
@@ -22,10 +22,11 @@ var debug_stats = {
 signal debug_data
 
 func _ready():
-	print("Creating player...")
+	print("Creating mplayer...")
 	
 func _process(delta):
-	_animated_sprite.play("run")
+
+	_animation_player.play("run")
 
 	applyControls()
 	applyGravity()

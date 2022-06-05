@@ -8,11 +8,8 @@
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 1 )]
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-movementSpeed = 100
-gravityPower = 30
-jumpPower = 100
-
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 position = Vector2( 960.5, 1120 )
 scale = Vector2( 119.688, 10 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
