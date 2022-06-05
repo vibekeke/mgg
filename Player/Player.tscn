@@ -31,3 +31,5 @@ frames = SubResource( 1 )
 animation = "run"
 frame = 1
 playing = true
+
+[connection signal="debug_data" from="." to="." method="_on_Player_debug_data"]
