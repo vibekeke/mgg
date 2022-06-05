@@ -36,15 +36,14 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 115, 167 )
+extents = Vector2( 231.111, 377.778 )
 
 [node name="MPlayer" type="KinematicBody2D"]
+scale = Vector2( 0.45, 0.45 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 1 )
-centered = false
 hframes = 4
 vframes = 4
 frame = 1
@@ -54,5 +53,5 @@ anims/RESET = SubResource( 1 )
 anims/run = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 188, 288 )
+position = Vector2( -244.444, 53.3333 )
 shape = SubResource( 3 )

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/NightCity.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Player/MPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=3]
 
 [node name="Level1" type="Node2D"]
@@ -12,4 +12,4 @@
 position = Vector2( 960.5, 1120 )
 scale = Vector2( 119.688, 10 )
 
-[node name="Player2" parent="." instance=ExtResource( 2 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
