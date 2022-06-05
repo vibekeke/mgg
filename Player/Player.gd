@@ -12,10 +12,18 @@ var movementVelocity = Vector2(0,0)
 var gravity = 0
 var doubleJump = false
 
+var debug_stats = {
+	"movementSpeed": movementSpeed,
+	"gravityPower": gravityPower,
+	"jumpPower": jumpPower
+}
+
+# Signals
+signal debug_data
+
 func _ready():
-	pass
-
-
+	print("Creating player...")
+	
 func _process(delta):
 	_animated_sprite.play("run")
 
@@ -24,6 +32,9 @@ func _process(delta):
 
 	velocity = velocity.linear_interpolate(movementVelocity * 10, delta * 15)
 	move_and_slide(velocity + Vector2(0, gravity), Vector2(0,-1))
+	
+	if OS.is_debug_build():
+		_on_Player_debug_data()
 
 func applyControls():
 	movementVelocity = Vector2(0,0)
@@ -53,3 +64,6 @@ func applyGravity():
 func jump(multiplier):
 	gravity = -jumpPower * multiplier * 10
 	
+
+func _on_Player_debug_data():
+	emit_signal("debug_data", debug_stats)

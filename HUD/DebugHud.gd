@@ -1,0 +1,22 @@
+extends CanvasLayer
+
+func _ready():
+	var player = null
+	var main = get_tree().get_root().get_node_or_null("Main")
+	if main != null:
+		var level = main.get_node_or_null("Level1")
+		if level != null:
+			player = level.get_node_or_null("Player")
+	print("Player", player)
+	if player != null:
+		player.connect("debug_data", self, "player_debug_handler")
+	pass
+
+func _process(delta):
+	$VBoxContainer/Framerate.text = "FPS: " + str(Engine.get_frames_per_second())
+	$VBoxContainer/MemoryUsage.text = "Static Mem: " + str(Performance.MEMORY_STATIC)
+	$VBoxContainer/Objects.text = "Objects: " + str(Performance.OBJECT_COUNT)
+
+func player_debug_handler(debug_data):
+	if debug_data.has("movementSpeed"):
+		$VBoxContainer/PlayerSpeed.text = "Speed: " + str(debug_data.get("movementSpeed"))
