@@ -6,6 +6,8 @@ export var movementSpeed = 10
 export var gravityPower = 10
 export var jumpPower = 20
 
+export (PackedScene) var gunshot
+
 # Private variables
 var velocity = Vector2(0,0)
 var movementVelocity = Vector2(0,0)
@@ -40,6 +42,9 @@ func applyControls():
 		elif doubleJump:
 			jump(1)
 			doubleJump = false
+	
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 
 func applyGravity():
 	gravity += gravityPower
@@ -52,4 +57,11 @@ func applyGravity():
 
 func jump(multiplier):
 	gravity = -jumpPower * multiplier * 10
+	
+func shoot():
+	var _gunshot = gunshot.instance()
+	get_tree().get_root().add_child(_gunshot)
+	_gunshot.direction = 1
+	_gunshot.position = self.position + Vector2(200, 20)
+	pass
 	
