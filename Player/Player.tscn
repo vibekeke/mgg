@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://imported_assets/actors/bunny/bunny_2.png" type="Texture" id=1]
 [ext_resource path="res://imported_assets/actors/bunny/bunny_1.png" type="Texture" id=2]
 [ext_resource path="res://Player/Player.gd" type="Script" id=3]
+[ext_resource path="res://Player/Projectiles/Gunshot.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 8 )
@@ -20,6 +21,7 @@ position = Vector2( 924, 900 )
 scale = Vector2( 10, 10 )
 script = ExtResource( 3 )
 movementSpeed = 20
+gunshot = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
@@ -27,6 +29,7 @@ shape = SubResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "run"
+frame = 1
 playing = true
 
 [connection signal="debug_data" from="." to="." method="_on_Player_debug_data"]
