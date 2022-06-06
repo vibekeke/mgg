@@ -6,7 +6,7 @@ func _ready():
 	if main != null:
 		var level = main.get_node_or_null("Level1")
 		if level != null:
-			player = level.get_node_or_null("Player")
+			player = level.get_node_or_null("MPlayer")
 	if player != null:
 		player.connect("debug_data", self, "player_debug_handler")
 	pass

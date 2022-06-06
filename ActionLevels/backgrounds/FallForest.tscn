@@ -2,9 +2,9 @@
 
 [ext_resource path="res://imported_assets/backgrounds/purple.png" type="Texture" id=1]
 [ext_resource path="res://ActionLevels/backgrounds/NightForest.gd" type="Script" id=2]
-[ext_resource path="res://imported_assets/backgrounds/backgroundColorForestTransparent.png" type="Texture" id=3]
+[ext_resource path="res://imported_assets/backgrounds/backgroundFallForestTransparent.png" type="Texture" id=4]
 
-[node name="NightForest" type="ParallaxBackground"]
+[node name="FallForest" type="ParallaxBackground"]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
@@ -20,12 +20,11 @@ centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
-[node name="Forest" type="ParallaxLayer" parent="."]
-motion_offset = Vector2( 1, 0 )
+[node name="FallForest" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2( 1920, 0 )
 
-[node name="Sprite" type="Sprite" parent="Forest"]
+[node name="Sprite" type="Sprite" parent="FallForest"]
 position = Vector2( 0, 57 )
 scale = Vector2( 1.875, 1 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 centered = false

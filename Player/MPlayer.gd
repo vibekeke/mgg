@@ -18,6 +18,8 @@ var debug_stats = {
 	"jumpPower": jumpPower
 }
 
+export (PackedScene) var gunshot
+
 # Signals
 signal debug_data
 
@@ -45,13 +47,19 @@ func applyControls():
 	elif Input.is_action_pressed("right"):
 		movementVelocity.x = movementSpeed
 	
-	if Input.is_action_pressed("jump"):
+	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			jump(1)
 			doubleJump = true
 		elif doubleJump:
 			jump(1)
 			doubleJump = false
+	
+	if Input.is_action_just_pressed("shoot") && !Input.is_action_pressed("hold_test"):
+		shoot()
+	elif Input.is_action_just_pressed("shoot") && Input.is_action_pressed("hold_test"):
+		shoot_diagonal()
+
 
 func applyGravity():
 	gravity += gravityPower
@@ -65,6 +73,17 @@ func applyGravity():
 func jump(multiplier):
 	gravity = -jumpPower * multiplier * 10
 	
+func shoot():
+	var _gunshot = gunshot.instance()
+	get_tree().get_root().add_child(_gunshot)
+	_gunshot.position = self.position + Vector2(80,2)
+
+func shoot_diagonal():
+	print("shooting diagonal")
+	var _gunshot = gunshot.instance()
+	_gunshot.position = self.position + Vector2(80,2)
+	_gunshot.set_rotation_degrees(45.0)
+	get_tree().get_root().add_child(_gunshot)
 
 func _on_Player_debug_data():
 	emit_signal("debug_data", debug_stats)
