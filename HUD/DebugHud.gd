@@ -19,3 +19,5 @@ func _process(delta):
 func player_debug_handler(debug_data):
 	if debug_data.has("movementSpeed"):
 		$VBoxContainer/PlayerSpeed.text = "Speed: " + str(debug_data.get("movementSpeed"))
+	if debug_data.has("shootAngle"):
+		$VBoxContainer/ShootAngle.text = "Shoot Angle: " + str(debug_data.get("shootAngle"))

@@ -12,10 +12,15 @@ var movementVelocity = Vector2(0,0)
 var gravity = 0
 var doubleJump = false
 
+enum SHOOT_ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
+
+var current_shooting_angle = SHOOT_ANGLE.FORWARD_B
+
 var debug_stats = {
 	"movementSpeed": movementSpeed,
 	"gravityPower": gravityPower,
-	"jumpPower": jumpPower
+	"jumpPower": jumpPower,
+	"shootAngle": current_shooting_angle
 }
 
 export (PackedScene) var gunshot
@@ -37,6 +42,7 @@ func _process(delta):
 	move_and_slide(velocity + Vector2(0, gravity), Vector2(0,-1))
 	
 	if OS.is_debug_build():
+		debug_stats["shootAngle"] = current_shooting_angle
 		_on_Player_debug_data()
 
 func applyControls():
@@ -55,10 +61,18 @@ func applyControls():
 			jump(1)
 			doubleJump = false
 	
-	if Input.is_action_just_pressed("shoot") && !Input.is_action_pressed("hold_test"):
-		shoot()
-	elif Input.is_action_just_pressed("shoot") && Input.is_action_pressed("hold_test"):
-		shoot_diagonal()
+	if Input.is_action_just_pressed("hold_test"):
+		print("switching angle")
+		if current_shooting_angle == SHOOT_ANGLE.FORWARD_B:
+			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
+		elif current_shooting_angle == SHOOT_ANGLE.UPWARD_B:
+			current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
+		elif current_shooting_angle == SHOOT_ANGLE.DOWNWARD_B:
+			current_shooting_angle = SHOOT_ANGLE.FORWARD_B
+		print(current_shooting_angle)
+		
+	if Input.is_action_just_pressed("shoot"):
+		shoot(current_shooting_angle)
 
 
 func applyGravity():
@@ -73,17 +87,11 @@ func applyGravity():
 func jump(multiplier):
 	gravity = -jumpPower * multiplier * 10
 	
-func shoot():
+func shoot(angle):
 	var _gunshot = gunshot.instance()
+	_gunshot.set_bullet_type(angle)
 	get_tree().get_root().add_child(_gunshot)
 	_gunshot.position = self.position + Vector2(80,2)
-
-func shoot_diagonal():
-	print("shooting diagonal")
-	var _gunshot = gunshot.instance()
-	_gunshot.position = self.position + Vector2(80,2)
-	_gunshot.set_rotation_degrees(45.0)
-	get_tree().get_root().add_child(_gunshot)
-
+	
 func _on_Player_debug_data():
 	emit_signal("debug_data", debug_stats)
