@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 onready var _animation_player = $AnimationPlayer
 
-export var movementSpeed = 10
-export var gravityPower = 10
-export var jumpPower = 20
+export var movementSpeed = 100
+export var gravityPower = 30
+export var jumpPower = 100
 
 # Private variables
 var velocity = Vector2(0,0)

@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
 onready var _animated_sprite = $AnimatedSprite
+#onready var camera = $Camera
 
-export var movementSpeed = 10
-export var gravityPower = 10
-export var jumpPower = 20
+export var movementSpeed = 100
+export var gravityPower = 30
+export var jumpPower = 100
 
 export (PackedScene) var gunshot
 
@@ -21,10 +22,13 @@ var debug_stats = {
 }
 
 # Signals
-signal debug_data
+signal debug_data(debug_stats)
 
 func _ready():
 	print("Creating player...")
+	debug_stats.movementSpeed = movementSpeed
+	debug_stats.gravityPower = gravityPower
+	debug_stats.jumpPower = jumpPower
 	
 func _process(delta):
 	_animated_sprite.play("run")
