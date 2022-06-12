@@ -1,7 +1,7 @@
 extends ParallaxBackground
 
 export (float) var scrolling_speed = 500.0
-export (float) var scrolling_time = 10
+export (float) var scrolling_time = 10000000000
 var basic_timer = 0
 
 func _process(delta):

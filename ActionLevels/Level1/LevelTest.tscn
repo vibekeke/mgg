@@ -4,7 +4,7 @@
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/backgrounds/NightForest.tscn" type="PackedScene" id=5]
 
-[node name="Level1" type="Node2D"]
+[node name="LevelTest" type="Node2D"]
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 position = Vector2( 960.5, 1120 )
@@ -13,4 +13,4 @@ scale = Vector2( 119.688, 10 )
 [node name="NightForest" parent="." instance=ExtResource( 5 )]
 
 [node name="MPlayerTest" parent="." instance=ExtResource( 1 )]
-position = Vector2( 347, 705 )
+position = Vector2( 229, 331 )
