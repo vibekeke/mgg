@@ -108,3 +108,18 @@ func shoot(angle):
 	
 func _on_Player_debug_data():
 	emit_signal("debug_data", debug_stats)
+
+
+func _on_VisibilityNotifier2D_screen_entered():
+	print("entered")
+	pass # Replace with function body.
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	print("exited")
+	pass # Replace with function body.
+
+
+func _on_VisibilityNotifier2D_viewport_entered(viewport):
+	print("entered")
+	pass # Replace with function body.

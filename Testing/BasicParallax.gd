@@ -10,6 +10,8 @@ var max_repeats = 4
 
 func _ready():
 	repeated_background = background.instance()
+	var viewport_size = get_viewport().get_visible_rect().size
+	print("viewport ", viewport_size)
 	add_child(repeated_background)
 
 func place_clone(width, tex_scale):
@@ -27,10 +29,11 @@ func place_clone(width, tex_scale):
 
 func move_backgrounds(children, move_value):
 	for child in children:
-		child.position.x -= move_value
+		child.position = child.position.linear_interpolate(child.position - Vector2(10, 0), move_value)
 
 func _process(delta):
 	if repeated_background != null:
-		if repeated_background.position.x <= 0:
+		print(repeated_background.position.x)
+		if repeated_background.position.x <= 100:
 			place_clone(repeated_background.texture.get_width(), repeated_background.scale.x)
 		move_backgrounds(get_children(), 200 * delta)

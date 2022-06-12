@@ -14,6 +14,7 @@ var bullet_type = ANGLE.FORWARD_B
 
 func _ready():
 	self.playing = true
+	get_notifier()
 
 func num_to_enum(number):
 	return enum_map.get(number, ANGLE.FORWARD_B)
@@ -21,6 +22,9 @@ func num_to_enum(number):
 func set_bullet_type(angle):
 	bullet_type = num_to_enum(angle)
 	self.rotate(deg2rad(angle_map[bullet_type]))
+
+func get_notifier():
+	pass
 
 func _process(delta):
 	timer += delta
@@ -36,3 +40,8 @@ func _process(delta):
 	elif bullet_type == ANGLE.DOWNWARD_B:
 		var radian = deg2rad(abs(angle_map[bullet_type]))
 		position += Vector2(movement_speed * cos(radian), -(movement_speed * sin(radian)))
+
+
+func _on_VisibilityNotifier2D_viewport_exited(viewport):
+	print("gunshot left screen")
+	self.queue_free()
