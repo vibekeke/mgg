@@ -23,31 +23,6 @@ flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 3072, 1024, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=26]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 1024, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 1024, 0, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=28]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 2048, 0, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=29]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 3072, 0, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=30]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 1024, 1024, 1024 )
-
 [sub_resource type="AtlasTexture" id=18]
 flags = 4
 atlas = ExtResource( 4 )
@@ -123,21 +98,36 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1024, 3072, 1024, 1024 )
 
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
 "frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
 "name": "landed",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 26 ) ],
-"loop": true,
-"name": "falling",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
-"loop": true,
-"name": "during_jump",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 18 ) ],
@@ -149,6 +139,16 @@ animations = [ {
 "loop": true,
 "name": "run",
 "speed": 14.0
+}, {
+"frames": [ SubResource( 26 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"loop": true,
+"name": "during_jump",
+"speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
@@ -313,91 +313,97 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=47]
+[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "during_jump"
+
+[sub_resource type="AnimationNodeTimeScale" id=40]
+
+[sub_resource type="AnimationNodeBlendTree" id=41]
+nodes/Animation/node = SubResource( 39 )
+nodes/Animation/position = Vector2( 350, 300 )
+nodes/TimeScale/node = SubResource( 40 )
+nodes/TimeScale/position = Vector2( 566.64, 292.32 )
+nodes/output/position = Vector2( 780, 310 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "falling"
+
+[sub_resource type="AnimationNodeTimeScale" id=43]
+
+[sub_resource type="AnimationNodeBlendTree" id=44]
+nodes/Animation/node = SubResource( 42 )
+nodes/Animation/position = Vector2( 146.88, 187.92 )
+nodes/TimeScale/node = SubResource( 43 )
+nodes/TimeScale/position = Vector2( 360, 160 )
+nodes/output/position = Vector2( 540, 170 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "landing"
+
+[sub_resource type="AnimationNodeTimeScale" id=46]
+
+[sub_resource type="AnimationNodeBlendTree" id=47]
+nodes/Animation/node = SubResource( 45 )
+nodes/Animation/position = Vector2( 200, 150 )
+nodes/TimeScale/node = SubResource( 46 )
+nodes/TimeScale/position = Vector2( 390, 140 )
+nodes/output/position = Vector2( 580, 170 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=48]
-animation = "during_jump"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=45]
-blend_point_0/node = SubResource( 47 )
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource( 48 )
-blend_point_1/pos = 1.0
-
-[sub_resource type="AnimationNodeAnimation" id=49]
-animation = "falling"
-
-[sub_resource type="AnimationNodeAnimation" id=50]
-animation = "falling"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=51]
-blend_point_0/node = SubResource( 49 )
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource( 50 )
-blend_point_1/pos = 1.0
-
-[sub_resource type="AnimationNodeAnimation" id=52]
-animation = "landing"
-
-[sub_resource type="AnimationNodeAnimation" id=53]
-animation = "landing"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=54]
-blend_point_0/node = SubResource( 52 )
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource( 53 )
-blend_point_1/pos = 1.0
-
-[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "jump_init"
 
-[sub_resource type="AnimationNodeAnimation" id=40]
-animation = "jump_init"
+[sub_resource type="AnimationNodeTimeScale" id=49]
 
-[sub_resource type="AnimationNodeBlendSpace1D" id=41]
-blend_point_0/node = SubResource( 39 )
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource( 40 )
-blend_point_1/pos = 1.0
+[sub_resource type="AnimationNodeBlendTree" id=50]
+nodes/Animation/node = SubResource( 48 )
+nodes/Animation/position = Vector2( 185.76, 254.16 )
+nodes/TimeScale/node = SubResource( 49 )
+nodes/TimeScale/position = Vector2( 414, 256.32 )
+nodes/output/position = Vector2( 630, 280 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=51]
 animation = "run"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
-animation = "run"
+[sub_resource type="AnimationNodeTimeScale" id=52]
 
-[sub_resource type="AnimationNodeBlendSpace1D" id=36]
-blend_point_0/node = SubResource( 34 )
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource( 35 )
-blend_point_1/pos = 1.0
+[sub_resource type="AnimationNodeBlendTree" id=53]
+graph_offset = Vector2( -198, -62 )
+nodes/Animation/node = SubResource( 51 )
+nodes/Animation/position = Vector2( -60, 140 )
+nodes/TimeScale/node = SubResource( 52 )
+nodes/TimeScale/position = Vector2( 120, 140 )
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=42]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=56]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=57]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachine" id=37]
-states/AboutToFall/node = SubResource( 45 )
-states/AboutToFall/position = Vector2( 1022.5, 272.5 )
-states/FallingLoop/node = SubResource( 51 )
-states/FallingLoop/position = Vector2( 846.5, 365.5 )
-states/Landing/node = SubResource( 54 )
-states/Landing/position = Vector2( 551.5, 337.5 )
-states/RisingLoop/node = SubResource( 41 )
-states/RisingLoop/position = Vector2( 1124.5, 171.5 )
-states/Run/node = SubResource( 36 )
-states/Run/position = Vector2( 875, 132 )
-transitions = [ "Run", "RisingLoop", SubResource( 42 ), "RisingLoop", "AboutToFall", SubResource( 46 ), "AboutToFall", "FallingLoop", SubResource( 55 ), "FallingLoop", "Landing", SubResource( 56 ), "Landing", "Run", SubResource( 57 ) ]
+states/AboutToFall/node = SubResource( 41 )
+states/AboutToFall/position = Vector2( 97, 252.25 )
+states/FallingLoop/node = SubResource( 44 )
+states/FallingLoop/position = Vector2( -201, 251.5 )
+states/Landing/node = SubResource( 47 )
+states/Landing/position = Vector2( -256.5, 108.5 )
+states/RisingLoop/node = SubResource( 50 )
+states/RisingLoop/position = Vector2( 135.5, 96 )
+states/Run/node = SubResource( 53 )
+states/Run/position = Vector2( -60.5, 6.5 )
+transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ) ]
 start_node = "Run"
+graph_offset = Vector2( -420, -26 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 
@@ -413,7 +419,7 @@ shape = SubResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 19 )
 animation = "run"
-frame = 1
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite"]
 anims/RESET = SubResource( 20 )
@@ -428,8 +434,8 @@ tree_root = SubResource( 37 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 38 )
-parameters/AboutToFall/blend_position = 0
-parameters/FallingLoop/blend_position = 0
-parameters/Landing/blend_position = 0
-parameters/RisingLoop/blend_position = 0
-parameters/Run/blend_position = 0
+parameters/AboutToFall/TimeScale/scale = 1.0
+parameters/FallingLoop/TimeScale/scale = 1.0
+parameters/Landing/TimeScale/scale = 1.0
+parameters/RisingLoop/TimeScale/scale = 1.0
+parameters/Run/TimeScale/scale = 1.0

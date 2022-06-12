@@ -13,4 +13,4 @@ scale = Vector2( 119.688, 10 )
 [node name="NightForest" parent="." instance=ExtResource( 5 )]
 
 [node name="MPlayerTest" parent="." instance=ExtResource( 1 )]
-position = Vector2( 218, 417 )
+position = Vector2( 229, 331 )

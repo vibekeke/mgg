@@ -15,6 +15,7 @@ export var max_jumps := 2
 
 # Private variables
 var velocity := Vector2.ZERO
+var normalized_velocity := Vector2.ZERO
 
 var jumps_made := 0
 
@@ -44,7 +45,11 @@ func _physics_process(delta):
 	)
 	
 	velocity.x = _horizontal_direction * movementSpeed
+	normalized_velocity.x = clamp(velocity.x, -1, 1)
 	velocity.y += gravity * delta
+	normalized_velocity.y += clamp(velocity.y, -1, 1)
+	
+#	print("normalized velocity y", normalized_velocity.y)
 	
 	var is_falling := velocity.y > 0.0 and not is_on_floor()
 	var is_rising := velocity.y < 0.0 and not is_on_floor()
@@ -63,6 +68,7 @@ func _physics_process(delta):
 		jumps_made += 1
 		_anim_state.travel("RisingLoop")
 		velocity.y = -jump_power
+	# TODO: Fix this hack using maths, e.g. store delta * gravity to help find peak of jump
 	if is_rising and velocity.y > -500:
 		_anim_state.travel("AboutToFall")
 	if is_falling:
@@ -70,20 +76,11 @@ func _physics_process(delta):
 	if _anim_state.get_current_node() == "FallingLoop" and (is_moving || is_not_moving) and not started_jumping:
 		_anim_state.travel("Landing")
 		jumps_made = 0
-#	if _anim_state.get_current_node()
-#	if is_rising:
-#		_anim_state.travel("AboutToFall")
-#	if is_falling:
-#		_anim_state.travel("FallingLoop")
-#	elif started_add_jump:
-#		jumps_made += 1
-#		if jumps_made <= max_jumps:
-#			velocity.y = -add_jump_power
-#		_anim_state.travel("Run")
-
 	
 	velocity = move_and_slide(velocity, UP_DIRECTION)
-
+	normalized_velocity.x = clamp(velocity.x, -1, 1)
+	normalized_velocity.y = clamp(velocity.y, -1, 1)
+	
 func _process(delta):
 	if OS.is_debug_build():
 		debug_stats["shootAngle"] = current_shooting_angle
