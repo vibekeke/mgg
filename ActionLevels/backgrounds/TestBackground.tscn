@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://imported_assets/backgrounds/Background_Test_Middleground.png" type="Texture" id=1]
 [ext_resource path="res://imported_assets/backgrounds/Background_Test_Foreground.png" type="Texture" id=2]
 [ext_resource path="res://imported_assets/backgrounds/Background_Test.png" type="Texture" id=3]
 [ext_resource path="res://ActionLevels/backgrounds/TestBackground.gd" type="Script" id=4]
 [ext_resource path="res://imported_assets/backgrounds/Untitled_Artwork 60.png" type="Texture" id=5]
+[ext_resource path="res://imported_assets/actors/bunny/bunny_1.png" type="Texture" id=6]
 
 [node name="TestBackground" type="CanvasLayer"]
 script = ExtResource( 4 )
@@ -50,3 +51,9 @@ position = Vector2( 1920, 0 )
 scale = Vector2( 0.333, 0.5 )
 texture = ExtResource( 5 )
 centered = false
+
+[node name="BackgroundDude" type="Sprite" parent="."]
+position = Vector2( 1967, 341 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+flip_h = true
