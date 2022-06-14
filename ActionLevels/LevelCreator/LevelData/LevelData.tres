@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/LevelData/LevelData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+level_name = ""
+num_phases = 0
+phase_times = [  ]
+enemies = [  ]
+obstacles = [  ]
