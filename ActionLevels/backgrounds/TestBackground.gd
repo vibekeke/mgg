@@ -17,7 +17,6 @@ var timer_been_set = false
 
 func _physics_process(delta):
 	basic_timer += delta
-	print((basic_timer / scrolling_time_foreground))
 	if basic_timer < scrolling_time_middleground:
 		$Middleground.scroll_offset.x -= scrolling_speed_middleground * delta
 	if basic_timer < scrolling_time_foreground:
@@ -27,9 +26,3 @@ func _physics_process(delta):
 	if basic_timer / scrolling_time_foreground >= 0.65 and foreground_stopped == false:
 		$Ending/ParallaxLayer/Sprite.visible = true
 		$Ending.scroll_offset.x -= scrolling_speed_ending * delta
-#	else:
-#		if timer_been_set == false:
-#			basic_timer = 0
-#			timer_been_set = true
-#		$Ending/ParallaxLayer/Sprite.visible = true
-#		$Ending.scroll_offset.x -= scrolling_speed_ending * delta

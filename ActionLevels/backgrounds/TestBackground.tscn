@@ -32,7 +32,6 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="Foreground" type="ParallaxBackground" parent="."]
-scroll_limit_end = Vector2( 17280, 0 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Foreground"]
 motion_mirroring = Vector2( 1920, 0 )
