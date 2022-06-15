@@ -43,5 +43,4 @@ func _process(delta):
 
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
-	print("gunshot left screen")
 	self.queue_free()

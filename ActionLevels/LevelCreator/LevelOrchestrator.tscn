@@ -1,3 +1,10 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/LevelOrchestrator.gd" type="Script" id=1]
+[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/ObstacleSpawner.tscn" type="PackedScene" id=2]
 
 [node name="LevelOrchestrator" type="Node2D"]
+script = ExtResource( 1 )
+level_name = "Level1"
+
+[node name="ObstacleSpawner" parent="." instance=ExtResource( 2 )]
