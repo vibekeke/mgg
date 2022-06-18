@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/LevelOrchestrator.gd" type="Script" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/ObstacleSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=3]
 
 [node name="LevelOrchestrator" type="Node2D"]
 script = ExtResource( 1 )
 level_name = "Level1"
 obstacle_spawn_freq = 3.0
+enemy_spawn_freq = 2.0
 
 [node name="ObstacleSpawner" parent="." instance=ExtResource( 2 )]
 default_obstacle_speed = 500
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 3 )]

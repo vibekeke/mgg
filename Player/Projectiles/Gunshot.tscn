@@ -20,9 +20,9 @@ scale = Vector2( 5, 5 )
 frames = SubResource( 1 )
 script = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="GunshotArea2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunshotArea2D"]
 position = Vector2( -1.33128e-07, 5.81922e-15 )
 shape = SubResource( 2 )
 
