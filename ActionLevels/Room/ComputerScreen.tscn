@@ -1,0 +1,191 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://imported_assets/computer/PatchRegular.png" type="Texture" id=2]
+[ext_resource path="res://imported_assets/computer/PatchInverted.png" type="Texture" id=3]
+[ext_resource path="res://imported_assets/computer/Window.png" type="Texture" id=4]
+[ext_resource path="res://imported_assets/computer/ClosePressed.png" type="Texture" id=5]
+[ext_resource path="res://imported_assets/computer/CloseRegular.png" type="Texture" id=6]
+[ext_resource path="res://ActionLevels/Room/ComputerScreen.gd" type="Script" id=7]
+[ext_resource path="res://imported_assets/computer/kisspng-windows-95-computer-icons-operating-systems-window-5afa97eda1c430.8385747315263723336626.png" type="Texture" id=8]
+[ext_resource path="res://ActionLevels/Room/DesktopIcon.gd" type="Script" id=9]
+[ext_resource path="res://ActionLevels/Room/QuitIcon.gd" type="Script" id=10]
+[ext_resource path="res://imported_assets/computer/icon.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+use_mipmaps = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 2 )
+region_rect = Rect2( 2, 2, 2, 2 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 1 )
+draw_center = false
+border_width_top = 5
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="DynamicFont" id=8]
+size = 50
+use_mipmaps = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
+use_mipmaps = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 23.0
+margin_bottom = 4.0
+expand_margin_top = 20.0
+
+[sub_resource type="Shader" id=11]
+code = "shader_type canvas_item;
+
+uniform float SCREEN_HEIGHT = 1080;
+
+void fragment() {
+	int y_index = int(UV.y * SCREEN_HEIGHT);
+	if (y_index % 2 == 0) {
+		COLOR.a = 0.05;
+	} else {
+		COLOR.a = 0.0;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = SubResource( 11 )
+shader_param/SCREEN_HEIGHT = 1080.0
+
+[node name="Desktop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.501961, 0.501961, 1 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -73.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Button" type="Button" parent="Panel"]
+margin_left = 9.0
+margin_top = 8.0
+margin_right = 161.0
+margin_bottom = 66.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+text = "Start"
+
+[node name="Panel" type="Panel" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="TimePanel" type="Panel" parent="Panel"]
+anchor_left = 0.894792
+anchor_top = 0.109589
+anchor_right = 0.995313
+anchor_bottom = 0.780822
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Panel/TimePanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -41.0
+margin_top = -22.5
+margin_right = 41.0
+margin_bottom = 22.5
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "16:23"
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+visible = true
+margin_left = 296.0
+margin_top = 530.0
+margin_right = 800.0
+margin_bottom = 880.0
+custom_colors/title_color = Color( 1, 1, 1, 1 )
+custom_constants/close_h_ofs = 20
+custom_constants/close_v_ofs = 16
+custom_fonts/title_font = SubResource( 9 )
+custom_icons/close_highlight = ExtResource( 5 )
+custom_icons/close = ExtResource( 6 )
+custom_styles/panel = SubResource( 10 )
+window_title = "WINDOW TITLE"
+
+[node name="Scanlines" type="ColorRect" parent="."]
+material = SubResource( 12 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SettingsIcon" type="TextureRect" parent="."]
+margin_left = 65.0
+margin_top = 31.0
+margin_right = 685.0
+margin_bottom = 671.0
+rect_scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 9 )
+idle_texture = ExtResource( 8 )
+hover_texture = ExtResource( 8 )
+click_texture = ExtResource( 8 )
+
+[node name="QuitIcon" type="TextureRect" parent="."]
+margin_left = 135.0
+margin_top = 393.0
+margin_right = 183.0
+margin_bottom = 433.0
+script = ExtResource( 10 )
+idle_texture = ExtResource( 11 )
+hover_texture = ExtResource( 11 )
+click_texture = ExtResource( 11 )

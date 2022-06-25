@@ -38,7 +38,6 @@ loop = false
 [node name="Area2D" type="Area2D" parent="Path2D/EnemyFollower"]
 position = Vector2( 0.225615, 1.99725 )
 rotation = -1.49012e-08
-scale = Vector2( 1, 1 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -46,7 +45,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/EnemyFollower/Area2D"]
 position = Vector2( -2.37029, -2.45599 )
 rotation = -1.78295
-scale = Vector2( 1, 1 )
 frames = SubResource( 2 )
 animation = "float"
 frame = 1
@@ -56,5 +54,4 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/EnemyFollower/Area2D"]
 position = Vector2( -1.48294, -2.13565 )
 rotation = -1.78295
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )

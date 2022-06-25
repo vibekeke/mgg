@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/kisspng-windows-95-computer-icons-operating-systems-window-5afa97eda1c430.8385747315263723336626.png-34bba9c6ca5edd7de168886618f4593e.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://imported_assets/computer/kisspng-windows-95-computer-icons-operating-systems-window-5afa97eda1c430.8385747315263723336626.png"
+dest_files=[ "res://.import/kisspng-windows-95-computer-icons-operating-systems-window-5afa97eda1c430.8385747315263723336626.png-34bba9c6ca5edd7de168886618f4593e.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
