@@ -20,5 +20,4 @@ scroll_speed = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -0.0999908, -5.9 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
