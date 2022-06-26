@@ -9,8 +9,8 @@
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 960.5, 1120 )
-scale = Vector2( 119.688, 10 )
+position = Vector2( 938.002, 1120 )
+scale = Vector2( 122.5, 10 )
 
 [node name="Wall" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -18,9 +18,16 @@ position = Vector2( -81.0001, 464 )
 rotation = 1.5708
 scale = Vector2( 119.688, 10 )
 
+[node name="Wall2" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 1875, 574 )
+rotation = 1.5708
+scale = Vector2( 119.688, 10 )
+
 [node name="MPlayerTest" parent="." instance=ExtResource( 1 )]
 position = Vector2( 231, 815 )
 
 [node name="TestBackground" parent="." instance=ExtResource( 2 )]
+scrolling_time_middleground = 150.0
 
 [node name="LevelOrchestrator" parent="." instance=ExtResource( 4 )]

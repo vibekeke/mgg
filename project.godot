@@ -9,20 +9,30 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "TextureRect",
+"class": "DesktopIcon",
+"language": "GDScript",
+"path": "res://ActionLevels/Room/DesktopIcon.gd"
+}, {
 "base": "Resource",
 "class": "LevelData",
 "language": "GDScript",
 "path": "res://ActionLevels/LevelCreator/LevelData/LevelData.gd"
+}, {
+"base": "DesktopIcon",
+"class": "QuitIcon",
+"language": "GDScript",
+"path": "res://ActionLevels/Room/QuitIcon.gd"
 } ]
 _global_script_class_icons={
-"LevelData": ""
+"DesktopIcon": "",
+"LevelData": "",
+"QuitIcon": ""
 }
 
 [application]
 
 config/name="Mgg"
-run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
 
 [debug]
 

@@ -17,9 +17,11 @@ func _ready():
 
 func death_cleanup():
 	queue_free_timer.set_wait_time(1)
+	add_child(queue_free_timer)
+	queue_free_timer.start()
+
 
 func _on_death_cleanup():
-	print("cleaning up after death")
 	queue_free()
 
 func call_death():
@@ -33,7 +35,7 @@ func call_death():
 
 func _on_call_area_entered(area):
 	if area.name == "GunshotArea2D":
-		call_death()
+		call_deferred("call_death")
 
 func _physics_process(delta):
 	follow_path.set_offset(follow_path.get_offset() + initial_speed * delta)
