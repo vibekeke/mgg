@@ -2,5 +2,5 @@ extends Control
 
 
 func _ready():
-	$WindowDialog.popup_centered()
-	$WindowDialog.get_close_button().focus_mode = FOCUS_NONE
+	$BSN.popup_centered()
+	$BSN.get_close_button().focus_mode = FOCUS_NONE
