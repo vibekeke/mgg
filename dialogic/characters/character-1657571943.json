@@ -1,0 +1,21 @@
+{
+	"color": "#fff164e8",
+	"description": "",
+	"display_name": "mgc",
+	"display_name_bool": true,
+	"id": "character-1657571943.json",
+	"mirror_portraits": false,
+	"name": "mgc",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}

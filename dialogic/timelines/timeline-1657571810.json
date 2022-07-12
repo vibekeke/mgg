@@ -1,0 +1,21 @@
+{
+	"events": [
+		{
+			"character": "character-1657571766.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hello fellow flesh owner!"
+		},
+		{
+			"character": "character-1657571943.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yo."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.3",
+		"file": "timeline-1657571810.json",
+		"name": "ayylmao_firstchat"
+	}
+}
