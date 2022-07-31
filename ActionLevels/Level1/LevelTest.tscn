@@ -8,19 +8,16 @@
 [node name="LevelTest" type="Node2D"]
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 938.002, 1120 )
+position = Vector2( 2.00001, 1079 )
 scale = Vector2( 122.5, 10 )
 
 [node name="Wall" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( -81.0001, 464 )
+position = Vector2( 4, 3 )
 rotation = 1.5708
 scale = Vector2( 119.688, 10 )
 
 [node name="Wall2" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 1875, 574 )
+position = Vector2( 1961, -115 )
 rotation = 1.5708
 scale = Vector2( 119.688, 10 )
 

@@ -14,8 +14,9 @@ var user_name = 'Player'
 var script_place = 0
 
 var conversationScript = [
-	{ 'name': 'MGG', 'color': '#00abc7', 'script': 'I got something ta say' },
-	{ 'name': 'Not an alien', 'color': '#ffdd8b', 'script': 'WHAT!?' }
+	{ 'name': 'MGG', 'color': '#00abc7', 'script': 'I got something ta say', 'delay': 2000 },
+	{ 'name': 'Not an alien', 'color': '#ffdd8b', 'script': 'WHAT!?', 'delay': 5000 },
+	{ 'name': 'Not an alien', 'color': '#00abc7', 'script': 'That\'s just how it be', 'delay': 1000}
 ]
 
 func _ready():
@@ -31,7 +32,14 @@ func _input(event):
 				var dialog_line = conversationScript[script_place]['script']
 				var char_name = conversationScript[script_place]['name']
 				var char_color = conversationScript[script_place]['color']
-				#text_entered(dialog_line)
+				var delay_ms = 0
+				if conversationScript[script_place]['delay']:
+					delay_ms = conversationScript[script_place]['delay']
+				var delay_timer = Timer.new()
+				delay_timer.set_wait_time(float(delay_ms) / 1000.0)
+				add_child(delay_timer)
+				delay_timer.start()
+				yield(delay_timer, "timeout")
 				message_entered(char_name, dialog_line, char_color)
 				script_place += 1
 				

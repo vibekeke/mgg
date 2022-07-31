@@ -8,9 +8,13 @@ extents = Vector2( 8, 2 )
 [node name="Floor" type="Sprite"]
 scale = Vector2( 10, 10 )
 texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -2.86102e-07, -6 )
+position = Vector2( 8, 2 )
 shape = SubResource( 1 )
