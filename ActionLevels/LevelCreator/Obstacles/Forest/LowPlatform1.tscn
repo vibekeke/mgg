@@ -1,25 +1,21 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://imported_assets/platforms/forest/Platform_forestrocks_Low-A.png" type="Texture" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/FloatingPlatform.gd" type="Script" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/MovingPlatform.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 530, 87.5 )
+extents = Vector2( 525, 50 )
 
-[node name="FloatingPlatform" type="Sprite"]
-position = Vector2( 1412, 482 )
+[node name="LowPlatform1" type="Sprite"]
 scale = Vector2( 0.4, 0.4 )
+z_index = -1
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
-scroll_speed = 500
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -514.999, 167.5 )
-scale = Vector2( 0.999999, 0.999999 )
+position = Vector2( -510, 137.5 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 one_way_collision = true
