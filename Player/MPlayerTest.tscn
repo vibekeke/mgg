@@ -1,9 +1,9 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://imported_assets/actors/mg/RunningV5.png" type="Texture" id=1]
 [ext_resource path="res://Player/MPlayerTest.gd" type="Script" id=2]
 [ext_resource path="res://Player/Projectiles/Gunshot.tscn" type="PackedScene" id=3]
-[ext_resource path="res://imported_assets/actors/mg/Running_June23.png" type="Texture" id=4]
+[ext_resource path="res://imported_assets/actors/mg/JumpingV10.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 200, 345.714 )
@@ -64,80 +64,69 @@ region = Rect2( 0, 3072, 1024, 1024 )
 atlas = ExtResource( 1 )
 region = Rect2( 1024, 3072, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=74]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 1024, 3072, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=75]
-flags = 4
+[sub_resource type="AtlasTexture" id=103]
 atlas = ExtResource( 4 )
 region = Rect2( 2048, 3072, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=76]
-flags = 4
+[sub_resource type="AtlasTexture" id=104]
+atlas = ExtResource( 4 )
+region = Rect2( 3072, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=105]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=77]
-flags = 4
+[sub_resource type="AtlasTexture" id=106]
 atlas = ExtResource( 4 )
 region = Rect2( 1024, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=78]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 2048, 2048, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=79]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 3072, 2048, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=80]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 3072, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=81]
-flags = 4
+[sub_resource type="AtlasTexture" id=107]
 atlas = ExtResource( 4 )
 region = Rect2( 2048, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=82]
-flags = 4
+[sub_resource type="AtlasTexture" id=108]
+atlas = ExtResource( 4 )
+region = Rect2( 3072, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=109]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=110]
+atlas = ExtResource( 4 )
+region = Rect2( 1024, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=111]
 atlas = ExtResource( 4 )
 region = Rect2( 3072, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=83]
-flags = 4
+[sub_resource type="AtlasTexture" id=112]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 1024, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=84]
-flags = 4
+[sub_resource type="AtlasTexture" id=113]
 atlas = ExtResource( 4 )
 region = Rect2( 1024, 1024, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=85]
-flags = 4
+[sub_resource type="AtlasTexture" id=114]
 atlas = ExtResource( 4 )
 region = Rect2( 2048, 1024, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=86]
-flags = 4
+[sub_resource type="AtlasTexture" id=115]
 atlas = ExtResource( 4 )
 region = Rect2( 3072, 1024, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=87]
-flags = 4
+[sub_resource type="AtlasTexture" id=116]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 2048, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=88]
-flags = 4
+[sub_resource type="AtlasTexture" id=117]
 atlas = ExtResource( 4 )
 region = Rect2( 1024, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=118]
+atlas = ExtResource( 4 )
+region = Rect2( 2048, 2048, 1024, 1024 )
 
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
@@ -146,22 +135,22 @@ animations = [ {
 "name": "run",
 "speed": 14.0
 }, {
-"frames": [ SubResource( 74 ), SubResource( 75 ) ],
+"frames": [ SubResource( 103 ), SubResource( 104 ) ],
 "loop": true,
 "name": "landed",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 76 ), SubResource( 77 ) ],
+"frames": [ SubResource( 105 ), SubResource( 106 ), SubResource( 107 ) ],
 "loop": true,
 "name": "init_jump",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
+"frames": [ SubResource( 108 ), SubResource( 109 ), SubResource( 110 ) ],
 "loop": true,
 "name": "falling",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ) ],
+"frames": [ SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ) ],
 "loop": true,
 "name": "during_jump",
 "speed": 5.0
@@ -340,7 +329,7 @@ nodes/Animation/position = Vector2( 350, 300 )
 nodes/TimeScale/node = SubResource( 40 )
 nodes/TimeScale/position = Vector2( 566.64, 292.32 )
 nodes/output/position = Vector2( 780, 310 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeBlendTree" id=59]
 
@@ -355,7 +344,7 @@ nodes/Animation/position = Vector2( 146.88, 187.92 )
 nodes/TimeScale/node = SubResource( 43 )
 nodes/TimeScale/position = Vector2( 360, 160 )
 nodes/output/position = Vector2( 540, 170 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=45]
 animation = "landing"
@@ -368,7 +357,7 @@ nodes/Animation/position = Vector2( 200, 150 )
 nodes/TimeScale/node = SubResource( 46 )
 nodes/TimeScale/position = Vector2( 390, 140 )
 nodes/output/position = Vector2( 580, 170 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=48]
 animation = "jump_init"
@@ -381,7 +370,7 @@ nodes/Animation/position = Vector2( 185.76, 254.16 )
 nodes/TimeScale/node = SubResource( 49 )
 nodes/TimeScale/position = Vector2( 414, 256.32 )
 nodes/output/position = Vector2( 630, 280 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=51]
 animation = "run"
@@ -394,7 +383,7 @@ nodes/Animation/node = SubResource( 51 )
 nodes/Animation/position = Vector2( -60, 140 )
 nodes/TimeScale/node = SubResource( 52 )
 nodes/TimeScale/position = Vector2( 120, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
 
@@ -439,7 +428,7 @@ shape = SubResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 19 )
 animation = "run"
-frame = 13
+frame = 8
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
