@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player/MPlayerTest.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ActionLevels/backgrounds/TestBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelOrchestrator.tscn" type="PackedScene" id=4]
 
 [node name="LevelTest" type="Node2D"]
 
@@ -12,11 +11,13 @@ position = Vector2( 2.00001, 1079 )
 scale = Vector2( 122.5, 10 )
 
 [node name="Wall" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 4, 3 )
 rotation = 1.5708
 scale = Vector2( 119.688, 10 )
 
 [node name="Wall2" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 1961, -115 )
 rotation = 1.5708
 scale = Vector2( 119.688, 10 )
@@ -24,7 +25,5 @@ scale = Vector2( 119.688, 10 )
 [node name="MPlayerTest" parent="." instance=ExtResource( 1 )]
 position = Vector2( 231, 815 )
 
-[node name="TestBackground" parent="." instance=ExtResource( 2 )]
-scrolling_time_middleground = 150.0
-
-[node name="LevelOrchestrator" parent="." instance=ExtResource( 4 )]
+[node name="Misbeehave" parent="." instance=ExtResource( 2 )]
+position = Vector2( 966, 841 )

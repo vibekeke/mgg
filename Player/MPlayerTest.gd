@@ -106,5 +106,9 @@ func shoot(angle):
 	get_tree().get_root().add_child(_gunshot)
 	_gunshot.position = self.position + Vector2(80,2)
 	
+func took_damage():
+	print("ouchie ouch")
+	pass
+	
 func _on_Player_debug_data():
 	emit_signal("debug_data", debug_stats)

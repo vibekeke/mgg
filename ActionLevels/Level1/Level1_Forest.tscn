@@ -7,7 +7,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BaseEnemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/TallPlatform.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/Health.tscn" type="PackedScene" id=10]
 
@@ -43,19 +43,19 @@ position = Vector2( 0, -161 )
 initial_speed = 300.0
 
 [node name="LongTallPlatform" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2019, 760 )
+position = Vector2( 2019, 718 )
 scroll_speed = 500
 
 [node name="TallPlatform" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3142, 752 )
+position = Vector2( 3142, 724 )
 scroll_speed = 500
 
-[node name="LowPlatform2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1164, 752 )
-
 [node name="OurGuy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, -95 )
+position = Vector2( -1, -159 )
 initial_speed = 120.0
 base_enemy = ExtResource( 9 )
 
 [node name="Health" parent="." instance=ExtResource( 10 )]
+
+[node name="Misbeehave" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1055, 795 )
