@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/MPlayerTest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Satan/Satan.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://HUD/Health.tscn" type="PackedScene" id=7]
 
 [node name="LevelTest" type="Node2D"]
 
@@ -26,10 +27,16 @@ rotation = 1.5708
 scale = Vector2( 119.688, 10 )
 
 [node name="MPlayerTest" parent="." instance=ExtResource( 1 )]
-position = Vector2( 231, 815 )
+position = Vector2( 223, 907 )
 
 [node name="Misbeehave" parent="." instance=ExtResource( 2 )]
 position = Vector2( 966, 841 )
+
+[node name="Misbeehave2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 716, 841 )
+
+[node name="Misbeehave3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 465, 841 )
 
 [node name="OurGuy" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1168, 978 )
@@ -39,3 +46,5 @@ position = Vector2( 1309, 793 )
 
 [node name="Satan" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1560, 983 )
+
+[node name="Health" parent="." instance=ExtResource( 7 )]

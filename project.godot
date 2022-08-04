@@ -94,6 +94,10 @@ _global_script_class_icons={
 
 config/name="Mgg"
 
+[autoload]
+
+Events="*res://Autoload/Events.gd"
+
 [debug]
 
 settings/fps/force_fps=60

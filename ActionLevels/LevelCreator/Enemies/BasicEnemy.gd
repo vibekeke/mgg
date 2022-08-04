@@ -13,12 +13,10 @@ onready var follow_path = $Path2D/PathFollow2D
 
 onready var queue_free_timer = Timer.new()
 
-var active_collision = false
 
 func _ready():
 	area2d.connect("area_entered", self, "_on_call_area_entered")
 	area2d.connect("body_entered", self, "_on_call_body_entered")
-	area2d.connect("body_exited", self, "_on_call_body_exited")
 	queue_free_timer.connect("timeout", self, "_on_death_cleanup")
 
 func death_cleanup():
@@ -40,10 +38,9 @@ func call_death():
 	death_cleanup()
 
 func _on_call_body_entered(body):
-	call_deferred("call_death")
-	
-func _on_call_body_exited(body):
-	pass
+	if body.name == 'MPlayerTest':
+		Events.emit_signal("collided_with_player", 1)
+		call_deferred("call_death")
 
 func _on_call_area_entered(area):
 	if area.name == "GunshotArea2D":

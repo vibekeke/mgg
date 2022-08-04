@@ -11,7 +11,10 @@ export var gravity := 2000.0
 export var jump_power := 1200.0
 export var add_jump_power: float = jump_power * 0.75
 export var max_jumps := 2
+export var max_health = 3
 
+var current_health = max_health
+var invul_timer = Timer.new()
 
 # Private variables
 var velocity := Vector2.ZERO
@@ -23,21 +26,24 @@ enum SHOOT_ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
 
 var current_shooting_angle = SHOOT_ANGLE.FORWARD_B
 
-var debug_stats = {
-	"movementSpeed": movementSpeed,
-	"jump_power": jump_power,
-	"shootAngle": current_shooting_angle
-}
-
 export (PackedScene) var gunshot
 
-# Signals
-signal debug_data
-
 func _ready():
-	print("Activating animation tree...")
+	Events.connect("collided_with_player", self, "_on_collided_with_player")
 	_animation_tree.active = true
 	_anim_state.travel("Run")
+	_invul_timer_setup()
+
+func _invul_timer_setup():
+	invul_timer.set_name("invul_timer")
+	invul_timer.connect("timeout", self, "_on_invul_timeout")
+	invul_timer.set_wait_time(0.5)
+	self.add_child(invul_timer)
+
+func _on_invul_timeout():
+	print("timed out")
+	modulate.a = 1
+	invul_timer.stop()
 
 func _physics_process(delta):
 	var _horizontal_direction = (
@@ -82,9 +88,7 @@ func _physics_process(delta):
 	normalized_velocity.y = clamp(velocity.y, -1, 1)
 	
 func _process(delta):
-	if OS.is_debug_build():
-		debug_stats["shootAngle"] = current_shooting_angle
-		_on_Player_debug_data()
+	Events.emit_signal("player_max_health", max_health)
 
 func shoot_staff():
 	if Input.is_action_just_pressed("hold_test"):
@@ -106,9 +110,12 @@ func shoot(angle):
 	get_tree().get_root().add_child(_gunshot)
 	_gunshot.position = self.position + Vector2(80,2)
 	
-func took_damage():
-	print("ouchie ouch")
-	pass
-	
-func _on_Player_debug_data():
-	emit_signal("debug_data", debug_stats)
+func _on_collided_with_player(damage):
+	if invul_timer.is_stopped():
+		current_health = current_health - damage
+		invul_timer.start()
+		modulate.a = 0.5
+		if current_health <= 0:
+			print("explode then emit game over or something")
+			Events.emit_signal("game_over")
+		Events.emit_signal("player_damaged", damage)
