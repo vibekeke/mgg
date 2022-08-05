@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemyAssets/BasicExplosion.gd" type="Script" id=1]
+[ext_resource path="res://imported_assets/misc/pastelstar.png" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+rotation_speed = 4.0
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.06, 0.06 )
+texture = ExtResource( 2 )
+
+[node name="Pivot" type="Node2D" parent="Sprite"]
+
+[node name="Sprite2" type="Sprite" parent="Sprite/Pivot"]
+position = Vector2( 40, -1180 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="Sprite/Pivot"]
+position = Vector2( 1180, -679.999 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+
+[node name="Sprite4" type="Sprite" parent="Sprite/Pivot"]
+position = Vector2( 1280, 420.001 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+
+[node name="Sprite5" type="Sprite" parent="Sprite/Pivot"]
+position = Vector2( 540, 1160 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+
+[node name="Sprite6" type="Sprite" parent="Sprite/Pivot"]
+position = Vector2( -659.998, 1080 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+
+[node name="Sprite7" type="Sprite" parent="Sprite/Pivot"]
+position = Vector2( -1320, 280.001 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+
+[node name="Sprite8" type="Sprite" parent="Sprite/Pivot"]
+position = Vector2( -1120, -740 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )

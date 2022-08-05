@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var death_explosion = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/BaseEnemyExplosion.tscn")
-
+#onready var death_explosion = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/BaseEnemyExplosion.tscn")
+onready var death_explosion = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/BasicExplosion.tscn")
 export (float) var initial_speed
 export (PackedScene) var base_enemy
 
@@ -32,7 +32,7 @@ func call_death():
 	collision_shape.disabled = true
 	var death_explosion_node = death_explosion.instance()
 	death_explosion_node.position = area2d.position
-	death_explosion_node.set_one_shot(true)
+#	death_explosion_node.set_one_shot(true)
 	area2d.add_child(death_explosion_node)
 	sprite.visible = false
 	death_cleanup()
