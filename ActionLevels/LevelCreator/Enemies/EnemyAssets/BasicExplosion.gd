@@ -17,5 +17,6 @@ func _process(delta):
 	$Sprite/Pivot/Sprite7.global_rotation = 0
 	$Sprite/Pivot/Sprite8.global_rotation = 0
 	$Sprite/Pivot.modulate.a = ($Sprite/Pivot.modulate.a - (1 * delta))
+	$Sprite/Pivot.position.x = $Sprite/Pivot.position.x + (1 * delta)
 	if time > TIME_PERIOD:
 		self.queue_free()

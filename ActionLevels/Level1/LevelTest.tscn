@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/MPlayerTest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://HUD/Health.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/OurGuy/DieTheGuy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform1.tscn" type="PackedScene" id=9]
 
 [node name="LevelTest" type="Node2D"]
 
@@ -30,21 +32,31 @@ scale = Vector2( 119.688, 10 )
 position = Vector2( 223, 907 )
 
 [node name="Misbeehave" parent="." instance=ExtResource( 2 )]
-position = Vector2( 966, 841 )
+position = Vector2( 1499, 783 )
+initial_speed = 500.0
 
 [node name="Misbeehave2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 716, 841 )
+position = Vector2( 1511, 570 )
+initial_speed = 250.0
 
 [node name="Misbeehave3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 465, 841 )
+position = Vector2( 1502, 361 )
+initial_speed = 250.0
 
 [node name="OurGuy" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1168, 978 )
+position = Vector2( 1576, 868 )
 
 [node name="Gunnerfly" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1309, 793 )
+position = Vector2( 1753, 817 )
 
 [node name="Satan" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1560, 983 )
+position = Vector2( 1822, 982 )
 
 [node name="Health" parent="." instance=ExtResource( 7 )]
+
+[node name="DieTheGuy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 718, 612 )
+initial_speed = 250.0
+
+[node name="LowPlatform1" parent="." instance=ExtResource( 9 )]
+position = Vector2( 918, 794 )

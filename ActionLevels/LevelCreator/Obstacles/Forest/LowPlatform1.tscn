@@ -4,7 +4,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/MovingPlatform.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 525, 50 )
+extents = Vector2( 510, 50 )
 
 [node name="LowPlatform1" type="Sprite"]
 scale = Vector2( 0.4, 0.4 )
@@ -15,7 +15,7 @@ script = ExtResource( 2 )
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -510, 137.5 )
+position = Vector2( -525, 137.5 )
 scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 one_way_collision = true

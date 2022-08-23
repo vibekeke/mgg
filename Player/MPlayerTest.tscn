@@ -130,6 +130,11 @@ region = Rect2( 1024, 3072, 1024, 1024 )
 
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 108 ), SubResource( 109 ), SubResource( 110 ) ],
 "loop": true,
 "name": "falling",
@@ -154,11 +159,6 @@ animations = [ {
 "loop": true,
 "name": "run",
 "speed": 14.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "default",
-"speed": 5.0
 } ]
 
 [sub_resource type="Animation" id=20]
@@ -329,7 +329,7 @@ nodes/Animation/position = Vector2( 350, 300 )
 nodes/TimeScale/node = SubResource( 40 )
 nodes/TimeScale/position = Vector2( 566.64, 292.32 )
 nodes/output/position = Vector2( 780, 310 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeBlendTree" id=59]
 
@@ -344,7 +344,7 @@ nodes/Animation/position = Vector2( 146.88, 187.92 )
 nodes/TimeScale/node = SubResource( 43 )
 nodes/TimeScale/position = Vector2( 360, 160 )
 nodes/output/position = Vector2( 540, 170 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=45]
 animation = "landing"
@@ -357,7 +357,7 @@ nodes/Animation/position = Vector2( 200, 150 )
 nodes/TimeScale/node = SubResource( 46 )
 nodes/TimeScale/position = Vector2( 390, 140 )
 nodes/output/position = Vector2( 580, 170 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=48]
 animation = "jump_init"
@@ -370,7 +370,7 @@ nodes/Animation/position = Vector2( 185.76, 254.16 )
 nodes/TimeScale/node = SubResource( 49 )
 nodes/TimeScale/position = Vector2( 414, 256.32 )
 nodes/output/position = Vector2( 630, 280 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=51]
 animation = "run"
@@ -383,7 +383,7 @@ nodes/Animation/node = SubResource( 51 )
 nodes/Animation/position = Vector2( -60, 140 )
 nodes/TimeScale/node = SubResource( 52 )
 nodes/TimeScale/position = Vector2( 120, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
 
