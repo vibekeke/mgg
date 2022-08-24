@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var death_explosion = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/BasicExplosion.tscn")
+onready var death_explosion = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/AnimatedEnemyExplosion.tscn")
 export (float) var initial_speed
 export (PackedScene) var base_enemy
 

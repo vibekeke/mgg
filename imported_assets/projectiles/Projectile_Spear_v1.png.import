@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BG_Forest_1-sky, 1080p.png-7f6ce3c2e809b484adcbfb559d99772d.stex"
+path="res://.import/Projectile_Spear_v1.png-ab1789bbd153711c31ef6feef5f6b59e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imported_assets/backgrounds/forest_1080/BG_Forest_1-sky, 1080p.png"
-dest_files=[ "res://.import/BG_Forest_1-sky, 1080p.png-7f6ce3c2e809b484adcbfb559d99772d.stex" ]
+source_file="res://imported_assets/projectiles/Projectile_Spear_v1.png"
+dest_files=[ "res://.import/Projectile_Spear_v1.png-ab1789bbd153711c31ef6feef5f6b59e.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

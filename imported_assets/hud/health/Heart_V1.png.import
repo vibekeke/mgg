@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BG_Forest_1-sky, 1080p.png-7f6ce3c2e809b484adcbfb559d99772d.stex"
+path="res://.import/Heart_V1.png-3ed345d741997ee67f88b5cf214c487f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imported_assets/backgrounds/forest_1080/BG_Forest_1-sky, 1080p.png"
-dest_files=[ "res://.import/BG_Forest_1-sky, 1080p.png-7f6ce3c2e809b484adcbfb559d99772d.stex" ]
+source_file="res://imported_assets/hud/health/Heart_V1.png"
+dest_files=[ "res://.import/Heart_V1.png-3ed345d741997ee67f88b5cf214c487f.stex" ]
 
 [params]
 

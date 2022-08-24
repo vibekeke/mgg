@@ -6,3 +6,6 @@ signal player_current_health(health) # emits the current health of the player
 signal collided_with_player(damage) # when an enemy collides with a player
 
 signal game_over # player has died or game has ended for some other reason
+
+func _process(delta):
+	print('FPS is ', str(Engine.get_frames_per_second()))
