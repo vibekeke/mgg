@@ -2,6 +2,7 @@ extends Control
 
 const _node_name_prefix = 'health'
 onready var heart_sprite = preload("HeartSprite.tscn")
+onready var animated_heart_sprite = preload("AnimatedHeartSprite.tscn")
 var has_set_max_health = false
 
 func _ready():
@@ -10,7 +11,8 @@ func _ready():
 
 func _on_player_max_health(max_health):
 	for i in max_health:
-		var health_sprite_node = heart_sprite.instance()
+#		var health_sprite_node = heart_sprite.instance()
+		var health_sprite_node = animated_heart_sprite.instance()
 		health_sprite_node.set_name(_node_name_prefix + str(i + 1))
 		$HBoxContainer.add_child(health_sprite_node)
 	if Events.is_connected("player_max_health", self, "_on_player_max_health"):
