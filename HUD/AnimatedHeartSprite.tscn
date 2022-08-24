@@ -60,8 +60,16 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[node name="AnimatedSprite" type="AnimatedSprite"]
+[node name="Control" type="Control"]
+margin_right = 161.0
+margin_bottom = 191.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 11 )
-frame = 2
+frame = 8
 playing = true
+centered = false

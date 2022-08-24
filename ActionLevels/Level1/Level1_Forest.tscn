@@ -45,11 +45,11 @@ scroll_speed = 500
 position = Vector2( 3142, 724 )
 scroll_speed = 500
 
-[node name="Health" parent="." instance=ExtResource( 10 )]
-
 [node name="Misbeehave" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1055, 795 )
 
 [node name="DieTheGuy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2127, 423 )
 initial_speed = 500.0
+
+[node name="Health" parent="." instance=ExtResource( 10 )]
