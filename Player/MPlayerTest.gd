@@ -55,27 +55,22 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	normalized_velocity.y += clamp(velocity.y, -1, 1)
 	
-#	print("normalized velocity y", normalized_velocity.y)
 	
-	var is_falling := velocity.y > 0.0 and not is_on_floor()
+	var is_falling := velocity.y > 100.0 and not is_on_floor()
 	var is_rising := velocity.y < 0.0 and not is_on_floor()
 	var started_jumping := Input.is_action_just_pressed("jump") and is_on_floor()
 	var started_add_jump := Input.is_action_just_pressed("jump") and is_falling
 	var has_jumped := false
 	var is_not_moving := is_on_floor() and is_zero_approx(velocity.x)
 	var is_moving := is_on_floor() and not is_zero_approx(velocity.x)
-#	print("Falling: ", is_falling)
-#	print("Rising: ", is_rising)
-#	print("Jumping: ", started_jumping)
-#	print("Moving: ", is_moving)
-#	print("Not moving: ", is_not_moving)
+
 	shoot_staff()
 	if started_jumping:
 		jumps_made += 1
 		_anim_state.travel("RisingLoop")
 		velocity.y = -jump_power
 	# TODO: Fix this hack using maths, e.g. store delta * gravity to help find peak of jump
-	if is_rising and velocity.y > -500:
+	if is_rising and velocity.y > -1400:
 		_anim_state.travel("AboutToFall")
 	if is_falling:
 		_anim_state.travel("FallingLoop")
@@ -89,6 +84,8 @@ func _physics_process(delta):
 	
 func _process(delta):
 	Events.emit_signal("player_max_health", max_health)
+	Events.emit_signal("player_global_position", self.global_position)
+	Events.emit_signal("player_local_position", self.position)
 
 func shoot_staff():
 	if Input.is_action_just_pressed("hold_test"):
@@ -116,6 +113,5 @@ func _on_collided_with_player(damage):
 		invul_timer.start()
 		modulate.a = 0.5
 		if current_health <= 0:
-			print("explode then emit game over or something")
 			Events.emit_signal("game_over")
 		Events.emit_signal("player_damaged", damage)

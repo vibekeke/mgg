@@ -54,10 +54,6 @@ func _on_call_area_entered(area):
 		call_deferred("call_death")
 
 func _physics_process(delta):
-	print($Area2D.get_overlapping_bodies())
-	#if is_on_floor == false:
-		#self.position.x -= 10.0 * delta
-	#else:
+	#print('overlapping bodies in walking enemy', $Area2D.get_overlapping_bodies())
 	self.position.x -= initial_speed * delta
-	#if is_on_floor == false:
-	#	self.position.y += gravity * delta
+	self.position.y

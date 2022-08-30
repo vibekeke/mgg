@@ -90,10 +90,8 @@ frequency = 2.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
 frames = SubResource( 14 )
 animation = "spin"
-frame = 7
+frame = 11
 playing = true
-centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 273.333, 253.333 )
 shape = SubResource( 15 )

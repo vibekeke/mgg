@@ -11,4 +11,4 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 margin_right = -1429.0
 margin_bottom = 156.0
-custom_constants/separation = 100
+custom_constants/separation = 120

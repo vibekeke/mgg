@@ -10,8 +10,8 @@ onready var area2d = $Area2D
 var time = 0
 
 func _ready():
-	self.position.x = x_init
-	self.position.y = y_init
+#	self.position.x = x_init
+#	self.position.y = y_init
 	area2d.connect("body_entered", self, "_on_call_body_entered")
 
 func _increment_dogs():
