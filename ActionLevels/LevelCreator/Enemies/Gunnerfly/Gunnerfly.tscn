@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://imported_assets/actors/gunnerfly/Gunnerfly.png" type="Texture" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemyAssets/Bullets/BasicEnemyGunshot.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -36,7 +37,12 @@ animations = [ {
 extents = Vector2( 187, 185 )
 
 [node name="Gunnerfly" type="Node2D"]
+position = Vector2( 928, 429 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+gunshot = ExtResource( 3 )
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )
@@ -48,9 +54,8 @@ scale = Vector2( 0.4, 0.4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 position = Vector2( 12, -29 )
-scale = Vector2( 1, 1 )
 frames = SubResource( 7 )
-frame = 3
+frame = 2
 speed_scale = 2.0
 playing = true
 

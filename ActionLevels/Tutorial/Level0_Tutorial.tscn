@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/MPlayerTest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ActionLevels/Tutorial/Level0_Tutorial.gd" type="Script" id=4]
+[ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HUD/Health.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment() {
+	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
+    float avg = (COLOR.r + COLOR.g + COLOR.b) / 3.0;
+    COLOR.rgb = vec3(avg);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[node name="Level0_Tutorial" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="LevelTutorial" parent="." instance=ExtResource( 1 )]
+
+[node name="Floor" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( -102, 1013 )
+scale = Vector2( 126.375, 10 )
+
+[node name="Backwall" parent="." instance=ExtResource( 2 )]
+visible = false
+rotation = 1.5708
+scale = Vector2( 67.5, 10 )
+
+[node name="Frontwall" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 1920, 0 )
+rotation = 1.5708
+scale = Vector2( 67.5, 10 )
+
+[node name="MPlayerTest" parent="." instance=ExtResource( 3 )]
+position = Vector2( 177, 840 )
+jump_power = 1300.0
+
+[node name="Health" parent="." instance=ExtResource( 10 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 2 )
+margin_right = 1921.0
+margin_bottom = 1083.0
+
+[node name="Dialog" parent="CanvasLayer" instance=ExtResource( 5 )]
+timeline = "timeline-1661969358.json"
+add_canvas = false

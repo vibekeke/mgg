@@ -1,0 +1,57 @@
+{
+	"events": [
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Welcome to the tutorial! [Press E to confirm]"
+		},
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Have you played before?"
+		},
+		{
+			"choice": "Yes",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You're replaying the game!? You must be a developer."
+		},
+		{
+			"choice": "No",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Playing is easy. You jump. You shoot. It's a video game dude you'll get the hang of it."
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"emit_signal": "level1",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1661969358.json",
+		"name": "Tutorial"
+	}
+}

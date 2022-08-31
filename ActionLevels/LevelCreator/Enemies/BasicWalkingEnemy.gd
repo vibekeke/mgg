@@ -1,6 +1,5 @@
 extends Node2D
 
-onready var death_explosion = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/BasicExplosion.tscn")
 export (float) var initial_speed
 export (PackedScene) var base_enemy
 
@@ -30,9 +29,6 @@ func _on_death_cleanup():
 
 func call_death():
 	collision_shape.disabled = true
-	var death_explosion_node = death_explosion.instance()
-	death_explosion_node.position = area2d.position
-	area2d.add_child(death_explosion_node)
 	sprite.visible = false
 	death_cleanup()
 
