@@ -9,13 +9,17 @@
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": 0,
+	"offset_y": -50,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://imported_assets/hud/npcs/angel/Angel_concept.png"
+		},
+		{
+			"name": "AngelDamaged",
+			"path": "res://imported_assets/hud/npcs/angel/AngelDamaged.png"
 		}
 	],
-	"scale": 100,
+	"scale": 50,
 	"theme": ""
 }

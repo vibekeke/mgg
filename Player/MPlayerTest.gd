@@ -20,6 +20,10 @@ var invul_timer = Timer.new()
 var velocity := Vector2.ZERO
 var normalized_velocity := Vector2.ZERO
 
+var is_jump_disabled = false
+var is_shoot_disabled = false
+var is_move_disabled = false
+
 var jumps_made := 0
 
 enum SHOOT_ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
@@ -30,6 +34,7 @@ export (PackedScene) var gunshot
 
 func _ready():
 	Events.connect("collided_with_player", self, "_on_collided_with_player")
+	Events.connect("disable_player_action", self, "_on_disable_player_action")
 	_animation_tree.active = true
 	_anim_state.travel("Run")
 	_invul_timer_setup()
@@ -50,10 +55,11 @@ func _physics_process(delta):
 		Input.get_action_strength("right") - Input.get_action_strength("left")
 	)
 	
-	velocity.x = _horizontal_direction * movementSpeed
-	normalized_velocity.x = clamp(velocity.x, -1, 1)
-	velocity.y += gravity * delta
-	normalized_velocity.y += clamp(velocity.y, -1, 1)
+	if !is_move_disabled:
+		velocity.x = _horizontal_direction * movementSpeed
+		normalized_velocity.x = clamp(velocity.x, -1, 1)
+		velocity.y += gravity * delta
+		normalized_velocity.y += clamp(velocity.y, -1, 1)
 	
 	
 	var is_falling := velocity.y > 100.0 and not is_on_floor()
@@ -64,8 +70,10 @@ func _physics_process(delta):
 	var is_not_moving := is_on_floor() and is_zero_approx(velocity.x)
 	var is_moving := is_on_floor() and not is_zero_approx(velocity.x)
 
-	shoot_staff()
-	if started_jumping:
+	if !is_shoot_disabled:
+		shoot_staff()
+		
+	if started_jumping and !is_jump_disabled:
 		jumps_made += 1
 		_anim_state.travel("RisingLoop")
 		velocity.y = -jump_power
@@ -106,7 +114,16 @@ func shoot(angle):
 	_gunshot.set_bullet_type(angle)
 	get_tree().get_root().add_child(_gunshot)
 	_gunshot.position = self.position + Vector2(80,2)
-	
+
+func _on_disable_player_action(to_disable):
+	print("received disable event", to_disable)
+	# 0 == disable everything, including movement and jumping
+	# 1 == disable everything except movement and jumping
+	if int(to_disable) == 0:
+		is_shoot_disabled = !is_shoot_disabled
+		is_jump_disabled = !is_jump_disabled
+		is_move_disabled = !is_move_disabled
+
 func _on_collided_with_player(damage):
 	if invul_timer.is_stopped():
 		current_health = current_health - damage

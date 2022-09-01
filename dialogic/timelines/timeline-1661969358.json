@@ -1,10 +1,55 @@
 {
 	"events": [
 		{
+			"call_node": {
+				"arguments": [
+					"0"
+				],
+				"method_name": "_disable_player_actions",
+				"target_node_path": "Events"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"0"
+				],
+				"method_name": "_disable_enemy_actions",
+				"target_node_path": "Events"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"block_input": true,
+			"event_id": "dialogic_050",
+			"wait_time": 2
+		},
+		{
+			"animation": "instant_in.gd",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "AngelDamaged",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
 			"character": "character-1661969364.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Welcome to the tutorial! [Press E to confirm]"
+			"portrait": "AngelDamaged",
+			"text": "Welcome to the tutorial [soldier,maggot,turd,dummy]!"
 		},
 		{
 			"character": "character-1661969364.json",
@@ -12,21 +57,8 @@
 			"options": [
 
 			],
-			"portrait": "",
+			"portrait": "(Don't change)",
 			"question": "Have you played before?"
-		},
-		{
-			"choice": "Yes",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"character": "character-1661969364.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "You're replaying the game!? You must be a developer."
 		},
 		{
 			"choice": "No",
@@ -38,15 +70,130 @@
 		{
 			"character": "character-1661969364.json",
 			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Haven't you ever played a video game before?\nYou jump.\nYou shoot."
+		},
+		{
+			"animation": "instant_out.gd",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
 			"portrait": "",
-			"text": "Playing is easy. You jump. You shoot. It's a video game dude you'll get the hang of it."
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 1,
+			"z_index": 0
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"0"
+				],
+				"method_name": "_disable_enemy_actions",
+				"target_node_path": "Events"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": true,
+			"wait_seconds": 5
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"0"
+				],
+				"method_name": "_disable_enemy_actions",
+				"target_node_path": "Events"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"animation": "instant_in.gd",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "AngelDamaged",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh?\nAn enemy! [pause=1][wave amp=50 freq=2]Perfect![/wave] Shoot it down! [br] (Press [color=yellow]E[/color] to shoot!)"
+		},
+		{
+			"block_input": true,
+			"event_id": "dialogic_050",
+			"wait_time": 0
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"1"
+				],
+				"method_name": "_disable_player_actions",
+				"target_node_path": "Events"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"0"
+				],
+				"method_name": "_disable_enemy_actions",
+				"target_node_path": "Events"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"choice": "Yes",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Then let's get to it soldier!"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"level1"
+				],
+				"method_name": "_load_new_scene",
+				"target_node_path": "Events"
+			},
+			"event_id": "dialogic_042"
 		},
 		{
 			"event_id": "dialogic_013"
-		},
-		{
-			"emit_signal": "level1",
-			"event_id": "dialogic_040"
 		}
 	],
 	"metadata": {

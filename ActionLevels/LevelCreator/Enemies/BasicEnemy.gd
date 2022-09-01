@@ -15,6 +15,8 @@ onready var collision_shape = $Path2D/PathFollow2D/Area2D/CollisionShape2D
 var player_local_position = Vector2(0,0)
 var player_global_position = Vector2(0,0)
 
+var is_move_disabled = false
+
 enum SHOOT_ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
 
 var default_shooting_angle = SHOOT_ANGLE.FORWARD_B
@@ -24,6 +26,7 @@ func _ready():
 	area2d.connect("body_entered", self, "_on_call_body_entered")
 	Events.connect("player_local_position", self, "_on_player_local_position")
 	Events.connect("player_global_position", self, "_on_player_global_position")
+	Events.connect("disable_enemy_action", self, "_on_disable_enemy_action")
 	if "Gunnerfly" in self.name:
 		var _timer = Timer.new()
 		add_child(_timer)
@@ -45,6 +48,9 @@ func call_death():
 func _on_explosion_finished():
 	queue_free()
 
+func _on_disable_enemy_action(is_disabled):
+	print("i kneel.")
+	is_move_disabled = !is_move_disabled
 
 func _on_player_local_position(_player_local_position):
 	self.player_local_position = _player_local_position
@@ -77,16 +83,19 @@ func _shoot():
 
 func _physics_process(delta):
 	if self.global_position.x < 0 || self.global_position.y < 0:
+		print('ded.')
 		off_screen_call()
-	enemy_follower.offset += initial_speed * delta
-	if "Gunnerfly" in self.name:
-		self.position.x -= initial_scroll_speed * 1.25 * delta
-		self.position.y
-	if "Misbeehave" in self.name:
-		if self.player_local_position != Vector2(0,0):
-			if self.position.x - self.player_local_position.x > 0:
-				self.position = self.position.move_toward(self.player_local_position, initial_scroll_speed * delta)
-			else:
-				self.position.x -= initial_scroll_speed * 1.25 * delta
-	else:
-		self.position.x -= initial_scroll_speed * delta
+	if !is_move_disabled:
+		enemy_follower.offset += initial_speed * delta
+		if "Gunnerfly" in self.name:
+			self.position.x -= initial_scroll_speed * 1.25 * delta
+			self.position.y
+		if "Misbeehave" in self.name:
+			print('movin')
+			if self.player_local_position != Vector2(0,0):
+				if self.position.x - self.player_local_position.x > 0:
+					self.position = self.position.move_toward(self.player_local_position, initial_scroll_speed * delta)
+				else:
+					self.position.x -= initial_scroll_speed * 1.25 * delta
+		else:
+			self.position.x -= initial_scroll_speed * delta
