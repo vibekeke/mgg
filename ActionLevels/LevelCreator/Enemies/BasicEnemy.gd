@@ -49,7 +49,6 @@ func _on_explosion_finished():
 	queue_free()
 
 func _on_disable_enemy_action(is_disabled):
-	print("i kneel.")
 	is_move_disabled = !is_move_disabled
 
 func _on_player_local_position(_player_local_position):
@@ -83,7 +82,6 @@ func _shoot():
 
 func _physics_process(delta):
 	if self.global_position.x < 0 || self.global_position.y < 0:
-		print('ded.')
 		off_screen_call()
 	if !is_move_disabled:
 		enemy_follower.offset += initial_speed * delta
@@ -91,7 +89,6 @@ func _physics_process(delta):
 			self.position.x -= initial_scroll_speed * 1.25 * delta
 			self.position.y
 		if "Misbeehave" in self.name:
-			print('movin')
 			if self.player_local_position != Vector2(0,0):
 				if self.position.x - self.player_local_position.x > 0:
 					self.position = self.position.move_toward(self.player_local_position, initial_scroll_speed * delta)

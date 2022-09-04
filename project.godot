@@ -73,6 +73,11 @@ _global_script_classes=[ {
 "class": "QuitIcon",
 "language": "GDScript",
 "path": "res://ActionLevels/Room/QuitIcon.gd"
+}, {
+"base": "CanvasLayer",
+"class": "SceneManager",
+"language": "GDScript",
+"path": "res://Autoload/SceneManager.gd"
 } ]
 _global_script_class_icons={
 "DTS": "",
@@ -87,7 +92,8 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "HistoryRow": "",
-"QuitIcon": ""
+"QuitIcon": "",
+"SceneManager": ""
 }
 
 [application]

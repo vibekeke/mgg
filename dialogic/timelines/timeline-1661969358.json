@@ -152,7 +152,7 @@
 		{
 			"call_node": {
 				"arguments": [
-					"1"
+					"0"
 				],
 				"method_name": "_disable_player_actions",
 				"target_node_path": "Events"
@@ -166,6 +166,16 @@
 				],
 				"method_name": "_disable_enemy_actions",
 				"target_node_path": "Events"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"Level1"
+				],
+				"method_name": "transition_to_next_scene",
+				"target_node_path": "SceneManager"
 			},
 			"event_id": "dialogic_042"
 		},
@@ -185,9 +195,9 @@
 		{
 			"call_node": {
 				"arguments": [
-					"level1"
+					"Level1"
 				],
-				"method_name": "_load_new_scene",
+				"method_name": "transition_to_new_scene",
 				"target_node_path": "Events"
 			},
 			"event_id": "dialogic_042"

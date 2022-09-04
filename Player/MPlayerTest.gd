@@ -35,6 +35,7 @@ export (PackedScene) var gunshot
 func _ready():
 	Events.connect("collided_with_player", self, "_on_collided_with_player")
 	Events.connect("disable_player_action", self, "_on_disable_player_action")
+	Events.connect("transition_to_scene", self, "test")
 	_animation_tree.active = true
 	_anim_state.travel("Run")
 	_invul_timer_setup()
