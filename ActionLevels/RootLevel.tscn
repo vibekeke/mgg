@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://ActionLevels/RootLevel.gd" type="Script" id=1]
+[ext_resource path="res://ActionLevels/RootScene.gd" type="Script" id=1]
 [ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=2]
 
-[node name="RootLevel" type="Node2D"]
+[node name="RootScene" type="Node2D"]
 script = ExtResource( 1 )
 target_scene = "res://ActionLevels/Tutorial/Level0_Tutorial.tscn"
 
