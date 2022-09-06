@@ -53,7 +53,7 @@ rotate = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 frames = SubResource( 8 )
-frame = 1
+frame = 3
 speed_scale = 3.0
 playing = true
 

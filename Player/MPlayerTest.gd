@@ -31,6 +31,7 @@ enum SHOOT_ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
 var current_shooting_angle = SHOOT_ANGLE.FORWARD_B
 
 export (PackedScene) var gunshot
+export (PackedScene) var physical_attack
 
 func _ready():
 	Events.connect("collided_with_player", self, "_on_collided_with_player")
@@ -108,8 +109,19 @@ func shoot_staff():
 		
 	if Input.is_action_just_pressed("shoot"):
 		shoot(current_shooting_angle)
+		
+	if Input.is_action_just_pressed("hit"):
+		print("hitting")
+		hit()
+		
+func hit():
+	for node in get_tree().get_root().get_children():
+		if node.name == "Hit":
+			return
+	var _physical_attack = physical_attack.instance()
+	get_tree().get_root().add_child(_physical_attack)
+	_physical_attack.location_offset = Vector2(40,2)
 
-	
 func shoot(angle):
 	var _gunshot = gunshot.instance()
 	_gunshot.set_bullet_type(angle)
@@ -117,7 +129,6 @@ func shoot(angle):
 	_gunshot.position = self.position + Vector2(80,2)
 
 func _on_disable_player_action(to_disable):
-	print("received disable event", to_disable)
 	# 0 == disable everything, including movement and jumping
 	# 1 == disable everything except movement and jumping
 	if int(to_disable) == 0:

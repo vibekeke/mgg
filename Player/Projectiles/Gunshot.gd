@@ -18,6 +18,13 @@ func _ready():
 		var area2d = $EnemyGunshotArea2D
 		if area2d != null:
 			area2d.connect("body_entered", self, "_on_call_body_entered")
+			area2d.connect("area_entered", self, "_on_call_area_entered")
+
+func _on_call_area_entered(area):
+	if area.name == "HitArea2D":
+		belongs_to_player = true
+		move_rightward = true
+		speed = speed * 1.10
 
 func _on_call_body_entered(body):
 	if body.name == 'MPlayerTest' and belongs_to_player == false:
