@@ -52,11 +52,17 @@ rotate = false
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
+position = Vector2( 770, -25 )
 frames = SubResource( 8 )
 frame = 3
 speed_scale = 3.0
 playing = true
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
-position = Vector2( -8.5, 55.5 )
+position = Vector2( 1012.5, 305 )
 shape = SubResource( 9 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 481.25, 296.25 )
+scale = Vector2( 20.875, 16.875 )

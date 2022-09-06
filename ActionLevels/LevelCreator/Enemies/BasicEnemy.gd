@@ -13,6 +13,7 @@ onready var enemy_follower = $Path2D/PathFollow2D
 onready var area2d = $Path2D/PathFollow2D/Area2D
 onready var sprite = $Path2D/PathFollow2D/Area2D/AnimatedSprite
 onready var collision_shape = $Path2D/PathFollow2D/Area2D/CollisionShape2D
+onready var visibility_notifier = $VisibilityNotifier2D
 
 var player_local_position = Vector2(0,0)
 var player_global_position = Vector2(0,0)
@@ -74,8 +75,11 @@ func _on_call_area_entered(area):
 func off_screen_call():
 	queue_free()
 
+func is_on_screen():
+	return visibility_notifier.is_on_screen()
+
 func _shoot():
-	if gunshot != null:
+	if gunshot != null and is_on_screen():
 		if "Gunnerfly" in self.name:
 			for value in SHOOT_ANGLE.values():
 				var _gunshot = gunshot.instance()
@@ -93,9 +97,8 @@ func _physics_process(delta):
 		enemy_follower.offset += initial_speed * delta
 		if "Gunnerfly" in self.name:
 			self.position.x -= initial_scroll_speed * 1.25 * delta
-			self.position.y
 		if "Misbeehave" in self.name:
-			if self.player_local_position != Vector2(0,0):
+			if self.player_local_position != Vector2(0,0) and is_on_screen():
 				if self.position.x - self.player_local_position.x > 0:
 					self.position = self.position.move_toward(self.player_local_position, initial_scroll_speed * delta)
 				else:
@@ -103,7 +106,7 @@ func _physics_process(delta):
 		if "BroBun" in self.name:
 			if bunny_drop:
 				self.position.y += initial_scroll_speed * 5 * delta
-			if self.player_local_position != Vector2(0,0):
+			if self.player_local_position != Vector2(0,0) and is_on_screen():
 				if self.position.x - self.player_local_position.x > 0:
 					var x_towards = self.position.move_toward(self.player_local_position, 500 * delta)
 					if abs(self.position.x - self.player_local_position.x) < 100:
