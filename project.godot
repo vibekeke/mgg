@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "BroBun",
+"language": "GDScript",
+"path": "res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.gd"
+}, {
 "base": "Reference",
 "class": "DTS",
 "language": "GDScript",
@@ -64,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
+"base": "Node",
+"class": "Gunnerfly",
+"language": "GDScript",
+"path": "res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly.gd"
+}, {
 "base": "PanelContainer",
 "class": "HistoryRow",
 "language": "GDScript",
@@ -73,6 +83,11 @@ _global_script_classes=[ {
 "class": "Hurtable",
 "language": "GDScript",
 "path": "res://Player/Projectiles/Hit.gd"
+}, {
+"base": "Node",
+"class": "Misbeehave",
+"language": "GDScript",
+"path": "res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.gd"
 }, {
 "base": "DesktopIcon",
 "class": "QuitIcon",
@@ -85,6 +100,7 @@ _global_script_classes=[ {
 "path": "res://Autoload/SceneManager.gd"
 } ]
 _global_script_class_icons={
+"BroBun": "",
 "DTS": "",
 "DesktopIcon": "",
 "Dialogic": "",
@@ -96,8 +112,10 @@ _global_script_class_icons={
 "DialogicParser": "",
 "DialogicResources": "",
 "DialogicUtil": "",
+"Gunnerfly": "",
 "HistoryRow": "",
 "Hurtable": "",
+"Misbeehave": "",
 "QuitIcon": "",
 "SceneManager": ""
 }

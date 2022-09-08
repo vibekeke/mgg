@@ -1,7 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://imported_assets/actors/misbeehave/Bee_Stressed.png" type="Texture" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave_logic.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array(  )
+}
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -36,33 +42,31 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 207.5, 163.5 )
+extents = Vector2( 182.5, 110 )
 
 [node name="Misbeehave" type="Node2D"]
-scale = Vector2( 0.4, 0.4 )
 script = ExtResource( 2 )
+enemy_logic = ExtResource( 3 )
 
 [node name="Path2D" type="Path2D" parent="."]
-curve = null
+curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( -532.5, -5 )
-rotate = false
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
+scale = Vector2( 0.4, 0.4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
-position = Vector2( 770, -25 )
 frames = SubResource( 8 )
-frame = 3
-speed_scale = 3.0
+frame = 4
+speed_scale = 2.0
 playing = true
-centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
-position = Vector2( 1012.5, 305 )
+position = Vector2( -10, 75 )
+scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 9 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 481.25, 296.25 )
-scale = Vector2( 20.875, 16.875 )
+position = Vector2( -4, 30 )
+scale = Vector2( 7.3, 4.4 )
