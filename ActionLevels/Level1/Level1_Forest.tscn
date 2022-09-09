@@ -1,17 +1,24 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/MPlayerTest.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ActionLevels/Level1/Level1_Forest.gd" type="Script" id=5]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/TallPlatform.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/Health.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=11]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1987, 127, 0, 0, 0, 0, 2002, 624, 0, 0, 0, 0, 2011, 963 )
+}
 
 [node name="Level1_Forest" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="LevelForest" parent="." instance=ExtResource( 1 )]
 
@@ -35,18 +42,6 @@ scale = Vector2( 67.5, 10 )
 position = Vector2( 177, 840 )
 jump_power = 1300.0
 
-[node name="Gunnerfly" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1760, 817 )
-initial_scroll_speed = 200.0
-
-[node name="Gunnerfly2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 3045, 512 )
-initial_scroll_speed = 200.0
-
-[node name="Gunnerfly3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 3038, 910 )
-initial_scroll_speed = 200.0
-
 [node name="LongTallPlatform" parent="." instance=ExtResource( 6 )]
 position = Vector2( 866, 448 )
 scroll_speed = 500
@@ -55,32 +50,18 @@ scroll_speed = 500
 position = Vector2( 3125, 443 )
 scroll_speed = 500
 
-[node name="Misbeehave" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2555, 347 )
-initial_scroll_speed = 200.0
-
-[node name="Misbeehave5" parent="." instance=ExtResource( 8 )]
-position = Vector2( 4478, 685 )
-initial_scroll_speed = 200.0
-
-[node name="Misbeehave2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2016, 517 )
-initial_scroll_speed = 200.0
-
-[node name="Misbeehave3" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1991, 78.0001 )
-initial_scroll_speed = 200.0
-
-[node name="Misbeehave4" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1545, 894 )
-initial_scroll_speed = 200.0
-
 [node name="Health" parent="." instance=ExtResource( 10 )]
 
 [node name="Dogu1" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1309, 528 )
+position = Vector2( 1529, 467 )
 scroll_speed = 500
 
-[node name="BroBun" parent="." instance=ExtResource( 5 )]
-position = Vector2( 3476, 348 )
-initial_scroll_speed = 200.0
+[node name="EnemySpawner" parent="." instance=ExtResource( 11 )]
+enemy_list = [ ExtResource( 8 ), ExtResource( 4 ) ]
+
+[node name="SpawnPaths" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="SpawnLocations" type="PathFollow2D" parent="SpawnPaths"]
+position = Vector2( 1987, 127 )
+rotation = 1.54066

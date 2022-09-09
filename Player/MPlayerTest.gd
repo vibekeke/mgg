@@ -48,7 +48,6 @@ func _invul_timer_setup():
 	self.add_child(invul_timer)
 
 func _on_invul_timeout():
-	print("timed out")
 	modulate.a = 1
 	invul_timer.stop()
 
@@ -111,7 +110,6 @@ func shoot_staff():
 		shoot(current_shooting_angle)
 		
 	if Input.is_action_just_pressed("hit"):
-		print("hitting")
 		hit()
 		
 func hit():
@@ -142,5 +140,7 @@ func _on_collided_with_player(damage):
 		invul_timer.start()
 		modulate.a = 0.5
 		if current_health <= 0:
+			self.queue_free()
 			Events.emit_signal("game_over")
-		Events.emit_signal("player_damaged", damage)
+		else:
+			Events.emit_signal("player_damaged", damage)

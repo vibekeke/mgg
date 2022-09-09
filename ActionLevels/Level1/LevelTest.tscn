@@ -36,9 +36,12 @@ position = Vector2( 690, 469 )
 
 [node name="BroBun" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1350, 932 )
+health_value = 5
 
 [node name="Gunnerfly" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1769, 830 )
+health_value = 5
 
 [node name="Misbeehave" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1450, 662 )
+health_value = 10

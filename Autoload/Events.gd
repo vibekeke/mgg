@@ -13,7 +13,8 @@ signal game_over # player has died or game has ended for some other reason
 signal disable_player_action(to_disable)
 signal disable_enemy_action(to_disable)
 
-
+signal regular_enemy_death
+signal level_spawn_points(spawn_points)
 
 func _disable_player_actions(to_disable):
 	# for tutorial and other stuff, e.g. boss loading?
