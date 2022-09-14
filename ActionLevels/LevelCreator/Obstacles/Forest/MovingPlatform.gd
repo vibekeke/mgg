@@ -1,4 +1,4 @@
-extends Sprite
+extends MeshInstance2D
 
 export (int) var scroll_speed
 	

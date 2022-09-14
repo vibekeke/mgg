@@ -8,8 +8,8 @@ func _physics_process(delta):
 		if parent_node.player_local_position != Vector2(0,0) and parent_node.is_on_screen():
 			if parent_node.position.x - parent_node.player_local_position.x > 0:
 				parent_node.position = parent_node.position.move_toward(parent_node.player_local_position, parent_node.initial_scroll_speed * delta)
-			else:
-				parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
+		else:
+			parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
 
 func get_default_speed():
 	return 500

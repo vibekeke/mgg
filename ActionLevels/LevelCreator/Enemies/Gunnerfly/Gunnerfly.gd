@@ -9,7 +9,6 @@ enum SHOOT_ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
 var default_shooting_angle = SHOOT_ANGLE.FORWARD_B
 var shot_time_seconds = 1.5
 # action performed in physics_process, takes enemy node
-var run_once = true
 
 func _ready():
 	var _timer = Timer.new()
@@ -21,18 +20,16 @@ func _ready():
 
 func _shoot():
 	if gunshot_gunnerfly != null and parent_node.is_on_screen():
-		for value in SHOOT_ANGLE.values():
-			var _gunshot = gunshot_gunnerfly.instance()
-			_gunshot.set_bullet_type(value)
-			get_tree().get_root().add_child(_gunshot)
-			_gunshot.position = parent_node.position + Vector2(-76,3)
+		#for value in SHOOT_ANGLE.values():
+		var _gunshot = gunshot_gunnerfly.instance()
+		_gunshot.set_bullet_type(default_shooting_angle)
+			#_gunshot.set_bullet_type(value)
+		get_tree().get_root().add_child(_gunshot)
+		_gunshot.position = parent_node.position + Vector2(-76,3)
 
 func _physics_process(delta):
 	if !parent_node.is_move_disabled:
 		parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
-	
-func enemy_action():
-	pass
 
 func get_class():
 	return "Gunnerfly"

@@ -3,6 +3,8 @@ extends Node2D
 
 onready var death_explosion = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/AnimatedEnemyExplosion.tscn")
 
+export(DataClasses.SpawnHeight) var spawn_height = DataClasses.SpawnHeight.ANY
+
 export (float) var initial_scroll_speed
 export (int) var health_value = 1
 export (PackedScene) var enemy_logic
@@ -86,8 +88,10 @@ func _on_call_area_entered(area):
 		if "belongs_to_player" in area.get_parent():
 			if area.get_parent().belongs_to_player:
 				take_damage()
+				area.get_parent().queue_free()
 
 func off_screen_call():
+	Events.emit_signal("regular_enemy_death")
 	queue_free()
 
 func is_on_screen():

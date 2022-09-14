@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var base_collectible = preload("res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu1.tscn")
+onready var base_collectible = preload("res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu.tscn")
 var total_instanced_elements = 0
 
 func instance_default_for_level(level_name):

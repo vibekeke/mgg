@@ -42,6 +42,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+spawn_height = 1
 initial_scroll_speed = 50.0
 enemy_logic = ExtResource( 3 )
 

@@ -27,8 +27,10 @@ var is_move_disabled = false
 var jumps_made := 0
 
 enum SHOOT_ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
+var angle_map = { SHOOT_ANGLE.FORWARD_B: 0, SHOOT_ANGLE.UPWARD_B: -30, SHOOT_ANGLE.DOWNWARD_B: -330 }
 
 var current_shooting_angle = SHOOT_ANGLE.FORWARD_B
+onready var shooting_arrow_guide = $Arrow
 
 export (PackedScene) var gunshot
 export (PackedScene) var physical_attack
@@ -50,6 +52,17 @@ func _invul_timer_setup():
 func _on_invul_timeout():
 	modulate.a = 1
 	invul_timer.stop()
+
+func move_arrow(angle):
+	shooting_arrow_guide.rotate(deg2rad(angle_map[angle]))
+#	if current_shooting_angle == SHOOT_ANGLE.FORWARD_B:
+#		var radian = deg2rad()
+#	elif current_shooting_angle == SHOOT_ANGLE.UPWARD_B:
+#		var radian = deg2rad(abs(angle_map[current_shooting_angle]))
+#		position += Vector2(movement_speed * cos(radian), -(movement_speed * sin(radian)))
+#	elif current_shooting_angle == SHOOT_ANGLE.DOWNWARD_B:
+#		var radian = deg2rad(abs(angle_map[current_shooting_angle]))
+#		position += Vector2(movement_speed * cos(radian), -(movement_speed * sin(radian)))
 
 func _physics_process(delta):
 	var _horizontal_direction = (
@@ -100,10 +113,13 @@ func shoot_staff():
 	if Input.is_action_just_pressed("hold_test"):
 		if current_shooting_angle == SHOOT_ANGLE.FORWARD_B:
 			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
+			move_arrow(SHOOT_ANGLE.UPWARD_B)
 		elif current_shooting_angle == SHOOT_ANGLE.UPWARD_B:
 			current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
+			move_arrow(SHOOT_ANGLE.DOWNWARD_B)
 		elif current_shooting_angle == SHOOT_ANGLE.DOWNWARD_B:
 			current_shooting_angle = SHOOT_ANGLE.FORWARD_B
+			move_arrow(SHOOT_ANGLE.FORWARD_B)
 		print(current_shooting_angle)
 		
 	if Input.is_action_just_pressed("shoot"):

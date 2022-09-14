@@ -66,6 +66,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+spawn_height = 0
 enemy_logic = ExtResource( 3 )
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -79,6 +80,7 @@ scale = Vector2( 0.4, 0.4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 position = Vector2( 12, -29 )
 frames = SubResource( 7 )
+frame = 7
 speed_scale = 2.0
 playing = true
 

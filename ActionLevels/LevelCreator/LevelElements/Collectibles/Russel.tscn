@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://imported_assets/items/dogu.png" type="Texture" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu1.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -76,22 +75,8 @@ animations = [ {
 "speed": 13.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 173.333, 143.333 )
-
-[node name="Dogu1" type="Node2D"]
-scale = Vector2( 0.6, 0.6 )
-script = ExtResource( 2 )
-amplitude = 50.0
-frequency = 2.0
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
+[node name="AnimatedSprite" type="AnimatedSprite"]
 frames = SubResource( 14 )
 animation = "spin"
 frame = 11
 playing = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 15 )

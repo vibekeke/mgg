@@ -3,13 +3,14 @@ extends Node2D
 export (int) var max_enemies_on_screen = 4
 export (float) var seconds_enemy_spawn_frequency = 1.0
 export (Array, PackedScene) var enemy_list
+export (int) var default_scroll_speed = 500
 
 onready var spawn_timer = Timer.new()
 onready var enemies_spawned = 0
 onready var rng = RandomNumberGenerator.new()
 
 var enemy_to_spawn = null
-var spawn_points = []
+var spawn_points = {}
 
 func _ready():
 	rng.randomize()
@@ -45,13 +46,36 @@ func enemy_to_spawn_next():
 	else:
 		print("no enemies found!")
 
+func spawn_at_valid_height(_enemy_to_spawn):
+	rng.randomize()
+	if _enemy_to_spawn.spawn_height == DataClasses.SpawnHeight.ANY:
+		var all_points = spawn_points.values()
+		return all_points[rng.randi_range(0, all_points.size() - 1)]
+	if _enemy_to_spawn.spawn_height == DataClasses.SpawnHeight.HIGH_ONLY:
+		return spawn_points[DataClasses.SpawnHeight.HIGH_ONLY]
+	if _enemy_to_spawn.spawn_height == DataClasses.SpawnHeight.MED_ONLY:
+		return spawn_points[DataClasses.SpawnHeight.MED_ONLY]
+	if _enemy_to_spawn.spawn_height == DataClasses.SpawnHeight.LOW_ONLY:
+		return spawn_points[DataClasses.SpawnHeight.LOW_ONLY]
+	if _enemy_to_spawn.spawn_height == DataClasses.SpawnHeight.HIGH_MED:
+		var valid_points = [spawn_points.get(DataClasses.SpawnHeight.HIGH_ONLY), spawn_points.get(DataClasses.SpawnHeight.MED_ONLY)]
+		return valid_points[rng.randi_range(0, valid_points.size() - 1)]
+	if _enemy_to_spawn.spawn_height == DataClasses.SpawnHeight.MED_LOW:
+		var valid_points = [spawn_points.get(DataClasses.SpawnHeight.MED_ONLY), spawn_points.get(DataClasses.SpawnHeight.LOW_ONLY)]
+		return valid_points[rng.randi_range(0, valid_points.size() - 1)]
+	if _enemy_to_spawn.spawn_height == DataClasses.SpawnHeight.HIGH_LOW:
+		var valid_points = [spawn_points.get(DataClasses.SpawnHeight.HIGH_ONLY), spawn_points.get(DataClasses.SpawnHeight.LOW_ONLY)]
+		return valid_points[rng.randi_range(0, valid_points.size() - 1)]
+
 func spawn_enemy_to_scene():
 	var parent_node = self.get_parent()
 	if parent_node != null:
 		var _enemy_to_spawn = enemy_to_spawn.instance()
+		_enemy_to_spawn.initial_scroll_speed = default_scroll_speed
 		rng.randomize()
 		if spawn_points.size() > 0:
-			_enemy_to_spawn.position = spawn_points[rng.randi_range(0, spawn_points.size() - 1)]
+			var spawn_place = spawn_at_valid_height(_enemy_to_spawn)
+			_enemy_to_spawn.position = spawn_place
 			parent_node.add_child(_enemy_to_spawn)
 		else:
 			print("No spawn points found!")
