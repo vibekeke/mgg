@@ -110,7 +110,7 @@ func _process(delta):
 	Events.emit_signal("player_local_position", self.position)
 
 func shoot_staff():
-	var other_way = false
+	var other_way = true
 	if other_way:
 		if Input.is_action_pressed("up"):
 			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
