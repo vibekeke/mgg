@@ -110,17 +110,38 @@ func _process(delta):
 	Events.emit_signal("player_local_position", self.position)
 
 func shoot_staff():
-	if Input.is_action_just_pressed("hold_test"):
-		if current_shooting_angle == SHOOT_ANGLE.FORWARD_B:
+	var other_way = false
+	if other_way:
+		if Input.is_action_pressed("up"):
 			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
 			move_arrow(SHOOT_ANGLE.UPWARD_B)
-		elif current_shooting_angle == SHOOT_ANGLE.UPWARD_B:
+		elif Input.is_action_pressed("down"):
 			current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
 			move_arrow(SHOOT_ANGLE.DOWNWARD_B)
-		elif current_shooting_angle == SHOOT_ANGLE.DOWNWARD_B:
+		else:
 			current_shooting_angle = SHOOT_ANGLE.FORWARD_B
 			move_arrow(SHOOT_ANGLE.FORWARD_B)
-		print(current_shooting_angle)
+	else:
+		if Input.is_action_just_pressed("aim_up"):
+			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
+			move_arrow(SHOOT_ANGLE.UPWARD_B)
+		elif Input.is_action_just_pressed("aim_down"):
+			current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
+			move_arrow(SHOOT_ANGLE.DOWNWARD_B)
+		elif Input.is_action_just_pressed("aim_forward"):
+			current_shooting_angle = SHOOT_ANGLE.FORWARD_B
+			move_arrow(SHOOT_ANGLE.FORWARD_B)
+#	if Input.is_action_just_pressed("hold_test"):
+#		if current_shooting_angle == SHOOT_ANGLE.FORWARD_B:
+#			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
+#			move_arrow(SHOOT_ANGLE.UPWARD_B)
+#		elif current_shooting_angle == SHOOT_ANGLE.UPWARD_B:
+#			current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
+#			move_arrow(SHOOT_ANGLE.DOWNWARD_B)
+#		elif current_shooting_angle == SHOOT_ANGLE.DOWNWARD_B:
+#			current_shooting_angle = SHOOT_ANGLE.FORWARD_B
+#			move_arrow(SHOOT_ANGLE.FORWARD_B)
+	print(current_shooting_angle)
 		
 	if Input.is_action_just_pressed("shoot"):
 		shoot(current_shooting_angle)
