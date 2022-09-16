@@ -12,11 +12,12 @@ export var jump_power := 1200.0
 export var add_jump_power: float = jump_power * 0.75
 export var max_jumps := 2
 export var max_health = 3
+export var fire_rate_secs := 0.15
 
 var current_health = max_health
 var invul_timer = Timer.new()
+var fire_rate_timer = Timer.new()
 
-# Private variables
 var velocity := Vector2.ZERO
 var normalized_velocity := Vector2.ZERO
 
@@ -42,12 +43,22 @@ func _ready():
 	_animation_tree.active = true
 	_anim_state.travel("Run")
 	_invul_timer_setup()
+	_fire_rate_timer_setup()
+
+func _fire_rate_timer_setup():
+	fire_rate_timer.set_name("fire_rate_timer")
+	fire_rate_timer.connect("timeout", self, "_on_fire_rate_timeout")
+	fire_rate_timer.set_wait_time(fire_rate_secs)
+	self.add_child(fire_rate_timer)
 
 func _invul_timer_setup():
 	invul_timer.set_name("invul_timer")
 	invul_timer.connect("timeout", self, "_on_invul_timeout")
 	invul_timer.set_wait_time(0.5)
 	self.add_child(invul_timer)
+
+func _on_fire_rate_timeout():
+	fire_rate_timer.stop()
 
 func _on_invul_timeout():
 	modulate.a = 1
@@ -66,7 +77,7 @@ func move_arrow(angle):
 
 func _physics_process(delta):
 	var _horizontal_direction = (
-		Input.get_action_strength("right") - Input.get_action_strength("left")
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	)
 	
 	if !is_move_disabled:
@@ -110,44 +121,49 @@ func _process(delta):
 	Events.emit_signal("player_local_position", self.position)
 
 func shoot_staff():
-	var other_way = true
-	if other_way:
-		if Input.is_action_pressed("up"):
-			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
-			move_arrow(SHOOT_ANGLE.UPWARD_B)
-		elif Input.is_action_pressed("down"):
-			current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
-			move_arrow(SHOOT_ANGLE.DOWNWARD_B)
+	if fire_rate_timer.is_stopped():
+		var other_way = true
+		if other_way:
+			if Input.is_action_pressed("up"):
+				current_shooting_angle = SHOOT_ANGLE.UPWARD_B
+				move_arrow(SHOOT_ANGLE.UPWARD_B)
+				shoot(current_shooting_angle)
+			elif Input.is_action_pressed("down"):
+				current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
+				move_arrow(SHOOT_ANGLE.DOWNWARD_B)
+				shoot(current_shooting_angle)
+			elif Input.is_action_pressed("right"):
+				current_shooting_angle = SHOOT_ANGLE.FORWARD_B
+				move_arrow(SHOOT_ANGLE.FORWARD_B)
+				shoot(current_shooting_angle)
 		else:
-			current_shooting_angle = SHOOT_ANGLE.FORWARD_B
-			move_arrow(SHOOT_ANGLE.FORWARD_B)
-	else:
-		if Input.is_action_just_pressed("aim_up"):
-			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
-			move_arrow(SHOOT_ANGLE.UPWARD_B)
-		elif Input.is_action_just_pressed("aim_down"):
-			current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
-			move_arrow(SHOOT_ANGLE.DOWNWARD_B)
-		elif Input.is_action_just_pressed("aim_forward"):
-			current_shooting_angle = SHOOT_ANGLE.FORWARD_B
-			move_arrow(SHOOT_ANGLE.FORWARD_B)
-#	if Input.is_action_just_pressed("hold_test"):
-#		if current_shooting_angle == SHOOT_ANGLE.FORWARD_B:
-#			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
-#			move_arrow(SHOOT_ANGLE.UPWARD_B)
-#		elif current_shooting_angle == SHOOT_ANGLE.UPWARD_B:
-#			current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
-#			move_arrow(SHOOT_ANGLE.DOWNWARD_B)
-#		elif current_shooting_angle == SHOOT_ANGLE.DOWNWARD_B:
-#			current_shooting_angle = SHOOT_ANGLE.FORWARD_B
-#			move_arrow(SHOOT_ANGLE.FORWARD_B)
-	print(current_shooting_angle)
-		
-	if Input.is_action_just_pressed("shoot"):
-		shoot(current_shooting_angle)
-		
-	if Input.is_action_just_pressed("hit"):
-		hit()
+			if Input.is_action_just_pressed("aim_up"):
+				current_shooting_angle = SHOOT_ANGLE.UPWARD_B
+				move_arrow(SHOOT_ANGLE.UPWARD_B)
+			elif Input.is_action_just_pressed("aim_down"):
+				current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
+				move_arrow(SHOOT_ANGLE.DOWNWARD_B)
+			elif Input.is_action_just_pressed("aim_forward"):
+				current_shooting_angle = SHOOT_ANGLE.FORWARD_B
+				move_arrow(SHOOT_ANGLE.FORWARD_B)
+				#shoot(current_shooting_angle)
+	#	if Input.is_action_just_pressed("hold_test"):
+	#		if current_shooting_angle == SHOOT_ANGLE.FORWARD_B:
+	#			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
+	#			move_arrow(SHOOT_ANGLE.UPWARD_B)
+	#		elif current_shooting_angle == SHOOT_ANGLE.UPWARD_B:
+	#			current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
+	#			move_arrow(SHOOT_ANGLE.DOWNWARD_B)
+	#		elif current_shooting_angle == SHOOT_ANGLE.DOWNWARD_B:
+	#			current_shooting_angle = SHOOT_ANGLE.FORWARD_B
+	#			move_arrow(SHOOT_ANGLE.FORWARD_B)
+		print(current_shooting_angle)
+			
+		if Input.is_action_pressed("shoot"):
+			shoot(current_shooting_angle)
+			
+		if Input.is_action_just_pressed("hit"):
+			hit()
 		
 func hit():
 	for node in get_tree().get_root().get_children():
@@ -162,6 +178,7 @@ func shoot(angle):
 	_gunshot.set_bullet_type(angle)
 	get_tree().get_root().add_child(_gunshot)
 	_gunshot.position = self.position + Vector2(80,2)
+	fire_rate_timer.start()
 
 func _on_disable_player_action(to_disable):
 	# 0 == disable everything, including movement and jumping
