@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "BigBird",
+"language": "GDScript",
+"path": "res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird_logic.gd"
+}, {
+"base": "Node",
 "class": "BroBun",
 "language": "GDScript",
 "path": "res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.gd"
@@ -105,6 +110,7 @@ _global_script_classes=[ {
 "path": "res://Autoload/SceneManager.gd"
 } ]
 _global_script_class_icons={
+"BigBird": "",
 "BroBun": "",
 "DTS": "",
 "DataClasses": "",

@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/MPlayerTest.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD/Health.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform1.tscn" type="PackedScene" id=9]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn" type="PackedScene" id=10]
 
 [node name="LevelTest" type="Node2D"]
 
@@ -34,14 +32,6 @@ position = Vector2( 223, 907 )
 [node name="LowPlatform1" parent="." instance=ExtResource( 9 )]
 position = Vector2( 690, 469 )
 
-[node name="BroBun" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1350, 932 )
-health_value = 5
-
-[node name="Gunnerfly" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1769, 830 )
-health_value = 5
-
-[node name="Misbeehave" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1450, 662 )
-health_value = 10
+[node name="BigBird" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1557, 485 )
+health_value = 1000

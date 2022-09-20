@@ -8,6 +8,7 @@ export(DataClasses.SpawnHeight) var spawn_height = DataClasses.SpawnHeight.ANY
 export (float) var initial_scroll_speed
 export (int) var health_value = 1
 export (PackedScene) var enemy_logic
+export (bool) var is_boss = false
 
 onready var enemy_follower = $Path2D/PathFollow2D
 onready var area2d = $Path2D/PathFollow2D/Area2D

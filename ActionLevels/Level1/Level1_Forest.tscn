@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform1.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform3.tscn" type="PackedScene" id=13]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Labrador.tscn" type="PackedScene" id=14]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -134,6 +133,3 @@ scroll_speed = 500
 [node name="TallPlatform4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 12837, 428 )
 scroll_speed = 500
-
-[node name="BroBun" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1627, 203 )
