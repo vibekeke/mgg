@@ -21,6 +21,7 @@ func _ready():
 			area2d.connect("area_entered", self, "_on_call_area_entered")
 
 func _on_call_area_entered(area):
+	# hit area 2d = player melee attack wow strings are bad
 	if area.name == "HitArea2D":
 		belongs_to_player = true
 		move_rightward = true

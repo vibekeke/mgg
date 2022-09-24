@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird_logic.gd" type="Script" id=1]
+[ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdProjectileWithPath.tscn" type="PackedScene" id=2]
 
 [node name="EnemyLogic" type="Node"]
 script = ExtResource( 1 )
+lil_bird_bullet = ExtResource( 2 )
+projectile_speed = 1500

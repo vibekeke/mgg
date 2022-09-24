@@ -29,7 +29,6 @@ func _ready():
 	if enemy_logic != null:
 		enemy_logic_instance = enemy_logic.instance()
 		self.add_child(enemy_logic_instance)
-#		initial_scroll_speed = enemy_logic_instance.get_default_speed()
 	else:
 		print("No logic found for enemy.")
 	area2d.connect("area_entered", self, "_on_call_area_entered")
@@ -74,7 +73,8 @@ func _on_player_global_position(_player_global_position):
 func take_damage(damage_value:= 1):
 	damage_timer.start()
 	sprite.modulate = Color(10,10,10,1)
-	self.position.x = self.position.x + 5 # slight knockback
+	if !is_boss:
+		self.position.x = self.position.x + 5 # slight knockback if not a boss
 	health_value -= damage_value
 	if health_value <= 0:
 		call_deferred("call_death")

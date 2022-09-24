@@ -2,7 +2,7 @@ extends Node
 
 class_name Gunnerfly
 
-onready var gunshot_gunnerfly = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/Bullets/BasicEnemyGunshot.tscn")
+export(PackedScene) var gunshot_gunnerfly
 onready var parent_node = self.get_parent()
 enum SHOOT_ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
 

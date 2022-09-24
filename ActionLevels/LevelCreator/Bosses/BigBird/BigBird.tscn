@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://imported_assets/actors/bigbird/BigBird_V1.png" type="Texture" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird_logic.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -69,14 +70,24 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 359.5, 215.5 )
 
+[sub_resource type="Curve2D" id=18]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 293, 15, 0, 0, 0, 0, 268, -57, 0, 0, 0, 0, 213, -112, 0, 0, 0, 0, 124, -149, 0, 0, 0, 0, 28, -154, 0, 0, 0, 0, -85, -156, 0, 0, 0, 0, -159, -157, 0, 0, 0, 0, -330, -159, 0, 0, 0, 0, -441, -153, 0, 0, 0, 0, -511, -146, 0, 0, 0, 0, -585, -139, 0, 0, 0, 0, -642, -130, 0, 0, 0, 0, -710, -126, 0, 0, 0, 0, -777, -123, 0, 0, 0, 0, -856, -124, 0, 0, 0, 0, -921, -124, 0, 0, 0, 0, -1022, -124, 0, 0, 0, 0, -1082, -125, 0, 0, 0, 0, -1154, -124, 0, 0, 0, 0, -1230, -134, 0, 0, 0, 0, -1306, -132, 0, 0, 0, 0, -1395, -126, 0, 0, 0, 0, -1474, -131, 0, 0, 0, 0, -1627, -131, 0, 0, 0, 0, -1794, -127 )
+}
+
+[sub_resource type="Curve2D" id=19]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 293, 14, 0, 0, 0, 0, -1643, -5 )
+}
+
 [node name="BigBird" type="Node2D"]
-position = Vector2( 931, 427 )
+position = Vector2( 1602, 352 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 spawn_height = 1
-initial_scroll_speed = 50.0
+enemy_logic = ExtResource( 3 )
 is_boss = true
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -90,8 +101,8 @@ scale = Vector2( 0.7, 0.7 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 position = Vector2( 12, -29 )
 frames = SubResource( 7 )
-frame = 5
-speed_scale = 2.0
+frame = 4
+speed_scale = 1.5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
@@ -101,3 +112,9 @@ shape = SubResource( 2 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 4.5, 3.00001 )
 scale = Vector2( 14.25, 8.5 )
+
+[node name="BulletPath1" type="Path2D" parent="." groups=["bullet_paths"]]
+curve = SubResource( 18 )
+
+[node name="BulletPath2" type="Path2D" parent="." groups=["bullet_paths"]]
+curve = SubResource( 19 )

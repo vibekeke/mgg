@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://imported_assets/misc/pastelstar.png" type="Texture" id=1]
-[ext_resource path="res://Player/Projectiles/Gunshot.gd" type="Script" id=2]
+[ext_resource path="res://Projectiles/Gunshot.gd" type="Script" id=2]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -20,9 +20,6 @@ frames = SubResource( 3 )
 playing = true
 centered = false
 script = ExtResource( 2 )
-speed = 100
-move_rightward = false
-belongs_to_player = false
 
 [node name="EnemyGunshotArea2D" type="Area2D" parent="."]
 
@@ -31,7 +28,7 @@ position = Vector2( 528.571, 514.286 )
 shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 0, 5.37895 )
-scale = Vector2( 1, 2.33478 )
+position = Vector2( 523.571, 483.873 )
+scale = Vector2( 53.3571, 50.1842 )
 
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
