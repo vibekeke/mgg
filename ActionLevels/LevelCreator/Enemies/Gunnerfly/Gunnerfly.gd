@@ -22,6 +22,8 @@ func _shoot():
 	if gunshot_gunnerfly != null and parent_node.is_on_screen():
 		#for value in SHOOT_ANGLE.values():
 		var _gunshot = gunshot_gunnerfly.instance()
+		_gunshot.belongs_to_player = false
+		_gunshot.move_rightward = false
 		_gunshot.set_bullet_type(default_shooting_angle)
 			#_gunshot.set_bullet_type(value)
 		get_tree().get_root().add_child(_gunshot)

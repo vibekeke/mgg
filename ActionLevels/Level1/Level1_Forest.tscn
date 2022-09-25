@@ -43,7 +43,8 @@ scale = Vector2( 67.5, 10 )
 
 [node name="MPlayerTest" parent="." instance=ExtResource( 3 )]
 position = Vector2( 177, 840 )
-jump_power = 1300.0
+gravity = 2800.0
+jump_power = 1500.0
 
 [node name="LongTallPlatform" parent="." instance=ExtResource( 6 )]
 position = Vector2( 866, 448 )

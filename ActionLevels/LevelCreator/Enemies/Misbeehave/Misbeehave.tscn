@@ -47,6 +47,7 @@ extents = Vector2( 182.5, 110 )
 [node name="Misbeehave" type="Node2D"]
 script = ExtResource( 2 )
 spawn_height = 5
+initial_scroll_speed = 500.0
 health_value = 3
 enemy_logic = ExtResource( 3 )
 
@@ -60,7 +61,7 @@ scale = Vector2( 0.4, 0.4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 frames = SubResource( 8 )
-frame = 3
+frame = 4
 speed_scale = 2.0
 playing = true
 
