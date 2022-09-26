@@ -78,5 +78,5 @@ animations = [ {
 [node name="Labrador" type="AnimatedSprite"]
 scale = Vector2( 0.75, 0.74 )
 frames = SubResource( 14 )
-frame = 11
+frame = 3
 playing = true

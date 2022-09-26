@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://imported_assets/hud/collectibles/Collected_Dogs.png" type="Texture" id=1]
+[ext_resource path="res://HUD/CollectedDog.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1190, 0, 170, 128 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 510, 0, 170, 128 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1870, 0, 170, 128 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 170, 128 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "russel",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "golden",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "labrador",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "empty",
+"speed": 1.0
+} ]
+
+[node name="CollectedDog" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="CollectedDogSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+animation = "russel"
+centered = false

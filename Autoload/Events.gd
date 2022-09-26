@@ -9,6 +9,7 @@ signal player_local_position(local_position)
 signal transition_to_scene(to_scene)
 signal game_over # player has died or game has ended for some other reason
 
+signal collected_dog(dog_type)
 
 signal disable_player_action(to_disable)
 signal disable_enemy_action(to_disable)

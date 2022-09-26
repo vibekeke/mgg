@@ -170,7 +170,8 @@ func _on_collided_with_player(damage):
 		invul_timer.start()
 		modulate.a = 0.5
 		if current_health <= 0:
-			self.queue_free()
+			Events.emit_signal("player_damaged", damage)
 			Events.emit_signal("game_over")
+			self.queue_free()
 		else:
 			Events.emit_signal("player_damaged", damage)

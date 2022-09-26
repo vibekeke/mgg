@@ -2,13 +2,8 @@
 
 [ext_resource path="res://HUD/Health.gd" type="Script" id=2]
 
-[node name="Health" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 2 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_right = 1.0
-margin_right = -1429.0
+[node name="Health" type="HBoxContainer"]
+margin_right = 491.0
 margin_bottom = 156.0
 custom_constants/separation = 120
+script = ExtResource( 2 )
