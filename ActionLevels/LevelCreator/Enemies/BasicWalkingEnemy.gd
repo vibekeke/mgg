@@ -40,7 +40,7 @@ func _on_call_body_entered(body):
 	print("body name ", body.name)
 	if body.name == 'StaticBody2D':
 		is_on_floor = true
-	if body.name == 'MPlayerTest':
+	if body.name == 'Player':
 		Events.emit_signal("collided_with_player", 1)
 		call_deferred("call_death")
 

@@ -80,7 +80,7 @@ func take_damage(damage_value:= 1):
 		call_deferred("call_death")
 
 func _on_call_body_entered(body):
-	if body.name == 'MPlayerTest':
+	if body.name == 'Player':
 		Events.emit_signal("collided_with_player", 1)
 		take_damage()
 

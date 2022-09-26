@@ -3,7 +3,6 @@ extends Node2D
 
 export (float) var speed = 100
 
-onready var main_body = $LilBird
 onready var area2d = $LilBird/Area2D
 onready var visual_body = $LilBird2
 
@@ -22,11 +21,11 @@ func _ready():
 		area2d.connect("area_entered", self, "_on_call_area_entered")
 
 func _on_call_body_entered(body):
-	if body.name == 'MPlayerTest':
+	if body.name == 'Player':
 		Events.emit_signal("collided_with_player", 1)
 
 func _on_call_area_entered(area):
-	if area.name == 'MPlayerTest':
+	if area.name == 'Player':
 		Events.emit_signal("collided_with_player", 1)
 
 

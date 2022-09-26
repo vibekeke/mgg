@@ -75,7 +75,7 @@ animations = [ {
 "speed": 8.0
 } ]
 
-[node name="AnimatedSprite" type="AnimatedSprite"]
+[node name="Russel" type="AnimatedSprite"]
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 14 )
 animation = "spin"

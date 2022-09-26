@@ -17,7 +17,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1020, 67.5 )
+extents = Vector2( 1020, 32.5 )
 
 [node name="LongTallPlatform" type="MeshInstance2D"]
 scale = Vector2( 0.4, 0.4 )
@@ -27,8 +27,10 @@ texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+constant_linear_velocity = Vector2( 0, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 1117.5, 475 )
+position = Vector2( 1130, 445 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 one_way_collision = true

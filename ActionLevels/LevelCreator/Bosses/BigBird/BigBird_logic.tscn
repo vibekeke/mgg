@@ -4,5 +4,6 @@
 
 [node name="EnemyLogic" type="Node"]
 script = ExtResource( 1 )
-spawn_point_count = 2
-fire_rate_timer_wait_time = 1.0
+rotate_speed = 70
+spawn_point_count = 8
+fire_rate_timer_wait_time = 0.3

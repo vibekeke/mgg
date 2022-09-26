@@ -17,6 +17,7 @@ export var fire_rate_secs := 0.15
 var current_health = max_health
 var invul_timer = Timer.new()
 var fire_rate_timer = Timer.new()
+var slide_adjust_timer = Timer.new()
 
 var velocity := Vector2.ZERO
 var normalized_velocity := Vector2.ZERO
@@ -24,6 +25,7 @@ var normalized_velocity := Vector2.ZERO
 var is_jump_disabled = false
 var is_shoot_disabled = false
 var is_move_disabled = false
+var is_sliding = false
 
 var jumps_made := 0
 
@@ -31,7 +33,6 @@ enum SHOOT_ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
 var angle_map = { SHOOT_ANGLE.FORWARD_B: 0, SHOOT_ANGLE.UPWARD_B: -30, SHOOT_ANGLE.DOWNWARD_B: -330 }
 
 var current_shooting_angle = SHOOT_ANGLE.FORWARD_B
-onready var shooting_arrow_guide = $Arrow
 
 export (PackedScene) var gunshot
 export (PackedScene) var physical_attack
@@ -57,6 +58,12 @@ func _invul_timer_setup():
 	invul_timer.set_wait_time(0.5)
 	self.add_child(invul_timer)
 
+func _is_sliding_timer():
+	slide_adjust_timer.set_name("slide_adjust_timer")
+	slide_adjust_timer.connect("timeout", self, "_on_slide_adjust_timeout")
+	slide_adjust_timer.set_wait_time(1)
+	self.add_child(slide_adjust_timer)
+
 func _on_fire_rate_timeout():
 	fire_rate_timer.stop()
 
@@ -64,20 +71,24 @@ func _on_invul_timeout():
 	modulate.a = 1
 	invul_timer.stop()
 
-func move_arrow(angle):
-	shooting_arrow_guide.rotate(deg2rad(angle_map[angle]))
-#	if current_shooting_angle == SHOOT_ANGLE.FORWARD_B:
-#		var radian = deg2rad()
-#	elif current_shooting_angle == SHOOT_ANGLE.UPWARD_B:
-#		var radian = deg2rad(abs(angle_map[current_shooting_angle]))
-#		position += Vector2(movement_speed * cos(radian), -(movement_speed * sin(radian)))
-#	elif current_shooting_angle == SHOOT_ANGLE.DOWNWARD_B:
-#		var radian = deg2rad(abs(angle_map[current_shooting_angle]))
-#		position += Vector2(movement_speed * cos(radian), -(movement_speed * sin(radian)))
+func initiate_slide(vertical_direction):
+	if vertical_direction == -1 and is_on_floor():
+		$CollisionShape2D.set_rotation_degrees(-90)
+		is_sliding = true
+	if vertical_direction >= 0 and is_on_floor():
+		$CollisionShape2D.set_rotation_degrees(0)
+		is_sliding = false
+	else:
+		is_sliding = false
+	
 
 func _physics_process(delta):
 	var _horizontal_direction = (
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	)
+	
+	var _vertical_direction = (
+		Input.get_action_strength("move_up") - Input.get_action_strength("move_down")
 	)
 	
 	if !is_move_disabled:
@@ -85,7 +96,7 @@ func _physics_process(delta):
 		normalized_velocity.x = clamp(velocity.x, -1, 1)
 		velocity.y += gravity * delta
 		normalized_velocity.y += clamp(velocity.y, -1, 1)
-	
+		initiate_slide(_vertical_direction)
 	
 	var is_falling := velocity.y > 100.0 and not is_on_floor()
 	var is_rising := velocity.y < 0.0 and not is_on_floor()
@@ -102,7 +113,7 @@ func _physics_process(delta):
 		jumps_made += 1
 		_anim_state.travel("RisingLoop")
 		velocity.y = -jump_power
-	# TODO: Fix this hack using maths, e.g. store delta * gravity to help find peak of jump
+
 	if is_rising and velocity.y > -1400:
 		_anim_state.travel("AboutToFall")
 	if is_falling:
@@ -120,24 +131,27 @@ func _process(delta):
 	Events.emit_signal("player_global_position", self.global_position)
 	Events.emit_signal("player_local_position", self.position)
 
+func shoot_hold_check():
+	if !Input.is_action_pressed("right"):
+		return
+	yield(get_tree().create_timer(5), "timeout")
+	if !Input.is_action_pressed("right"):
+		return
+	print("shoot a big shooty shot")
+
 func shoot_staff():
 	if fire_rate_timer.is_stopped():
 		if Input.is_action_pressed("up"):
 			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
-			move_arrow(SHOOT_ANGLE.UPWARD_B)
 			shoot(current_shooting_angle)
 		elif Input.is_action_pressed("down"):
 			current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
-			move_arrow(SHOOT_ANGLE.DOWNWARD_B)
 			shoot(current_shooting_angle)
+		elif Input.is_action_just_pressed("right"):
+			shoot_hold_check()
 		elif Input.is_action_pressed("right"):
 			current_shooting_angle = SHOOT_ANGLE.FORWARD_B
-			move_arrow(SHOOT_ANGLE.FORWARD_B)
-			shoot(current_shooting_angle)
-			
-		if Input.is_action_pressed("shoot"):
-			shoot(current_shooting_angle)
-			
+			shoot(current_shooting_angle)	
 		if Input.is_action_just_pressed("hit"):
 			hit()
 		

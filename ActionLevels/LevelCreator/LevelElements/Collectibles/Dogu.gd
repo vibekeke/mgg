@@ -14,6 +14,7 @@ var dog_breed
 func _ready():
 	var _dog_sprite = dog_sprite.instance()
 	dog_breed = _dog_sprite.name
+	print("dog breed is ", dog_breed)
 	_dog_sprite.set_name("DogSprite")
 	area2d.add_child(_dog_sprite)
 	area2d.connect("body_entered", self, "_on_call_body_entered")
@@ -22,7 +23,7 @@ func _increment_dogs():
 	Events.emit_signal("collected_dog", self.dog_breed)
 
 func _on_call_body_entered(body):
-	if body.name == "MPlayerTest":
+	if body.name == "Player":
 		self.visible = false
 		_increment_dogs()
 		queue_free()

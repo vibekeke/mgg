@@ -28,7 +28,7 @@ func _on_call_area_entered(area):
 		speed = speed * 1.10
 
 func _on_call_body_entered(body):
-	if body.name == 'MPlayerTest' and belongs_to_player == false:
+	if body.name == 'Player' and belongs_to_player == false:
 		Events.emit_signal("collided_with_player", 1)
 		self.queue_free()
 
