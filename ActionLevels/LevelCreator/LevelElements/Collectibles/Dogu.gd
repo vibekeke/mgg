@@ -17,7 +17,7 @@ func _ready():
 	area2d.connect("body_entered", self, "_on_call_body_entered")
 
 func _increment_dogs():
-	print("found dog")
+	pass
 
 func _on_call_body_entered(body):
 	if body.name == "MPlayerTest":

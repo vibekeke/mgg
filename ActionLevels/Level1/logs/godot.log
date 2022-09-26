@@ -1,0 +1,19 @@
+Godot Engine v3.4.4.stable.macports_build - https://godotengine.org
+OpenGL ES 3.0 Renderer: Apple M1 Pro
+OpenGL ES Batching: ON
+ 
+Registered camera FaceTime HD Camera with id 1 position 0 at index 0
+ERROR: Cannot open file 'res://ActionLevels/backgrounds/LevelForest.tscn'.
+   at: load_interactive (scene/resources/resource_format_text.cpp:1183) - Condition "err != OK" is true. Returned: Ref<ResourceInteractiveLoader>()
+ERROR: Failed loading resource: res://ActionLevels/backgrounds/LevelForest.tscn. Make sure resources have been imported by opening the project in the editor at least once.
+   at: _load (core/io/resource_loader.cpp:271) - Condition "found" is true. Returned: RES()
+ERROR: res://Level1_Forest.tscn:3 - Parse Error: [ext_resource] referenced nonexistent resource at: res://ActionLevels/backgrounds/LevelForest.tscn
+   at: poll (scene/resources/resource_format_text.cpp:412) - res://Level1_Forest.tscn:3 - Parse Error: [ext_resource] referenced nonexistent resource at: res://ActionLevels/backgrounds/LevelForest.tscn
+ERROR: Failed to load resource 'res://Level1_Forest.tscn'.
+   at: load (core/io/resource_loader.cpp:206) - Condition "err != OK" is true. Returned: RES()
+ERROR: Failed loading resource: res://Level1_Forest.tscn. Make sure resources have been imported by opening the project in the editor at least once.
+   at: _load (core/io/resource_loader.cpp:271) - Condition "found" is true. Returned: RES()
+ERROR: Failed loading scene: res://Level1_Forest.tscn
+   at: start (main/main.cpp:2011) - Condition "!scene" is true. Returned: false
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object.cpp:2064) - ObjectDB instances leaked at exit (run with --verbose for details).

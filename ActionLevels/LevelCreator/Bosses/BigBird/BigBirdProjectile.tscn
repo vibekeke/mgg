@@ -78,9 +78,10 @@ extents = Vector2( 93, 81 )
 script = ExtResource( 2 )
 
 [node name="LilBird" type="AnimatedSprite" parent="."]
+visible = false
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 13 )
-frame = 3
+frame = 6
 playing = true
 
 [node name="Area2D" type="Area2D" parent="LilBird"]
@@ -89,6 +90,14 @@ playing = true
 position = Vector2( 4, -1 )
 shape = SubResource( 14 )
 
+[node name="LilBird2" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 1.8, -1.5 )
 scale = Vector2( 2.835, 2.385 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

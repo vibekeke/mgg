@@ -2,8 +2,7 @@ extends Node
 
 class_name BigBird
 
-export(PackedScene) var lil_bird_bullet
-
+const lil_bird_bullet = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdProjectile.tscn")
 export (int) var rotate_speed = 80
 export (int) var spawn_point_count = 3
 export (float) var fire_rate_timer_wait_time = 0.2
@@ -27,7 +26,6 @@ func _on_fire_rate_timeout():
 	for s in rotator.get_children():
 		var bullet = lil_bird_bullet.instance()
 		get_tree().get_root().add_child(bullet)
-		# parent_node.add_child(bullet)
 		bullet.position = s.global_position
 		bullet.rotation = s.global_rotation
 

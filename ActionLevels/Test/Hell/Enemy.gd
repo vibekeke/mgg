@@ -1,6 +1,7 @@
 extends Node2D
 
-const bullet_scene = preload("res://ActionLevels/Test/Hell/Bullet.tscn")
+#const bullet_scene = preload("res://ActionLevels/Test/Hell/Bullet.tscn")
+const bullet_scene = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdProjectile.tscn")
 onready var shoot_timer = $ShootTimer
 onready var rotator = $Rotator
 
