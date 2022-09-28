@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://imported_assets/computer/PatchRegular.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://imported_assets/fonts/LiberationSans-Regular.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://ActionLevels/Room/Time.gd" type="Script" id=16]
 [ext_resource path="res://imported_assets/computer/mggdesktopbackground.png" type="Texture" id=17]
+[ext_resource path="res://ActionLevels/Room/crt_shader.tres" type="Material" id=18]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.184314, 0.0862745, 0.670588, 1 )
@@ -112,24 +113,6 @@ border_color = Color( 0, 0, 0, 1 )
 [sub_resource type="DynamicFont" id=18]
 size = 20
 font_data = ExtResource( 15 )
-
-[sub_resource type="Shader" id=11]
-code = "shader_type canvas_item;
-
-uniform float SCREEN_HEIGHT = 1080;
-
-void fragment() {
-	int y_index = int(UV.y * SCREEN_HEIGHT);
-	if (y_index % 2 == 0) {
-		COLOR.a = 0.05;
-	} else {
-		COLOR.a = 0.0;
-	}
-}"
-
-[sub_resource type="ShaderMaterial" id=12]
-shader = SubResource( 11 )
-shader_param/SCREEN_HEIGHT = 1080.0
 
 [sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 343.333, 353.333 )
@@ -360,7 +343,7 @@ margin_right = 645.0
 margin_bottom = 416.0
 
 [node name="Scanlines" type="ColorRect" parent="."]
-material = SubResource( 12 )
+material = ExtResource( 18 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

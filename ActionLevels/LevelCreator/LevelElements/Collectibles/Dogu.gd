@@ -25,6 +25,8 @@ func _on_call_body_entered(body):
 	if body.name == "Player":
 		self.visible = false
 		_increment_dogs()
+		$AudioStreamPlayer.play()
+		yield($AudioStreamPlayer, "finished")
 		queue_free()
 
 func _physics_process(delta):

@@ -125,5 +125,7 @@ motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 5760, 0 )
 
 [node name="Sprite" type="MeshInstance2D" parent="Foreground/ParallaxLayer"]
+position = Vector2( 0, -0.00012207 )
+scale = Vector2( 1.00017, 1 )
 mesh = SubResource( 7 )
 texture = ExtResource( 5 )

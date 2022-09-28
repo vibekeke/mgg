@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://imported_assets/hud/collectibles/Dog_1-Golden.png" type="Texture" id=1]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/color_gradient_outline.tres" type="Material" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -76,7 +77,8 @@ animations = [ {
 } ]
 
 [node name="Golden" type="AnimatedSprite"]
+material = ExtResource( 2 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 14 )
-frame = 2
+frame = 3
 playing = true

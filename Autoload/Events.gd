@@ -16,6 +16,7 @@ signal disable_enemy_action(to_disable)
 
 # collectibles
 signal collected_star
+signal collected_heart
 signal collected_dog(dog_type)
 
 # level related

@@ -13,8 +13,6 @@ onready var parent_node = self.get_parent()
 onready var initial_health_value: int = parent_node.health_value
 onready var fire_rate_timer = Timer.new()
 onready var rotator = parent_node.get_node("Rotator")
-#onready var rotator2 = parent_node.get_node("Rotator2")
-onready var bullet_paths = get_tree().get_nodes_in_group("bullet_paths")
 onready var current_phase: int = 0
 
 const phase_patterns = {
@@ -66,12 +64,6 @@ func _on_fire_rate_timeout():
 		get_tree().get_root().add_child(bullet)
 		bullet.position = s.global_position
 		bullet.rotation = s.global_rotation
-#	for s in rotator2.get_children():
-#		var bullet = lil_bird_bullet.instance()
-#		bullet.speed = projectile_speed
-#		get_tree().get_root().add_child(bullet)
-#		bullet.position = s.global_position
-#		bullet.rotation = s.global_rotation
 
 func _setup_bullets():
 	var step = 2 * PI / spawn_point_count
@@ -81,7 +73,6 @@ func _setup_bullets():
 		spawn_point.position = pos
 		spawn_point.rotation = pos.angle()
 		rotator.add_child(spawn_point)
-		#rotator2.add_child(spawn_point)
 	
 	fire_rate_timer.set_wait_time(fire_rate_timer_wait_time)
 	fire_rate_timer.start()
@@ -98,9 +89,7 @@ func apply_new_bullet_phase(phase_number: int):
 
 func _process(delta):
 	var new_rotation = rotator.rotation_degrees + rotate_speed * delta
-	#var new_rotation2 = rotator2.rotation_degrees - rotate_speed * delta
 	rotator.rotation_degrees = fmod(new_rotation, 360)
-	#rotator2.rotation_degrees = fmod(new_rotation2, 360)
 	if parent_node.health_value < (initial_health_value * 0.6) and current_phase != 1 and current_phase != 2:
 		current_phase = 1
 		apply_new_bullet_phase(current_phase)

@@ -1,6 +1,8 @@
 extends Node2D
 
 onready var spawn_paths = $SpawnPaths
+onready var background_music = $BackgroundMusic
+onready var boss = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
 
 func _ready():
 	var num_spawn_points = spawn_paths.get_curve().get_point_count()
@@ -11,3 +13,6 @@ func _ready():
 		spawn_point_array.append(spawn_paths.get_curve().get_point_position(x))
 		spawn_point_dictionary[spawn_point_heights[x]] = spawn_paths.get_curve().get_point_position(x)
 	Events.emit_signal("level_spawn_points", spawn_point_dictionary)
+	if !background_music.is_playing():
+		background_music.play()
+

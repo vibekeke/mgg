@@ -1,11 +1,13 @@
 extends Node2D
 
-export (int) var max_enemies_on_screen = 4
+export (int) var max_enemies_on_screen = 5
 export (float) var seconds_enemy_spawn_frequency = 1.0
 export (Array, PackedScene) var enemy_list
 export (int) var default_scroll_speed = 500
+export (PackedScene) var boss
 
 onready var spawn_timer = Timer.new()
+onready var until_boss_timer = Timer.new()
 onready var enemies_spawned = 0
 onready var rng = RandomNumberGenerator.new()
 
@@ -21,11 +23,16 @@ func _ready():
 	spawn_timer.set_wait_time(seconds_enemy_spawn_frequency + rng.randf_range(0.1, 0.6))
 	self.add_child(spawn_timer)
 	spawn_timer.start()
+	
+	until_boss_timer.set_name("until_boss_timer")
+	until_boss_timer.connect("timeout", self, "_spawn_boss")
+	until_boss_timer.set_wait_time(60)
+	self.add_child(until_boss_timer)
+	until_boss_timer.start()
 
 func _on_level_spawn_points(_spawn_points):
 	spawn_points = _spawn_points
-	print("spawn points are ", spawn_points)
-	
+
 func _on_regular_enemy_death():
 	enemies_spawned -= 1
 	
@@ -35,6 +42,10 @@ func _spawn_enemy():
 		enemy_to_spawn_next()
 		enemies_spawned += 1
 	spawn_timer.set_wait_time(seconds_enemy_spawn_frequency + rng.randf_range(0.1, 0.6))
+
+func _spawn_boss():
+	spawn_boss_to_scene()
+	
 
 func enemy_to_spawn_next():
 	rng.randomize()
@@ -79,3 +90,11 @@ func spawn_enemy_to_scene():
 			parent_node.add_child(_enemy_to_spawn)
 		else:
 			print("No spawn points found!")
+
+func spawn_boss_to_scene():
+	var parent_node = self.get_parent()
+	if parent_node != null:
+		var _boss_to_spawn = boss.instance()
+		var spawn_position = spawn_points[DataClasses.SpawnHeight.MED_ONLY]
+		_boss_to_spawn.position = spawn_position
+		parent_node.add_child(_boss_to_spawn)
