@@ -91,7 +91,7 @@ scale = Vector2( 2.835, 2.385 )
 [node name="LilBird2" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 13 )
-frame = 3
+frame = 7
 playing = true
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
