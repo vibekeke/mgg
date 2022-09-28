@@ -79,5 +79,5 @@ animations = [ {
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 14 )
 animation = "spin"
-frame = 12
+frame = 2
 playing = true

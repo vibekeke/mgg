@@ -78,5 +78,5 @@ animations = [ {
 [node name="Golden" type="AnimatedSprite"]
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 14 )
-frame = 7
+frame = 2
 playing = true

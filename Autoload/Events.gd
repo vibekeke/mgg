@@ -1,19 +1,24 @@
 extends Node
 
+# player related actions
 signal player_max_health(health) # emits players max health, NOT current health
 signal player_damaged(damage) # when the player takes damage
 signal player_current_health(health) # emits the current health of the player
 signal collided_with_player(damage) # when an enemy collides with a player
 signal player_global_position(global_position) # global position of the player
 signal player_local_position(local_position)
+
+# game state, e.g. scene transitions, game overs, cutscenes
 signal transition_to_scene(to_scene)
 signal game_over # player has died or game has ended for some other reason
-
-signal collected_dog(dog_type)
-
 signal disable_player_action(to_disable)
 signal disable_enemy_action(to_disable)
 
+# collectibles
+signal collected_star
+signal collected_dog(dog_type)
+
+# level related
 signal regular_enemy_death
 signal level_spawn_points(spawn_points)
 

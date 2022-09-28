@@ -78,5 +78,5 @@ animations = [ {
 [node name="Beagle" type="AnimatedSprite"]
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 14 )
-frame = 2
+frame = 8
 playing = true
