@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=6]
+[ext_resource path="res://FSMPlayer/FSMPlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://FSMPlayer/Projectiles/Hit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://FSMPlayer/Projectiles/RegularGunshot.tscn" type="PackedScene" id=9]
+[ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
 
 [node name="LevelTest" type="Node2D"]
 
@@ -25,12 +28,6 @@ position = Vector2( 1961, -115 )
 rotation = 1.5708
 scale = Vector2( 119.688, 10 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 223, 907 )
-gravity = 2800.0
-jump_power = 1500.0
-add_jump_power = 1.0
-
 [node name="BigBird" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1557, 485 )
 
@@ -41,3 +38,18 @@ position = Vector2( 422, 502 )
 
 [node name="Star" parent="." instance=ExtResource( 6 )]
 position = Vector2( 696, 558 )
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 418, 910 )
+max_jump_height = 500.0
+min_jump_height = 200.0
+jump_time_to_peak = 0.6
+jump_time_to_descent = 0.6
+gunshot = ExtResource( 9 )
+physical_attack = ExtResource( 8 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 10 )]
+visible = false
