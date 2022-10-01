@@ -11,6 +11,7 @@ export (float) var fire_rate_timer_wait_time = 0.2
 export (int) var radius = 100
 export (float) var projectile_speed = 100
 onready var test_sprite = parent_node.get_node("TestSprite")
+onready var line_area = parent_node.get_node("LineArea")
 
 onready var spawned_bullets = 0
 onready var fire_rate_timer = Timer.new()
@@ -37,18 +38,9 @@ func _fire_rate_timer_setup():
 	parent_node.add_child(fire_rate_timer)
 
 func _process_bullet(delta):
-	print("processing bullets in bullet list")
 	orbit = orbit + delta
-	print('orbit value ', orbit)
-#	for bullet in bullet_list:
-#		print(bullet.position)
-#		bullet.position = Vector2(
-#			sin(orbit * 2) * 100,
-#			cos(orbit * 2) * 100
-#		) + Vector2(100, 100)
 
 func _on_fire_rate_timeout():
-	#if spawned_bullets < spawn_point_count:
 	if spawned_bullets < 1:
 		for s in rotator.get_children():
 			spawned_bullets = spawned_bullets + 1
@@ -60,13 +52,22 @@ func _on_fire_rate_timeout():
 			bullet_list.append(bullet)
 			break
 
-func _ready():
-	#_fire_rate_timer_setup()
-	#_setup_bullets()
-	test_sprite.global_position.y = parent_node.global_position.y + 150
-	print(parent_node.global_position)
+func generate_bullet_shield():
 	pass
 
+func _ready():
+	test_sprite.global_position.y = parent_node.global_position.y + 150
+	line_area.connect("area_entered", self, "_on_line_area_entered")
+
+func _on_line_area_entered(entered_by):
+	print("entered by ", entered_by)
+
+func rotate_around_better(delta, a: Vector2, b: Vector2, object: Object):
+	orbit += 1
+	var c = Vector2(b.x - a.x, b.y - a.y)
+	var c_hat = Vector2(c.x * cos(orbit) - c.y * sin(orbit), c.x * sin(orbit) + c.y * cos(orbit))
+	object.global_position = c_hat
+	
 func rotate_around(delta, object: Object, radius: int, speed: int, point: Vector2):
 	orbit += delta
 	object.global_position = Vector2(cos(orbit * speed) * radius, sin(orbit * speed) * radius) + point
@@ -80,31 +81,13 @@ func rotate_around(delta, object: Object, radius: int, speed: int, point: Vector
 
 
 func _process(delta):
-#	var new_rotation = rotator.rotation_degrees + rotate_speed * delta
-#	rotator.rotation_degrees = fmod(new_rotation, 360)
-#	_process_bullet(delta)
-	#test_sprite.global_position = parent_node.global_position
-	#orbit += delta
-
-	#test_sprite.global_position = Vector2(cos(orbit * 1) * 150, sin(orbit * 1) * 150) + parent_node.global_position
 	pass
 	
 func _physics_process(delta):
 	# spawn bullet one at a time then shoot out
-	rotate_around(delta, test_sprite, 150, 2, parent_node.global_position)
-#	if !parent_node.is_move_disabled:
-#		if bunny_drop:
-#			parent_node.position.y += 500 * delta
-#		if parent_node.player_local_position != Vector2(0,0):
-#			if parent_node.position.x - parent_node.player_local_position.x > 0:
-#				var x_towards = parent_node.position.move_toward(parent_node.player_local_position, 500 * delta)
-#				if abs(parent_node.position.x - parent_node.player_local_position.x) < 100:
-#					bunny_drop = true
-#					parent_node.position.y += parent_node.initial_scroll_speed * 5 * delta
-#				parent_node.position.x = x_towards.x
-#			else:
-#				if bunny_drop == false:
-#					parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
+	#rotate_around(delta, test_sprite, 150, 2, parent_node.global_position)
+	rotate_around_better(delta, test_sprite.position, parent_node.global_position, test_sprite)
+	
 
 func get_class():
 	return "BroBun"

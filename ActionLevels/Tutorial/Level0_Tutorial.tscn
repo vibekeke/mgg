@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/Tutorial/Level0_Tutorial.gd" type="Script" id=4]
 [ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=6]
@@ -41,10 +40,6 @@ position = Vector2( 1920, 0 )
 rotation = 1.5708
 scale = Vector2( 67.5, 10 )
 
-[node name="MPlayerTest" parent="." instance=ExtResource( 3 )]
-position = Vector2( 177, 840 )
-jump_power = 1300.0
-
 [node name="Health" parent="." instance=ExtResource( 10 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -60,5 +55,4 @@ add_canvas = false
 
 [node name="Misbeehave" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2288, 791 )
-initial_speed = 210.0
 initial_scroll_speed = 200.0
