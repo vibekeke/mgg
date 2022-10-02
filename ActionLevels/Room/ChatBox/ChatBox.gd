@@ -14,9 +14,10 @@ var user_name = 'Player'
 var script_place = 0
 
 var conversationScript = [
-	{ 'name': 'MGG', 'color': '#00abc7', 'script': 'I got something ta say', 'delay': 2000 },
-	{ 'name': 'Not an alien', 'color': '#ffdd8b', 'script': 'WHAT!?', 'delay': 5000 },
-	{ 'name': 'Not an alien', 'color': '#00abc7', 'script': 'That\'s just how it be', 'delay': 1000}
+	{ 'name': 'MGG', 'color': '#00abc7', 'script': 'Hello :D', 'delay': 1000 },
+	{ 'name': 'Not an alien', 'color': '#000000', 'script': 'Hello there fellow human.', 'delay': 1000 },
+	{ 'name': 'MGG', 'color': '#00abc7', 'script': 'I\'ll kill ya :)', 'delay': 1000 },
+	{ 'name': 'Not an alien', 'color': '#000000', 'script': 'That\'s just how it be. \n I guess', 'delay': 1000 }
 ]
 
 func _ready():

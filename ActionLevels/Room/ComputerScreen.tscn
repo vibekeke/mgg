@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://imported_assets/computer/PatchRegular.png" type="Texture" id=2]
@@ -17,7 +17,7 @@
 [ext_resource path="res://imported_assets/fonts/LiberationSans-Regular.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://ActionLevels/Room/Time.gd" type="Script" id=16]
 [ext_resource path="res://imported_assets/computer/mggdesktopbackground.png" type="Texture" id=17]
-[ext_resource path="res://ActionLevels/Room/crt_shader.tres" type="Material" id=18]
+[ext_resource path="res://ActionLevels/Room/ScanlinesTest.tscn" type="PackedScene" id=19]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.184314, 0.0862745, 0.670588, 1 )
@@ -114,6 +114,26 @@ border_color = Color( 0, 0, 0, 1 )
 size = 20
 font_data = ExtResource( 15 )
 
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 1, 1, 1, 1 )
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 343.333, 353.333 )
 
@@ -196,13 +216,12 @@ __meta__ = {
 
 [node name="BSN" type="WindowDialog" parent="."]
 visible = true
-margin_left = 327.0
-margin_top = 60.0
-margin_right = 1534.0
-margin_bottom = 931.0
+margin_left = 102.0
+margin_top = 66.0
+margin_right = 1309.0
+margin_bottom = 937.0
 custom_colors/title_color = Color( 1, 1, 1, 1 )
-custom_constants/close_h_ofs = 20
-custom_constants/close_v_ofs = 16
+custom_constants/close_v_ofs = 15
 custom_fonts/title_font = SubResource( 9 )
 custom_icons/close_highlight = ExtResource( 5 )
 custom_icons/close = ExtResource( 6 )
@@ -342,14 +361,71 @@ margin_top = 26.0
 margin_right = 645.0
 margin_bottom = 416.0
 
-[node name="Scanlines" type="ColorRect" parent="."]
-material = ExtResource( 18 )
+[node name="BSNBuds" type="WindowDialog" parent="."]
+visible = true
+margin_left = 1425.0
+margin_top = 71.0
+margin_right = 1818.0
+margin_bottom = 937.0
+custom_colors/title_color = Color( 1, 1, 1, 1 )
+custom_constants/close_v_ofs = 15
+custom_fonts/title_font = SubResource( 9 )
+custom_icons/close_highlight = ExtResource( 5 )
+custom_icons/close = ExtResource( 6 )
+custom_styles/panel = SubResource( 10 )
+popup_exclusive = true
+window_title = "BSN"
+
+[node name="Panel" type="Panel" parent="BSNBuds"]
+margin_left = 31.0
+margin_top = 218.0
+margin_right = 369.0
+margin_bottom = 838.0
+custom_styles/panel = SubResource( 24 )
+
+[node name="Panel2" type="Panel" parent="BSNBuds"]
+margin_left = 32.0
+margin_top = 14.0
+margin_right = 370.0
+margin_bottom = 196.0
+custom_styles/panel = SubResource( 24 )
+
+[node name="Receiver2" type="Panel" parent="BSNBuds"]
+anchor_bottom = 0.023
+margin_left = 34.0
+margin_top = 17.0
+margin_right = 211.0
+margin_bottom = 167.082
+custom_styles/panel = SubResource( 25 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BSNBuds/Receiver2"]
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
+margin_left = 21.0
+margin_top = 17.0
+margin_right = -18.0
+margin_bottom = -15.0
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="TextureRect" type="TextureRect" parent="BSNBuds/Receiver2/HBoxContainer"]
+margin_right = 138.0
+margin_bottom = 138.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Scanlines" parent="CanvasLayer" instance=ExtResource( 19 )]
+visible = false
 
 [node name="SettingsIcon" type="TextureRect" parent="."]
 margin_left = 64.0
@@ -369,3 +445,5 @@ click_texture = ExtResource( 8 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SettingsIcon/Area2D"]
 position = Vector2( 310, 323.333 )
 shape = SubResource( 23 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -51,11 +51,15 @@ export (PackedScene) var physical_attack
 func _ready():
 	Events.connect("collided_with_player", self, "_on_collided_with_player")
 	Events.connect("disable_player_action", self, "_on_disable_player_action")
-	Events.connect("transition_to_scene", self, "test")
+	Events.connect("transition_to_scene", self, "_test")
+	Events.connect("collected_heart", self, "_on_collected_heart")
 	_animation_tree.active = true
 	_anim_state.travel("Run")
 	_invul_timer_setup()
 	_fire_rate_timer_setup()
+
+func _test():
+	print("Player has transitioned to scene")
 
 func _fire_rate_timer_setup():
 	fire_rate_timer.set_name("fire_rate_timer")
@@ -160,6 +164,9 @@ func _on_collided_with_player(damage):
 			self.queue_free()
 		else:
 			Events.emit_signal("player_damaged", damage)
+
+func _on_collected_heart():
+	current_health = clamp(current_health + 1, 0, max_health)
 
 func _physics_process(delta):
 	if is_on_floor():

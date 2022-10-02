@@ -142,7 +142,7 @@
 			"character": "character-1661969364.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Oh?\nAn enemy! [pause=1][wave amp=50 freq=2]Perfect![/wave] Shoot it down! [br] (Press [color=yellow]E[/color] to shoot!)"
+			"text": "Oh?\nAn enemy! [pause=1][wave amp=50 freq=2]Perfect![/wave] Shoot it down! [br] (Use the [color=yellow]arrow keys[/color] to shoot!)"
 		},
 		{
 			"block_input": true,
@@ -166,16 +166,6 @@
 				],
 				"method_name": "_disable_enemy_actions",
 				"target_node_path": "Events"
-			},
-			"event_id": "dialogic_042"
-		},
-		{
-			"call_node": {
-				"arguments": [
-					"Level1"
-				],
-				"method_name": "transition_to_next_scene",
-				"target_node_path": "SceneManager"
 			},
 			"event_id": "dialogic_042"
 		},

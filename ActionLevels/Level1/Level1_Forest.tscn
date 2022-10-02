@@ -121,5 +121,6 @@ volume_db = -30.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 247, 840 )
+jump_time_to_descent = 0.4
 gunshot = ExtResource( 20 )
 physical_attack = ExtResource( 19 )

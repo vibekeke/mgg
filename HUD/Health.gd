@@ -3,14 +3,29 @@ extends Control
 const _node_name_prefix = 'health'
 onready var animated_heart_sprite = preload("HeartSprite.tscn")
 var has_set_max_health = false
+var max_player_health
 var current_heart_to_act
+var hurt_heart_amount = 0
 
 func _ready():
 	Events.connect("player_max_health", self, "_on_player_max_health")
 	Events.connect("player_damaged", self, "_on_player_damaged")
+	Events.connect("collected_heart", self, "_on_collected_heart")
 
+func _on_collected_heart():
+	print("collected heart")
+	var hboxChildren = self.get_children()
+	print("hbox size", hboxChildren.size())
+	print("max player health ", max_player_health)
+	if hurt_heart_amount > 0:
+		var node_to_change = hboxChildren[-1]
+		if node_to_change != null:
+			node_to_change.call_anim("default")
+		hurt_heart_amount -= 1
+		
 func _on_player_max_health(max_health):
 	current_heart_to_act = max_health
+	max_player_health = max_health
 	for i in max_health:
 		var health_sprite_node = animated_heart_sprite.instance()
 		health_sprite_node.set_name(_node_name_prefix + str(i + 1))
@@ -25,5 +40,6 @@ func _on_player_damaged(damage):
 		var node_to_change = self.get_children()[current_heart_to_act]
 		if node_to_change != null:
 			node_to_change.call_anim("hurt")
+			hurt_heart_amount += 1
 		else:
 			print("Null value for heart in health container")
