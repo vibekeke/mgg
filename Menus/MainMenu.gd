@@ -3,7 +3,7 @@ extends Control
 export (PackedScene) var root_scene
 
 func _ready():
-	$VBoxContainer/StartButton.grab_focus()
+	$CanvasLayer/VBoxContainer/StartButton.grab_focus()
 
 func _on_StartButton_pressed():
 	get_tree().change_scene("res://ActionLevels/RootLevel.tscn")
