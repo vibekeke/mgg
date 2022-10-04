@@ -4,3 +4,5 @@
 
 [node name="BroBun_logic" type="Node"]
 script = ExtResource( 1 )
+fire_rate_timer_wait_time = 2.0
+projectile_speed = 1000.0

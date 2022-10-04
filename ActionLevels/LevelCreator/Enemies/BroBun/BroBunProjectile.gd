@@ -7,6 +7,8 @@ onready var area2d = $Projectile/Area2D
 onready var visual_body = $Star
 var player_position
 var shoot_towards = false
+var angle_to_player
+var set_angle = false
 
 func off_leftside_screen():
 	return self.global_position.x < 0 || self.global_position.y < 0
@@ -17,15 +19,15 @@ func _physics_process(delta):
 		self.queue_free()
 	if shoot_towards:
 		go_towards_point(delta)
-		#go_towards_point()
-		#self.position += self.transform.x * speed * delta
 
 func go_towards_point(delta):
 	if shoot_towards:
 		if player_position != null:
-			var x = self.global_position.x - speed*delta # TODO(Nadia) speed should be changed to speed_x (If not the speed of the star projectile will vary based on where the character is located relative to the star)
-			var y = (self.global_position.y - player_position.y) / (self.global_position.x - player_position.x) * (x - self.player_position.x) + self.player_position.y
-			self.global_position = Vector2(x,y)
+			if !set_angle:
+				angle_to_player = self.global_position.angle_to_point(player_position)
+				set_angle = true
+			self.global_position += Vector2(-(speed * delta * cos(angle_to_player)), -(speed * delta * sin(angle_to_player)))
+
 
 func _ready():
 	if area2d != null:

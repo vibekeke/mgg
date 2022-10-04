@@ -13,10 +13,7 @@ func _ready():
 	Events.connect("collected_heart", self, "_on_collected_heart")
 
 func _on_collected_heart():
-	print("collected heart")
 	var hboxChildren = self.get_children()
-	print("hbox size", hboxChildren.size())
-	print("max player health ", max_player_health)
 	if hurt_heart_amount > 0:
 		var node_to_change = hboxChildren[-1]
 		if node_to_change != null:

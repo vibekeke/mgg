@@ -31,7 +31,6 @@ rotation = 1.5708
 scale = Vector2( 119.688, 10 )
 
 [node name="BigBird" parent="." instance=ExtResource( 2 )]
-visible = false
 position = Vector2( 1557, 485 )
 
 [node name="FullHUD" parent="." instance=ExtResource( 5 )]
@@ -43,7 +42,7 @@ position = Vector2( 422, 502 )
 position = Vector2( 696, 558 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 418, 910 )
+position = Vector2( 450, 904 )
 debug_mode = true
 gunshot = ExtResource( 8 )
 physical_attack = ExtResource( 1 )
@@ -58,4 +57,5 @@ visible = false
 position = Vector2( 914, 550 )
 
 [node name="BroBun" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1492, 440 )
+position = Vector2( 1166, 946 )
+has_non_queue_free_rotator = true

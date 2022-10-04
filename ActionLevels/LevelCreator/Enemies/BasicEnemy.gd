@@ -10,6 +10,7 @@ export (int) var health_value = 1
 export (PackedScene) var enemy_logic
 export (bool) var is_boss = false
 export (bool) var debug_mode = false
+export (bool) var has_non_queue_free_rotator = false # hack to ensure rotator and children arent killed during queue free
 
 onready var enemy_follower = $Path2D/PathFollow2D
 onready var area2d = $Path2D/PathFollow2D/Area2D
@@ -23,6 +24,7 @@ var player_global_position = Vector2(0,0)
 var is_move_disabled = false
 
 var enemy_logic_instance = null
+var has_invulnerability = false
 
 var damage_timer = Timer.new()
 
@@ -62,7 +64,11 @@ func call_death():
 	Events.emit_signal("regular_enemy_death")
 
 func _on_explosion_finished():
-	queue_free()
+	if !has_non_queue_free_rotator:
+		queue_free()
+	else:
+		if $Path2D != null:
+			$Path2D.queue_free()
 
 func _on_disable_enemy_action(is_disabled):
 	is_move_disabled = !is_move_disabled
@@ -85,14 +91,18 @@ func take_damage(damage_value:= 1):
 func _on_call_body_entered(body):
 	if body.name == 'Player':
 		Events.emit_signal("collided_with_player", 1)
-		take_damage()
+		if !has_invulnerability:
+			take_damage()
 
 func _on_call_area_entered(area):
 	if area.get_parent() != null:
 		if "belongs_to_player" in area.get_parent():
 			if area.get_parent().belongs_to_player:
-				take_damage()
-				area.get_parent().queue_free()
+				if has_invulnerability:
+					area.get_parent().queue_free()
+				if !has_invulnerability:
+					take_damage()
+					area.get_parent().queue_free()
 
 func off_screen_call():
 	Events.emit_signal("regular_enemy_death")
