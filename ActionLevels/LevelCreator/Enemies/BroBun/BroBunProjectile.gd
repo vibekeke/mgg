@@ -23,8 +23,9 @@ func _physics_process(delta):
 func go_towards_point(delta):
 	if shoot_towards:
 		if player_position != null:
-			var something = (self.global_position.y - player_position.y) / (self.global_position.x - player_position.x) * (self.global_position.x - self.player_position.x)
-			print(something)
+			var x = self.global_position.x - speed*delta # TODO(Nadia) speed should be changed to speed_x (If not the speed of the star projectile will vary based on where the character is located relative to the star)
+			var y = (self.global_position.y - player_position.y) / (self.global_position.x - player_position.x) * (x - self.player_position.x) + self.player_position.y
+			self.global_position = Vector2(x,y)
 
 func _ready():
 	if area2d != null:
