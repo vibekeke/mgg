@@ -31,6 +31,7 @@ onready var double_jump_velocity : float = ((2.0 * max_jump_height + 5) / jump_t
 onready var min_jump_velocity : float = ((2.0 * min_jump_height) / jump_time_to_peak) * -1.0
 onready var jump_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 onready var fall_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+export (bool) var debug_mode = false
 
 var slide_adjust_timer = Timer.new()
 var is_sliding = false
@@ -51,14 +52,34 @@ export (PackedScene) var physical_attack
 func _ready():
 	Events.connect("collided_with_player", self, "_on_collided_with_player")
 	Events.connect("disable_player_action", self, "_on_disable_player_action")
-	Events.connect("transition_to_scene", self, "_test")
+	Events.connect("transition_to_scene", self, "_player_transition_to_scene")
 	Events.connect("collected_heart", self, "_on_collected_heart")
 	_animation_tree.active = true
 	_anim_state.travel("Run")
 	_invul_timer_setup()
 	_fire_rate_timer_setup()
+	if debug_mode:	
+		$DebugCanvasLayer/Control/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(fire_rate_secs)
+		$DebugCanvasLayer/Control/VBoxContainer/FireRateSlider.value = fire_rate_secs
 
-func _test():
+		$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedTitle.text = "Movement Speed: " + str(horizontal_movement_speed)
+		$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedSlider.value = horizontal_movement_speed
+		
+		$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpTitle.text = "Max Jump Height: " + str(max_jump_height)
+		$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpSlider.value = max_jump_height
+
+		$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpTitle.text = "Min Jump Height: " + str(min_jump_height)
+		$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpSlider.value = min_jump_height
+		
+		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakTitle.text = "Gravity Up: " + str(jump_time_to_peak)
+		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakSlider.value = jump_time_to_peak
+		
+		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentTitle.text = "Gravity Down: " + str(jump_time_to_descent)
+		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider.value = jump_time_to_descent
+	else:
+		$DebugCanvasLayer.visible = false
+
+func _player_transition_to_scene():
 	print("Player has transitioned to scene")
 
 func _fire_rate_timer_setup():
@@ -111,6 +132,7 @@ func shoot(angle):
 	_gunshot.set_bullet_type(angle)
 	get_tree().get_root().add_child(_gunshot)
 	_gunshot.position = self.position + Vector2(80,2)
+	$BulletFire.play(0.0)
 	fire_rate_timer.start()
 
 func shoot_hold_check():
@@ -137,6 +159,13 @@ func attack_logic():
 		if Input.is_action_just_pressed("hit"):
 			physical_attack()
 
+func debug_recalculate_jump_maths():
+	jump_velocity = ((2.0 * max_jump_height) / jump_time_to_peak) * -1.0
+	double_jump_velocity = ((2.0 * max_jump_height + 5) / jump_time_to_peak) * -1.0
+	min_jump_velocity = ((2.0 * min_jump_height) / jump_time_to_peak) * -1.0
+	jump_gravity = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
+	fall_gravity = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+
 func physical_attack():
 	for node in get_tree().get_root().get_children():
 		if node.name == "Hit":
@@ -154,6 +183,8 @@ func _on_disable_player_action(to_disable):
 		is_move_disabled = !is_move_disabled
 
 func _on_collided_with_player(damage):
+	if debug_mode:
+		return
 	if invul_timer.is_stopped():
 		current_health = current_health - damage
 		invul_timer.start()
@@ -201,3 +232,40 @@ func _process(delta):
 	Events.emit_signal("player_max_health", max_health)
 	Events.emit_signal("player_global_position", self.global_position)
 	Events.emit_signal("player_local_position", self.position)
+
+
+func _on_MovementSpeedSlider_value_changed(value):
+	$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedSlider.value = value
+	$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedTitle.text = "Movement Speed: " + str(value)
+	horizontal_movement_speed = value
+
+
+func _on_MaxHeightJumpSlider_value_changed(value):
+	$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpSlider.value = value
+	$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpTitle.text = "Max Height Jump: " + str(value)
+	max_jump_height = value
+	debug_recalculate_jump_maths()
+
+func _on_MinHeightJumpSlider_value_changed(value):
+	$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpSlider.value = value
+	$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpTitle.text = "Min Height Jump: " + str(value)
+	min_jump_height = value
+	debug_recalculate_jump_maths()
+	
+func _on_JumpTimeToPeakSlider_value_changed(value):
+	$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakSlider.value = value
+	$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakTitle.text = "Gravity Up: " + str(value)
+	jump_time_to_peak = value
+	debug_recalculate_jump_maths()
+
+func _on_JumpTimeToDescentSlider_value_changed(value):
+	$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider.value = value
+	$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentTitle.text = "Gravity Down: " + str(value)
+	jump_time_to_descent = value
+	debug_recalculate_jump_maths()
+
+func _on_FireRateSlider_value_changed(value):
+	$DebugCanvasLayer/Control/VBoxContainer/FireRateSlider.value = value
+	$DebugCanvasLayer/Control/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(value)
+	fire_rate_secs = value
+	fire_rate_timer.set_wait_time(fire_rate_secs)

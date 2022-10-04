@@ -39,7 +39,7 @@ func set_bullet_type(angle):
 	bullet_type = num_to_enum(angle)
 	self.rotate(deg2rad(angle_map[bullet_type]))
 
-func _process(delta):
+func _physics_process(delta):
 	var movement_speed = speed * 10 * delta
 	if move_rightward == false:
 		movement_speed = movement_speed * -1

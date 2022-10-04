@@ -1,11 +1,76 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://imported_assets/actors/mg/RunningV5.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://sounds/player/plst00.wav" type="AudioStream" id=3]
 [ext_resource path="res://imported_assets/actors/mg/JumpingV10.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 200, 345.714 )
+
+[sub_resource type="AtlasTexture" id=111]
+atlas = ExtResource( 4 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=112]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=113]
+atlas = ExtResource( 4 )
+region = Rect2( 1024, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=114]
+atlas = ExtResource( 4 )
+region = Rect2( 2048, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=115]
+atlas = ExtResource( 4 )
+region = Rect2( 3072, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=116]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=117]
+atlas = ExtResource( 4 )
+region = Rect2( 1024, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=118]
+atlas = ExtResource( 4 )
+region = Rect2( 2048, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=108]
+atlas = ExtResource( 4 )
+region = Rect2( 3072, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=109]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=110]
+atlas = ExtResource( 4 )
+region = Rect2( 1024, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=105]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=106]
+atlas = ExtResource( 4 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=107]
+atlas = ExtResource( 4 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=103]
+atlas = ExtResource( 4 )
+region = Rect2( 2048, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=104]
+atlas = ExtResource( 4 )
+region = Rect2( 3072, 3072, 1024, 1024 )
 
 [sub_resource type="AtlasTexture" id=89]
 atlas = ExtResource( 1 )
@@ -63,80 +128,21 @@ region = Rect2( 0, 3072, 1024, 1024 )
 atlas = ExtResource( 1 )
 region = Rect2( 1024, 3072, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=111]
-atlas = ExtResource( 4 )
-region = Rect2( 3072, 0, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=112]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 1024, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=113]
-atlas = ExtResource( 4 )
-region = Rect2( 1024, 1024, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=114]
-atlas = ExtResource( 4 )
-region = Rect2( 2048, 1024, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=115]
-atlas = ExtResource( 4 )
-region = Rect2( 3072, 1024, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=116]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 2048, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=117]
-atlas = ExtResource( 4 )
-region = Rect2( 1024, 2048, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=118]
-atlas = ExtResource( 4 )
-region = Rect2( 2048, 2048, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=105]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=106]
-atlas = ExtResource( 4 )
-region = Rect2( 1024, 0, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=107]
-atlas = ExtResource( 4 )
-region = Rect2( 2048, 0, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=103]
-atlas = ExtResource( 4 )
-region = Rect2( 2048, 3072, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=104]
-atlas = ExtResource( 4 )
-region = Rect2( 3072, 3072, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=108]
-atlas = ExtResource( 4 )
-region = Rect2( 3072, 2048, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=109]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 3072, 1024, 1024 )
-
-[sub_resource type="AtlasTexture" id=110]
-atlas = ExtResource( 4 )
-region = Rect2( 1024, 3072, 1024, 1024 )
-
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
-"frames": [ SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ) ],
+"frames": [  ],
 "loop": true,
-"name": "run",
-"speed": 14.0
+"name": "default",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ) ],
 "loop": true,
 "name": "during_jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 108 ), SubResource( 109 ), SubResource( 110 ) ],
+"loop": true,
+"name": "falling",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 105 ), SubResource( 106 ), SubResource( 107 ) ],
@@ -149,15 +155,10 @@ animations = [ {
 "name": "landed",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 108 ), SubResource( 109 ), SubResource( 110 ) ],
+"frames": [ SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ) ],
 "loop": true,
-"name": "falling",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "default",
-"speed": 5.0
+"name": "run",
+"speed": 14.0
 } ]
 
 [sub_resource type="Animation" id=20]
@@ -453,3 +454,125 @@ parameters/FallingLoop/TimeScale/scale = 1.0
 parameters/Landing/TimeScale/scale = 1.0
 parameters/RisingLoop/TimeScale/scale = 1.0
 parameters/Run/TimeScale/scale = 1.0
+
+[node name="BulletFire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+pitch_scale = 1.5
+
+[node name="DebugCanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Control" type="Control" parent="DebugCanvasLayer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugCanvasLayer/Control"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 71.0
+margin_top = -1041.0
+margin_right = 250.0
+margin_bottom = -763.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="FireRateTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_right = 179.0
+margin_bottom = 14.0
+text = "Fire Rate Seconds"
+
+[node name="FireRateSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 18.0
+margin_right = 179.0
+margin_bottom = 34.0
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.01
+
+[node name="MovementSpeedTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 38.0
+margin_right = 179.0
+margin_bottom = 52.0
+text = "Movement Speed"
+
+[node name="MovementSpeedSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 56.0
+margin_right = 179.0
+margin_bottom = 72.0
+min_value = 100.0
+max_value = 10000.0
+step = 100.0
+value = 100.0
+rounded = true
+
+[node name="MaxHeightJumpTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 76.0
+margin_right = 179.0
+margin_bottom = 90.0
+text = "Max Height Jump"
+
+[node name="MaxHeightJumpSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 94.0
+margin_right = 179.0
+margin_bottom = 110.0
+min_value = 100.0
+max_value = 1000.0
+step = 10.0
+value = 100.0
+rounded = true
+
+[node name="MinHeightJumpTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 114.0
+margin_right = 179.0
+margin_bottom = 128.0
+text = "Min Height Jump"
+
+[node name="MinHeightJumpSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 132.0
+margin_right = 179.0
+margin_bottom = 148.0
+min_value = 100.0
+max_value = 1000.0
+step = 10.0
+value = 100.0
+rounded = true
+
+[node name="JumpTimeToPeakTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 152.0
+margin_right = 179.0
+margin_bottom = 166.0
+text = "Gravity Up"
+
+[node name="JumpTimeToPeakSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 170.0
+margin_right = 179.0
+margin_bottom = 186.0
+min_value = 0.01
+max_value = 2.0
+step = 0.01
+value = 0.01
+
+[node name="JumpTimeToDescentTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 190.0
+margin_right = 179.0
+margin_bottom = 204.0
+text = "Gravity Down"
+
+[node name="JumpTimeToDescentSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 208.0
+margin_right = 179.0
+margin_bottom = 224.0
+min_value = 0.01
+max_value = 2.0
+step = 0.01
+value = 0.01
+
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/FireRateSlider" to="." method="_on_FireRateSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/MovementSpeedSlider" to="." method="_on_MovementSpeedSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpSlider" to="." method="_on_MaxHeightJumpSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpSlider" to="." method="_on_MinHeightJumpSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakSlider" to="." method="_on_JumpTimeToPeakSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider" to="." method="_on_JumpTimeToDescentSlider_value_changed"]

@@ -425,7 +425,6 @@ __meta__ = {
 layer = 100
 
 [node name="Scanlines" parent="CanvasLayer" instance=ExtResource( 19 )]
-visible = false
 
 [node name="SettingsIcon" type="TextureRect" parent="."]
 margin_left = 64.0
