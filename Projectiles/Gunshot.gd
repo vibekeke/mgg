@@ -3,6 +3,7 @@ extends AnimatedSprite
 export var speed = 200
 export var move_rightward = true
 export var belongs_to_player = true
+export var is_queue_freeable = true
 
 enum ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
 

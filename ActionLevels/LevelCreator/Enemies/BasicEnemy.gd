@@ -96,8 +96,13 @@ func _on_call_body_entered(body):
 
 func _on_call_area_entered(area):
 	if area.get_parent() != null:
-		if "belongs_to_player" in area.get_parent():
-			if area.get_parent().belongs_to_player:
+		print("groups ->", area.get_parent().get_groups())
+		var parent_groups = area.get_parent().get_groups()
+		if "player_charge_shot" in parent_groups:
+			if !has_invulnerability:
+				take_damage()
+		elif "player_bullet" in parent_groups:
+			if area.get_parent().belongs_to_player != null:
 				if has_invulnerability:
 					area.get_parent().queue_free()
 				if !has_invulnerability:

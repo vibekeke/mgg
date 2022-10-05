@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=5]
@@ -37,6 +38,7 @@ position = Vector2( 158, 904 )
 debug_mode = true
 gunshot = ExtResource( 8 )
 physical_attack = ExtResource( 1 )
+charge_shot = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 20
@@ -48,7 +50,7 @@ visible = false
 position = Vector2( 604, 568 )
 
 [node name="Star2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1424, 669 )
+position = Vector2( 266, 975 )
 
 [node name="Star3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 843, 531 )
@@ -66,7 +68,7 @@ position = Vector2( 478, 769 )
 position = Vector2( 1170, 854 )
 
 [node name="Star8" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1360, 963 )
+position = Vector2( 520, 1012 )
 
 [node name="Star9" parent="." instance=ExtResource( 6 )]
 position = Vector2( 323, 683 )
@@ -88,9 +90,3 @@ position = Vector2( 1020, 713 )
 
 [node name="Star15" parent="." instance=ExtResource( 6 )]
 position = Vector2( 978, 863 )
-
-[node name="Star16" parent="." instance=ExtResource( 6 )]
-position = Vector2( 920, 612 )
-
-[node name="Star17" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1121, 512 )

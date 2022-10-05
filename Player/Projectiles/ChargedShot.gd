@@ -1,6 +1,8 @@
 extends AnimatedSprite
 
 export var belongs_to_player = true
+export var is_queue_freeable = false
+var player_position = null
 
 onready var collision_shape_extends = {
 	0: Vector2.ZERO,
@@ -23,15 +25,21 @@ onready var collision_shape_extends = {
 
 func _ready():
 	self.playing = true
-
+	self.frame = 0
+	Events.connect("player_global_position", self, "_on_player_global_position")
 
 func expand_collision_shape(frame: int):
 	var new_collision_shape_extent = collision_shape_extends[frame]
 	$Area2D/CollisionShape2D.shape.extents = new_collision_shape_extent
-		
+
+func _on_player_global_position(player_global_position):
+	player_position = player_global_position
+
 func _physics_process(delta):
 	expand_collision_shape(self.frame)
-
+	if player_position != null:
+		self.global_position.x = player_position.x + 1200
+		self.global_position.y = player_position.y + 2
 
 func _on_ChargedShot_animation_finished():
 	self.queue_free()

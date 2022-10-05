@@ -96,6 +96,7 @@ extents = Vector2( 0, 0 )
 
 [node name="ChargedShot" type="AnimatedSprite"]
 frames = SubResource( 17 )
+frame = 11
 speed_scale = 0.7
 playing = true
 script = ExtResource( 2 )

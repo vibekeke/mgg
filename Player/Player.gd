@@ -48,6 +48,8 @@ var is_move_disabled = false
 
 export (PackedScene) var gunshot
 export (PackedScene) var physical_attack
+export (PackedScene) var charge_shot
+
 onready var has_charge_shot = false
 
 var sprite_anim_to_player_name = {
@@ -149,6 +151,7 @@ func jump_logic():
 
 func shoot(angle):
 	var _gunshot = gunshot.instance()
+	_gunshot.add_to_group("player_bullet")
 	_gunshot.set_bullet_type(angle)
 	get_tree().get_root().add_child(_gunshot)
 	_gunshot.position = self.position + Vector2(80,2)
@@ -162,21 +165,37 @@ func shoot_hold_check():
 	if !Input.is_action_pressed("right"):
 		return
 
+func charge_shot_present():
+	return get_tree().get_nodes_in_group("player_charge_shot").size() > 0
+
+func fire_charge_shot():
+	var _charge_shot = charge_shot.instance()
+	_charge_shot.add_to_group("player_bullet")
+	_charge_shot.add_to_group("player_charge_shot")
+	get_tree().get_root().add_child(_charge_shot)
+	_charge_shot.position = self.position + Vector2(1200,2)
+	Events.emit_signal("fired_charge_shot")
+
 func attack_logic():
 	if fire_rate_timer.is_stopped():
-		if Input.is_action_pressed("up"):
-			current_shooting_angle = SHOOT_ANGLE.UPWARD_B
-			shoot(current_shooting_angle)
-		elif Input.is_action_pressed("down"):
-			current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
-			shoot(current_shooting_angle)
-		elif Input.is_action_just_pressed("right"):
-			shoot_hold_check()
-		elif Input.is_action_pressed("right"):
-			current_shooting_angle = SHOOT_ANGLE.FORWARD_B
-			shoot(current_shooting_angle)	
-		if Input.is_action_just_pressed("hit"):
-			physical_attack()
+		if has_charge_shot:
+			if Input.is_action_pressed("charge_shot"):
+				has_charge_shot = false
+				fire_charge_shot()
+		if !charge_shot_present():
+			if Input.is_action_pressed("up"):
+				current_shooting_angle = SHOOT_ANGLE.UPWARD_B
+				shoot(current_shooting_angle)
+			elif Input.is_action_pressed("down"):
+				current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
+				shoot(current_shooting_angle)
+			elif Input.is_action_just_pressed("right"):
+				shoot_hold_check()
+			elif Input.is_action_pressed("right"):
+				current_shooting_angle = SHOOT_ANGLE.FORWARD_B
+				shoot(current_shooting_angle)
+			if Input.is_action_just_pressed("hit"):
+				physical_attack()
 
 func debug_recalculate_jump_maths():
 	jump_velocity = ((2.0 * max_jump_height) / jump_time_to_peak) * -1.0
