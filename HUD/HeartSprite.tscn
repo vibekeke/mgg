@@ -78,7 +78,7 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "hurt",
-"speed": 4.0
+"speed": 12.0
 } ]
 
 [node name="Control" type="Control"]
@@ -90,6 +90,7 @@ script = ExtResource( 2 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 13 )
 animation = "dead"
+frame = 2
 playing = true
 centered = false
 
