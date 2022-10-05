@@ -60,6 +60,7 @@ func _ready():
 	_anim_state.travel("Run")
 	_invul_timer_setup()
 	_fire_rate_timer_setup()
+	print("jump velocity is ", jump_velocity)
 	if debug_mode:	
 		$DebugCanvasLayer/Control/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(fire_rate_secs)
 		$DebugCanvasLayer/Control/VBoxContainer/FireRateSlider.value = fire_rate_secs
@@ -114,7 +115,14 @@ func get_gravity() -> float:
 	else:
 		gravity = fall_gravity
 		if !is_on_floor():
+			print("velocity falling", velocity.y)
 			_anim_state.travel("FallingLoop")
+	# velocity is negative so character is rising
+	# velocity is within 20% of total jump velocity, so character is approaching the peak
+	# of their jump
+	if velocity.y < 0 and velocity.y > jump_velocity * 0.2:
+		print("play about to fall")
+		_anim_state.travel("AboutToFall")
 	return gravity
 
 func jump_logic():
@@ -124,11 +132,11 @@ func jump_logic():
 		velocity.y = double_jump_velocity
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor() and !has_double_jumped:
-		can_double_jump = true
+		can_double_jump = false
 		velocity.y = jump_velocity
 		
 	if Input.is_action_just_released("jump") and !is_on_floor() && velocity.y < min_jump_velocity and !has_double_jumped:
-		can_double_jump = true
+		can_double_jump = false
 		velocity.y = min_jump_velocity
 
 
@@ -222,9 +230,8 @@ func _physics_process(delta):
 	if !is_move_disabled:
 		velocity.y += get_gravity() * delta
 		velocity.x = _horizontal_direction * horizontal_movement_speed
-	if previous_frame_velocity.y < 0 and velocity.y > 0:
-		_anim_state.travel("AboutToFall")
-	
+
+
 	if !is_shoot_disabled:
 		attack_logic()
 	

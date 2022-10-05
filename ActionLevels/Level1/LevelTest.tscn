@@ -1,16 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=8]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn" type="PackedScene" id=11]
 
 [node name="LevelTest" type="Node2D"]
 
@@ -30,58 +27,10 @@ position = Vector2( 1961, -115 )
 rotation = 1.5708
 scale = Vector2( 119.688, 10 )
 
-[node name="BigBird" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1557, 485 )
-
 [node name="FullHUD" parent="." instance=ExtResource( 5 )]
 
 [node name="LongTallPlatform" parent="." instance=ExtResource( 4 )]
 position = Vector2( 422, 502 )
-
-[node name="Star" parent="." instance=ExtResource( 6 )]
-position = Vector2( 538, 994 )
-
-[node name="Star2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 315, 1002 )
-
-[node name="Star6" parent="." instance=ExtResource( 6 )]
-position = Vector2( 317, 779 )
-
-[node name="Star7" parent="." instance=ExtResource( 6 )]
-position = Vector2( 550, 777 )
-
-[node name="Star11" parent="." instance=ExtResource( 6 )]
-position = Vector2( 559, 534 )
-
-[node name="Star12" parent="." instance=ExtResource( 6 )]
-position = Vector2( 769, 533 )
-
-[node name="Star13" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1096, 549 )
-
-[node name="Star14" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1490, 957 )
-
-[node name="Star15" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1335, 971 )
-
-[node name="Star8" parent="." instance=ExtResource( 6 )]
-position = Vector2( 755, 784 )
-
-[node name="Star9" parent="." instance=ExtResource( 6 )]
-position = Vector2( 951, 782 )
-
-[node name="Star10" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1141, 784 )
-
-[node name="Star3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 758, 1003 )
-
-[node name="Star4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 944, 998 )
-
-[node name="Star5" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1138, 1001 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 158, 904 )
@@ -95,9 +44,53 @@ layer = 20
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 10 )]
 visible = false
 
-[node name="CollectibleHeart" parent="." instance=ExtResource( 9 )]
-position = Vector2( 914, 550 )
+[node name="Star" parent="." instance=ExtResource( 6 )]
+position = Vector2( 604, 568 )
 
-[node name="BroBun" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1776, 950 )
-has_non_queue_free_rotator = true
+[node name="Star2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1424, 669 )
+
+[node name="Star3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 843, 531 )
+
+[node name="Star4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1021, 714 )
+
+[node name="Star5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 901, 649 )
+
+[node name="Star6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 478, 769 )
+
+[node name="Star7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1170, 854 )
+
+[node name="Star8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1360, 963 )
+
+[node name="Star9" parent="." instance=ExtResource( 6 )]
+position = Vector2( 323, 683 )
+
+[node name="Star10" parent="." instance=ExtResource( 6 )]
+position = Vector2( 923, 558 )
+
+[node name="Star11" parent="." instance=ExtResource( 6 )]
+position = Vector2( 529, 842 )
+
+[node name="Star12" parent="." instance=ExtResource( 6 )]
+position = Vector2( 951, 549 )
+
+[node name="Star13" parent="." instance=ExtResource( 6 )]
+position = Vector2( 752, 889 )
+
+[node name="Star14" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1020, 713 )
+
+[node name="Star15" parent="." instance=ExtResource( 6 )]
+position = Vector2( 978, 863 )
+
+[node name="Star16" parent="." instance=ExtResource( 6 )]
+position = Vector2( 920, 612 )
+
+[node name="Star17" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1121, 512 )
