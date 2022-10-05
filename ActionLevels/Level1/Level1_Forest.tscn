@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://sounds/level/forest/forest1.wav" type="AudioStream" id=18]
 [ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=21]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -124,3 +125,4 @@ position = Vector2( 247, 840 )
 jump_time_to_descent = 0.4
 gunshot = ExtResource( 20 )
 physical_attack = ExtResource( 19 )
+charge_shot = ExtResource( 21 )

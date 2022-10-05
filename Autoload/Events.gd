@@ -8,6 +8,7 @@ signal collided_with_player(damage) # when an enemy collides with a player
 signal player_global_position(global_position) # global position of the player
 signal player_local_position(local_position)
 signal has_charge_shot # whether player has charge shot or not
+signal fired_charge_shot # charge shot has just been fired
 
 # game state, e.g. scene transitions, game overs, cutscenes
 signal transition_to_scene(to_scene)
