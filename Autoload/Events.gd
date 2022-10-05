@@ -7,6 +7,7 @@ signal player_current_health(health) # emits the current health of the player
 signal collided_with_player(damage) # when an enemy collides with a player
 signal player_global_position(global_position) # global position of the player
 signal player_local_position(local_position)
+signal has_charge_shot # whether player has charge shot or not
 
 # game state, e.g. scene transitions, game overs, cutscenes
 signal transition_to_scene(to_scene)

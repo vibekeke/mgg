@@ -8,24 +8,34 @@ var stop_frames = [1,2,3,4]
 func _ready():
 	Events.connect("collected_star", self, "_on_positive_charge")
 	Events.connect("regular_enemy_death", self, "_on_positive_charge")
+	$AnimatedSprite.animation = "default"
+	$AnimatedSprite.frame = 0
+	$AnimatedSprite.stop()
 
-func play_frame_until(start_frame: int, end_frame: int):
+func play_fully_charged():
+	$AnimatedSprite.speed_scale = 1.5
+	$AnimatedSprite.play("complete")
+	Events.emit_signal("has_charge_shot")
+
+func play_frame_until():
 	$AnimatedSprite.play("default")
 
 func _on_positive_charge():
-	positive_action_count += 1
-	if fmod(positive_action_count, 3) == 0:
-		play_frame_until(current_frame, current_frame + 1)
-		current_frame += 1
-
-func _process(delta):
-	if Input.is_action_just_pressed("right"):
-		print("based")
-		_on_positive_charge()
+	if $AnimatedSprite.animation == "default":
+		positive_action_count += 1
+		if fmod(positive_action_count, 3) == 0:
+			play_frame_until()
+			current_frame += 1
 
 
 func _on_AnimatedSprite_frame_changed():
-	if current_frame < 5:
+	if $AnimatedSprite.animation == "default" and $AnimatedSprite.frame < 5:
 		$AnimatedSprite.stop()
-	if $AnimatedSprite.frame == 18:
-		$AnimatedSprite.stop()
+	if $AnimatedSprite.animation == "default" and $AnimatedSprite.frame == 5:
+		$AnimatedSprite.play("default")
+
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "default":
+		positive_action_count = 0
+		play_fully_charged()

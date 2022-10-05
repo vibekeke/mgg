@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://HUD/Health.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HUD/DogCollection.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HUD/ChargeCrystal.tscn" type="PackedScene" id=3]
 
 [node name="FullHUD" type="Control"]
 anchor_right = 1.0
@@ -14,3 +15,20 @@ margin_left = 1361.0
 margin_top = 49.0
 margin_right = 1908.0
 margin_bottom = 222.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 392.0
+margin_top = 3.0
+margin_right = 625.0
+margin_bottom = 204.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ChargeCrystal" parent="HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_bottom = 201.0
+__meta__ = {
+"_edit_group_": true
+}

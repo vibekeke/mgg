@@ -48,12 +48,14 @@ var is_move_disabled = false
 
 export (PackedScene) var gunshot
 export (PackedScene) var physical_attack
+onready var has_charge_shot = false
 
 func _ready():
 	Events.connect("collided_with_player", self, "_on_collided_with_player")
 	Events.connect("disable_player_action", self, "_on_disable_player_action")
 	Events.connect("transition_to_scene", self, "_player_transition_to_scene")
 	Events.connect("collected_heart", self, "_on_collected_heart")
+	Events.connect("has_charge_shot", self, "_on_has_charge_shot")
 	_animation_tree.active = true
 	_anim_state.travel("Run")
 	_invul_timer_setup()
@@ -81,6 +83,9 @@ func _ready():
 
 func _player_transition_to_scene():
 	print("Player has transitioned to scene")
+
+func _on_has_charge_shot():
+	has_charge_shot = true
 
 func _fire_rate_timer_setup():
 	fire_rate_timer.set_name("fire_rate_timer")
