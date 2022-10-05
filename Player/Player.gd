@@ -50,6 +50,14 @@ export (PackedScene) var gunshot
 export (PackedScene) var physical_attack
 onready var has_charge_shot = false
 
+var sprite_anim_to_player_name = {
+	'run': 'Run',
+	'landed': 'Landing',
+	'falling': 'FallingLoop',
+	'during_jump': 'AboutToFall',
+	'init_jump': 'RisingJump'
+}
+
 func _ready():
 	Events.connect("collided_with_player", self, "_on_collided_with_player")
 	Events.connect("disable_player_action", self, "_on_disable_player_action")
@@ -60,7 +68,6 @@ func _ready():
 	_anim_state.travel("Run")
 	_invul_timer_setup()
 	_fire_rate_timer_setup()
-	print("jump velocity is ", jump_velocity)
 	if debug_mode:	
 		$DebugCanvasLayer/Control/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(fire_rate_secs)
 		$DebugCanvasLayer/Control/VBoxContainer/FireRateSlider.value = fire_rate_secs
@@ -79,6 +86,8 @@ func _ready():
 		
 		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentTitle.text = "Gravity Down: " + str(jump_time_to_descent)
 		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider.value = jump_time_to_descent
+		
+		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$AnimatedSprite.animation]
 	else:
 		$DebugCanvasLayer.visible = false
 
@@ -115,13 +124,11 @@ func get_gravity() -> float:
 	else:
 		gravity = fall_gravity
 		if !is_on_floor():
-			print("velocity falling", velocity.y)
 			_anim_state.travel("FallingLoop")
 	# velocity is negative so character is rising
 	# velocity is within 20% of total jump velocity, so character is approaching the peak
 	# of their jump
 	if velocity.y < 0 and velocity.y > jump_velocity * 0.2:
-		print("play about to fall")
 		_anim_state.travel("AboutToFall")
 	return gravity
 
@@ -154,7 +161,6 @@ func shoot_hold_check():
 	yield(get_tree().create_timer(5), "timeout")
 	if !Input.is_action_pressed("right"):
 		return
-	print("shoot a big shooty shot")
 
 func attack_logic():
 	if fire_rate_timer.is_stopped():
@@ -244,6 +250,8 @@ func _process(delta):
 	Events.emit_signal("player_max_health", max_health)
 	Events.emit_signal("player_global_position", self.global_position)
 	Events.emit_signal("player_local_position", self.position)
+	if debug_mode:
+		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$AnimatedSprite.animation]
 
 
 func _on_MovementSpeedSlider_value_changed(value):
