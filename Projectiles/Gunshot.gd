@@ -23,15 +23,20 @@ func _ready():
 
 func _on_call_area_entered(area):
 	# hit area 2d = player melee attack wow strings are bad
+	print("area entered was ", area.name)
+	if area.is_in_group("player_hurtbox"):
+		Events.emit_signal("collided_with_player", 1)
+		self.queue_free()
 	if area.name == "HitArea2D":
 		belongs_to_player = true
 		move_rightward = true
 		speed = speed * 1.10
 
 func _on_call_body_entered(body):
-	if body.name == 'Player' and belongs_to_player == false:
-		Events.emit_signal("collided_with_player", 1)
-		self.queue_free()
+	print("body entered was ", body.name)
+#	if body.name == 'Player' and belongs_to_player == false:
+#		Events.emit_signal("collided_with_player", 1)
+#		self.queue_free()
 
 func num_to_enum(number):
 	return enum_map.get(number, ANGLE.FORWARD_B)

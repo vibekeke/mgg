@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var _animation_player = $AnimatedSprite/AnimationPlayer
 onready var _animation_tree = $AnimatedSprite/AnimationTree
 onready var _anim_state = _animation_tree.get("parameters/playback")
+onready var hurt_area = $HurtArea
 
 const UP_DIRECTION := Vector2.UP
 
@@ -131,7 +132,6 @@ func get_gravity() -> float:
 	# velocity is within 20% of total jump velocity, so character is approaching the peak
 	# of their jump
 	if velocity.y < 0 and velocity.y > jump_velocity * 0.5:
-		print("play about to fall")
 		_anim_state.travel("AboutToFall")
 	return gravity
 

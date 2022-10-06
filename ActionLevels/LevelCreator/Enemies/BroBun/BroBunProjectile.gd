@@ -35,12 +35,16 @@ func _ready():
 		area2d.connect("area_entered", self, "_on_call_area_entered")
 
 func _on_call_body_entered(body):
-	if body.name == 'Player':
-		Events.emit_signal("collided_with_player", 1)
+	pass
+	#if body.name == 'Player':
+	#	Events.emit_signal("collided_with_player", 1)
 
 func _on_call_area_entered(area):
-	if area.name == 'Player':
+	if area.is_in_group("player_hurtbox"):
 		Events.emit_signal("collided_with_player", 1)
+		self.queue_free()
+	#if area.name == 'Player':
+	#	Events.emit_signal("collided_with_player", 1)
 
 
 func _on_VisibilityNotifier2D_screen_exited():

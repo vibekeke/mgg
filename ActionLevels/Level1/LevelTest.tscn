@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
 
 [node name="LevelTest" type="Node2D"]
@@ -35,7 +36,6 @@ position = Vector2( 422, 502 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 158, 904 )
-debug_mode = true
 gunshot = ExtResource( 8 )
 physical_attack = ExtResource( 1 )
 charge_shot = ExtResource( 2 )
@@ -90,3 +90,6 @@ position = Vector2( 1020, 713 )
 
 [node name="Star15" parent="." instance=ExtResource( 6 )]
 position = Vector2( 978, 863 )
+
+[node name="BroBun" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1381, 871 )
