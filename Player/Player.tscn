@@ -6,7 +6,7 @@
 [ext_resource path="res://imported_assets/actors/mg/JumpingV11-2.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 177.143, 254.286 )
+extents = Vector2( 177.143, 298.572 )
 
 [sub_resource type="AtlasTexture" id=103]
 flags = 4
@@ -344,7 +344,7 @@ nodes/Animation/position = Vector2( 350, 300 )
 nodes/TimeScale/node = SubResource( 40 )
 nodes/TimeScale/position = Vector2( 566.64, 292.32 )
 nodes/output/position = Vector2( 780, 310 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeBlendTree" id=59]
 
@@ -359,7 +359,7 @@ nodes/Animation/position = Vector2( 146.88, 187.92 )
 nodes/TimeScale/node = SubResource( 43 )
 nodes/TimeScale/position = Vector2( 360, 160 )
 nodes/output/position = Vector2( 540, 170 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=45]
 animation = "landing"
@@ -372,7 +372,7 @@ nodes/Animation/position = Vector2( 200, 150 )
 nodes/TimeScale/node = SubResource( 46 )
 nodes/TimeScale/position = Vector2( 390, 140 )
 nodes/output/position = Vector2( 580, 170 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=48]
 animation = "jump_init"
@@ -385,7 +385,7 @@ nodes/Animation/position = Vector2( 185.76, 254.16 )
 nodes/TimeScale/node = SubResource( 49 )
 nodes/TimeScale/position = Vector2( 414, 256.32 )
 nodes/output/position = Vector2( 630, 280 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=51]
 animation = "run"
@@ -398,7 +398,7 @@ nodes/Animation/node = SubResource( 51 )
 nodes/Animation/position = Vector2( -60, 140 )
 nodes/TimeScale/node = SubResource( 52 )
 nodes/TimeScale/position = Vector2( 120, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
 
@@ -438,7 +438,7 @@ scale = Vector2( 0.35, 0.35 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -154.286, 145.714 )
+position = Vector2( -154.286, 190 )
 scale = Vector2( 1, 1 )
 shape = SubResource( 3 )
 
@@ -494,30 +494,36 @@ margin_right = 250.0
 margin_bottom = -763.0
 rect_scale = Vector2( 2, 2 )
 
-[node name="FireRateTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+[node name="AnimationStateTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
 margin_right = 179.0
 margin_bottom = 14.0
+text = "Animation"
+
+[node name="FireRateTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 18.0
+margin_right = 179.0
+margin_bottom = 32.0
 text = "Fire Rate Seconds"
 
 [node name="FireRateSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 18.0
+margin_top = 36.0
 margin_right = 179.0
-margin_bottom = 34.0
+margin_bottom = 52.0
 min_value = 0.01
 max_value = 1.0
 step = 0.01
 value = 0.01
 
 [node name="MovementSpeedTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 38.0
+margin_top = 56.0
 margin_right = 179.0
-margin_bottom = 52.0
+margin_bottom = 70.0
 text = "Movement Speed"
 
 [node name="MovementSpeedSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 56.0
+margin_top = 74.0
 margin_right = 179.0
-margin_bottom = 72.0
+margin_bottom = 90.0
 min_value = 100.0
 max_value = 10000.0
 step = 100.0
@@ -525,15 +531,15 @@ value = 100.0
 rounded = true
 
 [node name="MaxHeightJumpTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 76.0
+margin_top = 94.0
 margin_right = 179.0
-margin_bottom = 90.0
+margin_bottom = 108.0
 text = "Max Height Jump"
 
 [node name="MaxHeightJumpSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 94.0
+margin_top = 112.0
 margin_right = 179.0
-margin_bottom = 110.0
+margin_bottom = 128.0
 min_value = 100.0
 max_value = 1000.0
 step = 10.0
@@ -541,15 +547,15 @@ value = 100.0
 rounded = true
 
 [node name="MinHeightJumpTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 114.0
+margin_top = 132.0
 margin_right = 179.0
-margin_bottom = 128.0
+margin_bottom = 146.0
 text = "Min Height Jump"
 
 [node name="MinHeightJumpSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 132.0
+margin_top = 150.0
 margin_right = 179.0
-margin_bottom = 148.0
+margin_bottom = 166.0
 min_value = 100.0
 max_value = 1000.0
 step = 10.0
@@ -557,30 +563,30 @@ value = 100.0
 rounded = true
 
 [node name="JumpTimeToPeakTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 152.0
+margin_top = 170.0
 margin_right = 179.0
-margin_bottom = 166.0
+margin_bottom = 184.0
 text = "Gravity Up"
 
 [node name="JumpTimeToPeakSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 170.0
+margin_top = 188.0
 margin_right = 179.0
-margin_bottom = 186.0
+margin_bottom = 204.0
 min_value = 0.01
 max_value = 2.0
 step = 0.01
 value = 0.01
 
 [node name="JumpTimeToDescentTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 190.0
+margin_top = 208.0
 margin_right = 179.0
-margin_bottom = 204.0
+margin_bottom = 222.0
 text = "Gravity Down"
 
 [node name="JumpTimeToDescentSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 208.0
+margin_top = 226.0
 margin_right = 179.0
-margin_bottom = 224.0
+margin_bottom = 242.0
 min_value = 0.01
 max_value = 2.0
 step = 0.01
