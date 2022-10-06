@@ -120,7 +120,7 @@ func get_gravity() -> float:
 	# velocity is negative so character is rising
 	# velocity is within 20% of total jump velocity, so character is approaching the peak
 	# of their jump
-	if velocity.y < 0 and velocity.y > jump_velocity * 0.2:
+	if velocity.y < 0 and velocity.y > jump_velocity * 0.5:
 		print("play about to fall")
 		_anim_state.travel("AboutToFall")
 	return gravity
