@@ -26,19 +26,20 @@ export var max_jump_height : float = 500.0
 export var min_jump_height : float = 200.0
 export var jump_time_to_peak : float = 0.6
 export var jump_time_to_descent : float = 0.45
+export var float_time_to_descent : float = 4.0
 
 onready var jump_velocity : float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1.0
 onready var double_jump_velocity : float = ((2.0 * max_jump_height + 5) / jump_time_to_peak) * -1.0
 onready var min_jump_velocity : float = ((2.0 * min_jump_height) / jump_time_to_peak) * -1.0
 onready var jump_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 onready var fall_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+onready var float_gravity : float = ((-2.0 * max_jump_height) / (float_time_to_descent * float_time_to_descent)) * -1.0
 export (bool) var debug_mode = false
 
 var slide_adjust_timer = Timer.new()
 var is_sliding = false
 
 var velocity := Vector2.ZERO
-var previous_frame_velocity
 var can_double_jump = false
 var has_double_jumped = false
 
@@ -125,14 +126,19 @@ func get_gravity() -> float:
 		gravity = jump_gravity
 		_anim_state.travel("RisingLoop")
 	else:
-		gravity = fall_gravity
+		if Input.is_action_pressed("float") and !is_on_floor():
+			velocity.y = 0.0
+			gravity = float_gravity
+		else:
+			gravity = fall_gravity
 		if !is_on_floor():
 			_anim_state.travel("FallingLoop")
 	# velocity is negative so character is rising
-	# velocity is within 20% of total jump velocity, so character is approaching the peak
+	# velocity is within some percentage of total jump velocity, so character is approaching the peak
 	# of their jump
 	if velocity.y < 0 and velocity.y > jump_velocity * 0.5:
 		_anim_state.travel("AboutToFall")
+	print("returning gravity value ", gravity)
 	return gravity
 
 func jump_logic():
@@ -252,7 +258,6 @@ func _physics_process(delta):
 		Input.get_action_strength("move_up") - Input.get_action_strength("move_down")
 	)
 
-	previous_frame_velocity = velocity
 	if !is_move_disabled:
 		velocity.y += get_gravity() * delta
 		velocity.x = _horizontal_direction * horizontal_movement_speed
