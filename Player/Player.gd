@@ -1,9 +1,26 @@
 extends KinematicBody2D
 
+
+onready var initial_anim_state = $AnimatedSprite
 onready var _animation_player = $AnimatedSprite/AnimationPlayer
 onready var _animation_tree = $AnimatedSprite/AnimationTree
 onready var _anim_state = _animation_tree.get("parameters/playback")
 onready var hurt_area = $HurtArea
+
+onready var staff_forward = $StaffForward
+onready var _forward_animation_player = $StaffForward/AnimationPlayer
+onready var _forward_animation_tree = $StaffForward/AnimationTree
+onready var _forward_anim_state = _forward_animation_tree.get("parameters/playback")
+
+onready var staff_up = $StaffUp
+onready var _up_animation_player = $StaffUp/AnimationPlayer
+onready var _up_animation_tree = $StaffUp/AnimationTree
+onready var _up_anim_state = _up_animation_tree.get("parameters/playback")
+
+onready var staff_down = $StaffDown
+onready var _down_animation_player = $StaffDown/AnimationPlayer
+onready var _down_animation_tree = $StaffDown/AnimationTree
+onready var _down_anim_state = _down_animation_tree.get("parameters/playback")
 
 const UP_DIRECTION := Vector2.UP
 
@@ -27,6 +44,7 @@ export var min_jump_height : float = 200.0
 export var jump_time_to_peak : float = 0.6
 export var jump_time_to_descent : float = 0.45
 export var float_time_to_descent : float = 4.0
+export var fast_fall_time_to_descent : float = 0.2
 
 onready var jump_velocity : float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1.0
 onready var double_jump_velocity : float = ((2.0 * max_jump_height + 5) / jump_time_to_peak) * -1.0
@@ -34,6 +52,8 @@ onready var min_jump_velocity : float = ((2.0 * min_jump_height) / jump_time_to_
 onready var jump_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 onready var fall_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 onready var float_gravity : float = ((-2.0 * max_jump_height) / (float_time_to_descent * float_time_to_descent)) * -1.0
+onready var fast_fall_gravity : float = ((-2.0 * max_jump_height) / (fast_fall_time_to_descent * fast_fall_time_to_descent)) * -1.0
+
 export (bool) var debug_mode = false
 
 var slide_adjust_timer = Timer.new()
@@ -69,9 +89,19 @@ func _ready():
 	Events.connect("collected_heart", self, "_on_collected_heart")
 	Events.connect("has_charge_shot", self, "_on_has_charge_shot")
 	_animation_tree.active = true
+	_forward_animation_tree.active = true
+	_up_animation_tree.active = true
+	_down_animation_tree.active = true
 	_anim_state.travel("Run")
+	_forward_anim_state.travel("Run")
+	_up_anim_state.travel("Run")
+	_down_anim_state.travel("Run")
 	_invul_timer_setup()
 	_fire_rate_timer_setup()
+	initial_anim_state.frame = 0
+	staff_forward.frame = 0
+	staff_up.frame = 0
+	staff_down.frame = 0
 	if debug_mode:	
 		$DebugCanvasLayer/Control/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(fire_rate_secs)
 		$DebugCanvasLayer/Control/VBoxContainer/FireRateSlider.value = fire_rate_secs
@@ -125,20 +155,29 @@ func get_gravity() -> float:
 	if velocity.y < 0.0:
 		gravity = jump_gravity
 		_anim_state.travel("RisingLoop")
+		_forward_anim_state.travel("RisingLoop")
+		_up_anim_state.travel("RisingLoop")
+		_down_anim_state.travel("RisingLoop")
 	else:
 		if Input.is_action_pressed("float") and !is_on_floor():
-			velocity.y = 0.0
 			gravity = float_gravity
+		if Input.is_action_pressed("move_down"):
+			gravity = fast_fall_gravity
 		else:
 			gravity = fall_gravity
 		if !is_on_floor():
 			_anim_state.travel("FallingLoop")
+			_forward_anim_state.travel("FallingLoop")
+			_up_anim_state.travel("FallingLoop")
+			_down_anim_state.travel("FallingLoop")
 	# velocity is negative so character is rising
 	# velocity is within some percentage of total jump velocity, so character is approaching the peak
 	# of their jump
 	if velocity.y < 0 and velocity.y > jump_velocity * 0.5:
 		_anim_state.travel("AboutToFall")
-	print("returning gravity value ", gravity)
+		_forward_anim_state.travel("AboutToFall")
+		_up_anim_state.travel("AboutToFall")
+		_down_anim_state.travel("AboutToFall")
 	return gravity
 
 func jump_logic():
@@ -249,6 +288,9 @@ func _physics_process(delta):
 		can_double_jump = false
 		has_double_jumped = false
 		_anim_state.travel("Run")
+		_forward_anim_state.travel("Run")
+		_up_anim_state.travel("Run")
+		_down_anim_state.travel("Run")
 	
 	var _horizontal_direction = (
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -271,10 +313,30 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity, UP_DIRECTION)
 
+# hmm yes very good code i agree :)
+func animation_to_show():
+	if Input.is_action_pressed("up"):
+		$AnimatedSprite.visible = false
+		$StaffForward.visible = false
+		$StaffUp.visible = true
+		$StaffDown.visible = false
+	elif Input.is_action_pressed("down"):
+		$AnimatedSprite.visible = false
+		$StaffForward.visible = false
+		$StaffUp.visible = false
+		$StaffDown.visible = true
+	else:
+		$AnimatedSprite.visible = false
+		$StaffForward.visible = true
+		$StaffUp.visible = false
+		$StaffDown.visible = false
+
 func _process(delta):
 	Events.emit_signal("player_max_health", max_health)
 	Events.emit_signal("player_global_position", self.global_position)
 	Events.emit_signal("player_local_position", self.position)
+	animation_to_show()
+	
 	if debug_mode:
 		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$AnimatedSprite.animation]
 
