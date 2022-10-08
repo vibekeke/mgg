@@ -1,11 +1,9 @@
 extends KinematicBody2D
 
-
-onready var initial_anim_state = $AnimatedSprite
-onready var _animation_player = $AnimatedSprite/AnimationPlayer
-onready var _animation_tree = $AnimatedSprite/AnimationTree
-onready var _anim_state = _animation_tree.get("parameters/playback")
 onready var hurt_area = $HurtArea
+onready var slide_hurt_area = $SlideHurtArea
+onready var standing_collision = $StandingCollisionShape
+onready var sliding_collision = $SlidingCollisionShape
 
 onready var staff_forward = $StaffForward
 onready var _forward_animation_player = $StaffForward/AnimationPlayer
@@ -79,7 +77,8 @@ var sprite_anim_to_player_name = {
 	'landed': 'Landing',
 	'falling': 'FallingLoop',
 	'during_jump': 'AboutToFall',
-	'init_jump': 'RisingJump'
+	'init_jump': 'RisingJump',
+	'slide': 'Slide'
 }
 
 func _ready():
@@ -88,20 +87,15 @@ func _ready():
 	Events.connect("transition_to_scene", self, "_player_transition_to_scene")
 	Events.connect("collected_heart", self, "_on_collected_heart")
 	Events.connect("has_charge_shot", self, "_on_has_charge_shot")
-	_animation_tree.active = true
 	_forward_animation_tree.active = true
 	_up_animation_tree.active = true
 	_down_animation_tree.active = true
-	_anim_state.travel("Run")
-	_forward_anim_state.travel("Run")
-	_up_anim_state.travel("Run")
-	_down_anim_state.travel("Run")
 	_invul_timer_setup()
 	_fire_rate_timer_setup()
-	initial_anim_state.frame = 0
 	staff_forward.frame = 0
 	staff_up.frame = 0
 	staff_down.frame = 0
+	travel_to_animation("Run")
 	if debug_mode:	
 		$DebugCanvasLayer/Control/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(fire_rate_secs)
 		$DebugCanvasLayer/Control/VBoxContainer/FireRateSlider.value = fire_rate_secs
@@ -121,7 +115,7 @@ func _ready():
 		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentTitle.text = "Gravity Down: " + str(jump_time_to_descent)
 		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider.value = jump_time_to_descent
 
-		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$AnimatedSprite.animation]
+		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
 	else:
 		$DebugCanvasLayer.visible = false
 
@@ -150,14 +144,28 @@ func _on_invul_timeout():
 	modulate.a = 1
 	invul_timer.stop()
 
+func travel_to_animation(animation: String):
+		_forward_anim_state.travel(animation)
+		_up_anim_state.travel(animation)
+		_down_anim_state.travel(animation)
+
+func handle_collision_shapes():
+	if is_sliding:
+		sliding_collision.disabled = false
+		slide_hurt_area.get_node("CollisionShape2D").disabled = false
+		standing_collision.disabled = true
+		hurt_area.get_node("CollisionShape2D").disabled = true
+	else:
+		sliding_collision.disabled = true
+		slide_hurt_area.get_node("CollisionShape2D").disabled = true
+		standing_collision.disabled = false
+		hurt_area.get_node("CollisionShape2D").disabled = false
+
 func get_gravity() -> float:
 	var gravity
 	if velocity.y < 0.0:
 		gravity = jump_gravity
-		_anim_state.travel("RisingLoop")
-		_forward_anim_state.travel("RisingLoop")
-		_up_anim_state.travel("RisingLoop")
-		_down_anim_state.travel("RisingLoop")
+		travel_to_animation("RisingLoop")
 	else:
 		if Input.is_action_pressed("float") and !is_on_floor():
 			gravity = float_gravity
@@ -166,18 +174,12 @@ func get_gravity() -> float:
 		else:
 			gravity = fall_gravity
 		if !is_on_floor():
-			_anim_state.travel("FallingLoop")
-			_forward_anim_state.travel("FallingLoop")
-			_up_anim_state.travel("FallingLoop")
-			_down_anim_state.travel("FallingLoop")
+			travel_to_animation("FallingLoop")
 	# velocity is negative so character is rising
 	# velocity is within some percentage of total jump velocity, so character is approaching the peak
 	# of their jump
 	if velocity.y < 0 and velocity.y > jump_velocity * 0.5:
-		_anim_state.travel("AboutToFall")
-		_forward_anim_state.travel("AboutToFall")
-		_up_anim_state.travel("AboutToFall")
-		_down_anim_state.travel("AboutToFall")
+		travel_to_animation("AboutToFall")
 	return gravity
 
 func jump_logic():
@@ -241,7 +243,7 @@ func attack_logic():
 				current_shooting_angle = SHOOT_ANGLE.FORWARD_B
 				shoot(current_shooting_angle)
 			if Input.is_action_just_pressed("hit"):
-				physical_attack()
+				perform_physical_attack()
 
 func debug_recalculate_jump_maths():
 	jump_velocity = ((2.0 * max_jump_height) / jump_time_to_peak) * -1.0
@@ -250,7 +252,7 @@ func debug_recalculate_jump_maths():
 	jump_gravity = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 	fall_gravity = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
-func physical_attack():
+func perform_physical_attack():
 	for node in get_tree().get_root().get_children():
 		if node.name == "Hit":
 			return
@@ -287,10 +289,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		can_double_jump = false
 		has_double_jumped = false
-		_anim_state.travel("Run")
-		_forward_anim_state.travel("Run")
-		_up_anim_state.travel("Run")
-		_down_anim_state.travel("Run")
+		travel_to_animation("Run")
 	
 	var _horizontal_direction = (
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -303,7 +302,13 @@ func _physics_process(delta):
 	if !is_move_disabled:
 		velocity.y += get_gravity() * delta
 		velocity.x = _horizontal_direction * horizontal_movement_speed
+		if Input.is_action_pressed("move_down") and is_on_floor():
+			_forward_anim_state.travel("Slide")
+			is_sliding = true
+		else:
+			is_sliding = false
 
+	handle_collision_shapes()
 
 	if !is_shoot_disabled:
 		attack_logic()
@@ -316,17 +321,14 @@ func _physics_process(delta):
 # hmm yes very good code i agree :)
 func animation_to_show():
 	if Input.is_action_pressed("up"):
-		$AnimatedSprite.visible = false
 		$StaffForward.visible = false
 		$StaffUp.visible = true
 		$StaffDown.visible = false
 	elif Input.is_action_pressed("down"):
-		$AnimatedSprite.visible = false
 		$StaffForward.visible = false
 		$StaffUp.visible = false
 		$StaffDown.visible = true
 	else:
-		$AnimatedSprite.visible = false
 		$StaffForward.visible = true
 		$StaffUp.visible = false
 		$StaffDown.visible = false
@@ -338,7 +340,7 @@ func _process(delta):
 	animation_to_show()
 	
 	if debug_mode:
-		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$AnimatedSprite.animation]
+		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
 
 
 func _on_MovementSpeedSlider_value_changed(value):
