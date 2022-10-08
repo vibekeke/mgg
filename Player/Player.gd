@@ -309,14 +309,14 @@ func _physics_process(delta):
 		velocity.y += get_gravity() * delta
 		velocity.x = _horizontal_direction * horizontal_movement_speed
 		if Input.is_action_pressed("move_down") and is_on_floor():
-			_forward_anim_state.travel("Slide")
+			travel_to_animation("Slide")
 			is_sliding = true
 		else:
 			is_sliding = false
 
 	handle_collision_shapes()
-
-	if !is_shoot_disabled:
+		
+	if !is_sliding and !is_shoot_disabled:
 		attack_logic()
 	
 	if !is_jump_disabled:

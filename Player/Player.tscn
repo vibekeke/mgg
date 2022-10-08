@@ -1,10 +1,10 @@
-[gd_scene load_steps=169 format=2]
+[gd_scene load_steps=185 format=2]
 
-[ext_resource path="res://imported_assets/actors/mg/megamanslide.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://sounds/player/plst00.wav" type="AudioStream" id=3]
 [ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA2-V1.png" type="Texture" id=4]
 [ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA2-v1.png" type="Texture" id=5]
+[ext_resource path="res://imported_assets/actors/mg/Player_Slide_Test.png" type="Texture" id=6]
 [ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA1-V1.png" type="Texture" id=7]
 [ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.png" type="Texture" id=8]
 [ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA3-v1.png" type="Texture" id=9]
@@ -163,10 +163,10 @@ flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 1024, 3072, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=245]
+[sub_resource type="AtlasTexture" id=259]
 flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 608, 608 )
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 1024, 1024 )
 
 [sub_resource type="SpriteFrames" id=120]
 animations = [ {
@@ -200,10 +200,10 @@ animations = [ {
 "name": "run",
 "speed": 14.0
 }, {
-"frames": [ SubResource( 245 ), SubResource( 245 ), SubResource( 245 ), SubResource( 245 ), SubResource( 245 ), SubResource( 245 ), SubResource( 245 ) ],
+"frames": [ SubResource( 259 ) ],
 "loop": true,
 "name": "slide",
-"speed": 6.0
+"speed": 1.0
 } ]
 
 [sub_resource type="Animation" id=121]
@@ -368,7 +368,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=250]
 resource_name = "slide"
-step = 0.142857
+step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
@@ -388,10 +388,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+"values": [ 0 ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=39]
@@ -455,7 +455,7 @@ animation = "run"
 [sub_resource type="AnimationNodeTimeScale" id=52]
 
 [sub_resource type="AnimationNodeBlendTree" id=53]
-graph_offset = Vector2( -198, -62 )
+graph_offset = Vector2( -156.06, 7.935 )
 nodes/Animation/node = SubResource( 51 )
 nodes/Animation/position = Vector2( -60, 140 )
 nodes/TimeScale/node = SubResource( 52 )
@@ -503,22 +503,22 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachine" id=127]
 states/AboutToFall/node = SubResource( 41 )
-states/AboutToFall/position = Vector2( 97, 251.594 )
+states/AboutToFall/position = Vector2( 200.65, 264.594 )
 states/BlendTree/node = SubResource( 59 )
 states/BlendTree/position = Vector2( 395.5, 27 )
 states/FallingLoop/node = SubResource( 44 )
-states/FallingLoop/position = Vector2( -201, 251.547 )
+states/FallingLoop/position = Vector2( -369.75, 258.547 )
 states/Landing/node = SubResource( 47 )
 states/Landing/position = Vector2( -371.5, 98.5 )
 states/RisingLoop/node = SubResource( 50 )
-states/RisingLoop/position = Vector2( 180, 93 )
+states/RisingLoop/position = Vector2( 200.575, 93.5 )
 states/Run/node = SubResource( 53 )
-states/Run/position = Vector2( -290.5, -103 )
+states/Run/position = Vector2( -338, -115 )
 states/Slide/node = SubResource( 249 )
 states/Slide/position = Vector2( 200.3, -109.547 )
 transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 239 ), "AboutToFall", "Landing", SubResource( 240 ), "Run", "Slide", SubResource( 253 ), "Slide", "RisingLoop", SubResource( 254 ), "Landing", "Slide", SubResource( 256 ), "Slide", "Run", SubResource( 257 ) ]
 start_node = "Run"
-graph_offset = Vector2( -607.7, -376.581 )
+graph_offset = Vector2( -437.205, -171.688 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=128]
 
@@ -672,10 +672,10 @@ flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 1024, 3072, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=246]
+[sub_resource type="AtlasTexture" id=260]
 flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 608, 608 )
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 1024, 1024 )
 
 [sub_resource type="SpriteFrames" id=189]
 animations = [ {
@@ -709,10 +709,10 @@ animations = [ {
 "name": "run",
 "speed": 14.0
 }, {
-"frames": [ SubResource( 246 ) ],
+"frames": [ SubResource( 260 ) ],
 "loop": true,
 "name": "slide",
-"speed": 6.0
+"speed": 1.0
 } ]
 
 [sub_resource type="Animation" id=190]
@@ -875,9 +875,59 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
 }
 
+[sub_resource type="Animation" id=261]
+resource_name = "slide"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "slide" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=264]
+animation = "slide"
+
+[sub_resource type="AnimationNodeTimeScale" id=265]
+
+[sub_resource type="AnimationNodeBlendTree" id=266]
+graph_offset = Vector2( -188.572, 61.4963 )
+nodes/Animation/node = SubResource( 264 )
+nodes/Animation/position = Vector2( -90, 130 )
+nodes/TimeScale/node = SubResource( 265 )
+nodes/TimeScale/position = Vector2( 110, 150 )
+nodes/output/position = Vector2( 330, 180 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=241]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=242]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=267]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=268]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=269]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=270]
 
 [sub_resource type="AnimationNodeStateMachine" id=196]
 states/AboutToFall/node = SubResource( 41 )
@@ -887,14 +937,16 @@ states/BlendTree/position = Vector2( 395.5, 27 )
 states/FallingLoop/node = SubResource( 44 )
 states/FallingLoop/position = Vector2( -201, 251.547 )
 states/Landing/node = SubResource( 47 )
-states/Landing/position = Vector2( -256.5, 108.5 )
+states/Landing/position = Vector2( -262.5, 108.5 )
 states/RisingLoop/node = SubResource( 50 )
-states/RisingLoop/position = Vector2( 135.5, 96 )
+states/RisingLoop/position = Vector2( 112.21, 97 )
 states/Run/node = SubResource( 53 )
-states/Run/position = Vector2( -60.5, 6.5 )
-transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 241 ), "AboutToFall", "Landing", SubResource( 242 ) ]
+states/Run/position = Vector2( -263, -38 )
+states/Slide/node = SubResource( 266 )
+states/Slide/position = Vector2( 110.92, -35.969 )
+transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 241 ), "AboutToFall", "Landing", SubResource( 242 ), "Run", "Slide", SubResource( 267 ), "Slide", "Run", SubResource( 268 ), "Slide", "RisingLoop", SubResource( 269 ), "Landing", "Slide", SubResource( 270 ) ]
 start_node = "Run"
-graph_offset = Vector2( -561.7, -60.188 )
+graph_offset = Vector2( -561.7, -87.7505 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=197]
 
@@ -1048,10 +1100,10 @@ flags = 4
 atlas = ExtResource( 9 )
 region = Rect2( 1024, 3072, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=247]
+[sub_resource type="AtlasTexture" id=262]
 flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 608, 608 )
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 1024, 1024 )
 
 [sub_resource type="SpriteFrames" id=228]
 animations = [ {
@@ -1085,10 +1137,10 @@ animations = [ {
 "name": "run",
 "speed": 14.0
 }, {
-"frames": [ SubResource( 247 ) ],
+"frames": [ SubResource( 262 ) ],
 "loop": true,
 "name": "slide",
-"speed": 6.0
+"speed": 1.0
 } ]
 
 [sub_resource type="Animation" id=229]
@@ -1251,26 +1303,77 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
 }
 
+[sub_resource type="Animation" id=263]
+resource_name = "slide"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "slide" ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=271]
+animation = "slide"
+
+[sub_resource type="AnimationNodeTimeScale" id=272]
+
+[sub_resource type="AnimationNodeBlendTree" id=273]
+nodes/Animation/node = SubResource( 271 )
+nodes/Animation/position = Vector2( 50, 370 )
+nodes/TimeScale/node = SubResource( 272 )
+nodes/TimeScale/position = Vector2( 233, 359.5 )
+nodes/output/position = Vector2( 410, 400 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=243]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=244]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=274]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=275]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=276]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=277]
+
 [sub_resource type="AnimationNodeStateMachine" id=235]
 states/AboutToFall/node = SubResource( 41 )
-states/AboutToFall/position = Vector2( 97, 251.594 )
+states/AboutToFall/position = Vector2( 149, 281.07 )
 states/BlendTree/node = SubResource( 59 )
 states/BlendTree/position = Vector2( 395.5, 27 )
 states/FallingLoop/node = SubResource( 44 )
-states/FallingLoop/position = Vector2( -201, 251.547 )
+states/FallingLoop/position = Vector2( -265, 281.059 )
 states/Landing/node = SubResource( 47 )
-states/Landing/position = Vector2( -256.5, 108.5 )
+states/Landing/position = Vector2( -276, 140.5 )
 states/RisingLoop/node = SubResource( 50 )
-states/RisingLoop/position = Vector2( 135.5, 96 )
+states/RisingLoop/position = Vector2( 116.535, 123 )
 states/Run/node = SubResource( 53 )
-states/Run/position = Vector2( -60.5, 6.5 )
-transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 243 ), "AboutToFall", "Landing", SubResource( 244 ) ]
+states/Run/position = Vector2( -287, -27.8715 )
+states/Slide/node = SubResource( 273 )
+states/Slide/position = Vector2( 115.07, -25.743 )
+transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 243 ), "AboutToFall", "Landing", SubResource( 244 ), "Run", "Slide", SubResource( 274 ), "Slide", "Run", SubResource( 275 ), "Slide", "RisingLoop", SubResource( 276 ), "Landing", "Slide", SubResource( 277 ) ]
 start_node = "Run"
-graph_offset = Vector2( -425.7, 45.812 )
+graph_offset = Vector2( -399.93, -122.983 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=236]
 
@@ -1341,6 +1444,7 @@ anims/falling = SubResource( 192 )
 anims/jump_init = SubResource( 193 )
 anims/landing = SubResource( 194 )
 anims/run = SubResource( 195 )
+anims/slide = SubResource( 261 )
 
 [node name="AnimationTree" type="AnimationTree" parent="StaffUp"]
 tree_root = SubResource( 196 )
@@ -1352,6 +1456,7 @@ parameters/FallingLoop/TimeScale/scale = 1.0
 parameters/Landing/TimeScale/scale = 1.0
 parameters/RisingLoop/TimeScale/scale = 1.0
 parameters/Run/TimeScale/scale = 1.0
+parameters/Slide/TimeScale/scale = 1.0
 
 [node name="StaffDown" type="AnimatedSprite" parent="."]
 visible = false
@@ -1371,6 +1476,7 @@ anims/falling = SubResource( 231 )
 anims/jump_init = SubResource( 232 )
 anims/landing = SubResource( 233 )
 anims/run = SubResource( 234 )
+anims/slide = SubResource( 263 )
 
 [node name="AnimationTree" type="AnimationTree" parent="StaffDown"]
 tree_root = SubResource( 235 )
@@ -1382,6 +1488,7 @@ parameters/FallingLoop/TimeScale/scale = 1.0
 parameters/Landing/TimeScale/scale = 1.0
 parameters/RisingLoop/TimeScale/scale = 1.0
 parameters/Run/TimeScale/scale = 1.0
+parameters/Slide/TimeScale/scale = 1.0
 
 [node name="BulletFire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
