@@ -41,6 +41,7 @@ func _ready():
 	Events.connect("player_local_position", self, "_on_player_local_position")
 	Events.connect("player_global_position", self, "_on_player_global_position")
 	Events.connect("disable_enemy_action", self, "_on_disable_enemy_action")
+	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
 	_damage_timer_setup()
 
 func _damage_timer_setup():
@@ -96,7 +97,6 @@ func _on_call_body_entered(body):
 
 func _on_call_area_entered(area):
 	if area.get_parent() != null:
-		print("groups ->", area.get_parent().get_groups())
 		var parent_groups = area.get_parent().get_groups()
 		if "player_charge_shot" in parent_groups:
 			if !has_invulnerability:
@@ -111,6 +111,9 @@ func _on_call_area_entered(area):
 
 func off_screen_call():
 	Events.emit_signal("regular_enemy_death")
+	queue_free()
+
+func _on_screen_exited():
 	queue_free()
 
 func is_on_screen():
