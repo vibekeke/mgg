@@ -2,29 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-<<<<<<<< HEAD:imported_assets/actors/mg/Player_JUMP_SpearA3-V1.png.import
 path="res://.import/Player_JUMP_SpearA3-V1.png-94458e5b3a22441128d8fa520c3d0c67.stex"
-|||||||| c93b9cf:imported_assets/actors/mg/004.png.import
-path="res://.import/004.png-0a39a141b425fc5893f6c70ff7b0958a.stex"
-========
-path="res://.import/Player_RUNNING_SpearA1-v1.png-921cd6326514f5163d15b5a84fb03246.stex"
->>>>>>>> master:imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:imported_assets/actors/mg/Player_JUMP_SpearA3-V1.png.import
 source_file="res://imported_assets/actors/mg/Player_JUMP_SpearA3-V1.png"
 dest_files=[ "res://.import/Player_JUMP_SpearA3-V1.png-94458e5b3a22441128d8fa520c3d0c67.stex" ]
-|||||||| c93b9cf:imported_assets/actors/mg/004.png.import
-source_file="res://imported_assets/actors/mg/004.png"
-dest_files=[ "res://.import/004.png-0a39a141b425fc5893f6c70ff7b0958a.stex" ]
-========
-source_file="res://imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.png"
-dest_files=[ "res://.import/Player_RUNNING_SpearA1-v1.png-921cd6326514f5163d15b5a84fb03246.stex" ]
->>>>>>>> master:imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.png.import
 
 [params]
 
