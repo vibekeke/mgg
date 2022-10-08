@@ -1294,7 +1294,7 @@ shape = SubResource( 3 )
 
 [node name="StaffForward" type="AnimatedSprite" parent="."]
 frames = SubResource( 120 )
-animation = "falling"
+animation = "run"
 frame = 1
 playing = true
 __meta__ = {
@@ -1327,7 +1327,7 @@ parameters/Slide/TimeScale/scale = 1.0
 visible = false
 frames = SubResource( 189 )
 animation = "run"
-frame = 7
+frame = 1
 playing = true
 __meta__ = {
 "_edit_group_": true,
@@ -1512,7 +1512,6 @@ shape = SubResource( 119 )
 
 [node name="SlidingCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2( -207.143, 408.214 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 255 )
 disabled = true
 

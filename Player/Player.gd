@@ -202,7 +202,13 @@ func shoot(angle):
 	_gunshot.add_to_group("player_bullet")
 	_gunshot.set_bullet_type(angle)
 	get_tree().get_root().add_child(_gunshot)
-	_gunshot.position = self.position + Vector2(80,2)
+	if angle == SHOOT_ANGLE.FORWARD_B:
+		print("seting bullet position forward b")
+		_gunshot.position = self.position + Vector2(180,35)
+	if angle == SHOOT_ANGLE.UPWARD_B:
+		_gunshot.position = self.position + Vector2(180,-90)
+	if angle == SHOOT_ANGLE.DOWNWARD_B:
+		_gunshot.position = self.position + Vector2(200,160)
 	$BulletFire.play(0.0)
 	fire_rate_timer.start()
 
