@@ -54,8 +54,15 @@ onready var fast_fall_gravity : float = ((-2.0 * max_jump_height) / (fast_fall_t
 
 export (bool) var debug_mode = false
 
-var slide_adjust_timer = Timer.new()
+# sliding
+var slide_duration_timer = Timer.new()
+var slide_again_timer = Timer.new()
 var is_sliding = false
+var slide_distance = 100.0
+var slide_value = 1500.0
+var slide_duration = 0.2
+var slide_again_duration = 0.5
+
 
 var velocity := Vector2.ZERO
 var can_double_jump = false
@@ -92,6 +99,8 @@ func _ready():
 	_down_animation_tree.active = true
 	_invul_timer_setup()
 	_fire_rate_timer_setup()
+	_slide_again_timer_setup()
+	_slide_duration_timer_setup()
 	staff_forward.frame = 0
 	staff_up.frame = 0
 	staff_down.frame = 0
@@ -130,15 +139,36 @@ func _fire_rate_timer_setup():
 	fire_rate_timer.connect("timeout", self, "_on_fire_rate_timeout")
 	fire_rate_timer.set_wait_time(fire_rate_secs)
 	self.add_child(fire_rate_timer)
-	
+
+
+func _slide_duration_timer_setup():
+	slide_duration_timer.set_name("slide_duration_timer")
+	slide_duration_timer.connect("timeout", self, "_on_slide_duration_timeout")
+	slide_duration_timer.set_wait_time(slide_duration)
+	self.add_child(slide_duration_timer)
+
+func _slide_again_timer_setup():
+	slide_again_timer.set_name("slide_again_timer")
+	slide_again_timer.connect("timeout", self, "_on_slide_again_timeout")
+	slide_again_timer.set_wait_time(slide_again_duration)
+	self.add_child(slide_again_timer)
+
 func _invul_timer_setup():
 	invul_timer.set_name("invul_timer")
 	invul_timer.connect("timeout", self, "_on_invul_timeout")
 	invul_timer.set_wait_time(0.5)
 	self.add_child(invul_timer)
 
+func _on_slide_duration_timeout():
+	slide_duration_timer.stop()
+	slide_again_timer.start()
+	is_sliding = false
+
 func _on_fire_rate_timeout():
 	fire_rate_timer.stop()
+
+func _on_slide_again_timeout():
+	slide_again_timer.stop()
 
 func _on_invul_timeout():
 	modulate.a = 1
@@ -203,7 +233,6 @@ func shoot(angle):
 	_gunshot.set_bullet_type(angle)
 	get_tree().get_root().add_child(_gunshot)
 	if angle == SHOOT_ANGLE.FORWARD_B:
-		print("seting bullet position forward b")
 		_gunshot.position = self.position + Vector2(180,35)
 	if angle == SHOOT_ANGLE.UPWARD_B:
 		_gunshot.position = self.position + Vector2(180,-90)
@@ -293,9 +322,12 @@ func _on_collected_heart():
 
 func _physics_process(delta):
 	if is_on_floor():
-		can_double_jump = false
-		has_double_jumped = false
-		travel_to_animation("Run")
+		if is_sliding:
+			travel_to_animation("Slide")
+		else:
+			can_double_jump = false
+			has_double_jumped = false
+			travel_to_animation("Run")
 	
 	var _horizontal_direction = (
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -308,23 +340,32 @@ func _physics_process(delta):
 	if !is_move_disabled:
 		velocity.y += get_gravity() * delta
 		velocity.x = _horizontal_direction * horizontal_movement_speed
-		if Input.is_action_pressed("move_down") and is_on_floor():
-			travel_to_animation("Slide")
-			is_sliding = true
-		else:
-			is_sliding = false
+		if is_sliding:
+			velocity.x = 1 * slide_value
+		if Input.is_action_just_pressed("move_down") and is_on_floor() and slide_duration_timer.is_stopped():
+			if slide_again_timer.is_stopped():
+				initiate_slide()
 
 	handle_collision_shapes()
 		
 	if !is_sliding and !is_shoot_disabled:
 		attack_logic()
 	
-	if !is_jump_disabled:
+	if !is_jump_disabled and !is_sliding:
 		jump_logic()
 	
 	velocity = move_and_slide(velocity, UP_DIRECTION)
 
-# hmm yes very good code i agree :)
+func initiate_slide():
+	# player has committed to slide for X number of frames
+	# disable jumping and directional movement
+	# move player forward for X number of frames
+	# allow slide to be actionable before it's fully complete
+	# e.g. you can jump some number of frames before the slide is over
+	travel_to_animation("Slide")
+	slide_duration_timer.start()
+	is_sliding = true
+
 func animation_to_show():
 	if Input.is_action_pressed("up"):
 		$StaffForward.visible = false
