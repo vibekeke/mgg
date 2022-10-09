@@ -345,7 +345,7 @@ func _physics_process(delta):
 		velocity.x = _horizontal_direction * horizontal_movement_speed
 		if is_sliding:
 			velocity.x = 1 * slide_value
-		if Input.is_action_just_pressed("move_down") and is_on_floor() and slide_duration_timer.is_stopped():
+		if Input.is_action_just_pressed("move_down") and is_on_floor() and slide_duration_timer.is_stopped() and !charge_shot_present():
 			if slide_again_timer.is_stopped():
 				initiate_slide()
 
