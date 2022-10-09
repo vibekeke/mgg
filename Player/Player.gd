@@ -64,7 +64,7 @@ var slide_value = 1500.0
 # how long the slide lasts for, in seconds
 var slide_duration = 0.2
 # how long to wait until you can slide again, in seconds
-var slide_again_duration = 0.5
+var slide_again_duration = 0.3
 
 
 var velocity := Vector2.ZERO
