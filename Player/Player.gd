@@ -58,9 +58,12 @@ export (bool) var debug_mode = false
 var slide_duration_timer = Timer.new()
 var slide_again_timer = Timer.new()
 var is_sliding = false
-var slide_distance = 100.0
+
+# speed of the slide
 var slide_value = 1500.0
+# how long the slide lasts for, in seconds
 var slide_duration = 0.2
+# how long to wait until you can slide again, in seconds
 var slide_again_duration = 0.5
 
 
