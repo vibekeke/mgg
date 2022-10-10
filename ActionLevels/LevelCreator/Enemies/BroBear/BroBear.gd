@@ -53,6 +53,7 @@ func _setup_bullets():
 		spawn_point.position = pos
 		spawn_point.rotation = pos.angle()
 		spawn_point.add_to_group("bullets")
+		spawn_point.speed = projectile_speed
 		rotator.add_child(spawn_point)
 	fire_rate_timer.set_wait_time(fire_rate_timer_wait_time)
 	fire_rate_timer.start()
@@ -61,6 +62,9 @@ func _process(delta):
 	if has_fired:
 		parent_node.has_invulnerability = false
 
+func get_spawn_height():
+	return DataClasses.SpawnHeight.MED_ONLY
+
 func _physics_process(delta):
 	if parent_node.initial_scroll_speed > 0:
 		parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
@@ -68,6 +72,5 @@ func _physics_process(delta):
 		var new_rotation = rotator.rotation_degrees - rotate_speed * delta
 		rotator.rotation_degrees = fmod(new_rotation, 360)
 
-
 func get_class():
-	return "BroBun"
+	return self.name

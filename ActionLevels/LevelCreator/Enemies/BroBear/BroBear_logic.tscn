@@ -4,3 +4,6 @@
 
 [node name="BroBear_logic" type="Node"]
 script = ExtResource( 1 )
+spawn_point_count = 6
+fire_rate_timer_wait_time = 0.5
+projectile_speed = 400.0

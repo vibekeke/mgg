@@ -47,6 +47,9 @@ func _ready():
 func _on_player_global_position(player_global_position):
 	player_position = player_global_position
 
+func get_spawn_height():
+	return DataClasses.SpawnHeight.MED_ONLY
+
 func _setup_bullets():
 	var step = 2 * PI / spawn_point_count
 	for i in range(spawn_point_count):
@@ -55,6 +58,7 @@ func _setup_bullets():
 		spawn_point.position = pos
 		spawn_point.rotation = pos.angle()
 		spawn_point.add_to_group("bullets")
+		spawn_point.speed = projectile_speed
 		rotator.add_child(spawn_point)
 	fire_rate_timer.set_wait_time(fire_rate_timer_wait_time)
 	fire_rate_timer.start()
@@ -72,4 +76,4 @@ func _physics_process(delta):
 
 
 func get_class():
-	return "BroBun"
+	return self.name

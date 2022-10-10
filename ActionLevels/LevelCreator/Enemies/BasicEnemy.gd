@@ -42,6 +42,7 @@ func _ready():
 	Events.connect("player_global_position", self, "_on_player_global_position")
 	Events.connect("disable_enemy_action", self, "_on_disable_enemy_action")
 	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
+	enemy_spawn_point()
 	_damage_timer_setup()
 
 func _damage_timer_setup():
@@ -54,7 +55,9 @@ func _on_damage_timer():
 	sprite.modulate = Color(1,1,1,1)
 	damage_timer.stop()
 
-func call_death():
+func call_death(count_as_regular_death: bool):
+	if count_as_regular_death:
+		Events.emit_signal("regular_enemy_death")
 	collision_shape.disabled = true
 	var death_explosion_node = death_explosion.instance()
 	death_explosion_node.position = area2d.position
@@ -62,7 +65,6 @@ func call_death():
 	area2d.add_child(death_explosion_node)
 	sprite.visible = false
 	death_explosion_node.play("default", false)
-	Events.emit_signal("regular_enemy_death")
 
 func _on_explosion_finished():
 	if !has_non_queue_free_rotator:
@@ -87,7 +89,7 @@ func take_damage(damage_value:= 1):
 		self.position.x = self.position.x + 5 # slight knockback if not a boss
 	health_value -= damage_value
 	if health_value <= 0:
-		call_deferred("call_death")
+		call_deferred("call_death", true)
 
 func _on_call_body_entered(body):
 	if body.name == 'Player':
@@ -109,6 +111,13 @@ func _on_call_area_entered(area):
 					take_damage()
 					area.get_parent().queue_free()
 
+func enemy_spawn_point():
+	if enemy_logic_instance.has_method("get_spawn_height"):
+		print("enemy has the logic")
+		self.spawn_height = enemy_logic_instance.get_spawn_height()
+	else:
+		print("no spawn height set by enemy logic")
+
 func off_screen_call():
 	Events.emit_signal("regular_enemy_death")
 	queue_free()
@@ -125,3 +134,9 @@ func _physics_process(delta):
 
 func get_enemy_name():
 	return self.name
+	
+func get_non_queue_free_rotator():
+	return has_non_queue_free_rotator
+
+func set_non_queue_free_rotator(non_queue_free_rotator : bool):
+	self.has_non_queue_free_rotator = non_queue_free_rotator
