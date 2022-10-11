@@ -1386,6 +1386,7 @@ extents = Vector2( 230, 79.6428 )
 
 [sub_resource type="CapsuleShape2D" id=258]
 radius = 68.5714
+height = 0.0
 
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.35, 0.35 )
@@ -1625,7 +1626,7 @@ disabled = true
 [node name="SlideHurtArea" type="Area2D" parent="." groups=["player_hurtbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlideHurtArea"]
-position = Vector2( -208.571, 408.571 )
+position = Vector2( -208.571, 394.285 )
 shape = SubResource( 258 )
 disabled = true
 

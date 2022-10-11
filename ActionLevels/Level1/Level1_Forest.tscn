@@ -28,7 +28,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1987, 127, 0, 0, 0, 0, 2002, 624, 0, 0, 0, 0, 2003, 843 )
+"points": PoolVector2Array( 0, 0, 0, 0, 2009.65, 113.155, 0, 0, 0, 0, 2006, 619, 0, 0, 0, 0, 2007.46, 806.398 )
 }
 
 [node name="Level1_Forest" type="Node2D"]
@@ -59,11 +59,11 @@ rotation = 1.5708
 scale = Vector2( 67.5, 10 )
 
 [node name="LongTallPlatform" parent="." instance=ExtResource( 6 )]
-position = Vector2( 866, 448 )
+position = Vector2( 876, 418 )
 scroll_speed = 500
 
 [node name="TallPlatform" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3125, 443 )
+position = Vector2( 3127, 425 )
 scroll_speed = 500
 
 [node name="Dogu1" parent="." instance=ExtResource( 9 )]
@@ -77,32 +77,34 @@ dog_sprite = ExtResource( 14 )
 scroll_speed = 500
 
 [node name="Dogu3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 4062, 662 )
+position = Vector2( 10424, 468 )
 dog_sprite = ExtResource( 16 )
 scroll_speed = 500
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 11 )]
-seconds_until_boss = 45.0
+seconds_until_boss = 1.0
 enemy_list = [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 23 ), ExtResource( 22 ) ]
 boss = ExtResource( 17 )
 
 [node name="SpawnPaths" type="Path2D" parent="."]
+position = Vector2( -732.053, -1.42097 )
+scale = Vector2( 1.36842, 1.01119 )
 curve = SubResource( 1 )
 
 [node name="SpawnLocations" type="PathFollow2D" parent="SpawnPaths"]
-position = Vector2( 1987, 127 )
-rotation = 1.54066
+position = Vector2( 2009.65, 113.155 )
+rotation = 1.57807
 
 [node name="LowPlatform1" parent="." instance=ExtResource( 12 )]
-position = Vector2( 3777, 442 )
+position = Vector2( 3777, 418 )
 scroll_speed = 500
 
 [node name="LowPlatform2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 4465, 438 )
+position = Vector2( 5357, 421 )
 scroll_speed = 500
 
 [node name="LowPlatform3" parent="." instance=ExtResource( 12 )]
-position = Vector2( 5178, 434 )
+position = Vector2( 6837, 420 )
 scroll_speed = 500
 
 [node name="LowPlatform4" parent="." instance=ExtResource( 13 )]
@@ -136,7 +138,7 @@ stream = ExtResource( 24 )
 volume_db = -30.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 247, 840 )
+position = Vector2( 247, 841 )
 jump_time_to_descent = 0.4
 gunshot = ExtResource( 20 )
 physical_attack = ExtResource( 19 )

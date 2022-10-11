@@ -244,13 +244,6 @@ func shoot(angle):
 	$BulletFire.play(0.0)
 	fire_rate_timer.start()
 
-func shoot_hold_check():
-	if !Input.is_action_pressed("right"):
-		return
-	yield(get_tree().create_timer(5), "timeout")
-	if !Input.is_action_pressed("right"):
-		return
-
 func charge_shot_present():
 	return get_tree().get_nodes_in_group("player_charge_shot").size() > 0
 
@@ -275,8 +268,6 @@ func attack_logic():
 			elif Input.is_action_pressed("down"):
 				current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
 				shoot(current_shooting_angle)
-			elif Input.is_action_just_pressed("right"):
-				shoot_hold_check()
 			elif Input.is_action_pressed("right"):
 				current_shooting_angle = SHOOT_ANGLE.FORWARD_B
 				shoot(current_shooting_angle)
