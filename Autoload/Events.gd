@@ -25,6 +25,7 @@ signal collected_dog(dog_type)
 signal regular_enemy_death
 signal level_spawn_points(spawn_points)
 signal boss_spawned
+signal level_complete
 
 func _disable_player_actions(to_disable):
 	# for tutorial and other stuff, e.g. boss loading?

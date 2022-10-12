@@ -1,5 +1,6 @@
-[gd_scene load_steps=185 format=2]
+[gd_scene load_steps=209 format=2]
 
+[ext_resource path="res://imported_assets/actors/mg/Player_MeleeTEST-A.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://sounds/player/plst00.wav" type="AudioStream" id=3]
 [ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA2-V1.png" type="Texture" id=4]
@@ -9,6 +10,7 @@
 [ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.png" type="Texture" id=8]
 [ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA3-v1.png" type="Texture" id=9]
 [ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA3-V1.png" type="Texture" id=10]
+[ext_resource path="res://imported_assets/actors/mg/Player_MeleeTEST-B.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 177.143, 298.572 )
@@ -92,6 +94,36 @@ region = Rect2( 2048, 3072, 1024, 1024 )
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 3072, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=278]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=279]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=280]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=281]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=282]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=283]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 2048, 0, 1024, 1024 )
 
 [sub_resource type="AtlasTexture" id=145]
 flags = 4
@@ -193,6 +225,16 @@ animations = [ {
 "frames": [ SubResource( 143 ), SubResource( 144 ) ],
 "loop": true,
 "name": "landed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 278 ), SubResource( 279 ), SubResource( 280 ) ],
+"loop": true,
+"name": "melee_1",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 281 ), SubResource( 282 ), SubResource( 283 ) ],
+"loop": true,
+"name": "melee_2",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 145 ), SubResource( 146 ), SubResource( 147 ), SubResource( 148 ), SubResource( 149 ), SubResource( 150 ), SubResource( 151 ), SubResource( 152 ), SubResource( 153 ), SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 157 ), SubResource( 158 ) ],
@@ -337,6 +379,62 @@ tracks/1/keys = {
 "values": [ 0, 1 ]
 }
 
+[sub_resource type="Animation" id=284]
+resource_name = "melee_1"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "melee_1" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=285]
+resource_name = "melee_2"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "melee_2" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.333333, 0.666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
 [sub_resource type="Animation" id=126]
 resource_name = "run"
 loop = true
@@ -408,8 +506,6 @@ nodes/TimeScale/position = Vector2( 566.64, 292.32 )
 nodes/output/position = Vector2( 780, 310 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeBlendTree" id=59]
-
 [sub_resource type="AnimationNodeAnimation" id=42]
 animation = "falling"
 
@@ -434,6 +530,32 @@ nodes/Animation/position = Vector2( 200, 150 )
 nodes/TimeScale/node = SubResource( 46 )
 nodes/TimeScale/position = Vector2( 390, 140 )
 nodes/output/position = Vector2( 580, 170 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=286]
+animation = "melee_1"
+
+[sub_resource type="AnimationNodeTimeScale" id=287]
+
+[sub_resource type="AnimationNodeBlendTree" id=288]
+nodes/Animation/node = SubResource( 286 )
+nodes/Animation/position = Vector2( 250, 200 )
+nodes/TimeScale/node = SubResource( 287 )
+nodes/TimeScale/position = Vector2( 450, 200 )
+nodes/output/position = Vector2( 660, 230 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=289]
+animation = "melee_2"
+
+[sub_resource type="AnimationNodeTimeScale" id=290]
+
+[sub_resource type="AnimationNodeBlendTree" id=291]
+nodes/Animation/node = SubResource( 289 )
+nodes/Animation/position = Vector2( 507.5, 151.5 )
+nodes/TimeScale/node = SubResource( 290 )
+nodes/TimeScale/position = Vector2( 740, 150 )
+nodes/output/position = Vector2( 970, 200 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=48]
@@ -501,24 +623,45 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=257]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=292]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=293]
+priority = 32
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=294]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=295]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=298]
+priority = 32
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=299]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=300]
+
 [sub_resource type="AnimationNodeStateMachine" id=127]
 states/AboutToFall/node = SubResource( 41 )
 states/AboutToFall/position = Vector2( 200.65, 264.594 )
-states/BlendTree/node = SubResource( 59 )
-states/BlendTree/position = Vector2( 395.5, 27 )
 states/FallingLoop/node = SubResource( 44 )
 states/FallingLoop/position = Vector2( -369.75, 258.547 )
 states/Landing/node = SubResource( 47 )
 states/Landing/position = Vector2( -371.5, 98.5 )
+states/Melee_1/node = SubResource( 288 )
+states/Melee_1/position = Vector2( -548.05, -267.557 )
+states/Melee_2/node = SubResource( 291 )
+states/Melee_2/position = Vector2( -625.05, -115.528 )
 states/RisingLoop/node = SubResource( 50 )
 states/RisingLoop/position = Vector2( 200.575, 93.5 )
 states/Run/node = SubResource( 53 )
 states/Run/position = Vector2( -338, -115 )
 states/Slide/node = SubResource( 249 )
 states/Slide/position = Vector2( 200.3, -109.547 )
-transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 239 ), "AboutToFall", "Landing", SubResource( 240 ), "Run", "Slide", SubResource( 253 ), "Slide", "RisingLoop", SubResource( 254 ), "Landing", "Slide", SubResource( 256 ), "Slide", "Run", SubResource( 257 ) ]
+transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 239 ), "AboutToFall", "Landing", SubResource( 240 ), "Run", "Slide", SubResource( 253 ), "Slide", "RisingLoop", SubResource( 254 ), "Landing", "Slide", SubResource( 256 ), "Slide", "Run", SubResource( 257 ), "Run", "Melee_1", SubResource( 292 ), "Run", "Melee_2", SubResource( 293 ), "Melee_1", "Run", SubResource( 294 ), "Melee_2", "Run", SubResource( 295 ), "FallingLoop", "Melee_2", SubResource( 298 ), "Melee_2", "FallingLoop", SubResource( 299 ), "Melee_2", "Landing", SubResource( 300 ) ]
 start_node = "Run"
-graph_offset = Vector2( -437.205, -171.688 )
+graph_offset = Vector2( -817.55, -182.723 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=128]
 
@@ -902,6 +1045,8 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+
+[sub_resource type="AnimationNodeBlendTree" id=59]
 
 [sub_resource type="AnimationNodeAnimation" id=264]
 animation = "slide"
@@ -1388,6 +1533,9 @@ extents = Vector2( 230, 79.6428 )
 radius = 68.5714
 height = 0.0
 
+[sub_resource type="CapsuleShape2D" id=301]
+radius = 445.714
+
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.35, 0.35 )
 script = ExtResource( 2 )
@@ -1398,9 +1546,8 @@ shape = SubResource( 3 )
 
 [node name="StaffForward" type="AnimatedSprite" parent="."]
 frames = SubResource( 120 )
-animation = "run"
+animation = "melee_2"
 frame = 1
-playing = true
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -1412,6 +1559,8 @@ anims/during_jump = SubResource( 122 )
 anims/falling = SubResource( 123 )
 anims/jump_init = SubResource( 124 )
 anims/landing = SubResource( 125 )
+anims/melee_1 = SubResource( 284 )
+anims/melee_2 = SubResource( 285 )
 anims/run = SubResource( 126 )
 anims/slide = SubResource( 250 )
 
@@ -1423,6 +1572,8 @@ parameters/playback = SubResource( 128 )
 parameters/AboutToFall/TimeScale/scale = 1.0
 parameters/FallingLoop/TimeScale/scale = 1.0
 parameters/Landing/TimeScale/scale = 1.0
+parameters/Melee_1/TimeScale/scale = 1.0
+parameters/Melee_2/TimeScale/scale = 1.0
 parameters/RisingLoop/TimeScale/scale = 1.0
 parameters/Run/TimeScale/scale = 1.0
 parameters/Slide/TimeScale/scale = 1.0
@@ -1628,6 +1779,13 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlideHurtArea"]
 position = Vector2( -208.571, 394.285 )
 shape = SubResource( 258 )
+disabled = true
+
+[node name="MeleeArea" type="Area2D" parent="." groups=["player_physical_attack"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeArea"]
+position = Vector2( 77.1429, -5.71429 )
+shape = SubResource( 301 )
 disabled = true
 
 [connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/FireRateSlider" to="." method="_on_FireRateSlider_value_changed"]

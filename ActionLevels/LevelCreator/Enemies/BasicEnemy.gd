@@ -58,13 +58,17 @@ func _on_damage_timer():
 func call_death(count_as_regular_death: bool):
 	if count_as_regular_death:
 		Events.emit_signal("regular_enemy_death")
-	collision_shape.disabled = true
-	var death_explosion_node = death_explosion.instance()
-	death_explosion_node.position = area2d.position
-	death_explosion_node.connect("animation_finished", self, "_on_explosion_finished")
-	area2d.add_child(death_explosion_node)
-	sprite.visible = false
-	death_explosion_node.play("default", false)
+	if is_boss:
+		Events.emit_signal("level_complete")
+	if is_instance_valid(collision_shape):
+		collision_shape.disabled = true
+	if is_instance_valid(area2d):
+		var death_explosion_node = death_explosion.instance()
+		death_explosion_node.position = area2d.position
+		death_explosion_node.connect("animation_finished", self, "_on_explosion_finished")
+		area2d.add_child(death_explosion_node)
+		sprite.visible = false
+		death_explosion_node.play("default", false)
 
 func _on_explosion_finished():
 	if !has_non_queue_free_rotator:

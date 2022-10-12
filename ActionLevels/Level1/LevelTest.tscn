@@ -31,6 +31,7 @@ scale = Vector2( 119.688, 10 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 158, 904 )
+debug_mode = true
 gunshot = ExtResource( 8 )
 physical_attack = ExtResource( 1 )
 charge_shot = ExtResource( 2 )

@@ -83,7 +83,7 @@ scroll_speed = 500
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 11 )]
 max_enemies_on_screen = 6
-seconds_until_boss = 45.0
+seconds_until_boss = 10.0
 enemy_list = [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 23 ), ExtResource( 22 ) ]
 boss = ExtResource( 17 )
 
@@ -94,7 +94,7 @@ curve = SubResource( 1 )
 
 [node name="SpawnLocations" type="PathFollow2D" parent="SpawnPaths"]
 position = Vector2( 2009.65, 113.155 )
-rotation = 1.57807
+rotation = 1.57803
 
 [node name="LowPlatform1" parent="." instance=ExtResource( 12 )]
 position = Vector2( 3777, 418 )
