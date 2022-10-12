@@ -429,10 +429,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.333333, 0.666667 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2 ]
+"values": [ 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2 ]
 }
 
 [sub_resource type="Animation" id=126]
@@ -504,7 +504,7 @@ nodes/Animation/position = Vector2( 350, 300 )
 nodes/TimeScale/node = SubResource( 40 )
 nodes/TimeScale/position = Vector2( 566.64, 292.32 )
 nodes/output/position = Vector2( 780, 310 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=42]
 animation = "falling"
@@ -517,7 +517,7 @@ nodes/Animation/position = Vector2( 146.88, 187.92 )
 nodes/TimeScale/node = SubResource( 43 )
 nodes/TimeScale/position = Vector2( 360, 160 )
 nodes/output/position = Vector2( 540, 170 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=45]
 animation = "landing"
@@ -530,7 +530,7 @@ nodes/Animation/position = Vector2( 200, 150 )
 nodes/TimeScale/node = SubResource( 46 )
 nodes/TimeScale/position = Vector2( 390, 140 )
 nodes/output/position = Vector2( 580, 170 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=286]
 animation = "melee_1"
@@ -543,7 +543,7 @@ nodes/Animation/position = Vector2( 250, 200 )
 nodes/TimeScale/node = SubResource( 287 )
 nodes/TimeScale/position = Vector2( 450, 200 )
 nodes/output/position = Vector2( 660, 230 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=289]
 animation = "melee_2"
@@ -556,7 +556,7 @@ nodes/Animation/position = Vector2( 507.5, 151.5 )
 nodes/TimeScale/node = SubResource( 290 )
 nodes/TimeScale/position = Vector2( 740, 150 )
 nodes/output/position = Vector2( 970, 200 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=48]
 animation = "jump_init"
@@ -569,7 +569,7 @@ nodes/Animation/position = Vector2( 185.76, 254.16 )
 nodes/TimeScale/node = SubResource( 49 )
 nodes/TimeScale/position = Vector2( 414, 256.32 )
 nodes/output/position = Vector2( 630, 280 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=51]
 animation = "run"
@@ -582,7 +582,7 @@ nodes/Animation/node = SubResource( 51 )
 nodes/Animation/position = Vector2( -60, 140 )
 nodes/TimeScale/node = SubResource( 52 )
 nodes/TimeScale/position = Vector2( 120, 140 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=251]
 animation = "slide"
@@ -595,7 +595,7 @@ nodes/Animation/position = Vector2( 576.5, 173.5 )
 nodes/TimeScale/node = SubResource( 252 )
 nodes/TimeScale/position = Vector2( 810, 180 )
 nodes/output/position = Vector2( 1060, 190 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
 
@@ -1060,7 +1060,7 @@ nodes/Animation/position = Vector2( -90, 130 )
 nodes/TimeScale/node = SubResource( 265 )
 nodes/TimeScale/position = Vector2( 110, 150 )
 nodes/output/position = Vector2( 330, 180 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=241]
 
@@ -1487,7 +1487,7 @@ nodes/Animation/position = Vector2( 50, 370 )
 nodes/TimeScale/node = SubResource( 272 )
 nodes/TimeScale/position = Vector2( 233, 359.5 )
 nodes/output/position = Vector2( 410, 400 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=243]
 
@@ -1546,7 +1546,7 @@ shape = SubResource( 3 )
 
 [node name="StaffForward" type="AnimatedSprite" parent="."]
 frames = SubResource( 120 )
-animation = "melee_2"
+animation = "run"
 frame = 1
 __meta__ = {
 "_edit_group_": true,
