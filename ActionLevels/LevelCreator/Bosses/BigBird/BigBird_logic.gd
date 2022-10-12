@@ -9,6 +9,9 @@ export (float) var fire_rate_timer_wait_time = 0.2
 export (int) var radius = 100
 export (float) var projectile_speed = 100.0
 var debug_mode = false
+var intro_complete = false
+var shadow_modulate = Color(0.0,0.0,0.0)
+var initial_color_value = 0.0
 
 onready var parent_node = self.get_parent()
 onready var initial_health_value: int = parent_node.health_value
@@ -19,40 +22,53 @@ onready var debug_texture = load("res://icon.png")
 
 const phase_patterns = {
 	0: {
-		'rotate_speed': 100, # speed of rotation of bullet generator
-		'spawn_point_count': 3, # number of bullets to spawn at one time, equivalent of angles to complete a circle, e.g. 3 = 120 degrees at each point
-		'fire_rate_timer_wait_time': 0.5, # how often to fire in seconds
+		'rotate_speed': 80, # speed of rotation of bullet generator
+		'spawn_point_count': 2, # number of bullets to spawn at one time, equivalent of angles to complete a circle, e.g. 3 = 120 degrees at each point
+		'fire_rate_timer_wait_time': 0.6, # how often to fire in seconds
 		'radius': 100, # size of radius of bullet spawning, influences initial "closeness" of bullets
 		'projectile_speed': 100 # speed of the projectiles that are generated
 	},
 	1: {
-		'rotate_speed': 90,
-		'spawn_point_count': 4,
-		'fire_rate_timer_wait_time': 0.4,
-		'radius': 100,
-		'projectile_speed': 150
+		'rotate_speed': 33,
+		'spawn_point_count': 3,
+		'fire_rate_timer_wait_time': 0.45,
+		'radius': 110,
+		'projectile_speed': 810
 	},
 	2: {
 		'rotate_speed': 80,
 		'spawn_point_count': 5,
-		'fire_rate_timer_wait_time': 0.5,
-		'radius': 100,
-		'projectile_speed': 100
+		'fire_rate_timer_wait_time': 1.02,
+		'radius': 40,
+		'projectile_speed': 200
 	},
-	# phase 3 is a joke for testing weird shit
 	3: {
-		'rotate_speed': 80,
-		'spawn_point_count': 9,
-		'fire_rate_timer_wait_time': 0.001,
-		'radius': 100,
-		'projectile_speed': 500
+		'rotate_speed': 24,
+		'spawn_point_count': 6,
+		'fire_rate_timer_wait_time': 0.88,
+		'radius': 110,
+		'projectile_speed': 260
 	}
 }
 
+func play_intro(delta):
+	if initial_color_value < 1.0:
+		initial_color_value = initial_color_value + delta * 0.5
+		initial_color_value = clamp(initial_color_value, 0.0, 1.0)
+		parent_node.modulate = Color(initial_color_value, initial_color_value, initial_color_value)
+		parent_node.has_invulnerability = true
+	else:
+		intro_complete = true
+		post_intro()
+
 func _ready():
-	apply_new_bullet_phase(current_phase)
+	$CanvasLayer.visible = debug_mode
+
+func post_intro():
 	_fire_rate_timer_setup()
+	apply_new_bullet_phase(current_phase)
 	_setup_bullets()
+	parent_node.has_invulnerability = false
 	if debug_mode:
 		$CanvasLayer/DebugSliders/VBoxContainer/RotationSpeedSlider.value = rotate_speed
 		$CanvasLayer/DebugSliders/VBoxContainer/RotationSpeedTitle.text = "Rotation Speed: " + str(rotate_speed)
@@ -68,8 +84,28 @@ func _ready():
 		
 		$CanvasLayer/DebugSliders/VBoxContainer/ProjectileSpeedSlider.value = projectile_speed
 		$CanvasLayer/DebugSliders/VBoxContainer/ProjectileSpeedTitle.text = "Projectile Speed: " + str(projectile_speed)
-	else:
-		$CanvasLayer.visible = false
+	
+#func _ready():
+#	_fire_rate_timer_setup()
+#	apply_new_bullet_phase(current_phase)
+#	_setup_bullets()
+#	if debug_mode:
+#		$CanvasLayer/DebugSliders/VBoxContainer/RotationSpeedSlider.value = rotate_speed
+#		$CanvasLayer/DebugSliders/VBoxContainer/RotationSpeedTitle.text = "Rotation Speed: " + str(rotate_speed)
+#
+#		$CanvasLayer/DebugSliders/VBoxContainer/SpawnCountSlider.value = spawn_point_count
+#		$CanvasLayer/DebugSliders/VBoxContainer/SpawnCountTitle.text = "Spawn Count: " + str(spawn_point_count)
+#
+#		$CanvasLayer/DebugSliders/VBoxContainer/FireRateSlider.value = fire_rate_timer_wait_time
+#		$CanvasLayer/DebugSliders/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(fire_rate_timer_wait_time)
+#
+#		$CanvasLayer/DebugSliders/VBoxContainer/RadiusSlider.value = radius
+#		$CanvasLayer/DebugSliders/VBoxContainer/RadiusTitle.text = "Radius: " + str(radius)
+#
+#		$CanvasLayer/DebugSliders/VBoxContainer/ProjectileSpeedSlider.value = projectile_speed
+#		$CanvasLayer/DebugSliders/VBoxContainer/ProjectileSpeedTitle.text = "Projectile Speed: " + str(projectile_speed)
+#	else:
+#		$CanvasLayer.visible = false
 		
 func set_pattern_debug():
 	_setup_bullets()
@@ -77,7 +113,8 @@ func set_pattern_debug():
 func _fire_rate_timer_setup():
 	fire_rate_timer.set_name("boss_fire_rate_timer")
 	fire_rate_timer.connect("timeout", self, "_on_fire_rate_timeout")
-	parent_node.add_child(fire_rate_timer)
+	self.add_child(fire_rate_timer)
+	#parent_node.add_child(fire_rate_timer)
 
 func _on_fire_rate_timeout():
 	for s in rotator.get_children():
@@ -102,7 +139,7 @@ func _setup_bullets():
 		spawn_point.position = pos
 		spawn_point.rotation = pos.angle()
 		rotator.add_child(spawn_point)
-	
+
 	fire_rate_timer.set_wait_time(fire_rate_timer_wait_time)
 	fire_rate_timer.start()
 
@@ -121,6 +158,8 @@ func apply_new_bullet_phase(phase_number: int):
 		_setup_bullets()
 
 func _process(delta):
+	if !intro_complete:
+		play_intro(delta)
 	if parent_node.health_value < (initial_health_value * 0.6) and current_phase != 1 and current_phase != 2:
 		current_phase = 1
 		apply_new_bullet_phase(current_phase)

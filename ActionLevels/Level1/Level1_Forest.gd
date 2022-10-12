@@ -7,6 +7,7 @@ onready var boss = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBi
 
 func _ready():
 	Events.connect("boss_spawned", self, "_on_boss_spawn")
+	Events.connect("level_complete", self, "_on_level_complete")
 	var num_spawn_points = spawn_paths.get_curve().get_point_count()
 	var spawn_point_dictionary = {}
 	var spawn_point_heights = [DataClasses.SpawnHeight.HIGH_ONLY, DataClasses.SpawnHeight.MED_ONLY, DataClasses.SpawnHeight.LOW_ONLY]
@@ -17,6 +18,9 @@ func _ready():
 	Events.emit_signal("level_spawn_points", spawn_point_dictionary)
 	if !background_music.is_playing():
 		background_music.play()
+
+func _on_level_complete():
+	print("boss dead yay, transition to next level/area/cutscene/etc")
 
 func _on_boss_spawn():
 	background_music.stop()

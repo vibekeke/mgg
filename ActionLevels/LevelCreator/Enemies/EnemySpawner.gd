@@ -112,6 +112,6 @@ func spawn_boss_to_scene():
 		var spawn_position = spawn_points[DataClasses.SpawnHeight.MED_ONLY]
 		_boss_to_spawn.position = spawn_position
 		_boss_to_spawn.add_to_group("boss_enemy")
-		_boss_to_spawn.position.x = _boss_to_spawn.position.x - 500
+		_boss_to_spawn.global_position = Vector2(1510, 620)
 		parent_node.add_child(_boss_to_spawn)
 		Events.emit_signal("boss_spawned")
