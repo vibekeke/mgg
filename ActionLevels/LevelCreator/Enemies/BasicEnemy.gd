@@ -20,7 +20,7 @@ onready var visibility_notifier = $VisibilityNotifier2D
 
 var player_local_position = Vector2(0,0)
 var player_global_position = Vector2(0,0)
-
+var hit_times = 0
 var is_move_disabled = false
 
 var enemy_logic_instance = null
@@ -106,6 +106,8 @@ func _on_call_area_entered(area):
 		var parent_groups = area.get_parent().get_groups()
 		if "player_charge_shot" in parent_groups:
 			if !has_invulnerability:
+				hit_times += 1
+				print("ow hit ", hit_times, " times")
 				take_damage()
 		elif "player_bullet" in parent_groups:
 			if area.get_parent().belongs_to_player != null:

@@ -119,9 +119,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 0, 0 )
 
-[node name="ChargedShot" type="AnimatedSprite"]
+[node name="ChargedShot" type="AnimatedSprite" groups=["player_bullet", "player_charge_shot"]]
 frames = SubResource( 17 )
-frame = 1
+frame = 3
 speed_scale = 0.7
 playing = true
 script = ExtResource( 2 )

@@ -4,6 +4,7 @@ onready var spawn_paths = $SpawnPaths
 onready var background_music = $BackgroundMusic
 onready var boss_music = $BossMusic
 onready var boss = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
+export var mute_audio = false # temporary
 
 func _ready():
 	Events.connect("boss_spawned", self, "_on_boss_spawn")
@@ -16,12 +17,14 @@ func _ready():
 		spawn_point_array.append(spawn_paths.get_curve().get_point_position(x))
 		spawn_point_dictionary[spawn_point_heights[x]] = spawn_paths.get_curve().get_point_position(x)
 	Events.emit_signal("level_spawn_points", spawn_point_dictionary)
-	if !background_music.is_playing():
-		background_music.play()
+	if !mute_audio:
+		if !background_music.is_playing():
+			background_music.play()
 
 func _on_level_complete():
 	print("boss dead yay, transition to next level/area/cutscene/etc")
 
 func _on_boss_spawn():
-	background_music.stop()
-	boss_music.play()
+	if !mute_audio:
+		background_music.stop()
+		boss_music.play()

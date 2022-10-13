@@ -44,7 +44,7 @@ export var min_jump_height : float = 200.0
 export var jump_time_to_peak : float = 0.6
 export var jump_time_to_descent : float = 0.45
 export var float_time_to_descent : float = 4.0
-export var fast_fall_time_to_descent : float = 0.2
+export var fast_fall_time_to_descent : float = 0.3
 
 onready var jump_velocity : float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1.0
 onready var double_jump_velocity : float = ((2.0 * max_jump_height + 5) / jump_time_to_peak) * -1.0
@@ -54,6 +54,7 @@ onready var fall_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_des
 onready var float_gravity : float = ((-2.0 * max_jump_height) / (float_time_to_descent * float_time_to_descent)) * -1.0
 onready var fast_fall_gravity : float = ((-2.0 * max_jump_height) / (fast_fall_time_to_descent * fast_fall_time_to_descent)) * -1.0
 var float_halt = false
+var has_floated = false
 
 export (bool) var debug_mode = false
 
@@ -63,12 +64,12 @@ var slide_again_timer = Timer.new()
 var is_sliding = false
 
 # melee
-var is_physical_attack = false
+var is_physically_attacking = false
 
 # speed of the slide
-var slide_value = 1600.0
+export var slide_value = 1200.0
 # how long the slide lasts for, in seconds
-var slide_duration = 0.2
+export var slide_duration = 0.4
 # how long to wait until you can slide again, in seconds
 var slide_again_duration = 0.3
 
@@ -116,28 +117,8 @@ func _ready():
 	staff_up.frame = 0
 	staff_down.frame = 0
 	travel_to_animation("Run")
-	if debug_mode:	
-		$DebugCanvasLayer/Control/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(fire_rate_secs)
-		$DebugCanvasLayer/Control/VBoxContainer/FireRateSlider.value = fire_rate_secs
+	setup_debug_canvas(debug_mode)
 
-		$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedTitle.text = "Movement Speed: " + str(horizontal_movement_speed)
-		$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedSlider.value = horizontal_movement_speed
-		
-		$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpTitle.text = "Max Jump Height: " + str(max_jump_height)
-		$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpSlider.value = max_jump_height
-
-		$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpTitle.text = "Min Jump Height: " + str(min_jump_height)
-		$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpSlider.value = min_jump_height
-		
-		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakTitle.text = "Gravity Up: " + str(jump_time_to_peak)
-		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakSlider.value = jump_time_to_peak
-		
-		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentTitle.text = "Gravity Down: " + str(jump_time_to_descent)
-		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider.value = jump_time_to_descent
-
-		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
-	else:
-		$DebugCanvasLayer.visible = false
 
 func _player_transition_to_scene():
 	print("Player has transitioned to scene")
@@ -208,7 +189,7 @@ func get_gravity() -> float:
 		gravity = jump_gravity
 		travel_to_animation("RisingLoop")
 	else:
-		if Input.is_action_pressed("float") and !is_on_floor():
+		if Input.is_action_pressed("float") and !is_on_floor() and !has_floated and !is_physically_attacking:
 			gravity = float_gravity
 		elif Input.is_action_pressed("move_down"):
 			gravity = fast_fall_gravity
@@ -257,8 +238,6 @@ func charge_shot_present():
 
 func fire_charge_shot():
 	var _charge_shot = charge_shot.instance()
-	_charge_shot.add_to_group("player_bullet")
-	_charge_shot.add_to_group("player_charge_shot")
 	get_tree().get_root().add_child(_charge_shot)
 	_charge_shot.position = self.position + Vector2(1200,2)
 	Events.emit_signal("fired_charge_shot")
@@ -266,10 +245,10 @@ func fire_charge_shot():
 func attack_logic():
 	if fire_rate_timer.is_stopped():
 		if has_charge_shot:
-			if Input.is_action_pressed("charge_shot"):
+			if Input.is_action_pressed("charge_shot") and !is_physically_attacking:
 				has_charge_shot = false
 				fire_charge_shot()
-		if !charge_shot_present():
+		if !charge_shot_present() || !is_physically_attacking:
 			if Input.is_action_pressed("up"):
 				current_shooting_angle = SHOOT_ANGLE.UPWARD_B
 				shoot(current_shooting_angle)
@@ -297,7 +276,7 @@ func perform_physical_attack():
 		var _physical_attack = physical_attack.instance()
 		get_tree().get_root().add_child(_physical_attack)
 		_physical_attack.location_offset = Vector2(40,2)
-		_forward_anim_state.travel("Melee_2")
+		travel_to_animation("Melee_2")
 
 func _on_disable_player_action(to_disable):
 	# 0 == disable everything, including movement and jumping
@@ -327,9 +306,10 @@ func _on_collected_heart():
 func _physics_process(delta):
 	if is_on_floor() and is_sliding:
 		travel_to_animation("Slide")
-	else:
+	elif is_on_floor():
 		can_double_jump = false
 		has_double_jumped = false
+		has_floated = false
 		travel_to_animation("Run")
 	
 	var _horizontal_direction = (
@@ -345,13 +325,13 @@ func _physics_process(delta):
 		velocity.x = _horizontal_direction * horizontal_movement_speed
 		if is_sliding:
 			velocity.x = 1 * slide_value
-		if Input.is_action_just_pressed("move_down") and is_on_floor() and slide_duration_timer.is_stopped() and !charge_shot_present():
+		if Input.is_action_just_pressed("move_down") and is_on_floor() and slide_duration_timer.is_stopped() and !charge_shot_present() and !is_physically_attacking:
 			if slide_again_timer.is_stopped():
 				initiate_slide()
 
 	handle_collision_shapes()
 	actions_based_on_animation()
-	if !is_sliding and !is_shoot_disabled:
+	if !is_sliding and !is_shoot_disabled and !is_physically_attacking:
 		attack_logic()
 	
 	if !is_sliding and !is_jump_disabled:
@@ -359,11 +339,13 @@ func _physics_process(delta):
 	
 	# the 5 lines below are a crime against humanity and i dont actually get why this works
 	# TODO: write this in a way that makes sense lol
-	if Input.is_action_pressed("float") and velocity.y > 0 and !float_halt:
-		float_halt = true
-		velocity.y = 0 # halt velocity if you are floating
-	elif Input.is_action_just_released("float"):
-		float_halt = false
+	if !has_floated and !is_physically_attacking:
+		if Input.is_action_pressed("float") and velocity.y > 0 and !float_halt:
+			float_halt = true
+			velocity.y = 0 # halt velocity if you are floating
+		elif Input.is_action_just_released("float"):
+			float_halt = false
+			has_floated = true
 	velocity = move_and_slide(velocity, UP_DIRECTION)
 
 func initiate_slide():
@@ -377,7 +359,11 @@ func initiate_slide():
 	is_sliding = true
 
 func animation_to_show():
-	if Input.is_action_pressed("up"):
+	if is_physically_attacking:
+		$StaffForward.visible = true
+		$StaffUp.visible = false
+		$StaffDown.visible = false
+	elif Input.is_action_pressed("up"):
 		$StaffForward.visible = false
 		$StaffUp.visible = true
 		$StaffDown.visible = false
@@ -399,15 +385,15 @@ func get_active_aiming_state():
 		return _down_anim_state
 
 func current_animation():
-	var current_aim_state = get_active_aiming_state()
-	return current_aim_state.get_current_node()
+	return get_active_aiming_state().get_current_node()
 
 func actions_based_on_animation():
-	var current_anim = current_animation()
-	if current_anim == "Melee_1" or current_anim == "Melee_2":
+	if current_animation() == "Melee_2":
 		physical_attack_hitbox.get_node("CollisionShape2D").disabled = false
+		is_physically_attacking = true
 	else:
 		physical_attack_hitbox.get_node("CollisionShape2D").disabled = true
+		is_physically_attacking = false
 
 func _process(delta):
 	Events.emit_signal("player_max_health", max_health)
@@ -417,6 +403,39 @@ func _process(delta):
 	
 	if debug_mode:
 		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
+
+
+func setup_debug_canvas(debug_enabled: bool):
+	if debug_enabled:
+		$DebugCanvasLayer/Control/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(fire_rate_secs)
+		$DebugCanvasLayer/Control/VBoxContainer/FireRateSlider.value = fire_rate_secs
+
+		$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedTitle.text = "Movement Speed: " + str(horizontal_movement_speed)
+		$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedSlider.value = horizontal_movement_speed
+		
+		$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpTitle.text = "Max Jump Height: " + str(max_jump_height)
+		$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpSlider.value = max_jump_height
+
+		$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpTitle.text = "Min Jump Height: " + str(min_jump_height)
+		$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpSlider.value = min_jump_height
+		
+		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakTitle.text = "Gravity Up: " + str(jump_time_to_peak)
+		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakSlider.value = jump_time_to_peak
+		
+		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentTitle.text = "Gravity Down: " + str(jump_time_to_descent)
+		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider.value = jump_time_to_descent
+		
+
+		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
+		
+		$DebugCanvasLayer/Control/VBoxContainer/SlideDurationTitle.text = "Slide Duration: " + str(slide_duration)
+		$DebugCanvasLayer/Control/VBoxContainer/SlideDurationSlider.value = slide_duration
+		
+		$DebugCanvasLayer/Control/VBoxContainer/SlideSpeedTitle.text = "Slide Speed: " + str(slide_value)
+		$DebugCanvasLayer/Control/VBoxContainer/SlideSpeedSlider.value = slide_value
+		
+	else:
+		$DebugCanvasLayer.visible = false
 
 
 func _on_MovementSpeedSlider_value_changed(value):
@@ -454,3 +473,16 @@ func _on_FireRateSlider_value_changed(value):
 	$DebugCanvasLayer/Control/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(value)
 	fire_rate_secs = value
 	fire_rate_timer.set_wait_time(fire_rate_secs)
+
+
+func _on_SlideSpeedSlider_value_changed(value):
+	$DebugCanvasLayer/Control/VBoxContainer/SlideSpeedSlider.value = value
+	$DebugCanvasLayer/Control/VBoxContainer/SlideSpeedTitle.text = "Slide Speed: " + str(value)
+	slide_value = value
+
+
+func _on_SlideDurationSlider_value_changed(value):
+	$DebugCanvasLayer/Control/VBoxContainer/SlideDurationSlider.value = value
+	$DebugCanvasLayer/Control/VBoxContainer/SlideDurationTitle.text = "Slide Duration: " + str(value)
+	slide_duration = value
+	slide_duration_timer.set_wait_time(slide_duration)

@@ -5,6 +5,7 @@ export var is_queue_freeable : bool = false
 export var shot_duration : float = 1.75
 var player_position = null
 onready var shoot_duration_timer = Timer.new()
+onready var flash_collision_shape_timer = Timer.new()
 
 onready var collision_shape_extents = {
 	0: Vector2.ZERO,
@@ -30,10 +31,15 @@ func _ready():
 	shoot_duration_timer.connect("timeout", self, "_on_shoot_duration_timeout")
 	shoot_duration_timer.set_wait_time(shot_duration)
 	self.add_child(shoot_duration_timer)
+	flash_collision_shape_timer.set_name("flash_collision_shape_timer")
+	flash_collision_shape_timer.connect("timeout", self, "_on_flash_collision_shape_timeout")
+	flash_collision_shape_timer.set_wait_time(0.35)
+	self.add_child(flash_collision_shape_timer)
 	self.playing = true
 	self.frame = 0
 	Events.connect("player_global_position", self, "_on_player_global_position")
 	shoot_duration_timer.start()
+	flash_collision_shape_timer.start()
 
 func expand_collision_shape(frame: int):
 	var new_collision_shape_extent = collision_shape_extents[frame]
@@ -57,6 +63,9 @@ func _physics_process(delta):
 	if player_position != null:
 		self.global_position.x = player_position.x + 1200
 		self.global_position.y = player_position.y + 2
+
+func _on_flash_collision_shape_timeout():
+	$Area2D/CollisionShape2D.disabled = !$Area2D/CollisionShape2D.disabled
 
 func _on_shoot_duration_timeout():
 	self.animation = "default"
