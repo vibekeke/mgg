@@ -1,6 +1,8 @@
 extends CanvasLayer
 
-# Use signals instead of timer????
+
+# left timer related stuff here for now so I can remember how it works
+# in case it's necessary later
 
 export (float) var scrolling_speed_middleground = 500.0
 export (float) var scrolling_time_middleground = 10.0

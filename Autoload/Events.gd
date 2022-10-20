@@ -37,3 +37,11 @@ func _disable_enemy_actions(to_disable):
 
 func transition_to_new_scene(next_scene):
 	self.emit_signal("transition_to_scene", next_scene)
+
+
+onready var enemyPaths = {
+	'PathedMisbeehave': 'res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn'
+}
+
+func get_enemy_paths():
+	return enemyPaths

@@ -38,6 +38,7 @@ func launch_bullet(bullet: Object):
 
 func _ready():
 	parent_node.has_invulnerability = true
+	parent_node.has_non_queue_free_rotator = true
 	_fire_rate_timer_setup()
 	_setup_bullets()
 	Events.connect("player_global_position", self, "_on_player_global_position")

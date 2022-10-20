@@ -1,13 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ActionLevels/Level1/TestLevelEvents.gd" type="Script" id=12]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.tscn" type="PackedScene" id=13]
 
 [node name="LevelTest" type="Node2D"]
 
@@ -42,5 +46,21 @@ layer = 20
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 10 )]
 visible = false
 
-[node name="BigBird" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1194, 872 )
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( -94, 252 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="SpawnPaths" parent="Node2D" instance=ExtResource( 9 )]
+unique_name_in_owner = true
+position = Vector2( -769.053, -1.42097 )
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 11 )]
+unique_name_in_owner = true
+enemy_list = [ ExtResource( 4 ) ]
+
+[node name="TestLevelEvents" type="Node2D" parent="."]
+script = ExtResource( 12 )
+
+[node name="Level1_Event1" parent="." instance=ExtResource( 13 )]

@@ -15,12 +15,11 @@ func _physics_process(delta):
 		go_towards_point(delta)
 
 func go_towards_point(delta):
-	if shoot_towards:
-		if player_position != null:
-			if !set_angle:
-				angle_to_player = self.global_position.angle_to_point(player_position)
-				set_angle = true
-			self.global_position += Vector2(-(speed * delta * cos(angle_to_player)), -(speed * delta * sin(angle_to_player)))
+	if shoot_towards && player_position != null:
+		if !set_angle:
+			angle_to_player = self.global_position.angle_to_point(player_position)
+			set_angle = true
+		self.global_position += Vector2(-(speed * delta * cos(angle_to_player)), -(speed * delta * sin(angle_to_player)))
 
 
 func _ready():
@@ -30,9 +29,11 @@ func _ready():
 func _on_call_area_entered(area):
 	if area.is_in_group("player_hurtbox"):
 		Events.emit_signal("collided_with_player", 1)
+		print("killing bullet in on call area")
 		self.queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
 	if self.global_position.y > 0:
+		print("killing bullet")
 		self.queue_free()
 

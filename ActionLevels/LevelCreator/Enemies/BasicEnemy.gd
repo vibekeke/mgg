@@ -16,7 +16,7 @@ onready var enemy_follower = $Path2D/PathFollow2D
 onready var area2d = $Path2D/PathFollow2D/Area2D
 onready var sprite = $Path2D/PathFollow2D/Area2D/AnimatedSprite
 onready var collision_shape = $Path2D/PathFollow2D/Area2D/CollisionShape2D
-onready var visibility_notifier = $VisibilityNotifier2D
+onready var visibility_notifier = $Path2D/PathFollow2D/Area2D/VisibilityNotifier2D
 
 var player_local_position = Vector2(0,0)
 var player_global_position = Vector2(0,0)
@@ -25,8 +25,10 @@ var is_move_disabled = false
 
 var enemy_logic_instance = null
 var has_invulnerability = false
+var active_death_explosion_node = null
 
 var damage_timer = Timer.new()
+var eventually_queue_free_timer = Timer.new()
 
 func _ready():
 	if enemy_logic != null:
@@ -44,6 +46,16 @@ func _ready():
 	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
 	enemy_spawn_point()
 	_damage_timer_setup()
+	_eventually_queue_free_setup()
+
+func _eventually_queue_free_setup():
+	eventually_queue_free_timer.set_name("eventually_queue_free_timer")
+	eventually_queue_free_timer.connect("timeout", self, "_on_eventually_queue_free_timer")
+	eventually_queue_free_timer.set_wait_time(5.0)
+	self.add_child(eventually_queue_free_timer)
+
+func _on_eventually_queue_free_timer():
+	self.queue_free()
 
 func _damage_timer_setup():
 	damage_timer.set_name("damage_timer")
@@ -63,19 +75,19 @@ func call_death(count_as_regular_death: bool):
 	if is_instance_valid(collision_shape):
 		collision_shape.disabled = true
 	if is_instance_valid(area2d):
-		var death_explosion_node = death_explosion.instance()
-		death_explosion_node.position = area2d.position
-		death_explosion_node.connect("animation_finished", self, "_on_explosion_finished")
-		area2d.add_child(death_explosion_node)
+		active_death_explosion_node = death_explosion.instance()
+		active_death_explosion_node.add_to_group("death_explosion")
+		active_death_explosion_node.position = area2d.position
+		active_death_explosion_node.connect("animation_finished", self, "_on_explosion_finished")
+		area2d.add_child(active_death_explosion_node)
 		sprite.visible = false
-		death_explosion_node.play("default", false)
+		active_death_explosion_node.play("default", false)
 
 func _on_explosion_finished():
 	if !has_non_queue_free_rotator:
-		queue_free()
+		self.queue_free()
 	else:
-		if $Path2D != null:
-			$Path2D.queue_free()
+		eventually_queue_free_timer.start()
 
 func _on_disable_enemy_action(is_disabled):
 	is_move_disabled = !is_move_disabled
@@ -101,28 +113,29 @@ func _on_call_body_entered(body):
 		if !has_invulnerability:
 			take_damage()
 
-func _on_call_area_entered(area):
-	if area.get_parent() != null:
-		var parent_groups = area.get_parent().get_groups()
+func _on_call_area_entered(player_bullet):
+	if player_bullet.get_parent() != null:
+		var parent_groups = player_bullet.get_parent().get_groups()
 		if "player_charge_shot" in parent_groups:
 			if !has_invulnerability:
 				hit_times += 1
 				print("ow hit ", hit_times, " times")
 				take_damage()
 		elif "player_bullet" in parent_groups:
-			if area.get_parent().belongs_to_player != null:
+			if player_bullet.get_parent().belongs_to_player != null:
 				if has_invulnerability:
-					area.get_parent().queue_free()
+					player_bullet.get_parent().queue_free()
 				if !has_invulnerability:
 					take_damage()
-					area.get_parent().queue_free()
+					player_bullet.get_parent().queue_free()
 
 func enemy_spawn_point():
-	if enemy_logic_instance.has_method("get_spawn_height"):
-		print("enemy has the logic")
-		self.spawn_height = enemy_logic_instance.get_spawn_height()
-	else:
-		print("no spawn height set by enemy logic")
+	if enemy_logic_instance != null:
+		if enemy_logic_instance.has_method("get_spawn_height"):
+			print("enemy has the logic")
+			self.spawn_height = enemy_logic_instance.get_spawn_height()
+		else:
+			print("no spawn height set by enemy logic")
 
 func off_screen_call():
 	Events.emit_signal("regular_enemy_death")
