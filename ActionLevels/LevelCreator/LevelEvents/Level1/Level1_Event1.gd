@@ -40,4 +40,4 @@ func event_start() -> void:
 		
 func end_event() -> void:
 	start_event_timer.stop()
-	pass
+	enemy_spawner.start_enemy_spawner()
