@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 2009.65, 113.155, 0, 0, 0, 0, 2006, 619, 0, 0, 0, 0, 2007.46, 806.398 )
+}
+
+[node name="SpawnPaths" type="Path2D"]
+position = Vector2( -732.053, -1.42097 )
+scale = Vector2( 1.36842, 1.01119 )
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="SpawnLocations" type="PathFollow2D" parent="."]
+position = Vector2( 2009.65, 113.155 )
+rotation = 1.57803

@@ -40,6 +40,7 @@ func launch_bullet(bullet: Object):
 
 func _ready():
 	parent_node.has_invulnerability = true
+	parent_node.has_non_queue_free_rotator = true
 	_fire_rate_timer_setup()
 	_setup_bullets()
 	Events.connect("player_global_position", self, "_on_player_global_position")
@@ -68,8 +69,7 @@ func _process(delta):
 		parent_node.has_invulnerability = false
 
 func _physics_process(delta):
-	if parent_node.initial_scroll_speed > 0:
-		parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
+	parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
 	if !has_fired:
 		var new_rotation = rotator.rotation_degrees + rotate_speed * delta
 		rotator.rotation_degrees = fmod(new_rotation, 360)
