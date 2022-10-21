@@ -41,6 +41,7 @@ layer = 102
 visible = false
 
 [node name="LevelForest" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
 layer = 100
 
 [node name="VHS" type="ColorRect" parent="LevelForest"]

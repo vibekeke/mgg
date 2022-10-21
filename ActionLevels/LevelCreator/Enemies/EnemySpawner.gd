@@ -12,6 +12,8 @@ onready var until_boss_timer = Timer.new()
 onready var enemies_spawned = 0
 onready var rng = RandomNumberGenerator.new()
 onready var spawn_paths = get_node("%SpawnPaths")
+onready var level_background = get_node("%LevelForest")
+
 var enemy_to_spawn = null
 var spawn_points = {}
 
@@ -120,6 +122,17 @@ func _direct_spawn_obstacle_at_position(obstacle: PackedScene, position: Vector2
 	_obstacle_to_spawn.position = position
 	parent_node.add_child(_obstacle_to_spawn)
 	#self.get_parent().call_deferred("add_child", _obstacle_to_spawn)
+
+func spawn_to_background_element(element: PackedScene, background_element_name: String, position: Vector2, scroll_speed):
+	var parent_node = self.get_parent()
+	if parent_node != null:
+		var _element_to_spawn = element.instance()
+		_element_to_spawn.position = position
+		if "initial_speed" in _element_to_spawn:
+			_element_to_spawn.initial_speed = scroll_speed
+		if "scroll_speed" in _element_to_spawn:
+			_element_to_spawn.scroll_speed = scroll_speed
+		level_background.get_node_or_null(background_element_name).add_child(_element_to_spawn)
 
 func _direct_spawn_at_position(enemy: PackedScene, position: Vector2, speed):
 	var _direct_enemy_to_spawn = enemy.instance()

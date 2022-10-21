@@ -54,6 +54,13 @@ onready var level_collectibles = {
 	'Star': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn'
 }
 
+onready var level_background_elements = {
+	1 : {
+		'BeeBackground': 'res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BeeBackground.tscn',
+		'BigBackground': 'res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn'
+	}
+}
+
 onready var level_platforms = {
 	1 : {
 		'LongTallPlatform': 'res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn',
@@ -69,4 +76,7 @@ func get_enemy_paths():
 
 func get_level_platforms(level_number : int):
 	return level_platforms[level_number]
+
+func get_level_background_elements(level_number: int):
+	return level_background_elements[level_number]
 

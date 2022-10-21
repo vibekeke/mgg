@@ -3,6 +3,7 @@ extends Node2D
 onready var spawn_paths = $SpawnPaths
 onready var background_music = $BackgroundMusic
 onready var boss_music = $BossMusic
+onready var level_background = get_node("%LevelForest")
 onready var boss = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
 export var mute_audio = false # temporary
 
@@ -17,9 +18,17 @@ func _ready():
 		spawn_point_array.append(spawn_paths.get_curve().get_point_position(x))
 		spawn_point_dictionary[spawn_point_heights[x]] = spawn_paths.get_curve().get_point_position(x)
 	Events.emit_signal("level_spawn_points", spawn_point_dictionary)
+	add_initial_background_element()
 	if !mute_audio:
 		if !background_music.is_playing():
 			background_music.play()
+
+func add_initial_background_element():
+	var boss_background = load(Events.get_level_background_elements(1).get('BigBackground'))
+	if boss_background != null:
+		var _boss_background = boss_background.instance()
+		_boss_background.position = Vector2(0, 450)
+		level_background.get_node_or_null('SkyBackground').add_child(_boss_background)
 
 func _on_level_complete():
 	print("boss dead yay, transition to next level/area/cutscene/etc")
