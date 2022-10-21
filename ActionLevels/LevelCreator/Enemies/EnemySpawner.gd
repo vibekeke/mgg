@@ -105,7 +105,6 @@ func spawn_enemy_to_scene():
 		_enemy_to_spawn.initial_scroll_speed = default_scroll_speed
 		rng.randomize()
 		if spawn_points.size() > 0:
-			print("spawning enemy at ", _enemy_to_spawn.spawn_height)
 			var spawn_place = spawn_at_valid_height(_enemy_to_spawn)
 			_enemy_to_spawn.position = spawn_place
 			parent_node.add_child(_enemy_to_spawn)

@@ -29,11 +29,9 @@ func _ready():
 func _on_call_area_entered(area):
 	if area.is_in_group("player_hurtbox"):
 		Events.emit_signal("collided_with_player", 1)
-		print("killing bullet in on call area")
 		self.queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
 	if self.global_position.y > 0:
-		print("killing bullet")
 		self.queue_free()
 

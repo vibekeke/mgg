@@ -132,10 +132,7 @@ func _on_call_area_entered(player_bullet):
 func enemy_spawn_point():
 	if enemy_logic_instance != null:
 		if enemy_logic_instance.has_method("get_spawn_height"):
-			print("enemy has the logic")
 			self.spawn_height = enemy_logic_instance.get_spawn_height()
-		else:
-			print("no spawn height set by enemy logic")
 
 func off_screen_call():
 	Events.emit_signal("regular_enemy_death")
