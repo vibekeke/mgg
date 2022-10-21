@@ -25,6 +25,7 @@ signal collected_dog(dog_type)
 signal regular_enemy_death
 signal level_spawn_points(spawn_points)
 signal boss_spawned
+signal level_event_complete(level_event_name, event_number)
 signal level_complete
 
 func _disable_player_actions(to_disable):
@@ -40,8 +41,32 @@ func transition_to_new_scene(next_scene):
 
 
 onready var enemyPaths = {
+	'Misbeehave': 'res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn',
+	'BroBun': 'res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn',
+	'BroBear': 'res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn',
+	'Gunnerfly': 'res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly.tscn',
+	'OurGuy': 'res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.tscn',
+	'Satan': 'res://ActionLevels/LevelCreator/Enemies/Satan/Satan.tscn',
 	'PathedMisbeehave': 'res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn'
+}
+
+onready var level_collectibles = {
+	'Star': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn'
+}
+
+onready var level_platforms = {
+	1 : {
+		'LongTallPlatform': 'res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn',
+		'TallPlatform': 'res://ActionLevels/LevelCreator/Obstacles/Forest/TallPlatform.tscn',
+		'LowPlatform1': 'res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform1.tscn',
+		'LowPlatform2': 'res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform2.tscn',
+		'LowPlatform3': 'res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform3.tscn'
+	}
 }
 
 func get_enemy_paths():
 	return enemyPaths
+
+func get_level_platforms(level_number : int):
+	return level_platforms[level_number]
+

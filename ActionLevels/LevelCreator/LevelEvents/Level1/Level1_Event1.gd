@@ -16,6 +16,7 @@ func _ready():
 	self.add_child(wait_after_stopping_spawner_timer)
 	start_event_timer.start()
 	event_number = 1
+	event_name = 'Level1_Event1'
 
 func _on_wait_after_stopping_spawner_timer():
 	event_start()
@@ -41,3 +42,4 @@ func event_start() -> void:
 func end_event() -> void:
 	start_event_timer.stop()
 	enemy_spawner.start_enemy_spawner()
+	Events.emit_signal("level_event_complete", event_name, event_number)

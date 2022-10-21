@@ -12,7 +12,6 @@
 [ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform1.tscn" type="PackedScene" id=12]
-[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform3.tscn" type="PackedScene" id=13]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Labrador.tscn" type="PackedScene" id=14]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Golden.tscn" type="PackedScene" id=15]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Russel.tscn" type="PackedScene" id=16]
@@ -29,6 +28,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.tscn" type="PackedScene" id=27]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" type="PackedScene" id=28]
 [ext_resource path="res://ActionLevels/Level1/vhs_shader_level.tres" type="Material" id=29]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event2.tscn" type="PackedScene" id=30]
 
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource( 5 )
@@ -67,11 +67,11 @@ rotation = 1.5708
 scale = Vector2( 67.5, 10 )
 
 [node name="LongTallPlatform" parent="." instance=ExtResource( 6 )]
-position = Vector2( 876, 418 )
+position = Vector2( 876, 420 )
 scroll_speed = 500
 
 [node name="TallPlatform" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3127, 425 )
+position = Vector2( 3127, 420 )
 scroll_speed = 500
 
 [node name="Dogu1" parent="." instance=ExtResource( 9 )]
@@ -92,6 +92,7 @@ scroll_speed = 500
 [node name="EnemySpawner" parent="." instance=ExtResource( 11 )]
 unique_name_in_owner = true
 max_enemies_on_screen = 6
+seconds_until_boss = 120.0
 enemy_list = [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 22 ), ExtResource( 23 ) ]
 boss = ExtResource( 17 )
 
@@ -99,35 +100,11 @@ boss = ExtResource( 17 )
 unique_name_in_owner = true
 
 [node name="LowPlatform1" parent="." instance=ExtResource( 12 )]
-position = Vector2( 3777, 418 )
-scroll_speed = 500
-
-[node name="LowPlatform2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 5357, 421 )
-scroll_speed = 500
-
-[node name="LowPlatform3" parent="." instance=ExtResource( 12 )]
-position = Vector2( 6837, 420 )
-scroll_speed = 500
-
-[node name="LowPlatform4" parent="." instance=ExtResource( 13 )]
-position = Vector2( 7883, 429 )
-scroll_speed = 500
-
-[node name="LowPlatform5" parent="." instance=ExtResource( 13 )]
-position = Vector2( 14505, 434 )
+position = Vector2( 3777, 420 )
 scroll_speed = 500
 
 [node name="TallPlatform2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 10125, 432 )
-scroll_speed = 500
-
-[node name="TallPlatform3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 11151, 429 )
-scroll_speed = 500
-
-[node name="TallPlatform4" parent="." instance=ExtResource( 7 )]
-position = Vector2( 12837, 428 )
 scroll_speed = 500
 
 [node name="FullHUD" parent="." instance=ExtResource( 10 )]
@@ -150,3 +127,5 @@ charge_shot = ExtResource( 21 )
 [node name="LevelEventsManager" parent="." instance=ExtResource( 28 )]
 
 [node name="Level1_Event1" parent="LevelEventsManager" instance=ExtResource( 27 )]
+
+[node name="Level1_Event2" parent="LevelEventsManager" instance=ExtResource( 30 )]

@@ -1,9 +1,14 @@
 extends Node
 
-export (Array, PackedScene) var events_list
+var completed_events_map = {}
 onready var enemy_spawner = get_node("%EnemySpawner")
 
 func _ready():
-	print("enemy spawner in events manager ", enemy_spawner)
-#	for event in self.get_children():
-#		self.add_child(event.instance())
+	Events.connect("level_event_complete", self, "_on_level_event_complete")
+
+func _on_level_event_complete(level_event_name, level_event_number):
+	completed_events_map[level_event_number] = level_event_name
+	print("currently compeleted events are ", completed_events_map)
+
+func completed_events():
+	return completed_events_map

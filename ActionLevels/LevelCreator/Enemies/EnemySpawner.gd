@@ -110,6 +110,17 @@ func spawn_enemy_to_scene():
 		else:
 			print("No spawn points found!")
 
+func _direct_spawn_obstacle_at_position(obstacle: PackedScene, position: Vector2, scroll_speed):
+	var parent_node = self.get_parent()
+	var _obstacle_to_spawn = obstacle.instance()
+	if scroll_speed != null:
+		_obstacle_to_spawn.scroll_speed = default_scroll_speed
+	else:
+		_obstacle_to_spawn.scroll_speed = scroll_speed
+	_obstacle_to_spawn.position = position
+	parent_node.add_child(_obstacle_to_spawn)
+	#self.get_parent().call_deferred("add_child", _obstacle_to_spawn)
+
 func _direct_spawn_at_position(enemy: PackedScene, position: Vector2, speed):
 	var _direct_enemy_to_spawn = enemy.instance()
 	if !_direct_enemy_to_spawn.is_in_group("non_boss_enemy"):
