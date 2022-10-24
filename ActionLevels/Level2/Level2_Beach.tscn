@@ -1,0 +1,68 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://ActionLevels/backgrounds/LevelBeach.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=6]
+[ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=9]
+[ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sounds/level/beach/beach.wav" type="AudioStream" id=13]
+[ext_resource path="res://ActionLevels/Level2/Level2_Beach.gd" type="Script" id=14]
+
+[node name="Level2_Beach" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 102
+
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource( 7 )]
+visible = false
+
+[node name="LevelBackground" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
+
+[node name="VHS" parent="LevelBackground" instance=ExtResource( 8 )]
+
+[node name="Floor" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( -102, 1013 )
+scale = Vector2( 126.375, 10 )
+
+[node name="Backwall" parent="." instance=ExtResource( 3 )]
+visible = false
+rotation = 1.5708
+scale = Vector2( 67.5, 10 )
+
+[node name="Frontwall" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 1920, 0 )
+rotation = 1.5708
+scale = Vector2( 67.5, 10 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 247, 841 )
+gunshot = ExtResource( 6 )
+physical_attack = ExtResource( 5 )
+charge_shot = ExtResource( 4 )
+
+[node name="FullHUD" parent="." instance=ExtResource( 10 )]
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 9 )]
+unique_name_in_owner = true
+
+[node name="SpawnPaths" parent="." instance=ExtResource( 11 )]
+unique_name_in_owner = true
+
+[node name="LevelEventsManager" parent="." instance=ExtResource( 12 )]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -30.0
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]

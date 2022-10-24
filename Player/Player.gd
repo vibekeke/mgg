@@ -42,7 +42,7 @@ export var horizontal_movement_speed := 600.0
 export var max_jump_height : float = 500.0
 export var min_jump_height : float = 200.0
 export var jump_time_to_peak : float = 0.6
-export var jump_time_to_descent : float = 0.45
+export var jump_time_to_descent : float = 0.4
 export var float_time_to_descent : float = 4.0
 export var fast_fall_time_to_descent : float = 0.3
 

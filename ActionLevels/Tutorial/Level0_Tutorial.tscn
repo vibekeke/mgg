@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/Tutorial/Level0_Tutorial.gd" type="Script" id=4]
 [ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=5]

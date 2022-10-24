@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ActionLevels/Level1/Level1_Forest.gd" type="Script" id=5]
@@ -12,6 +12,7 @@
 [ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=13]
 [ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sounds/level/forest/forest1.wav" type="AudioStream" id=18]
 [ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=19]
@@ -24,7 +25,6 @@
 [ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=26]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.tscn" type="PackedScene" id=27]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" type="PackedScene" id=28]
-[ext_resource path="res://ActionLevels/Level1/vhs_shader_level.tres" type="Material" id=29]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event2.tscn" type="PackedScene" id=30]
 
 [node name="Level1_Forest" type="Node2D"]
@@ -41,14 +41,10 @@ visible = false
 unique_name_in_owner = true
 layer = 100
 
-[node name="VHS" type="ColorRect" parent="LevelBackground"]
-unique_name_in_owner = true
-material = ExtResource( 29 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
+[node name="VHS" parent="LevelBackground" instance=ExtResource( 13 )]
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( -102, 1013 )
 scale = Vector2( 126.375, 10 )
 
@@ -101,7 +97,6 @@ volume_db = -30.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 247, 841 )
-jump_time_to_descent = 0.4
 debug_mode = true
 gunshot = ExtResource( 20 )
 physical_attack = ExtResource( 19 )
