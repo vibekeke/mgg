@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.gd" type="Script" id=1]
+
+[node name="OurGuy" type="Node"]
+script = ExtResource( 1 )

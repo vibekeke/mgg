@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventBoss.gd" type="Script" id=1]
+
+[node name="Level1_EventBoss" type="Node"]
+script = ExtResource( 1 )

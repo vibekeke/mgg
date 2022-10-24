@@ -18,7 +18,6 @@ func _ready():
 	if belongs_to_player == false:
 		var area2d = $EnemyGunshotArea2D
 		if area2d != null:
-			area2d.connect("body_entered", self, "_on_call_body_entered")
 			area2d.connect("area_entered", self, "_on_call_area_entered")
 
 func _on_call_area_entered(area):
@@ -31,12 +30,6 @@ func _on_call_area_entered(area):
 		belongs_to_player = true
 		move_rightward = true
 		speed = speed * 1.10
-
-func _on_call_body_entered(body):
-	print("body entered was ", body.name)
-#	if body.name == 'Player' and belongs_to_player == false:
-#		Events.emit_signal("collided_with_player", 1)
-#		self.queue_free()
 
 func num_to_enum(number):
 	return enum_map.get(number, ANGLE.FORWARD_B)

@@ -80,5 +80,4 @@ animations = [ {
 material = ExtResource( 2 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 14 )
-frame = 12
 playing = true

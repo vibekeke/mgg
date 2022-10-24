@@ -1,6 +1,5 @@
 extends LevelEvent
 
-onready var event_timer = Timer.new()
 onready var enemy_spawner = get_node("%EnemySpawner")
 var start_event_timer = Timer.new()
 var wait_after_stopping_spawner_timer = Timer.new()
@@ -34,7 +33,7 @@ func event_start() -> void:
 		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 799), 300)
 		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 899), 300)
 		var new_dialog = Dialogic.start('Level1Event1')
-		self.add_child(new_dialog)
+		self.get_parent().add_child(new_dialog)
 		end_event()
 	else:
 		print("enemy spawner is null")
@@ -43,3 +42,4 @@ func end_event() -> void:
 	start_event_timer.stop()
 	enemy_spawner.start_enemy_spawner()
 	Events.emit_signal("level_event_complete", event_name, event_number)
+	self.queue_free()

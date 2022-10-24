@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/Level1/Floor.tscn" type="PackedScene" id=2]
@@ -8,13 +8,10 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/TallPlatform.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=8]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event3.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform1.tscn" type="PackedScene" id=12]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Labrador.tscn" type="PackedScene" id=14]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Golden.tscn" type="PackedScene" id=15]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Russel.tscn" type="PackedScene" id=16]
 [ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sounds/level/forest/forest1.wav" type="AudioStream" id=18]
 [ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=19]
@@ -40,11 +37,11 @@ layer = 102
 [node name="PauseMenu" parent="PauseLayer" instance=ExtResource( 25 )]
 visible = false
 
-[node name="LevelForest" parent="." instance=ExtResource( 1 )]
+[node name="LevelBackground" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
 layer = 100
 
-[node name="VHS" type="ColorRect" parent="LevelForest"]
+[node name="VHS" type="ColorRect" parent="LevelBackground"]
 unique_name_in_owner = true
 material = ExtResource( 29 )
 anchor_right = 1.0
@@ -52,7 +49,6 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
-visible = false
 position = Vector2( -102, 1013 )
 scale = Vector2( 126.375, 10 )
 
@@ -73,21 +69,6 @@ scroll_speed = 500
 
 [node name="TallPlatform" parent="." instance=ExtResource( 7 )]
 position = Vector2( 3127, 420 )
-scroll_speed = 500
-
-[node name="Dogu1" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1529, 467 )
-dog_sprite = ExtResource( 15 )
-scroll_speed = 500
-
-[node name="Dogu2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 3393, 483 )
-dog_sprite = ExtResource( 14 )
-scroll_speed = 500
-
-[node name="Dogu3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 10424, 468 )
-dog_sprite = ExtResource( 16 )
 scroll_speed = 500
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 11 )]
@@ -121,6 +102,7 @@ volume_db = -30.0
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 247, 841 )
 jump_time_to_descent = 0.4
+debug_mode = true
 gunshot = ExtResource( 20 )
 physical_attack = ExtResource( 19 )
 charge_shot = ExtResource( 21 )
@@ -130,3 +112,5 @@ charge_shot = ExtResource( 21 )
 [node name="Level1_Event1" parent="LevelEventsManager" instance=ExtResource( 27 )]
 
 [node name="Level1_Event2" parent="LevelEventsManager" instance=ExtResource( 30 )]
+
+[node name="Level1_Event3" parent="LevelEventsManager" instance=ExtResource( 9 )]

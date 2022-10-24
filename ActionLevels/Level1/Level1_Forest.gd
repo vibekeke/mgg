@@ -3,7 +3,7 @@ extends Node2D
 onready var spawn_paths = $SpawnPaths
 onready var background_music = $BackgroundMusic
 onready var boss_music = $BossMusic
-onready var level_background = get_node("%LevelForest")
+onready var level_background = get_node("%LevelBackground")
 onready var boss = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
 export var mute_audio = false # temporary
 

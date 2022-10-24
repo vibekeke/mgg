@@ -577,7 +577,7 @@ animation = "run"
 [sub_resource type="AnimationNodeTimeScale" id=52]
 
 [sub_resource type="AnimationNodeBlendTree" id=53]
-graph_offset = Vector2( -156.06, 7.935 )
+graph_offset = Vector2( -361, 55.545 )
 nodes/Animation/node = SubResource( 51 )
 nodes/Animation/position = Vector2( -60, 140 )
 nodes/TimeScale/node = SubResource( 52 )
@@ -670,7 +670,7 @@ states/Slide/node = SubResource( 249 )
 states/Slide/position = Vector2( 200.3, -109.547 )
 transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 239 ), "AboutToFall", "Landing", SubResource( 240 ), "Run", "Slide", SubResource( 253 ), "Slide", "RisingLoop", SubResource( 254 ), "Landing", "Slide", SubResource( 256 ), "Slide", "Run", SubResource( 257 ), "Run", "Melee_1", SubResource( 292 ), "Run", "Melee_2", SubResource( 293 ), "Melee_1", "Run", SubResource( 294 ), "Melee_2", "Run", SubResource( 295 ), "FallingLoop", "Melee_2", SubResource( 298 ), "Melee_2", "FallingLoop", SubResource( 299 ), "Melee_2", "Landing", SubResource( 300 ), "RisingLoop", "Melee_2", SubResource( 302 ), "AboutToFall", "Melee_2", SubResource( 303 ), "Landing", "Melee_2", SubResource( 304 ) ]
 start_node = "Run"
-graph_offset = Vector2( -1076.8, -190.283 )
+graph_offset = Vector2( -1121.38, -202.095 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=128]
 
@@ -1197,7 +1197,7 @@ states/Slide/node = SubResource( 266 )
 states/Slide/position = Vector2( 117.315, -88.559 )
 transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 241 ), "AboutToFall", "Landing", SubResource( 242 ), "Run", "Slide", SubResource( 267 ), "Slide", "Run", SubResource( 268 ), "Slide", "RisingLoop", SubResource( 269 ), "Landing", "Slide", SubResource( 270 ), "Melee_2", "Run", SubResource( 316 ), "Run", "Melee_2", SubResource( 317 ), "Melee_2", "FallingLoop", SubResource( 318 ), "FallingLoop", "Melee_2", SubResource( 319 ), "Landing", "Melee_2", SubResource( 320 ), "Melee_2", "Landing", SubResource( 321 ), "RisingLoop", "Melee_2", SubResource( 322 ), "AboutToFall", "Melee_2", SubResource( 323 ) ]
 start_node = "Run"
-graph_offset = Vector2( -1189.98, -117.026 )
+graph_offset = Vector2( -814.08, -164.276 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=197]
 
@@ -1755,14 +1755,13 @@ parameters/Landing/TimeScale/scale = 1.0
 parameters/Melee_1/TimeScale/scale = 1.0
 parameters/Melee_2/TimeScale/scale = 1.0
 parameters/RisingLoop/TimeScale/scale = 1.0
-parameters/Run/TimeScale/scale = 1.0
+parameters/Run/TimeScale/scale = 0.9
 parameters/Slide/TimeScale/scale = 1.0
 
 [node name="StaffUp" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 189 )
-animation = "run"
-frame = 12
+animation = "melee_2"
 playing = true
 __meta__ = {
 "_edit_group_": true,
@@ -1789,14 +1788,14 @@ parameters/FallingLoop/TimeScale/scale = 1.0
 parameters/Landing/TimeScale/scale = 1.0
 parameters/Melee_2/TimeScale/scale = 1.0
 parameters/RisingLoop/TimeScale/scale = 1.0
-parameters/Run/TimeScale/scale = 1.0
+parameters/Run/TimeScale/scale = 0.9
 parameters/Slide/TimeScale/scale = 1.0
 
 [node name="StaffDown" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 228 )
 animation = "run"
-frame = 12
+frame = 5
 playing = true
 __meta__ = {
 "_edit_group_": true,
@@ -1823,7 +1822,7 @@ parameters/FallingLoop/TimeScale/scale = 1.0
 parameters/Landing/TimeScale/scale = 1.0
 parameters/Melee_2/TimeScale/scale = 1.0
 parameters/RisingLoop/TimeScale/scale = 1.0
-parameters/Run/TimeScale/scale = 1.0
+parameters/Run/TimeScale/scale = 0.9
 parameters/Slide/TimeScale/scale = 1.0
 
 [node name="BulletFire" type="AudioStreamPlayer" parent="."]

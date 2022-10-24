@@ -139,6 +139,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.gd"
 }, {
+"base": "Node",
+"class": "OurGuy",
+"language": "GDScript",
+"path": "res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.gd"
+}, {
 "base": "MarginContainer",
 "class": "ParameterGroup",
 "language": "GDScript",
@@ -158,6 +163,11 @@ _global_script_classes=[ {
 "class": "SceneManager",
 "language": "GDScript",
 "path": "res://Autoload/SceneManager.gd"
+}, {
+"base": "Node",
+"class": "SneakySnake",
+"language": "GDScript",
+"path": "res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake_logic.gd"
 } ]
 _global_script_class_icons={
 "BHBullet": "",
@@ -186,10 +196,12 @@ _global_script_class_icons={
 "Hurtable": "",
 "LevelEvent": "",
 "Misbeehave": "",
+"OurGuy": "",
 "ParameterGroup": "",
 "PathedMisbeehave": "",
 "QuitIcon": "",
-"SceneManager": ""
+"SceneManager": "",
+"SneakySnake": ""
 }
 
 [application]

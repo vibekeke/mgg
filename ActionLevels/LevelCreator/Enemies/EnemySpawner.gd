@@ -12,7 +12,7 @@ onready var until_boss_timer = Timer.new()
 onready var enemies_spawned = 0
 onready var rng = RandomNumberGenerator.new()
 onready var spawn_paths = get_node("%SpawnPaths")
-onready var level_background = get_node("%LevelForest")
+onready var level_background = get_node("%LevelBackground")
 
 var enemy_to_spawn = null
 var spawn_points = {}
@@ -70,7 +70,7 @@ func enemy_to_spawn_next():
 		enemy_to_spawn = enemy_list[randi() % enemy_list.size()]
 		spawn_enemy_to_scene()
 
-func spawn_at_valid_height(_enemy_to_spawn):
+func spawn_at_valid_height(_enemy_to_spawn) -> Vector2:
 	rng.randomize()
 	var spawn_height = _enemy_to_spawn.spawn_height
 	match spawn_height:
@@ -92,6 +92,12 @@ func spawn_at_valid_height(_enemy_to_spawn):
 		DataClasses.SpawnHeight.HIGH_LOW:
 			var valid_points = [spawn_points.get(DataClasses.SpawnHeight.HIGH_ONLY), spawn_points.get(DataClasses.SpawnHeight.LOW_ONLY)]
 			return valid_points[rng.randi_range(0, valid_points.size() - 1)]
+		DataClasses.SpawnHeight.GROUND_ONLY:		
+			if _enemy_to_spawn.custom_grounded_spawn_point != null:
+				return _enemy_to_spawn.custom_grounded_spawn_point
+			else:
+				print_debug("Couldnt find point for grounded enemy, estimating height to spawn")
+				return Vector2(2006, 951)
 		_:
 			var all_points = spawn_points.values()
 			return all_points[rng.randi_range(0, all_points.size() - 1)]
@@ -121,6 +127,18 @@ func _direct_spawn_obstacle_at_position(obstacle: PackedScene, position: Vector2
 	_obstacle_to_spawn.position = position
 	parent_node.add_child(_obstacle_to_spawn)
 	#self.get_parent().call_deferred("add_child", _obstacle_to_spawn)
+
+func _direct_spawn_dog(dog: PackedScene, dogType: String, position: Vector2, speed, disabled_float):
+	var parent_node = self.get_parent()
+	var _dog = dog.instance()
+	if speed != null:
+		_dog.scroll_speed = speed
+	else:
+		_dog.scroll_speed = default_scroll_speed
+	_dog.set_dogu(dogType)
+	_dog.disable_float(disabled_float)
+	_dog.position = position
+	parent_node.add_child(_dog)
 
 func spawn_to_background_element(element: PackedScene, background_element_name: String, position: Vector2, scroll_speed):
 	var parent_node = self.get_parent()

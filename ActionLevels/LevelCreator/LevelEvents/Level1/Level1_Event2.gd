@@ -1,30 +1,34 @@
 extends LevelEvent
 
-onready var event_timer = Timer.new()
 onready var enemy_spawner = get_node("%EnemySpawner")
-var start_event_timer = Timer.new()
-var spawn_enemies_timer = Timer.new()
-var spawn_platforms_timer = Timer.new()
-var spawn_background_enemies_timer = Timer.new()
-var wait_after_stopping_spawner_timer = Timer.new()
+onready var start_event_timer = Timer.new()
+onready var spawn_enemies_timer = Timer.new()
+onready var spawn_platforms_timer = Timer.new()
+onready var spawn_background_enemies_timer = Timer.new()
+onready var wait_after_stopping_spawner_timer = Timer.new()
+export var time_until_event_start = 10.0
 var num_background_enemies_spawned = 0
 var num_enemies_spawned = 0
 var num_platforms_spawned = 0
 var enemy_spawn_start = false
 var background_enemy_spawn_start = false
 var platform_spawn_place = Vector2(2200, 420)
+var enemy_spawn_place = Vector2(2200, 799)
+var background_enemy_spawn_place = Vector2(0, 861)
+var enemy_speed = 1500
+var platform_scroll_speed = 500
 
 func _ready():
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
 	event_number = 2
-	event_name = 'Level1_Event2'
+	event_name = "Level1_Event2"
 
 func _on_level_event_complete(level_event_name, level_event_number):
 	if level_event_number == 1:
 		
 		start_event_timer.set_name(event_name + "_start_timer")
 		start_event_timer.connect("timeout", self, "trigger")
-		start_event_timer.set_wait_time(10.0)
+		start_event_timer.set_wait_time(time_until_event_start)
 		start_event_timer.set_one_shot(true)
 		
 		wait_after_stopping_spawner_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
@@ -66,7 +70,7 @@ func trigger() -> void:
 
 func _on_spawn_platforms_timer() -> void:
 	var platform_to_spawn : PackedScene = load(Events.get_level_platforms(1).get('LowPlatform3'))
-	enemy_spawner._direct_spawn_obstacle_at_position(platform_to_spawn, platform_spawn_place, 500)
+	enemy_spawner._direct_spawn_obstacle_at_position(platform_to_spawn, platform_spawn_place, platform_scroll_speed)
 	if !background_enemy_spawn_start:
 		background_enemy_spawn_start = true
 		spawn_background_enemies_timer.start()
@@ -77,14 +81,14 @@ func _on_spawn_platforms_timer() -> void:
 
 func _on_spawn_background_enemies_timer() -> void:
 	var background_element_to_spawn = load(Events.get_level_background_elements(1).get('BeeBackground'))
-	enemy_spawner.spawn_to_background_element(background_element_to_spawn, 'BackForestBackground', Vector2(0, 861), 1500)
+	enemy_spawner.spawn_to_background_element(background_element_to_spawn, 'BackForestBackground', background_enemy_spawn_place, enemy_speed)
 	num_background_enemies_spawned += 1
 	if num_background_enemies_spawned >= 30:
 		spawn_background_enemies_timer.stop()
 
 func _on_spawn_enemies_timer() -> void:
 	var enemy_to_spawn = load(Events.get_enemy_paths().get('Misbeehave'))
-	enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 799), 1500)
+	enemy_spawner._direct_spawn_at_position(enemy_to_spawn, enemy_spawn_place, enemy_speed)
 	num_enemies_spawned += 1
 	if num_enemies_spawned >= 30:
 		spawn_enemies_timer.stop()

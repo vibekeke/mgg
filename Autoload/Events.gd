@@ -22,6 +22,7 @@ signal collected_heart
 signal collected_dog(dog_type)
 
 # level related
+signal enemy_taken_damage(enemy, health_value)
 signal regular_enemy_death
 signal level_spawn_points(spawn_points)
 signal boss_spawned
@@ -47,11 +48,14 @@ onready var enemyPaths = {
 	'Gunnerfly': 'res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly.tscn',
 	'OurGuy': 'res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.tscn',
 	'Satan': 'res://ActionLevels/LevelCreator/Enemies/Satan/Satan.tscn',
-	'PathedMisbeehave': 'res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn'
+	'PathedMisbeehave': 'res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn',
+	'SneakySnake': 'res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake.tscn',
 }
 
 onready var level_collectibles = {
-	'Star': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn'
+	'Star': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn',
+	'CollectibleHeart': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn',
+	'Dogu': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu.tscn'
 }
 
 onready var level_background_elements = {
@@ -80,3 +84,5 @@ func get_level_platforms(level_number : int):
 func get_level_background_elements(level_number: int):
 	return level_background_elements[level_number]
 
+func get_level_collectible(collectible: String):
+	return level_collectibles[collectible]

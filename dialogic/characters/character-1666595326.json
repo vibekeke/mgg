@@ -1,0 +1,21 @@
+{
+	"color": "#ff460766",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1666595326.json",
+	"mirror_portraits": false,
+	"name": "Big Bird of Darkness",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		}
+	],
+	"scale": 100,
+	"theme": "theme-1666595376.cfg"
+}

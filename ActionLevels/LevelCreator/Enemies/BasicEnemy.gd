@@ -4,6 +4,7 @@ extends Node2D
 onready var death_explosion = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/AnimatedEnemyExplosion.tscn")
 
 export(DataClasses.SpawnHeight) var spawn_height = DataClasses.SpawnHeight.ANY
+export (Vector2) var custom_grounded_spawn_point
 
 export (float) var initial_scroll_speed
 export (int) var health_value = 1
@@ -11,12 +12,15 @@ export (PackedScene) var enemy_logic
 export (bool) var is_boss = false
 export (bool) var debug_mode = false
 export (bool) var has_non_queue_free_rotator = false # hack to ensure rotator and children arent killed during queue free
+export (Array, PackedScene) var droppables
 
 onready var enemy_follower = $Path2D/PathFollow2D
 onready var area2d = $Path2D/PathFollow2D/Area2D
 onready var sprite = $Path2D/PathFollow2D/Area2D/AnimatedSprite
 onready var collision_shape = $Path2D/PathFollow2D/Area2D/CollisionShape2D
 onready var visibility_notifier = $Path2D/PathFollow2D/Area2D/VisibilityNotifier2D
+
+onready var rng = RandomNumberGenerator.new()
 
 var player_local_position = Vector2(0,0)
 var player_global_position = Vector2(0,0)
@@ -31,6 +35,7 @@ var damage_timer = Timer.new()
 var eventually_queue_free_timer = Timer.new()
 
 func _ready():
+	rng.randomize()
 	if enemy_logic != null:
 		enemy_logic_instance = enemy_logic.instance()
 		if "debug_mode" in enemy_logic_instance:
@@ -67,6 +72,13 @@ func _on_damage_timer():
 	sprite.modulate = Color(1,1,1,1)
 	damage_timer.stop()
 
+func spawn_possible_collectible(death_position: Vector2):
+	if rng.randi_range(0, 10) < 3:
+		var _collectible_to_spawn = droppables[randi() % droppables.size()].instance()
+		_collectible_to_spawn.position = death_position
+		get_tree().get_root().add_child(_collectible_to_spawn)
+
+
 func call_death(count_as_regular_death: bool):
 	if count_as_regular_death:
 		Events.emit_signal("regular_enemy_death")
@@ -77,11 +89,14 @@ func call_death(count_as_regular_death: bool):
 	if is_instance_valid(area2d):
 		active_death_explosion_node = death_explosion.instance()
 		active_death_explosion_node.add_to_group("death_explosion")
-		active_death_explosion_node.position = area2d.position
+		var death_position = area2d.position
+		var death_global_position = area2d.global_position
+		active_death_explosion_node.position = death_position
 		active_death_explosion_node.connect("animation_finished", self, "_on_explosion_finished")
 		area2d.add_child(active_death_explosion_node)
 		sprite.visible = false
 		active_death_explosion_node.play("default", false)
+		spawn_possible_collectible(death_global_position)
 
 func _on_explosion_finished():
 	if !has_non_queue_free_rotator:
@@ -104,6 +119,7 @@ func take_damage(damage_value:= 1):
 	if !is_boss:
 		self.position.x = self.position.x + 5 # slight knockback if not a boss
 	health_value -= damage_value
+	Events.emit_signal("enemy_taken_damage", self, health_value)
 	if health_value <= 0:
 		call_deferred("call_death", true)
 
@@ -119,7 +135,6 @@ func _on_call_area_entered(player_bullet):
 		if "player_charge_shot" in parent_groups:
 			if !has_invulnerability:
 				hit_times += 1
-				print("ow hit ", hit_times, " times")
 				take_damage()
 		elif "player_bullet" in parent_groups:
 			if player_bullet.get_parent().belongs_to_player != null:
