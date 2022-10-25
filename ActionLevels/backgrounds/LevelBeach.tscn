@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelBeach.gd" type="Script" id=1]
 [ext_resource path="res://imported_assets/backgrounds/beach/BG_Beach_1-sky.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://imported_assets/backgrounds/beach/BG_Beach_4-Background.png" type="Texture" id=4]
 [ext_resource path="res://imported_assets/backgrounds/beach/BG_Beach_3-Middleground.png" type="Texture" id=5]
 [ext_resource path="res://imported_assets/backgrounds/beach/BG_Beach_2-Foreground.png" type="Texture" id=6]
+[ext_resource path="res://ActionLevels/backgrounds/SmallElements/Sun.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ActionLevels/backgrounds/SmallElements/SunShine.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ArrayMesh" id=1]
 surfaces/0 = {
@@ -85,6 +87,10 @@ motion_mirroring = Vector2( 3840, 0 )
 mesh = SubResource( 1 )
 texture = ExtResource( 2 )
 
+[node name="Sun" parent="SkyBackground" instance=ExtResource( 7 )]
+position = Vector2( 932, 490 )
+scale = Vector2( 0.9, 0.9 )
+
 [node name="CloudBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="CloudBackground"]
@@ -124,3 +130,6 @@ motion_mirroring = Vector2( 3840, 0 )
 [node name="Sprite" type="MeshInstance2D" parent="BeachForeground/ParallaxLayer"]
 mesh = SubResource( 5 )
 texture = ExtResource( 6 )
+
+[node name="SunShine" parent="BeachForeground" instance=ExtResource( 8 )]
+position = Vector2( 933, 612 )

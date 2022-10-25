@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Luftbalong.png-f6f3090acdd6aec5738998c5b4dd4ea5.stex"
+path="res://.import/Luftballong.png-25123d123ad03ee851c5b797c8e2c3b7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imported_assets/actors/luftballong/Luftbalong.png"
-dest_files=[ "res://.import/Luftbalong.png-f6f3090acdd6aec5738998c5b4dd4ea5.stex" ]
+source_file="res://imported_assets/actors/luftballong/Luftballong.png"
+dest_files=[ "res://.import/Luftballong.png-25123d123ad03ee851c5b797c8e2c3b7.stex" ]
 
 [params]
 
