@@ -28,6 +28,7 @@ signal level_spawn_points(spawn_points)
 signal boss_spawned
 signal level_event_complete(level_event_name, event_number)
 signal level_complete
+signal background_element_offscreen(element_name)
 
 func _disable_player_actions(to_disable):
 	# for tutorial and other stuff, e.g. boss loading?
@@ -74,6 +75,13 @@ onready var level_platforms = {
 		'LowPlatform3': 'res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform3.tscn'
 	}
 }
+
+onready var bossPaths = {
+	'BigBird': 'res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn'
+}
+
+func get_boss(boss_name : String):
+	return bossPaths[boss_name]
 
 func get_enemy_paths():
 	return enemyPaths

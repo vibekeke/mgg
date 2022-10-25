@@ -1,3 +1,5 @@
 class_name DataClasses
 
 enum SpawnHeight { HIGH_ONLY, MED_ONLY, LOW_ONLY, HIGH_MED, HIGH_LOW, MED_LOW, ANY, GROUND_ONLY }
+
+enum Boss { BIG_BIRD, BANJO_FISH, ICE_PRINCE }

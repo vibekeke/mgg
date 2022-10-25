@@ -140,6 +140,17 @@ func _direct_spawn_dog(dog: PackedScene, dogType: String, position: Vector2, spe
 	_dog.position = position
 	parent_node.add_child(_dog)
 
+func spawn_instanced_background_element(element,  background_element_name: String, position: Vector2, scroll_speed):
+	var parent_node = self.get_parent()
+	if parent_node != null:
+		element.position = position
+		if "initial_speed" in element:
+			element.initial_speed = scroll_speed
+		if "scroll_speed" in element:
+			element.scroll_speed = scroll_speed
+		level_background.get_node_or_null(background_element_name).add_child(element)	
+
+
 func spawn_to_background_element(element: PackedScene, background_element_name: String, position: Vector2, scroll_speed):
 	var parent_node = self.get_parent()
 	if parent_node != null:
@@ -167,6 +178,23 @@ func kill_non_boss_enemies():
 	for enemy in non_boss_enemies:
 		if enemy.has_method("call_death") and is_instance_valid(enemy):
 			enemy.call_death(false)
+
+func _direct_instanced_boss_at_position(boss: PackedScene, position: Vector2, speed):
+	var parent_node = self.get_parent()
+	if parent_node != null && boss != null:
+		boss.add_to_group("boss_enemy")
+		boss.global_position = position
+		parent_node.add_child(boss)
+		Events.emit_signal("boss_spawned")
+
+func _direct_spawn_boss_at_position(boss: PackedScene, position: Vector2, speed):
+	var parent_node = self.get_parent()
+	if parent_node != null && boss != null:
+		var _boss_to_spawn = boss.instance()
+		_boss_to_spawn.add_to_group("boss_enemy")
+		_boss_to_spawn.global_position = position
+		parent_node.add_child(_boss_to_spawn)
+		Events.emit_signal("boss_spawned")
 
 func spawn_boss_to_scene():
 	var parent_node = self.get_parent()

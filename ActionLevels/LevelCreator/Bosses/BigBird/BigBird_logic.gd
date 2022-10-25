@@ -10,8 +10,9 @@ export (int) var radius = 100
 export (float) var projectile_speed = 100.0
 var debug_mode = false
 var intro_complete = false
-var shadow_modulate = Color(0.0,0.0,0.0)
+
 var initial_color_value = 0.0
+var initial_alpha_value = 0.0
 
 onready var parent_node = self.get_parent()
 onready var initial_health_value: int = parent_node.health_value
@@ -52,10 +53,15 @@ const phase_patterns = {
 }
 
 func play_intro(delta):
-	if initial_color_value < 1.0:
+	if initial_alpha_value < 1.0:
+		initial_alpha_value = initial_alpha_value + delta * 0.5
+		initial_alpha_value = clamp(initial_alpha_value, 0.0, 1.0)
+		parent_node.modulate = Color(0, 0, 0, initial_alpha_value)
+		parent_node.has_invulnerability = true
+	elif initial_color_value < 1.0:
 		initial_color_value = initial_color_value + delta * 0.5
 		initial_color_value = clamp(initial_color_value, 0.0, 1.0)
-		parent_node.modulate = Color(initial_color_value, initial_color_value, initial_color_value)
+		parent_node.modulate = Color(initial_color_value, initial_color_value, initial_color_value, initial_alpha_value)
 		parent_node.has_invulnerability = true
 	else:
 		intro_complete = true
