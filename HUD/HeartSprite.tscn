@@ -90,7 +90,7 @@ script = ExtResource( 2 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 13 )
 animation = "dead"
-frame = 2
+frame = 1
 playing = true
 centered = false
 

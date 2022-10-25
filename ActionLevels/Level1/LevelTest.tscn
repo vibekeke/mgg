@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=9]
@@ -45,7 +46,6 @@ visible = false
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 11 )]
 unique_name_in_owner = true
-enemy_list = [ ExtResource( 6 ) ]
 
 [node name="LevelBackground" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -53,3 +53,53 @@ unique_name_in_owner = true
 [node name="SpawnPaths" parent="." instance=ExtResource( 9 )]
 unique_name_in_owner = true
 position = Vector2( -732.053, -1.421 )
+
+[node name="CollectibleHeart" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1704, 935 )
+
+[node name="CollectibleHeart3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1354, 676 )
+
+[node name="CollectibleHeart6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 636, 677 )
+
+[node name="CollectibleHeart4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 831, 656 )
+
+[node name="CollectibleHeart5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1071, 883 )
+
+[node name="CollectibleHeart2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1463, 800 )
+
+[node name="Misbeehave" parent="." instance=ExtResource( 6 )]
+position = Vector2( 637, 807 )
+initial_scroll_speed = 0.0
+
+[node name="Misbeehave3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1716, 619 )
+initial_scroll_speed = 0.0
+
+[node name="Misbeehave4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1719, 796 )
+initial_scroll_speed = 0.0
+
+[node name="Misbeehave5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 763, 883 )
+initial_scroll_speed = 0.0
+
+[node name="Misbeehave6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 707, 493 )
+initial_scroll_speed = 0.0
+
+[node name="Misbeehave7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1494, 925 )
+initial_scroll_speed = 0.0
+
+[node name="Misbeehave2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1220, 786 )
+initial_scroll_speed = 0.0
+
+[node name="Misbeehave8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1329, 919 )
+initial_scroll_speed = 0.0

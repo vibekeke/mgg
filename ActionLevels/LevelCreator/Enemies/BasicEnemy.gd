@@ -73,7 +73,7 @@ func _on_damage_timer():
 	damage_timer.stop()
 
 func spawn_possible_collectible(death_position: Vector2):
-	if rng.randi_range(0, 10) < 3:
+	if rng.randi_range(0, 10) < 3 and droppables.size() > 0:
 		var _collectible_to_spawn = droppables[randi() % droppables.size()].instance()
 		_collectible_to_spawn.position = death_position
 		get_tree().get_root().add_child(_collectible_to_spawn)

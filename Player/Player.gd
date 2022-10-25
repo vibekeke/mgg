@@ -291,17 +291,18 @@ func _on_collided_with_player(damage):
 		return
 	if invul_timer.is_stopped():
 		current_health = current_health - damage
+		Events.emit_signal("player_damaged", damage)
+		Events.emit_signal("player_current_health", current_health)
 		invul_timer.start()
 		modulate.a = 0.5
 		if current_health <= 0:
-			Events.emit_signal("player_damaged", damage)
 			Events.emit_signal("game_over")
 			self.queue_free()
-		else:
-			Events.emit_signal("player_damaged", damage)
+			
 
 func _on_collected_heart():
 	current_health = clamp(current_health + 1, 0, max_health)
+	Events.emit_signal("player_current_health", current_health)
 
 func _physics_process(delta):
 	if is_on_floor() and is_sliding:
