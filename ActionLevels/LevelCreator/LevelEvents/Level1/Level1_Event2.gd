@@ -18,7 +18,7 @@ var background_enemy_spawn_place = Vector2(0, 861)
 var enemy_speed = 1500
 var platform_scroll_speed = 500
 
-onready var enemy_to_spawn = load(Events.get_enemy_paths().get('Misbeehave'))
+onready var enemy_to_spawn = preload("res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn")
 onready var background_element_to_spawn = load(Events.get_level_background_elements(1).get('BeeBackground'))
 
 func _ready():

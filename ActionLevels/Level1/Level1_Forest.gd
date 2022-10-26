@@ -5,6 +5,8 @@ onready var background_music = $BackgroundMusic
 onready var boss_music = $BossMusic
 onready var level_background = get_node("%LevelBackground")
 onready var boss = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
+onready var boss_background = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn")
+
 export var mute_audio = false # temporary
 
 func _ready():
@@ -24,7 +26,6 @@ func _ready():
 			background_music.play()
 
 func add_initial_background_element():
-	var boss_background = load(Events.get_level_background_elements(1).get('BigBackground'))
 	if boss_background != null:
 		var _boss_background = boss_background.instance()
 		_boss_background.position = Vector2(0, 450)

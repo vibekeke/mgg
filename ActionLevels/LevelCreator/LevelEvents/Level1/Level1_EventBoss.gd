@@ -7,8 +7,11 @@ onready var start_event_timer = Timer.new()
 onready var end_event_timer = Timer.new()
 onready var wait_after_stopping_spawner_timer = Timer.new()
 onready var boss_background_swoop_timer = Timer.new()
-onready var boss_background_to_spawn : PackedScene = load(Events.get_level_background_elements(1).get('BigBackground'))
-onready var boss : PackedScene = load(Events.get_boss('BigBird'))
+
+#onready var boss_background_to_spawn : PackedScene = load(Events.get_level_background_elements(1).get('BigBackground'))
+#onready var boss : PackedScene = load(Events.get_boss('BigBird'))
+onready var boss_background_to_spawn : PackedScene = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn")
+onready var boss : PackedScene = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
 
 var background_boss_spawn_place = Vector2(-500, 700)
 var background_boss_speed = 2000
