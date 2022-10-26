@@ -18,6 +18,9 @@ var background_enemy_spawn_place = Vector2(0, 861)
 var enemy_speed = 1500
 var platform_scroll_speed = 500
 
+onready var enemy_to_spawn = load(Events.get_enemy_paths().get('Misbeehave'))
+onready var background_element_to_spawn = load(Events.get_level_background_elements(1).get('BeeBackground'))
+
 func _ready():
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
 	event_number = 2
@@ -80,14 +83,12 @@ func _on_spawn_platforms_timer() -> void:
 		spawn_enemies_timer.start()
 
 func _on_spawn_background_enemies_timer() -> void:
-	var background_element_to_spawn = load(Events.get_level_background_elements(1).get('BeeBackground'))
 	enemy_spawner.spawn_to_background_element(background_element_to_spawn, 'BackForestBackground', background_enemy_spawn_place, enemy_speed)
 	num_background_enemies_spawned += 1
 	if num_background_enemies_spawned >= 30:
 		spawn_background_enemies_timer.stop()
 
 func _on_spawn_enemies_timer() -> void:
-	var enemy_to_spawn = load(Events.get_enemy_paths().get('Misbeehave'))
 	enemy_spawner._direct_spawn_at_position(enemy_to_spawn, enemy_spawn_place, enemy_speed)
 	num_enemies_spawned += 1
 	if num_enemies_spawned >= 30:

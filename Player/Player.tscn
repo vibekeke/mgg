@@ -1761,7 +1761,8 @@ parameters/Slide/TimeScale/scale = 1.0
 [node name="StaffUp" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 189 )
-animation = "melee_2"
+animation = "run"
+frame = 12
 playing = true
 __meta__ = {
 "_edit_group_": true,
@@ -1795,7 +1796,7 @@ parameters/Slide/TimeScale/scale = 1.0
 visible = false
 frames = SubResource( 228 )
 animation = "run"
-frame = 5
+frame = 12
 playing = true
 __meta__ = {
 "_edit_group_": true,

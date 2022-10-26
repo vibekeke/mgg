@@ -1,6 +1,7 @@
 extends LevelEvent
 
 onready var enemy_spawner = get_node("%EnemySpawner")
+onready var enemy_to_spawn = load("res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn")
 var start_event_timer = Timer.new()
 var wait_after_stopping_spawner_timer = Timer.new()
 
@@ -28,7 +29,7 @@ func trigger() -> void:
 
 func event_start() -> void:
 	if enemy_spawner != null:
-		var enemy_to_spawn = load(Events.get_enemy_paths().get('PathedMisbeehave'))
+		#var enemy_to_spawn = load(Events.get_enemy_paths().get('PathedMisbeehave'))
 		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 699), 300)
 		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 799), 300)
 		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 899), 300)

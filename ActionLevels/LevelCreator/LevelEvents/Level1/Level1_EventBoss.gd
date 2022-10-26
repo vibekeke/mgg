@@ -7,6 +7,8 @@ onready var start_event_timer = Timer.new()
 onready var end_event_timer = Timer.new()
 onready var wait_after_stopping_spawner_timer = Timer.new()
 onready var boss_background_swoop_timer = Timer.new()
+onready var boss_background_to_spawn : PackedScene = load(Events.get_level_background_elements(1).get('BigBackground'))
+onready var boss : PackedScene = load(Events.get_boss('BigBird'))
 
 var background_boss_spawn_place = Vector2(-500, 700)
 var background_boss_speed = 2000
@@ -68,11 +70,9 @@ func _on_dialog_end(_timeline_name):
 	spawn_boss()
 
 func spawn_boss():
-	var boss : PackedScene = load(Events.get_boss('BigBird'))
 	enemy_spawner._direct_spawn_boss_at_position(boss, Vector2(1510, 620), 0)
 
 func event_start() -> void:
-	var boss_background_to_spawn : PackedScene = load(Events.get_level_background_elements(1).get('BigBackground'))
 
 	if boss_background_to_spawn != null:
 		_boss_background_instance = boss_background_to_spawn.instance()
