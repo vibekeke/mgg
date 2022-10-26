@@ -20,6 +20,7 @@ var platform_scroll_speed = 500
 
 onready var enemy_to_spawn = preload("res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn")
 onready var background_element_to_spawn = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BeeBackground.tscn")
+onready var platform_to_spawn : PackedScene = preload("res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform3.tscn")
 
 func _ready():
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
@@ -72,7 +73,6 @@ func trigger() -> void:
 		wait_after_stopping_spawner_timer.start()
 
 func _on_spawn_platforms_timer() -> void:
-	var platform_to_spawn : PackedScene = load(Events.get_level_platforms(1).get('LowPlatform3'))
 	enemy_spawner._direct_spawn_obstacle_at_position(platform_to_spawn, platform_spawn_place, platform_scroll_speed)
 	if !background_enemy_spawn_start:
 		background_enemy_spawn_start = true
