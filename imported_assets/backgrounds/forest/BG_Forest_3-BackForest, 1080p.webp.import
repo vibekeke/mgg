@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Running_V4_Sheet.png-d14f9d3165e0a03f437b83cb1fec8fc5.stex"
+path="res://.import/BG_Forest_3-BackForest, 1080p.webp-9a722948b50e0c1f267cc10f558428b5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imported_assets/actors/mg/Running_V4_Sheet.png"
-dest_files=[ "res://.import/Running_V4_Sheet.png-d14f9d3165e0a03f437b83cb1fec8fc5.stex" ]
+source_file="res://imported_assets/backgrounds/forest/BG_Forest_3-BackForest, 1080p.webp"
+dest_files=[ "res://.import/BG_Forest_3-BackForest, 1080p.webp-9a722948b50e0c1f267cc10f558428b5.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Running_June23.png-2d41c4f7cea4e49e82651cafb6085865.stex"
+path="res://.import/BG_Forest_4-ThiccTrees, 1080p.webp-23beb9ece22fe8df1efce0e4ae55dfac.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imported_assets/actors/mg/Running_June23.png"
-dest_files=[ "res://.import/Running_June23.png-2d41c4f7cea4e49e82651cafb6085865.stex" ]
+source_file="res://imported_assets/backgrounds/forest/BG_Forest_4-ThiccTrees, 1080p.webp"
+dest_files=[ "res://.import/BG_Forest_4-ThiccTrees, 1080p.webp-23beb9ece22fe8df1efce0e4ae55dfac.stex" ]
 
 [params]
 

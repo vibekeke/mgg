@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/JumpingV10.png-da15bd32b4f3a00a83eda6696cd94b22.stex"
+path="res://.import/Player_RUNNING_SpearA3-v1.webp-0a03f0c8c30f1322fc2e616653be8b5f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imported_assets/actors/mg/JumpingV10.png"
-dest_files=[ "res://.import/JumpingV10.png-da15bd32b4f3a00a83eda6696cd94b22.stex" ]
+source_file="res://imported_assets/actors/mg/Player_RUNNING_SpearA3-v1.webp"
+dest_files=[ "res://.import/Player_RUNNING_SpearA3-v1.webp-0a03f0c8c30f1322fc2e616653be8b5f.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

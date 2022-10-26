@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Player_JUMP_SpearA2-V1.png-27478cb9d48960d7d94e886e712efd16.stex"
+path="res://.import/BG_Beach_5-Clouds.webp-c71ab456af9d99302b86f0d28e1caf7b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imported_assets/actors/mg/Player_JUMP_SpearA2-V1.png"
-dest_files=[ "res://.import/Player_JUMP_SpearA2-V1.png-27478cb9d48960d7d94e886e712efd16.stex" ]
+source_file="res://imported_assets/backgrounds/beach/BG_Beach_5-Clouds.webp"
+dest_files=[ "res://.import/BG_Beach_5-Clouds.webp-c71ab456af9d99302b86f0d28e1caf7b.stex" ]
 
 [params]
 

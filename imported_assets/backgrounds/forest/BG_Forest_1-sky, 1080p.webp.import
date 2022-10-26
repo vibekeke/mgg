@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Player_RUNNING_SpearA1-v1.png-921cd6326514f5163d15b5a84fb03246.stex"
+path="res://.import/BG_Forest_1-sky, 1080p.webp-b25fe0afbd8054490d74f3f2acfab36e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.png"
-dest_files=[ "res://.import/Player_RUNNING_SpearA1-v1.png-921cd6326514f5163d15b5a84fb03246.stex" ]
+source_file="res://imported_assets/backgrounds/forest/BG_Forest_1-sky, 1080p.webp"
+dest_files=[ "res://.import/BG_Forest_1-sky, 1080p.webp-b25fe0afbd8054490d74f3f2acfab36e.stex" ]
 
 [params]
 
