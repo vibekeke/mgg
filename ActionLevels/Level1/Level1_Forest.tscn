@@ -45,7 +45,7 @@ layer = 100
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
 visible = false
-position = Vector2( -102, 1013 )
+position = Vector2( -102, 1031 )
 scale = Vector2( 126.375, 10 )
 
 [node name="Backwall" parent="." instance=ExtResource( 2 )]
@@ -60,7 +60,7 @@ rotation = 1.5708
 scale = Vector2( 67.5, 10 )
 
 [node name="LongTallPlatform" parent="." instance=ExtResource( 6 )]
-position = Vector2( 876, 420 )
+position = Vector2( 876, 402 )
 scroll_speed = 500
 
 [node name="TallPlatform" parent="." instance=ExtResource( 7 )]
@@ -96,7 +96,7 @@ stream = ExtResource( 24 )
 volume_db = -30.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 247, 841 )
+position = Vector2( 247, 857 )
 debug_mode = true
 gunshot = ExtResource( 20 )
 physical_attack = ExtResource( 19 )

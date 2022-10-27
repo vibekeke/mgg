@@ -4,6 +4,7 @@ onready var enemy_spawner = get_node("%EnemySpawner")
 onready var enemy_to_spawn = preload("res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn")
 var start_event_timer = Timer.new()
 var wait_after_stopping_spawner_timer = Timer.new()
+onready var new_dialog = Dialogic.start('Level1Event1')
 
 func _ready():
 	start_event_timer.set_name("Level1_Event1_start_timer")
@@ -32,7 +33,7 @@ func event_start() -> void:
 		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 699), 300)
 		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 799), 300)
 		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 899), 300)
-		var new_dialog = Dialogic.start('Level1Event1')
+
 		self.get_parent().add_child(new_dialog)
 		end_event()
 	else:
