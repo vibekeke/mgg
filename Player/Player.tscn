@@ -670,7 +670,7 @@ states/Slide/node = SubResource( 249 )
 states/Slide/position = Vector2( 200.3, -109.547 )
 transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 239 ), "AboutToFall", "Landing", SubResource( 240 ), "Run", "Slide", SubResource( 253 ), "Slide", "RisingLoop", SubResource( 254 ), "Landing", "Slide", SubResource( 256 ), "Slide", "Run", SubResource( 257 ), "Run", "Melee_1", SubResource( 292 ), "Run", "Melee_2", SubResource( 293 ), "Melee_1", "Run", SubResource( 294 ), "Melee_2", "Run", SubResource( 295 ), "FallingLoop", "Melee_2", SubResource( 298 ), "Melee_2", "FallingLoop", SubResource( 299 ), "Melee_2", "Landing", SubResource( 300 ), "RisingLoop", "Melee_2", SubResource( 302 ), "AboutToFall", "Melee_2", SubResource( 303 ), "Landing", "Melee_2", SubResource( 304 ) ]
 start_node = "Run"
-graph_offset = Vector2( -1121.38, -202.095 )
+graph_offset = Vector2( -1121.38, -254.701 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=128]
 
