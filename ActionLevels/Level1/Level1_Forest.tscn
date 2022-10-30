@@ -107,7 +107,6 @@ volume_db = -30.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 247, 841 )
-debug_mode = true
 gunshot = ExtResource( 20 )
 charge_shot = ExtResource( 21 )
 
