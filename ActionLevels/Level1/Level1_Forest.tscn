@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -13,9 +13,12 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform1.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn" type="PackedScene" id=14]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn" type="PackedScene" id=15]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BeeBackground.tscn" type="PackedScene" id=16]
 [ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sounds/level/forest/forest1.wav" type="AudioStream" id=18]
-[ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=19]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=21]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tscn" type="PackedScene" id=22]
@@ -25,10 +28,14 @@
 [ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=26]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.tscn" type="PackedScene" id=27]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" type="PackedScene" id=28]
+[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform3.tscn" type="PackedScene" id=29]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event2.tscn" type="PackedScene" id=30]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu.tscn" type="PackedScene" id=31]
+[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform2.tscn" type="PackedScene" id=33]
 
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource( 5 )
+boss_background = ExtResource( 14 )
 mute_audio = true
 
 [node name="PauseLayer" type="CanvasLayer" parent="."]
@@ -45,7 +52,7 @@ layer = 100
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
 visible = false
-position = Vector2( -102, 1013 )
+position = Vector2( -102, 1031 )
 scale = Vector2( 126.375, 10 )
 
 [node name="Backwall" parent="." instance=ExtResource( 2 )]
@@ -60,29 +67,32 @@ rotation = 1.5708
 scale = Vector2( 67.5, 10 )
 
 [node name="LongTallPlatform" parent="." instance=ExtResource( 6 )]
-position = Vector2( 876, 420 )
+position = Vector2( 876, 410 )
 scroll_speed = 500
 
 [node name="TallPlatform" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3127, 420 )
+position = Vector2( 3127, 410 )
 scroll_speed = 500
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 11 )]
 unique_name_in_owner = true
 max_enemies_on_screen = 6
 seconds_until_boss = 120.0
-enemy_list = [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 22 ), ExtResource( 23 ) ]
+first_tier_enemy_list = [ ExtResource( 19 ), ExtResource( 8 ) ]
+second_tier_enemy_list = [ ExtResource( 4 ) ]
+third_tier_enemy_list = [ ExtResource( 22 ), ExtResource( 23 ) ]
+platform_list = [ ExtResource( 6 ), ExtResource( 12 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 7 ) ]
 boss = ExtResource( 17 )
 
 [node name="SpawnPaths" parent="." instance=ExtResource( 26 )]
 unique_name_in_owner = true
 
 [node name="LowPlatform1" parent="." instance=ExtResource( 12 )]
-position = Vector2( 3777, 420 )
+position = Vector2( 3777, 410 )
 scroll_speed = 500
 
 [node name="TallPlatform2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 10125, 432 )
+position = Vector2( 10125, 410 )
 scroll_speed = 500
 
 [node name="FullHUD" parent="." instance=ExtResource( 10 )]
@@ -99,13 +109,18 @@ volume_db = -30.0
 position = Vector2( 247, 841 )
 debug_mode = true
 gunshot = ExtResource( 20 )
-physical_attack = ExtResource( 19 )
 charge_shot = ExtResource( 21 )
 
 [node name="LevelEventsManager" parent="." instance=ExtResource( 28 )]
 
 [node name="Level1_Event1" parent="LevelEventsManager" instance=ExtResource( 27 )]
+enemy_to_spawn = ExtResource( 15 )
 
 [node name="Level1_Event2" parent="LevelEventsManager" instance=ExtResource( 30 )]
+enemy_to_spawn = ExtResource( 8 )
+background_element_to_spawn = ExtResource( 16 )
+platform_to_spawn = ExtResource( 29 )
 
 [node name="Level1_Event3" parent="LevelEventsManager" instance=ExtResource( 9 )]
+dog = ExtResource( 31 )
+bee = ExtResource( 8 )

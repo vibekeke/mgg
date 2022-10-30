@@ -6,10 +6,9 @@ onready var end_event_timer = Timer.new()
 onready var wait_after_stopping_spawner_timer = Timer.new()
 export var time_until_event_start = 3.0
 export var debug_mode : bool = false
-#onready var dog : PackedScene = load(Events.get_level_collectible("Dogu"))
-#onready var bee : PackedScene = load(Events.get_enemy_paths().get("Misbeehave"))
-onready var dog : PackedScene = preload("res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu.tscn")
-onready var bee : PackedScene = preload("res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn")
+
+export var dog : PackedScene
+export var bee : PackedScene
 
 func _ready():
 	Events.connect("level_event_complete", self, "_on_level_event_complete")

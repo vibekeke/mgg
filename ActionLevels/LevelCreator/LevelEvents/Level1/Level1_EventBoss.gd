@@ -8,8 +8,6 @@ onready var end_event_timer = Timer.new()
 onready var wait_after_stopping_spawner_timer = Timer.new()
 onready var boss_background_swoop_timer = Timer.new()
 
-#onready var boss_background_to_spawn : PackedScene = load(Events.get_level_background_elements(1).get('BigBackground'))
-#onready var boss : PackedScene = load(Events.get_boss('BigBird'))
 onready var boss_background_to_spawn : PackedScene = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn")
 onready var boss : PackedScene = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
 
@@ -73,6 +71,7 @@ func _on_dialog_end(_timeline_name):
 	spawn_boss()
 
 func spawn_boss():
+	enemy_spawner.kill_non_boss_enemies()
 	enemy_spawner._direct_spawn_boss_at_position(boss, Vector2(1510, 620), 0)
 
 func event_start() -> void:

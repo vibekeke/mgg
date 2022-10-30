@@ -4,8 +4,7 @@ onready var spawn_paths = $SpawnPaths
 onready var background_music = $BackgroundMusic
 onready var boss_music = $BossMusic
 onready var level_background = get_node("%LevelBackground")
-onready var boss = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
-onready var boss_background = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn")
+export var boss_background : PackedScene
 
 export var mute_audio = false # temporary
 

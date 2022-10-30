@@ -94,3 +94,6 @@ func get_level_background_elements(level_number: int):
 
 func get_level_collectible(collectible: String):
 	return level_collectibles[collectible]
+
+func preload_enemies():
+	pass

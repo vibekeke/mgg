@@ -1,23 +1,24 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Player/Projectiles/Hit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event4.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventBoss.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/OurGuyBackground.tscn" type="PackedScene" id=13]
 
 [node name="LevelTest" type="Node2D"]
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 visible = false
-position = Vector2( -102, 1013 )
+position = Vector2( -102, 1031 )
 scale = Vector2( 126.275, 10 )
 
 [node name="Wall" parent="." instance=ExtResource( 3 )]
@@ -37,7 +38,6 @@ scale = Vector2( 119.688, 10 )
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 247, 840 )
 gunshot = ExtResource( 8 )
-physical_attack = ExtResource( 1 )
 charge_shot = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -58,5 +58,7 @@ unique_name_in_owner = true
 
 [node name="VHS" parent="LevelBackground" instance=ExtResource( 12 )]
 
-[node name="Level1_EventBoss" parent="." instance=ExtResource( 6 )]
+[node name="Level1_Event4" parent="." instance=ExtResource( 1 )]
 debug_mode = true
+ourguy = ExtResource( 6 )
+ourguybackground = ExtResource( 13 )

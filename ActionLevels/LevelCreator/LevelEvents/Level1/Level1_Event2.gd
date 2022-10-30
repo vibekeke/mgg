@@ -18,9 +18,9 @@ var background_enemy_spawn_place = Vector2(0, 861)
 var enemy_speed = 1500
 var platform_scroll_speed = 500
 
-onready var enemy_to_spawn = preload("res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn")
-onready var background_element_to_spawn = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BeeBackground.tscn")
-onready var platform_to_spawn : PackedScene = preload("res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform3.tscn")
+export var enemy_to_spawn : PackedScene
+export var background_element_to_spawn : PackedScene
+export var platform_to_spawn : PackedScene
 
 func _ready():
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
@@ -85,13 +85,13 @@ func _on_spawn_platforms_timer() -> void:
 func _on_spawn_background_enemies_timer() -> void:
 	enemy_spawner.spawn_to_background_element(background_element_to_spawn, 'BackForestBackground', background_enemy_spawn_place, enemy_speed)
 	num_background_enemies_spawned += 1
-	if num_background_enemies_spawned >= 30:
+	if num_background_enemies_spawned >= 20:
 		spawn_background_enemies_timer.stop()
 
 func _on_spawn_enemies_timer() -> void:
 	enemy_spawner._direct_spawn_at_position(enemy_to_spawn, enemy_spawn_place, enemy_speed)
 	num_enemies_spawned += 1
-	if num_enemies_spawned >= 30:
+	if num_enemies_spawned >= 20:
 		spawn_enemies_timer.stop()
 		spawn_platforms_timer.stop()
 		end_event()
@@ -105,4 +105,6 @@ func event_start() -> void:
 func end_event() -> void:
 	start_event_timer.stop()
 	enemy_spawner.start_enemy_spawner()
+	enemy_spawner.increment_difficulty_tier()
 	Events.emit_signal("level_event_complete", event_name, event_number)
+	self.queue_free()

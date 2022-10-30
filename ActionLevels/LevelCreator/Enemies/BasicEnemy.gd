@@ -13,6 +13,7 @@ export (bool) var is_boss = false
 export (bool) var debug_mode = false
 export (bool) var has_non_queue_free_rotator = false # hack to ensure rotator and children arent killed during queue free
 export (Array, PackedScene) var droppables
+export (int) var enemy_difficulty_tier
 
 onready var enemy_follower = $Path2D/PathFollow2D
 onready var area2d = $Path2D/PathFollow2D/Area2D

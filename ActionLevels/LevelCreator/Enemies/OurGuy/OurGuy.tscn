@@ -45,9 +45,11 @@ __meta__ = {
 }
 spawn_height = 7
 custom_grounded_spawn_point = Vector2( 2005, 912 )
+initial_scroll_speed = 600.0
 health_value = 4
 enemy_logic = ExtResource( 3 )
 droppables = [ ExtResource( 5 ), ExtResource( 4 ) ]
+enemy_difficulty_tier = 1
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )
@@ -59,7 +61,7 @@ scale = Vector2( 0.4, 0.4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 frames = SubResource( 6 )
-frame = 2
+frame = 1
 speed_scale = 6.0
 playing = true
 

@@ -5,7 +5,6 @@ onready var slide_hurt_area = $SlideHurtArea
 onready var standing_collision = $StandingCollisionShape
 onready var sliding_collision = $SlidingCollisionShape
 
-onready var physical_attack_hitbox = $MeleeArea
 
 onready var staff_forward = $StaffForward
 onready var _forward_animation_player = $StaffForward/AnimationPlayer
@@ -63,8 +62,6 @@ var slide_duration_timer = Timer.new()
 var slide_again_timer = Timer.new()
 var is_sliding = false
 
-# melee
-var is_physically_attacking = false
 
 # speed of the slide
 export var slide_value = 1200.0
@@ -84,7 +81,6 @@ var is_shoot_disabled = false
 var is_move_disabled = false
 
 export (PackedScene) var gunshot
-export (PackedScene) var physical_attack
 export (PackedScene) var charge_shot
 
 onready var has_charge_shot = false
@@ -95,9 +91,7 @@ var sprite_anim_to_player_name = {
 	'falling': 'FallingLoop',
 	'during_jump': 'AboutToFall',
 	'init_jump': 'RisingJump',
-	'slide': 'Slide',
-	'melee_1': 'Melee_1',
-	'melee_2': 'Melee_2'
+	'slide': 'Slide'
 }
 
 func _ready():
@@ -189,7 +183,7 @@ func get_gravity() -> float:
 		gravity = jump_gravity
 		travel_to_animation("RisingLoop")
 	else:
-		if Input.is_action_pressed("float") and !is_on_floor() and !has_floated and !is_physically_attacking:
+		if Input.is_action_pressed("float") and !is_on_floor() and !has_floated:
 			gravity = float_gravity
 		elif Input.is_action_pressed("move_down"):
 			gravity = fast_fall_gravity
@@ -245,10 +239,10 @@ func fire_charge_shot():
 func attack_logic():
 	if fire_rate_timer.is_stopped():
 		if has_charge_shot:
-			if Input.is_action_pressed("charge_shot") and !is_physically_attacking:
+			if Input.is_action_pressed("charge_shot"):
 				has_charge_shot = false
 				fire_charge_shot()
-		if !charge_shot_present() || !is_physically_attacking:
+		if !charge_shot_present():
 			if Input.is_action_pressed("up"):
 				current_shooting_angle = SHOOT_ANGLE.UPWARD_B
 				shoot(current_shooting_angle)
@@ -258,8 +252,6 @@ func attack_logic():
 			elif Input.is_action_pressed("right"):
 				current_shooting_angle = SHOOT_ANGLE.FORWARD_B
 				shoot(current_shooting_angle)
-			if Input.is_action_just_pressed("hit"):
-				perform_physical_attack()
 
 func debug_recalculate_jump_maths():
 	jump_velocity = ((2.0 * max_jump_height) / jump_time_to_peak) * -1.0
@@ -267,16 +259,6 @@ func debug_recalculate_jump_maths():
 	min_jump_velocity = ((2.0 * min_jump_height) / jump_time_to_peak) * -1.0
 	jump_gravity = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 	fall_gravity = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
-
-func perform_physical_attack():
-	if !is_sliding:
-		for node in get_tree().get_root().get_children():
-			if node.name == "Hit":
-				return
-		var _physical_attack = physical_attack.instance()
-		get_tree().get_root().add_child(_physical_attack)
-		_physical_attack.location_offset = Vector2(40,2)
-		travel_to_animation("Melee_2")
 
 func _on_disable_player_action(to_disable):
 	# 0 == disable everything, including movement and jumping
@@ -326,13 +308,13 @@ func _physics_process(delta):
 		velocity.x = _horizontal_direction * horizontal_movement_speed
 		if is_sliding:
 			velocity.x = 1 * slide_value
-		if Input.is_action_just_pressed("move_down") and is_on_floor() and slide_duration_timer.is_stopped() and !charge_shot_present() and !is_physically_attacking:
+		if Input.is_action_just_pressed("move_down") and is_on_floor() and slide_duration_timer.is_stopped() and !charge_shot_present():
 			if slide_again_timer.is_stopped():
 				initiate_slide()
 
 	handle_collision_shapes()
-	actions_based_on_animation()
-	if !is_sliding and !is_shoot_disabled and !is_physically_attacking:
+#	actions_based_on_animation()
+	if !is_sliding and !is_shoot_disabled:
 		attack_logic()
 	
 	if !is_sliding and !is_jump_disabled:
@@ -340,7 +322,7 @@ func _physics_process(delta):
 	
 	# the 5 lines below are a crime against humanity and i dont actually get why this works
 	# TODO: write this in a way that makes sense lol
-	if !has_floated and !is_physically_attacking:
+	if !has_floated:
 		if Input.is_action_pressed("float") and velocity.y > 0 and !float_halt:
 			float_halt = true
 			velocity.y = 0 # halt velocity if you are floating
@@ -360,11 +342,7 @@ func initiate_slide():
 	is_sliding = true
 
 func animation_to_show():
-	if is_physically_attacking:
-		$StaffForward.visible = true
-		$StaffUp.visible = false
-		$StaffDown.visible = false
-	elif Input.is_action_pressed("up"):
+	if Input.is_action_pressed("up"):
 		$StaffForward.visible = false
 		$StaffUp.visible = true
 		$StaffDown.visible = false
@@ -387,14 +365,6 @@ func get_active_aiming_state():
 
 func current_animation():
 	return get_active_aiming_state().get_current_node()
-
-func actions_based_on_animation():
-	if current_animation() == "Melee_2":
-		physical_attack_hitbox.get_node("CollisionShape2D").disabled = false
-		is_physically_attacking = true
-	else:
-		physical_attack_hitbox.get_node("CollisionShape2D").disabled = true
-		is_physically_attacking = false
 
 func _process(delta):
 	Events.emit_signal("player_max_health", max_health)

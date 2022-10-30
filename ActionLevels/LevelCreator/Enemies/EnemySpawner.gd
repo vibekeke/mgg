@@ -3,13 +3,17 @@ extends Node2D
 export (int) var max_enemies_on_screen = 5
 export (float) var seconds_enemy_spawn_frequency = 1.0
 export (float) var seconds_until_boss = 60.0
-export (Array, PackedScene) var enemy_list
+onready var current_enemy_list : Array = []
+export (Array, PackedScene) var first_tier_enemy_list
+export (Array, PackedScene) var second_tier_enemy_list
+export (Array, PackedScene) var third_tier_enemy_list
+export (Array, PackedScene) var platform_list
 export (int) var default_scroll_speed = 500
 export (PackedScene) var boss
 
-onready var spawn_timer = Timer.new()
-onready var until_boss_timer = Timer.new()
-onready var enemies_spawned = 0
+onready var spawn_timer : Timer = Timer.new()
+onready var enemies_spawned : int = 0
+onready var current_difficulty_tier : int = 1
 onready var rng = RandomNumberGenerator.new()
 onready var spawn_paths = get_node("%SpawnPaths")
 onready var level_background = get_node("%LevelBackground")
@@ -27,12 +31,14 @@ func _ready():
 	spawn_timer.set_wait_time(seconds_enemy_spawn_frequency + rng.randf_range(0.1, 0.6))
 	self.add_child(spawn_timer)
 	spawn_timer.start()
-	
-	until_boss_timer.set_name("until_boss_timer")
-	until_boss_timer.connect("timeout", self, "_spawn_boss")
-	until_boss_timer.set_wait_time(seconds_until_boss)
-	self.add_child(until_boss_timer)
-	until_boss_timer.start()
+
+func get_enemy_from_difficulty_tier():
+	if current_difficulty_tier <= 1:
+		current_enemy_list = first_tier_enemy_list
+	elif current_difficulty_tier <= 2:
+		current_enemy_list = first_tier_enemy_list + second_tier_enemy_list
+	elif current_difficulty_tier >= 3:
+		current_enemy_list = first_tier_enemy_list + second_tier_enemy_list + third_tier_enemy_list
 
 func _spawn_grouped_enemy():
 	pass
@@ -52,22 +58,17 @@ func _on_regular_enemy_death():
 func _spawn_enemy():
 	rng.randomize()
 	if enemies_spawned < max_enemies_on_screen:
+		get_enemy_from_difficulty_tier()
 		enemy_to_spawn_next()
 		enemies_spawned += 1
 	spawn_timer.set_wait_time(seconds_enemy_spawn_frequency + rng.randf_range(0.1, 0.6))
 
-func _spawn_boss():
-	spawn_boss_to_scene()
-	until_boss_timer.stop()
-	spawn_timer.stop()
-	kill_non_boss_enemies()
-
 func enemy_to_spawn_next():
-	if enemy_list.size() == 0:
+	if current_enemy_list.size() == 0:
 		print("no enemies found!")
 	else:
 		rng.randomize()
-		enemy_to_spawn = enemy_list[randi() % enemy_list.size()]
+		enemy_to_spawn = current_enemy_list[randi() % current_enemy_list.size()]
 		spawn_enemy_to_scene()
 
 func spawn_at_valid_height(_enemy_to_spawn) -> Vector2:
@@ -108,7 +109,8 @@ func spawn_enemy_to_scene():
 		var _enemy_to_spawn = enemy_to_spawn.instance()
 		if !_enemy_to_spawn.is_in_group("non_boss_enemy"):
 			_enemy_to_spawn.add_to_group("non_boss_enemy")
-		_enemy_to_spawn.initial_scroll_speed = default_scroll_speed
+		if _enemy_to_spawn.initial_scroll_speed == 0:
+			_enemy_to_spawn.initial_scroll_speed = default_scroll_speed
 		rng.randomize()
 		if spawn_points.size() > 0:
 			var spawn_place = spawn_at_valid_height(_enemy_to_spawn)
@@ -211,3 +213,14 @@ func spawn_boss_to_scene():
 			print_debug("No parent node found in enemy spawner.")
 		if boss == null:
 			print_debug("No boss node found in enemy spawner.")
+
+func increment_difficulty_tier():
+	current_difficulty_tier = current_difficulty_tier + 1
+
+func add_enemy_to_spawn_list(enemy_to_add : PackedScene, tier : int):
+	if tier <= 1:
+		first_tier_enemy_list.append(enemy_to_add)
+	elif tier <= 2:
+		second_tier_enemy_list.append(enemy_to_add)
+	elif tier >= 3:
+		third_tier_enemy_list.append(enemy_to_add)

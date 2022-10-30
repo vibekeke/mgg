@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=1]
 [ext_resource path="res://imported_assets/actors/regularsnaker/Snake_Regular.png" type="Texture" id=2]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake_logic.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -54,7 +55,9 @@ extents = Vector2( 342.5, 70 )
 script = ExtResource( 1 )
 spawn_height = 7
 custom_grounded_spawn_point = Vector2( 2006, 951 )
+initial_scroll_speed = 600.0
 enemy_logic = ExtResource( 3 )
+droppables = [ ExtResource( 4 ) ]
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )
@@ -72,7 +75,6 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
 position = Vector2( -2.5, 87.5 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 9 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D/Area2D"]
