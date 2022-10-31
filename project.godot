@@ -9,26 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
-"class": "BHBullet",
-"language": "GDScript",
-"path": "res://addons/BulletHellper/BasicBullets/NodeBullet.gd"
-}, {
-"base": "Reference",
-"class": "BHBulletShell",
-"language": "GDScript",
-"path": "res://addons/BulletHellper/Source/BulletShell.gd"
-}, {
-"base": "BHPropertySetter",
-"class": "BHColorProperty",
-"language": "GDScript",
-"path": "res://addons/BulletHellper/UI/PropertySetters/ColorProperty.gd"
-}, {
-"base": "Node",
-"class": "BHPropertySetter",
-"language": "GDScript",
-"path": "res://addons/BulletHellper/UI/PropertySetters/PropertySetter.gd"
-}, {
 "base": "Node",
 "class": "BigBird",
 "language": "GDScript",
@@ -43,11 +23,6 @@ _global_script_classes=[ {
 "class": "BroBun",
 "language": "GDScript",
 "path": "res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.gd"
-}, {
-"base": "Node2D",
-"class": "BulletHellperPattern",
-"language": "GDScript",
-"path": "res://addons/BulletHellper/Source/BulletPattern.gd"
 }, {
 "base": "Reference",
 "class": "DTS",
@@ -144,11 +119,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.gd"
 }, {
-"base": "MarginContainer",
-"class": "ParameterGroup",
-"language": "GDScript",
-"path": "res://addons/BulletHellper/UI/ParameterContainers/ParameterGroup.gd"
-}, {
 "base": "Node",
 "class": "PathedMisbeehave",
 "language": "GDScript",
@@ -170,14 +140,9 @@ _global_script_classes=[ {
 "path": "res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake_logic.gd"
 } ]
 _global_script_class_icons={
-"BHBullet": "",
-"BHBulletShell": "",
-"BHColorProperty": "",
-"BHPropertySetter": "",
 "BigBird": "",
 "BroBear": "",
 "BroBun": "",
-"BulletHellperPattern": "",
 "DTS": "",
 "DataClasses": "",
 "DesktopIcon": "",
@@ -197,7 +162,6 @@ _global_script_class_icons={
 "LevelEvent": "",
 "Misbeehave": "",
 "OurGuy": "",
-"ParameterGroup": "",
 "PathedMisbeehave": "",
 "QuitIcon": "",
 "SceneManager": "",
@@ -212,7 +176,6 @@ run/main_scene="res://ActionLevels/Level1/Level1_Forest.tscn"
 [autoload]
 
 Events="*res://Autoload/Events.gd"
-BHPatternManager="*res://addons/BulletHellper/Source/PatternManager.gd"
 
 [debug]
 
@@ -223,15 +186,13 @@ settings/fps/force_fps=60
 window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
-window/size/test_width=1280
-window/size/test_height=720
 window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/BulletHellper/plugin.cfg", "res://addons/dialogic/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg" )
 
 [input]
 

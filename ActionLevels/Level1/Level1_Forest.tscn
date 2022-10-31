@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn" type="PackedScene" id=14]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn" type="PackedScene" id=15]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BeeBackground.tscn" type="PackedScene" id=16]
-[ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn" type="PackedScene" id=17]
 [ext_resource path="res://sounds/level/forest/forest1.wav" type="AudioStream" id=18]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=20]
@@ -36,7 +35,6 @@
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource( 5 )
 boss_background = ExtResource( 14 )
-mute_audio = true
 
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 layer = 102
@@ -77,12 +75,10 @@ scroll_speed = 500
 [node name="EnemySpawner" parent="." instance=ExtResource( 11 )]
 unique_name_in_owner = true
 max_enemies_on_screen = 6
-seconds_until_boss = 120.0
 first_tier_enemy_list = [ ExtResource( 19 ), ExtResource( 8 ) ]
 second_tier_enemy_list = [ ExtResource( 4 ) ]
 third_tier_enemy_list = [ ExtResource( 22 ), ExtResource( 23 ) ]
 platform_list = [ ExtResource( 6 ), ExtResource( 12 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 7 ) ]
-boss = ExtResource( 17 )
 
 [node name="SpawnPaths" parent="." instance=ExtResource( 26 )]
 unique_name_in_owner = true

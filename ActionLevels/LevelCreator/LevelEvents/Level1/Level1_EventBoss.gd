@@ -8,13 +8,11 @@ onready var end_event_timer = Timer.new()
 onready var wait_after_stopping_spawner_timer = Timer.new()
 onready var boss_background_swoop_timer = Timer.new()
 
-onready var boss_background_to_spawn : PackedScene = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn")
+onready var boss_background_to_spawn : Object = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn").instance()
 onready var boss : PackedScene = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
-
+var boss_dialog = null
 var background_boss_spawn_place = Vector2(-500, 700)
 var background_boss_speed = 2000
-var _boss_background_instance = null
-var commence_dialog = false
 export var time_until_event_start = 3.0
 export var previous_event : int
 export var debug_mode : bool = false
@@ -22,10 +20,16 @@ export var debug_mode : bool = false
 func _ready():
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
 	Events.connect("background_element_offscreen", self, "_on_background_element_offscreen")
-	event_number = 99
+	boss_dialog = Dialogic.start('Level1BossIntroEvent')
+	boss_dialog.connect("timeline_end", self, "_on_timeline_end")
+	event_number = 99 # last level event
 	event_name = "Level1_EventBoss"
 	if debug_mode:
 		_on_level_event_complete('dummy_event', previous_event)
+
+func _on_timeline_end(_timeline_name):
+	spawn_boss()
+	
 
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == previous_event:
@@ -63,12 +67,7 @@ func _on_wait_after_stopping_spawner_timer():
 
 func _on_background_element_offscreen(element_name):
 	if element_name == DataClasses.Boss.BIG_BIRD:
-		var boss_dialog = Dialogic.start('Level1BossIntro')
-		boss_dialog.connect("timeline_end", self, "_on_dialog_end")
 		self.get_parent().add_child(boss_dialog)
-
-func _on_dialog_end(_timeline_name):
-	spawn_boss()
 
 func spawn_boss():
 	enemy_spawner.kill_non_boss_enemies()
@@ -77,14 +76,12 @@ func spawn_boss():
 func event_start() -> void:
 
 	if boss_background_to_spawn != null:
-		_boss_background_instance = boss_background_to_spawn.instance()
-		_boss_background_instance.scale.x = 0.65
-		_boss_background_instance.scale.y = 0.65
-		enemy_spawner.spawn_instanced_background_element(_boss_background_instance, 'BackForestBackground', background_boss_spawn_place, background_boss_speed)
+		boss_background_to_spawn.scale.x = 0.65
+		boss_background_to_spawn.scale.y = 0.65
+		enemy_spawner.spawn_instanced_background_element(boss_background_to_spawn, 'BackForestBackground', background_boss_spawn_place, background_boss_speed)
 	#end_event_timer.start()
 
 func end_event() -> void:
 	start_event_timer.stop()
-	enemy_spawner.start_enemy_spawner()
 	Events.emit_signal("level_event_complete", event_name, event_number)
 	self.queue_free()
