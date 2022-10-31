@@ -20,7 +20,7 @@ export var debug_mode : bool = false
 func _ready():
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
 	Events.connect("background_element_offscreen", self, "_on_background_element_offscreen")
-	boss_dialog = Dialogic.start('Level1BossIntro')
+	boss_dialog = Dialogic.start('Level1BossIntroEvent')
 	boss_dialog.connect("timeline_end", self, "_on_timeline_end")
 	event_number = 99 # last level event
 	event_name = "Level1_EventBoss"
@@ -28,7 +28,8 @@ func _ready():
 		_on_level_event_complete('dummy_event', previous_event)
 
 func _on_timeline_end(_timeline_name):
-	print("_timeline_name", _timeline_name)
+	spawn_boss()
+	
 
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == previous_event:
@@ -69,7 +70,6 @@ func _on_background_element_offscreen(element_name):
 		self.get_parent().add_child(boss_dialog)
 
 func spawn_boss():
-	print("spawn the bossman")
 	enemy_spawner.kill_non_boss_enemies()
 	enemy_spawner._direct_spawn_boss_at_position(boss, Vector2(1510, 620), 0)
 
@@ -79,7 +79,7 @@ func event_start() -> void:
 		boss_background_to_spawn.scale.x = 0.65
 		boss_background_to_spawn.scale.y = 0.65
 		enemy_spawner.spawn_instanced_background_element(boss_background_to_spawn, 'BackForestBackground', background_boss_spawn_place, background_boss_speed)
-	end_event_timer.start()
+	#end_event_timer.start()
 
 func end_event() -> void:
 	start_event_timer.stop()

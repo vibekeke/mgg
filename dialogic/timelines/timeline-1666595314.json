@@ -24,16 +24,12 @@
 			"character": "character-1666595326.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[nw=1]I am the [shake rate=7 level=15]darkness[/shake]. [pause=1][br]I am the [shake rate=7 level=15]night[/shake]."
-		},
-		{
-			"event_id": "dialogic_022",
-			"transition_duration": 0.5
+			"text": "I am the [shake rate=7 level=15]darkness[/shake]. [pause=1][br]I am the [shake rate=7 level=15]night[/shake].[nw]"
 		}
 	],
 	"metadata": {
 		"dialogic-version": "1.4.5",
 		"file": "timeline-1666595314.json",
-		"name": "Level1BossIntro"
+		"name": "Level1BossIntroEvent"
 	}
 }
