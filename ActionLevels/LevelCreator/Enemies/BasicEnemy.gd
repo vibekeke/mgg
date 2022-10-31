@@ -14,6 +14,7 @@ export (bool) var debug_mode = false
 export (bool) var has_non_queue_free_rotator = false # hack to ensure rotator and children arent killed during queue free
 export (Array, PackedScene) var droppables
 export (int) var enemy_difficulty_tier
+export (Color) var hurt_colour = Color(10,10,10,1)
 
 onready var enemy_follower = $Path2D/PathFollow2D
 onready var area2d = $Path2D/PathFollow2D/Area2D
@@ -116,7 +117,7 @@ func _on_player_global_position(_player_global_position):
 
 func take_damage(damage_value:= 1):
 	damage_timer.start()
-	sprite.modulate = Color(10,10,10,1)
+	sprite.modulate = hurt_colour
 	if !is_boss:
 		self.position.x = self.position.x + 5 # slight knockback if not a boss
 	health_value -= damage_value

@@ -30,6 +30,9 @@ signal level_event_complete(level_event_name, event_number)
 signal level_complete
 signal background_element_offscreen(element_name)
 
+func it_is_fucking_shit():
+	print("agreed!")
+
 func _disable_player_actions(to_disable):
 	# for tutorial and other stuff, e.g. boss loading?
 	self.emit_signal("disable_player_action", to_disable)

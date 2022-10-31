@@ -2,14 +2,12 @@ extends Node2D
 
 export (int) var max_enemies_on_screen = 5
 export (float) var seconds_enemy_spawn_frequency = 1.0
-export (float) var seconds_until_boss = 60.0
 onready var current_enemy_list : Array = []
 export (Array, PackedScene) var first_tier_enemy_list
 export (Array, PackedScene) var second_tier_enemy_list
 export (Array, PackedScene) var third_tier_enemy_list
 export (Array, PackedScene) var platform_list
 export (int) var default_scroll_speed = 500
-export (PackedScene) var boss
 
 onready var spawn_timer : Timer = Timer.new()
 onready var enemies_spawned : int = 0
@@ -198,21 +196,6 @@ func _direct_spawn_boss_at_position(boss: PackedScene, position: Vector2, speed)
 		parent_node.add_child(_boss_to_spawn)
 		Events.emit_signal("boss_spawned")
 
-func spawn_boss_to_scene():
-	var parent_node = self.get_parent()
-	if parent_node != null && boss!= null:
-		var _boss_to_spawn = boss.instance()
-		var spawn_position = spawn_points[DataClasses.SpawnHeight.MED_ONLY]
-		_boss_to_spawn.position = spawn_position
-		_boss_to_spawn.add_to_group("boss_enemy")
-		_boss_to_spawn.global_position = Vector2(1510, 620)
-		parent_node.add_child(_boss_to_spawn)
-		Events.emit_signal("boss_spawned")
-	else:
-		if parent_node == null:
-			print_debug("No parent node found in enemy spawner.")
-		if boss == null:
-			print_debug("No boss node found in enemy spawner.")
 
 func increment_difficulty_tier():
 	current_difficulty_tier = current_difficulty_tier + 1
