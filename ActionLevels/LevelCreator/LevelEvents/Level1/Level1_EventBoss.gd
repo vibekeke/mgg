@@ -58,6 +58,7 @@ func _on_level_event_complete(level_event_name, level_event_number) -> void:
 
 func trigger() -> void:
 	if enemy_spawner != null:
+		Events.emit_signal("level_event_lock", event_name, event_number)
 		enemy_spawner.stop_enemy_spawner()
 		wait_after_stopping_spawner_timer.start()
 
@@ -84,4 +85,5 @@ func event_start() -> void:
 func end_event() -> void:
 	start_event_timer.stop()
 	Events.emit_signal("level_event_complete", event_name, event_number)
+	Events.emit_signal("level_event_lock", "", -1)
 	self.queue_free()

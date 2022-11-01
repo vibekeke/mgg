@@ -26,6 +26,7 @@ signal enemy_taken_damage(enemy, health_value)
 signal regular_enemy_death
 signal level_spawn_points(spawn_points)
 signal boss_spawned
+signal level_event_lock(level_event_name, event_number)
 signal level_event_complete(level_event_name, event_number)
 signal level_complete
 signal background_element_offscreen(element_name)
