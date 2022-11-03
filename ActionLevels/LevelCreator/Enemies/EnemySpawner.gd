@@ -180,7 +180,8 @@ func _direct_spawn_dog(dog: PackedScene, dogType: String, position: Vector2, spe
 	_dog.set_dogu(dogType)
 	_dog.disable_float(disabled_float)
 	_dog.position = position
-	parent_node.add_child(_dog)
+	#parent_node.add_child(_dog)
+	parent_node.call_deferred("add_child", _dog)
 
 func spawn_instanced_background_element(element,  background_element_name: String, position: Vector2, scroll_speed):
 	var parent_node = self.get_parent()

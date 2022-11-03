@@ -6,11 +6,26 @@ onready var enemy_spawner = get_node("%EnemySpawner")
 export var time_until_event_start = 1.0
 export var ourguy : PackedScene
 export var ourguybackground : PackedScene
+export var dogbackground : PackedScene
 export var platform_to_spawn_one : PackedScene
 export var platform_to_spawn_two : PackedScene
 export var dog : PackedScene
-var background_enemy_spawn_place = Vector2(0, 861)
-var enemy_speed = 100
+var first_background_enemy_spawn_place = Vector2(-100, 861)
+var second_background_enemy_spawn_place = Vector2(-250, 861)
+var background_dog_spawn_place = Vector2(-400, 861)
+var third_background_enemy_spawn_place = Vector2(-550, 861)
+var fourth_background_enemy_spawn_place = Vector2(-700, 861)
+
+
+var first_enemy_spawn_place = Vector2(2200, 912)
+var second_enemy_spawn_place = Vector2(2350, 912)
+var dog_collectible_spawn_place = Vector2(2500, 912)
+var third_enemy_spawn_place = Vector2(2650, 912)
+var fourth_enemy_spawn_place = Vector2(2800, 912)
+var enemy_speed = 600
+var background_element_speed = 100
+
+var num_background_elements_offscreen = 0
 
 onready var start_event_timer = Timer.new()
 
@@ -22,15 +37,24 @@ func _ready():
 	event_number = 4
 	event_name = "Level1_Event4"
 	if debug_mode:
-		_on_level_event_complete('dummy_event', 3)
+		spawn_our_guy()
+		#_on_level_event_complete('dummy_event', 3)
+		enemy_spawner.stop_enemy_spawner()
 
 func _on_background_element_offscreen(element_name):
-	enemy_spawner.stop_enemy_spawner()
 	if element_name == DataClasses.Enemies.OUR_GUY:
-		spawn_our_guy()
+		num_background_elements_offscreen += 1
+		if num_background_elements_offscreen >= 2:
+			enemy_spawner.stop_enemy_spawner()
+			spawn_our_guy()
 
 func spawn_our_guy():
-	enemy_spawner._direct_spawn_at_position(ourguy, Vector2(2200, 912), 600)
+	print("spawning the guys")
+	enemy_spawner._direct_spawn_at_position(ourguy, first_enemy_spawn_place, enemy_speed)
+	enemy_spawner._direct_spawn_at_position(ourguy, second_enemy_spawn_place, enemy_speed)
+	enemy_spawner._direct_spawn_dog(dog, 'Labrador', dog_collectible_spawn_place, enemy_speed, true)
+	enemy_spawner._direct_spawn_at_position(ourguy, third_enemy_spawn_place, enemy_speed)
+	enemy_spawner._direct_spawn_at_position(ourguy, fourth_enemy_spawn_place, enemy_speed)
 	end_event()
 
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
@@ -49,10 +73,15 @@ func trigger() -> void:
 	event_start()
 
 func event_start() -> void:
-	enemy_spawner.spawn_to_background_element(ourguybackground, 'BackForestBackground', background_enemy_spawn_place, enemy_speed)
+	enemy_spawner.spawn_to_background_element(ourguybackground, 'BackForestBackground', first_background_enemy_spawn_place, background_element_speed)
+	enemy_spawner.spawn_to_background_element(ourguybackground, 'BackForestBackground', second_background_enemy_spawn_place, background_element_speed)	
+	enemy_spawner.spawn_to_background_element(dogbackground, 'BackForestBackground', background_dog_spawn_place, background_element_speed)
+	enemy_spawner.spawn_to_background_element(ourguybackground, 'BackForestBackground', third_background_enemy_spawn_place, background_element_speed)
+	enemy_spawner.spawn_to_background_element(ourguybackground, 'BackForestBackground', fourth_background_enemy_spawn_place, background_element_speed)
+
+
 
 func end_event() -> void:
-	start_event_timer.stop()
 	Events.emit_signal("level_event_complete", event_name, event_number)
 	Events.emit_signal("level_event_lock", "", -1)
 	enemy_spawner.add_enemy_to_spawn_list(ourguy, 1)

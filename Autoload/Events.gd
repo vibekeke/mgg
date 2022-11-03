@@ -34,7 +34,7 @@ signal background_element_offscreen(element_name)
 func _ready():
 	OS.min_window_size = Vector2(1280, 720)
 	OS.max_window_size = Vector2(1920, 1080)
-	OS.window_size = Vector2(1280, 720)
+	#OS.window_size = Vector2(1280, 720)
 	OS.center_window()
 
 func _disable_player_actions(to_disable):

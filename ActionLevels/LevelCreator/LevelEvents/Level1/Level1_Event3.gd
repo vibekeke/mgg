@@ -29,7 +29,7 @@ func _on_level_event_complete(level_event_name, level_event_number) -> void:
 		end_event_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
 		end_event_timer.connect("timeout", self, "end_event")
 		end_event_timer.set_wait_time(3.0)
-		end_event_timer.set_one_shot(true)	
+		end_event_timer.set_one_shot(true)
 
 		wait_after_stopping_spawner_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
 		wait_after_stopping_spawner_timer.connect("timeout", self, "_on_wait_after_stopping_spawner_timer")

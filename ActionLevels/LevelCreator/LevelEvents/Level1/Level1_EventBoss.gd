@@ -67,7 +67,7 @@ func _on_wait_after_stopping_spawner_timer():
 	event_start()
 
 func _on_background_element_offscreen(element_name):
-	if element_name == DataClasses.Boss.BIG_BIRD:
+	if element_name == DataClasses.Boss.BIG_BIRD && !start_event_timer.is_stopped():
 		self.get_parent().add_child(boss_dialog)
 
 func spawn_boss():
