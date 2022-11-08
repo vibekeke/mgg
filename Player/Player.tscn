@@ -1553,7 +1553,6 @@ parameters/Slide/TimeScale/scale = 1.0
 visible = false
 frames = SubResource( 228 )
 animation = "run"
-frame = 7
 playing = true
 __meta__ = {
 "_edit_group_": true,
