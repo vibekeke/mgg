@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundBun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundBear.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundDog.tscn" type="PackedScene" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BackgroundBun" parent="." instance=ExtResource( 1 )]
+position = Vector2( -206, 178 )
+frame = 0
+
+[node name="BackgroundBear" parent="." instance=ExtResource( 2 )]
+position = Vector2( -206, 611 )
+frame = 5
+
+[node name="BackgroundDog" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
+position = Vector2( -206, 400 )
+frame = 12

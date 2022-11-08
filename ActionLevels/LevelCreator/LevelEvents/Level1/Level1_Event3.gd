@@ -71,6 +71,7 @@ func event_start() -> void:
 
 func end_event() -> void:
 	start_event_timer.stop()
+	enemy_spawner.increment_difficulty_tier()
 	enemy_spawner.start_enemy_spawner()
 	Events.emit_signal("level_event_complete", event_name, event_number)
 	Events.emit_signal("level_event_lock", "", -1)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventBoss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=4]
@@ -12,10 +12,6 @@
 [ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=12]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu.tscn" type="PackedScene" id=13]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event4.tscn" type="PackedScene" id=14]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/OurGuyBackground.tscn" type="PackedScene" id=15]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundDog.tscn" type="PackedScene" id=16]
 
 [node name="LevelTest" type="Node2D"]
 
@@ -64,9 +60,5 @@ unique_name_in_owner = true
 [node name="LevelEventsManager" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true
 
-[node name="Level1_Event4" parent="LevelEventsManager" instance=ExtResource( 14 )]
+[node name="Level1_EventBoss" parent="LevelEventsManager" instance=ExtResource( 1 )]
 debug_mode = true
-ourguy = ExtResource( 1 )
-ourguybackground = ExtResource( 15 )
-dogbackground = ExtResource( 16 )
-dog = ExtResource( 13 )

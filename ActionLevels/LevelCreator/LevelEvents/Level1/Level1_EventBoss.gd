@@ -1,6 +1,7 @@
 extends LevelEvent
 
 onready var enemy_spawner = get_node("%EnemySpawner")
+onready var level_events_manager = get_node("%LevelEventsManager")
 
 # timers
 onready var start_event_timer = Timer.new()
@@ -10,29 +11,27 @@ onready var boss_background_swoop_timer = Timer.new()
 
 onready var boss_background_to_spawn : Object = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn").instance()
 onready var boss : PackedScene = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
-var boss_dialog = null
+onready var boss_dialog = Dialogic.start('Level1BossIntroEvent')
 var background_boss_spawn_place = Vector2(-500, 700)
 var background_boss_speed = 2000
 export var time_until_event_start = 3.0
-export var previous_event : int
 export var debug_mode : bool = false
 
 func _ready():
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
 	Events.connect("background_element_offscreen", self, "_on_background_element_offscreen")
-	boss_dialog = Dialogic.start('Level1BossIntroEvent')
 	boss_dialog.connect("timeline_end", self, "_on_timeline_end")
-	event_number = 99 # last level event
+	event_number = 6 # last level event
 	event_name = "Level1_EventBoss"
 	if debug_mode:
-		_on_level_event_complete('dummy_event', previous_event)
+		_on_level_event_complete('dummy_event', 5)
 
 func _on_timeline_end(_timeline_name):
 	spawn_boss()
 	
 
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
-	if level_event_number == previous_event:
+	if level_event_number == 5:
 		start_event_timer.set_name(event_name + "_start_timer")
 		start_event_timer.connect("timeout", self, "trigger")
 		if debug_mode:
@@ -67,7 +66,8 @@ func _on_wait_after_stopping_spawner_timer():
 	event_start()
 
 func _on_background_element_offscreen(element_name):
-	if element_name == DataClasses.Boss.BIG_BIRD && !start_event_timer.is_stopped():
+	print("currently running event is ", level_events_manager.get_currently_running_event())
+	if element_name == DataClasses.Enemies.BIG_BIRD && level_events_manager.get_currently_running_event() == 6:
 		self.get_parent().add_child(boss_dialog)
 
 func spawn_boss():
@@ -86,4 +86,4 @@ func end_event() -> void:
 	start_event_timer.stop()
 	Events.emit_signal("level_event_complete", event_name, event_number)
 	Events.emit_signal("level_event_lock", "", -1)
-	self.queue_free()
+	#self.queue_free()

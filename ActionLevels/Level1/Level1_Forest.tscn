@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -31,12 +31,18 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform3.tscn" type="PackedScene" id=29]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event2.tscn" type="PackedScene" id=30]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu.tscn" type="PackedScene" id=31]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event5.tscn" type="PackedScene" id=32]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform2.tscn" type="PackedScene" id=33]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventBoss.tscn" type="PackedScene" id=34]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundDog.tscn" type="PackedScene" id=35]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.tscn" type="PackedScene" id=36]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/OurGuyBackground.tscn" type="PackedScene" id=37]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundBun.tscn" type="PackedScene" id=38]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundBear.tscn" type="PackedScene" id=39]
 
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource( 5 )
 boss_background = ExtResource( 14 )
-mute_audio = true
 
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 layer = 102
@@ -89,7 +95,6 @@ volume_db = -30.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 247, 841 )
-debug_mode = true
 gunshot = ExtResource( 20 )
 charge_shot = ExtResource( 21 )
 
@@ -109,3 +114,19 @@ dog = ExtResource( 31 )
 bee = ExtResource( 8 )
 
 [node name="Level1_Event4" parent="LevelEventsManager" instance=ExtResource( 17 )]
+time_until_event_start = 4.0
+ourguy = ExtResource( 36 )
+ourguybackground = ExtResource( 37 )
+dogbackground = ExtResource( 35 )
+dog = ExtResource( 31 )
+
+[node name="Level1_Event5" parent="LevelEventsManager" instance=ExtResource( 32 )]
+background_brobun = ExtResource( 38 )
+background_brobear = ExtResource( 39 )
+background_dog = ExtResource( 35 )
+bun = ExtResource( 23 )
+bear = ExtResource( 22 )
+dog = ExtResource( 31 )
+time_until_event_start = 3.0
+
+[node name="Level1_EventBoss" parent="LevelEventsManager" instance=ExtResource( 34 )]
