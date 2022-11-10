@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://imported_assets/actors/gunnerfly/Gunnerfly.png" type="Texture" id=1]
+[ext_resource path="res://imported_assets/actors/flybutt/Butterfly.png" type="Texture" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=2]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly_logic.tscn" type="PackedScene" id=3]
 
@@ -24,28 +24,32 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=9]
 resource_local_to_scene = true
 shader = SubResource( 8 )
-shader_param/flash_color = Color( 0.0980392, 0.737255, 0.886275, 1 )
-shader_param/flash_modifier = 0.7
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 512, 0, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1024, 0, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 1536, 0, 512, 512 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "default",
 "speed": 4.0
@@ -77,16 +81,14 @@ unique_name_in_owner = true
 material = SubResource( 9 )
 position = Vector2( 12, -29 )
 frames = SubResource( 7 )
-frame = 3
+frame = 1
 speed_scale = 2.0
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
-visible = false
 position = Vector2( 12, 8 )
 shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D/Area2D"]
-visible = false
 position = Vector2( 12.5, 8.75 )
 scale = Vector2( 18.5, 18.625 )

@@ -22,15 +22,15 @@ var charging_shot_params = {
 
 func _ready():
 	parent_node.add_child(_timer)
-	_timer.connect("timeout", self, "_shoot")
-	_timer.set_wait_time(shot_time_seconds)
-	_timer.set_one_shot(false)
-	_timer.start()
-
-	_flash_timer.connect("timeout", self, "_flash_shader_with_timer")
-	_flash_timer.set_wait_time(flash_time_seconds)
-	_flash_timer.set_one_shot(false)
-	parent_node.add_child(_flash_timer)
+#	_timer.connect("timeout", self, "_shoot")
+#	_timer.set_wait_time(shot_time_seconds)
+#	_timer.set_one_shot(false)
+#	_timer.start()
+#
+#	_flash_timer.connect("timeout", self, "_flash_shader_with_timer")
+#	_flash_timer.set_wait_time(flash_time_seconds)
+#	_flash_timer.set_one_shot(false)
+#	parent_node.add_child(_flash_timer)
 
 
 func _shoot():
@@ -55,13 +55,12 @@ func _flash_shader_with_timer():
 		parent_node.get_node("%AnimatedSprite").material.set_shader_param('flash_modifier', 0.0)
 
 
-func _process(delta):
-	if _timer.time_left <= 0.3:
-		start_flashing()
-		#parent_node.get_node("%AnimatedSprite").material.set_shader_param('flash_modifier', 0.7)
-	else:
-		is_flashing = false
-		parent_node.get_node("%AnimatedSprite").material.set_shader_param('flash_modifier', 0.0)
+#func _process(delta):
+#	if _timer.time_left <= 0.3:
+#		start_flashing()
+#	else:
+#		is_flashing = false
+#		parent_node.get_node("%AnimatedSprite").material.set_shader_param('flash_modifier', 0.0)
 
 func _physics_process(delta):
 	if !parent_node.is_move_disabled:
