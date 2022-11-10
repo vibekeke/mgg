@@ -62,6 +62,10 @@ var slide_duration_timer = Timer.new()
 var slide_again_timer = Timer.new()
 var is_sliding = false
 
+export var flash_charge_timer = 0.2
+var flash_charge_shoot_timer = Timer.new()
+var original_color : Color = Color(1.0, 1.0, 1.0, 1.0)
+var flash_color : Color = Color(0.5, 1.0, 0.98, 1.0)
 
 # speed of the slide
 export var slide_value = 1200.0
@@ -107,6 +111,7 @@ func _ready():
 	_fire_rate_timer_setup()
 	_slide_again_timer_setup()
 	_slide_duration_timer_setup()
+	_flash_charge_shoot_setup()
 	staff_forward.frame = 0
 	staff_up.frame = 0
 	staff_down.frame = 0
@@ -142,8 +147,15 @@ func _slide_again_timer_setup():
 func _invul_timer_setup():
 	invul_timer.set_name("invul_timer")
 	invul_timer.connect("timeout", self, "_on_invul_timeout")
-	invul_timer.set_wait_time(0.5)
+	invul_timer.set_wait_time(1.0)
 	self.add_child(invul_timer)
+
+func _flash_charge_shoot_setup():
+	flash_charge_shoot_timer.set_name("flash_charge_shoot_timer")
+	flash_charge_shoot_timer.connect("timeout", self, "_on_flash_charge_shoot_timeout")
+	flash_charge_shoot_timer.set_wait_time(flash_charge_timer)
+	flash_charge_shoot_timer.set_one_shot(false)
+	self.add_child(flash_charge_shoot_timer)
 
 func _on_slide_duration_timeout():
 	slide_duration_timer.stop()
@@ -159,6 +171,10 @@ func _on_slide_again_timeout():
 func _on_invul_timeout():
 	modulate.a = 1
 	invul_timer.stop()
+
+func _on_flash_charge_shoot_timeout():
+	if self.modulate == original_color:
+		self.modulate = flash_color
 
 func travel_to_animation(animation: String):
 		_forward_anim_state.travel(animation)
@@ -271,7 +287,7 @@ func _on_disable_player_action(to_disable):
 func _on_collided_with_player(damage):
 	if debug_mode:
 		return
-	if invul_timer.is_stopped():
+	if invul_timer.is_stopped() && !charge_shot_present():
 		current_health = current_health - damage
 		Events.emit_signal("player_damaged", damage)
 		Events.emit_signal("player_current_health", current_health)
@@ -302,6 +318,15 @@ func _physics_process(delta):
 	var _vertical_direction = (
 		Input.get_action_strength("move_up") - Input.get_action_strength("move_down")
 	)
+	
+	if charge_shot_present():
+		if flash_charge_shoot_timer.is_stopped():
+			flash_charge_shoot_timer.start()
+	
+	if !charge_shot_present():
+		if !flash_charge_shoot_timer.is_stopped():
+			flash_charge_shoot_timer.stop()
+			self.modulate = original_color
 
 	if !is_move_disabled:
 		velocity.y += get_gravity() * delta

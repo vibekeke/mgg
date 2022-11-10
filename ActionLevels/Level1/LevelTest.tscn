@@ -1,6 +1,5 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventBoss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=4]
@@ -12,8 +11,12 @@
 [ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn" type="PackedScene" id=13]
 
 [node name="LevelTest" type="Node2D"]
+
+[node name="LongTallPlatform" parent="." instance=ExtResource( 13 )]
+position = Vector2( 612, 433 )
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -36,6 +39,8 @@ scale = Vector2( 119.688, 10 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 247, 840 )
+debug_mode = true
+flash_charge_timer = 0.1
 gunshot = ExtResource( 8 )
 charge_shot = ExtResource( 2 )
 
@@ -59,6 +64,3 @@ unique_name_in_owner = true
 
 [node name="LevelEventsManager" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true
-
-[node name="Level1_EventBoss" parent="LevelEventsManager" instance=ExtResource( 1 )]
-debug_mode = true

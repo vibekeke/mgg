@@ -67,7 +67,7 @@ func _on_level_event_complete(level_event_name, level_event_number) -> void:
 
 		wait_for_spawn_restart_timer.set_name(event_name + "_wait_for_spawn_restart_timer")
 		wait_for_spawn_restart_timer.connect("timeout", self, "end_event")
-		wait_for_spawn_restart_timer.set_wait_time(1.0)
+		wait_for_spawn_restart_timer.set_wait_time(2.5)
 		self.add_child(wait_for_spawn_restart_timer)
 
 func trigger() -> void:

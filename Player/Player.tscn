@@ -2,7 +2,7 @@
 
 [ext_resource path="res://imported_assets/actors/mg/Player_MeleeTEST-A.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://sounds/player/plst00.wav" type="AudioStream" id=3]
+[ext_resource path="res://sounds/player/basiclaser.wav" type="AudioStream" id=3]
 [ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA3-v1.webp" type="Texture" id=4]
 [ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA3-V1.webp" type="Texture" id=5]
 [ext_resource path="res://imported_assets/actors/mg/Player_Slide_Test.png" type="Texture" id=6]
@@ -1553,6 +1553,7 @@ parameters/Slide/TimeScale/scale = 1.0
 visible = false
 frames = SubResource( 228 )
 animation = "run"
+frame = 3
 playing = true
 __meta__ = {
 "_edit_group_": true,
@@ -1583,7 +1584,7 @@ parameters/Slide/TimeScale/scale = 1.0
 [node name="BulletFire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -20.0
-pitch_scale = 1.5
+pitch_scale = 2.03
 
 [node name="DebugCanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
