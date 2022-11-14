@@ -27,7 +27,7 @@ const phase_patterns = {
 	0: {
 		'rotate_speed': 115, # speed of rotation of bullet generator
 		'spawn_point_count': 1, # number of bullets to spawn at one time, equivalent of angles to complete a circle, e.g. 3 = 120 degrees at each point
-		'fire_rate_timer_wait_time': 0.3, # how often to fire in seconds
+		'fire_rate_timer_wait_time': 0.5, # how often to fire in seconds
 		'radius': 1, # size of radius of bullet spawning, influences initial "closeness" of bullets
 		'projectile_speed': 100 # speed of the projectiles that are generated
 	}
@@ -105,7 +105,6 @@ func apply_new_bullet_phase(phase_number: int):
 		_setup_bullets()
 
 func _physics_process(delta):
-	print("????????", parent_node.global_position)
 	var new_rotation = rotator.rotation_degrees + rotate_speed * delta
 	rotator.rotation_degrees = fmod(new_rotation, 360)
 	if parent_node.global_position.x >= 1000:

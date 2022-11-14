@@ -45,7 +45,7 @@ __meta__ = {
 }
 spawn_height = 1
 initial_scroll_speed = 200.0
-health_value = 35
+health_value = 10
 enemy_logic = ExtResource( 3 )
 is_unique_while_alive = true
 droppables = [ ExtResource( 4 ) ]
@@ -62,7 +62,7 @@ scale = Vector2( 0.4, 0.4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 frames = SubResource( 6 )
-frame = 2
+frame = 3
 speed_scale = 2.0
 playing = true
 
