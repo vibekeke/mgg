@@ -4,15 +4,18 @@ export (int) var max_enemies_on_screen = 5
 export (int) var max_platforms_on_screen = 3
 export (float) var seconds_enemy_spawn_frequency = 1.0
 export (float) var seconds_platform_spawn_frequency = 2.0
+export (float) var seconds_spawn_unique_while_alive_frequency = 2.0
 export (Vector2) var default_platform_spawn_position = Vector2(2000, 410)
 onready var current_enemy_list : Array = []
 export (Array, PackedScene) var first_tier_enemy_list
 export (Array, PackedScene) var second_tier_enemy_list
 export (Array, PackedScene) var third_tier_enemy_list
+export (Array, PackedScene) var unique_enemy_list
 export (Array, PackedScene) var platform_list
 export (int) var default_scroll_speed = 500
 
 onready var spawn_timer : Timer = Timer.new()
+onready var spawn_unique_while_alive_timer : Timer = Timer.new()
 onready var platform_spawn_timer : Timer = Timer.new()
 onready var enemies_spawned : int = 0
 onready var platforms_spawned : int = 0
@@ -23,6 +26,7 @@ onready var level_background = get_node("%LevelBackground")
 onready var level_events_manager = get_node("%LevelEventsManager")
 
 var enemy_to_spawn = null
+var unique_enemy_to_spawn = null
 var platform_to_spawn = null
 var spawn_points = {}
 
@@ -42,6 +46,12 @@ func _ready():
 	platform_spawn_timer.set_wait_time(seconds_platform_spawn_frequency + rng.randf_range(0.1, 1.0))
 	self.add_child(platform_spawn_timer)
 	platform_spawn_timer.start()
+	
+	spawn_unique_while_alive_timer.set_name("spawn_unique_while_alive_timer")
+	spawn_unique_while_alive_timer.connect("timeout", self, "_spawn_unique_while_alive_enemy")
+	spawn_unique_while_alive_timer.set_wait_time(seconds_spawn_unique_while_alive_frequency + rng.randf_range(1.0, 3.5))
+	self.add_child(spawn_unique_while_alive_timer)
+	spawn_unique_while_alive_timer.start()
 
 func get_enemy_from_difficulty_tier():
 	if current_difficulty_tier <= 1:
@@ -87,6 +97,21 @@ func _spawn_enemy():
 func _spawn_platform():
 	platform_to_spawn_next()
 	platform_spawn_timer.set_wait_time(seconds_platform_spawn_frequency + rng.randf_range(0.1, 1.0))
+
+func _spawn_unique_while_alive_enemy():
+	if current_difficulty_tier > 1 && unique_enemy_list.size() > 0 && check_for_unique_enemies() <= 0:
+		var parent_node = self.get_parent()
+		if parent_node != null:
+			unique_enemy_to_spawn = unique_enemy_list[rng.randi() % unique_enemy_list.size()]
+			var _unique_enemy_to_spawn = unique_enemy_to_spawn.instance()
+			if !_unique_enemy_to_spawn.is_in_group("non_boss_enemy"):
+				_unique_enemy_to_spawn.add_to_group("non_boss_enemy")
+			if _unique_enemy_to_spawn.initial_scroll_speed == 0:
+				_unique_enemy_to_spawn.initial_scroll_speed = default_scroll_speed
+			if spawn_points.size() > 0:
+				var spawn_place = spawn_at_valid_height(_unique_enemy_to_spawn)
+				_unique_enemy_to_spawn.position = spawn_place
+				parent_node.add_child(_unique_enemy_to_spawn)
 
 func platform_to_spawn_next():
 	if platform_list.size() == 0:
@@ -250,3 +275,7 @@ func add_enemy_to_spawn_list(enemy_to_add : PackedScene, tier : int):
 		second_tier_enemy_list.append(enemy_to_add)
 	elif tier >= 3:
 		third_tier_enemy_list.append(enemy_to_add)
+
+func check_for_unique_enemies():
+	var unique_while_alive_enemy = get_tree().get_nodes_in_group("unique_while_alive")
+	return unique_while_alive_enemy.size()

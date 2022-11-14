@@ -1,5 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerfly.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=4]
@@ -11,12 +12,8 @@
 [ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=12]
-[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn" type="PackedScene" id=13]
 
 [node name="LevelTest" type="Node2D"]
-
-[node name="LongTallPlatform" parent="." instance=ExtResource( 13 )]
-position = Vector2( 612, 433 )
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -52,6 +49,7 @@ visible = false
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 11 )]
 unique_name_in_owner = true
+unique_enemy_list = [ ExtResource( 1 ) ]
 
 [node name="SpawnPaths" parent="." instance=ExtResource( 9 )]
 unique_name_in_owner = true

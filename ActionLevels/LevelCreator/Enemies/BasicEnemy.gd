@@ -11,6 +11,7 @@ export (int) var health_value = 1
 export (PackedScene) var enemy_logic
 export (bool) var is_boss = false
 export (bool) var debug_mode = false
+export (bool) var is_unique_while_alive = false
 export (bool) var has_non_queue_free_rotator = false # hack to ensure rotator and children arent killed during queue free
 export (Array, PackedScene) var droppables
 export (int) var enemy_difficulty_tier
@@ -51,6 +52,8 @@ func _ready():
 	Events.connect("player_global_position", self, "_on_player_global_position")
 	Events.connect("disable_enemy_action", self, "_on_disable_enemy_action")
 	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
+	if is_unique_while_alive:
+		self.add_to_group("unique_while_alive")
 	enemy_spawn_point()
 	_damage_timer_setup()
 	_eventually_queue_free_setup()
@@ -138,7 +141,7 @@ func _on_call_area_entered(player_bullet):
 		if "player_charge_shot" in parent_groups:
 			if !has_invulnerability:
 				hit_times += 1
-				take_damage()
+				take_damage(2)
 		elif "player_bullet" in parent_groups:
 			if player_bullet.get_parent().belongs_to_player != null:
 				if has_invulnerability:

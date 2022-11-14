@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://imported_assets/actors/misbeehave/Bee_Stressed.png" type="Texture" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=2]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave_logic.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -50,6 +52,7 @@ spawn_height = 2
 initial_scroll_speed = 650.0
 health_value = 2
 enemy_logic = ExtResource( 3 )
+droppables = [ ExtResource( 5 ), ExtResource( 4 ) ]
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )
@@ -61,7 +64,7 @@ scale = Vector2( 0.4, 0.4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 frames = SubResource( 8 )
-frame = 3
+frame = 5
 speed_scale = 2.0
 playing = true
 

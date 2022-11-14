@@ -3,8 +3,8 @@ extends Node2D
 
 export (float) var speed = 100
 
-onready var area2d = $LilBird/Area2D
-onready var visual_body = $LilBird2
+onready var area2d = $Projectile/Area2D
+onready var visual_body = $VisualStar
 
 func off_leftside_screen():
 	return self.global_position.x < 0 || self.global_position.y < 0
