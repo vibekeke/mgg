@@ -59,13 +59,14 @@ func set_pattern_debug():
 	_setup_bullets()
 
 func _fire_rate_timer_setup():
-	fire_rate_timer.set_name("boss_fire_rate_timer")
+	fire_rate_timer.set_name("fire_rate_timer")
 	fire_rate_timer.connect("timeout", self, "_on_fire_rate_timeout")
 	self.add_child(fire_rate_timer)
 
 func _on_fire_rate_timeout():
 	for s in rotator.get_children():
 		var bullet = gunnerfly_bullet.instance()
+		bullet.add_to_group("static_gunnerfly_bullets")
 		bullet.speed = projectile_speed
 		get_tree().get_root().add_child(bullet)
 		bullet.position = s.global_position

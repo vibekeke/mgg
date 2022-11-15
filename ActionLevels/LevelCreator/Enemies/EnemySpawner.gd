@@ -64,11 +64,13 @@ func get_enemy_from_difficulty_tier():
 func stop_enemy_spawner():
 	platform_spawn_timer.stop()
 	spawn_timer.stop()
+	spawn_unique_while_alive_timer.stop()
 	
 func start_enemy_spawner():
 	platform_spawn_timer.start()
 	spawn_timer.start()
-
+	spawn_unique_while_alive_timer.start()
+	
 func stop_platform_spawner():
 	platform_spawn_timer.stop()
 
@@ -80,6 +82,13 @@ func stop_spawning_enemies():
 
 func start_spawning_enemies():
 	spawn_timer.start()
+	
+func start_unique_enemy_spawner():
+	spawn_unique_while_alive_timer.start()
+	
+func stop_unique_enemy_spawner():
+	spawn_unique_while_alive_timer.stop()
+	
 
 func _on_level_spawn_points(_spawn_points):
 	spawn_points = _spawn_points

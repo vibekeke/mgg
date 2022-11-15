@@ -8,10 +8,14 @@ var player_position
 var shoot_towards = false
 var angle_to_player
 var set_angle = false
+var detach_from_parent = false
 
 func _physics_process(delta):
 	self.visual_body.set_global_rotation(0)
 	if shoot_towards:
+		if detach_from_parent:
+			get_parent().remove_child(self)
+			get_tree().get_root().add_child(self)
 		go_towards_point(delta)
 
 func go_towards_point(delta):
