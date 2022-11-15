@@ -15,6 +15,9 @@ func _process(delta):
 	if off_leftside_screen():
 		self.queue_free()
 
+func force_queue_free():
+	self.queue_free()
+
 func _ready():
 	if area2d != null:
 		area2d.connect("area_entered", self, "_on_call_area_entered")

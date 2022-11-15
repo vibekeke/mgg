@@ -100,6 +100,7 @@ func call_death(count_as_regular_death: bool):
 		active_death_explosion_node.position = death_position
 		active_death_explosion_node.connect("animation_finished", self, "_on_explosion_finished")
 		area2d.add_child(active_death_explosion_node)
+		get_tree().call_group("static_gunnerfly_bullets", "force_queue_free")
 		sprite.visible = false
 		active_death_explosion_node.play("default", false)
 		spawn_possible_collectible(death_global_position)
