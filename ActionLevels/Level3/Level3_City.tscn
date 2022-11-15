@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ActionLevels/Level3/Level3_City.gd" type="Script" id=1]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=3]
+
+[node name="Level3_City" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Floor" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( -102, 1013 )
+scale = Vector2( 126.375, 10 )
+
+[node name="Backwall" parent="." instance=ExtResource( 2 )]
+visible = false
+rotation = 1.5708
+scale = Vector2( 67.5, 10 )
+
+[node name="Frontwall" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 1920, 0 )
+rotation = 1.5708
+scale = Vector2( 67.5, 10 )
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 102
+
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource( 3 )]
+visible = false
+
+[node name="LevelBackground" type="CanvasLayer" parent="."]
