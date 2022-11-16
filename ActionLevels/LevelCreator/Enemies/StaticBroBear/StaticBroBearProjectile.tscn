@@ -1,13 +1,17 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemyAssets/StarBullet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBearProjectile.gd" type="Script" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticBroBear/StaticBroBearProjectile.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 25, 25 )
 
-[node name="BroBearProjectile" type="Node2D"]
+[node name="StaticBroBearProjectile" type="Node2D"]
+position = Vector2( 488, 256 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Star" parent="." instance=ExtResource( 1 )]
 
@@ -17,7 +21,7 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile/Area2D"]
 position = Vector2( -1, -2 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( -1, -2 )

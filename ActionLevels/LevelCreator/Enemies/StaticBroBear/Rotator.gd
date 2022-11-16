@@ -2,10 +2,10 @@ extends Node2D
 
 class_name BroBearRotator
 
-onready var secret_rotator = get_node("%SecretRotator")
+onready var area2d = get_node("%Area2D")
 
 var rotator_has_fired = false
 
 func _physics_process(delta):
-	if secret_rotator != null && !rotator_has_fired:
-		self.global_position = secret_rotator.global_position
+	if area2d != null && rotator_has_fired == false:
+		self.global_position = area2d.global_position

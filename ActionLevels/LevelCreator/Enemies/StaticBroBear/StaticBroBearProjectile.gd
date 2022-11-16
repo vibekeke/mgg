@@ -9,8 +9,7 @@ var angle_to_player
 var set_angle = false
 
 func _physics_process(delta):
-	#print(self.name, " is at ", self.global_position)
-	self.visual_body.set_global_rotation(0)
+	self.rotation -= delta * 2
 	if shoot_towards:
 		go_towards_point(delta)
 
@@ -22,7 +21,6 @@ func go_towards_point(delta):
 				set_angle = true
 			self.global_position += Vector2(-(speed * delta * cos(angle_to_player)), -(speed * delta * sin(angle_to_player)))
 
-
 func _ready():
 	if area2d != null:
 		area2d.connect("area_entered", self, "_on_call_area_entered")
@@ -32,7 +30,6 @@ func _on_call_area_entered(area):
 		Events.emit_signal("collided_with_player", 1)
 		self.queue_free()
 
-
 func _on_VisibilityNotifier2D_screen_exited():
-	if self.global_position.y > 0:
+	if self.global_position.y > 1080:
 		self.queue_free()
