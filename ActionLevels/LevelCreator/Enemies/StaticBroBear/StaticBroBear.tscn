@@ -45,7 +45,7 @@ scale = Vector2( 14.125, 20.875 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 frames = ExtResource( 2 )
-frame = 4
+frame = 5
 speed_scale = 2.0
 playing = true
 
