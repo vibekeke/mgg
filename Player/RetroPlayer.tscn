@@ -200,7 +200,7 @@ flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 1024, 1024 )
 
-[sub_resource type="SpriteFrames" id=120]
+[sub_resource type="SpriteFrames" id=427]
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -381,8 +381,9 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=126]
 resource_name = "run"
+length = 0.4
 loop = true
-step = 0.071
+step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
@@ -402,10 +403,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.071, 0.142, 0.213, 0.284, 0.355, 0.426, 0.497, 0.568, 0.639, 0.71, 0.781, 0.852, 0.923 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+"values": [ 0, 4 ]
 }
 
 [sub_resource type="Animation" id=250]
@@ -556,7 +557,7 @@ states/Slide/node = SubResource( 249 )
 states/Slide/position = Vector2( 200.3, -109.547 )
 transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 239 ), "AboutToFall", "Landing", SubResource( 240 ), "Run", "Slide", SubResource( 253 ), "Slide", "RisingLoop", SubResource( 254 ), "Landing", "Slide", SubResource( 256 ), "Slide", "Run", SubResource( 257 ) ]
 start_node = "Run"
-graph_offset = Vector2( -853.78, 69.5925 )
+graph_offset = Vector2( -853.78, -176.445 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=128]
 
@@ -1481,6 +1482,7 @@ height = 0.0
 radius = 445.714
 
 [node name="Player" type="KinematicBody2D"]
+modulate = Color( 0, 0, 0, 1 )
 scale = Vector2( 0.35, 0.35 )
 script = ExtResource( 2 )
 
@@ -1489,7 +1491,7 @@ position = Vector2( -154.286, 190 )
 shape = SubResource( 3 )
 
 [node name="StaffForward" type="AnimatedSprite" parent="."]
-frames = SubResource( 120 )
+frames = SubResource( 427 )
 animation = "run"
 frame = 1
 __meta__ = {
@@ -1553,7 +1555,7 @@ parameters/Slide/TimeScale/scale = 1.0
 visible = false
 frames = SubResource( 228 )
 animation = "run"
-frame = 4
+frame = 1
 playing = true
 __meta__ = {
 "_edit_group_": true,

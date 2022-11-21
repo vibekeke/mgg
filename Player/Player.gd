@@ -119,7 +119,7 @@ func _ready():
 	setup_debug_canvas(debug_mode)
 
 
-func _player_transition_to_scene():
+func _player_transition_to_scene(scene_name):
 	print("Player has transitioned to scene")
 
 func _on_has_charge_shot():

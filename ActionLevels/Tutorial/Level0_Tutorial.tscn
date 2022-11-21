@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -6,10 +6,9 @@
 [ext_resource path="res://ActionLevels/Tutorial/Level0_Tutorial.gd" type="Script" id=4]
 [ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ActionLevels/Tutorial/blackwhiteshader.tres" type="Material" id=9]
 [ext_resource path="res://HUD/Health.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player/RetroPlayer.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -78,10 +77,6 @@ disable_3d = true
 usage = 0
 render_target_update_mode = 3
 
-[node name="Player" parent="ViewportContainer/Viewport" instance=ExtResource( 8 )]
-position = Vector2( 191, 811 )
-gunshot = ExtResource( 7 )
-
 [node name="Floor" parent="ViewportContainer/Viewport" instance=ExtResource( 2 )]
 visible = false
 position = Vector2( -102, 1013 )
@@ -101,3 +96,6 @@ scale = Vector2( 67.5, 10 )
 [node name="Misbeehave" parent="ViewportContainer/Viewport" instance=ExtResource( 6 )]
 position = Vector2( 2288, 791 )
 initial_scroll_speed = 0.0
+
+[node name="Player2" parent="ViewportContainer/Viewport" instance=ExtResource( 11 )]
+position = Vector2( 191, 811 )
