@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/Tutorial/Level0_Tutorial.gd" type="Script" id=4]
 [ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=6]
@@ -56,11 +55,6 @@ margin_bottom = 1083.0
 timeline = "timeline-1661969358.json"
 add_canvas = false
 
-[node name="LevelEventsManager" parent="." instance=ExtResource( 3 )]
-
-[node name="EnemySpawner" parent="." instance=ExtResource( 1 )]
-unique_name_in_owner = true
-
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 material = SubResource( 2 )
 anchor_right = 1.0
@@ -97,5 +91,7 @@ scale = Vector2( 67.5, 10 )
 position = Vector2( 2288, 791 )
 initial_scroll_speed = 0.0
 
-[node name="Player2" parent="ViewportContainer/Viewport" instance=ExtResource( 11 )]
+[node name="RetroPlayer" parent="ViewportContainer/Viewport" instance=ExtResource( 11 )]
 position = Vector2( 191, 811 )
+
+[node name="SceneManager" parent="." instance=ExtResource( 1 )]

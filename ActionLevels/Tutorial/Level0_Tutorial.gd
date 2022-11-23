@@ -13,8 +13,9 @@ func _on_transition_timer():
 	Events.transition_to_new_scene("Level1")
 
 func _process(delta):
-	var present_bee = get_node_or_null("Misbeehave")
-	if present_bee == null:
-		if !transitioning:
-			transition_timer.start()
-			transitioning = true
+	pass
+#	var present_bee = get_node_or_null("Misbeehave")
+#	if present_bee == null:
+#		if !transitioning:
+#			transition_timer.start()
+#			transitioning = true

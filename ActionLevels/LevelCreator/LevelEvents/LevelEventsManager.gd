@@ -14,7 +14,6 @@ func _on_currently_running_event(level_event_name, level_event_number):
 
 func _on_level_event_complete(level_event_name, level_event_number):
 	completed_events_map[level_event_number] = level_event_name
-	print("currently compeleted events are ", completed_events_map)
 
 func get_is_event_running():
 	return !(currently_running_event < 0)

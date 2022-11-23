@@ -61,18 +61,16 @@ func set_vhs_shader(shader_params : Dictionary):
 		vhs_filter.material.set_shader_param(param, shader_params[param])
 
 func set_is_paused(value):
-	is_paused = value
+	is_paused = value		
 	if value && vhs_filter != null:
 		set_vhs_shader(vhs_filter_state_paused)
 	elif value == false && vhs_filter != null:
 		set_vhs_shader(vhs_filter_state_unpaused)
 	get_tree().paused = is_paused
 	visible = is_paused
+	if is_paused:
+		$CenterContainer/VBoxContainer/ResumeBtn.grab_focus()
 	
-func _ready():
-	print("vhs filter in pause screen ", vhs_filter)
-	pass
-
 func _on_ResumeBtn_pressed():
 	self.is_paused = false
 

@@ -15,15 +15,14 @@ margin_left = -50.0
 margin_top = -50.0
 margin_right = 450.0
 margin_bottom = 50.0
-rect_scale = Vector2( 2, 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 500.0
-margin_bottom = 28.0
+margin_bottom = 56.0
 
 [node name="ResolutionButton" type="Button" parent="HBoxContainer"]
-margin_right = 102.0
-margin_bottom = 28.0
+margin_right = 204.0
+margin_bottom = 56.0
 focus_neighbour_right = NodePath(".")
 custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
@@ -59,9 +58,9 @@ same_column_width = true
 script = ExtResource( 5 )
 
 [node name="BackButton" type="Button" parent="."]
-margin_top = 32.0
+margin_top = 60.0
 margin_right = 500.0
-margin_bottom = 60.0
+margin_bottom = 116.0
 custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
 custom_colors/font_color_hover = Color( 0.898039, 0.890196, 0.0745098, 1 )

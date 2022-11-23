@@ -47,6 +47,7 @@ func _disable_enemy_actions(to_disable):
 
 
 func transition_to_new_scene(next_scene):
+	print("transition to new scene", next_scene)
 	self.emit_signal("transition_to_scene", next_scene)
 	
 func go_to_game_over():
@@ -90,6 +91,14 @@ onready var level_platforms = {
 
 onready var bossPaths = {
 	'BigBird': 'res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn'
+}
+
+onready var action_level_list = {
+	"Tutorial": "res//ActionLevels/Tutorial/Level0_Tutorial.tscn",
+	"Level1": "res://ActionLevels/Level1/Level1_Forest.tscn",
+	"Level2": "res://ActionLevels/Level2/Level2_Beach.tscn",
+	"Level3": "res://ActionLevels/Level3/Level3_City.tscn",
+	"GameOver": "res://Menus/GameOver.tscn"
 }
 
 func get_boss(boss_name : String):
