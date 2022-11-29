@@ -13,16 +13,16 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -50.0
 margin_top = -50.0
-margin_right = 450.0
-margin_bottom = 50.0
+margin_right = 736.0
+margin_bottom = 318.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 500.0
-margin_bottom = 56.0
+margin_right = 786.0
+margin_bottom = 368.0
 
 [node name="ResolutionButton" type="Button" parent="HBoxContainer"]
-margin_right = 204.0
-margin_bottom = 56.0
+margin_right = 322.0
+margin_bottom = 368.0
 focus_neighbour_right = NodePath(".")
 custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
@@ -36,14 +36,12 @@ custom_styles/normal = ExtResource( 3 )
 text = "Resolution"
 
 [node name="ResolutionList" type="ItemList" parent="HBoxContainer"]
-visible = false
-margin_left = 106.0
-margin_right = 500.0
-margin_bottom = 64.0
+margin_left = 326.0
+margin_right = 786.0
+margin_bottom = 368.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")
-focus_neighbour_bottom = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 size_flags_horizontal = 3
@@ -52,24 +50,9 @@ custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/selected_focus = ExtResource( 2 )
 custom_styles/bg = ExtResource( 3 )
-items = [ "1920 x 1080", null, false, "1280 x 720", null, false, "Fullscreen", null, false ]
+items = [ "1920 x 1080", null, false, "1280 x 720", null, false, "Fullscreen", null, false, "Back", null, false ]
 auto_height = true
 same_column_width = true
 script = ExtResource( 5 )
-
-[node name="BackButton" type="Button" parent="."]
-margin_top = 60.0
-margin_right = 500.0
-margin_bottom = 116.0
-custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
-custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
-custom_colors/font_color_hover = Color( 0.898039, 0.890196, 0.0745098, 1 )
-custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
-custom_fonts/font = ExtResource( 1 )
-custom_styles/hover = ExtResource( 2 )
-custom_styles/pressed = ExtResource( 4 )
-custom_styles/focus = ExtResource( 2 )
-custom_styles/normal = ExtResource( 3 )
-text = "Back"
 
 [connection signal="item_activated" from="HBoxContainer/ResolutionList" to="HBoxContainer/ResolutionList" method="_on_ResolutionList_item_activated"]

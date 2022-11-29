@@ -12,6 +12,8 @@ func _on_ResolutionList_item_activated(index):
 			var os_screen_res = OS.get_screen_size()
 			OS.set_window_size(os_screen_res)
 			OS.window_fullscreen = !OS.window_fullscreen
+		3:
+			pass
 		_:
 			print("do nothing")
 	

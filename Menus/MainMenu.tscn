@@ -28,8 +28,8 @@ margin_bottom = 50.0
 alignment = 1
 
 [node name="StartButton" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_right = 152.0
-margin_bottom = 56.0
+margin_right = 239.0
+margin_bottom = 88.0
 focus_neighbour_top = NodePath("../QuitButton")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
@@ -44,9 +44,9 @@ custom_styles/normal = ExtResource( 3 )
 text = "Start"
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 60.0
-margin_right = 152.0
-margin_bottom = 116.0
+margin_top = 92.0
+margin_right = 239.0
+margin_bottom = 180.0
 custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
 custom_colors/font_color_hover = Color( 0.898039, 0.890196, 0.0745098, 1 )
@@ -59,9 +59,9 @@ custom_styles/normal = ExtResource( 3 )
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 120.0
-margin_right = 152.0
-margin_bottom = 176.0
+margin_top = 184.0
+margin_right = 239.0
+margin_bottom = 272.0
 focus_neighbour_bottom = NodePath("../StartButton")
 custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
