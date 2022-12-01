@@ -16,6 +16,7 @@ onready var action_level_list = {
 }
 
 func _ready():
+	self.visible = true
 	Events.connect("transition_to_scene", self, "_transition_to_next_scene")
 	tween.interpolate_property(color_rect, "modulate:a", 1, 0, fade_duration)
 	tween.interpolate_callback(color_rect, fade_duration, "hide")
