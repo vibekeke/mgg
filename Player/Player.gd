@@ -4,6 +4,7 @@ onready var hurt_area = $HurtArea
 onready var slide_hurt_area = $SlideHurtArea
 onready var standing_collision = $StandingCollisionShape
 onready var sliding_collision = $SlidingCollisionShape
+onready var visibility_notifier = $VisibilityNotifier2D
 
 
 onready var staff_forward = $StaffForward
@@ -22,15 +23,20 @@ onready var _down_animation_tree = $StaffDown/AnimationTree
 onready var _down_anim_state = _down_animation_tree.get("parameters/playback")
 
 const UP_DIRECTION := Vector2.UP
+const DOWN_DIRECTION := Vector2.DOWN
 
 ## health
 export var max_health := 3
-var current_health = max_health
-var invul_timer = Timer.new()
+var current_health : int = max_health
+var invul_timer : Timer = Timer.new()
+
+## Respawning
+var respawn_timer : Timer = Timer.new()
+var start_respawning_player : bool = false
 
 ## shooting
 export var fire_rate_secs := 0.15
-var fire_rate_timer = Timer.new()
+var fire_rate_timer : Timer = Timer.new()
 enum SHOOT_ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
 var angle_map = { SHOOT_ANGLE.FORWARD_B: 0 , SHOOT_ANGLE.UPWARD_B: -30, SHOOT_ANGLE.DOWNWARD_B: -330 }
 var current_shooting_angle = SHOOT_ANGLE.FORWARD_B
@@ -52,8 +58,8 @@ onready var jump_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_pea
 onready var fall_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 onready var float_gravity : float = ((-2.0 * max_jump_height) / (float_time_to_descent * float_time_to_descent)) * -1.0
 onready var fast_fall_gravity : float = ((-2.0 * max_jump_height) / (fast_fall_time_to_descent * fast_fall_time_to_descent)) * -1.0
-var float_halt = false
-var has_floated = false
+var float_halt : bool = false
+var has_floated : bool = false
 
 export (bool) var debug_mode = false
 
@@ -104,6 +110,7 @@ func _ready():
 	Events.connect("transition_to_scene", self, "_player_transition_to_scene")
 	Events.connect("collected_heart", self, "_on_collected_heart")
 	Events.connect("has_charge_shot", self, "_on_has_charge_shot")
+	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
 	_forward_animation_tree.active = true
 	_up_animation_tree.active = true
 	_down_animation_tree.active = true
@@ -112,12 +119,18 @@ func _ready():
 	_slide_again_timer_setup()
 	_slide_duration_timer_setup()
 	_flash_charge_shoot_setup()
+	_respawn_timer_setup()
 	staff_forward.frame = 0
 	staff_up.frame = 0
 	staff_down.frame = 0
 	travel_to_animation("Run")
 	setup_debug_canvas(debug_mode)
 
+func _on_screen_exited():
+	if self.global_position.y > 0:
+		take_damage(1)
+		if current_health > 0:
+			start_respawning_player = true
 
 func _player_transition_to_scene(scene_name):
 	print("Player will transitioned to scene", scene_name)
@@ -156,6 +169,13 @@ func _flash_charge_shoot_setup():
 	flash_charge_shoot_timer.set_wait_time(flash_charge_timer)
 	flash_charge_shoot_timer.set_one_shot(false)
 	self.add_child(flash_charge_shoot_timer)
+
+func _respawn_timer_setup():
+	respawn_timer.set_name("respawn_timer")
+	#respawn_timer.connect("timeout", self, "_on_respawn_timeout")
+	respawn_timer.set_wait_time(1.0)
+	respawn_timer.set_one_shot(true)
+	self.add_child(respawn_timer)
 
 func _on_slide_duration_timeout():
 	slide_duration_timer.stop()
@@ -212,6 +232,9 @@ func get_gravity() -> float:
 	# of their jump
 	if velocity.y < 0 and velocity.y > jump_velocity * 0.5:
 		travel_to_animation("AboutToFall")
+	if start_respawning_player:
+		print("reversing gravity for respawn")
+		gravity = gravity * -1.0
 	return gravity
 
 func jump_logic():
@@ -284,25 +307,29 @@ func _on_disable_player_action(to_disable):
 		is_jump_disabled = !is_jump_disabled
 		is_move_disabled = !is_move_disabled
 
+func take_damage(damage):
+	current_health = current_health - damage
+	Events.emit_signal("player_damaged", damage)
+	Events.emit_signal("player_current_health", current_health)
+	invul_timer.start()
+	modulate.a = 0.5
+	if current_health <= 0:
+		self.queue_free()
+
 func _on_collided_with_player(damage):
 	if debug_mode:
 		return
 	if invul_timer.is_stopped() && !charge_shot_present():
-		current_health = current_health - damage
-		Events.emit_signal("player_damaged", damage)
-		Events.emit_signal("player_current_health", current_health)
-		invul_timer.start()
-		modulate.a = 0.5
-		if current_health <= 0:
-			Events.emit_signal("game_over")
-			self.queue_free()
-			
+		take_damage(damage)
 
 func _on_collected_heart():
 	current_health = clamp(current_health + 1, 0, max_health)
 	Events.emit_signal("player_current_health", current_health)
 
 func _physics_process(delta):
+	if self.global_position.y < 540 && start_respawning_player:
+		print("disabling respawn effects")
+		start_respawning_player = false
 	if is_on_floor() and is_sliding:
 		travel_to_animation("Slide")
 	elif is_on_floor():
@@ -354,7 +381,10 @@ func _physics_process(delta):
 		elif Input.is_action_just_released("float"):
 			float_halt = false
 			has_floated = true
-	velocity = move_and_slide(velocity, UP_DIRECTION)
+	if start_respawning_player:
+		velocity = move_and_slide(velocity, DOWN_DIRECTION)
+	else:
+		velocity = move_and_slide(velocity, UP_DIRECTION)
 
 func initiate_slide():
 	# player has committed to slide for X number of frames
