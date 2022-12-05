@@ -29,6 +29,7 @@ unique_name_in_owner = true
 [node name="VHS" parent="LevelBackground" instance=ExtResource( 8 )]
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
 visible = false
 position = Vector2( -102, 1013 )
 scale = Vector2( 126.375, 10 )

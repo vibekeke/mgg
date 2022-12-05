@@ -17,6 +17,7 @@
 script = ExtResource( 1 )
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
+unique_name_in_owner = true
 position = Vector2( -1099, 1019 )
 scale = Vector2( 126.375, 10 )
 

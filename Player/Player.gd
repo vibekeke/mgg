@@ -22,6 +22,8 @@ onready var _down_animation_player = $StaffDown/AnimationPlayer
 onready var _down_animation_tree = $StaffDown/AnimationTree
 onready var _down_anim_state = _down_animation_tree.get("parameters/playback")
 
+onready var _floor = get_node_or_null("%Floor")
+
 const UP_DIRECTION := Vector2.UP
 const DOWN_DIRECTION := Vector2.DOWN
 
@@ -233,7 +235,6 @@ func get_gravity() -> float:
 	if velocity.y < 0 and velocity.y > jump_velocity * 0.5:
 		travel_to_animation("AboutToFall")
 	if start_respawning_player:
-		print("reversing gravity for respawn")
 		gravity = gravity * -1.0
 	return gravity
 
@@ -328,7 +329,6 @@ func _on_collected_heart():
 
 func _physics_process(delta):
 	if self.global_position.y < 540 && start_respawning_player:
-		print("disabling respawn effects")
 		start_respawning_player = false
 	if is_on_floor() and is_sliding:
 		travel_to_animation("Slide")
@@ -382,8 +382,12 @@ func _physics_process(delta):
 			float_halt = false
 			has_floated = true
 	if start_respawning_player:
+		if _floor != null:
+			_floor.turn_off_collision()
 		velocity = move_and_slide(velocity, DOWN_DIRECTION)
 	else:
+		if _floor != null:
+			_floor.turn_on_collision()
 		velocity = move_and_slide(velocity, UP_DIRECTION)
 
 func initiate_slide():
@@ -422,6 +426,7 @@ func current_animation():
 	return get_active_aiming_state().get_current_node()
 
 func _process(delta):
+	print("respawning ", start_respawning_player)
 	Events.emit_signal("player_max_health", max_health)
 	Events.emit_signal("player_global_position", self.global_position)
 	Events.emit_signal("player_local_position", self.position)

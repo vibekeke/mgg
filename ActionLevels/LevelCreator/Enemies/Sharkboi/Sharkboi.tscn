@@ -1,6 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://imported_assets/actors/sharkboi/Shark_Bloons.png" type="Texture" id=1]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Sharkboi/SharkboiAnimatedSprite.gd" type="Script" id=3]
+
+[sub_resource type="Curve2D" id=11]
+_data = {
+"points": PoolVector2Array(  )
+}
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -80,11 +87,36 @@ tracks/1/keys = {
 "values": [  ]
 }
 
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 205, 66 )
+
 [node name="Sharkboi" type="Node2D"]
+position = Vector2( 1030, 402 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 11 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 frames = SubResource( 9 )
-frame = 6
+frame = 7
+playing = true
+script = ExtResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/Area2D/AnimatedSprite"]
 "anims/New Anim" = SubResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
+position = Vector2( -6, 144 )
+shape = SubResource( 12 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D/Area2D"]
+position = Vector2( -5.00002, 144 )
+scale = Vector2( 20.6, 6.5 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundBear.tscn" type="PackedScene" id=39]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticBroBear/StaticBroBear.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=41]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerfly.tscn" type="PackedScene" id=42]
 
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource( 5 )
@@ -60,6 +61,7 @@ layer = 100
 [node name="VHS" parent="LevelBackground" instance=ExtResource( 13 )]
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
+unique_name_in_owner = true
 visible = false
 position = Vector2( -102, 1031 )
 scale = Vector2( 126.375, 10 )
@@ -81,7 +83,7 @@ max_enemies_on_screen = 6
 first_tier_enemy_list = [ ExtResource( 19 ), ExtResource( 8 ) ]
 second_tier_enemy_list = [ ExtResource( 4 ) ]
 third_tier_enemy_list = [ ExtResource( 22 ), ExtResource( 23 ) ]
-unique_enemy_list = [ ExtResource( 40 ), ExtResource( 40 ) ]
+unique_enemy_list = [ ExtResource( 40 ), ExtResource( 42 ) ]
 platform_list = [ ExtResource( 6 ), ExtResource( 12 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 7 ) ]
 
 [node name="SpawnPaths" parent="." instance=ExtResource( 26 )]
