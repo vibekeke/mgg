@@ -199,9 +199,9 @@ func _on_flash_charge_shoot_timeout():
 		self.modulate = flash_color
 
 func travel_to_animation(animation: String):
-		_forward_anim_state.travel(animation)
-		_up_anim_state.travel(animation)
-		_down_anim_state.travel(animation)
+	_forward_anim_state.travel(animation)
+	_up_anim_state.travel(animation)
+	_down_anim_state.travel(animation)
 
 func handle_collision_shapes():
 	if is_sliding:
@@ -426,12 +426,10 @@ func current_animation():
 	return get_active_aiming_state().get_current_node()
 
 func _process(delta):
-	print("respawning ", start_respawning_player)
 	Events.emit_signal("player_max_health", max_health)
 	Events.emit_signal("player_global_position", self.global_position)
 	Events.emit_signal("player_local_position", self.position)
 	animation_to_show()
-	
 	if debug_mode:
 		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
 

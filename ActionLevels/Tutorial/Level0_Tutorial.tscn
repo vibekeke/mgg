@@ -1,15 +1,19 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/Tutorial/Level0_Tutorial.gd" type="Script" id=4]
-[ext_resource path="res://addons/dialogic/Dialog.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ActionLevels/Tutorial/blackwhiteshader.tres" type="Material" id=9]
-[ext_resource path="res://HUD/Health.tscn" type="PackedScene" id=10]
+[ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Player/RetroPlayer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelTutorial/LevelTutorial_Event1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=13]
+[ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -44,25 +48,6 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
-
-[node name="Health" parent="." instance=ExtResource( 10 )]
-visible = false
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
-material = ExtResource( 9 )
-margin_right = 1921.0
-margin_bottom = 1083.0
-
-[node name="Dialog" parent="CanvasLayer" instance=ExtResource( 5 )]
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-timeline = "timeline-1669914177.json"
-add_canvas = false
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 material = SubResource( 2 )
@@ -100,12 +85,38 @@ rotation = 1.5708
 scale = Vector2( 67.5, 10 )
 
 [node name="RetroPlayer" parent="ViewportContainer/Viewport" instance=ExtResource( 11 )]
+unique_name_in_owner = true
 position = Vector2( 191, 811 )
 gunshot = ExtResource( 7 )
 charge_shot = ExtResource( 3 )
 
-[node name="Misbeehave" parent="ViewportContainer/Viewport" instance=ExtResource( 6 )]
-position = Vector2( 1760, 811 )
+[node name="EnemySpawner" parent="ViewportContainer/Viewport" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+
+[node name="FullHUD" parent="ViewportContainer/Viewport" instance=ExtResource( 14 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ViewportContainer"]
+
+[node name="ColorRect" type="ColorRect" parent="ViewportContainer/CanvasLayer"]
+visible = false
+material = ExtResource( 9 )
+margin_right = 1921.0
+margin_bottom = 1083.0
 
 [node name="SceneManager" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="LevelEventsManager" parent="." instance=ExtResource( 5 )]
+unique_name_in_owner = true
+
+[node name="LevelTutorial_Event1" parent="LevelEventsManager" instance=ExtResource( 12 )]
+enemy_to_spawn = ExtResource( 8 )
+
+[node name="SpawnPaths" parent="." instance=ExtResource( 13 )]
+unique_name_in_owner = true
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 102
+
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource( 10 )]
 visible = false

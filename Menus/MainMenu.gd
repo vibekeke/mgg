@@ -13,7 +13,7 @@ func _ready():
 	$CanvasLayer/OptionsMenu/HBoxContainer/ResolutionList.connect("item_activated", self, "_on_ResolutionList_item_activated")
 
 func _on_StartButton_pressed():
-	Events.emit_signal("transition_to_scene", "Tutorial")
+	Events.emit_signal("transition_to_scene", "TutorialSelection")
 
 func _on_OptionsButton_pressed():
 	$CanvasLayer/VBoxContainer.visible = false

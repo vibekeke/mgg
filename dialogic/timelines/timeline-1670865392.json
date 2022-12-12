@@ -1,0 +1,55 @@
+{
+	"events": [
+		{
+			"character": "",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Play the tutorial?"
+		},
+		{
+			"choice": "Heck yeah!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"Tutorial"
+				],
+				"method_name": "transition_to_new_scene",
+				"target_node_path": "Events"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"choice": "Heck no!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"Level1"
+				],
+				"method_name": "transition_to_new_scene",
+				"target_node_path": "Events"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1670865392.json",
+		"name": "NewGameTutorial"
+	}
+}

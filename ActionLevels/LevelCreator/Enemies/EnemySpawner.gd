@@ -22,7 +22,7 @@ onready var platforms_spawned : int = 0
 onready var current_difficulty_tier : int = 1
 onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 onready var spawn_paths = get_node("%SpawnPaths")
-onready var level_background = get_node("%LevelBackground")
+onready var level_background = get_node_or_null("%LevelBackground")
 onready var level_events_manager = get_node("%LevelEventsManager")
 
 var enemy_to_spawn = null
@@ -225,7 +225,7 @@ func spawn_instanced_background_element(element,  background_element_name: Strin
 			element.initial_speed = scroll_speed
 		if "scroll_speed" in element:
 			element.scroll_speed = scroll_speed
-		level_background.get_node_or_null(background_element_name).add_child(element)	
+		level_background.get_node_or_null(background_element_name).add_child(element)
 
 
 func spawn_to_background_element(element: PackedScene, background_element_name: String, position: Vector2, scroll_speed):

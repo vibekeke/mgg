@@ -23,13 +23,13 @@
 		{
 			"character": "character-1661969364.json",
 			"event_id": "dialogic_001",
-			"portrait": "Default",
-			"text": "Welcome to the tutorial!\nBeing a magical girl is easy!\nYou jump. You shoot.\nYou lay waste to your enemies!\nTry jumping now with [color=yellow]space bar[/color]! (Do 3 jumps!)"
+			"portrait": "",
+			"text": "Not bad!\nYou can also use your [wave amp=50 freq=2][color=#9400d3]m[/color][color=#4B0082]a[/color][color=#0000ff]g[/color][color=#00ff00]i[/color][color=#ffff00]c[/color][color=#ff7f00]a[/color][color=#ff0000]l[/color][/wave] powers to float!\nHold [color=yellow]shift[/color] to float! Try it 3 times!"
 		}
 	],
 	"metadata": {
 		"dialogic-version": "1.4.5",
-		"file": "timeline-1669914177.json",
-		"name": "LevelTutorial_Event1"
+		"file": "timeline-1670867836.json",
+		"name": "FloatTutorial"
 	}
 }
