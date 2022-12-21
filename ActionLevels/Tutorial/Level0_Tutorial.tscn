@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelTutorial/LevelTutorial_Event1.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=13]
 [ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=14]
+[ext_resource path="res://ActionLevels/Tutorial/TutorialElements/FloatingOrb.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -94,6 +95,15 @@ charge_shot = ExtResource( 3 )
 unique_name_in_owner = true
 
 [node name="FullHUD" parent="ViewportContainer/Viewport" instance=ExtResource( 14 )]
+
+[node name="FloatingOrb" parent="ViewportContainer/Viewport" instance=ExtResource( 15 )]
+position = Vector2( 1940, 1100 )
+
+[node name="FloatingOrb2" parent="ViewportContainer/Viewport" instance=ExtResource( 15 )]
+position = Vector2( 1940, 1100 )
+
+[node name="FloatingOrb3" parent="ViewportContainer/Viewport" instance=ExtResource( 15 )]
+position = Vector2( 1940, 1100 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="ViewportContainer"]
 

@@ -215,6 +215,9 @@ func handle_collision_shapes():
 		standing_collision.disabled = false
 		hurt_area.get_node("CollisionShape2D").disabled = false
 
+func get_float_gravity_value() -> float:
+	return float_gravity
+
 func get_gravity() -> float:
 	var gravity
 	if velocity.y < 0.0:

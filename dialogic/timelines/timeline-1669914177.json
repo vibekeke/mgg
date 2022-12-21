@@ -24,12 +24,16 @@
 			"character": "character-1661969364.json",
 			"event_id": "dialogic_001",
 			"portrait": "Default",
-			"text": "Welcome to the tutorial!\nBeing a magical girl is easy!\nYou jump. You shoot.\nYou lay waste to your enemies!\nTry jumping now with [color=yellow]space bar[/color]! (Do 3 jumps!)"
+			"text": "Welcome to the tutorial!\nBeing a magical girl is easy!\nYou jump. You shoot.\nYou lay waste to your enemies!\nTry jumping into the [color=yellow]floating orbs[/color] with [color=yellow]space bar[/color]!"
+		},
+		{
+			"emit_signal": "intro_and_jump",
+			"event_id": "dialogic_040"
 		}
 	],
 	"metadata": {
 		"dialogic-version": "1.4.5",
 		"file": "timeline-1669914177.json",
-		"name": "LevelTutorial_Event1"
+		"name": "IntroAndJumpTutorial"
 	}
 }
