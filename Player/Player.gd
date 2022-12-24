@@ -315,8 +315,9 @@ func take_damage(damage):
 	current_health = current_health - damage
 	Events.emit_signal("player_damaged", damage)
 	Events.emit_signal("player_current_health", current_health)
-	invul_timer.start()
-	modulate.a = 0.5
+	if current_health > 0:
+		invul_timer.start()
+		modulate.a = 0.5
 	if current_health <= 0:
 		self.queue_free()
 

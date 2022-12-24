@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ActionLevels/Level3/SnowEffect/fake_snow_particles.tscn" type="PackedScene" id=1]
+
+[node name="SnowEffect" type="CanvasLayer"]
+
+[node name="FakeSnowParticles" parent="." instance=ExtResource( 1 )]
+amount = 300
+visibility_rect = Rect2( 0, 1080, 1920, 1080 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ActionLevels/Level3/Level3_City.gd" type="Script" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ActionLevels/Level3/SnowEffect/SnowEffect.tscn" type="PackedScene" id=13]
 
 [node name="Level3_City" type="Node2D"]
 script = ExtResource( 1 )
@@ -68,3 +69,7 @@ base_scrolling_speed = 200.0
 position = Vector2( 615, 214 )
 gunshot = ExtResource( 11 )
 charge_shot = ExtResource( 12 )
+
+[node name="SnowEffect" parent="." instance=ExtResource( 13 )]
+layer = -1
+visible = false

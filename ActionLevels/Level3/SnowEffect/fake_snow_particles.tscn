@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ActionLevels/Level3/SnowEffect/fake_snow_particles.gd" type="Script" id=1]
+
+[node name="FakeSnowParticles" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 1 )
+visibility_rect = Rect2( 0, 180, 320, 180 )
+colors = [ Color( 1, 1, 1, 1 ) ]
+timer_wait_time = 0.1
+preprocess = true
