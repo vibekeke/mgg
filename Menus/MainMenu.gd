@@ -14,6 +14,7 @@ func _ready():
 
 func _on_StartButton_pressed():
 	Events.emit_signal("transition_to_scene", "TutorialSelection")
+	$AudioStreamPlayer.play(0.0)
 
 func _on_OptionsButton_pressed():
 	$CanvasLayer/VBoxContainer.visible = false

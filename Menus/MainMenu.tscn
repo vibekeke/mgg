@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Menus/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=6]
 [ext_resource path="res://Menus/menubuttonfont.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Menus/OptionsMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sounds/level/selection_confirm.wav" type="AudioStream" id=9]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -84,6 +85,9 @@ base_scrolling_speed = 50.0
 unique_name_in_owner = true
 layer = 1
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
