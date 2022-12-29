@@ -5,6 +5,8 @@ export var enemy_to_spawn : PackedScene
 
 onready var intro_and_jump_tutorial_dialog = Dialogic.start('TutorialChallenges/IntroAndJumpTutorial')
 onready var float_tutorial_dialog = Dialogic.start('TutorialChallenges/FloatTutorial')
+onready var slide_tutorial_dialog = Dialogic.start('TutorialChallenges/SlideTutorial')
+onready var shoot_tutorial_dialog = Dialogic.start('TutorialChallenges/ShootTutorial')
 
 onready var monitored_player = get_node("%RetroPlayer")
 var current_tutorial_task = ''
@@ -23,7 +25,8 @@ var jump_tutorial_orb_directions = [1, 1, 0]
 func _ready():
 	intro_and_jump_tutorial_dialog.connect("dialogic_signal", self, "_on_dialog_complete")
 	float_tutorial_dialog.connect("dialogic_signal", self, "_on_dialog_complete")
-	
+	slide_tutorial_dialog.connect("dialogic_signal", self, "_on_dialog_complete")
+	shoot_tutorial_dialog.connect("dialogic_signal", self, "_on_dialog_complete")
 	Events.connect("tutorial_element_touched", self, "_on_tutorial_element_touched")
 	
 	start_event_timer.set_name("LevelTutorial_Event1_start_timer")
@@ -71,7 +74,7 @@ func jump_challenge():
 
 func on_floated_duration_timer():
 	floated_duration_timer.stop()
-	print('starting slide challenge')
+	print('float duration timer finished')
 	current_tutorial_task = 'slide_challenge'
 
 func float_challenge():
@@ -111,12 +114,27 @@ func _on_dialog_complete(dialog_name) -> void:
 	match dialog_name:
 		"intro_and_jump":
 			move_orbs_to_position(dialog_name)
+		"float":
+			start_monitoring_float()
+		"slide":
+			pass
+		"shoot":
+			pass
+		"big_shot":
+			pass
+
+func start_monitoring_float():
+	pass
 
 func _process(delta):
 	if current_tutorial_task == 'jump_challenge' && last_completed_dialog == 'intro_and_jump':
 		jump_challenge()
 	if current_tutorial_task == 'float_challenge' && last_completed_dialog == 'float':
 		float_challenge()
+	if current_tutorial_task == 'slide_challenge' && last_completed_dialog == 'slide':
+		slide_challenge()
+	if current_tutorial_task == 'shoot_challenge' && last_completed_dialog == 'shoot':
+		shoot_challenge()
 
 func end_event() -> void:
 	print("Ending event")

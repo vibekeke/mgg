@@ -2,6 +2,7 @@ extends Control
 
 onready var positive_action_count = 0
 onready var current_frame = 0
+var POSITIVE_ACTION_COUNT = 15
 
 func _ready():
 	Events.connect("collected_star", self, "_on_positive_charge")
@@ -13,6 +14,7 @@ func _ready():
 
 func play_fully_charged():
 	$AnimatedSprite.speed_scale = 1.5
+	$AudioStreamPlayer.play(0.0)
 	$AnimatedSprite.play("complete")
 	Events.emit_signal("has_charge_shot")
 
@@ -34,7 +36,7 @@ func _on_positive_charge():
 			current_frame += 1
 
 func _process(delta):
-	if positive_action_count >= 15:
+	if positive_action_count >= POSITIVE_ACTION_COUNT:
 		positive_action_count = 0
 		play_fully_charged()
 

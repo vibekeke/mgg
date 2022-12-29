@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/515830__newlocknew__ui-1-sweet-saw-sytrus-arpegio-multiprocessing-rsmpl.wav-d3685e2ce03bdfe4e559c39ef03c1985.sample"
+
+[deps]
+
+source_file="res://sounds/player/515830__newlocknew__ui-1-sweet-saw-sytrus-arpegio-multiprocessing-rsmpl.wav"
+dest_files=[ "res://.import/515830__newlocknew__ui-1-sweet-saw-sytrus-arpegio-multiprocessing-rsmpl.wav-d3685e2ce03bdfe4e559c39ef03c1985.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,39 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Now it's time to learn how to ki.. I mean [b]pacify[/b] enemies!\nPress [color=yellow]up[/color], [color=yellow]down[/color] or [color=yellow]forward[/color] keys to shoot!\nBeat these bumbling bees!"
+		},
+		{
+			"emit_signal": "shoot",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1671981047.json",
+		"name": "ShootTutorial"
+	}
+}
