@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=2]
 [ext_resource path="res://Menus/button_normal.tres" type="StyleBox" id=3]
 [ext_resource path="res://Menus/menubuttonfont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Menus/button_focus_and_selected.tres" type="StyleBox" id=5]
+[ext_resource path="res://imported_assets/misc/icons8-pause-button-100.png" type="Texture" id=6]
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
@@ -22,23 +23,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 880.0
-margin_top = 452.0
-margin_right = 1040.0
-margin_bottom = 628.0
+margin_left = 838.0
+margin_top = 404.0
+margin_right = 1081.0
+margin_bottom = 676.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 160.0
-margin_bottom = 56.0
+margin_right = 243.0
+margin_bottom = 88.0
 custom_fonts/font = ExtResource( 4 )
 text = "Paused"
 align = 1
 valign = 1
 
 [node name="ResumeBtn" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 60.0
-margin_right = 160.0
-margin_bottom = 116.0
+margin_top = 92.0
+margin_right = 243.0
+margin_bottom = 180.0
 focus_neighbour_top = NodePath("../QuitBtn")
 focus_neighbour_bottom = NodePath("../QuitBtn")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -54,9 +55,9 @@ custom_styles/normal = ExtResource( 3 )
 text = "Resume"
 
 [node name="QuitBtn" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 120.0
-margin_right = 160.0
-margin_bottom = 176.0
+margin_top = 184.0
+margin_right = 243.0
+margin_bottom = 272.0
 focus_neighbour_top = NodePath("../ResumeBtn")
 focus_neighbour_bottom = NodePath("../ResumeBtn")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -70,6 +71,10 @@ custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 3 )
 text = "Quit"
+
+[node name="PauseIcon" type="Sprite" parent="."]
+position = Vector2( 1860, 100 )
+texture = ExtResource( 6 )
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitBtn" to="." method="_on_QuitBtn_pressed"]

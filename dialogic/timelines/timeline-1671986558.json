@@ -25,6 +25,10 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Try a [color=yellow]slide[/color] with the [color=yellow]down[/color] key while on the [b]ground[/b]."
+		},
+		{
+			"emit_signal": "slide",
+			"event_id": "dialogic_040"
 		}
 	],
 	"metadata": {

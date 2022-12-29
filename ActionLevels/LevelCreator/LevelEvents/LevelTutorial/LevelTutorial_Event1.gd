@@ -74,7 +74,7 @@ func jump_challenge():
 
 func on_floated_duration_timer():
 	floated_duration_timer.stop()
-	print('float duration timer finished')
+	self.get_parent().add_child(slide_tutorial_dialog)
 	current_tutorial_task = 'slide_challenge'
 
 func float_challenge():
@@ -88,7 +88,10 @@ func float_challenge():
 		floated_duration_timer.set_paused(true)
 	
 func slide_challenge():
-	pass
+	var current_player_animation = monitored_player.current_animation()
+	if current_player_animation == 'Slide':
+		self.get_parent().add_child(shoot_tutorial_dialog)
+		current_tutorial_task = 'shoot_challenge'
 
 func shoot_challenge():
 	pass
