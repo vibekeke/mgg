@@ -62,6 +62,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
+unique_name_in_owner = true
 size = Vector2( 1920, 1080 )
 handle_input_locally = false
 hdr = false
@@ -104,6 +105,21 @@ position = Vector2( 1940, 1100 )
 
 [node name="FloatingOrb3" parent="ViewportContainer/Viewport" instance=ExtResource( 15 )]
 position = Vector2( 1940, 1100 )
+
+[node name="Misbeehave" parent="ViewportContainer/Viewport" groups=["shoot_challenge"] instance=ExtResource( 8 )]
+unique_name_in_owner = true
+position = Vector2( 2200, 850 )
+droppables = [  ]
+
+[node name="Misbeehave2" parent="ViewportContainer/Viewport" groups=["shoot_challenge"] instance=ExtResource( 8 )]
+unique_name_in_owner = true
+position = Vector2( 2400, 850 )
+droppables = [  ]
+
+[node name="Misbeehave3" parent="ViewportContainer/Viewport" groups=["big_shoot_challenge"] instance=ExtResource( 8 )]
+unique_name_in_owner = true
+position = Vector2( 2200, 850 )
+droppables = [  ]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="ViewportContainer"]
 

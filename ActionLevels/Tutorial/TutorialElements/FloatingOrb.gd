@@ -26,7 +26,6 @@ func _physics_process(delta):
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("player_hurtbox"):
-		print("collided with player")
 		Events.emit_signal("tutorial_element_touched", id)
 		# consider going off screen rather than queue freeing so they don't need to be
 		# instanced so much in tutorial

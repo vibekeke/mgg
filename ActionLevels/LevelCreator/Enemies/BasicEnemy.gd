@@ -11,6 +11,7 @@ export (int) var health_value = 1
 export (PackedScene) var enemy_logic
 export (bool) var is_boss = false
 export (bool) var debug_mode = false
+export (bool) var can_wrap_around = false
 export (bool) var is_unique_while_alive = false
 export (bool) var has_non_queue_free_rotator = false # hack to ensure rotator and children arent killed during queue free
 export (Array, PackedScene) var droppables
@@ -24,11 +25,13 @@ onready var collision_shape = $Path2D/PathFollow2D/Area2D/CollisionShape2D
 onready var visibility_notifier = $Path2D/PathFollow2D/Area2D/VisibilityNotifier2D
 
 onready var rng = RandomNumberGenerator.new()
+onready var initial_position = self.global_position
 
 var player_local_position = Vector2(0,0)
 var player_global_position = Vector2(0,0)
 var hit_times = 0
 var is_move_disabled = false
+export (bool) var death_by_collision_with_player = true
 
 var enemy_logic_instance = null
 var has_invulnerability = false
@@ -131,12 +134,13 @@ func take_damage(damage_value:= 1):
 		call_deferred("call_death", true)
 
 func _on_call_body_entered(body):
-	if body.name == 'Player':
-		Events.emit_signal("collided_with_player", 1)
-		if !has_invulnerability:
-			take_damage()
+	if death_by_collision_with_player && body.name == 'Player':
+			Events.emit_signal("collided_with_player", 1)
+			if !has_invulnerability:
+				take_damage()
 
 func _on_call_area_entered(player_bullet):
+	print("area entered with vulnerability state of: ", has_invulnerability)
 	if player_bullet.get_parent() != null:
 		var parent_groups = player_bullet.get_parent().get_groups()
 		if "player_charge_shot" in parent_groups:
@@ -157,11 +161,17 @@ func enemy_spawn_point():
 			self.spawn_height = enemy_logic_instance.get_spawn_height()
 
 func off_screen_call():
-	Events.emit_signal("regular_enemy_death")
-	queue_free()
+	if can_wrap_around:
+		self.global_position = initial_position
+	else:
+		Events.emit_signal("regular_enemy_death")
+		queue_free()
 
 func _on_screen_exited():
-	queue_free()
+	if can_wrap_around:
+		self.global_position = initial_position
+	else:
+		queue_free()
 
 func is_on_screen():
 	return visibility_notifier.is_on_screen()

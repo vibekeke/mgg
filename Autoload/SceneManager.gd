@@ -16,6 +16,10 @@ onready var action_level_list = {
 	"TutorialSelection": "res://ActionLevels/MiscMenus/TutorialSelection.tscn"
 }
 
+onready var cutscene_level_list = {
+	"Cutscene1": ""
+}
+
 func _ready():
 	self.visible = true
 	Events.connect("transition_to_scene", self, "_transition_to_next_scene")
