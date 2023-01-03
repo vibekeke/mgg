@@ -30,7 +30,6 @@ func _ready():
 func _on_timeline_end(_timeline_name):
 	spawn_boss()
 	
-
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 5:
 		start_event_timer.set_name(event_name + "_start_timer")
