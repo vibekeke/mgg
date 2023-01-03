@@ -48,6 +48,10 @@ script = ExtResource( 5 )
 boss_background = ExtResource( 14 )
 mute_audio = true
 
+[node name="DialogLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 101
+
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 layer = 102
 

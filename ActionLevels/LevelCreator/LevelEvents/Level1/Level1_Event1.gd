@@ -1,8 +1,9 @@
 extends LevelEvent
 
 onready var enemy_spawner = get_node("%EnemySpawner")
+onready var dialog_layer = get_node("%DialogLayer")
 export var enemy_to_spawn : PackedScene
-onready var new_dialog = Dialogic.start('Level1Event1')
+onready var new_dialog = Dialogic.start('Level1Event1', '', "res://addons/dialogic/Nodes/DialogNode.tscn", false)
 var start_event_timer = Timer.new()
 var wait_after_stopping_spawner_timer = Timer.new()
 
@@ -34,8 +35,8 @@ func event_start() -> void:
 		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 699), 300)
 		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 799), 300)
 		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 899), 300)
-
-		self.get_parent().add_child(new_dialog)
+		dialog_layer.add_child(new_dialog)
+		#self.get_parent().add_child(new_dialog)
 		end_event()
 	else:
 		print("enemy spawner is null")
