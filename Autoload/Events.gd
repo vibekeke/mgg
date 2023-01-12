@@ -32,6 +32,11 @@ signal level_complete
 signal background_element_offscreen(element_name)
 signal tutorial_element_touched(element_id)
 
+# save file location and metadata
+const SAVE_FILE_LOCATION : String = "res://mggsave.save"
+const COMPLETED_LEVELS : Array = []
+var COLLECTED_DOGS : Dictionary = {}
+
 func _ready():
 	OS.min_window_size = Vector2(1280, 720)
 	OS.max_window_size = Vector2(1920, 1080)
@@ -101,6 +106,35 @@ onready var action_level_list = {
 	"Level3": "res://ActionLevels/Level3/Level3_City.tscn",
 	"GameOver": "res://Menus/GameOver.tscn"
 }
+
+func load_game():
+	print_debug("Attempting to load game.")
+	var loaded_save_game = File.new()
+	if not loaded_save_game.file_exists(SAVE_FILE_LOCATION):
+		print_debug("No save file found.")
+		return
+	loaded_save_game.open(SAVE_FILE_LOCATION, File.READ)
+	while loaded_save_game.get_position() < loaded_save_game.get_len():
+		var node_data = parse_json(loaded_save_game.get_line())
+		var last_completed_level : int = node_data['LastCompletedLevel']
+		var dog_info : Dictionary = node_data['collected_dogs_for_level']
+		for x in range(0, last_completed_level):
+			COMPLETED_LEVELS.append(x)
+		COLLECTED_DOGS = node_data['collected_dogs_for_level']
+		print_debug("completed levels", COMPLETED_LEVELS)
+		print("collected dogs is", COLLECTED_DOGS)
+
+func save_game(level_name : int, dog_info : Dictionary):
+	print_debug("Attempting to save game.")
+	var save_dict = {
+		'LastCompletedLevel': level_name,
+		'collected_dogs_for_level': dog_info
+	}
+
+	var save_file = File.new()
+	save_file.open(SAVE_FILE_LOCATION,  File.WRITE)
+	save_file.store_line(to_json(save_dict))
+	save_file.close()
 
 func get_boss(boss_name : String):
 	return bossPaths[boss_name]

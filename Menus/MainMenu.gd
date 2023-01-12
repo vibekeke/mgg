@@ -12,9 +12,10 @@ func _ready():
 	$CanvasLayer/VBoxContainer/StartButton.grab_focus()
 	$CanvasLayer/OptionsMenu/HBoxContainer/ResolutionList.connect("item_activated", self, "_on_ResolutionList_item_activated")
 	var directory = Directory.new()
-	var fileExists = directory.file_exists("res://savegame.save")
+	var fileExists = directory.file_exists(Events.SAVE_FILE_LOCATION)
 	if fileExists:
 		$CanvasLayer/VBoxContainer/LoadButton.visible = true
+		Events.load_game()
 
 func _on_StartButton_pressed():
 	Events.emit_signal("transition_to_scene", "TutorialSelection")

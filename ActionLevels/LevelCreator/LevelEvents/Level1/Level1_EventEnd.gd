@@ -13,7 +13,6 @@ func _ready():
 	event_name = 'Level1_EventEnd'
 	Events.connect("collected_dog", self, "_on_collected_dog")
 	if debug_mode:
-		print("saving immediately")
 		event_start()
 
 
@@ -23,19 +22,6 @@ func _on_collected_dog(dog_breed):
 
 func _on_wait_after_stopping_spawner_timer():
 	event_start()
-
-func save():
-	print_debug("attempting to save game")
-	var save_dict = {
-		'LastCompletedLevel': LEVEL_NAME,
-		'collected_dogs_for_level': {
-			LEVEL_NAME: collected_dogs
-		}
-	}
-	var save_game = File.new()
-	save_game.open("res://savegame.save", File.WRITE)
-	save_game.store_line(to_json(save_dict))
-	save_game.close()
 
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 6:
@@ -49,7 +35,8 @@ func trigger() -> void:
 	event_start()
 	
 func event_start() -> void:
-	save()
+	var saved_dogs_for_level = {1 : collected_dogs}
+	Events.save_game(1, saved_dogs_for_level)
 	
 func end_event() -> void:
 	Events.emit_signal("level_event_complete", event_name, event_number)
