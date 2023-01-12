@@ -189,7 +189,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Mgg"
-run/main_scene="res://ActionLevels/Level1/Level1_Forest.tscn"
+run/main_scene="res://Menus/MainMenu.tscn"
 
 [autoload]
 

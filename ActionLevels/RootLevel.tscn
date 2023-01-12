@@ -5,6 +5,6 @@
 
 [node name="RootScene" type="Node2D"]
 script = ExtResource( 1 )
-target_scene = "res://ActionLevels/Tutorial/Level0_Tutorial.tscn"
+target_scene = "res://Menus/MainMenu.tscn"
 
 [node name="SceneManager" parent="." instance=ExtResource( 2 )]
