@@ -140,7 +140,6 @@ func _on_call_body_entered(body):
 				take_damage()
 
 func _on_call_area_entered(player_bullet):
-	print("area entered with vulnerability state of: ", has_invulnerability)
 	if player_bullet.get_parent() != null:
 		var parent_groups = player_bullet.get_parent().get_groups()
 		if "player_charge_shot" in parent_groups:

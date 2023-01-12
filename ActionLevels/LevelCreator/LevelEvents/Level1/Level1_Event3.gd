@@ -10,10 +10,16 @@ export var debug_mode : bool = false
 export var dog : PackedScene
 export var bee : PackedScene
 
+onready var dog_to_spawn = 'Golden'
+
 func _ready():
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
 	event_number = 3
 	event_name = "Level1_Event3"
+	if '1' in Events.COLLECTED_DOGS:
+		if 'Golden' in Events.COLLECTED_DOGS.get('1'):
+			print_debug("spawning clear dogu")
+			dog_to_spawn = 'ClearDogu'
 	if debug_mode:
 		_on_level_event_complete('dummy_event', 2)
 
@@ -61,7 +67,7 @@ func event_start() -> void:
 	enemy_spawner._direct_spawn_at_position(bee, Vector2(3200, 799), 550)
 	enemy_spawner._direct_spawn_at_position(bee, Vector2(3350, 799), 550)
 	enemy_spawner._direct_spawn_at_position(bee, Vector2(3500, 799), 550)
-	enemy_spawner._direct_spawn_dog(dog, 'Golden', Vector2(3350, 930), 550 * 1.5, true)
+	enemy_spawner._direct_spawn_dog(dog, dog_to_spawn, Vector2(3350, 930), 550 * 1.5, true)
 
 	enemy_spawner._direct_spawn_at_position(bee, Vector2(4200, 799), 550)
 	enemy_spawner._direct_spawn_at_position(bee, Vector2(4350, 799), 550)

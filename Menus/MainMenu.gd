@@ -16,6 +16,9 @@ func _ready():
 	if fileExists:
 		$CanvasLayer/VBoxContainer/LoadButton.visible = true
 		Events.load_game()
+		print("looking at collected dogs - ", Events.COLLECTED_DOGS['1'])
+		if 1 in Events.COLLECTED_DOGS:
+			print("based")
 
 func _on_StartButton_pressed():
 	Events.emit_signal("transition_to_scene", "TutorialSelection")

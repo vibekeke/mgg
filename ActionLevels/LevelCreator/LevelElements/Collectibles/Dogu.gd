@@ -15,7 +15,8 @@ onready var float_disabled = false
 var dog_sprites = {
 	'Golden': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Golden.tscn',
 	'Labrador': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Labrador.tscn',
-	'Russel': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Russel.tscn'
+	'Russel': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Russel.tscn',
+	'ClearDogu': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/ClearDogu.tscn'
 }
 
 func _ready():
@@ -31,10 +32,11 @@ func set_dogu(dog_name: String):
 	dog_sprite = load(dog_sprites[dog_name])
 
 func disable_float(disable: bool):
-	float_disabled = disable	
-
+	float_disabled = disable
+	
 func _increment_dogs():
-	Events.emit_signal("collected_dog", self.dog_breed)
+	if self.dog_breed != 'ClearDogu':
+		Events.emit_signal("collected_dog", self.dog_breed)
 
 func _on_call_body_entered(body):
 	if body.name == "Player":
