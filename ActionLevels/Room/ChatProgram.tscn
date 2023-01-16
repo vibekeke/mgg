@@ -62,7 +62,6 @@ size = 20
 font_data = ExtResource( 9 )
 
 [node name="BSN" type="WindowDialog"]
-visible = true
 margin_left = 102.0
 margin_top = 66.0
 margin_right = 1309.0

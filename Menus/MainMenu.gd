@@ -15,10 +15,6 @@ func _ready():
 	var fileExists = directory.file_exists(Events.SAVE_FILE_LOCATION)
 	if fileExists:
 		$CanvasLayer/VBoxContainer/LoadButton.visible = true
-		Events.load_game()
-		print("looking at collected dogs - ", Events.COLLECTED_DOGS['1'])
-		if 1 in Events.COLLECTED_DOGS:
-			print("based")
 
 func _on_StartButton_pressed():
 	Events.emit_signal("transition_to_scene", "TutorialSelection")
@@ -53,3 +49,11 @@ func _on_ResolutionList_item_activated(index: int):
 			
 func _on_QuitButton_pressed():
 	get_tree().quit()
+
+
+func _on_LoadButton_pressed():
+	Events.load_game()
+	var last_completed_level = Events.COMPLETED_LEVELS[Events.COMPLETED_LEVELS.size() - 1]
+	print("last compeleted level was ", last_completed_level)
+	# TODO - map number to level and/or scene to go to upon loading
+	Events.emit_signal("transition_to_scene", "TutorialSelection")

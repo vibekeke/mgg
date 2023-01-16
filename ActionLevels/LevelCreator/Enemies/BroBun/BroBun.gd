@@ -15,7 +15,7 @@ onready var fire_rate_timer = Timer.new()
 onready var rotator = parent_node.get_node("Rotator")
 onready var bullet_list = []
 onready var rotate_lock_value
-onready var debug_texture = load("res://icon.png")
+onready var debug_texture = preload("res://icon.png")
 var player_position
 var has_fired = false
 
