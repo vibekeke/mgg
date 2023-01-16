@@ -16,7 +16,7 @@ onready var initial_health_value: int = parent_node.health_value
 onready var fire_rate_timer = Timer.new()
 onready var rotator = parent_node.get_node("%Rotator")
 onready var current_phase: int = 0
-onready var debug_texture = load("res://icon.png")
+onready var debug_texture = preload("res://icon.png")
 onready var path2d = parent_node.get_node_or_null("Path2D")
 onready var path_follow = path2d.get_node_or_null("PathFollow2D")
 

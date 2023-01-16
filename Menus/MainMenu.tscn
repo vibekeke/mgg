@@ -49,7 +49,7 @@ visible = false
 margin_top = 92.0
 margin_right = 239.0
 margin_bottom = 180.0
-focus_neighbour_top = NodePath("../QuitButton")
+focus_neighbour_top = NodePath("../StartButton")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
@@ -108,6 +108,6 @@ visible = false
 stream = ExtResource( 9 )
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/LoadButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -108,7 +108,6 @@ onready var action_level_list = {
 }
 
 func load_game():
-	print_debug("Attempting to load game.")
 	var loaded_save_game = File.new()
 	if not loaded_save_game.file_exists(SAVE_FILE_LOCATION):
 		print_debug("No save file found.")
@@ -121,8 +120,6 @@ func load_game():
 		for x in range(0, last_completed_level):
 			COMPLETED_LEVELS.append(x)
 		COLLECTED_DOGS = node_data['collected_dogs_for_level']
-		print_debug("completed levels", COMPLETED_LEVELS)
-		print("collected dogs is", COLLECTED_DOGS)
 
 func save_game(level_name : int, dog_info : Dictionary):
 	print_debug("Attempting to save game.")
