@@ -1,106 +1,134 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://imported_assets/computer/level1.png" type="Texture" id=2]
 [ext_resource path="res://imported_assets/computer/level2.png" type="Texture" id=3]
 [ext_resource path="res://imported_assets/computer/level3.png" type="Texture" id=4]
 [ext_resource path="res://ActionLevels/Room/LevelSelect.gd" type="Script" id=5]
+[ext_resource path="res://imported_assets/fonts/BestTen-DOT.otf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
-font_data = ExtResource( 1 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.0588235, 0.12549, 0.807843, 1 )
-border_width_top = 36
+border_width_top = 42
 expand_margin_top = 32.0
 
-[sub_resource type="Shader" id=6]
-code = "shader_type spatial;
-render_mode cull_front, unshaded;
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
 
-uniform sampler2D outline_noise_tex;
-uniform vec4 outline_color:hint_color;
-uniform float scissor_value = 0.5;
-uniform vec2 uv_scale = vec2(1.0);
-uniform sampler2D falloff_curve;
-uniform float outline_size = 0.1;
-uniform float offset_fres = 0.3;
-uniform float fps = 5.0;
+uniform vec4 color : hint_color = vec4(1.0);
+uniform float width : hint_range(0, 10) = 1.0;
+uniform int pattern : hint_range(0, 2) = 0; // diamond, circle, square
+uniform bool inside = false;
+uniform bool add_margins = true; // only useful when inside is false
 
-varying float h;
-
-void vertex(){
-	VERTEX += NORMAL * outline_size * texture(outline_noise_tex, UV).r;
-	h = (WORLD_MATRIX * vec4(VERTEX, 1.0)).y;
+void vertex() {
+	if (add_margins) {
+		VERTEX += (UV * 2.0 - 1.0) * width;
+	}
 }
 
-void fragment(){
-	float fres = abs(dot(normalize(-NORMAL), normalize(VERTEX)));
-	vec3 nor = normalize(NORMAL);
-	float angle = atan(nor.y, nor.x);
-	angle /= 3.14;
+bool hasContraryNeighbour(vec2 uv, vec2 texture_pixel_size, sampler2D texture) {
+	for (float i = -ceil(width); i <= ceil(width); i++) {
+		float x = abs(i) > width ? width * sign(i) : i;
+		float offset;
+		
+		if (pattern == 0) {
+			offset = width - abs(x);
+		} else if (pattern == 1) {
+			offset = floor(sqrt(pow(width + 0.5, 2) - x * x));
+		} else if (pattern == 2) {
+			offset = width;
+		}
+		
+		for (float j = -ceil(offset); j <= ceil(offset); j++) {
+			float y = abs(j) > offset ? offset * sign(j) : j;
+			vec2 xy = uv + texture_pixel_size * vec2(x, y);
+			
+			if ((xy != clamp(xy, vec2(0.0), vec2(1.0)) || texture(texture, xy).a == 0.0) == inside) {
+				return true;
+			}
+		}
+	}
 	
-	float fres_remap = texture(falloff_curve, vec2(1.0 - fres)).r + offset_fres;
-	ALPHA = texture(outline_noise_tex, vec2(angle * uv_scale.x + SCREEN_UV.x, nor.z * uv_scale.y + floor(TIME * fps)/fps)).r * fres_remap;
-	ALBEDO = outline_color.rgb;
-	ALPHA_SCISSOR = scissor_value;
-}"
-
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
-shader_param/outline_color = null
-shader_param/scissor_value = 0.5
-shader_param/uv_scale = Vector2( 1, 1 )
-shader_param/outline_size = 0.1
-shader_param/offset_fres = 0.3
-shader_param/fps = 5.0
-
-[sub_resource type="Shader" id=4]
-code = "shader_type spatial;
-render_mode cull_front, unshaded;
-
-uniform sampler2D outline_noise_tex;
-uniform vec4 outline_color:hint_color;
-uniform float scissor_value = 0.5;
-uniform vec2 uv_scale = vec2(1.0);
-uniform sampler2D falloff_curve;
-uniform float outline_size = 0.1;
-uniform float offset_fres = 0.3;
-uniform float fps = 5.0;
-
-varying float h;
-
-void vertex(){
-	VERTEX += NORMAL * outline_size * texture(outline_noise_tex, UV).r;
-	h = (WORLD_MATRIX * vec4(VERTEX, 1.0)).y;
+	return false;
 }
 
-void fragment(){
-	float fres = abs(dot(normalize(-NORMAL), normalize(VERTEX)));
-	vec3 nor = normalize(NORMAL);
-	float angle = atan(nor.y, nor.x);
-	angle /= 3.14;
+void fragment() {
+	vec2 uv = UV;
 	
-	float fres_remap = texture(falloff_curve, vec2(1.0 - fres)).r + offset_fres;
-	ALPHA = texture(outline_noise_tex, vec2(angle * uv_scale.x + SCREEN_UV.x, nor.z * uv_scale.y + floor(TIME * fps)/fps)).r * fres_remap;
-	ALBEDO = outline_color.rgb;
-	ALPHA_SCISSOR = scissor_value;
+	if (add_margins) {
+		vec2 texture_pixel_size = vec2(1.0) / (vec2(1.0) / TEXTURE_PIXEL_SIZE + vec2(width * 2.0));
+		
+		uv = (uv - texture_pixel_size * width) * TEXTURE_PIXEL_SIZE / texture_pixel_size;
+		
+		if (uv != clamp(uv, vec2(0.0), vec2(1.0))) {
+			COLOR.a = 0.0;
+		} else {
+			COLOR = texture(TEXTURE, uv);
+		}
+	} else {
+		COLOR = texture(TEXTURE, uv);
+	}
+	
+	if ((COLOR.a > 0.0) == inside && hasContraryNeighbour(uv, TEXTURE_PIXEL_SIZE, TEXTURE)) {
+		COLOR.rgb = inside ? mix(COLOR.rgb, color.rgb, color.a) : color.rgb;
+		COLOR.a += (1.0 - COLOR.a) * color.a;
+	}
 }"
 
-[sub_resource type="ShaderMaterial" id=5]
-next_pass = SubResource( 7 )
-shader = SubResource( 4 )
-shader_param/outline_color = Color( 1, 1, 1, 1 )
-shader_param/scissor_value = 0.5
-shader_param/uv_scale = Vector2( 1, 1 )
-shader_param/outline_size = 0.1
-shader_param/offset_fres = 0.3
-shader_param/fps = 5.0
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+shader_param/color = Color( 0.831373, 0.0156863, 1, 1 )
+shader_param/width = 0.0
+shader_param/pattern = 2
+shader_param/inside = false
+shader_param/add_margins = true
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 8 )
+shader_param/color = Color( 0.831373, 0.0156863, 1, 1 )
+shader_param/width = 0.0
+shader_param/pattern = 2
+shader_param/inside = false
+shader_param/add_margins = true
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 8 )
+shader_param/color = Color( 0.831373, 0.0156863, 1, 1 )
+shader_param/width = 0.0
+shader_param/pattern = 2
+shader_param/inside = false
+shader_param/add_margins = true
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0588235, 0.12549, 0.807843, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 32
+size = 64
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+border_width_top = 1
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 2
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+font_data = ExtResource( 6 )
 
 [node name="LevelSelect" type="WindowDialog"]
 unique_name_in_owner = true
@@ -110,62 +138,99 @@ anchor_right = 0.78125
 anchor_bottom = 0.875
 custom_fonts/title_font = SubResource( 1 )
 custom_styles/panel = SubResource( 2 )
-window_title = "Worldwide Wack"
 script = ExtResource( 5 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
 [node name="Level1" type="TextureRect" parent="."]
 unique_name_in_owner = true
-material = SubResource( 5 )
-margin_left = 346.0
-margin_top = 97.0
-margin_right = 1839.0
-margin_bottom = 896.0
+material = SubResource( 9 )
+margin_left = 83.9994
+margin_top = 69.9999
+margin_right = 1577.0
+margin_bottom = 869.0
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 expand = true
 
 [node name="Level2" type="TextureRect" parent="."]
 unique_name_in_owner = true
-visible = false
-margin_left = 345.0
-margin_top = 286.0
-margin_right = 1838.0
-margin_bottom = 1085.0
+material = SubResource( 10 )
+margin_left = 80.9994
+margin_top = 255.0
+margin_right = 1574.0
+margin_bottom = 1054.0
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 expand = true
 
 [node name="Level3" type="TextureRect" parent="."]
 unique_name_in_owner = true
-visible = false
-margin_left = 346.0
-margin_top = 476.0
-margin_right = 1839.0
-margin_bottom = 1275.0
+material = SubResource( 11 )
+margin_left = 80.9994
+margin_top = 444.0
+margin_right = 1574.0
+margin_bottom = 1243.0
 rect_scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 4 )
 expand = true
 
-[node name="LevelLore" type="RichTextLabel" parent="."]
+[node name="LorePanel" type="Panel" parent="."]
+anchor_left = 0.34
+anchor_top = 0.0583091
+anchor_right = 0.745218
+anchor_bottom = 0.567056
+margin_left = 7.99997
+margin_top = 28.9999
+margin_right = 8.0
+margin_bottom = 28.9999
+custom_styles/panel = SubResource( 4 )
+
+[node name="LevelLore" type="RichTextLabel" parent="LorePanel"]
 unique_name_in_owner = true
-anchor_left = 0.645217
-anchor_top = 0.163265
-anchor_right = 0.86087
-anchor_bottom = 0.925656
-margin_left = -6.10352e-05
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
 custom_fonts/normal_font = SubResource( 3 )
-text = "Level details etc."
+text = "Test"
 scroll_active = false
+
+[node name="URLBar" type="Panel" parent="."]
+anchor_top = 0.0131195
+anchor_right = 1.0
+anchor_bottom = 0.0612245
+margin_right = 0.00012207
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="Panel" type="Panel" parent="URLBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 96.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="URLText" type="RichTextLabel" parent="URLBar/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 7 )
+meta_underlined = false
+text = " http://www.bestlevels.com/where_can_aliens_be_found"
+scroll_active = false
+
 [connection signal="gui_input" from="Level1" to="." method="_on_Level1_gui_input"]
 [connection signal="mouse_entered" from="Level1" to="." method="_on_Level1_mouse_entered"]
+[connection signal="mouse_exited" from="Level1" to="." method="_on_Level1_mouse_exited"]
 [connection signal="gui_input" from="Level2" to="." method="_on_Level2_gui_input"]
 [connection signal="mouse_entered" from="Level2" to="." method="_on_Level2_mouse_entered"]
+[connection signal="mouse_exited" from="Level2" to="." method="_on_Level2_mouse_exited"]
 [connection signal="gui_input" from="Level3" to="." method="_on_Level3_gui_input"]
 [connection signal="mouse_entered" from="Level3" to="." method="_on_Level3_mouse_entered"]
+[connection signal="mouse_exited" from="Level3" to="." method="_on_Level3_mouse_exited"]
