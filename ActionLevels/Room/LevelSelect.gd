@@ -8,7 +8,7 @@ onready var level_lore = get_node("%LevelLore")
 
 onready var level1_lore_description : String = "A forest next to your house. It's full of a bunch of not so friendly animals."
 onready var level2_lore_description : String = "They say a \"Banjo Fish\" lives here. But how can a fish play a banjo?"
-onready var level3_lore_description : String = "The big city! Hey...are cities supposed to be this cold!?"
+onready var level3_lore_description : String = "The big city! Hey...are cities supposed to be this cold in July!?"
 
 onready var window_dialog_title : String = "WELCOME TO THE WEB!!!"
 onready var alternate_dialog_title : String = "ワルドワイドウエボ！！！"
@@ -82,6 +82,7 @@ func _on_Level3_mouse_exited():
 func _on_Level1_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.get_button_index() == BUTTON_LEFT and event.pressed:
+			print("transition to level 1")
 			Events.emit_signal("transition_to_scene", "Level1")
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://imported_assets/computer/PatchRegular.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://ActionLevels/Room/ChatProgram.tscn" type="PackedScene" id=10]
 [ext_resource path="res://imported_assets/computer/connected_world-0.png" type="Texture" id=11]
 [ext_resource path="res://ActionLevels/Room/LevelSelectIcon.gd" type="Script" id=12]
+[ext_resource path="res://sounds/computer/70 BPM 2.wav" type="AudioStream" id=13]
 [ext_resource path="res://ActionLevels/Room/Time.gd" type="Script" id=16]
 [ext_resource path="res://ActionLevels/Room/ScanlinesTest.tscn" type="PackedScene" id=19]
 
@@ -184,6 +185,8 @@ position = Vector2( 310, 323.333 )
 shape = SubResource( 23 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -11.0
 
 [node name="LevelSelectIcon" type="TextureRect" parent="."]
 margin_left = 74.0
@@ -213,6 +216,7 @@ text = "WWW"
 scroll_active = false
 
 [node name="LevelSelect" parent="." instance=ExtResource( 5 )]
+visible = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
