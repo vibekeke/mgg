@@ -5,7 +5,7 @@ class_name DesktopIcon
 export (Texture) var idle_texture
 export (Texture) var hover_texture
 export (Texture) var click_texture
-onready var bsn = get_node("%BSN")
+onready var chat_app = get_node("%ChatApp")
 
 func _ready():
 	self.texture = idle_texture
@@ -14,8 +14,8 @@ func _ready():
 	area2d.connect("input_event", self, "_on_Area2D_input_event")
 
 func click():
-	print("visibility is ", bsn.visible)
-	bsn.visible = !bsn.visible
+	print("visibility is ", chat_app.visible)
+	chat_app.visible = !chat_app.visible
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:

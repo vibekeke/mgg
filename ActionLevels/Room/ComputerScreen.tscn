@@ -9,10 +9,10 @@
 [ext_resource path="res://ActionLevels/Room/ComputerScreen.gd" type="Script" id=7]
 [ext_resource path="res://imported_assets/computer/kisspng-windows-95-computer-icons-operating-systems-window-5afa97eda1c430.8385747315263723336626.png" type="Texture" id=8]
 [ext_resource path="res://ActionLevels/Room/DesktopIcon.gd" type="Script" id=9]
-[ext_resource path="res://ActionLevels/Room/ChatProgram.tscn" type="PackedScene" id=10]
 [ext_resource path="res://imported_assets/computer/connected_world-0.png" type="Texture" id=11]
 [ext_resource path="res://ActionLevels/Room/LevelSelectIcon.gd" type="Script" id=12]
 [ext_resource path="res://sounds/computer/70 BPM 2.wav" type="AudioStream" id=13]
+[ext_resource path="res://ActionLevels/Room/ChatApp.tscn" type="PackedScene" id=14]
 [ext_resource path="res://ActionLevels/Room/Time.gd" type="Script" id=16]
 [ext_resource path="res://ActionLevels/Room/ScanlinesTest.tscn" type="PackedScene" id=19]
 
@@ -154,11 +154,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BSN" parent="." instance=ExtResource( 10 )]
-unique_name_in_owner = true
-margin_left = 221.0
-margin_right = 1428.0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
 
@@ -216,7 +211,6 @@ text = "WWW"
 scroll_active = false
 
 [node name="LevelSelect" parent="." instance=ExtResource( 5 )]
-visible = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -229,3 +223,10 @@ margin_bottom = 182.0
 custom_fonts/normal_font = SubResource( 28 )
 text = "Chat"
 scroll_active = false
+
+[node name="ChatApp" parent="." instance=ExtResource( 14 )]
+anchor_left = 0.441146
+anchor_top = 0.125926
+anchor_right = 0.810937
+anchor_bottom = 0.683333
+popup_exclusive = true
