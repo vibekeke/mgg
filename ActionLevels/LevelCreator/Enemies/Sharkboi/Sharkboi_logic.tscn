@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Sharkboi/Sharkboi_logic.gd" type="Script" id=1]
+
+[node name="Sharkboi_logic" type="Node"]
+script = ExtResource( 1 )
+amplitude = 600.0
+frequency = 2.0

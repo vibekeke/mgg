@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://imported_assets/actors/sharkboi/Shark_Bloons.png" type="Texture" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=2]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Sharkboi/SharkboiAnimatedSprite.gd" type="Script" id=3]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Sharkboi/Sharkboi_logic.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=11]
 _data = {
@@ -96,6 +98,11 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+spawn_height = 1
+initial_scroll_speed = 100.0
+health_value = 4
+enemy_logic = ExtResource( 4 )
+droppables = [ ExtResource( 5 ) ]
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 11 )
@@ -106,7 +113,7 @@ curve = SubResource( 11 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 frames = SubResource( 9 )
-frame = 7
+frame = 2
 playing = true
 script = ExtResource( 3 )
 
