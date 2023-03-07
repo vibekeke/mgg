@@ -13,7 +13,8 @@ onready var action_level_list = {
 	"Level2": "res://ActionLevels/Level2/Level2_Beach.tscn",
 	"Level3": "res://ActionLevels/Level3/Level3_City.tscn",
 	"GameOver": "res://Menus/GameOver.tscn",
-	"TutorialSelection": "res://ActionLevels/MiscMenus/TutorialSelection.tscn"
+	"TutorialSelection": "res://ActionLevels/MiscMenus/TutorialSelection.tscn",
+	"ComputerScreen": "res://ActionLevels/Room/ComputerScreen.tscn"
 }
 
 onready var cutscene_level_list = {

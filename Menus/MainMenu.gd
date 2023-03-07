@@ -51,9 +51,19 @@ func _on_QuitButton_pressed():
 	get_tree().quit()
 
 
+func send_to_computer(last_completed_level: int):
+	match last_completed_level:
+		0:
+			Events.emit_signal("transition_to_scene", "TutorialSelection")
+		1:
+			Events.emit_signal("transition_to_scene", "ComputerScreen")
+		2:
+			Events.emit_signal("transition_to_scene", "ComputerScreen")
+		3:
+			Events.emit_signal("transition_to_scene", "ComputerScreen")
+
 func _on_LoadButton_pressed():
+	$AudioStreamPlayer.play(0.0)
 	Events.load_game()
 	var last_completed_level = Events.COMPLETED_LEVELS[Events.COMPLETED_LEVELS.size() - 1]
-	print("last compeleted level was ", last_completed_level)
-	# TODO - map number to level and/or scene to go to upon loading
-	Events.emit_signal("transition_to_scene", "TutorialSelection")
+	send_to_computer(last_completed_level)

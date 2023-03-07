@@ -53,7 +53,6 @@ func _disable_enemy_actions(to_disable):
 
 
 func transition_to_new_scene(next_scene):
-	print("transition to new scene", next_scene)
 	self.emit_signal("transition_to_scene", next_scene)
 	
 func go_to_game_over():
@@ -118,11 +117,10 @@ func load_game():
 		var last_completed_level : int = node_data['LastCompletedLevel']
 		var dog_info : Dictionary = node_data['collected_dogs_for_level']
 		for x in range(0, last_completed_level):
-			COMPLETED_LEVELS.append(x)
+			COMPLETED_LEVELS.append(x + 1)
 		COLLECTED_DOGS = node_data['collected_dogs_for_level']
 
 func save_game(level_name : int, dog_info : Dictionary):
-	print_debug("Attempting to save game.")
 	var save_dict = {
 		'LastCompletedLevel': level_name,
 		'collected_dogs_for_level': dog_info

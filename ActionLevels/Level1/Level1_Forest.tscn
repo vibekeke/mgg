@@ -47,7 +47,6 @@
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource( 5 )
 boss_background = ExtResource( 14 )
-mute_audio = true
 
 [node name="DialogLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -145,3 +144,4 @@ time_until_event_start = 3.0
 [node name="Level1_EventEnd" parent="LevelEventsManager" instance=ExtResource( 43 )]
 
 [node name="SceneManager" parent="." instance=ExtResource( 41 )]
+visible = false

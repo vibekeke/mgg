@@ -76,4 +76,9 @@ func _on_ResumeBtn_pressed():
 
 
 func _on_QuitBtn_pressed():
+	self.is_paused = false
 	get_tree().quit()
+
+func _on_BackBtn_pressed():
+	self.is_paused = false
+	Events.emit_signal("transition_to_scene", "ComputerScreen")

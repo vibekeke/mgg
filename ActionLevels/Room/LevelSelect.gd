@@ -34,13 +34,13 @@ func _ready():
 	_flicker_timer.start()
 	
 	# TODO: Remember to revert this back when finished testing
-	#for level in Events.COMPLETED_LEVELS:
-	for level in [1,2,3]:
-		if level == 1:
+	for level in Events.COMPLETED_LEVELS:
+		# level 1 should always be visible duh
+		if level >= 0:
 			level1_image.visible = true
-		if level == 2:
+		if level >= 1:
 			level2_image.visible = true
-		if level == 3:
+		if level >= 2:
 			level3_image.visible = true
 
 func _on_flicker_title_update():
