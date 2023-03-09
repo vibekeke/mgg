@@ -39,11 +39,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ActionLevels/LevelCreator/DataClasses.gd"
 }, {
-"base": "TextureRect",
-"class": "DesktopIcon",
-"language": "GDScript",
-"path": "res://ActionLevels/Room/DesktopIcon.gd"
-}, {
 "base": "Node",
 "class": "Dialogic",
 "language": "GDScript",
@@ -166,7 +161,6 @@ _global_script_class_icons={
 "BroBun": "",
 "DTS": "",
 "DataClasses": "",
-"DesktopIcon": "",
 "Dialogic": "",
 "DialogicAnimaPropertiesHelper": "",
 "DialogicAnimaResources": "",

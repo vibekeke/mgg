@@ -11,7 +11,10 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.0588235, 0.12549, 0.807843, 1 )
+border_width_left = 4
 border_width_top = 42
+border_width_right = 4
+border_width_bottom = 4
 expand_margin_top = 32.0
 
 [sub_resource type="StyleBoxFlat" id=3]

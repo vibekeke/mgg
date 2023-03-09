@@ -17,7 +17,10 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.0588235, 0.12549, 0.807843, 1 )
+border_width_left = 5
 border_width_top = 42
+border_width_right = 5
+border_width_bottom = 5
 expand_margin_top = 32.0
 
 [sub_resource type="Shader" id=8]
@@ -231,7 +234,10 @@ scroll_active = false
 anchor_top = 0.0131195
 anchor_right = 1.0
 anchor_bottom = 0.0612245
-margin_right = 0.00012207
+margin_left = 5.0
+margin_top = 1.00003
+margin_right = -4.99939
+margin_bottom = 1.0
 custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -260,7 +266,10 @@ anchor_left = 0.00260782
 anchor_top = 0.892128
 anchor_right = 0.600525
 anchor_bottom = 0.96435
-margin_right = -6.10352e-05
+margin_left = 2.00101
+margin_top = 0.000366211
+margin_right = 2.00098
+margin_bottom = 0.000366211
 custom_styles/panel = SubResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": true

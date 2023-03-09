@@ -1,17 +1,11 @@
 extends TextureRect
 
-
-onready var chat_app = get_node("%ChatApp")
-
-func _ready():
-	pass
+onready var birder = get_node("%Birder")
 
 func click():
-	chat_app.visible = !chat_app.visible
-	
+	birder.visible = !birder.visible
 
-func _on_ChatIcon_gui_input(event):
+func _on_TwatterIcon_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.get_button_index() == BUTTON_LEFT and event.pressed:
 			click()
-

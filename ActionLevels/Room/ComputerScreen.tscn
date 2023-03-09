@@ -1,9 +1,9 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://imported_assets/computer/PatchRegular.png" type="Texture" id=2]
 [ext_resource path="res://imported_assets/computer/PatchInverted.png" type="Texture" id=3]
-[ext_resource path="res://imported_assets/fonts/AcPlus_IBM_VGA_8x16-2x.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://sounds/mouseclick-cut.mp3" type="AudioStream" id=4]
 [ext_resource path="res://ActionLevels/Room/LevelSelect.tscn" type="PackedScene" id=5]
 [ext_resource path="res://imported_assets/computer/Untitled_upscale.png" type="Texture" id=6]
 [ext_resource path="res://ActionLevels/Room/ComputerScreen.gd" type="Script" id=7]
@@ -14,8 +14,12 @@
 [ext_resource path="res://ActionLevels/Room/LevelSelectIcon.gd" type="Script" id=12]
 [ext_resource path="res://sounds/computer/Anonymous420 - Bitcoin Day.mp3" type="AudioStream" id=13]
 [ext_resource path="res://ActionLevels/Room/ChatApp.tscn" type="PackedScene" id=14]
+[ext_resource path="res://imported_assets/computer/twatter.png" type="Texture" id=15]
 [ext_resource path="res://ActionLevels/Room/Time.gd" type="Script" id=16]
+[ext_resource path="res://ActionLevels/Room/TwatterIcon.gd" type="Script" id=17]
+[ext_resource path="res://ActionLevels/Room/old_font_for_icons.tres" type="DynamicFont" id=18]
 [ext_resource path="res://ActionLevels/Room/ScanlinesTest.tscn" type="PackedScene" id=19]
+[ext_resource path="res://ActionLevels/Room/Birder.tscn" type="PackedScene" id=20]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.184314, 0.0862745, 0.670588, 1 )
@@ -62,25 +66,13 @@ margin_right = 5.0
 margin_top = 5.0
 margin_bottom = 5.0
 
-[sub_resource type="RectangleShape2D" id=23]
-extents = Vector2( 343.333, 353.333 )
-
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 26, 22 )
-
-[sub_resource type="DynamicFont" id=27]
-size = 9
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=28]
-size = 20
-font_data = ExtResource( 4 )
 
 [node name="Desktop" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
@@ -160,26 +152,6 @@ layer = 128
 
 [node name="Scanlines" parent="CanvasLayer" instance=ExtResource( 19 )]
 
-[node name="ChatIcon" type="TextureRect" parent="."]
-margin_left = 64.0
-margin_top = 29.0
-margin_right = 684.0
-margin_bottom = 669.0
-rect_scale = Vector2( 0.2, 0.2 )
-mouse_filter = 2
-mouse_default_cursor_shape = 2
-texture = ExtResource( 8 )
-script = ExtResource( 9 )
-idle_texture = ExtResource( 8 )
-hover_texture = ExtResource( 8 )
-click_texture = ExtResource( 8 )
-
-[node name="Area2D" type="Area2D" parent="ChatIcon"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatIcon/Area2D"]
-position = Vector2( 310, 323.333 )
-shape = SubResource( 23 )
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -20.0
@@ -191,7 +163,6 @@ margin_top = 188.0
 margin_right = 114.0
 margin_bottom = 228.0
 rect_scale = Vector2( 2.5, 2.5 )
-mouse_filter = 2
 mouse_default_cursor_shape = 2
 texture = ExtResource( 11 )
 expand = true
@@ -204,27 +175,76 @@ position = Vector2( 19.6, 20.8 )
 shape = SubResource( 26 )
 
 [node name="LevelSelectLabel" type="RichTextLabel" parent="LevelSelectIcon"]
-margin_left = 6.79999
+margin_left = 7.0
 margin_top = 42.0
-margin_right = 31.8
+margin_right = 36.0
 margin_bottom = 52.0
-custom_fonts/normal_font = SubResource( 27 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 18 )
 text = "WWW"
+scroll_active = false
+
+[node name="ChatIcon" type="TextureRect" parent="."]
+margin_left = 75.0
+margin_top = 46.0
+margin_right = 115.0
+margin_bottom = 86.0
+rect_scale = Vector2( 2.5, 2.5 )
+mouse_default_cursor_shape = 2
+texture = ExtResource( 8 )
+expand = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="ChatIcon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatIcon/Area2D"]
+position = Vector2( 19.6, 20.8 )
+shape = SubResource( 26 )
+
+[node name="LevelSelectLabel" type="RichTextLabel" parent="ChatIcon"]
+margin_left = 7.0
+margin_top = 42.0
+margin_right = 36.0
+margin_bottom = 52.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 18 )
+text = "CHAT"
+scroll_active = false
+
+[node name="BirderIcon" type="TextureRect" parent="."]
+margin_left = 74.0
+margin_top = 324.0
+margin_right = 114.0
+margin_bottom = 364.0
+rect_scale = Vector2( 2.5, 2.5 )
+mouse_default_cursor_shape = 2
+texture = ExtResource( 15 )
+expand = true
+script = ExtResource( 17 )
+
+[node name="Area2D" type="Area2D" parent="BirderIcon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BirderIcon/Area2D"]
+position = Vector2( 19.6, 20.8 )
+shape = SubResource( 26 )
+
+[node name="TwatterLabel" type="RichTextLabel" parent="BirderIcon"]
+margin_left = -0.4
+margin_top = 41.6
+margin_right = 40.6
+margin_bottom = 51.6
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 18 )
+text = "BIRDER"
 scroll_active = false
 
 [node name="LevelSelect" parent="." instance=ExtResource( 5 )]
 __meta__ = {
 "_edit_use_anchors_": true
 }
-
-[node name="ChatLabel" type="RichTextLabel" parent="."]
-margin_left = 94.0
-margin_top = 157.0
-margin_right = 167.0
-margin_bottom = 182.0
-custom_fonts/normal_font = SubResource( 28 )
-text = "Chat"
-scroll_active = false
 
 [node name="ChatApp" parent="." instance=ExtResource( 14 )]
 anchor_left = 0.441146
@@ -235,3 +255,16 @@ popup_exclusive = true
 
 [node name="SceneManager" parent="." instance=ExtResource( 10 )]
 visible = false
+
+[node name="MouseClick" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 4 )
+volume_db = -4.0
+
+[node name="Birder" parent="." instance=ExtResource( 20 )]
+visible = false
+
+[connection signal="gui_input" from="." to="." method="_on_Desktop_gui_input"]
+[connection signal="gui_input" from="LevelSelectIcon" to="LevelSelectIcon" method="_on_LevelSelectIcon_gui_input"]
+[connection signal="gui_input" from="ChatIcon" to="ChatIcon" method="_on_ChatIcon_gui_input"]
+[connection signal="gui_input" from="BirderIcon" to="BirderIcon" method="_on_TwatterIcon_gui_input"]
