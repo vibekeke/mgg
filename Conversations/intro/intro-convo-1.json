@@ -1,0 +1,20 @@
+[
+   {
+      "name":"MGG",
+      "color":"#000000",
+      "script":"Hello :D\n",
+      "delay":1000
+   },
+   {
+      "name":"Not an alien",
+      "color":"#000000",
+      "script":"Hello there fellow human.\n",
+      "delay":1000
+   },
+   {
+      "name":"MGG",
+      "color":"#000000",
+      "script":"I\\'ll kill ya :)\n",
+      "delay":1000
+   }
+]

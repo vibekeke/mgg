@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://imported_assets/computer/level1.png" type="Texture" id=2]
@@ -10,18 +10,7 @@
 [ext_resource path="res://imported_assets/computer/car-sprite-alpha.png" type="Texture" id=8]
 [ext_resource path="res://imported_assets/computer/dog_shiba_inu_nose.png" type="Texture" id=9]
 [ext_resource path="res://imported_assets/fonts/LiberationSans-Regular.ttf" type="DynamicFontData" id=10]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 6 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.0588235, 0.12549, 0.807843, 1 )
-border_width_left = 5
-border_width_top = 42
-border_width_right = 5
-border_width_bottom = 5
-expand_margin_top = 32.0
+[ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=11]
 
 [sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
@@ -167,8 +156,7 @@ anchor_left = 0.182292
 anchor_top = 0.239815
 anchor_right = 0.78125
 anchor_bottom = 0.875
-custom_fonts/title_font = SubResource( 1 )
-custom_styles/panel = SubResource( 2 )
+theme = ExtResource( 11 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true,

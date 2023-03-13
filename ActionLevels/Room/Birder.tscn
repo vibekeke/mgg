@@ -1,24 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://imported_assets/fonts/BestTen-DOT.otf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.0588235, 0.12549, 0.807843, 1 )
-border_width_left = 5
-border_width_top = 42
-border_width_right = 5
-border_width_bottom = 5
-expand_margin_top = 32.0
+[ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=1]
 
 [sub_resource type="StyleBoxFlat" id=3]
 
 [node name="Birder" type="WindowDialog"]
 unique_name_in_owner = true
-visible = true
 anchor_left = 0.463021
 anchor_top = 0.0546296
 anchor_right = 0.86875
@@ -27,9 +14,8 @@ margin_left = -4.0
 margin_top = 9.0
 margin_right = -4.0
 margin_bottom = 9.0
-custom_fonts/title_font = SubResource( 1 )
-custom_styles/panel = SubResource( 2 )
-window_title = "SOCIAL MEDIA                                "
+theme = ExtResource( 1 )
+window_title = "SOCIAL MEDIA"
 __meta__ = {
 "_edit_use_anchors_": true
 }

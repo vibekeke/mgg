@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/kbd-2-no-distance.mp3-6c721d341f796412bc62824c259fe0c3.mp3str"
+
+[deps]
+
+source_file="res://sounds/computer/kbd-2-no-distance.mp3"
+dest_files=[ "res://.import/kbd-2-no-distance.mp3-6c721d341f796412bc62824c259fe0c3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

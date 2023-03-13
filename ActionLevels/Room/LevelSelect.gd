@@ -20,7 +20,7 @@ onready var _flicker_timer : Timer = Timer.new()
 
 func _ready():
 	_timer.connect("timeout", self, "_on_window_title_update")
-	_timer.set_wait_time(0.65)
+	_timer.set_wait_time(0.50)
 	_timer.set_one_shot(false)
 	self.window_title = ""
 	title_to_use = window_dialog_title
@@ -52,7 +52,9 @@ func _on_window_title_update():
 	if global_scroller > len(title_to_use):
 		global_scroller = 0
 		if title_to_use == window_dialog_title:
-			title_to_use = alternate_dialog_title
+			# disable for now
+			#title_to_use = alternate_dialog_title
+			title_to_use = window_dialog_title
 		else:
 			title_to_use = window_dialog_title
 		

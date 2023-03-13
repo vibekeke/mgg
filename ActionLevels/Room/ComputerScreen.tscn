@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://imported_assets/computer/PatchRegular.png" type="Texture" id=2]
@@ -65,9 +65,6 @@ margin_left = 5.0
 margin_right = 5.0
 margin_top = 5.0
 margin_bottom = 5.0
-
-[sub_resource type="RectangleShape2D" id=26]
-extents = Vector2( 26, 22 )
 
 [node name="Desktop" type="Control"]
 anchor_right = 1.0
@@ -155,7 +152,6 @@ layer = 128
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -20.0
-autoplay = true
 
 [node name="LevelSelectIcon" type="TextureRect" parent="."]
 margin_left = 74.0
@@ -167,12 +163,6 @@ mouse_default_cursor_shape = 2
 texture = ExtResource( 11 )
 expand = true
 script = ExtResource( 12 )
-
-[node name="Area2D" type="Area2D" parent="LevelSelectIcon"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSelectIcon/Area2D"]
-position = Vector2( 19.6, 20.8 )
-shape = SubResource( 26 )
 
 [node name="LevelSelectLabel" type="RichTextLabel" parent="LevelSelectIcon"]
 margin_left = 7.0
@@ -198,12 +188,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Area2D" type="Area2D" parent="ChatIcon"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatIcon/Area2D"]
-position = Vector2( 19.6, 20.8 )
-shape = SubResource( 26 )
-
 [node name="LevelSelectLabel" type="RichTextLabel" parent="ChatIcon"]
 margin_left = 7.0
 margin_top = 42.0
@@ -224,12 +208,6 @@ mouse_default_cursor_shape = 2
 texture = ExtResource( 15 )
 expand = true
 script = ExtResource( 17 )
-
-[node name="Area2D" type="Area2D" parent="BirderIcon"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BirderIcon/Area2D"]
-position = Vector2( 19.6, 20.8 )
-shape = SubResource( 26 )
 
 [node name="TwatterLabel" type="RichTextLabel" parent="BirderIcon"]
 margin_left = -0.4
@@ -262,7 +240,6 @@ stream = ExtResource( 4 )
 volume_db = -4.0
 
 [node name="Birder" parent="." instance=ExtResource( 20 )]
-visible = false
 
 [connection signal="gui_input" from="." to="." method="_on_Desktop_gui_input"]
 [connection signal="gui_input" from="LevelSelectIcon" to="LevelSelectIcon" method="_on_LevelSelectIcon_gui_input"]
