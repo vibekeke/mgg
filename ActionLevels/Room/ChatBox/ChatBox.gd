@@ -1,5 +1,6 @@
 extends Control
 
+onready var chat_app = get_node("%ChatApp")
 onready var chatLog = get_node("VBoxContainer/RichTextLabel")
 onready var inputLabel = get_node("VBoxContainer/HBoxContainer/Label")
 onready var inputField = get_node("VBoxContainer/HBoxContainer/LineEdit")
