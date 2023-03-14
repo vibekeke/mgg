@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=1]
+[ext_resource path="res://ActionLevels/Room/Birder.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=3]
 
@@ -14,8 +15,10 @@ margin_left = -4.0
 margin_top = 9.0
 margin_right = -4.0
 margin_bottom = 9.0
+mouse_filter = 1
 theme = ExtResource( 1 )
 window_title = "SOCIAL MEDIA"
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -291,3 +294,5 @@ margin_right = 40.0
 margin_bottom = 1624.0
 rect_min_size = Vector2( 40, 40 )
 custom_styles/panel = SubResource( 3 )
+
+[connection signal="gui_input" from="." to="." method="_on_Birder_gui_input"]

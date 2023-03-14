@@ -219,15 +219,18 @@ custom_fonts/normal_font = ExtResource( 18 )
 text = "BIRDER"
 scroll_active = false
 
+[node name="Birder" parent="." instance=ExtResource( 20 )]
+
 [node name="LevelSelect" parent="." instance=ExtResource( 5 )]
+show_behind_parent = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="ChatApp" parent="." instance=ExtResource( 14 )]
-anchor_left = 0.441146
+anchor_left = 0.335938
 anchor_top = 0.125926
-anchor_right = 0.810937
+anchor_right = 0.810938
 anchor_bottom = 0.683333
 popup_exclusive = true
 
@@ -238,8 +241,6 @@ visible = false
 unique_name_in_owner = true
 stream = ExtResource( 4 )
 volume_db = -4.0
-
-[node name="Birder" parent="." instance=ExtResource( 20 )]
 
 [connection signal="gui_input" from="." to="." method="_on_Desktop_gui_input"]
 [connection signal="gui_input" from="LevelSelectIcon" to="LevelSelectIcon" method="_on_LevelSelectIcon_gui_input"]

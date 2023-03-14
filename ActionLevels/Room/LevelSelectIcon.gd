@@ -1,10 +1,14 @@
 extends TextureRect
 
 onready var level_select = get_node("%LevelSelect")
-onready var mouse_click = get_node("%MouseClick")
+onready var parent_node = self.get_parent()
 
 func click():
+	bring_to_front()
 	level_select.visible = !level_select.visible
+
+func bring_to_front():
+	parent_node.move_child(level_select, parent_node.get_child_count())
 
 func _on_LevelSelectIcon_gui_input(event):
 	if event is InputEventMouseButton:

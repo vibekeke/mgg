@@ -326,6 +326,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[connection signal="gui_input" from="." to="." method="_on_LevelSelect_gui_input"]
 [connection signal="gui_input" from="Level1" to="." method="_on_Level1_gui_input"]
 [connection signal="mouse_entered" from="Level1" to="." method="_on_Level1_mouse_entered"]
 [connection signal="mouse_exited" from="Level1" to="." method="_on_Level1_mouse_exited"]

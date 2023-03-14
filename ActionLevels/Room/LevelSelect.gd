@@ -1,6 +1,7 @@
 extends WindowDialog
 
 onready var last_completed_level : int = 0
+onready var parent_node = self.get_parent()
 onready var level1_image = get_node("%Level1")
 onready var level2_image = get_node("%Level2")
 onready var level3_image = get_node("%Level3")
@@ -101,3 +102,12 @@ func _on_Level3_gui_input(event):
 			Events.emit_signal("transition_to_scene", "Level3")
 
 
+
+
+func _on_LevelSelect_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.get_button_index() == BUTTON_LEFT and event.pressed:
+			if parent_node != null:
+				parent_node.move_child(self, parent_node.get_child_count())
+			else:
+				print_debug("That did not work dummy")
