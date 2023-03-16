@@ -1,5 +1,9 @@
-extends Panel
+extends PanelContainer
+
+func _ready():
+	pass
+	#$MarginContainer/VBoxContainer/ChatText.margin_left = 5
+	#print("changed margin in chat text")
 
 func add_message_text(text_to_add):
-	print("adding text to chat panel", text_to_add)
-	$ChatText.append_bbcode(text_to_add)
+	$MarginContainer/VBoxContainer/ChatText.set_text(text_to_add)

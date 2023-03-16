@@ -1,11 +1,11 @@
 extends Control
 
-const player_chat_panel = preload("res://ActionLevels/Room/ChatBox/ChatPanel.tscn")
+const player_chat_panel = preload("res://ActionLevels/Room/ChatBox/SettableChatPanel.tscn")
 
 func create_player_panel(text_for_panel):
 	var _instanced_player_chat_panel = player_chat_panel.instance()
 	_instanced_player_chat_panel.add_message_text(text_for_panel)
-	$ScrollContainer.add_child(_instanced_player_chat_panel)
+	$ScrollContainer/VBoxContainer.add_child(_instanced_player_chat_panel)
 
 func create_friend_panel(text_for_panel):
 	pass

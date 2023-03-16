@@ -1,28 +1,59 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ActionLevels/Room/ChatBox/ChatBox.gd" type="Script" id=1]
+[ext_resource path="res://ActionLevels/Room/ChatBox/SettableChatPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
 
 [node name="ChatBox" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -811.0
-margin_bottom = -362.0
+anchor_right = 5.0
+anchor_bottom = 0.664815
 theme = ExtResource( 4 )
 script = ExtResource( 1 )
-
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 4 )
-custom_styles/bg = SubResource( 1 )
-scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0001
+anchor_bottom = 1.0
+margin_right = -1.0
+theme = ExtResource( 4 )
+custom_styles/bg = SubResource( 1 )
+scroll_horizontal_enabled = false
+
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 214.0
+margin_bottom = 740.0
 custom_constants/separation = 15
+
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer"]
+margin_right = 214.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="SettableChatPanel" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 65.0
+margin_bottom = 165.0
+
+[node name="SettableChatPanel2" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 180.0
+margin_bottom = 280.0
+
+[node name="SettableChatPanel3" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 295.0
+margin_bottom = 395.0
+
+[node name="SettableChatPanel4" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 410.0
+margin_bottom = 510.0
+
+[node name="SettableChatPanel5" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 525.0
+margin_bottom = 625.0
+
+[node name="SettableChatPanel6" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 640.0
+margin_bottom = 740.0

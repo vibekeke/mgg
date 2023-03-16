@@ -11,6 +11,7 @@
 
 [node name="ChatApp" type="WindowDialog"]
 unique_name_in_owner = true
+visible = true
 anchor_left = 0.0817708
 anchor_top = 0.239815
 anchor_right = 0.565625
@@ -76,6 +77,8 @@ __meta__ = {
 
 [node name="ChatBox" parent="Dialog" instance=ExtResource( 3 )]
 unique_name_in_owner = true
+anchor_right = 0.994683
+anchor_bottom = 1.0026
 margin_left = 5.0
 margin_top = 5.0
 margin_right = -5.0
