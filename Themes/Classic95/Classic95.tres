@@ -5,9 +5,9 @@
 [ext_resource path="res://Themes/Classic95/Styles/Panel/InlinePanel.tres" type="StyleBox" id=3]
 [ext_resource path="res://Themes/Classic95/Styles/Panel/TabFb.tres" type="StyleBox" id=4]
 [ext_resource path="res://Themes/Classic95/Styles/Panel/TabBg.tres" type="StyleBox" id=5]
-[ext_resource path="res://Themes/Classic95/Styles/Window/CloseBtn.png" type="Texture" id=6]
+[ext_resource path="res://Themes/Classic95/Styles/Window/CloseBtnH-large-2.png" type="Texture" id=6]
 [ext_resource path="res://Themes/Classic95/Styles/Window/Window.tres" type="StyleBox" id=7]
-[ext_resource path="res://Themes/Classic95/Styles/Window/CloseBtnH.png" type="Texture" id=8]
+[ext_resource path="res://Themes/Classic95/Styles/Window/CloseBtn-large-2.png" type="Texture" id=8]
 [ext_resource path="res://Themes/Classic95/Styles/Button/Button.tres" type="StyleBox" id=9]
 [ext_resource path="res://Themes/Classic95/Styles/Button/Focused.tres" type="StyleBox" id=10]
 [ext_resource path="res://Themes/Classic95/Styles/Button/Pressed.tres" type="StyleBox" id=11]
@@ -314,6 +314,6 @@ VSlider/styles/grabber_area = SubResource( 10 )
 VSlider/styles/grabber_area_highlight = SubResource( 10 )
 VSlider/styles/slider = SubResource( 9 )
 WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
-WindowDialog/icons/close = ExtResource( 6 )
-WindowDialog/icons/close_highlight = ExtResource( 8 )
+WindowDialog/icons/close = ExtResource( 8 )
+WindowDialog/icons/close_highlight = ExtResource( 6 )
 WindowDialog/styles/panel = ExtResource( 7 )
