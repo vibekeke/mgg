@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=1]
 [ext_resource path="res://ActionLevels/Room/Birder.gd" type="Script" id=2]
+[ext_resource path="res://addons/dialogic/Documentation/Theme/Font/NotoSans-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+extra_spacing_top = 6
+font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 
@@ -17,7 +23,8 @@ margin_right = -4.0
 margin_bottom = 9.0
 mouse_filter = 1
 theme = ExtResource( 1 )
-window_title = "SOCIAL MEDIA"
+custom_fonts/title_font = SubResource( 4 )
+window_title = "BIRDER"
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": true
