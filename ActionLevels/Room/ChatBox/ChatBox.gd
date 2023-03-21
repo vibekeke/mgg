@@ -14,6 +14,15 @@ func create_counterpart_panel(text_for_panel):
 	var _instanced_counterpart_chat_panel = receiver_chat_panel.instance()
 	_instanced_counterpart_chat_panel.add_message_text(text_for_panel)
 	$ScrollContainer/VBoxContainer.add_child(_instanced_counterpart_chat_panel)
+	$MessageReceivedSound.play(0.0)
 	yield(get_tree(), "idle_frame")
 	$ScrollContainer.ensure_control_visible(_instanced_counterpart_chat_panel)
 	
+func hide_is_typing():
+	$IsTypingField.visible = false
+
+func display_is_typing(typer_name):
+	if $IsTypingField.visible == false:
+		$IsTypingField.visible = true
+		$IsTypingField.bbcode_text = ""
+		$IsTypingField.bbcode_text = typer_name + " [wave]is typing...[/wave]"

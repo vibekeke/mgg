@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ActionLevels/Room/ChatBox/ChatBox.gd" type="Script" id=1]
+[ext_resource path="res://addons/dialogic/Documentation/Theme/Font/NotoSans-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://sounds/computer/message-received-cut.mp3" type="AudioStream" id=3]
 [ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
 
 [node name="ChatBox" type="Control"]
 anchor_right = 1.0
@@ -35,3 +40,26 @@ modulate = Color( 1, 1, 1, 0 )
 margin_right = 1919.0
 margin_bottom = 1.0
 rect_min_size = Vector2( 1, 1 )
+
+[node name="IsTypingField" type="RichTextLabel" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -34.0
+grow_horizontal = 0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Person [wave]is typing...[/wave]"
+meta_underlined = false
+text = "Person is typing..."
+fit_content_height = true
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="MessageReceivedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0

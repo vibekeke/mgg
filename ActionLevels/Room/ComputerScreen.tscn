@@ -148,6 +148,7 @@ __meta__ = {
 layer = 128
 
 [node name="Scanlines" parent="CanvasLayer" instance=ExtResource( 19 )]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
@@ -209,7 +210,7 @@ texture = ExtResource( 15 )
 expand = true
 script = ExtResource( 17 )
 
-[node name="TwatterLabel" type="RichTextLabel" parent="BirderIcon"]
+[node name="BirderLabel" type="RichTextLabel" parent="BirderIcon"]
 margin_left = -0.4
 margin_top = 41.6
 margin_right = 40.6

@@ -25,6 +25,7 @@ font_data = ExtResource( 9 )
 
 [node name="ChatApp" type="WindowDialog"]
 unique_name_in_owner = true
+visible = true
 anchor_left = 0.0817708
 anchor_top = 0.0638889
 anchor_right = 0.678646
@@ -91,8 +92,7 @@ __meta__ = {
 
 [node name="ChatBox" parent="Dialog" instance=ExtResource( 3 )]
 unique_name_in_owner = true
-anchor_right = 0.994683
-anchor_bottom = 1.0026
+anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
 margin_right = -5.0
@@ -121,6 +121,7 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 wrap_enabled = true
+caret_moving_by_right_click = false
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": true

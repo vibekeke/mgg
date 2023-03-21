@@ -27,14 +27,20 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 200.001
 margin_bottom = 405.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_right = 200.0
-margin_bottom = 405.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 190.0
+margin_bottom = 395.0
 
 [node name="ChatText" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_right = 200.0
+margin_right = 180.0
 margin_bottom = 34.0
 custom_fonts/font = SubResource( 2 )
 autowrap = true

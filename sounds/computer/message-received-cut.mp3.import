@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/message-received-cut.mp3-47169c844cd116456246c67ac1e5d875.mp3str"
+
+[deps]
+
+source_file="res://sounds/computer/message-received-cut.mp3"
+dest_files=[ "res://.import/message-received-cut.mp3-47169c844cd116456246c67ac1e5d875.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

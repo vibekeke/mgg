@@ -2,19 +2,19 @@
    {
       "name":"MGG",
       "color":"#000000",
-      "script":"Hello :D\n How are you? \n This is a test dialogue!\nTestttestestetest\ntestetestestestestes\ntestestestestes\ntestestestestestestestestetestsetestestestestestestestestestsetse\n",
+      "script":"This is a conversation!\n",
       "delay":1000
    },
    {
       "name":"Not an alien",
       "color":"#000000",
-      "script":"Hello there fellow human.\n",
+      "script":"Hmm...have you heard of updog?",
       "delay":1000
    },
    {
       "name":"MGG",
       "color":"#000000",
-      "script":"I\\'ll kill ya :)\n",
+      "script":"No. What's updog?",
       "delay":1000
    }
 ]
