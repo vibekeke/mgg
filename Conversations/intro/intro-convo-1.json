@@ -1,20 +1,22 @@
 [
    {
       "name":"MGG",
-      "color":"#000000",
-      "script":"This is a conversation!\n",
-      "delay":1000
+      "script":"This is a conversation!"
    },
    {
       "name":"Not an alien",
-      "color":"#000000",
-      "script":"Hmm...have you heard of updog?",
-      "delay":1000
+      "script":"Hmm...have you heard of updog?"
    },
    {
       "name":"MGG",
-      "color":"#000000",
-      "script":"No. What's updog?",
-      "delay":1000
+      "script":"No. What's updog?"
+   },
+   {
+     "name": "Not an alien",
+     "script": "Nothing much how about you? :)"
+   },
+   {
+     "name": "MGG",
+     "script": "Not funny :("
    }
 ]
