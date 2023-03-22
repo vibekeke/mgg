@@ -2,6 +2,7 @@ extends WindowDialog
 
 onready var parent_node = self.get_parent()
 var PLAYER_IDENTIFIER = "MGG"
+var conversation_path = "res://Conversations/"
 onready var current_dialog = ""
 onready var receiver_name = ""
 onready var sender_name = ""
