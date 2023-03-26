@@ -14,7 +14,6 @@ font_data = ExtResource( 2 )
 [node name="ChatBox" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 0.664815
-theme = ExtResource( 4 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true

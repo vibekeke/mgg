@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://imported_assets/computer/question-mark-2d.png" type="Texture" id=1]
 [ext_resource path="res://ActionLevels/Room/ChatTextEdit.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://sounds/computer/kbd-2-no-distance.mp3" type="AudioStream" id=7]
 [ext_resource path="res://sounds/computer/kbd-1-no-distance.mp3" type="AudioStream" id=8]
 [ext_resource path="res://addons/dialogic/Documentation/Theme/Font/NotoSans-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://imported_assets/fonts/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://CustomShaders/chat_panel_color_override.tres" type="Material" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -21,10 +23,11 @@ font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
-font_data = ExtResource( 9 )
+font_data = ExtResource( 10 )
 
 [node name="ChatApp" type="WindowDialog"]
 unique_name_in_owner = true
+visible = true
 anchor_left = 0.0817708
 anchor_top = 0.0638889
 anchor_right = 0.678646
@@ -38,6 +41,7 @@ __meta__ = {
 }
 
 [node name="Receiver" type="Panel" parent="."]
+material = ExtResource( 11 )
 anchor_left = 0.649297
 anchor_top = 0.0299004
 anchor_right = 0.9831
@@ -61,6 +65,7 @@ __meta__ = {
 }
 
 [node name="Sender" type="Panel" parent="."]
+material = ExtResource( 11 )
 anchor_left = 0.653522
 anchor_top = 0.475083
 anchor_right = 0.981692
@@ -92,10 +97,10 @@ __meta__ = {
 [node name="ChatBox" parent="Dialog" instance=ExtResource( 3 )]
 unique_name_in_owner = true
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = -2.0
+margin_bottom = -2.0
 
 [node name="ChatBoxPanel" type="Panel" parent="."]
 anchor_left = 0.0633803
@@ -108,8 +113,8 @@ __meta__ = {
 
 [node name="ChatTextSender" type="TextEdit" parent="ChatBoxPanel"]
 unique_name_in_owner = true
-anchor_right = 0.997017
-anchor_bottom = 0.992426
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
 readonly = true
 context_menu_enabled = false
