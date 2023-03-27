@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=66 format=2]
+[gd_resource type="Theme" load_steps=68 format=2]
 
 [ext_resource path="res://Themes/Classic95/Styles/Panel/Panel.tres" type="StyleBox" id=1]
 [ext_resource path="res://Themes/Classic95/Styles/Panel/TabDisabled.tres" type="StyleBox" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://Themes/Classic95/Styles/CheckBox/SlideOnDisabled.png" type="Texture" id=24]
 [ext_resource path="res://Themes/Classic95/Styles/CheckBox/SlideOff.png" type="Texture" id=25]
 [ext_resource path="res://Themes/Classic95/Styles/General/Box.tres" type="StyleBox" id=26]
+[ext_resource path="res://test_fonts/pixel_unicode/Pixel-UniCode.ttf" type="DynamicFontData" id=27]
 [ext_resource path="res://Themes/Classic95/Styles/General/Focused.tres" type="StyleBox" id=28]
 [ext_resource path="res://Themes/Classic95/Styles/Button/DropDown.tres" type="StyleBox" id=29]
 [ext_resource path="res://Themes/Classic95/Styles/Button/DropDownPressed.tres" type="StyleBox" id=30]
@@ -147,6 +148,10 @@ expand_margin_top = 1.0
 expand_margin_bottom = 2.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
+
+[sub_resource type="DynamicFont" id=13]
+size = 32
+font_data = ExtResource( 27 )
 
 [resource]
 Button/colors/font_color = Color( 0, 0, 0, 1 )
@@ -314,6 +319,7 @@ VSlider/styles/grabber_area = SubResource( 10 )
 VSlider/styles/grabber_area_highlight = SubResource( 10 )
 VSlider/styles/slider = SubResource( 9 )
 WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
+WindowDialog/fonts/title_font = SubResource( 13 )
 WindowDialog/icons/close = ExtResource( 8 )
 WindowDialog/icons/close_highlight = ExtResource( 6 )
 WindowDialog/styles/panel = ExtResource( 7 )

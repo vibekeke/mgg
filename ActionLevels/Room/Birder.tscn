@@ -2,15 +2,16 @@
 
 [ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=1]
 [ext_resource path="res://ActionLevels/Room/Birder.gd" type="Script" id=2]
-[ext_resource path="res://addons/dialogic/Documentation/Theme/Font/NotoSans-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://test_fonts/pixel_unicode/Pixel-UniCode.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=4]
-size = 32
-extra_spacing_top = 6
+size = 48
+extra_spacing_top = 10
 font_data = ExtResource( 3 )
 
 [node name="Birder" type="WindowDialog"]
 unique_name_in_owner = true
+visible = true
 anchor_left = 0.463021
 anchor_top = 0.0546296
 anchor_right = 0.86875

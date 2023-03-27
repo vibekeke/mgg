@@ -19,6 +19,7 @@ onready var current_typing_sound = 0
 onready var _type_timer = Timer.new()
 onready var _counterpart_is_typing_timer = Timer.new()
 
+
 func _ready():
 	randomize()
 	
@@ -97,3 +98,20 @@ func _on_SendMessageButton_button_up():
 	else:
 		chat_send_button.disabled = false
 	current_dialog_entry_number = current_dialog_entry_number + 1
+
+func _on_ProfilePicColourR_value_changed(value):
+	print("setting Red value", value)
+	$Receiver.material.set_shader_param("r_color", value)
+	$Sender.material.set_shader_param("r_color", value)
+
+
+func _on_ProfilePicColourG_value_changed(value):
+	print("setting Green value", value)
+	$Receiver.material.set_shader_param("g_color", value)
+	$Sender.material.set_shader_param("g_color", value)
+
+
+func _on_ProfilePicColourB_value_changed(value):
+	print("setting Blue value", value)
+	$Receiver.material.set_shader_param("b_color", value)
+	$Sender.material.set_shader_param("b_color", value)

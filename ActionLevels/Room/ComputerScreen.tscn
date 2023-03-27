@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://imported_assets/computer/PatchRegular.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://ActionLevels/Room/old_font_for_icons.tres" type="DynamicFont" id=18]
 [ext_resource path="res://ActionLevels/Room/ScanlinesTest.tscn" type="PackedScene" id=19]
 [ext_resource path="res://ActionLevels/Room/Birder.tscn" type="PackedScene" id=20]
+[ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=21]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.184314, 0.0862745, 0.670588, 1 )
@@ -146,18 +147,18 @@ __meta__ = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
+visible = false
 
 [node name="Scanlines" parent="CanvasLayer" instance=ExtResource( 19 )]
-visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -20.0
 
 [node name="LevelSelectIcon" type="TextureRect" parent="."]
-margin_left = 74.0
+margin_left = 77.0
 margin_top = 188.0
-margin_right = 114.0
+margin_right = 117.0
 margin_bottom = 228.0
 rect_scale = Vector2( 2.5, 2.5 )
 mouse_default_cursor_shape = 2
@@ -165,21 +166,11 @@ texture = ExtResource( 11 )
 expand = true
 script = ExtResource( 12 )
 
-[node name="LevelSelectLabel" type="RichTextLabel" parent="LevelSelectIcon"]
-margin_left = 7.0
-margin_top = 42.0
-margin_right = 36.0
-margin_bottom = 52.0
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = ExtResource( 18 )
-text = "WWW"
-scroll_active = false
-
 [node name="ChatIcon" type="TextureRect" parent="."]
-margin_left = 75.0
-margin_top = 46.0
-margin_right = 115.0
-margin_bottom = 86.0
+margin_left = 80.0
+margin_top = 29.0
+margin_right = 120.0
+margin_bottom = 69.0
 rect_scale = Vector2( 2.5, 2.5 )
 mouse_default_cursor_shape = 2
 texture = ExtResource( 8 )
@@ -189,36 +180,16 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="LevelSelectLabel" type="RichTextLabel" parent="ChatIcon"]
-margin_left = 7.0
-margin_top = 42.0
-margin_right = 36.0
-margin_bottom = 52.0
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = ExtResource( 18 )
-text = "CHAT"
-scroll_active = false
-
 [node name="BirderIcon" type="TextureRect" parent="."]
-margin_left = 74.0
-margin_top = 324.0
-margin_right = 114.0
-margin_bottom = 364.0
+margin_left = 75.0
+margin_top = 337.0
+margin_right = 115.0
+margin_bottom = 377.0
 rect_scale = Vector2( 2.5, 2.5 )
 mouse_default_cursor_shape = 2
 texture = ExtResource( 15 )
 expand = true
 script = ExtResource( 17 )
-
-[node name="BirderLabel" type="RichTextLabel" parent="BirderIcon"]
-margin_left = -0.4
-margin_top = 41.6
-margin_right = 40.6
-margin_bottom = 51.6
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = ExtResource( 18 )
-text = "BIRDER"
-scroll_active = false
 
 [node name="Birder" parent="." instance=ExtResource( 20 )]
 
@@ -242,6 +213,39 @@ visible = false
 unique_name_in_owner = true
 stream = ExtResource( 4 )
 volume_db = -4.0
+
+[node name="LevelSelectLabel" type="RichTextLabel" parent="."]
+margin_left = 83.0
+margin_top = 281.0
+margin_right = 212.0
+margin_bottom = 341.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 18 )
+text = "WWW"
+scroll_active = false
+
+[node name="ChatLabel" type="RichTextLabel" parent="."]
+margin_left = 91.0
+margin_top = 128.0
+margin_right = 190.0
+margin_bottom = 187.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 18 )
+text = "CHAT"
+scroll_active = false
+
+[node name="BirderLabel" type="RichTextLabel" parent="."]
+margin_left = 74.0
+margin_top = 419.0
+margin_right = 220.0
+margin_bottom = 488.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 18 )
+text = "BIRDER"
+scroll_active = false
+
+[node name="PauseMenu" parent="." instance=ExtResource( 21 )]
+visible = false
 
 [connection signal="gui_input" from="." to="." method="_on_Desktop_gui_input"]
 [connection signal="gui_input" from="LevelSelectIcon" to="LevelSelectIcon" method="_on_LevelSelectIcon_gui_input"]

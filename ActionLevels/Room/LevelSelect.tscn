@@ -11,11 +11,11 @@
 [ext_resource path="res://imported_assets/computer/dog_shiba_inu_nose.png" type="Texture" id=9]
 [ext_resource path="res://imported_assets/fonts/LiberationSans-Regular.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=11]
-[ext_resource path="res://addons/dialogic/Documentation/Theme/Font/NotoSans-Regular.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://test_fonts/pixel_unicode/Pixel-UniCode.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="DynamicFont" id=16]
-size = 32
-extra_spacing_top = 5
+size = 48
+extra_spacing_top = 10
 font_data = ExtResource( 12 )
 
 [sub_resource type="Shader" id=8]
@@ -159,6 +159,7 @@ font_data = ExtResource( 10 )
 
 [node name="LevelSelect" type="WindowDialog"]
 unique_name_in_owner = true
+visible = true
 anchor_left = 0.182292
 anchor_top = 0.239815
 anchor_right = 0.78125
@@ -314,7 +315,7 @@ bbcode_text = "9 OUT OF 10 MAGICAL GIRLS RECOMMEND
 \"HE JUST WOOFS AND IT'S GREAT\"
   - REPUTABLE MAGICAL GIRL"
 text = "9 OUT OF 10 MAGICAL GIRLS RECOMMEND 
-[wave]DOG COMPANIONS[/wave]
+DOG COMPANIONS
 
 \"HE JUST WOOFS AND IT'S GREAT\"
   - REPUTABLE MAGICAL GIRL"

@@ -24,23 +24,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 689.0
-margin_top = 358.0
-margin_right = 1231.0
-margin_bottom = 722.0
+margin_left = 656.0
+margin_top = 420.0
+margin_right = 1264.0
+margin_bottom = 660.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 542.0
-margin_bottom = 88.0
+margin_right = 608.0
+margin_bottom = 57.0
 custom_fonts/font = ExtResource( 4 )
 text = "Paused"
 align = 1
 valign = 1
 
 [node name="ResumeBtn" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 92.0
-margin_right = 542.0
-margin_bottom = 180.0
+margin_top = 61.0
+margin_right = 608.0
+margin_bottom = 118.0
 focus_neighbour_top = NodePath("../QuitBtn")
 focus_neighbour_bottom = NodePath("../BackBtn")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -56,9 +56,9 @@ custom_styles/normal = ExtResource( 3 )
 text = "Resume"
 
 [node name="BackBtn" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 184.0
-margin_right = 542.0
-margin_bottom = 272.0
+margin_top = 122.0
+margin_right = 608.0
+margin_bottom = 179.0
 focus_neighbour_top = NodePath("../ResumeBtn")
 focus_neighbour_bottom = NodePath("../QuitBtn")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -74,9 +74,9 @@ custom_styles/normal = ExtResource( 3 )
 text = "Back to Computer"
 
 [node name="QuitBtn" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 276.0
-margin_right = 542.0
-margin_bottom = 364.0
+margin_top = 183.0
+margin_right = 608.0
+margin_bottom = 240.0
 focus_neighbour_top = NodePath("../BackBtn")
 focus_neighbour_bottom = NodePath("../ResumeBtn")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
