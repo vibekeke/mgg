@@ -32,7 +32,6 @@ func load_tweets():
 	loaded_tweets.open(tweet_path + "misc/filler-1.json", File.READ)
 	var dialog_data = JSON.parse(loaded_tweets.get_as_text())
 	if typeof(dialog_data.result) == TYPE_ARRAY:
-		print("printing tweet data ", dialog_data.result)
 		return dialog_data.result
 	print_debug("Failed to read dialog data!")
 	return []

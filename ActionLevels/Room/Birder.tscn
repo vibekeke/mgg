@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=1]
 [ext_resource path="res://ActionLevels/Room/Birder.gd" type="Script" id=2]
@@ -9,19 +9,24 @@ size = 48
 extra_spacing_top = 10
 font_data = ExtResource( 3 )
 
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+
 [node name="Birder" type="WindowDialog"]
 unique_name_in_owner = true
-visible = true
-anchor_left = 0.463021
-anchor_top = 0.0546296
-anchor_right = 0.86875
+anchor_left = 0.432
+anchor_top = 0.081
+anchor_right = 0.874
 anchor_bottom = 0.973148
 margin_left = -4.0
-margin_top = 9.0
-margin_right = -4.0
+margin_top = -19.0
+margin_right = -14.0
 margin_bottom = 9.0
 mouse_filter = 1
 theme = ExtResource( 1 )
+custom_constants/close_h_ofs = 40
 custom_fonts/title_font = SubResource( 4 )
 window_title = "BIRDER"
 script = ExtResource( 2 )
@@ -30,16 +35,28 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-anchor_left = 0.0256739
-anchor_top = 0.0393145
-anchor_right = 0.985879
-anchor_bottom = 0.984879
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -2.0
 scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
-[node name="TweetContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="Panel" type="Panel" parent="ScrollContainer"]
+margin_right = 778.64
+margin_bottom = 959.52
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 5 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TweetContainer" type="VBoxContainer" parent="ScrollContainer/Panel/ScrollContainer"]
 unique_name_in_owner = true
+margin_right = 778.64
+size_flags_horizontal = 3
 
 [connection signal="gui_input" from="." to="." method="_on_Birder_gui_input"]

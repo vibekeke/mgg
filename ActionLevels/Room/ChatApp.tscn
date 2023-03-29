@@ -5,7 +5,7 @@
 [ext_resource path="res://ActionLevels/Room/ChatBox/ChatBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=4]
 [ext_resource path="res://ActionLevels/Room/ChatApp.gd" type="Script" id=5]
-[ext_resource path="res://sounds/computer/kbd-3-no-distance.mp3" type="AudioStream" id=6]
+[ext_resource path="res://sounds/computer/kbd-3-no-distance-clipped.mp3" type="AudioStream" id=6]
 [ext_resource path="res://sounds/computer/kbd-2-no-distance.mp3" type="AudioStream" id=7]
 [ext_resource path="res://sounds/computer/kbd-1-no-distance.mp3" type="AudioStream" id=8]
 [ext_resource path="res://test_fonts/pixel_unicode/Pixel-UniCode.ttf" type="DynamicFontData" id=10]
@@ -32,6 +32,7 @@ anchor_top = 0.0638889
 anchor_right = 0.678646
 anchor_bottom = 0.844444
 theme = ExtResource( 4 )
+custom_constants/close_h_ofs = 40
 custom_fonts/title_font = SubResource( 1 )
 window_title = "BSN"
 script = ExtResource( 5 )

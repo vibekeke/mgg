@@ -1,6 +1,7 @@
 extends Control
 
 var is_paused = false setget set_is_paused
+onready var back_button = get_node("%BackBtn")
 
 var vhs_filter_state_paused = {
 	'overlay': true,
@@ -52,6 +53,13 @@ var vhs_filter_state_unpaused = {
 
 onready var vhs_filter = get_node_or_null("%VHS")
 
+func _ready():
+	if vhs_filter == null:
+		print("Could not find a node named VHS filter in this scene!")
+	var parent_node = self.get_parent()
+	if parent_node.name == "Desktop":
+		back_button.visible = false
+
 func _unhandled_input(event):
 	if event.is_action_pressed("paused"):
 		self.is_paused = !is_paused
@@ -61,7 +69,7 @@ func set_vhs_shader(shader_params : Dictionary):
 		vhs_filter.material.set_shader_param(param, shader_params[param])
 
 func set_is_paused(value):
-	is_paused = value		
+	is_paused = value
 	if value && vhs_filter != null:
 		set_vhs_shader(vhs_filter_state_paused)
 	elif value == false && vhs_filter != null:

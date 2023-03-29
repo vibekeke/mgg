@@ -165,6 +165,7 @@ anchor_top = 0.239815
 anchor_right = 0.78125
 anchor_bottom = 0.875
 theme = ExtResource( 11 )
+custom_constants/close_h_ofs = 40
 custom_fonts/title_font = SubResource( 16 )
 script = ExtResource( 5 )
 __meta__ = {

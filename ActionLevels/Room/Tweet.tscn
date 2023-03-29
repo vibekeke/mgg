@@ -1,71 +1,207 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://imported_assets/hud/npcs/angel/Angel_concept.png" type="Texture" id=1]
+[ext_resource path="res://ActionLevels/Room/BirderProfPic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/Room/Tweet.gd" type="Script" id=2]
+[ext_resource path="res://test_fonts/pixel_unicode/Pixel-UniCode.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://imported_assets/computer/ChatBubbleLeftHighRes.png" type="Texture" id=4]
+[ext_resource path="res://imported_assets/computer/HeartHighRes.png" type="Texture" id=5]
+[ext_resource path="res://imported_assets/computer/ArrowPathRoundedSquareHighRes.png" type="Texture" id=6]
 
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 835, 853 )
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.843137, 0.682353, 0.984314, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 3 )
 
 [node name="Tweet" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1905.0
-margin_bottom = -1048.0
+margin_right = -1170.0
+margin_bottom = -954.0
 rect_min_size = Vector2( 500, 100 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 493.0
-margin_bottom = 93.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 749.0
+margin_bottom = 685.0
+custom_constants/margin_left = 5
 
 [node name="TweetContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_right = 486.0
-margin_bottom = 86.0
+margin_left = 5.0
+margin_right = 748.0
+margin_bottom = 684.0
 
 [node name="NameContainer" type="HBoxContainer" parent="MarginContainer/TweetContainer"]
-margin_right = 486.0
-margin_bottom = 14.0
+margin_right = 743.0
+margin_bottom = 36.0
 
 [node name="Name" type="Label" parent="MarginContainer/TweetContainer/NameContainer"]
 unique_name_in_owner = true
-margin_right = 38.0
-margin_bottom = 14.0
+margin_right = 60.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0.921569, 0.196078, 0.886275, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Name"
 
 [node name="Tag" type="Label" parent="MarginContainer/TweetContainer/NameContainer"]
 unique_name_in_owner = true
-margin_left = 42.0
-margin_right = 116.0
-margin_bottom = 14.0
+margin_left = 64.0
+margin_right = 176.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0.921569, 0.196078, 0.886275, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "@nameless"
 
 [node name="PicAndTextContainer" type="HBoxContainer" parent="MarginContainer/TweetContainer"]
-margin_top = 18.0
-margin_right = 486.0
-margin_bottom = 68.0
+margin_top = 40.0
+margin_right = 743.0
+margin_bottom = 140.0
 
-[node name="ProfPic" type="Panel" parent="MarginContainer/TweetContainer/PicAndTextContainer"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-custom_styles/panel = SubResource( 1 )
+[node name="BirderProfPic" parent="MarginContainer/TweetContainer/PicAndTextContainer" instance=ExtResource( 1 )]
+unique_name_in_owner = true
 
 [node name="TweetText" type="Label" parent="MarginContainer/TweetContainer/PicAndTextContainer"]
 unique_name_in_owner = true
-margin_left = 54.0
-margin_top = 18.0
-margin_right = 486.0
-margin_bottom = 32.0
+margin_left = 104.0
+margin_top = 12.0
+margin_right = 743.0
+margin_bottom = 87.0
 size_flags_horizontal = 3
-text = "Test Test Test Test Test Test"
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "A lot to say but not much space to say it in. Let's test how much one of these tweets can contain!!"
 autowrap = true
 
-[node name="InteractionCrapContainer" type="HBoxContainer" parent="MarginContainer/TweetContainer"]
-margin_top = 72.0
-margin_right = 486.0
-margin_bottom = 72.0
+[node name="OptionalImageContainer" type="HBoxContainer" parent="MarginContainer/TweetContainer"]
+unique_name_in_owner = true
+margin_top = 144.0
+margin_right = 743.0
+margin_bottom = 644.0
+rect_min_size = Vector2( 0, 500 )
 
-[node name="Panel" type="Panel" parent="MarginContainer/TweetContainer/InteractionCrapContainer"]
+[node name="TweetImage" type="TextureRect" parent="MarginContainer/TweetContainer/OptionalImageContainer"]
+unique_name_in_owner = true
+margin_right = 743.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+
+[node name="InteractionCrapContainer" type="HBoxContainer" parent="MarginContainer/TweetContainer"]
+margin_top = 648.0
+margin_right = 743.0
+margin_bottom = 684.0
+rect_min_size = Vector2( 0, 30 )
+custom_constants/separation = 25
+
+[node name="MessageContainer" type="HBoxContainer" parent="MarginContainer/TweetContainer/InteractionCrapContainer"]
+margin_right = 54.0
+margin_bottom = 36.0
+custom_constants/separation = 0
+
+[node name="MessageButton" type="Panel" parent="MarginContainer/TweetContainer/InteractionCrapContainer/MessageContainer"]
+margin_right = 30.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TweetContainer/InteractionCrapContainer/MessageContainer/MessageButton"]
+margin_right = 10.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="NumberMessages" type="Label" parent="MarginContainer/TweetContainer/InteractionCrapContainer/MessageContainer"]
+margin_left = 30.0
+margin_right = 54.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "99"
+
+[node name="RetweetContainer" type="HBoxContainer" parent="MarginContainer/TweetContainer/InteractionCrapContainer"]
+margin_left = 79.0
+margin_right = 133.0
+margin_bottom = 36.0
+custom_constants/separation = 0
+
+[node name="RetweetButton" type="Panel" parent="MarginContainer/TweetContainer/InteractionCrapContainer/RetweetContainer"]
+margin_right = 30.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TweetContainer/InteractionCrapContainer/RetweetContainer/RetweetButton"]
+margin_right = 10.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="NumberRetweet" type="Label" parent="MarginContainer/TweetContainer/InteractionCrapContainer/RetweetContainer"]
+margin_left = 30.0
+margin_right = 54.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "99"
+
+[node name="LikeContainer" type="HBoxContainer" parent="MarginContainer/TweetContainer/InteractionCrapContainer"]
+margin_left = 158.0
+margin_right = 212.0
+margin_bottom = 36.0
+custom_constants/separation = 0
+
+[node name="LikeButton" type="Panel" parent="MarginContainer/TweetContainer/InteractionCrapContainer/LikeContainer"]
+margin_right = 30.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TweetContainer/InteractionCrapContainer/LikeContainer/LikeButton"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="NumberLike" type="Label" parent="MarginContainer/TweetContainer/InteractionCrapContainer/LikeContainer"]
+margin_left = 30.0
+margin_right = 54.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "99"

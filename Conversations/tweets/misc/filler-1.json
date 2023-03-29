@@ -1,10 +1,37 @@
-[{
-  "name": "M",
-  "tag": "person",
-  "content": "This is a tweet"
+[
+{
+  "name": "Rolig",
+  "tag": "RoligHedgehog",
+  "content": "Gotta go at a moderate pace",
+  "image": "",
+  "metaName": "redHog"
 },
 {
-  "name": "N",
-  "tag": "broski",
-  "content": "This is not a tweet"
-}]
+  "name": "SelnesMan",
+  "tag": "farenavartisten",
+  "content": "Magical girls are cool actually.",
+  "image": "",
+  "metaName": "literallyVibekesDad"
+},
+{
+  "name": "David Davidson",
+  "tag": "PartaySnake99",
+  "content": "I woke up this morning and my dog is gone! If anyone can find my good boy there will be many parties available to you in your future. He looks like this.",
+  "image": "res://imported_assets/computer/dog_shiba_inu_nose.png",
+  "metaName": "partySnake"
+},
+{
+  "name": "Skjeggy",
+  "tag": "bugs4life",
+  "content": "Sorry losers and haters, but my I.Q. is one of the highest -and you all know it! Please don't feel so stupid or insecure, it's not your fault",
+  "image": "",
+  "metaName": "skjeggy"
+},
+{
+  "name": "Rolig",
+  "tag": "RoligHedgehog",
+  "content": "Life is hard sometimes but that's okay. Remember that today is just another day of many, these feelings aren't final. Take a deep breath and take it easy and slow.",
+  "image": "",
+  "metaName": "redHog"
+}
+]
