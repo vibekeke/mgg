@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ActionLevels/Room/DesktopIcon.gd" type="Script" id=1]
+[ext_resource path="res://imported_assets/computer/process-notify.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "//Shader BY LURGX second shader */
+//
+
+shader_type canvas_item;
+uniform bool shine = true;
+uniform bool move = true;
+uniform float side = 0.9;
+uniform float up = 0.1;
+uniform vec4 color: hint_color;
+uniform float u_time: hint_range (0.,10.);
+
+
+void vertex() {//Movement 
+if (move == true){
+	VERTEX += vec2(cos(TIME*u_time)*side,cos(TIME*u_time)*up);
+}
+}
+
+void fragment() { //COLOR SHINE
+if (shine == true){
+	COLOR = texture(TEXTURE, UV);
+	COLOR.rgb += vec3(color.r,color.g,color.b)*(abs(cos(TIME*u_time)));
+}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/shine = true
+shader_param/move = true
+shader_param/side = 0.3
+shader_param/up = 0.5
+shader_param/color = Color( 0.4, 0.12549, 0.12549, 1 )
+shader_param/u_time = 10.0
+
+[node name="NotifyIcon" type="TextureRect"]
+material = SubResource( 2 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
+mouse_default_cursor_shape = 2
+texture = ExtResource( 2 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[connection signal="gui_input" from="." to="." method="_on_ChatIcon_gui_input"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://imported_assets/computer/PatchRegular.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://ActionLevels/Room/ScanlinesTest.tscn" type="PackedScene" id=19]
 [ext_resource path="res://ActionLevels/Room/Birder.tscn" type="PackedScene" id=20]
 [ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=21]
+[ext_resource path="res://ActionLevels/Room/NotifyIcon.tscn" type="PackedScene" id=22]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.184314, 0.0862745, 0.670588, 1 )
@@ -72,9 +73,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -157,38 +155,50 @@ volume_db = -20.0
 [node name="LevelSelectIcon" type="TextureRect" parent="."]
 margin_left = 77.0
 margin_top = 188.0
-margin_right = 117.0
-margin_bottom = 228.0
-rect_scale = Vector2( 2.5, 2.5 )
+margin_right = 177.0
+margin_bottom = 288.0
 mouse_default_cursor_shape = 2
 texture = ExtResource( 11 )
 expand = true
 script = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NotifyIcon" parent="LevelSelectIcon" instance=ExtResource( 22 )]
+visible = false
 
 [node name="ChatIcon" type="TextureRect" parent="."]
 margin_left = 80.0
 margin_top = 29.0
-margin_right = 120.0
-margin_bottom = 69.0
-rect_scale = Vector2( 2.5, 2.5 )
+margin_right = 180.0
+margin_bottom = 129.0
 mouse_default_cursor_shape = 2
 texture = ExtResource( 8 )
 expand = true
 script = ExtResource( 9 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
+
+[node name="NotifyIcon" parent="ChatIcon" instance=ExtResource( 22 )]
+script = null
 
 [node name="BirderIcon" type="TextureRect" parent="."]
 margin_left = 75.0
 margin_top = 337.0
-margin_right = 115.0
-margin_bottom = 377.0
-rect_scale = Vector2( 2.5, 2.5 )
+margin_right = 175.0
+margin_bottom = 437.0
 mouse_default_cursor_shape = 2
 texture = ExtResource( 15 )
 expand = true
 script = ExtResource( 17 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NotifyIcon" parent="BirderIcon" instance=ExtResource( 22 )]
 
 [node name="Birder" parent="." instance=ExtResource( 20 )]
 
