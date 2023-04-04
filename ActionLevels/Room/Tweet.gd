@@ -16,6 +16,13 @@ onready var meta_name_to_texture_map = {
 	'skjeggy': 'res://ActionLevels/Room/BirderAssets/skjeggy.png'
 }
 
+func _ready():
+	if OS.get_window_size().y < 1080:
+		var tweet_text = get_node("%TweetText")
+		var font = tweet_text.get_font("font")
+		font.size = 42
+		tweet_text.add_font_override("font", font)
+
 func set_tweet_image(tweet_image_path):
 	tweet_image.texture = load(tweet_image_path)
 
