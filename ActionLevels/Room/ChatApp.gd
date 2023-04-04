@@ -19,6 +19,8 @@ onready var current_typing_sound = 0
 onready var _type_timer = Timer.new()
 onready var _counterpart_is_typing_timer = Timer.new()
 
+onready var window_size = OS.get_window_size()
+
 
 func _ready():
 	randomize()
@@ -63,6 +65,14 @@ func type_then_send(text_to_type, sender):
 	else:
 		chat_box.create_counterpart_panel(text_to_type)
 		
+func filter_button_texture():
+	var button_theme = $SendMessageButton.theme
+	var styleboxTexture = button_theme.get_stylebox("normal", "Button")
+	var texture = styleboxTexture.get_texture()
+	#texture.set_flags(Texture.FLAG_MIPMAPS)
+	#button_theme.set_stylebox("normal", "Button", texture)
+	$SendMessageButton.theme = button_theme
+	
 func check_counterpart_typing():
 	if script_array.size() <= current_dialog_entry_number:
 		print("no counterpart, dialog is finished")
@@ -106,12 +116,10 @@ func _on_ProfilePicColourR_value_changed(value):
 
 
 func _on_ProfilePicColourG_value_changed(value):
-	print("setting Green value", value)
 	$Receiver.material.set_shader_param("g_color", value)
 	$Sender.material.set_shader_param("g_color", value)
 
 
 func _on_ProfilePicColourB_value_changed(value):
-	print("setting Blue value", value)
 	$Receiver.material.set_shader_param("b_color", value)
 	$Sender.material.set_shader_param("b_color", value)

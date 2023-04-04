@@ -146,7 +146,8 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
 
-[node name="Scanlines" parent="CanvasLayer" instance=ExtResource( 19 )]
+[node name="VHS" parent="CanvasLayer" instance=ExtResource( 19 )]
+unique_name_in_owner = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
@@ -183,6 +184,7 @@ __meta__ = {
 }
 
 [node name="NotifyIcon" parent="ChatIcon" instance=ExtResource( 22 )]
+visible = false
 script = null
 
 [node name="BirderIcon" type="TextureRect" parent="."]
@@ -199,6 +201,7 @@ __meta__ = {
 }
 
 [node name="NotifyIcon" parent="BirderIcon" instance=ExtResource( 22 )]
+visible = false
 
 [node name="Birder" parent="." instance=ExtResource( 20 )]
 

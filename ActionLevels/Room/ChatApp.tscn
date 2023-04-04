@@ -138,6 +138,7 @@ anchor_left = 0.545375
 anchor_top = 0.688019
 anchor_right = 0.643106
 anchor_bottom = 0.787663
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 2 )
 shortcut_in_tooltip = false
 text = "Send"

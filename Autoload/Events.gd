@@ -40,7 +40,6 @@ var COLLECTED_DOGS : Dictionary = {}
 func _ready():
 	OS.min_window_size = Vector2(1280, 720)
 	OS.max_window_size = Vector2(1920, 1080)
-	#OS.window_size = Vector2(1280, 720)
 	OS.center_window()
 	Events.connect("game_over", self, "go_to_game_over")
 
