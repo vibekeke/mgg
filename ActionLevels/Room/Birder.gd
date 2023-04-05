@@ -23,6 +23,8 @@ func create_tweet_panels(tweets):
 func _ready():
 	var loaded_tweets = load_tweets()
 	create_tweet_panels(loaded_tweets)
+	if OS.has_feature("editor"):
+		self.visible = true
 	
 func load_tweets():
 	var loaded_tweets = File.new()

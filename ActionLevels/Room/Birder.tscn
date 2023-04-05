@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=1]
 [ext_resource path="res://ActionLevels/Room/Birder.gd" type="Script" id=2]
 [ext_resource path="res://test_fonts/pixel_unicode/Pixel-UniCode.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://ActionLevels/Room/Tweet.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=4]
 size = 48
@@ -16,6 +17,7 @@ corner_radius_top_right = 25
 
 [node name="Birder" type="WindowDialog"]
 unique_name_in_owner = true
+visible = true
 anchor_left = 0.432
 anchor_top = 0.081
 anchor_right = 0.874
@@ -53,10 +55,79 @@ custom_styles/panel = SubResource( 5 )
 [node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 5.0
+margin_right = -11.0
 
-[node name="TweetContainer" type="VBoxContainer" parent="ScrollContainer/Panel/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/Panel/ScrollContainer"]
 unique_name_in_owner = true
-margin_right = 778.64
+margin_right = 751.64
+margin_bottom = 1504.0
 size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 20
+custom_constants/margin_left = 10
+
+[node name="TweetContainer" type="VBoxContainer" parent="ScrollContainer/Panel/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+margin_left = 10.0
+margin_top = 20.0
+margin_right = 741.0
+margin_bottom = 1504.0
+size_flags_horizontal = 3
+
+[node name="Tweet" parent="ScrollContainer/Panel/ScrollContainer/MarginContainer/TweetContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 731.0
+margin_bottom = 182.0
+
+[node name="Tweet2" parent="ScrollContainer/Panel/ScrollContainer/MarginContainer/TweetContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 186.0
+margin_right = 731.0
+margin_bottom = 368.0
+
+[node name="Tweet3" parent="ScrollContainer/Panel/ScrollContainer/MarginContainer/TweetContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 372.0
+margin_right = 731.0
+margin_bottom = 554.0
+
+[node name="Tweet4" parent="ScrollContainer/Panel/ScrollContainer/MarginContainer/TweetContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 558.0
+margin_right = 731.0
+margin_bottom = 740.0
+
+[node name="Tweet5" parent="ScrollContainer/Panel/ScrollContainer/MarginContainer/TweetContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 744.0
+margin_right = 731.0
+margin_bottom = 926.0
+
+[node name="Tweet6" parent="ScrollContainer/Panel/ScrollContainer/MarginContainer/TweetContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 930.0
+margin_right = 731.0
+margin_bottom = 1112.0
+
+[node name="Tweet7" parent="ScrollContainer/Panel/ScrollContainer/MarginContainer/TweetContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 1116.0
+margin_right = 731.0
+margin_bottom = 1298.0
+
+[node name="Tweet8" parent="ScrollContainer/Panel/ScrollContainer/MarginContainer/TweetContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 1302.0
+margin_right = 731.0
+margin_bottom = 1484.0
 
 [connection signal="gui_input" from="." to="." method="_on_Birder_gui_input"]

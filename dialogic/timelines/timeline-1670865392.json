@@ -1,12 +1,12 @@
 {
 	"events": [
 		{
-			"character": "",
+			"character": "character-1680719156.json",
 			"event_id": "dialogic_010",
 			"options": [
 
 			],
-			"portrait": "",
+			"portrait": "Default",
 			"question": "Play the tutorial?"
 		},
 		{

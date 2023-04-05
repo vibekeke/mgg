@@ -6,6 +6,7 @@ export (String, "Tutorial", "Level1", "Level2", "Level3", "GameOver", "None") va
 
 onready var color_rect: ColorRect = $ColorRect
 onready var tween: Tween = $Tween
+#onready var tween = get_tree().create_tween()
 
 onready var action_level_list = {
 	"Tutorial": "res://ActionLevels/Tutorial/Level0_Tutorial.tscn",

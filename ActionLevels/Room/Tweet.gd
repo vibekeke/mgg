@@ -7,6 +7,10 @@ onready var profile_pic = get_node("%BirderProfPic")
 onready var tweet_image = get_node("%TweetImage")
 onready var tweet_image_container = get_node("%OptionalImageContainer")
 
+onready var number_replies = get_node("%NumberMessages")
+onready var number_retweets = get_node("%NumberRetweet")
+onready var number_likes = get_node("%NumberLike")
+
 var profile_pic_path = "res://ActionLevels/Room/BirderAssets/"
 
 onready var meta_name_to_texture_map = {
@@ -22,7 +26,12 @@ func _ready():
 		var font = tweet_text.get_font("font")
 		font.size = 42
 		tweet_text.add_font_override("font", font)
-
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	number_replies.text = String(rng.randi_range(1, 5000))
+	number_retweets.text = String(rng.randi_range(1, 5000))
+	number_likes.text = String(rng.randi_range(1, 5000))
+	
 func set_tweet_image(tweet_image_path):
 	tweet_image.texture = load(tweet_image_path)
 
