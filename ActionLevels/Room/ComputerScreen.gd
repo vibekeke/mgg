@@ -10,3 +10,4 @@ func _on_Desktop_gui_input(event):
 func _on_StartButton_button_up():
 	var pause_menu = get_node("%PauseMenu")
 	pause_menu.set_is_paused(true)
+	

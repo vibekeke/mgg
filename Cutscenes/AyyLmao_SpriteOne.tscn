@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://imported_assets/actors/ayylmao/ayylmao1.webp" type="Texture" id=1]
+
+[node name="AyyLmao" type="Sprite"]
+position = Vector2( 1168, 601 )
+z_index = 1
+texture = ExtResource( 1 )

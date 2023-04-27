@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/crt-turn-on.mp3-82d587692dba0060efed7273f1f5ad41.mp3str"
+
+[deps]
+
+source_file="res://sounds/cutscenes/crt-turn-on.mp3"
+dest_files=[ "res://.import/crt-turn-on.mp3-82d587692dba0060efed7273f1f5ad41.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

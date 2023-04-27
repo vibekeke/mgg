@@ -7,7 +7,9 @@
 			"files": [
 				"character-1661969364.json",
 				"character-1666595326.json",
-				"character-1680719156.json"
+				"character-1680719156.json",
+				"character-1682622900.json",
+				"character-1682623850.json"
 			],
 			"folders": {
 
@@ -33,7 +35,9 @@
 			"files": [
 				"default-theme.cfg",
 				"theme-1666595376.cfg",
-				"theme-1680093838.cfg"
+				"theme-1680093838.cfg",
+				"theme-1682622886.cfg",
+				"theme-1682623863.cfg"
 			],
 			"folders": {
 
@@ -50,6 +54,18 @@
 				"timeline-1666286268.json"
 			],
 			"folders": {
+				"Cutscenes": {
+					"files": [
+						"timeline-1682623047.json"
+					],
+					"folders": {
+
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				},
 				"TutorialChallenges": {
 					"files": [
 						"timeline-1670867836.json",
@@ -64,7 +80,7 @@
 					},
 					"metadata": {
 						"color": null,
-						"folded": false
+						"folded": true
 					}
 				}
 			},

@@ -53,7 +53,14 @@ var vhs_filter_state_unpaused = {
 
 onready var vhs_filter = get_node_or_null("%VHS")
 
+func look_for_vhs_filter():
+	var level_background = self.get_parent().get_node_or_null("%LevelBackground")
+	print("level background is", level_background)
+	if level_background != null:
+		vhs_filter = level_background.get_node_or_null("%VHS")
+
 func _ready():
+	look_for_vhs_filter()
 	if vhs_filter == null:
 		print("Could not find a node named VHS filter in this scene!")
 	var parent_node = self.get_parent()

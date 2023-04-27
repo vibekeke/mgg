@@ -130,15 +130,17 @@ margin_bottom = 36.0
 custom_constants/separation = 0
 
 [node name="MessageButton" type="Panel" parent="MarginContainer/TweetContainer/InteractionCrapContainer/MessageContainer"]
+unique_name_in_owner = true
 margin_right = 30.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 30, 30 )
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 6 )
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/TweetContainer/InteractionCrapContainer/MessageContainer/MessageButton"]
-margin_right = 10.0
-margin_bottom = 10.0
+[node name="ReplyIcon" type="TextureRect" parent="MarginContainer/TweetContainer/InteractionCrapContainer/MessageContainer/MessageButton"]
+unique_name_in_owner = true
+margin_right = 30.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
 texture = ExtResource( 4 )
 expand = true
@@ -159,13 +161,15 @@ margin_bottom = 36.0
 custom_constants/separation = 0
 
 [node name="RetweetButton" type="Panel" parent="MarginContainer/TweetContainer/InteractionCrapContainer/RetweetContainer"]
+unique_name_in_owner = true
 margin_right = 30.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 30, 30 )
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 6 )
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/TweetContainer/InteractionCrapContainer/RetweetContainer/RetweetButton"]
+[node name="RetweetIcon" type="TextureRect" parent="MarginContainer/TweetContainer/InteractionCrapContainer/RetweetContainer/RetweetButton"]
+unique_name_in_owner = true
 margin_right = 10.0
 margin_bottom = 10.0
 rect_min_size = Vector2( 30, 30 )
@@ -188,13 +192,15 @@ margin_bottom = 36.0
 custom_constants/separation = 0
 
 [node name="LikeButton" type="Panel" parent="MarginContainer/TweetContainer/InteractionCrapContainer/LikeContainer"]
+unique_name_in_owner = true
 margin_right = 30.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 30, 30 )
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 6 )
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/TweetContainer/InteractionCrapContainer/LikeContainer/LikeButton"]
+[node name="HeartIcon" type="TextureRect" parent="MarginContainer/TweetContainer/InteractionCrapContainer/LikeContainer/LikeButton"]
+unique_name_in_owner = true
 margin_right = 30.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
