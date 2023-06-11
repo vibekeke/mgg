@@ -23,14 +23,3 @@ func _physics_process(delta):
 	$BackForestBackground.scroll_offset.x -= scrolling_speed_foreground * 0.5 * delta
 	$HillBackground.scroll_offset.x -= scrolling_speed_foreground * 0.25 * delta
 	$SkyBackground.scroll_offset.x -= scrolling_speed_foreground * 0.10 * delta
-	#pass
-#	basic_timer += delta
-#	if basic_timer < scrolling_time_middleground:
-#		$FrontTreesBackground.scroll_offset.x -= scrolling_speed_middleground * delta
-#	if basic_timer < scrolling_time_foreground:
-#		$Foreground.scroll_offset.x -= scrolling_speed_foreground * delta
-#	else:
-#		foreground_stopped = true
-#	if (scrolling_time_foreground - basic_timer) <= 3.5 and foreground_stopped == false:
-#		$Ending/ParallaxLayer/Sprite.visible = true
-#		$Ending.scroll_offset.x -= scrolling_speed_ending * delta

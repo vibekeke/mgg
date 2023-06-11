@@ -12,8 +12,8 @@ func _ready():
 func _process(delta):
 	if tv_sound_finished:
 		$CanvasLayer/VHS.set_modulate(lerp($CanvasLayer/VHS.get_modulate(), Color(1,1,1,1), 0.05))
-		$AyyLmao.set_modulate(lerp($AyyLmao.get_modulate(), Color(1,1,1,0.04), 0.05))
-		$AyyLmao2.set_modulate(lerp($AyyLmao2.get_modulate(), Color(1,1,1,0.04), 0.05))
+		$AyyLmao.set_modulate(lerp($AyyLmao.get_modulate(), Color(1,1,1,0.1), 0.05))
+		$AyyLmao2.set_modulate(lerp($AyyLmao2.get_modulate(), Color(1,1,1,0.1), 0.05))
 
 func _on_TVTurnOn_finished():
 	tv_sound_finished = true

@@ -25,7 +25,7 @@
 			"character": "character-1682622900.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "You have the stuff...?"
+			"text": "[color=yellow]Have the bird and fish been deployed?"
 		},
 		{
 			"animation": "slide_in_right.gd",
@@ -51,7 +51,37 @@
 			"character": "character-1682623850.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Do you even need to ask?"
+			"text": "[color=teal]Yes sir, the [color=fuchsia]girl[/color] should be awakening soon."
+		},
+		{
+			"character": "character-1682622900.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[color=yellow]What about the boy?"
+		},
+		{
+			"character": "character-1682623850.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[color=teal]That will take more time. But once he awakens the girl will have a [color=red]real challenge[/color]."
+		},
+		{
+			"character": "character-1682622900.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[color=yellow]Perfect..."
+		},
+		{
+			"character": "character-1682623850.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[color=teal]Finally..."
+		},
+		{
+			"character": "character-1682622900.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[color=yellow]A world where [color=fuchsia]Moonlight Miko[/color] will be real!"
 		}
 	],
 	"metadata": {

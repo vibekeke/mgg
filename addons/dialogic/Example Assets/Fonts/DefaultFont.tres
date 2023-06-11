@@ -1,8 +1,7 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://addons/dialogic/Example Assets/Fonts/Overlock/Overlock-Regular.ttf"
+[ext_resource path="res://test_fonts/pixel_unicode/Pixel-UniCode.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 40
-font_data = SubResource( 1 )
+size = 48
+font_data = ExtResource( 1 )

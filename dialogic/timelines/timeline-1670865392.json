@@ -36,7 +36,7 @@
 		{
 			"call_node": {
 				"arguments": [
-					"Level1"
+					"Intro"
 				],
 				"method_name": "transition_to_new_scene",
 				"target_node_path": "Events"

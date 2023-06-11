@@ -264,11 +264,11 @@ shader_param/vignette_opacity = 0.5
 script = ExtResource( 3 )
 
 [node name="AyyLmao" parent="." instance=ExtResource( 2 )]
-modulate = Color( 1, 1, 1, 0.0392157 )
-position = Vector2( 1085, 584 )
+modulate = Color( 1, 1, 1, 0.196078 )
+position = Vector2( 1136, 584 )
 
 [node name="AyyLmao2" parent="." instance=ExtResource( 2 )]
-modulate = Color( 1, 1, 1, 0.0392157 )
+modulate = Color( 1, 1, 1, 0.196078 )
 position = Vector2( 660, 586 )
 flip_h = true
 

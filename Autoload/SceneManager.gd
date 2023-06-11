@@ -15,11 +15,8 @@ onready var action_level_list = {
 	"Level3": "res://ActionLevels/Level3/Level3_City.tscn",
 	"GameOver": "res://Menus/GameOver.tscn",
 	"TutorialSelection": "res://ActionLevels/MiscMenus/TutorialSelection.tscn",
-	"ComputerScreen": "res://ActionLevels/Room/ComputerScreen.tscn"
-}
-
-onready var cutscene_level_list = {
-	"Cutscene1": ""
+	"ComputerScreen": "res://ActionLevels/Room/ComputerScreen.tscn",
+	"Intro": "res://Cutscenes/Intro.tscn"
 }
 
 func _ready():
