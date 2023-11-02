@@ -8,6 +8,8 @@ func _ready():
 	$CanvasLayer/VHS.set_modulate(Color(1,1,1,0))
 	$AyyLmao.set_modulate(Color(1,1,1,0))
 	$AyyLmao2.set_modulate(Color(1,1,1,0))
+	
+	#intro_cutscene_dialogue.connect("")
 
 func _process(delta):
 	if tv_sound_finished:

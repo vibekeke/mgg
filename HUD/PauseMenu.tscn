@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://HUD/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Menus/button_focus_and_selected.tres" type="StyleBox" id=5]
 [ext_resource path="res://imported_assets/misc/icons8-pause-button-100.png" type="Texture" id=6]
 [ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ArrayMesh" id=1]
 surfaces/0 = {
@@ -35,13 +36,37 @@ color = Color( 0, 0, 0, 0.392157 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 656.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 654.0
 margin_top = 420.0
-margin_right = 1264.0
+margin_right = 1266.0
 margin_bottom = 660.0
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_bottom = 240.0
+
+[node name="Control" type="Control" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+
+[node name="SpinnyStarResume" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+unique_name_in_owner = true
+visible = false
+
+[node name="SpinnyStarBack" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+unique_name_in_owner = true
+visible = false
+position = Vector2( -18, 152 )
+
+[node name="SpinnyStarQuit" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+unique_name_in_owner = true
+visible = false
+position = Vector2( 208, 214 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_left = 4.0
+margin_right = 612.0
+margin_bottom = 240.0
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
 margin_right = 608.0
 margin_bottom = 57.0
 custom_fonts/font = ExtResource( 4 )
@@ -49,7 +74,8 @@ text = "Paused"
 align = 1
 valign = 1
 
-[node name="ResumeBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="ResumeBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 margin_top = 61.0
 margin_right = 608.0
 margin_bottom = 118.0
@@ -65,9 +91,10 @@ custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 3 )
+shortcut_in_tooltip = false
 text = "Resume"
 
-[node name="BackBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="BackBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 margin_top = 122.0
 margin_right = 608.0
@@ -86,7 +113,8 @@ custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 3 )
 text = "Back to Computer"
 
-[node name="QuitBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="QuitBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 margin_top = 183.0
 margin_right = 608.0
 margin_bottom = 240.0
@@ -113,6 +141,12 @@ texture = ExtResource( 6 )
 [node name="SceneManager" parent="." instance=ExtResource( 7 )]
 visible = false
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/BackBtn" to="." method="_on_BackBtn_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitBtn" to="." method="_on_QuitBtn_pressed"]
+[connection signal="focus_entered" from="CenterContainer/HBoxContainer/VBoxContainer2/ResumeBtn" to="." method="_on_ResumeBtn_focus_entered"]
+[connection signal="focus_exited" from="CenterContainer/HBoxContainer/VBoxContainer2/ResumeBtn" to="." method="_on_ResumeBtn_focus_exited"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer2/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
+[connection signal="focus_entered" from="CenterContainer/HBoxContainer/VBoxContainer2/BackBtn" to="." method="_on_BackBtn_focus_entered"]
+[connection signal="focus_exited" from="CenterContainer/HBoxContainer/VBoxContainer2/BackBtn" to="." method="_on_BackBtn_focus_exited"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer2/BackBtn" to="." method="_on_BackBtn_pressed"]
+[connection signal="focus_entered" from="CenterContainer/HBoxContainer/VBoxContainer2/QuitBtn" to="." method="_on_QuitBtn_focus_entered"]
+[connection signal="focus_exited" from="CenterContainer/HBoxContainer/VBoxContainer2/QuitBtn" to="." method="_on_QuitBtn_focus_exited"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer2/QuitBtn" to="." method="_on_QuitBtn_pressed"]

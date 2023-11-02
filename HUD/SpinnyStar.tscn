@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://HUD/StarSelect.gd" type="Script" id=1]
+[ext_resource path="res://imported_assets/hud/collectibles/Collected_Stars.png" type="Texture" id=2]
+
+[node name="StarSelect" type="Sprite"]
+position = Vector2( 165, 90 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )

@@ -3,6 +3,10 @@ extends Control
 export (PackedScene) var root_scene
 
 onready var resolution_list = $CanvasLayer/OptionsMenu/HBoxContainer/ResolutionList
+onready var star_select_start = get_node("%StarSelectStart")
+onready var star_select_load = get_node("%StarSelectLoad")
+onready var star_select_options = get_node("%StarSelectOptions")
+onready var star_select_quit = get_node("%StarSelectQuit")
 
 func _ready():
 	var scene_manager = get_node_or_null("%SceneManager")
@@ -67,3 +71,33 @@ func _on_LoadButton_pressed():
 	Events.load_game()
 	var last_completed_level = Events.COMPLETED_LEVELS[Events.COMPLETED_LEVELS.size() - 1]
 	send_to_computer(last_completed_level)
+
+
+func _on_StartButton_focus_entered():
+	star_select_start.visible = true
+
+
+func _on_StartButton_focus_exited():
+	star_select_start.visible = false
+
+
+func _on_LoadButton_focus_entered():
+	star_select_load.visible = true
+
+
+func _on_LoadButton_focus_exited():
+	star_select_load.visible = false
+
+func _on_OptionsButton_focus_entered():
+	star_select_options.visible = true
+
+func _on_OptionsButton_focus_exited():
+	star_select_options.visible = false
+
+
+func _on_QuitButton_focus_entered():
+	star_select_quit.visible = true
+
+
+func _on_QuitButton_focus_exited():
+	star_select_quit.visible = false

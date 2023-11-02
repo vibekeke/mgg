@@ -2,6 +2,12 @@ extends CanvasLayer
 
 var is_paused = false setget set_is_paused
 onready var back_button = get_node("%BackBtn")
+onready var resume_button = get_node("%ResumeBtn")
+onready var quit_button = get_node("%QuitBtn")
+
+onready var spinny_star_resume = get_node("%SpinnyStarResume")
+onready var spinny_star_back = get_node("%SpinnyStarBack")
+onready var spinny_star_quit = get_node("%SpinnyStarQuit")
 
 var vhs_filter_state_paused = {
 	'overlay': true,
@@ -84,11 +90,10 @@ func set_is_paused(value):
 	get_tree().paused = is_paused
 	visible = is_paused
 	if is_paused:
-		$CenterContainer/VBoxContainer/ResumeBtn.grab_focus()
-	
+		resume_button.grab_focus()
+
 func _on_ResumeBtn_pressed():
 	self.is_paused = false
-
 
 func _on_QuitBtn_pressed():
 	self.is_paused = false
@@ -97,3 +102,25 @@ func _on_QuitBtn_pressed():
 func _on_BackBtn_pressed():
 	self.is_paused = false
 	Events.emit_signal("transition_to_scene", "ComputerScreen")
+
+func _on_ResumeBtn_focus_entered():
+	spinny_star_resume.visible = true
+
+func _on_ResumeBtn_focus_exited():
+	spinny_star_resume.visible = false
+
+
+func _on_BackBtn_focus_entered():
+	spinny_star_back.visible = true
+
+
+func _on_BackBtn_focus_exited():
+	spinny_star_back.visible = false
+
+
+func _on_QuitBtn_focus_entered():
+	spinny_star_quit.visible = true
+
+
+func _on_QuitBtn_focus_exited():
+	spinny_star_quit.visible = false

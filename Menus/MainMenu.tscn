@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Menus/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Menus/menubuttonfont.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Menus/OptionsMenu.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sounds/level/selection_confirm.wav" type="AudioStream" id=9]
+[ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=10]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -27,6 +28,26 @@ margin_top = -136.0
 margin_right = 119.5
 margin_bottom = 136.0
 alignment = 1
+
+[node name="StarSelectStart" parent="CanvasLayer/VBoxContainer" instance=ExtResource( 10 )]
+unique_name_in_owner = true
+visible = false
+position = Vector2( 14, 46 )
+
+[node name="StarSelectLoad" parent="CanvasLayer/VBoxContainer" instance=ExtResource( 10 )]
+unique_name_in_owner = true
+visible = false
+position = Vector2( 14, 107 )
+
+[node name="StarSelectOptions" parent="CanvasLayer/VBoxContainer" instance=ExtResource( 10 )]
+unique_name_in_owner = true
+visible = false
+position = Vector2( -25, 167 )
+
+[node name="StarSelectQuit" parent="CanvasLayer/VBoxContainer" instance=ExtResource( 10 )]
+unique_name_in_owner = true
+visible = false
+position = Vector2( 34, 229 )
 
 [node name="StartButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 margin_top = 16.0
@@ -107,7 +128,15 @@ visible = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 
+[connection signal="focus_entered" from="CanvasLayer/VBoxContainer/StartButton" to="." method="_on_StartButton_focus_entered"]
+[connection signal="focus_exited" from="CanvasLayer/VBoxContainer/StartButton" to="." method="_on_StartButton_focus_exited"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/VBoxContainer/LoadButton" to="." method="_on_LoadButton_focus_entered"]
+[connection signal="focus_exited" from="CanvasLayer/VBoxContainer/LoadButton" to="." method="_on_LoadButton_focus_exited"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/LoadButton" to="." method="_on_LoadButton_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_focus_entered"]
+[connection signal="focus_exited" from="CanvasLayer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_focus_exited"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_focus_entered"]
+[connection signal="focus_exited" from="CanvasLayer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_focus_exited"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
