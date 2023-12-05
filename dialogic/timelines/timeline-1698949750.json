@@ -1,0 +1,177 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1698950609.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1698950609.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Helloooooooo?"
+		},
+		{
+			"character": "character-1698950609.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Is anybody theeeeeeere?"
+		},
+		{
+			"choice": "Hey",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "Ho?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"character": "character-1698950609.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Woah! You're a human! I've been looking for one of you for a whole 20 minutes!"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1698950609.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 1,
+			"z_index": 0
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Yo."
+		},
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Are you surprised? Don't be afraid!\nIs this your first time seeing an [color=blue]alien?[/color]"
+		},
+		{
+			"choice": "Nope",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "Nah",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "...Oh.\nWell, uh, I have a DEAL for you.\nMy [color=red]GREAT MASTERS[/color] need your help to save this world!\nAnimals and people everywhere are going crazy and getting [color=red]slightly more angry[/color] than ever before.\nYou need to help us!"
+		},
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Are you in?"
+		},
+		{
+			"choice": "Yeah",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "Ye",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"character": "character-1661969364.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Woo~!\nYou have a computer right? We can find out where the most dangerous areas are!"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1698949750.json",
+		"name": "Level1Precutscene"
+	}
+}

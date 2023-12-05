@@ -16,7 +16,8 @@ onready var action_level_list = {
 	"GameOver": "res://Menus/GameOver.tscn",
 	"TutorialSelection": "res://ActionLevels/MiscMenus/TutorialSelection.tscn",
 	"ComputerScreen": "res://ActionLevels/Room/ComputerScreen.tscn",
-	"Intro": "res://Cutscenes/Intro.tscn"
+	"Intro": "res://Cutscenes/Intro.tscn",
+	"PreLevel1Cutscene": "res://Cutscenes/PreLevel1Cutscene.tscn"
 }
 
 func _ready():

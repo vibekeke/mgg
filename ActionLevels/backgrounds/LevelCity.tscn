@@ -78,7 +78,6 @@ layer = -100
 
 [node name="SkyBackground" type="AnimatedSprite" parent="SkyBackgroundLayer"]
 frames = SubResource( 1 )
-frame = 3
 playing = true
 centered = false
 

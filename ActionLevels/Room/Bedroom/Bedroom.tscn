@@ -1,0 +1,271 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://imported_assets/bedroom/room_background.webp" type="Texture" id=1]
+[ext_resource path="res://imported_assets/bedroom/room_player.webp" type="Texture" id=2]
+[ext_resource path="res://ActionLevels/Room/Bedroom/OverworldPlayer.gd" type="Script" id=3]
+[ext_resource path="res://imported_assets/bedroom/room_gamecub.webp" type="Texture" id=4]
+[ext_resource path="res://imported_assets/bedroom/room_piano.webp" type="Texture" id=5]
+[ext_resource path="res://imported_assets/bedroom/room_lamp.webp" type="Texture" id=6]
+[ext_resource path="res://imported_assets/bedroom/room_pillows.webp" type="Texture" id=7]
+[ext_resource path="res://imported_assets/bedroom/room_pengwing.webp" type="Texture" id=8]
+[ext_resource path="res://imported_assets/bedroom/room_TV_ON.webp" type="Texture" id=9]
+[ext_resource path="res://imported_assets/bedroom/room_TV.webp" type="Texture" id=10]
+[ext_resource path="res://imported_assets/bedroom/room_plant.webp" type="Texture" id=11]
+[ext_resource path="res://ActionLevels/Room/Bedroom/TV.gd" type="Script" id=12]
+[ext_resource path="res://sounds/bedroom/Menu 1 - Super Smash Bros. Melee.mp3" type="AudioStream" id=13]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=2]
+gradient = SubResource( 1 )
+width = 1920
+height = 1080
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 67.5, 93.75 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 48.1251, 76.2501 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 136.25, 115 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 150, 82.5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 96.25, 106.25 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 291.25, 67.4999 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 187.5, 168.75 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 93.75, 69.0625 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 256.25, 48.75 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 57.5001, 78.7498 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 25.5, 352.5 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 381, 12.5 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 21.5, 279.5 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 420, 17 )
+
+[node name="Bedroom" type="Node2D"]
+
+[node name="Blackbackground" type="Sprite" parent="."]
+z_index = -2
+texture = SubResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Room" type="Sprite" parent="."]
+position = Vector2( 973, 521 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="OverworldPlayer" type="KinematicBody2D" parent="YSort"]
+position = Vector2( 779, 432 )
+scale = Vector2( 0.4, 0.4 )
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/OverworldPlayer"]
+frames = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/OverworldPlayer"]
+position = Vector2( 0, 33.7499 )
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="YSort/OverworldPlayer"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Lamp" type="Sprite" parent="YSort"]
+position = Vector2( 671, 661 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Lamp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Lamp/StaticBody2D"]
+position = Vector2( -4.37512, 133.75 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 8 )
+
+[node name="TV" type="AnimatedSprite" parent="YSort"]
+position = Vector2( 767, 645 )
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 5 )
+script = ExtResource( 12 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/TV"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/TV/StaticBody2D"]
+position = Vector2( 1.24988, -105 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 6 )
+
+[node name="TVArea2D" type="Area2D" parent="YSort/TV"]
+unique_name_in_owner = true
+position = Vector2( -0.00012207, 187.5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/TV/TVArea2D"]
+position = Vector2( -2.50037, 72.5 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 18 )
+
+[node name="TVAudio" type="AudioStreamPlayer" parent="YSort/TV"]
+unique_name_in_owner = true
+stream = ExtResource( 13 )
+volume_db = -10.0
+
+[node name="Pillows" type="Sprite" parent="YSort"]
+position = Vector2( 794, 864 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 7 )
+
+[node name="Penguin" type="Sprite" parent="YSort"]
+position = Vector2( 877, 631 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 8 )
+
+[node name="Gamecube" type="Sprite" parent="YSort"]
+position = Vector2( 879, 709 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Gamecube"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Gamecube/StaticBody2D"]
+position = Vector2( -8.74976, -166.25 )
+shape = SubResource( 7 )
+
+[node name="YSort" type="YSort" parent="YSort"]
+position = Vector2( 876, 607 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Keyboard" type="Sprite" parent="YSort"]
+position = Vector2( 1075, 851 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Keyboard"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Keyboard/StaticBody2D"]
+position = Vector2( 1.25024, -57.5 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 9 )
+
+[node name="BedStaticBody2D" type="StaticBody2D" parent="YSort"]
+position = Vector2( 1240, 428 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/BedStaticBody2D"]
+position = Vector2( -2.5, 73.7496 )
+shape = SubResource( 11 )
+
+[node name="DrawerStaticBody2D" type="StaticBody2D" parent="YSort"]
+position = Vector2( 1122, 373 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/DrawerStaticBody2D"]
+position = Vector2( -26.25, -18.4375 )
+shape = SubResource( 12 )
+
+[node name="DeskStaticBody2D2" type="StaticBody2D" parent="YSort"]
+position = Vector2( 905, 362 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/DeskStaticBody2D2"]
+position = Vector2( 131.25, -38.75 )
+shape = SubResource( 13 )
+
+[node name="Plant" type="Sprite" parent="YSort"]
+position = Vector2( 1256, 800 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Plant"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Plant/StaticBody2D"]
+position = Vector2( -0.000244141, 176.25 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 10 )
+
+[node name="BoundaryRoom" type="StaticBody2D" parent="."]
+
+[node name="Left" type="CollisionShape2D" parent="BoundaryRoom"]
+position = Vector2( 580.5, 577.5 )
+shape = SubResource( 14 )
+
+[node name="Top" type="CollisionShape2D" parent="BoundaryRoom"]
+position = Vector2( 977, 370.5 )
+shape = SubResource( 15 )
+
+[node name="Right" type="CollisionShape2D" parent="BoundaryRoom"]
+position = Vector2( 1371.5, 647.5 )
+shape = SubResource( 16 )
+
+[node name="Bottom" type="CollisionShape2D" parent="BoundaryRoom"]
+position = Vector2( 974, 939 )
+shape = SubResource( 17 )

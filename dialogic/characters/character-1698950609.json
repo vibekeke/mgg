@@ -1,11 +1,11 @@
 {
 	"color": "#ffffffff",
 	"description": "",
-	"display_name": "Angel",
+	"display_name": "???",
 	"display_name_bool": true,
-	"id": "character-1661969364.json",
+	"id": "character-1698950609.json",
 	"mirror_portraits": false,
-	"name": "TutorialGod",
+	"name": "AngelUnknown",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
@@ -13,14 +13,6 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://imported_assets/hud/npcs/angel/Angel_concept.png"
-		},
-		{
-			"name": "AngelDamaged",
-			"path": "res://imported_assets/hud/npcs/angel/AngelDamaged.png"
-		},
-		{
-			"name": "Shadowed",
 			"path": "res://imported_assets/hud/npcs/angel/angel_shadow.png"
 		}
 	],

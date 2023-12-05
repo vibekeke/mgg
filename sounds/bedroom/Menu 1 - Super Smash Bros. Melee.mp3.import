@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Menu 1 - Super Smash Bros. Melee.mp3-91700a74a976e6e356be6451ad2aab42.mp3str"
+
+[deps]
+
+source_file="res://sounds/bedroom/Menu 1 - Super Smash Bros. Melee.mp3"
+dest_files=[ "res://.import/Menu 1 - Super Smash Bros. Melee.mp3-91700a74a976e6e356be6451ad2aab42.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
