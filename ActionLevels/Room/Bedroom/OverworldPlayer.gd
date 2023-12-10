@@ -2,11 +2,14 @@ extends KinematicBody2D
 
 var speed = 200
 var velocity = Vector2.ZERO
+var is_controlled = false
 
 func _ready():
 	pass
 
 func get_input():
+	if is_controlled:
+		return
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("right"):
 		velocity.x += 1

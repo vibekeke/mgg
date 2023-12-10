@@ -71,13 +71,19 @@ margin_bottom = 5.0
 [node name="Desktop" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -640.0
+margin_bottom = -360.0
 mouse_filter = 1
 script = ExtResource( 7 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 1152.0
+margin_bottom = 1992.0
 mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
 texture = ExtResource( 6 )
 stretch_mode = 1
 __meta__ = {
@@ -146,6 +152,7 @@ __meta__ = {
 [node name="LevelBackground" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 layer = 128
+visible = false
 
 [node name="VHS" parent="LevelBackground" instance=ExtResource( 19 )]
 unique_name_in_owner = true
