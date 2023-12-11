@@ -7,32 +7,39 @@ onready var star_select_start = get_node("%StarSelectStart")
 onready var star_select_load = get_node("%StarSelectLoad")
 onready var star_select_options = get_node("%StarSelectOptions")
 onready var star_select_quit = get_node("%StarSelectQuit")
+onready var title_screen_animation = get_node("%TitleScreenAnimation")
+onready var camera = get_node("%Camera2D")
+onready var tween = get_node("%Tween")
 
 func _ready():
+	tween.interpolate_property(camera, "position",
+		camera.position, Vector2(961, 540), 2,
+		Tween.TRANS_SINE, Tween.EASE_IN)
+	tween.start()
 	var scene_manager = get_node_or_null("%SceneManager")
 	if scene_manager != null:
 		scene_manager.visible = true
-	$CanvasLayer/OptionsMenu/HBoxContainer/ResolutionButton.connect("pressed", self, "_on_ResolutionButton_pressed")
-	$CanvasLayer/VBoxContainer/StartButton.grab_focus()
-	$CanvasLayer/OptionsMenu/HBoxContainer/ResolutionList.connect("item_activated", self, "_on_ResolutionList_item_activated")
+	$MenuLayer/OptionsMenu/HBoxContainer/ResolutionButton.connect("pressed", self, "_on_ResolutionButton_pressed")
+	$MenuLayer/VBoxContainer/StartButton.grab_focus()
+	$MenuLayer/OptionsMenu/HBoxContainer/ResolutionList.connect("item_activated", self, "_on_ResolutionList_item_activated")
 	var directory = Directory.new()
 	var fileExists = directory.file_exists(Events.SAVE_FILE_LOCATION)
 	if fileExists:
-		$CanvasLayer/VBoxContainer/LoadButton.visible = true
+		$MenuLayer/VBoxContainer/LoadButton.visible = true
 
 func _on_StartButton_pressed():
 	Events.emit_signal("transition_to_scene", "TutorialSelection")
 	$AudioStreamPlayer.play(0.0)
 
 func _on_OptionsButton_pressed():
-	$CanvasLayer/VBoxContainer.visible = false
-	$CanvasLayer/OptionsMenu.visible = true
-	$CanvasLayer/OptionsMenu/HBoxContainer/ResolutionList.grab_focus()
+	$MenuLayer/VBoxContainer.visible = false
+	$MenuLayer/OptionsMenu.visible = true
+	$MenuLayer/OptionsMenu/HBoxContainer/ResolutionList.grab_focus()
 
 func _on_BackButton_pressed():
-	$CanvasLayer/OptionsMenu.visible = false
-	$CanvasLayer/VBoxContainer.visible = true
-	$CanvasLayer/VBoxContainer/StartButton.grab_focus()
+	$MenuLayer/OptionsMenu.visible = false
+	$MenuLayer/VBoxContainer.visible = true
+	$MenuLayer/VBoxContainer/StartButton.grab_focus()
 
 func _on_ResolutionList_item_activated(index: int):
 	match index:
@@ -53,7 +60,6 @@ func _on_ResolutionList_item_activated(index: int):
 			
 func _on_QuitButton_pressed():
 	get_tree().quit()
-
 
 func send_to_computer(last_completed_level: int):
 	match last_completed_level:
@@ -101,3 +107,7 @@ func _on_QuitButton_focus_entered():
 
 func _on_QuitButton_focus_exited():
 	star_select_quit.visible = false
+
+
+func _on_Tween_tween_all_completed():
+	title_screen_animation.play("characters_appear")

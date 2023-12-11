@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ActionLevels/Room/Bedroom/OverworldPlayer.gd" type="Script" id=1]
-[ext_resource path="res://imported_assets/bedroom/room_player.webp" type="Texture" id=2]
+[ext_resource path="res://imported_assets/bedroom/room_player-1.webp" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 265, 466 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ SubResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
