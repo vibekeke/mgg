@@ -27,6 +27,11 @@ func _ready():
 	if fileExists:
 		$MenuLayer/VBoxContainer/LoadButton.visible = true
 
+func _process(delta):
+	if (title_screen_animation.is_playing() or tween.is_active()) and Input.is_action_just_pressed("ui_accept"):
+		tween.playback_speed = 10
+		title_screen_animation.playback_speed = 10
+
 func _on_StartButton_pressed():
 	Events.emit_signal("transition_to_scene", "TutorialSelection")
 	$AudioStreamPlayer.play(0.0)
