@@ -5,24 +5,28 @@
 [ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=3]
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 187.5, 168.75 )
+extents = Vector2( 187.5, 103.75 )
 
 [node name="Duvet" type="Sprite"]
 material = ExtResource( 3 )
 position = Vector2( 1236, 499 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -100 )
 
 [node name="BedStaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 9.99976, -177.5 )
+position = Vector2( 10, -110 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BedStaticBody2D"]
-position = Vector2( -2.5, 73.7496 )
+position = Vector2( -2.5, 103.75 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="LightAlteringComponent" parent="." instance=ExtResource( 2 )]
 light_affected_item = NodePath("..")

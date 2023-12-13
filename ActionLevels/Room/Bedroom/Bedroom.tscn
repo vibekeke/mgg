@@ -203,6 +203,7 @@ position = Vector2( 954, 915 )
 
 [node name="Duvet" parent="YSort" instance=ExtResource( 12 )]
 material = SubResource( 43 )
+position = Vector2( 1239, 531 )
 
 [node name="DrawerStaticBody2D" type="StaticBody2D" parent="YSort"]
 position = Vector2( 1122, 373 )
@@ -222,7 +223,6 @@ scale = Vector2( 0.4, 0.4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/DeskStaticBody2D2"]
 position = Vector2( 243.75, 15 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 13 )
 
 [node name="Computer" parent="YSort" instance=ExtResource( 1 )]

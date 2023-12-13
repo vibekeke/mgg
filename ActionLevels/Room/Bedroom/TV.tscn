@@ -41,6 +41,7 @@ position = Vector2( 65.2001, 83.8 )
 tv_screen = NodePath("../TVScreen")
 
 [node name="TVScreen" parent="." instance=ExtResource( 1 )]
-visible = false
 material = SubResource( 38 )
 position = Vector2( 65.2001, 83.8 )
+centered = false
+offset = Vector2( 0, -450 )
