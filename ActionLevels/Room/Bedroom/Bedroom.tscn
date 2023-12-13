@@ -95,7 +95,7 @@ shader_param/apply_effect = false
 extents = Vector2( 93.75, 69.0625 )
 
 [sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 256.25, 48.75 )
+extents = Vector2( 368.75, 102.5 )
 
 [sub_resource type="Shader" id=47]
 code = "shader_type canvas_item;
@@ -177,25 +177,29 @@ material = SubResource( 37 )
 
 [node name="OverworldPlayer" parent="YSort" instance=ExtResource( 2 )]
 unique_name_in_owner = true
-position = Vector2( 779, 469 )
+position = Vector2( 784, 525 )
 
 [node name="Lamp" parent="YSort" instance=ExtResource( 5 )]
 material = SubResource( 38 )
+position = Vector2( 671, 720 )
 
 [node name="TV" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 708, 555 )
+position = Vector2( 645, 638 )
 
 [node name="Pillows" parent="YSort" instance=ExtResource( 4 )]
 material = SubResource( 39 )
 
 [node name="Penguin" parent="YSort" instance=ExtResource( 8 )]
 material = SubResource( 40 )
+position = Vector2( 845, 663 )
 
 [node name="Gamecube" parent="YSort" instance=ExtResource( 9 )]
 material = SubResource( 41 )
+position = Vector2( 822, 765 )
 
 [node name="Keyboard" parent="YSort" instance=ExtResource( 11 )]
 material = SubResource( 42 )
+position = Vector2( 954, 915 )
 
 [node name="Duvet" parent="YSort" instance=ExtResource( 12 )]
 material = SubResource( 43 )
@@ -217,7 +221,8 @@ position = Vector2( 905, 362 )
 scale = Vector2( 0.4, 0.4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/DeskStaticBody2D2"]
-position = Vector2( 131.25, -38.75 )
+position = Vector2( 243.75, 15 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 13 )
 
 [node name="Computer" parent="YSort" instance=ExtResource( 1 )]
@@ -226,7 +231,7 @@ scale = Vector2( 0.4, 0.4 )
 
 [node name="Chair" parent="YSort" instance=ExtResource( 13 )]
 material = SubResource( 48 )
-position = Vector2( 961, 461 )
+position = Vector2( 958, 524 )
 
 [node name="Plant" parent="YSort" instance=ExtResource( 17 )]
 material = SubResource( 44 )
