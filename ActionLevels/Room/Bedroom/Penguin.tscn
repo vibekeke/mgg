@@ -10,7 +10,7 @@ position = Vector2( 877, 631 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )
 centered = false
-offset = Vector2( 0, -200 )
+offset = Vector2( 0, -370 )
 __meta__ = {
 "_edit_lock_": true
 }

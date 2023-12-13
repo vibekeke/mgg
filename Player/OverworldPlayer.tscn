@@ -166,6 +166,7 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=56]
 radius = 72.5
+height = 0.0
 
 [sub_resource type="Animation" id=25]
 length = 0.001
@@ -509,7 +510,7 @@ centered = false
 offset = Vector2( -160, -460 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.5, -82.5 )
+position = Vector2( -2.5, -72.5 )
 shape = SubResource( 56 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

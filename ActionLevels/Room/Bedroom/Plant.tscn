@@ -5,22 +5,22 @@
 [ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 57.5001, 78.7498 )
+extents = Vector2( 57.5001, 60 )
 
 [node name="Plant" type="Sprite"]
 material = ExtResource( 2 )
-position = Vector2( 1256, 800 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -250 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -0.000244141, 176.25 )
+position = Vector2( -0.000244141, -55 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 10 )
 
 [node name="LightAlteringComponent" parent="." instance=ExtResource( 3 )]

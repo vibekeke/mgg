@@ -6,13 +6,10 @@
 
 [node name="Pillows" type="Sprite"]
 material = ExtResource( 2 )
-position = Vector2( 794, 864 )
 scale = Vector2( 0.4, 0.4 )
 z_index = -1
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+offset = Vector2( 0, 90 )
 
 [node name="LightAlteringComponent" parent="." instance=ExtResource( 3 )]
 light_affected_item = NodePath("..")

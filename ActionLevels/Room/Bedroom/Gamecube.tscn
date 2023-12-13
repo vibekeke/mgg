@@ -5,15 +5,14 @@
 [ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=3]
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 96.25, 60 )
+extents = Vector2( 96.25, 77.5 )
 
 [node name="Gamecube" type="Sprite"]
 material = ExtResource( 3 )
 scale = Vector2( 0.4, 0.4 )
-z_index = -1
 texture = ExtResource( 1 )
 centered = false
-offset = Vector2( 0, -320 )
+offset = Vector2( 0, -220 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -21,7 +20,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 140, -257.5 )
+position = Vector2( 140, -132.5 )
 scale = Vector2( 1, 1 )
 shape = SubResource( 7 )
 
