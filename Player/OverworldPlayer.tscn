@@ -41,45 +41,45 @@ flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 1192, 0, 298, 487 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 298, 974, 298, 487 )
+region = Rect2( 894, 974, 298, 487 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 596, 974, 298, 487 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 894, 974, 298, 487 )
+region = Rect2( 298, 974, 298, 487 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 974, 298, 487 )
 
-[sub_resource type="AtlasTexture" id=48]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 894, 487, 298, 487 )
-
 [sub_resource type="AtlasTexture" id=49]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 1192, 487, 298, 487 )
 
-[sub_resource type="AtlasTexture" id=50]
+[sub_resource type="AtlasTexture" id=48]
 flags = 4
 atlas = ExtResource( 5 )
-region = Rect2( 0, 974, 298, 487 )
+region = Rect2( 894, 487, 298, 487 )
 
 [sub_resource type="AtlasTexture" id=51]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 298, 974, 298, 487 )
+
+[sub_resource type="AtlasTexture" id=50]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 974, 298, 487 )
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
@@ -143,12 +143,12 @@ animations = [ {
 "name": "idle_up",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ SubResource( 11 ), SubResource( 10 ), SubResource( 9 ), SubResource( 12 ) ],
 "loop": true,
 "name": "walk_down",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ) ],
+"frames": [ SubResource( 49 ), SubResource( 48 ), SubResource( 51 ), SubResource( 50 ) ],
 "loop": true,
 "name": "walk_left",
 "speed": 5.0
@@ -164,8 +164,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 67.5, 93.75 )
+[sub_resource type="CapsuleShape2D" id=56]
+radius = 72.5
 
 [sub_resource type="Animation" id=25]
 length = 0.001
@@ -498,7 +498,6 @@ start_node = "Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=40]
 
 [node name="OverworldPlayer" type="KinematicBody2D"]
-position = Vector2( 779, 432 )
 scale = Vector2( 0.4, 0.4 )
 script = ExtResource( 1 )
 
@@ -506,21 +505,14 @@ script = ExtResource( 1 )
 material = ExtResource( 4 )
 frames = SubResource( 3 )
 animation = "idle_down"
-__meta__ = {
-"_edit_lock_": true
-}
+centered = false
+offset = Vector2( -160, -460 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 33.7499 )
-shape = SubResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( -2.5, -82.5 )
+shape = SubResource( 56 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

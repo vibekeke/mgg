@@ -20,7 +20,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 136.25, 115 )
+extents = Vector2( 146.25, 120 )
 
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 150, 82.5 )
@@ -30,7 +30,12 @@ material = ExtResource( 4 )
 position = Vector2( 767, 645 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 5 )
+centered = false
+offset = Vector2( 0, -450 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -39,7 +44,8 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 1.24988, -105 )
+position = Vector2( 153.75, -152.5 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 6 )
 
 [node name="TVArea2D" type="Area2D" parent="."]
@@ -47,7 +53,7 @@ unique_name_in_owner = true
 position = Vector2( -0.00012207, 187.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TVArea2D"]
-position = Vector2( -2.50037, 72.5 )
+position = Vector2( 152.5, -220 )
 shape = SubResource( 18 )
 
 [node name="TVAudio" type="AudioStreamPlayer" parent="."]

@@ -5,18 +5,19 @@
 [ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=3]
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 48.1251, 76.2501 )
+extents = Vector2( 67.5001, 58.75 )
 
 [node name="Lamp" type="Sprite"]
 material = ExtResource( 3 )
 position = Vector2( 671, 661 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -200 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -4.37512, 133.75 )
+position = Vector2( 2.5, 3.75 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 8 )
 
