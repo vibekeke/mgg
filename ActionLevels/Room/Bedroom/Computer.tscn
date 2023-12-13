@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ActionLevels/Room/Bedroom/ComputerScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ActionLevels/Room/Bedroom/ComputerDesktop.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Shader" id=36]
+code = "shader_type canvas_item;
+
+uniform vec4 night_color : hint_color = vec4(0.2, 0.2, 0.4, 0.6);
+uniform bool apply_effect = false;
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+	if (apply_effect) {
+		COLOR.rgb = (1.0 - night_color.a) * tex_color.rgb + night_color.a * (tex_color.rgb * night_color.rgb);
+		COLOR.a = tex_color.a;
+	} else {
+		COLOR = tex_color;
+	}
+
+}
+"
+
+[sub_resource type="ShaderMaterial" id=37]
+resource_local_to_scene = true
+shader = SubResource( 36 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
+
+[sub_resource type="ShaderMaterial" id=38]
+resource_local_to_scene = true
+shader = SubResource( 36 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
+
+[node name="Computer" type="Node2D"]
+scale = Vector2( 1, 1 )
+
+[node name="ComputerDesktop" parent="." instance=ExtResource( 2 )]
+material = SubResource( 37 )
+position = Vector2( 68.8, 65.6 )
+scale = Vector2( 1, 1 )
+
+[node name="ComputerScreen" parent="." instance=ExtResource( 1 )]
+material = SubResource( 38 )
+position = Vector2( 68.8, 65.6 )
+scale = Vector2( 1, 1 )

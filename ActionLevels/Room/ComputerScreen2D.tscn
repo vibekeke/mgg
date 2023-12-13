@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://ActionLevels/Room/ComputerScreen2D.gd" type="Script" id=1]
 [ext_resource path="res://sounds/computer/minimize_008.wav" type="AudioStream" id=2]
 [ext_resource path="res://sounds/computer/maximize_008.wav" type="AudioStream" id=3]
 [ext_resource path="res://ActionLevels/Room/BrowserComputerScreen2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://imported_assets/computer/fullscreen.png" type="Texture" id=5]
+[ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
@@ -347,7 +348,6 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopBackground/FullscreenIcon/FullscreenIconArea2D"]
 position = Vector2( 0.000976562, -0.000488281 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 15 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -371,6 +371,9 @@ unique_name_in_owner = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 16 )
+
+[node name="LightAlteringComponent" parent="." instance=ExtResource( 6 )]
+affected_by_light = false
 
 [connection signal="input_event" from="DesktopBackground/FullscreenIcon/FullscreenIconArea2D" to="." method="_on_FullscreenIconArea2D_input_event"]
 [connection signal="mouse_entered" from="DesktopBackground/FullscreenIcon/FullscreenIconArea2D" to="." method="_on_FullscreenIconArea2D_mouse_entered"]

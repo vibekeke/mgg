@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var animation_tree = get_node("%AnimationTree")
-
+onready var light_altering = get_node("%LightAltering")
 var speed = 200
 var velocity = Vector2.ZERO
 var is_controlled = false

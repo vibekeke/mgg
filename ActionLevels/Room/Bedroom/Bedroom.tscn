@@ -1,63 +1,27 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=44 format=2]
 
-[ext_resource path="res://imported_assets/bedroom/room_compyutah-2.webp" type="Texture" id=1]
+[ext_resource path="res://ActionLevels/Room/Bedroom/Computer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/OverworldPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/Room/Bedroom/Bedroom.gd" type="Script" id=3]
-[ext_resource path="res://imported_assets/bedroom/room_pengwing-1.webp" type="Texture" id=4]
-[ext_resource path="res://imported_assets/bedroom/room_lamp-1.webp" type="Texture" id=5]
-[ext_resource path="res://imported_assets/bedroom/room_pillows-1.webp" type="Texture" id=6]
-[ext_resource path="res://imported_assets/bedroom/room_gamecub-1.webp" type="Texture" id=7]
-[ext_resource path="res://imported_assets/bedroom/room_piano-1.webp" type="Texture" id=8]
-[ext_resource path="res://imported_assets/bedroom/room_plant-1.webp" type="Texture" id=9]
-[ext_resource path="res://imported_assets/bedroom/room_TV-1.webp" type="Texture" id=10]
-[ext_resource path="res://imported_assets/bedroom/room_lights_bed.webp" type="Texture" id=11]
-[ext_resource path="res://ActionLevels/Room/Bedroom/TV.gd" type="Script" id=12]
-[ext_resource path="res://sounds/bedroom/Menu 1 - Super Smash Bros. Melee.mp3" type="AudioStream" id=13]
+[ext_resource path="res://ActionLevels/Room/Bedroom/Pillows.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ActionLevels/Room/Bedroom/Lamp.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ActionLevels/Room/Bedroom/StickersA.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ActionLevels/Room/Bedroom/StickersB.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ActionLevels/Room/Bedroom/Penguin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ActionLevels/Room/Bedroom/Gamecube.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ActionLevels/Room/Bedroom/TV.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ActionLevels/Room/Bedroom/Keyboard.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ActionLevels/Room/Bedroom/Duvet.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ActionLevels/Room/Bedroom/Chair.tscn" type="PackedScene" id=13]
 [ext_resource path="res://ActionLevels/Room/Bedroom/UseComputerArea.gd" type="Script" id=14]
 [ext_resource path="res://ActionLevels/Room/ComputerScreen2D.tscn" type="PackedScene" id=15]
-[ext_resource path="res://imported_assets/bedroom/room_background-light.webp" type="Texture" id=16]
-[ext_resource path="res://imported_assets/bedroom/room_chair-1.webp" type="Texture" id=17]
-[ext_resource path="res://imported_assets/bedroom/room_bed.webp" type="Texture" id=18]
-[ext_resource path="res://imported_assets/bedroom/Blending_COLORDODGE.webp" type="Texture" id=19]
-[ext_resource path="res://imported_assets/bedroom/room_lightstickers-B.webp" type="Texture" id=20]
-[ext_resource path="res://imported_assets/bedroom/room_lightstickers-A.webp" type="Texture" id=21]
-[ext_resource path="res://imported_assets/bedroom/room_lightbulb_OFF.webp" type="Texture" id=22]
-[ext_resource path="res://imported_assets/bedroom/room_lightbulb-ON.webp" type="Texture" id=23]
-[ext_resource path="res://imported_assets/bedroom/room_TV_ON-1.webp" type="Texture" id=24]
-
-[sub_resource type="Shader" id=28]
-code = "shader_type canvas_item;
-
-uniform vec4 night_color : hint_color = vec4(1.0, 1.0, 1.4, 1.0); // A brighter and less saturated blue
-
-void fragment() {
-    COLOR = texture(SCREEN_TEXTURE, SCREEN_UV) * night_color;
-}
-"
-
-[sub_resource type="ShaderMaterial" id=29]
-shader = SubResource( 28 )
-shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
-
-[sub_resource type="Shader" id=31]
-code = "	shader_type canvas_item;
-
-	void fragment() {
-	    vec4 screen_color = texture(SCREEN_TEXTURE, SCREEN_UV);
-	    vec4 sprite_color = vec4(1.0, 1.0, 1.0, 0.0);
-
-	    vec3 color_dodge;
-
-	    color_dodge.r = sprite_color.r < 1.0 ? min(screen_color.r / (1.0 - sprite_color.r), 1.0) : sprite_color.r;
-	    color_dodge.g = sprite_color.g < 1.0 ? min(screen_color.g / (1.0 - sprite_color.g), 1.0) : sprite_color.g;
-	    color_dodge.b = sprite_color.b < 1.0 ? min(screen_color.b / (1.0 - sprite_color.b), 1.0) : sprite_color.b;
-
-	    COLOR = vec4(color_dodge, sprite_color.a);
-	}
-"
-
-[sub_resource type="ShaderMaterial" id=32]
-shader = SubResource( 31 )
+[ext_resource path="res://ActionLevels/Room/Bedroom/Room.tscn" type="PackedScene" id=16]
+[ext_resource path="res://ActionLevels/Room/Bedroom/Plant.tscn" type="PackedScene" id=17]
+[ext_resource path="res://ActionLevels/Room/Bedroom/RoomLightsBed.tscn" type="PackedScene" id=18]
+[ext_resource path="res://ActionLevels/Room/Bedroom/WindowAnchor.tscn" type="PackedScene" id=19]
+[ext_resource path="res://ActionLevels/Room/Bedroom/RoomLightsArea.gd" type="Script" id=20]
+[ext_resource path="res://ActionLevels/Room/Bedroom/RoomLight.tscn" type="PackedScene" id=21]
+[ext_resource path="res://sounds/bedroom/light-switch.wav" type="AudioStream" id=22]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
@@ -67,56 +31,65 @@ gradient = SubResource( 1 )
 width = 1920
 height = 1080
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 48.1251, 76.2501 )
-
-[sub_resource type="AtlasTexture" id=30]
-flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 315, 453 )
-
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ SubResource( 30 ) ],
-"loop": true,
-"name": "default",
-"speed": 1.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 136.25, 115 )
-
-[sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 150, 82.5 )
-
 [sub_resource type="Shader" id=36]
 code = "shader_type canvas_item;
 
+uniform vec4 night_color : hint_color = vec4(0.2, 0.2, 0.4, 0.6);
+uniform bool apply_effect = false;
+
 void fragment() {
-    vec4 screen_color = texture(SCREEN_TEXTURE, SCREEN_UV);
-    vec4 sprite_color = texture(TEXTURE, UV);
+	vec4 tex_color = texture(TEXTURE, UV);
+	if (apply_effect) {
+		COLOR.rgb = (1.0 - night_color.a) * tex_color.rgb + night_color.a * (tex_color.rgb * night_color.rgb);
+		COLOR.a = tex_color.a;
+	} else {
+		COLOR = tex_color;
+	}
 
-    vec3 color_dodge;
-
-    color_dodge.r = sprite_color.r < 1.0 ? min(screen_color.r / (1.0 - sprite_color.r), 1.0) : sprite_color.r;
-    color_dodge.g = sprite_color.g < 1.0 ? min(screen_color.g / (1.0 - sprite_color.g), 1.0) : sprite_color.g;
-    color_dodge.b = sprite_color.b < 1.0 ? min(screen_color.b / (1.0 - sprite_color.b), 1.0) : sprite_color.b;
-
-    COLOR = vec4(color_dodge, sprite_color.a);
 }
 "
 
 [sub_resource type="ShaderMaterial" id=37]
+resource_local_to_scene = true
 shader = SubResource( 36 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 96.25, 106.25 )
+[sub_resource type="ShaderMaterial" id=38]
+resource_local_to_scene = true
+shader = SubResource( 36 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 291.25, 67.4999 )
+[sub_resource type="ShaderMaterial" id=39]
+resource_local_to_scene = true
+shader = SubResource( 36 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
 
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 187.5, 168.75 )
+[sub_resource type="ShaderMaterial" id=40]
+resource_local_to_scene = true
+shader = SubResource( 36 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
+
+[sub_resource type="ShaderMaterial" id=41]
+resource_local_to_scene = true
+shader = SubResource( 36 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
+
+[sub_resource type="ShaderMaterial" id=42]
+resource_local_to_scene = true
+shader = SubResource( 36 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
+
+[sub_resource type="ShaderMaterial" id=43]
+resource_local_to_scene = true
+shader = SubResource( 36 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 93.75, 69.0625 )
@@ -124,28 +97,35 @@ extents = Vector2( 93.75, 69.0625 )
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 256.25, 48.75 )
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 57.5001, 78.7498 )
-
-[sub_resource type="Shader" id=26]
+[sub_resource type="Shader" id=47]
 code = "shader_type canvas_item;
 
+uniform vec4 night_color : hint_color = vec4(0.2, 0.2, 0.4, 0.6);
+uniform bool apply_effect = false;
+
 void fragment() {
-    vec4 screen_color = texture(SCREEN_TEXTURE, SCREEN_UV);
-    vec4 sprite_color = texture(TEXTURE, UV);
+	vec4 tex_color = texture(TEXTURE, UV);
+	if (apply_effect) {
+		COLOR.rgb = (1.0 - night_color.a) * tex_color.rgb + night_color.a * (tex_color.rgb * night_color.rgb);
+		COLOR.a = tex_color.a;
+	} else {
+		COLOR = tex_color;
+	}
 
-    vec3 color_dodge;
-
-    color_dodge.r = sprite_color.r < 1.0 ? min(screen_color.r / (1.0 - sprite_color.r), 1.0) : sprite_color.r;
-    color_dodge.g = sprite_color.g < 1.0 ? min(screen_color.g / (1.0 - sprite_color.g), 1.0) : sprite_color.g;
-    color_dodge.b = sprite_color.b < 1.0 ? min(screen_color.b / (1.0 - sprite_color.b), 1.0) : sprite_color.b;
-
-    COLOR = vec4(color_dodge, sprite_color.a);
 }
 "
 
-[sub_resource type="ShaderMaterial" id=27]
-shader = SubResource( 26 )
+[sub_resource type="ShaderMaterial" id=48]
+resource_local_to_scene = true
+shader = SubResource( 47 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
+
+[sub_resource type="ShaderMaterial" id=44]
+resource_local_to_scene = true
+shader = SubResource( 36 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 25.5, 352.5 )
@@ -162,61 +142,25 @@ extents = Vector2( 420, 17 )
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 97, 56.5 )
 
-[sub_resource type="Gradient" id=33]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture2D" id=34]
-gradient = SubResource( 33 )
-
-[sub_resource type="SpriteFrames" id=35]
-animations = [ {
-"frames": [ ExtResource( 22 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[sub_resource type="RectangleShape2D" id=46]
+extents = Vector2( 25, 34 )
 
 [node name="Bedroom" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="RoomLightsLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="RoomLightsBed" type="Sprite" parent="RoomLightsLayer"]
-position = Vector2( 1221, 254 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 11 )
-
-[node name="StickersA" type="Sprite" parent="RoomLightsLayer"]
-position = Vector2( 881, 293 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 21 )
-
-[node name="StickersB" type="Sprite" parent="RoomLightsLayer"]
-position = Vector2( 1229, 261 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 20 )
-
-[node name="NightLayer" type="CanvasLayer" parent="."]
+[node name="ComputerScreen2D" parent="." instance=ExtResource( 15 )]
 unique_name_in_owner = true
+position = Vector2( 1238, 354 )
+z_index = 1
 
-[node name="ColorRect" type="ColorRect" parent="NightLayer"]
-material = SubResource( 29 )
-margin_right = 1920.0
-margin_bottom = 1080.0
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="DesktopBackground" parent="ComputerScreen2D" index="0"]
+position = Vector2( 175, -34 )
 
-[node name="WindowLightLayer" type="CanvasLayer" parent="."]
+[node name="RoomLightsBed" parent="." instance=ExtResource( 18 )]
 
-[node name="ColorRect" type="ColorRect" parent="WindowLightLayer"]
-material = SubResource( 32 )
-margin_left = 764.0
-margin_top = 494.0
-margin_right = 804.0
-margin_bottom = 534.0
-color = Color( 0.403922, 0.407843, 0.478431, 1 )
+[node name="StickersA" parent="." instance=ExtResource( 6 )]
+
+[node name="StickersB" parent="." instance=ExtResource( 7 )]
 
 [node name="Blackbackground" type="Sprite" parent="."]
 z_index = -2
@@ -226,135 +170,35 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Room" type="Sprite" parent="."]
-position = Vector2( 973, 521 )
-scale = Vector2( 0.4, 0.4 )
-z_index = -2
-texture = ExtResource( 16 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Room" parent="." instance=ExtResource( 16 )]
+material = SubResource( 37 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="OverworldPlayer" parent="YSort" instance=ExtResource( 2 )]
 unique_name_in_owner = true
-position = Vector2( 939, 532 )
+position = Vector2( 779, 469 )
 
-[node name="PlayerLayer" type="CanvasLayer" parent="YSort"]
+[node name="Lamp" parent="YSort" instance=ExtResource( 5 )]
+material = SubResource( 38 )
 
-[node name="Lamp" type="Sprite" parent="YSort"]
-position = Vector2( 671, 661 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 5 )
+[node name="TV" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 708, 555 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Lamp"]
+[node name="Pillows" parent="YSort" instance=ExtResource( 4 )]
+material = SubResource( 39 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Lamp/StaticBody2D"]
-position = Vector2( -4.37512, 133.75 )
-scale = Vector2( 0.999999, 0.999999 )
-shape = SubResource( 8 )
+[node name="Penguin" parent="YSort" instance=ExtResource( 8 )]
+material = SubResource( 40 )
 
-[node name="TV" type="AnimatedSprite" parent="YSort"]
-position = Vector2( 767, 645 )
-scale = Vector2( 0.4, 0.4 )
-frames = SubResource( 5 )
-script = ExtResource( 12 )
+[node name="Gamecube" parent="YSort" instance=ExtResource( 9 )]
+material = SubResource( 41 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="YSort/TV"]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
+[node name="Keyboard" parent="YSort" instance=ExtResource( 11 )]
+material = SubResource( 42 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/TV/StaticBody2D"]
-position = Vector2( 1.24988, -105 )
-shape = SubResource( 6 )
-
-[node name="TVArea2D" type="Area2D" parent="YSort/TV"]
-unique_name_in_owner = true
-position = Vector2( -0.00012207, 187.5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/TV/TVArea2D"]
-position = Vector2( -2.50037, 72.5 )
-shape = SubResource( 18 )
-
-[node name="TVAudio" type="AudioStreamPlayer" parent="YSort/TV"]
-unique_name_in_owner = true
-stream = ExtResource( 13 )
-volume_db = -10.0
-
-[node name="TVScreen" type="Sprite" parent="YSort/TV"]
-material = SubResource( 37 )
-scale = Vector2( 1, 1 )
-texture = ExtResource( 24 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="YSort/TV"]
-layer = 0
-
-[node name="Pillows" type="Sprite" parent="YSort"]
-position = Vector2( 794, 864 )
-scale = Vector2( 0.4, 0.4 )
-z_index = -1
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Penguin" type="Sprite" parent="YSort"]
-position = Vector2( 877, 631 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Gamecube" type="Sprite" parent="YSort"]
-position = Vector2( 879, 709 )
-scale = Vector2( 0.4, 0.4 )
-z_index = -1
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Gamecube"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Gamecube/StaticBody2D"]
-position = Vector2( -8.74976, -166.25 )
-shape = SubResource( 7 )
-
-[node name="Keyboard" type="Sprite" parent="YSort"]
-position = Vector2( 1075, 851 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 8 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Keyboard"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Keyboard/StaticBody2D"]
-position = Vector2( 1.25024, -57.5 )
-scale = Vector2( 0.999999, 0.999999 )
-shape = SubResource( 9 )
-
-[node name="Duvet" type="Sprite" parent="YSort"]
-position = Vector2( 1236, 499 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 18 )
-
-[node name="BedStaticBody2D" type="StaticBody2D" parent="YSort/Duvet"]
-position = Vector2( 9.99976, -177.5 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Duvet/BedStaticBody2D"]
-position = Vector2( -2.5, 73.7496 )
-shape = SubResource( 11 )
+[node name="Duvet" parent="YSort" instance=ExtResource( 12 )]
+material = SubResource( 43 )
 
 [node name="DrawerStaticBody2D" type="StaticBody2D" parent="YSort"]
 position = Vector2( 1122, 373 )
@@ -376,44 +220,23 @@ scale = Vector2( 0.4, 0.4 )
 position = Vector2( 131.25, -38.75 )
 shape = SubResource( 13 )
 
-[node name="Chair" type="Sprite" parent="YSort"]
-position = Vector2( 955, 429 )
+[node name="Computer" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 954, 298 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 17 )
 
-[node name="Plant" type="Sprite" parent="YSort"]
-position = Vector2( 1256, 800 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 9 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
+[node name="Chair" parent="YSort" instance=ExtResource( 13 )]
+material = SubResource( 48 )
+position = Vector2( 961, 461 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="YSort/Plant"]
+[node name="CollisionShape2D" parent="YSort/Chair/StaticBody2D" index="0"]
+position = Vector2( 1.25, -70 )
+scale = Vector2( 0.999999, 0.999999 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Plant/StaticBody2D"]
-position = Vector2( -0.000244141, 176.25 )
-shape = SubResource( 10 )
+[node name="Plant" parent="YSort" instance=ExtResource( 17 )]
+material = SubResource( 44 )
 
-[node name="Computer" type="Sprite" parent="YSort"]
-position = Vector2( 979, 325 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 1 )
-
-[node name="WindowAnchor" type="Node2D" parent="YSort"]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="WindowLight" type="Sprite" parent="YSort/WindowAnchor"]
-material = SubResource( 27 )
-position = Vector2( 1119, 600 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 19 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="WindowAnchor" parent="YSort" instance=ExtResource( 19 )]
+visible = false
 
 [node name="BoundaryRoom" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -437,13 +260,6 @@ shape = SubResource( 16 )
 position = Vector2( 974, 939 )
 shape = SubResource( 17 )
 
-[node name="ComputerScreen2D" parent="." instance=ExtResource( 15 )]
-unique_name_in_owner = true
-position = Vector2( 1238, 354 )
-
-[node name="DesktopBackground" parent="ComputerScreen2D" index="0"]
-position = Vector2( 175, -34 )
-
 [node name="UseComputerArea" type="Area2D" parent="."]
 position = Vector2( 959, 463 )
 script = ExtResource( 14 )
@@ -456,51 +272,20 @@ __meta__ = {
 position = Vector2( 0, -46.5 )
 shape = SubResource( 19 )
 
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 1041, 601 )
-scale = Vector2( 1.23437, 1 )
-texture = SubResource( 34 )
-offset = Vector2( -4.45569, -4 )
-energy = 0.3
+[node name="RoomLight" parent="." instance=ExtResource( 21 )]
 
-[node name="Light2D2" type="Light2D" parent="."]
-position = Vector2( 1041.57, 680.25 )
-scale = Vector2( 1.25, 1.0625 )
-texture = SubResource( 34 )
-offset = Vector2( -4.45569, -4 )
-energy = 0.3
+[node name="RoomLightsArea" type="Area2D" parent="."]
+position = Vector2( 686, 411 )
+script = ExtResource( 20 )
 
-[node name="Light2D3" type="Light2D" parent="."]
-position = Vector2( 1153.15, 679.687 )
-scale = Vector2( 1.55577, 1.04688 )
-texture = SubResource( 34 )
-offset = Vector2( -4.45569, -4 )
-energy = 0.3
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLightsArea"]
+position = Vector2( -2, -27 )
+shape = SubResource( 46 )
 
-[node name="Light2D4" type="Light2D" parent="."]
-position = Vector2( 1153.36, 617.676 )
-scale = Vector2( 1.62057, 0.379883 )
-texture = SubResource( 34 )
-offset = Vector2( -4.45569, -4 )
-energy = 0.3
-
-[node name="Light2D5" type="Light2D" parent="."]
-position = Vector2( 1111.05, 587.375 )
-scale = Vector2( 0.469988, 0.59375 )
-texture = SubResource( 34 )
-offset = Vector2( -4.45569, -4 )
-energy = 0.3
-
-[node name="Light2D6" type="Light2D" parent="."]
-position = Vector2( 1205.29, 513.063 )
-scale = Vector2( 1.1875, 0.640625 )
-texture = SubResource( 34 )
-offset = Vector2( -4.45569, -4 )
-energy = 0.3
-
-[node name="RoomLight" type="AnimatedSprite" parent="."]
-position = Vector2( 765, 169 )
-scale = Vector2( 0.4, 0.4 )
-frames = SubResource( 35 )
+[node name="LightSwitchAudio" type="AudioStreamPlayer" parent="RoomLightsArea"]
+unique_name_in_owner = true
+stream = ExtResource( 22 )
+volume_db = -10.0
 
 [editable path="ComputerScreen2D"]
+[editable path="YSort/Chair"]

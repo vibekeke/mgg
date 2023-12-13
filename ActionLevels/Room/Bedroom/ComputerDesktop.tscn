@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player/LightAltering.gd" type="Script" id=1]
+[ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=2]
+[ext_resource path="res://imported_assets/bedroom/room_compyutah-2.webp" type="Texture" id=3]
+[ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=4]
+
+[node name="Computer" type="Sprite"]
+material = ExtResource( 2 )
+position = Vector2( 979, 325 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+
+[node name="LightAlteringComponent" type="Node" parent="." instance=ExtResource( 4 )]
+script = ExtResource( 1 )
+light_affected_item = NodePath("..")

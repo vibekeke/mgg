@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://ActionLevels/Room/Bedroom/TV.gd" type="Script" id=2]
+[ext_resource path="res://sounds/bedroom/Menu 1 - Super Smash Bros. Melee.mp3" type="AudioStream" id=3]
+[ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=4]
+[ext_resource path="res://imported_assets/bedroom/room_TV-1.webp" type="Texture" id=5]
+[ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=6]
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 315, 453 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 30 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 136.25, 115 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 150, 82.5 )
+
+[node name="TVBox" type="AnimatedSprite"]
+material = ExtResource( 4 )
+position = Vector2( 767, 645 )
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 5 )
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1.24988, -105 )
+shape = SubResource( 6 )
+
+[node name="TVArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2( -0.00012207, 187.5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TVArea2D"]
+position = Vector2( -2.50037, 72.5 )
+shape = SubResource( 18 )
+
+[node name="TVAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 3 )
+volume_db = -10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="LightAlteringComponent" parent="." instance=ExtResource( 6 )]
+light_affected_item = NodePath("..")

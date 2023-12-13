@@ -1,7 +1,9 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://ActionLevels/Room/Bedroom/OverworldPlayer.gd" type="Script" id=1]
 [ext_resource path="res://imported_assets/overworld_player/room_player.png" type="Texture" id=2]
+[ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=4]
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
@@ -481,6 +483,7 @@ scale = Vector2( 0.4, 0.4 )
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 4 )
 frames = SubResource( 3 )
 animation = "idle_down"
 __meta__ = {
@@ -519,3 +522,5 @@ active = true
 parameters/playback = SubResource( 40 )
 parameters/Idle/blend_position = Vector2( 0.984848, -0.262613 )
 parameters/Walk/blend_position = Vector2( -0.0321212, -0.772316 )
+
+[node name="LightAlteringComponent" parent="." instance=ExtResource( 3 )]

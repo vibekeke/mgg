@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Player/LightAltering.gd" type="Script" id=1]
+
+[node name="LightAlteringComponent" type="Node"]
+script = ExtResource( 1 )
+light_affected_item = NodePath("../AnimatedSprite")

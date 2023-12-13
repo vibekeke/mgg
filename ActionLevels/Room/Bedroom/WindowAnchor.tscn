@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://imported_assets/bedroom/Blending_COLORDODGE.webp" type="Texture" id=1]
+[ext_resource path="res://ActionLevels/Room/Bedroom/WindowLight.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=26]
+code = "shader_type canvas_item;
+
+void fragment() {
+    vec4 screen_color = texture(SCREEN_TEXTURE, SCREEN_UV);
+    vec4 sprite_color = texture(TEXTURE, UV);
+
+    vec3 color_dodge;
+
+    color_dodge.r = sprite_color.r < 1.0 ? min(screen_color.r / (1.0 - sprite_color.r), 1.0) : sprite_color.r;
+    color_dodge.g = sprite_color.g < 1.0 ? min(screen_color.g / (1.0 - sprite_color.g), 1.0) : sprite_color.g;
+    color_dodge.b = sprite_color.b < 1.0 ? min(screen_color.b / (1.0 - sprite_color.b), 1.0) : sprite_color.b;
+
+    COLOR = vec4(color_dodge, sprite_color.a);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=27]
+shader = SubResource( 26 )
+
+[sub_resource type="Gradient" id=33]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture2D" id=34]
+gradient = SubResource( 33 )
+
+[node name="WindowAnchor" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WindowLight" type="Sprite" parent="."]
+material = SubResource( 27 )
+position = Vector2( 1119, 600 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Light2D" type="Light2D" parent="WindowLight"]
+position = Vector2( -195, 2.5 )
+scale = Vector2( 3.08592, 2.5 )
+texture = SubResource( 34 )
+offset = Vector2( -4.45569, -4 )
+energy = 0.3
+
+[node name="Light2D2" type="Light2D" parent="WindowLight"]
+position = Vector2( -193.575, 200.625 )
+scale = Vector2( 3.125, 2.65625 )
+texture = SubResource( 34 )
+offset = Vector2( -4.45569, -4 )
+energy = 0.3
+
+[node name="Light2D3" type="Light2D" parent="WindowLight"]
+position = Vector2( 85.375, 199.218 )
+scale = Vector2( 3.88942, 2.6172 )
+texture = SubResource( 34 )
+offset = Vector2( -4.45569, -4 )
+energy = 0.3
+
+[node name="Light2D4" type="Light2D" parent="WindowLight"]
+position = Vector2( 85.8999, 44.1901 )
+scale = Vector2( 4.05142, 0.949707 )
+texture = SubResource( 34 )
+offset = Vector2( -4.45569, -4 )
+energy = 0.3
+
+[node name="Light2D5" type="Light2D" parent="WindowLight"]
+position = Vector2( -19.875, -31.5625 )
+scale = Vector2( 1.17497, 1.48437 )
+texture = SubResource( 34 )
+offset = Vector2( -4.45569, -4 )
+energy = 0.3
+
+[node name="Light2D6" type="Light2D" parent="WindowLight"]
+position = Vector2( 215.725, -217.343 )
+scale = Vector2( 2.96875, 1.60156 )
+texture = SubResource( 34 )
+offset = Vector2( -4.45569, -4 )
+energy = 0.3

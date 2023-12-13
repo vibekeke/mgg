@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://imported_assets/bedroom/room_lightbulb_OFF.webp" type="Texture" id=1]
+[ext_resource path="res://imported_assets/bedroom/room_lightbulb-ON.webp" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=35]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="RoomLight" type="AnimatedSprite"]
+unique_name_in_owner = true
+position = Vector2( 765, 169 )
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 35 )

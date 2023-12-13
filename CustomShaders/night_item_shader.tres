@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=36]
+code = "shader_type canvas_item;
+
+uniform vec4 night_color : hint_color = vec4(0.2, 0.2, 0.4, 0.6);
+uniform bool apply_effect = false;
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+	if (apply_effect) {
+		COLOR.rgb = (1.0 - night_color.a) * tex_color.rgb + night_color.a * (tex_color.rgb * night_color.rgb);
+		COLOR.a = tex_color.a;
+	} else {
+		COLOR = tex_color;
+	}
+
+}
+"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 36 )
+shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
+shader_param/apply_effect = false
