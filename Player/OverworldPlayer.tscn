@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://ActionLevels/Room/Bedroom/OverworldPlayer.gd" type="Script" id=1]
 [ext_resource path="res://imported_assets/overworld_player/room_player.png" type="Texture" id=2]
@@ -6,20 +6,35 @@
 [ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=4]
 [ext_resource path="res://imported_assets/overworld_player/room_player_V2.png" type="Texture" id=5]
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=52]
 flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 974, 298, 487 )
+atlas = ExtResource( 5 )
+region = Rect2( 596, 974, 298, 487 )
+
+[sub_resource type="AtlasTexture" id=53]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 298, 1461, 298, 487 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 596, 487, 298, 487 )
 
+[sub_resource type="AtlasTexture" id=54]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 596, 1461, 298, 487 )
+
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 298, 487 )
+
+[sub_resource type="AtlasTexture" id=55]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 894, 1461, 298, 487 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
@@ -108,17 +123,17 @@ region = Rect2( 1192, 0, 298, 487 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 5 ) ],
+"frames": [ SubResource( 52 ), SubResource( 53 ) ],
 "loop": true,
 "name": "idle_down",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 6 ) ],
+"frames": [ SubResource( 6 ), SubResource( 54 ) ],
 "loop": true,
 "name": "idle_left",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 7 ) ],
+"frames": [ SubResource( 7 ), SubResource( 55 ) ],
 "loop": true,
 "name": "idle_right",
 "speed": 5.0
@@ -181,7 +196,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=26]
 resource_name = "idle_down"
-length = 0.8
+length = 3.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:frames")
@@ -214,14 +229,16 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 0, 1, 0 ]
 }
 
 [sub_resource type="Animation" id=27]
 resource_name = "idle_left"
+length = 3.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -241,14 +258,16 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 0, 1, 0 ]
 }
 
 [sub_resource type="Animation" id=28]
 resource_name = "idle_right"
+length = 3.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -268,10 +287,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 0, 1, 0 ]
 }
 
 [sub_resource type="Animation" id=29]
