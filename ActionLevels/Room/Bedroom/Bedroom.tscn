@@ -228,10 +228,6 @@ scale = Vector2( 0.4, 0.4 )
 material = SubResource( 48 )
 position = Vector2( 961, 461 )
 
-[node name="CollisionShape2D" parent="YSort/Chair/StaticBody2D" index="0"]
-position = Vector2( 1.25, -70 )
-scale = Vector2( 0.999999, 0.999999 )
-
 [node name="Plant" parent="YSort" instance=ExtResource( 17 )]
 material = SubResource( 44 )
 
@@ -287,5 +283,8 @@ unique_name_in_owner = true
 stream = ExtResource( 22 )
 volume_db = -10.0
 
+[node name="PlayerSitPosition" type="Position2D" parent="."]
+unique_name_in_owner = true
+position = Vector2( 962, 417 )
+
 [editable path="ComputerScreen2D"]
-[editable path="YSort/Chair"]

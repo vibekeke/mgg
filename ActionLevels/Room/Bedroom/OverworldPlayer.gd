@@ -9,6 +9,10 @@ var is_controlled = false
 func _ready():
 	pass
 
+func set_facing_direction(facing_vector: Vector2):
+	animation_tree.get("parameters/playback").travel("Idle")
+	animation_tree.set("parameters/Idle/blend_position", facing_vector)
+
 func get_input():
 	if is_controlled:
 		return

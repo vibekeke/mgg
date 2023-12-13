@@ -1,9 +1,10 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://ActionLevels/Room/Bedroom/OverworldPlayer.gd" type="Script" id=1]
 [ext_resource path="res://imported_assets/overworld_player/room_player.png" type="Texture" id=2]
 [ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=4]
+[ext_resource path="res://imported_assets/overworld_player/room_player_V2.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
@@ -45,25 +46,25 @@ flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 974, 298, 487 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=48]
 flags = 4
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 894, 487, 298, 487 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=49]
 flags = 4
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 1192, 487, 298, 487 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=50]
 flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 1490, 487, 298, 487 )
+atlas = ExtResource( 5 )
+region = Rect2( 0, 974, 298, 487 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=51]
 flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 596, 487, 298, 487 )
+atlas = ExtResource( 5 )
+region = Rect2( 298, 974, 298, 487 )
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
@@ -132,7 +133,7 @@ animations = [ {
 "name": "walk_down",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ) ],
 "loop": true,
 "name": "walk_left",
 "speed": 5.0

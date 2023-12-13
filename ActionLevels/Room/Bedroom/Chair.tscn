@@ -19,6 +19,6 @@ light_affected_item = NodePath("..")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 1.25, -73.75 )
+position = Vector2( 0, 12.5 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 1 )
