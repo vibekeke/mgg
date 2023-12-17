@@ -34,7 +34,6 @@ shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
 shader_param/apply_effect = false
 
 [node name="Computer" type="Node2D"]
-scale = Vector2( 1, 1 )
 
 [node name="ComputerDesktop" parent="." instance=ExtResource( 2 )]
 material = SubResource( 37 )
@@ -42,6 +41,7 @@ position = Vector2( 68.8, 65.6 )
 scale = Vector2( 1, 1 )
 
 [node name="ComputerScreen" parent="." instance=ExtResource( 1 )]
+visible = false
 material = SubResource( 38 )
 position = Vector2( 68.8, 65.6 )
 scale = Vector2( 1, 1 )

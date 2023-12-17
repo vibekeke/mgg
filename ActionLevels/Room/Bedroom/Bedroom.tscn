@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://ActionLevels/Room/Bedroom/Computer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/OverworldPlayer.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://ActionLevels/Room/Bedroom/RoomLightsArea.gd" type="Script" id=20]
 [ext_resource path="res://ActionLevels/Room/Bedroom/RoomLight.tscn" type="PackedScene" id=21]
 [ext_resource path="res://sounds/bedroom/light-switch.wav" type="AudioStream" id=22]
+[ext_resource path="res://DialogBox/DialogBox.tscn" type="PackedScene" id=23]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
@@ -291,5 +292,7 @@ volume_db = -10.0
 [node name="PlayerSitPosition" type="Position2D" parent="."]
 unique_name_in_owner = true
 position = Vector2( 962, 417 )
+
+[node name="DialogBox" parent="." instance=ExtResource( 23 )]
 
 [editable path="ComputerScreen2D"]

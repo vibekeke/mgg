@@ -1,13 +1,20 @@
 extends KinematicBody2D
 
 onready var animation_tree = get_node("%AnimationTree")
-onready var light_altering = get_node("%LightAltering")
+onready var overworld_reactions = get_node("%OverworldPlayerReactions")
+
 var speed = 200
 var velocity = Vector2.ZERO
 var is_controlled = false
 
 func _ready():
 	pass
+	
+func set_reaction(name: String, state: bool):
+	if name == "question_mark" and state:
+		overworld_reactions.play_question_mark()
+	elif name == "question_mark" and !state:
+		overworld_reactions.remove_question_mark()
 
 func set_facing_direction(facing_vector: Vector2):
 	animation_tree.get("parameters/playback").travel("Idle")

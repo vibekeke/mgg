@@ -1,10 +1,11 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://ActionLevels/Room/Bedroom/OverworldPlayer.gd" type="Script" id=1]
 [ext_resource path="res://imported_assets/overworld_player/room_player.png" type="Texture" id=2]
 [ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=4]
 [ext_resource path="res://imported_assets/overworld_player/room_player_V2.png" type="Texture" id=5]
+[ext_resource path="res://Player/OverworldPlayerReactions.tscn" type="PackedScene" id=6]
 
 [sub_resource type="AtlasTexture" id=52]
 flags = 4
@@ -536,3 +537,7 @@ parameters/Idle/blend_position = Vector2( 0.984848, -0.262613 )
 parameters/Walk/blend_position = Vector2( -0.0321212, -0.772316 )
 
 [node name="LightAlteringComponent" parent="." instance=ExtResource( 3 )]
+
+[node name="OverworldPlayerReactions" parent="." instance=ExtResource( 6 )]
+unique_name_in_owner = true
+position = Vector2( 0, -485 )

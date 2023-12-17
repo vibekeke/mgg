@@ -1,0 +1,78 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 5
+syntax_version = 2
+raw_text = "~ this_is_a_node_title
+
+Angel: What's up cuck.
+This line was said by no one.
+Angel: Select an option
+- This one
+- No, this one
+- Nothing => END"
+errors = [  ]
+titles = {
+"this_is_a_node_title": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "this_is_a_node_title",
+"type": "title"
+},
+"2": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "3",
+"replacements": [  ],
+"text": "What's up cuck.",
+"translation_key": "What's up cuck.",
+"type": "dialogue"
+},
+"3": {
+"character": "",
+"next_id": "4",
+"replacements": [  ],
+"text": "This line was said by no one.",
+"translation_key": "This line was said by no one.",
+"type": "dialogue"
+},
+"4": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "5",
+"replacements": [  ],
+"text": "Select an option",
+"translation_key": "Select an option",
+"type": "dialogue"
+},
+"5": {
+"next_id": "end!",
+"next_id_after": "end!",
+"replacements": [  ],
+"responses": PoolStringArray( "5", "6", "7" ),
+"text": "This one",
+"translation_key": "This one",
+"type": "response"
+},
+"6": {
+"next_id": "end!",
+"next_id_after": "end!",
+"replacements": [  ],
+"text": "No, this one",
+"translation_key": "No, this one",
+"type": "response"
+},
+"7": {
+"next_id": "end",
+"next_id_after": "end!",
+"replacements": [  ],
+"text": "Nothing",
+"translation_key": "Nothing",
+"type": "response"
+}
+}
