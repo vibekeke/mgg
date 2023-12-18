@@ -8,8 +8,11 @@ var velocity = Vector2.ZERO
 var is_controlled = false
 
 func _ready():
-	pass
-	
+	Events.connect("overworld_player_controlled", self, "_on_overworld_player_controlled")
+
+func _on_overworld_player_controlled(status):
+	is_controlled = status
+
 func set_reaction(name: String, state: bool):
 	if name == "question_mark" and state:
 		overworld_reactions.play_question_mark()

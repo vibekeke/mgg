@@ -21,7 +21,7 @@ func _ready():
 func show_dialogue(key: String) -> void:
 	var dialogue = yield(dialogue_resource.get_next_dialogue_line(key), \"completed\")
 	if dialogue != null:
-		print(\"dialogue in DialogBox\", dialogue)
+		#print(\"dialogue in DialogBox\", dialogue)
 		var balloon = Balloon.instance()
 		balloon.set_dialogue(dialogue)
 		get_tree().current_scene.add_child(balloon)

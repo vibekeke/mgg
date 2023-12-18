@@ -32,6 +32,8 @@ signal level_complete
 signal background_element_offscreen(element_name)
 signal tutorial_element_touched(element_id)
 
+# overworld related
+signal overworld_player_controlled(status)
 signal bedroom_lights_on(status)
 
 # save file location and metadata

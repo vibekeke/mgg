@@ -14,13 +14,11 @@ func _ready():
 func _on_room_light_area_entered(body):
 	if body.name == "OverworldPlayer":
 		player_in_area = true
-		overworld_player.set_reaction("question_mark", true)
 		
 	
 func _on_room_light_area_exited(body):
 	if body.name == "OverworldPlayer":
 		player_in_area = false
-		overworld_player.set_reaction("question_mark", false)
 		
 func _process(delta):
 	if player_in_area and Input.is_action_just_pressed("ui_accept"):
