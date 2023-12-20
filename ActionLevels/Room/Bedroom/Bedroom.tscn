@@ -232,6 +232,9 @@ scale = Vector2( 0.4, 0.4 )
 [node name="Chair" parent="YSort" instance=ExtResource( 13 )]
 material = SubResource( 48 )
 position = Vector2( 958, 524 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Plant" parent="YSort" instance=ExtResource( 17 )]
 material = SubResource( 44 )

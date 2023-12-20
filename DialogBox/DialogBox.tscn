@@ -1,42 +1,40 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://dialogue_test.tres" type="Resource" id=1]
-[ext_resource path="res://DialogBox/portraits_balloon/portraits_balloon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://DialogBox/dialogue_text/bedroom_piano.tres" type="Resource" id=1]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
-export var Balloon : PackedScene
-export var title := \"start\"
-export var dialogue_resource: Resource
-export var width := 1920
-export var height := 1080
+signal dialogue_box_finished
 
-func _ready():
+export var title := \"\"
+export var dialogue_resource: Resource
+
+func create_dialogue_bubble():
 	DialogueManager.connect(\"dialogue_finished\", self, \"_on_dialogue_finished\")
-	yield(get_tree().create_timer(0.4), \"timeout\")
+	#yield(get_tree().create_timer(0.2), \"timeout\")
 	
 	show_dialogue(title)
 	
 func show_dialogue(key: String) -> void:
 	var dialogue = yield(dialogue_resource.get_next_dialogue_line(key), \"completed\")
 	if dialogue != null:
-		#print(\"dialogue in DialogBox\", dialogue)
-		var balloon = Balloon.instance()
+		var balloon = preload(\"res://DialogBox/portraits_balloon/portraits_balloon.tscn\").instance()
 		balloon.set_dialogue(dialogue)
 		get_tree().current_scene.add_child(balloon)
 		show_dialogue(yield(balloon, \"actioned\"))
 		
 
+
+
 # Signals
 
 func _on_dialogue_finished():
 	yield(get_tree().create_timer(0.4), \"timeout\")
-	get_tree().quit()
+	emit_signal(\"dialogue_box_finished\")
 "
 
 [node name="DialogBox" type="Node2D"]
 script = SubResource( 1 )
-Balloon = ExtResource( 2 )
-title = "this_is_a_node_title"
+title = "bedroom_piano"
 dialogue_resource = ExtResource( 1 )

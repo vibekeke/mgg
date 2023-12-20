@@ -201,6 +201,7 @@ run/main_scene="res://Menus/MainMenu.tscn"
 
 Events="*res://Autoload/Events.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+MggDialogue="*res://Autoload/MggDialogue.gd"
 
 [debug]
 

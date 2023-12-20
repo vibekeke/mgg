@@ -1,6 +1,8 @@
 extends Sprite
 
 onready var piano_music = get_node("%PianoMusic")
+export var dialogue_resource: Resource
+export var dialogue_title := "bedroom_piano"
 
 var player_in_area : bool = false
 
@@ -21,5 +23,7 @@ func _process(delta):
 		start_music()
 
 func _on_PianoMusic_finished():
+	if piano_music.get_number_of_audio_streams() - 1 == piano_music.get_current_index_audio_stream():
+		MggDialogue.show_dialogue_balloon(dialogue_resource, dialogue_title)
 	Events.emit_signal("overworld_player_controlled", false)
 	piano_music.set_next_audio_track()

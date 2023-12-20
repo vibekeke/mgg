@@ -1,0 +1,58 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 4
+syntax_version = 2
+raw_text = "~ bedroom_piano
+
+% You played the piano as elegantly as a fish.
+% You played the piano as brilliantly as a monkey.
+% You played the piano as fantastically as a penguin."
+errors = [  ]
+titles = {
+"bedroom_piano": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "bedroom_piano",
+"type": "title"
+},
+"2": {
+"character": "",
+"next_id": "end",
+"replacements": [  ],
+"siblings": [ {
+"id": "2",
+"weight": 1
+}, {
+"id": "3",
+"weight": 1
+}, {
+"id": "4",
+"weight": 1
+} ],
+"text": "You played the piano as elegantly as a fish.",
+"translation_key": "You played the piano as elegantly as a fish.",
+"type": "dialogue"
+},
+"3": {
+"character": "",
+"next_id": "end",
+"replacements": [  ],
+"text": "You played the piano as brilliantly as a monkey.",
+"translation_key": "You played the piano as brilliantly as a monkey.",
+"type": "dialogue"
+},
+"4": {
+"character": "",
+"next_id": "end",
+"replacements": [  ],
+"text": "You played the piano as fantastically as a penguin.",
+"translation_key": "You played the piano as fantastically as a penguin.",
+"type": "dialogue"
+}
+}

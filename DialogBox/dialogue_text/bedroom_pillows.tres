@@ -1,0 +1,30 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 4
+syntax_version = 2
+raw_text = "~ bedroom_pillows
+
+These pillows were once part of a great fort.[wait=1] Now,[wait=1] they lie in ruins..."
+errors = [  ]
+titles = {
+"bedroom_pillows": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "bedroom_pillows",
+"type": "title"
+},
+"2": {
+"character": "",
+"next_id": "",
+"replacements": [  ],
+"text": "These pillows were once part of a great fort.[wait=1] Now,[wait=1] they lie in ruins...",
+"translation_key": "These pillows were once part of a great fort.[wait=1] Now,[wait=1] they lie in ruins...",
+"type": "dialogue"
+}
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://imported_assets/bedroom/room_piano-1.webp" type="Texture" id=1]
 [ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://sounds/computer/spille-piano-3.wav" type="AudioStream" id=9]
 [ext_resource path="res://sounds/computer/spille-piano-2.wav" type="AudioStream" id=10]
 [ext_resource path="res://sounds/computer/spille-piano-5.wav" type="AudioStream" id=11]
+[ext_resource path="res://DialogBox/DialogBox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://DialogBox/dialogue_text/bedroom_piano.tres" type="Resource" id=13]
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 290, 80.0001 )
@@ -29,6 +31,7 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
+dialogue_resource = ExtResource( 13 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -57,8 +60,9 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 276.25, -17.5 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 10 )
+
+[node name="DialogBox" parent="." instance=ExtResource( 12 )]
 
 [connection signal="finished" from="PianoMusic" to="." method="_on_PianoMusic_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
