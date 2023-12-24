@@ -18,11 +18,11 @@ margin_bottom = 318.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 786.0
-margin_bottom = 244.0
+margin_bottom = 288.0
 
 [node name="ResolutionButton" type="Button" parent="HBoxContainer"]
-margin_right = 380.0
-margin_bottom = 244.0
+margin_right = 299.0
+margin_bottom = 288.0
 focus_neighbour_right = NodePath(".")
 custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
@@ -36,9 +36,9 @@ custom_styles/normal = ExtResource( 3 )
 text = "Resolution"
 
 [node name="ResolutionList" type="ItemList" parent="HBoxContainer"]
-margin_left = 384.0
+margin_left = 303.0
 margin_right = 786.0
-margin_bottom = 244.0
+margin_bottom = 288.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")

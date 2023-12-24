@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "TextureRect",
+"class": "AnimatedTextureRect",
+"language": "GDScript",
+"path": "res://TestShit/AnimatedTextureRect.gd"
+}, {
 "base": "Node",
 "class": "BigBird",
 "language": "GDScript",
@@ -160,6 +165,7 @@ _global_script_classes=[ {
 "path": "res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerfly_logic.gd"
 } ]
 _global_script_class_icons={
+"AnimatedTextureRect": "",
 "BigBird": "",
 "BroBear": "",
 "BroBearRotator": "",

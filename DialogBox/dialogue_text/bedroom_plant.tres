@@ -4,12 +4,12 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 3
+resource_version = 15
 syntax_version = 2
 raw_text = "~ bedroom_plant
 
-The plant is a few centimetres bigger than you.
-You feel a little jealous."
+The plant is a few centimetres bigger than you now.
+...but you could still beat it in a fight."
 errors = [  ]
 titles = {
 "bedroom_plant": "2"
@@ -24,16 +24,16 @@ lines = {
 "character": "",
 "next_id": "3",
 "replacements": [  ],
-"text": "The plant is a few centimetres bigger than you.",
-"translation_key": "The plant is a few centimetres bigger than you.",
+"text": "The plant is a few centimetres bigger than you now.",
+"translation_key": "The plant is a few centimetres bigger than you now.",
 "type": "dialogue"
 },
 "3": {
 "character": "",
 "next_id": "",
 "replacements": [  ],
-"text": "You feel a little jealous.",
-"translation_key": "You feel a little jealous.",
+"text": "...but you could still beat it in a fight.",
+"translation_key": "...but you could still beat it in a fight.",
 "type": "dialogue"
 }
 }

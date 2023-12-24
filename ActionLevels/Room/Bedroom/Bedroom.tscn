@@ -238,6 +238,7 @@ __meta__ = {
 
 [node name="Plant" parent="YSort" instance=ExtResource( 17 )]
 material = SubResource( 44 )
+position = Vector2( 1261, 870 )
 
 [node name="WindowAnchor" parent="YSort" instance=ExtResource( 19 )]
 visible = false
