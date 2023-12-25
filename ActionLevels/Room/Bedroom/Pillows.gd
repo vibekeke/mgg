@@ -1,14 +1,13 @@
 extends Sprite
 
-
 var player_in_area: bool = false
 var dialogue_open : bool = false
 
-onready var dialog_box = get_node("%DialogBox")
+export var title := ""
 
 func _ready():
-	dialog_box.connect("dialogue_box_finished", self, "_on_dialogue_box_finished")
-
+	# dialog_box.connect("dialogue_box_finished", self, "_on_dialogue_box_finished")
+	pass
 
 func _on_InteractableArea_body_entered(body):
 	if body.name == "OverworldPlayer":
@@ -20,7 +19,7 @@ func _on_InteractableArea_body_exited(body):
 		player_in_area = false
 
 func display_dialogue():
-	dialog_box.create_dialogue_bubble()
+	# dialog_box.create_dialogue_bubble()
 	dialogue_open = true
 
 func _process(delta):

@@ -21,7 +21,7 @@ func show_dialogue(key: String) -> void:
 	if self.get_child_count() > 1:
 		self.get_child(1).set_next_dialogue(dialogue)
 	else:
-		var new_dialogue_bubble = load("res://TestShit/TestDialogueContainer.tscn").instance()
+		var new_dialogue_bubble = load("res://DialogBox/DialogueContainer.tscn").instance()
 		new_dialogue_bubble.set_dialogue(dialogue)
 		self.add_child(new_dialogue_bubble)
 	show_dialogue(yield(self.get_child(1), "actioned"))
@@ -35,5 +35,6 @@ func _on_dialogue_finished():
 	timer.start()
 
 func _on_Timer_timeout():
+	print("timing out")
 	enable_create_dialogue_balloon = true
 	emit_signal("dialogue_box_finished")

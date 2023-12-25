@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "TextureRect",
 "class": "AnimatedTextureRect",
 "language": "GDScript",
-"path": "res://TestShit/AnimatedTextureRect.gd"
+"path": "res://DialogBox/AnimatedTextureRect.gd"
 }, {
 "base": "Node",
 "class": "BigBird",

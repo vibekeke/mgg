@@ -1,0 +1,66 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 7
+syntax_version = 2
+raw_text = "~ bedroom_penguin
+
+It's a penguin![wait=0.5] Yup.[wait=0.75] Just a penguin.
+
+~ bedroom_penguin_2
+
+It's still just a penguin.
+
+~ bedroom_penguin_3
+
+Seriously[wait=0.2].[wait=0.2].[wait=0.2].[wait=1.5] it really is just a penguin."
+errors = [  ]
+titles = {
+"bedroom_penguin": "2",
+"bedroom_penguin_2": "6",
+"bedroom_penguin_3": "10"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "bedroom_penguin",
+"type": "title"
+},
+"10": {
+"character": "",
+"next_id": "",
+"replacements": [  ],
+"text": "Seriously[wait=0.2].[wait=0.2].[wait=0.2].[wait=1.5] it really is just a penguin.",
+"translation_key": "Seriously[wait=0.2].[wait=0.2].[wait=0.2].[wait=1.5] it really is just a penguin.",
+"type": "dialogue"
+},
+"2": {
+"character": "",
+"next_id": "",
+"replacements": [  ],
+"text": "It's a penguin![wait=0.5] Yup.[wait=0.75] Just a penguin.",
+"translation_key": "It's a penguin![wait=0.5] Yup.[wait=0.75] Just a penguin.",
+"type": "dialogue"
+},
+"4": {
+"next_id": "6",
+"text": "bedroom_penguin_2",
+"type": "title"
+},
+"6": {
+"character": "",
+"next_id": "",
+"replacements": [  ],
+"text": "It's still just a penguin.",
+"translation_key": "It's still just a penguin.",
+"type": "dialogue"
+},
+"8": {
+"next_id": "10",
+"text": "bedroom_penguin_3",
+"type": "title"
+}
+}

@@ -11,7 +11,7 @@
 [ext_resource path="res://sounds/computer/spille-piano-3.wav" type="AudioStream" id=9]
 [ext_resource path="res://sounds/computer/spille-piano-2.wav" type="AudioStream" id=10]
 [ext_resource path="res://sounds/computer/spille-piano-5.wav" type="AudioStream" id=11]
-[ext_resource path="res://TestShit/TestDialogueCreator.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/CanCreateDialogue.tscn" type="PackedScene" id=12]
 [ext_resource path="res://DialogBox/dialogue_text/bedroom_piano.tres" type="Resource" id=13]
 
 [sub_resource type="RectangleShape2D" id=9]
@@ -62,9 +62,13 @@ __meta__ = {
 position = Vector2( 276.25, -17.5 )
 shape = SubResource( 10 )
 
-[node name="TestDialogueCreator" parent="." instance=ExtResource( 12 )]
+[node name="CanCreateDialogue" parent="." instance=ExtResource( 12 )]
+unique_name_in_owner = true
 title = "bedroom_piano"
-dialogue_resource = ExtResource( 13 )
+dialogue = ExtResource( 13 )
+interactable_area = NodePath("../Area2D")
+stop_player = false
+trigger_from_node = true
 
 [connection signal="finished" from="PianoMusic" to="." method="_on_PianoMusic_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

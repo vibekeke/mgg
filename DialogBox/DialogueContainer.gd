@@ -58,7 +58,7 @@ func add_dialogue():
 		# show responses if they exist
 		is_processing_response = true
 		for response in dialogue.responses:
-			var response_item = preload("res://TestShit/ResponseTemplate.tscn").instance()
+			var response_item = preload("res://DialogBox/ResponseTemplate.tscn").instance()
 			response_item.name = "Response" + str(responses_list.get_child_count())
 			if not response.is_allowed:
 				response_item.name += "Disallowed"

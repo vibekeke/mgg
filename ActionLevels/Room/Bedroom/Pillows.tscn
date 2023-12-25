@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://imported_assets/bedroom/room_pillows-1.webp" type="Texture" id=1]
 [ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=2]
 [ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=3]
-[ext_resource path="res://DialogBox/DialogBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://DialogBox/dialogue_text/bedroom_pillows.tres" type="Resource" id=5]
 [ext_resource path="res://ActionLevels/Room/Bedroom/Pillows.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -24,16 +22,10 @@ __meta__ = {
 [node name="LightAlteringComponent" parent="." instance=ExtResource( 3 )]
 light_affected_item = NodePath("..")
 
-[node name="DialogBox" parent="." instance=ExtResource( 4 )]
-unique_name_in_owner = true
-title = "bedroom_pillows"
-dialogue_resource = ExtResource( 5 )
-
 [node name="InteractableArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
 position = Vector2( 8.75, -5 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="InteractableArea" to="." method="_on_InteractableArea_body_entered"]

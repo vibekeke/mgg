@@ -1,8 +1,8 @@
 extends Panel
 
 #swaped these cause looks better blue as focused
-var focused_theme : StyleBox = load("res://TestShit/ResponseTemplateUnfocused.tres")
-var unfocused_theme : StyleBox = load("res://TestShit/ResponseTemplateFocused.tres")
+var focused_theme : StyleBox = load("res://DialogBox/ResponseTemplateUnfocused.tres")
+var unfocused_theme : StyleBox = load("res://DialogBox/ResponseTemplateFocused.tres")
 onready var response_text = get_node("%Response")
 
 func set_text(text):

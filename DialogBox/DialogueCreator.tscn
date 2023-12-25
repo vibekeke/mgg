@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://TestShit/TestDialogueCreator.gd" type="Script" id=1]
+[ext_resource path="res://DialogBox/DialogueCreator.gd" type="Script" id=1]
 [ext_resource path="res://DialogBox/dialogue_text/bedroom_plant.tres" type="Resource" id=2]
 
 [node name="TestDialogueCreator" type="Node"]
