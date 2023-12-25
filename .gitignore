@@ -1,7 +1,6 @@
 .import/
 .idea/*
 .vscode/*
-TestShit/*
 sounds/speaking/*
 .DS_Store
 mggsave.save

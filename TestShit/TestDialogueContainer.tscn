@@ -1,0 +1,134 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_BG.png" type="Texture" id=1]
+[ext_resource path="res://TestShit/AnimatedTextureRect.gd" type="Script" id=2]
+[ext_resource path="res://TestShit/TestDialogueContainer.gd" type="Script" id=3]
+[ext_resource path="res://addons/dialogue_manager/dialogue_label.tscn" type="PackedScene" id=4]
+[ext_resource path="res://test_fonts/Comforta/Comfortaa-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Components/CanFloat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://imported_assets/hud/collectibles/Collected_Stars.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.12549, 0.619608, 1, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=12]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 48
+use_filter = true
+font_data = ExtResource( 5 )
+
+[node name="TestDialogueContainerCanvasLayer" type="CanvasLayer"]
+layer = 128
+script = ExtResource( 3 )
+
+[node name="TestDialogueContainer" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DialogueBackground" type="PanelContainer" parent="TestDialogueContainer"]
+anchor_left = 0.25
+anchor_top = 0.7
+anchor_right = 0.75
+anchor_bottom = 0.95
+custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="TestDialogueContainer/DialogueBackground"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 955.0
+margin_bottom = 265.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="DialogueContainer" type="VBoxContainer" parent="TestDialogueContainer/DialogueBackground/MarginContainer"]
+unique_name_in_owner = true
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 940.0
+margin_bottom = 250.0
+
+[node name="CharacterTitle" type="RichTextLabel" parent="TestDialogueContainer/DialogueBackground/MarginContainer/DialogueContainer"]
+unique_name_in_owner = true
+margin_right = 930.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 12 )
+bbcode_enabled = true
+bbcode_text = "Character"
+text = "Character"
+
+[node name="DialogueLabel" parent="TestDialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" instance=ExtResource( 4 )]
+unique_name_in_owner = true
+margin_top = 54.0
+margin_right = 930.0
+margin_bottom = 240.0
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_text = "Some dialogue"
+text = "Some dialogue"
+
+[node name="ResponsesList" type="HBoxContainer" parent="TestDialogueContainer"]
+unique_name_in_owner = true
+anchor_left = 0.2
+anchor_top = 0.39
+anchor_right = 0.8
+anchor_bottom = 0.5
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Portrait" type="TextureRect" parent="TestDialogueContainer"]
+unique_name_in_owner = true
+anchor_left = 0.65
+anchor_top = 0.6
+anchor_right = 0.65
+anchor_bottom = 0.6
+margin_right = 751.0
+margin_bottom = 728.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="AnimatedTextureRect" type="TextureRect" parent="TestDialogueContainer/Portrait"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+script = ExtResource( 2 )
+
+[node name="AwaitCursor" type="Sprite" parent="."]
+unique_name_in_owner = true
+position = Vector2( 1396, 981 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+
+[node name="CanFloat" parent="AwaitCursor" instance=ExtResource( 6 )]
+enable_only_when_visible = true
+
+[connection signal="gui_input" from="TestDialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" to="." method="_on_DialogueContainer_gui_input"]

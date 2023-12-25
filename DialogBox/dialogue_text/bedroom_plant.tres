@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 15
+resource_version = 20
 syntax_version = 2
 raw_text = "~ bedroom_plant
 

@@ -17,14 +17,14 @@ func _on_InteractableArea_body_exited(body):
 		player_in_area = false
 
 func display_dialogue():
+	Events.emit_signal("overworld_player_controlled", true)
 	dialog_box.create_dialogue_balloon()
 	dialogue_open = true
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept") and player_in_area and !dialogue_open:
-		print("display dialogue")
 		display_dialogue()
 
 func _on_dialogue_box_finished():
-	print("dialogue box finished")
+	Events.emit_signal("overworld_player_controlled", false)
 	dialogue_open = false

@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=1]
+[ext_resource path="res://TestShit/TestShitScript.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1920, 1080 )
+handle_input_locally = false
+usage = 1
+render_target_update_mode = 3
+
+[node name="WindowDialog" type="WindowDialog" parent="ViewportContainer/Viewport"]
+visible = true
+anchor_right = 0.325521
+anchor_bottom = 0.871296
+margin_left = 198.0
+margin_top = 51.0
+margin_right = 198.0
+margin_bottom = 51.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TabContainer" type="TabContainer" parent="ViewportContainer/Viewport/WindowDialog"]
+margin_right = 8.0
+margin_bottom = 36.0
+
+[node name="Button" type="Button" parent="ViewportContainer/Viewport/WindowDialog/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 27.0
+margin_right = -3.0
+margin_bottom = -3.0
+rect_min_size = Vector2( 600, 900 )
+shortcut_in_tooltip = false
+text = "Test"
+
+[connection signal="button_up" from="ViewportContainer/Viewport/WindowDialog/TabContainer/Button" to="." method="_on_Button_button_up"]
