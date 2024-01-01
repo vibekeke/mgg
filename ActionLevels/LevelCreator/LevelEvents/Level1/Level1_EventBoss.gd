@@ -2,6 +2,7 @@ extends LevelEvent
 
 onready var enemy_spawner = get_node("%EnemySpawner")
 onready var level_events_manager = get_node("%LevelEventsManager")
+onready var boss_warning_tape = get_node("%BossWarningTape")
 
 # timers
 onready var start_event_timer = Timer.new()
@@ -23,6 +24,7 @@ func _ready():
 	Events.connect("background_element_offscreen", self, "_on_background_element_offscreen")
 	boss_dialog.connect("timeline_end", self, "_on_timeline_end")
 	event_number = 6 # last level event
+	boss_warning_tape.connect("warning_finished", self, "_on_warning_finished")
 	event_name = "Level1_EventBoss"
 	if debug_mode:
 		_on_level_event_complete('dummy_event', 5)
@@ -42,7 +44,7 @@ func _on_level_event_complete(level_event_name, level_event_number) -> void:
 		end_event_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
 		end_event_timer.connect("timeout", self, "end_event")
 		end_event_timer.set_wait_time(3.0)
-		end_event_timer.set_one_shot(true)	
+		end_event_timer.set_one_shot(true)
 
 		wait_after_stopping_spawner_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
 		wait_after_stopping_spawner_timer.connect("timeout", self, "_on_wait_after_stopping_spawner_timer")
@@ -67,11 +69,15 @@ func _on_wait_after_stopping_spawner_timer():
 
 func _on_background_element_offscreen(element_name):
 	if element_name == DataClasses.Enemies.BIG_BIRD && level_events_manager.get_currently_running_event() == 6:
-		dialog_layer.add_child(boss_dialog)
+		boss_warning_tape.visible = true
+		boss_warning_tape.start_animation()
 
 func spawn_boss():
 	enemy_spawner.kill_non_boss_enemies()
 	enemy_spawner._direct_spawn_boss_at_position(boss, Vector2(1510, 620), 0)
+
+func _on_warning_finished():
+	dialog_layer.add_child(boss_dialog)
 
 func event_start() -> void:
 

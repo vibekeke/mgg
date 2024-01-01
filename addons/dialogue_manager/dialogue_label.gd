@@ -2,6 +2,7 @@ extends RichTextLabel
 
 
 signal spoke(letter, speed)
+signal arriving_characer(letter)
 signal paused(duration)
 signal finished()
 
@@ -96,6 +97,8 @@ func type_next(delta: float, seconds_needed: float) -> void:
 	else:
 		percent_visible += percent_per_index
 		index += 1
+		if index <= text.length():
+			emit_signal("arriving_characer", text[index - 1])
 		seconds_needed += seconds_per_step * (1.0 / get_speed(index))
 		if seconds_needed > delta:
 			waiting_seconds += seconds_needed

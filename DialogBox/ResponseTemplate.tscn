@@ -1,13 +1,63 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://test_fonts/Comforta/Comfortaa-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://DialogBox/ResponseTemplateFocused.tres" type="StyleBox" id=2]
+[ext_resource path="res://DialogBox/ResponseTemplateUnfocused.tres" type="StyleBox" id=2]
 [ext_resource path="res://DialogBox/ResponseTemplate.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=12]
 size = 32
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="Environment" id=13]
+background_mode = 4
+background_canvas_max_layer = 128
+glow_enabled = true
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 2.5, 2.5, 2.5, 1 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "glow"
+length = 2.001
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_styles/panel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:custom_styles/panel:border_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 2.5, 2.5, 2.5, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="ResponseTemplate" type="Panel"]
 margin_left = 768.0
@@ -48,6 +98,14 @@ custom_fonts/normal_font = SubResource( 12 )
 bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 13 )
+
+[node name="GlowAnimate" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/RESET = SubResource( 14 )
+anims/glow = SubResource( 15 )
 
 [connection signal="focus_entered" from="." to="." method="_on_ResponseTemplate_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_ResponseTemplate_focus_exited"]

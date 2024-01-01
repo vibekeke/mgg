@@ -7,6 +7,7 @@ onready var responses_list = get_node("%ResponsesList")
 onready var portrait = get_node("%Portrait")
 onready var character_title = get_node("%CharacterTitle")
 onready var await_cursor = get_node("%AwaitCursor")
+onready var dialogue_audio = get_node("%DialogueAudio")
 
 var dialogue
 var is_waiting_for_input: bool = false
@@ -40,17 +41,6 @@ func add_dialogue():
 		dialogue_label.rect_size.x = dialogue_label.get_parent().rect_size.x
 	dialogue_label.dialogue_line = dialogue
 
-#	if dialogue.responses.size() > 0:
-#		for response in dialogue.responses:
-#			var response_item = preload("res://TestShit/ResponseTemplate.tscn").instance()
-#			response_item.name = "Response" + str(responses_list.get_child_count())
-#			if not response.is_allowed:
-#				response_item.name += "Disallowed"
-#			response_item.set_text(response.text)
-#			response_item.connect("gui_input", self, "_on_response_gui_input", [response_item])
-#			response_item.show()
-#			responses_list.add_child(response_item)
-
 	dialogue_label.type_out()
 	yield(dialogue_label, "finished")
 	await_cursor.visible = true
@@ -83,7 +73,12 @@ func add_dialogue():
 
 
 func _ready() -> void:
+	dialogue_label.connect("arriving_characer", self, "_on_arriving_character")
 	add_dialogue()
+
+func _on_arriving_character(character):
+	if character != "" and (character == "a" or character == "e" or character == "i" or character == "o" or character == "u"):
+		dialogue_audio.play(0.0)
 
 func next(next_id: String) -> void:
 	if inputs_are_disabled:

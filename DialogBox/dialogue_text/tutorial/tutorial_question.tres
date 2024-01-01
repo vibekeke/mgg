@@ -1,0 +1,81 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 15
+syntax_version = 2
+raw_text = "~ tutorial_question
+
+Play the tutorial?
+- Heck yeah!
+	do go_to_scene(\"Tutorial\")
+- Heck no!
+	do go_to_scene(\"Bedroom\")"
+errors = [  ]
+titles = {
+"tutorial_question": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "tutorial_question",
+"type": "title"
+},
+"2": {
+"character": "",
+"next_id": "3",
+"replacements": [  ],
+"text": "Play the tutorial?",
+"translation_key": "Play the tutorial?",
+"type": "dialogue"
+},
+"3": {
+"next_id": "4",
+"next_id_after": "end!",
+"replacements": [  ],
+"responses": PoolStringArray( "3", "5" ),
+"text": "Heck yeah!",
+"translation_key": "Heck yeah!",
+"type": "response"
+},
+"4": {
+"mutation": {
+"expression": [ {
+"function": "go_to_scene",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Tutorial"
+} ] ]
+} ]
+},
+"next_id": "end!",
+"parent_id": "3",
+"type": "mutation"
+},
+"5": {
+"next_id": "6",
+"next_id_after": "end!",
+"replacements": [  ],
+"text": "Heck no!",
+"translation_key": "Heck no!",
+"type": "response"
+},
+"6": {
+"mutation": {
+"expression": [ {
+"function": "go_to_scene",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Bedroom"
+} ] ]
+} ]
+},
+"next_id": "end!",
+"parent_id": "5",
+"type": "mutation"
+}
+}

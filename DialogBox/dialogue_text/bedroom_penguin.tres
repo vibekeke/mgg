@@ -4,11 +4,11 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 7
+resource_version = 13
 syntax_version = 2
 raw_text = "~ bedroom_penguin
 
-It's a penguin![wait=0.5] Yup.[wait=0.75] Just a penguin.
+It's a penguin![wait=0.5]\\nYup.[wait=0.5] \\nJust a penguin.
 
 ~ bedroom_penguin_2
 
@@ -41,8 +41,12 @@ lines = {
 "character": "",
 "next_id": "",
 "replacements": [  ],
-"text": "It's a penguin![wait=0.5] Yup.[wait=0.75] Just a penguin.",
-"translation_key": "It's a penguin![wait=0.5] Yup.[wait=0.75] Just a penguin.",
+"text": "It's a penguin![wait=0.5]
+Yup.[wait=0.5] 
+Just a penguin.",
+"translation_key": "It's a penguin![wait=0.5]
+Yup.[wait=0.5] 
+Just a penguin.",
 "type": "dialogue"
 },
 "4": {

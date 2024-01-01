@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://addons/dialogue_manager/dialogue_label.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DialogBox/AnimatedTextureRect.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://DialogBox/DialogueContainer.gd" type="Script" id=5]
 [ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_BG.png" type="Texture" id=6]
 [ext_resource path="res://Components/CanFloat.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sounds/speaking/angel/angel_all_audio/twinkle_split_007.wav" type="AudioStream" id=8]
 
 [sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.12549, 0.619608, 1, 1 )
@@ -130,5 +131,11 @@ texture = ExtResource( 4 )
 
 [node name="CanFloat" parent="AwaitCursor" instance=ExtResource( 7 )]
 enable_only_when_visible = true
+
+[node name="DialogueAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 8 )
+volume_db = -10.0
+pitch_scale = 0.7
 
 [connection signal="gui_input" from="TestDialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" to="." method="_on_DialogueContainer_gui_input"]

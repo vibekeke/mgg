@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://ActionLevels/Room/Bedroom/Computer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/OverworldPlayer.tscn" type="PackedScene" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://ActionLevels/Room/Bedroom/RoomLightsArea.gd" type="Script" id=20]
 [ext_resource path="res://ActionLevels/Room/Bedroom/RoomLight.tscn" type="PackedScene" id=21]
 [ext_resource path="res://sounds/bedroom/light-switch.wav" type="AudioStream" id=22]
+[ext_resource path="res://Components/CanCreateDialogue.tscn" type="PackedScene" id=23]
+[ext_resource path="res://DialogBox/dialogue_text/bedroom_door.tres" type="Resource" id=24]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
@@ -145,6 +147,9 @@ extents = Vector2( 97, 56.5 )
 [sub_resource type="RectangleShape2D" id=46]
 extents = Vector2( 25, 34 )
 
+[sub_resource type="RectangleShape2D" id=49]
+extents = Vector2( 37, 31 )
+
 [node name="Bedroom" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -177,7 +182,7 @@ material = SubResource( 37 )
 
 [node name="OverworldPlayer" parent="YSort" instance=ExtResource( 2 )]
 unique_name_in_owner = true
-position = Vector2( 784, 525 )
+position = Vector2( 1049, 676 )
 
 [node name="Lamp" parent="YSort" instance=ExtResource( 5 )]
 material = SubResource( 38 )
@@ -295,5 +300,20 @@ volume_db = -10.0
 [node name="PlayerSitPosition" type="Position2D" parent="."]
 unique_name_in_owner = true
 position = Vector2( 962, 417 )
+
+[node name="DoorArea" type="Area2D" parent="."]
+position = Vector2( 762, 410 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea"]
+position = Vector2( 2, -21 )
+shape = SubResource( 49 )
+
+[node name="CanCreateDialogue" parent="DoorArea" instance=ExtResource( 23 )]
+title = "bedroom_door"
+dialogue = ExtResource( 24 )
+interactable_area = NodePath("..")
 
 [editable path="ComputerScreen2D"]

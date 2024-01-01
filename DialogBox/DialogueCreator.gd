@@ -35,6 +35,5 @@ func _on_dialogue_finished():
 	timer.start()
 
 func _on_Timer_timeout():
-	print("timing out")
 	enable_create_dialogue_balloon = true
 	emit_signal("dialogue_box_finished")

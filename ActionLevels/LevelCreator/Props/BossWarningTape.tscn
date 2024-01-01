@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/Props/warning_bar.png" type="Texture" id=1]
+[ext_resource path="res://CustomShaders/loop.tres" type="Shader" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/Props/boss_aprproaching.png" type="Texture" id=3]
+[ext_resource path="res://ActionLevels/LevelCreator/Props/warning_symbol.png" type="Texture" id=4]
+[ext_resource path="res://ActionLevels/LevelCreator/Props/BossWarningTape.gd" type="Script" id=5]
+[ext_resource path="res://sounds/level/warning-sound.wav" type="AudioStream" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/Direction = Vector2( 1, 0 )
+shader_param/Speed = 0.1
+
+[sub_resource type="Animation" id=2]
+resource_name = "warning_tape"
+tracks/0/type = "value"
+tracks/0/path = NodePath("BossWarningTapeLayer/BossApproaching:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -960, 270 ), Vector2( 960, 270 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BossWarningTapeLayer/WarningTape:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2880, 540 ), Vector2( 960, 540 ) ]
+}
+
+[sub_resource type="Environment" id=3]
+background_mode = 4
+background_canvas_max_layer = 128
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 2 )
+shader_param/Direction = Vector2( -1, 0 )
+shader_param/Speed = 0.1
+
+[sub_resource type="CanvasItemMaterial" id=6]
+
+[node name="BossWarningTape" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="BossWarningTapeLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 10
+visible = false
+
+[node name="WarningTape" type="Sprite" parent="BossWarningTapeLayer"]
+material = SubResource( 1 )
+position = Vector2( 2880, 540 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 135 )
+
+[node name="WarningTapeAnimationPlayer" type="AnimationPlayer" parent="BossWarningTapeLayer"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+anims/warning_tape = SubResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="BossWarningTapeLayer"]
+environment = SubResource( 3 )
+
+[node name="WarningSymbol" type="Sprite" parent="BossWarningTapeLayer"]
+unique_name_in_owner = true
+position = Vector2( 960, 582 )
+texture = ExtResource( 4 )
+
+[node name="BossApproaching" type="Sprite" parent="BossWarningTapeLayer"]
+material = SubResource( 4 )
+position = Vector2( -960, 270 )
+texture = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="BossWarningTapeLayer"]
+unique_name_in_owner = true
+repeat = true
+playback/repeat = true
+
+[node name="WarningSiren" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 6 )
+volume_db = -10.0
+
+[node name="ColorRectLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 9
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="ColorRectLayer"]
+unique_name_in_owner = true
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.94902, 0.105882, 0.105882, 1 )
+
+[node name="ColorRectTween" type="Tween" parent="ColorRectLayer"]
+unique_name_in_owner = true
+
+[node name="SirenTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 4.5
+one_shot = true
+
+[connection signal="animation_finished" from="BossWarningTapeLayer/WarningTapeAnimationPlayer" to="." method="_on_WarningTapeAnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="BossWarningTapeLayer/WarningTapeAnimationPlayer" to="." method="_on_WarningTapeAnimationPlayer_animation_started"]
+[connection signal="tween_completed" from="BossWarningTapeLayer/Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="tween_completed" from="ColorRectLayer/ColorRectTween" to="." method="_on_ColorRectTween_tween_completed"]
+[connection signal="timeout" from="SirenTimer" to="." method="_on_SirenTimer_timeout"]

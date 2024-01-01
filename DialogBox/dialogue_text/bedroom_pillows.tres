@@ -4,11 +4,12 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 4
+resource_version = 5
 syntax_version = 2
 raw_text = "~ bedroom_pillows
 
-These pillows were once part of a great fort.[wait=1] Now,[wait=1] they lie in ruins..."
+These pillows were once part of a great fort.
+Now,[wait=1] they lie in ruins..."
 errors = [  ]
 titles = {
 "bedroom_pillows": "2"
@@ -21,10 +22,18 @@ lines = {
 },
 "2": {
 "character": "",
+"next_id": "3",
+"replacements": [  ],
+"text": "These pillows were once part of a great fort.",
+"translation_key": "These pillows were once part of a great fort.",
+"type": "dialogue"
+},
+"3": {
+"character": "",
 "next_id": "",
 "replacements": [  ],
-"text": "These pillows were once part of a great fort.[wait=1] Now,[wait=1] they lie in ruins...",
-"translation_key": "These pillows were once part of a great fort.[wait=1] Now,[wait=1] they lie in ruins...",
+"text": "Now,[wait=1] they lie in ruins...",
+"translation_key": "Now,[wait=1] they lie in ruins...",
 "type": "dialogue"
 }
 }

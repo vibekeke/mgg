@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/IsTalkingEnemy.gd" type="Script" id=1]
+
+[node name="IsTalkingEnemy" type="Node"]
+script = ExtResource( 1 )

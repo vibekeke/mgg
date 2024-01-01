@@ -1,0 +1,48 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 5
+syntax_version = 2
+raw_text = "~ bedroom_door
+
+You thought about leaving your room.
+But only for a second.
+Who actually wants to leave their room?"
+errors = [  ]
+titles = {
+"bedroom_door": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "bedroom_door",
+"type": "title"
+},
+"2": {
+"character": "",
+"next_id": "3",
+"replacements": [  ],
+"text": "You thought about leaving your room.",
+"translation_key": "You thought about leaving your room.",
+"type": "dialogue"
+},
+"3": {
+"character": "",
+"next_id": "4",
+"replacements": [  ],
+"text": "But only for a second.",
+"translation_key": "But only for a second.",
+"type": "dialogue"
+},
+"4": {
+"character": "",
+"next_id": "",
+"replacements": [  ],
+"text": "Who actually wants to leave their room?",
+"translation_key": "Who actually wants to leave their room?",
+"type": "dialogue"
+}
+}

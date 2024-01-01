@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -43,6 +43,7 @@
 [ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=41]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerfly.tscn" type="PackedScene" id=42]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventEnd.tscn" type="PackedScene" id=43]
+[ext_resource path="res://ActionLevels/LevelCreator/Props/BossWarningTape.tscn" type="PackedScene" id=44]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -174,4 +175,8 @@ time_until_event_start = 3.0
 [node name="Level1_EventEnd" parent="LevelEventsManager" instance=ExtResource( 43 )]
 
 [node name="SceneManager" parent="." instance=ExtResource( 41 )]
+visible = false
+
+[node name="BossWarningTape" parent="." instance=ExtResource( 44 )]
+unique_name_in_owner = true
 visible = false

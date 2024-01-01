@@ -2,7 +2,7 @@ extends Control
 
 export (PackedScene) var root_scene
 
-onready var resolution_list = $CanvasLayer/OptionsMenu/HBoxContainer/ResolutionList
+onready var resolution_list = $MenuLayer/OptionsMenu/HBoxContainer/ResolutionList
 onready var star_select_start = get_node("%StarSelectStart")
 onready var star_select_load = get_node("%StarSelectLoad")
 onready var star_select_options = get_node("%StarSelectOptions")
@@ -10,17 +10,15 @@ onready var star_select_quit = get_node("%StarSelectQuit")
 onready var title_screen_animation = get_node("%TitleScreenAnimation")
 onready var camera = get_node("%Camera2D")
 onready var tween = get_node("%Tween")
+onready var scene_manager = get_node("%SceneManager")
 
 func _ready():
 	tween.interpolate_property(camera, "position",
 		camera.position, Vector2(961, 540), 2,
 		Tween.TRANS_SINE, Tween.EASE_IN)
 	tween.start()
-	var scene_manager = get_node_or_null("%SceneManager")
-	if scene_manager != null:
-		scene_manager.visible = true
+	scene_manager.visible = true
 	$MenuLayer/OptionsMenu/HBoxContainer/ResolutionButton.connect("pressed", self, "_on_ResolutionButton_pressed")
-	$MenuLayer/VBoxContainer/StartButton.grab_focus()
 	$MenuLayer/OptionsMenu/HBoxContainer/ResolutionList.connect("item_activated", self, "_on_ResolutionList_item_activated")
 	var directory = Directory.new()
 	var fileExists = directory.file_exists(Events.SAVE_FILE_LOCATION)
@@ -71,11 +69,11 @@ func send_to_computer(last_completed_level: int):
 		0:
 			Events.emit_signal("transition_to_scene", "TutorialSelection")
 		1:
-			Events.emit_signal("transition_to_scene", "ComputerScreen")
+			Events.emit_signal("transition_to_scene", "Bedroom")
 		2:
-			Events.emit_signal("transition_to_scene", "ComputerScreen")
+			Events.emit_signal("transition_to_scene", "Bedroom")
 		3:
-			Events.emit_signal("transition_to_scene", "ComputerScreen")
+			Events.emit_signal("transition_to_scene", "Bedroom")
 
 func _on_LoadButton_pressed():
 	$AudioStreamPlayer.play(0.0)
@@ -116,3 +114,8 @@ func _on_QuitButton_focus_exited():
 
 func _on_Tween_tween_all_completed():
 	title_screen_animation.play("characters_appear")
+
+
+func _on_TitleScreenAnimation_animation_finished(anim_name):
+	if anim_name == "characters_appear":
+		$MenuLayer/VBoxContainer/StartButton.grab_focus()

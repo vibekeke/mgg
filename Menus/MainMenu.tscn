@@ -291,3 +291,4 @@ centered = false
 [connection signal="focus_exited" from="MenuLayer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_focus_exited"]
 [connection signal="pressed" from="MenuLayer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="animation_finished" from="TitleScreenAnimation" to="." method="_on_TitleScreenAnimation_animation_finished"]
