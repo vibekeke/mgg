@@ -119,7 +119,6 @@ editor_draw_drag_margin = true
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer"]
 anchor_left = 0.5
@@ -250,16 +249,14 @@ unique_name_in_owner = true
 [node name="CharacterLayer" type="CanvasLayer" parent="."]
 
 [node name="CoverArtMC" type="Sprite" parent="CharacterLayer"]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -572, 568 )
+position = Vector2( 1273, 568 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 11 )
 script = ExtResource( 14 )
 amplitude = 1.0
 
 [node name="CoverArtSidekick" type="Sprite" parent="CharacterLayer"]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 2567, 829 )
+position = Vector2( 1207, 829 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 12 )
 script = ExtResource( 15 )

@@ -43,6 +43,7 @@ __meta__ = {
 }
 
 [node name="DialogueBackground" type="PanelContainer" parent="TestDialogueContainer"]
+unique_name_in_owner = true
 anchor_left = 0.25
 anchor_top = 0.7
 anchor_right = 0.75
@@ -123,13 +124,13 @@ margin_right = 20.0
 margin_bottom = 20.0
 script = ExtResource( 2 )
 
-[node name="AwaitCursor" type="Sprite" parent="."]
+[node name="AwaitCursor" type="Sprite" parent="TestDialogueContainer"]
 unique_name_in_owner = true
 position = Vector2( 1396, 981 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
 
-[node name="CanFloat" parent="AwaitCursor" instance=ExtResource( 7 )]
+[node name="CanFloat" parent="TestDialogueContainer/AwaitCursor" instance=ExtResource( 7 )]
 enable_only_when_visible = true
 
 [node name="DialogueAudio" type="AudioStreamPlayer" parent="."]

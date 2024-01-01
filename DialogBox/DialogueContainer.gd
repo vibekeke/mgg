@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal actioned(next_id)
+export var dialogue_box_upper := false
 onready var dialogue_label = get_node("%DialogueLabel")
 onready var dialogue_container = get_node("%DialogueContainer")
 onready var responses_list = get_node("%ResponsesList")
