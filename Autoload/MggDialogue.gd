@@ -4,10 +4,11 @@ signal mgg_dialogue_box_finished(node_id)
 var node_id_in_use = -1
 var current_dialogue_creator_node
 
-func create_dialogue_balloon(title: String, dialogue_resource: Resource, node_id: int):
+func create_dialogue_balloon(title: String, dialogue_resource: Resource, node_id: int, placement: int = DataClasses.Placement.LOWER):
 	var dialogue_creator = load("res://DialogBox/DialogueCreator.tscn").instance()
 	dialogue_creator.title = title
-	dialogue_creator.dialogue_resource =dialogue_resource
+	dialogue_creator.dialogue_resource = dialogue_resource
+	dialogue_creator.placement = placement
 	dialogue_creator.connect("dialogue_box_finished", self, "_on_dialogue_box_finished")
 	node_id_in_use = node_id
 	#get_tree().current_scene.add_child(dialogue_creator)

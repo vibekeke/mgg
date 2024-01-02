@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 signal actioned(next_id)
-export var dialogue_box_upper := false
+onready var dialogue_main_window = get_node("%DialogueBackground")
 onready var dialogue_label = get_node("%DialogueLabel")
 onready var dialogue_container = get_node("%DialogueContainer")
 onready var responses_list = get_node("%ResponsesList")
@@ -9,6 +9,15 @@ onready var portrait = get_node("%Portrait")
 onready var character_title = get_node("%CharacterTitle")
 onready var await_cursor = get_node("%AwaitCursor")
 onready var dialogue_audio = get_node("%DialogueAudio")
+onready var star_flicker_animation_player = get_node("%StarFlickerAnimationPlayer")
+
+var placement_dictionary = {
+	DataClasses.Placement.LOWER: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(1396.0, 981.0)}},
+	DataClasses.Placement.MIDDLE: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(0.0,0.0)}},
+	DataClasses.Placement.UPPER: {'dialogue_main_window': {'top': 0.05, 'bottom': 0.3}, 'portrait': {'top': 0.0, 'bottom': 0.0}, 'cursor': {'position': Vector2(1396.0, 290.0)}}
+}
+
+var placement = DataClasses.Placement.LOWER
 
 var dialogue
 var is_waiting_for_input: bool = false
@@ -45,6 +54,7 @@ func add_dialogue():
 	dialogue_label.type_out()
 	yield(dialogue_label, "finished")
 	await_cursor.visible = true
+	star_flicker_animation_player.play("flicker")
 	if dialogue.responses.size() > 0:
 		# show responses if they exist
 		is_processing_response = true
@@ -73,7 +83,17 @@ func add_dialogue():
 	inputs_are_disabled = false
 
 
+func container_placement():
+	dialogue_main_window.anchor_bottom = placement_dictionary[placement]['dialogue_main_window']['bottom']
+	dialogue_main_window.anchor_top = placement_dictionary[placement]['dialogue_main_window']['top']
+
+	portrait.anchor_bottom = placement_dictionary[placement]['portrait']['top']
+	portrait.anchor_top = placement_dictionary[placement]['portrait']['bottom']
+
+	await_cursor.global_position = placement_dictionary[placement]['cursor']['position']
+
 func _ready() -> void:
+	container_placement()
 	dialogue_label.connect("arriving_characer", self, "_on_arriving_character")
 	add_dialogue()
 

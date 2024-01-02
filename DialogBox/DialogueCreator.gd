@@ -7,6 +7,7 @@ export var dialogue_resource: Resource
 var dialogue_begun = false
 var has_connected_signal = false
 var enable_create_dialogue_balloon = true
+export var placement: int = DataClasses.Placement.LOWER
 onready var timer = get_node("%Timer")
 
 func _ready():
@@ -22,6 +23,7 @@ func show_dialogue(key: String) -> void:
 		self.get_child(1).set_next_dialogue(dialogue)
 	else:
 		var new_dialogue_bubble = load("res://DialogBox/DialogueContainer.tscn").instance()
+		new_dialogue_bubble.placement = placement
 		new_dialogue_bubble.set_dialogue(dialogue)
 		self.add_child(new_dialogue_bubble)
 	show_dialogue(yield(self.get_child(1), "actioned"))

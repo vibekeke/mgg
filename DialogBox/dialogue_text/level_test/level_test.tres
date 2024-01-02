@@ -4,12 +4,14 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 1
+resource_version = 3
 syntax_version = 2
 raw_text = "~ level_test
-I'm just a beeeeee.
-I don't know what else I can beeeee.
-Are you a beeee?"
+I'm just a bee.
+I don't know what else I can bee.
+Are you a bee?
+- Buzz off...
+- I can bee."
 errors = [  ]
 titles = {
 "level_test": "1"
@@ -24,24 +26,41 @@ lines = {
 "character": "",
 "next_id": "2",
 "replacements": [  ],
-"text": "I'm just a beeeeee.",
-"translation_key": "I'm just a beeeeee.",
+"text": "I'm just a bee.",
+"translation_key": "I'm just a bee.",
 "type": "dialogue"
 },
 "2": {
 "character": "",
 "next_id": "3",
 "replacements": [  ],
-"text": "I don't know what else I can beeeee.",
-"translation_key": "I don't know what else I can beeeee.",
+"text": "I don't know what else I can bee.",
+"translation_key": "I don't know what else I can bee.",
 "type": "dialogue"
 },
 "3": {
 "character": "",
-"next_id": "",
+"next_id": "4",
 "replacements": [  ],
-"text": "Are you a beeee?",
-"translation_key": "Are you a beeee?",
+"text": "Are you a bee?",
+"translation_key": "Are you a bee?",
 "type": "dialogue"
+},
+"4": {
+"next_id": "end!",
+"next_id_after": "end!",
+"replacements": [  ],
+"responses": PoolStringArray( "4", "5" ),
+"text": "Buzz off...",
+"translation_key": "Buzz off...",
+"type": "response"
+},
+"5": {
+"next_id": "",
+"next_id_after": "end!",
+"replacements": [  ],
+"text": "I can bee.",
+"translation_key": "I can bee.",
+"type": "response"
 }
 }

@@ -18,9 +18,8 @@ func floating(delta):
 	_parent.global_position.y = new_y
 
 func _physics_process(delta):
-	if enabled:
-		if enable_only_when_visible and _parent.visible:
-			floating(delta)
-		else:
-			floating(delta)
+	if enabled and !enable_only_when_visible:
+		floating(delta)
+	elif enabled and enable_only_when_visible and _parent.visible:
+		floating(delta)
 
