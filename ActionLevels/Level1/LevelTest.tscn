@@ -69,10 +69,6 @@ unique_name_in_owner = true
 [node name="LevelEventsManager" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 962, 538 )
-current = true
-zoom = Vector2( 1.5, 1.5 )
-
 [node name="NewMisbeehave" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
 position = Vector2( 1472, 877 )

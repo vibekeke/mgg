@@ -31,6 +31,7 @@ signal level_event_complete(level_event_name, event_number)
 signal level_complete
 signal background_element_offscreen(element_name)
 signal tutorial_element_touched(element_id)
+signal in_battle_dialogue(_in_battle_dialogue)
 
 # overworld related
 signal overworld_player_controlled(status)

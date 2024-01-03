@@ -18,7 +18,8 @@ onready var action_level_list = {
 	"ComputerScreen": "res://ActionLevels/Room/ComputerScreen.tscn",
 	"Intro": "res://Cutscenes/Intro.tscn",
 	"PreLevel1Cutscene": "res://Cutscenes/PreLevel1Cutscene.tscn",
-	"Bedroom": "res://ActionLevels/Room/Bedroom/Bedroom.tscn"
+	"Bedroom": "res://ActionLevels/Room/Bedroom/Bedroom.tscn",
+	"DialogueStage": "res://ActionLevels/Level1/LevelDialogueStage.tscn"
 }
 
 func _ready():

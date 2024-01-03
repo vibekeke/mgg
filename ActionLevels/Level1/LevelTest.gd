@@ -2,6 +2,6 @@ extends Node2D
 
 var title = "level_test"
 export var dialogue : Resource
+var bee_talking = false
 
-func _ready():
-	pass
+onready var misbeehave = get_node("%NewMisbeehave")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://imported_assets/spotlight/spotlight.png" type="Texture" id=5]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/NewMisbeehave/NewMisbeehave.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ActionLevels/Level1/LevelDialogueStage.gd" type="Script" id=7]
+[ext_resource path="res://HUD/SceneTransitionAnimation.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.156863, 0.156863, 0.156863, 1, 0.156863, 0.156863, 0.156863, 1 )
@@ -251,6 +252,7 @@ position = Vector2( 5.96046e-08, 919 )
 scale = Vector2( 119.813, 10 )
 
 [node name="NewMisbeehave" parent="." instance=ExtResource( 6 )]
+unique_name_in_owner = true
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 2129, 819 )
 moving = false
@@ -261,3 +263,6 @@ anims/RESET = SubResource( 7 )
 anims/start_spotlight = SubResource( 6 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource( 8 )]
+unique_name_in_owner = true

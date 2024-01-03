@@ -138,7 +138,7 @@ func _on_screen_exited():
 			start_respawning_player = true
 
 func _player_transition_to_scene(scene_name):
-	print("Player will transitioned to scene", scene_name)
+	print("Player will transition to scene", scene_name)
 
 func _on_has_charge_shot():
 	has_charge_shot = true

@@ -91,6 +91,7 @@ var has_double_jumped = false
 var is_jump_disabled = false
 var is_shoot_disabled = false
 var is_move_disabled = false
+var in_battle_dialogue = false
 
 export (PackedScene) var gunshot
 export (PackedScene) var charge_shot
@@ -112,6 +113,8 @@ func _ready():
 	Events.connect("transition_to_scene", self, "_player_transition_to_scene")
 	Events.connect("collected_heart", self, "_on_collected_heart")
 	Events.connect("has_charge_shot", self, "_on_has_charge_shot")
+	Events.connect("in_battle_dialogue", self, "_on_in_battle_dialogue")
+	
 	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
 	_forward_animation_tree.active = true
 	_up_animation_tree.active = true
@@ -128,14 +131,18 @@ func _ready():
 	travel_to_animation("Run")
 	setup_debug_canvas(debug_mode)
 
+func _on_in_battle_dialogue(_in_battle_dialogue):
+	in_battle_dialogue = _in_battle_dialogue
+	
+
 func _on_screen_exited():
-	if self.global_position.y > 0:
+	if self.global_position.y > 0 and !in_battle_dialogue:
 		take_damage(1)
 		if current_health > 0:
 			start_respawning_player = true
 
 func _player_transition_to_scene(scene_name):
-	print("Player will transitioned to scene", scene_name)
+	print("Player will transition to scene", scene_name)
 
 func _on_has_charge_shot():
 	has_charge_shot = true
@@ -312,15 +319,16 @@ func _on_disable_player_action(to_disable):
 		is_move_disabled = !is_move_disabled
 
 func take_damage(damage):
-	current_health = current_health - damage
-	Events.emit_signal("player_damaged", damage)
-	Events.emit_signal("player_current_health", current_health)
-	if current_health > 0:
-		invul_timer.start()
-		modulate.a = 0.5
-	if current_health <= 0:
-		Events.emit_signal("game_over")
-		self.queue_free()
+	if !in_battle_dialogue:
+		current_health = current_health - damage
+		Events.emit_signal("player_damaged", damage)
+		Events.emit_signal("player_current_health", current_health)
+		if current_health > 0:
+			invul_timer.start()
+			modulate.a = 0.5
+		if current_health <= 0:
+			Events.emit_signal("game_over")
+			self.queue_free()
 
 func _on_collided_with_player(damage):
 	if debug_mode:
@@ -406,18 +414,19 @@ func initiate_slide():
 	is_sliding = true
 
 func animation_to_show():
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("up") and !is_shoot_disabled:
 		$StaffForward.visible = false
 		$StaffUp.visible = true
 		$StaffDown.visible = false
-	elif Input.is_action_pressed("down"):
+	elif Input.is_action_pressed("down") and !is_shoot_disabled:
 		$StaffForward.visible = false
 		$StaffUp.visible = false
 		$StaffDown.visible = true
 	else:
-		$StaffForward.visible = true
-		$StaffUp.visible = false
-		$StaffDown.visible = false
+		if !is_shoot_disabled:
+			$StaffForward.visible = true
+			$StaffUp.visible = false
+			$StaffDown.visible = false
 
 func get_active_aiming_state():
 	if $StaffForward.visible:
