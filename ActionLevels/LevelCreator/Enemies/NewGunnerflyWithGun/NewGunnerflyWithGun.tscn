@@ -1,0 +1,102 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Components/CanDieOffScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Components/HasSpawnLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/CanSpawnCollectible.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/CanDamagePlayerOnTouch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://imported_assets/actors/gunnerfly/Gunnerfly.png" type="Texture" id=5]
+[ext_resource path="res://Components/CanTakeDamage.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/CanMoveSingleDirection.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/NewGunnerflyWithGun/NewGunnerflyWithGun.gd" type="Script" id=10]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 150, 176.25 )
+
+[node name="NewGunnerflyWithGun" type="Node2D"]
+scale = Vector2( 0.4, 0.4 )
+script = ExtResource( 10 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+playing = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 27.5, 26.25 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 6 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 27.5, 26.25 )
+scale = Vector2( 15, 17.625 )
+
+[node name="CanDamagePlayerOnTouch" parent="." instance=ExtResource( 4 )]
+enemy = NodePath("..")
+enemy_area = NodePath("../Area2D")
+take_damage = NodePath("../CanTakeDamage")
+
+[node name="CanDieOffScreen" parent="." instance=ExtResource( 1 )]
+enemy = NodePath("..")
+visibility_notifier = NodePath("../VisibilityNotifier2D")
+
+[node name="CanMoveSingleDirection" parent="." instance=ExtResource( 7 )]
+unique_name_in_owner = true
+enemy = NodePath("..")
+speed = 600
+
+[node name="CanSpawnCollectible" parent="." instance=ExtResource( 3 )]
+enemy = NodePath("..")
+droppables = [ ExtResource( 9 ), ExtResource( 8 ) ]
+take_damage = NodePath("../CanTakeDamage")
+
+[node name="CanTakeDamage" parent="." instance=ExtResource( 6 )]
+enemy = NodePath("..")
+enemy_area = NodePath("../Area2D")
+enemy_sprite = NodePath("../AnimatedSprite")
+health_value = 4
+
+[node name="HasSpawnLevel" parent="." instance=ExtResource( 2 )]
+spawn_height = [ 0 ]
+
+[node name="BulletPosition" type="Position2D" parent="."]
+unique_name_in_owner = true
+position = Vector2( -225, 97.5 )
+
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.7
+autostart = true
+
+[node name="StopMovingTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="StopMovingTimer" to="." method="_on_StopMovingTimer_timeout"]

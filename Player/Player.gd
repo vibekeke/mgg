@@ -131,7 +131,7 @@ func _ready():
 	travel_to_animation("Run")
 	setup_debug_canvas(debug_mode)
 
-func _on_in_battle_dialogue(_in_battle_dialogue):
+func _on_in_battle_dialogue(_in_battle_dialogue, _enemy_name):
 	in_battle_dialogue = _in_battle_dialogue
 	
 
@@ -141,8 +141,8 @@ func _on_screen_exited():
 		if current_health > 0:
 			start_respawning_player = true
 
-func _player_transition_to_scene(scene_name):
-	print("Player will transition to scene", scene_name)
+func _player_transition_to_scene(scene_name, dialogue_scene):
+	print("Player will transition to scene", scene_name, dialogue_scene)
 
 func _on_has_charge_shot():
 	has_charge_shot = true

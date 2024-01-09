@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/CanGravitateTowardsPlayer.gd" type="Script" id=1]
+
+[node name="CanGravitateTowardsPlayer" type="Node" groups=["component"]]
+script = ExtResource( 1 )

@@ -81,7 +81,6 @@ unique_name_in_owner = true
 material = SubResource( 9 )
 position = Vector2( 12, -29 )
 frames = SubResource( 7 )
-frame = 1
 speed_scale = 2.0
 playing = true
 

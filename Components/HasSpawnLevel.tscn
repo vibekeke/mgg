@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/HasSpawnLevel.gd" type="Script" id=1]
+
+[node name="HasSpawnLevel" type="Node" groups=["component", "spawn_height_component"]]
+script = ExtResource( 1 )

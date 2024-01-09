@@ -4,9 +4,8 @@ extends CanvasLayer
 export (float) var fade_duration := 0.5
 export (String, "Tutorial", "Level1", "Level2", "Level3", "GameOver", "None") var retry_scene
 
-onready var color_rect: ColorRect = $ColorRect
-onready var tween: Tween = $Tween
-#onready var tween = get_tree().create_tween()
+onready var color_rect = get_node("%ColorRect")
+onready var tween = get_node("%Tween")
 
 onready var action_level_list = {
 	"Tutorial": "res://ActionLevels/Tutorial/Level0_Tutorial.tscn",
@@ -35,7 +34,7 @@ func get_scene_path(scene_name):
 	else:
 		print("Scene not present in action level list")
 
-func _transition_to_next_scene(_next_scene):
+func _transition_to_next_scene(_next_scene, battle_dialogue_intro: bool = false):
 	color_rect.show()
 	tween.interpolate_property(color_rect, "modulate:a", 0, 1, fade_duration)
 	tween.start()

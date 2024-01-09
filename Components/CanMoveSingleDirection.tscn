@@ -2,5 +2,5 @@
 
 [ext_resource path="res://Components/CanMoveSingleDirection.gd" type="Script" id=1]
 
-[node name="CanMoveSingleDirection" type="Node"]
+[node name="CanMoveSingleDirection" type="Node" groups=["component"]]
 script = ExtResource( 1 )

@@ -21,7 +21,7 @@ frames = SubResource( 3 )
 playing = true
 script = ExtResource( 2 )
 
-[node name="GunshotArea2D" type="Area2D" parent="."]
+[node name="GunshotArea2D" type="Area2D" parent="." groups=["damage_from_player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GunshotArea2D"]
 position = Vector2( 30.5352, 26.2419 )

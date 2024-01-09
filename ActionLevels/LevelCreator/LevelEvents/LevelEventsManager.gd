@@ -3,7 +3,7 @@ extends Node
 var completed_events_map = {}
 var currently_running_event = -1
 onready var total_events = self.get_children().size()
-onready var enemy_spawner = get_node("%EnemySpawner")
+#onready var enemy_spawner = get_node("%EnemySpawner")
 var a = 0
 func _ready():
 	Events.connect("level_event_lock", self, "_on_currently_running_event")

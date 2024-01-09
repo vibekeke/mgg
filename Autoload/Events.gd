@@ -11,7 +11,7 @@ signal has_charge_shot # whether player has charge shot or not
 signal fired_charge_shot # charge shot has just been fired
 
 # game state, e.g. scene transitions, game overs, cutscenes
-signal transition_to_scene(to_scene)
+signal transition_to_scene(to_scene, to_dialogue_screen)
 signal game_over # player has died or game has ended for some other reason
 signal disable_player_action(to_disable)
 signal disable_enemy_action(to_disable)
@@ -31,7 +31,8 @@ signal level_event_complete(level_event_name, event_number)
 signal level_complete
 signal background_element_offscreen(element_name)
 signal tutorial_element_touched(element_id)
-signal in_battle_dialogue(_in_battle_dialogue)
+signal in_battle_dialogue(_in_battle_dialogue, enemy_name)
+signal dialogue_intro_finished
 
 # overworld related
 signal overworld_player_controlled(status)
@@ -57,11 +58,11 @@ func _disable_enemy_actions(to_disable):
 
 
 func transition_to_new_scene(next_scene):
-	self.emit_signal("transition_to_scene", next_scene)
+	self.emit_signal("transition_to_scene", next_scene, true)
 	
 func go_to_game_over():
 	print("transition to game over screen")
-	self.emit_signal("transition_to_scene", "GameOver")
+	self.emit_signal("transition_to_scene", "GameOver", false)
 
 
 onready var enemyPaths = {
@@ -73,6 +74,8 @@ onready var enemyPaths = {
 	'Satan': 'res://ActionLevels/LevelCreator/Enemies/Satan/Satan.tscn',
 	'PathedMisbeehave': 'res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn',
 	'SneakySnake': 'res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake.tscn',
+	'NewMisbeehave': 'res://ActionLevels/LevelCreator/Enemies/NewMisbeehave/NewMisbeehave.tscn',
+	'BigBird': 'res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn'
 }
 
 onready var level_collectibles = {

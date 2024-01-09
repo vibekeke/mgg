@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/NewMisbeehave/NewMisbeehave.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ActionLevels/EnemySpawnerNew.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=4]
@@ -10,15 +10,11 @@
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=12]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticBroBear/StaticBroBear.tscn" type="PackedScene" id=13]
 [ext_resource path="res://ActionLevels/Level1/LevelTest.gd" type="Script" id=14]
-[ext_resource path="res://DialogBox/dialogue_text/level_test/level_test.tres" type="Resource" id=15]
 
 [node name="LevelTest" type="Node2D"]
 script = ExtResource( 14 )
-dialogue = ExtResource( 15 )
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -42,7 +38,6 @@ scale = Vector2( 119.688, 10 )
 [node name="Player" parent="." instance=ExtResource( 7 )]
 unique_name_in_owner = true
 position = Vector2( 247, 840 )
-debug_mode = true
 flash_charge_timer = 0.1
 gunshot = ExtResource( 8 )
 charge_shot = ExtResource( 2 )
@@ -52,10 +47,6 @@ layer = 20
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 10 )]
 visible = false
-
-[node name="EnemySpawner" parent="." instance=ExtResource( 11 )]
-unique_name_in_owner = true
-unique_enemy_list = [ ExtResource( 13 ) ]
 
 [node name="SpawnPaths" parent="." instance=ExtResource( 9 )]
 unique_name_in_owner = true
@@ -69,6 +60,5 @@ unique_name_in_owner = true
 [node name="LevelEventsManager" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true
 
-[node name="NewMisbeehave" parent="." instance=ExtResource( 1 )]
-unique_name_in_owner = true
-position = Vector2( 1472, 877 )
+[node name="EnemySpawnerNew" parent="." instance=ExtResource( 1 )]
+level = NodePath("..")

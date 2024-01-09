@@ -1,10 +1,15 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://imported_assets/actors/misbeehave/Bee_Stressed.png" type="Texture" id=1]
-[ext_resource path="res://Components/IsTalkingEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/CanMoveSingleDirection.tscn" type="PackedScene" id=3]
-[ext_resource path="res://DialogBox/dialogue_text/level_test/level_test.tres" type="Resource" id=4]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/NewMisbeehave/NewMisbeehave.gd" type="Script" id=5]
+[ext_resource path="res://Components/CanTakeDamage.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/CanSpawnCollectible.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/CanDamagePlayerOnTouch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/CanDieOffScreen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/HasSpawnLevel.tscn" type="PackedScene" id=12]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -38,6 +43,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 182.5, 95 )
+
 [node name="NewMisbeehave" type="Node2D"]
 scale = Vector2( 0.4, 0.4 )
 script = ExtResource( 5 )
@@ -47,12 +55,43 @@ frames = SubResource( 7 )
 speed_scale = 2.0
 playing = true
 
-[node name="IsTalkingEnemy" parent="." instance=ExtResource( 2 )]
-unique_name_in_owner = true
-enemy = NodePath("..")
-title = "level_test"
-dialogue = ExtResource( 4 )
-
 [node name="CanMoveSingleDirection" parent="." instance=ExtResource( 3 )]
 unique_name_in_owner = true
 enemy = NodePath("..")
+
+[node name="CanTakeDamage" parent="." instance=ExtResource( 6 )]
+unique_name_in_owner = true
+enemy = NodePath("..")
+enemy_area = NodePath("../Area2D")
+enemy_sprite = NodePath("../AnimatedSprite")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, 100 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -12.5, -10 )
+shape = SubResource( 8 )
+
+[node name="CanSpawnCollectible" parent="." instance=ExtResource( 7 )]
+unique_name_in_owner = true
+enemy = NodePath("..")
+droppables = [ ExtResource( 9 ), ExtResource( 8 ) ]
+take_damage = NodePath("../CanTakeDamage")
+
+[node name="CanDamagePlayerOnTouch" parent="." instance=ExtResource( 10 )]
+unique_name_in_owner = true
+enemy = NodePath("..")
+enemy_area = NodePath("../Area2D")
+take_damage = NodePath("../CanTakeDamage")
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -12.5, 90 )
+scale = Vector2( 18.25, 9.5 )
+
+[node name="CanDieOffScreen" parent="." instance=ExtResource( 11 )]
+unique_name_in_owner = true
+enemy = NodePath("..")
+visibility_notifier = NodePath("../VisibilityNotifier2D")
+
+[node name="HasSpawnLevel" parent="." instance=ExtResource( 12 )]
+spawn_height = [ 1, 2 ]

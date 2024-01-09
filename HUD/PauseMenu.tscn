@@ -37,38 +37,39 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
-margin_left = 654.0
-margin_top = 420.0
-margin_right = 1266.0
-margin_bottom = 660.0
+margin_left = 693.0
+margin_top = 398.0
+margin_right = 1227.0
+margin_bottom = 682.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
-margin_bottom = 240.0
+margin_bottom = 284.0
 
 [node name="Control" type="Control" parent="CenterContainer/HBoxContainer/VBoxContainer"]
 
 [node name="SpinnyStarResume" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
 unique_name_in_owner = true
 visible = false
+position = Vector2( 128, 101 )
 
 [node name="SpinnyStarBack" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
 unique_name_in_owner = true
 visible = false
-position = Vector2( -18, 152 )
+position = Vector2( -18, 172 )
 
 [node name="SpinnyStarQuit" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
 unique_name_in_owner = true
 visible = false
-position = Vector2( 208, 214 )
+position = Vector2( 180, 245 )
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
 margin_left = 4.0
-margin_right = 612.0
-margin_bottom = 240.0
+margin_right = 534.0
+margin_bottom = 284.0
 
 [node name="Label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 608.0
-margin_bottom = 57.0
+margin_right = 530.0
+margin_bottom = 68.0
 custom_fonts/font = ExtResource( 4 )
 text = "Paused"
 align = 1
@@ -76,9 +77,9 @@ valign = 1
 
 [node name="ResumeBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
-margin_top = 61.0
-margin_right = 608.0
-margin_bottom = 118.0
+margin_top = 72.0
+margin_right = 530.0
+margin_bottom = 140.0
 focus_neighbour_top = NodePath("../QuitBtn")
 focus_neighbour_bottom = NodePath("../BackBtn")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -96,9 +97,9 @@ text = "Resume"
 
 [node name="BackBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
-margin_top = 122.0
-margin_right = 608.0
-margin_bottom = 179.0
+margin_top = 144.0
+margin_right = 530.0
+margin_bottom = 212.0
 focus_neighbour_top = NodePath("../ResumeBtn")
 focus_neighbour_bottom = NodePath("../QuitBtn")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -115,9 +116,9 @@ text = "Back to Computer"
 
 [node name="QuitBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
-margin_top = 183.0
-margin_right = 608.0
-margin_bottom = 240.0
+margin_top = 216.0
+margin_right = 530.0
+margin_bottom = 284.0
 focus_neighbour_top = NodePath("../BackBtn")
 focus_neighbour_bottom = NodePath("../ResumeBtn")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
