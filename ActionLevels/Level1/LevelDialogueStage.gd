@@ -15,7 +15,6 @@ func _ready():
 	spotlight_two.visible = false
 
 func load_enemy(enemy_name):
-	print("enemy name is ", enemy_name)
 	var enemy_node = dumb_enemy_list[enemy_name].instance()
 	enemy_node.global_position = Vector2(2129, 819)
 	self.add_child(enemy_node)
