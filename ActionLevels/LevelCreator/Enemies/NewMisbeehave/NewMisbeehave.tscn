@@ -49,6 +49,7 @@ extents = Vector2( 182.5, 95 )
 [node name="NewMisbeehave" type="Node2D"]
 scale = Vector2( 0.4, 0.4 )
 script = ExtResource( 5 )
+enemy_name = "Misbeehave"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 7 )

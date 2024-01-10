@@ -5,13 +5,18 @@ onready var player = get_node("%Player")
 onready var spotlight_one = get_node("%Spotlight")
 onready var spotlight_two = get_node("%Spotlight2")
 
+onready var dumb_enemy_list = {
+	'Misbeehave': preload("res://ActionLevels/LevelCreator/DumbEnemies/DumbMisbeehave/DumbMisbeehave.tscn")
+}
+
 func _ready():
 	player.global_position = Vector2(-215, 749)
 	spotlight_one.visible = false
 	spotlight_two.visible = false
 
 func load_enemy(enemy_name):
-	var enemy_node = load(Events.enemyPaths[enemy_name]).instance()
+	print("enemy name is ", enemy_name)
+	var enemy_node = dumb_enemy_list[enemy_name].instance()
 	enemy_node.global_position = Vector2(2129, 819)
 	self.add_child(enemy_node)
 	tween.interpolate_property(enemy_node, "global_position", enemy_node.global_position, Vector2(1472, 819), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

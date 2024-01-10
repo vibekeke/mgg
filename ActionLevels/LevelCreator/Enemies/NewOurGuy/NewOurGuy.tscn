@@ -1,0 +1,86 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Components/CanTakeDamage.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Components/CanDieOffScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/CanDamagePlayerOnTouch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/HasSpawnLevel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/CanSpeedUpOnHit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://imported_assets/actors/ourguy/Guy.png" type="Texture" id=6]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/CanSpawnCollectible.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/NewOurGuy/NewOurGuy.gd" type="Script" id=10]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 6 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 6 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 6 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 24.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 158.75, 266.25 )
+
+[node name="NewOurGuy" type="Node2D"]
+scale = Vector2( 0.4, 0.4 )
+script = ExtResource( 10 )
+enemy_name = "OurGuy"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+playing = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 6.24999, 8.75001 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 6 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="CanTakeDamage" parent="." instance=ExtResource( 1 )]
+enemy = NodePath("..")
+enemy_area = NodePath("../Area2D")
+enemy_sprite = NodePath("../AnimatedSprite")
+health_value = 6
+
+[node name="CanDamagePlayerOnTouch" parent="." instance=ExtResource( 3 )]
+enemy = NodePath("..")
+enemy_area = NodePath("../Area2D")
+take_damage = NodePath("../CanTakeDamage")
+
+[node name="CanDieOffScreen" parent="." instance=ExtResource( 2 )]
+enemy = NodePath("..")
+visibility_notifier = NodePath("../VisibilityNotifier2D")
+
+[node name="CanSpeedUpOnHit" parent="." instance=ExtResource( 5 )]
+enemy = NodePath("..")
+take_damage = NodePath("../CanTakeDamage")
+speed = 600
+speed_up_value = 200
+
+[node name="HasSpawnLevel" parent="." instance=ExtResource( 4 )]
+spawn_height = [ 2 ]
+
+[node name="CanSpawnCollectible" parent="." instance=ExtResource( 9 )]
+enemy = NodePath("..")
+droppables = [ ExtResource( 8 ), ExtResource( 7 ) ]
+take_damage = NodePath("../CanTakeDamage")

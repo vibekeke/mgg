@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemyBullets/BulletRotator.gd" type="Script" id=1]
+
+[node name="BulletRotator" type="Node2D"]
+script = ExtResource( 1 )

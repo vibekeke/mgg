@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/CanSpawnBulletShield.gd" type="Script" id=1]
+
+[node name="CanSpawnBulletShield" type="Node" groups=["component"]]
+script = ExtResource( 1 )
+node_rotator_position = NodePath("../Path2D/PathFollow2D/AnimatedSprite/Area2D")
+
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

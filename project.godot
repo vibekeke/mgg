@@ -95,6 +95,16 @@ _global_script_classes=[ {
 "path": "res://addons/dialogue_manager/dialogue_resource.gd"
 }, {
 "base": "Node2D",
+"class": "DumbEnemy",
+"language": "GDScript",
+"path": "res://ActionLevels/LevelCreator/DumbEnemies/DumbEnemies.gd"
+}, {
+"base": "Node2D",
+"class": "EnemyBase",
+"language": "GDScript",
+"path": "res://ActionLevels/LevelCreator/Enemies/EnemyBase.gd"
+}, {
+"base": "Node2D",
 "class": "FakeSnowParticles",
 "language": "GDScript",
 "path": "res://ActionLevels/Level3/SnowEffect/fake_snow_particles.gd"
@@ -182,6 +192,8 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "DialogueResource": "",
+"DumbEnemy": "",
+"EnemyBase": "",
 "FakeSnowParticles": "",
 "Gunnerfly": "",
 "HistoryRow": "",

@@ -8,7 +8,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=8]
-[ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ActionLevels/Level1/Level1_Event1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ActionLevels/Level1/LevelTest.gd" type="Script" id=14]
@@ -48,10 +48,6 @@ layer = 20
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 10 )]
 visible = false
 
-[node name="SpawnPaths" parent="." instance=ExtResource( 9 )]
-unique_name_in_owner = true
-position = Vector2( -732.053, -1.421 )
-
 [node name="LevelBackground" parent="." instance=ExtResource( 4 )]
 unique_name_in_owner = true
 
@@ -62,3 +58,7 @@ unique_name_in_owner = true
 
 [node name="EnemySpawnerNew" parent="." instance=ExtResource( 1 )]
 level = NodePath("..")
+
+[node name="Level1_Event1" parent="." instance=ExtResource( 9 )]
+
+[editable path="EnemySpawnerNew"]

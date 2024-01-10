@@ -1,4 +1,4 @@
-extends Node2D
+extends EnemyBase
 
 onready var shoot_timer = get_node("%ShootTimer")
 onready var stop_moving_timer = get_node("%StopMovingTimer")

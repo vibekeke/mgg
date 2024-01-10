@@ -1,0 +1,115 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Components/CanTakeDamage.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Components/CanDamagePlayerOnTouch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/CanSpawnCollectible.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/CanMoveSingleDirection.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/HasSpawnLevel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://imported_assets/actors/brobun/UfoBro_Bunny.png" type="Texture" id=6]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/CanSpawnBulletShield.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/NewBroBun/NewBroBun.gd" type="Script" id=10]
+[ext_resource path="res://Components/CanDieOffScreen.tscn" type="PackedScene" id=11]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 1024, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 2048, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 3072, 1024, 1024, 1024 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 16.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 142, 234 )
+
+[node name="NewBroBun" type="Node2D"]
+scale = Vector2( 0.4, 0.4 )
+script = ExtResource( 10 )
+enemy_name = "BroBun"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 9 )
+playing = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -15, 26 )
+shape = SubResource( 10 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -15, 26 )
+scale = Vector2( 14.2, 23.4 )
+
+[node name="CanMoveSingleDirection" parent="." instance=ExtResource( 4 )]
+enemy = NodePath("..")
+
+[node name="CanTakeDamage" parent="." instance=ExtResource( 1 )]
+enemy = NodePath("..")
+enemy_area = NodePath("../Area2D")
+enemy_sprite = NodePath("../AnimatedSprite")
+health_value = 4
+
+[node name="CanDamagePlayerOnTouch" parent="." instance=ExtResource( 2 )]
+enemy = NodePath("..")
+enemy_area = NodePath("../Area2D")
+take_damage = NodePath("../CanTakeDamage")
+
+[node name="HasSpawnLevel" parent="." instance=ExtResource( 5 )]
+spawn_height = [ 1 ]
+
+[node name="CanSpawnCollectible" parent="." instance=ExtResource( 3 )]
+enemy = NodePath("..")
+droppables = [ ExtResource( 8 ), ExtResource( 7 ) ]
+take_damage = NodePath("../CanTakeDamage")
+
+[node name="CanSpawnBulletShield" parent="." instance=ExtResource( 9 )]
+visibility_notifier = NodePath("../VisibilityNotifier2D")
+shoots_bullets = false
+bullets_die_with_parent = true
+node_rotator_position = NodePath("../Area2D")
+
+[node name="CanDieOffScreen" parent="." instance=ExtResource( 11 )]
+enemy = NodePath("..")
+visibility_notifier = NodePath("../VisibilityNotifier2D")

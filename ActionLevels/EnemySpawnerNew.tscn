@@ -15,7 +15,7 @@ position = Vector2( 2160, 720 )
 
 [node name="Lower" type="Position2D" parent="."]
 unique_name_in_owner = true
-position = Vector2( 2160, 950 )
+position = Vector2( 2160, 930 )
 
 [node name="NewSpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true

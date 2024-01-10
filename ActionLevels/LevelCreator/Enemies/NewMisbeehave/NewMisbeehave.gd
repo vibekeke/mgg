@@ -1,4 +1,4 @@
-extends Node2D
+extends EnemyBase
 
 onready var can_move_single_direction = get_node("%CanMoveSingleDirection")
 onready var can_take_damage = get_node("%CanTakeDamage")

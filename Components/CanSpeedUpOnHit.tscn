@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/CanSpeedUpOnHit.gd" type="Script" id=1]
+
+[node name="CanSpeedUpOnHit" type="Node" groups=["component"]]
+script = ExtResource( 1 )

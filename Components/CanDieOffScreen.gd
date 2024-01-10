@@ -11,5 +11,5 @@ func _ready():
 
 func _on_screen_exited():
 	if is_instance_valid(enemy_node):
-		print("dead off screen")
-		enemy_node.queue_free()
+		if enemy_node.global_position.x <= 0:
+			enemy_node.queue_free()

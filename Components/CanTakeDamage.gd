@@ -16,6 +16,7 @@ onready var damage_timer = get_node("%DamageTimer")
 
 export (Color) var hurt_colour = Color(10,10,10,1)
 
+signal took_damage(node_id)
 signal enemy_dead(node_id, death_position)
 
 var death_called := false
@@ -29,13 +30,15 @@ func call_death():
 	if !death_called:
 		death_called = true
 		var death_global_position = enemy_area_node.global_position
+		print("death global position is ", death_global_position)
 		Events.emit_signal("regular_enemy_death")
 		emit_signal("enemy_dead", self.get_instance_id(), death_global_position)
 		var active_death_explosion = death_explosion.instance()
+		active_death_explosion.scale = enemy_node.scale
+		active_death_explosion.global_position = death_global_position
 		active_death_explosion.add_to_group("death_explosion")
 		active_death_explosion.connect("animation_finished", self, "_on_explosion_finished")
-		#enemy_area_node.add_child(active_death_explosion)
-		enemy_node.add_child(active_death_explosion)
+		get_tree().current_scene.add_child(active_death_explosion)
 		enemy_sprite_node.visible = false
 		active_death_explosion.play("default", false)
 
@@ -43,6 +46,7 @@ func take_damage():
 	damage_timer.start()
 	enemy_sprite_node.modulate = hurt_colour
 	health_value = health_value - 1
+	emit_signal("took_damage", self.get_instance_id())
 
 
 func _on_area_entered(area: Area2D):

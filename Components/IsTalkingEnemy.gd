@@ -2,7 +2,6 @@ extends Node
 
 export (NodePath) var enemy
 onready var enemy_node = get_node(enemy)
-export var going_to_talk := false
 export var title := ""
 export var dialogue : Resource
 

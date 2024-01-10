@@ -41,6 +41,7 @@ extents = Vector2( 150, 176.25 )
 [node name="NewGunnerflyWithGun" type="Node2D"]
 scale = Vector2( 0.4, 0.4 )
 script = ExtResource( 10 )
+enemy_name = "GunnerflyWithGun"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
@@ -50,7 +51,6 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 27.5, 26.25 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 6 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
