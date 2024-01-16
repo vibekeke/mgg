@@ -1057,6 +1057,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Title" type="RichTextLabel" parent="TextLayer/CenterContainer"]
+unique_name_in_owner = true
 margin_left = 460.0
 margin_top = 404.0
 margin_right = 1460.0

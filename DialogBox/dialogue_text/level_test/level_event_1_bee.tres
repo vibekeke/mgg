@@ -1,0 +1,164 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 4
+syntax_version = 2
+raw_text = "~ level_event_1_bee
+I'm just a bee.
+I don't know what else I can bee.
+Are you a bee?
+- Buzz off... => negative_response
+- I can bee. => positive_response
+
+~ positive_response
+Hmm...you don't look like a bee.
+But bees never lie. So you must be a bee!
+Okay, I'll help you out!
+
+~ negative_response
+B-Buzz...?
+O-Off...?
+BUZZ OFF?!
+[speed=3]I'm more than just a bee!
+[speed=3]I'll show you!
+BOYS! GET HER!!!
+"
+errors = [  ]
+titles = {
+"level_event_1_bee": "1",
+"negative_response": "13",
+"positive_response": "8"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "level_event_1_bee",
+"type": "title"
+},
+"1": {
+"character": "",
+"next_id": "2",
+"replacements": [  ],
+"text": "I'm just a bee.",
+"translation_key": "I'm just a bee.",
+"type": "dialogue"
+},
+"10": {
+"character": "",
+"next_id": "",
+"replacements": [  ],
+"text": "Okay, I'll help you out!",
+"translation_key": "Okay, I'll help you out!",
+"type": "dialogue"
+},
+"12": {
+"next_id": "13",
+"text": "negative_response",
+"type": "title"
+},
+"13": {
+"character": "",
+"next_id": "14",
+"replacements": [  ],
+"text": "B-Buzz...?",
+"translation_key": "B-Buzz...?",
+"type": "dialogue"
+},
+"14": {
+"character": "",
+"next_id": "15",
+"replacements": [  ],
+"text": "O-Off...?",
+"translation_key": "O-Off...?",
+"type": "dialogue"
+},
+"15": {
+"character": "",
+"next_id": "16",
+"replacements": [  ],
+"text": "BUZZ OFF?!",
+"translation_key": "BUZZ OFF?!",
+"type": "dialogue"
+},
+"16": {
+"character": "",
+"next_id": "17",
+"replacements": [  ],
+"text": "[speed=3]I'm more than just a bee!",
+"translation_key": "[speed=3]I'm more than just a bee!",
+"type": "dialogue"
+},
+"17": {
+"character": "",
+"next_id": "18",
+"replacements": [  ],
+"text": "[speed=3]I'll show you!",
+"translation_key": "[speed=3]I'll show you!",
+"type": "dialogue"
+},
+"18": {
+"character": "",
+"next_id": "",
+"replacements": [  ],
+"text": "BOYS! GET HER!!!",
+"translation_key": "BOYS! GET HER!!!",
+"type": "dialogue"
+},
+"2": {
+"character": "",
+"next_id": "3",
+"replacements": [  ],
+"text": "I don't know what else I can bee.",
+"translation_key": "I don't know what else I can bee.",
+"type": "dialogue"
+},
+"3": {
+"character": "",
+"next_id": "4",
+"replacements": [  ],
+"text": "Are you a bee?",
+"translation_key": "Are you a bee?",
+"type": "dialogue"
+},
+"4": {
+"next_id": "13",
+"next_id_after": "end!",
+"replacements": [  ],
+"responses": PoolStringArray( "4", "5" ),
+"text": "Buzz off...",
+"translation_key": "Buzz off...",
+"type": "response"
+},
+"5": {
+"next_id": "8",
+"next_id_after": "end!",
+"replacements": [  ],
+"text": "I can bee.",
+"translation_key": "I can bee.",
+"type": "response"
+},
+"7": {
+"next_id": "8",
+"text": "positive_response",
+"type": "title"
+},
+"8": {
+"character": "",
+"next_id": "9",
+"replacements": [  ],
+"text": "Hmm...you don't look like a bee.",
+"translation_key": "Hmm...you don't look like a bee.",
+"type": "dialogue"
+},
+"9": {
+"character": "",
+"next_id": "10",
+"replacements": [  ],
+"text": "But bees never lie. So you must be a bee!",
+"translation_key": "But bees never lie. So you must be a bee!",
+"type": "dialogue"
+}
+}

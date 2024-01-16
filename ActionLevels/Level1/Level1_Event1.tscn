@@ -1,25 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://DialogBox/dialogue_text/level_test/level_test.tres" type="Resource" id=1]
+[ext_resource path="res://DialogBox/dialogue_text/level_test/level_event_1_bee.tres" type="Resource" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/NewMisbeehave/NewMisbeehave.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/IsTalkingEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ActionLevels/Level1/Level1_Event1.gd" type="Script" id=4]
 
 [node name="Level1_Event1" type="Node2D"]
+script = ExtResource( 4 )
+time_until_event = 10
 
 [node name="NewMisbeehave" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
-position = Vector2( 1648, 892 )
+position = Vector2( 2162, 892 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="IsTalkingEnemy" parent="NewMisbeehave" instance=ExtResource( 3 )]
 enemy = NodePath("..")
-title = "level_test"
+title = "level_event_1_bee"
 dialogue = ExtResource( 1 )
 can_take_damage = NodePath("../CanTakeDamage")
 touch_damage = NodePath("../CanDamagePlayerOnTouch")
 movement_component = NodePath("../CanMoveSingleDirection")
 enemy_name = "Misbeehave"
+
+[connection signal="visibility_changed" from="." to="." method="_on_Level1_Event1_visibility_changed"]
 
 [editable path="NewMisbeehave"]

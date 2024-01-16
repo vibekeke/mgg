@@ -58,6 +58,7 @@ func _ready():
 	level_name = level_node.name
 	Events.connect("enemy_spawner_enabled", self, "_on_enemy_spawner_enabled")
 	Events.connect("enemy_spawner_difficulty", self, "_on_enemy_spawner_difficulty")
+	Events.connect("kill_spawned_enemies", self, "_on_kill_spawned_enemies")
 
 func _process(delta):
 	total_time_passed += delta
@@ -129,3 +130,8 @@ func _on_enemy_spawner_enabled(enabled):
 func _on_enemy_spawner_difficulty(time_to_spawn, max_enemies):
 	max_number_of_on_screen_enemies = max_enemies
 	new_spawn_timer.wait_time = time_to_spawn
+
+func _on_kill_spawned_enemies():
+	for enemy in valid_enemies():
+		if is_instance_valid(enemy):
+			enemy.queue_free()

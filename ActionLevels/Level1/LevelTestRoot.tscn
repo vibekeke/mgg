@@ -6,7 +6,6 @@
 [sub_resource type="Environment" id=1]
 background_mode = 4
 background_canvas_max_layer = 100
-glow_enabled = true
 
 [node name="LevelTestRoot" type="CanvasLayer"]
 script = ExtResource( 2 )

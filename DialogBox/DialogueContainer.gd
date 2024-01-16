@@ -97,9 +97,11 @@ func _ready() -> void:
 	dialogue_label.connect("arriving_characer", self, "_on_arriving_character")
 	add_dialogue()
 
-func _on_arriving_character(character):
-	if character != "" and (character == "a" or character == "e" or character == "i" or character == "o" or character == "u"):
-		dialogue_audio.play(0.0)
+func _on_arriving_character(character: String):
+	if character != "":
+		var lower_case_character = character.to_lower()
+		if lower_case_character in "aeiou":
+			dialogue_audio.play(0.0)
 
 func next(next_id: String) -> void:
 	if inputs_are_disabled:

@@ -5,6 +5,8 @@ onready var player = get_node("%Player")
 onready var spotlight_one = get_node("%Spotlight")
 onready var spotlight_two = get_node("%Spotlight2")
 
+signal scene_dialogue_finished
+
 onready var dumb_enemy_list = {
 	'Misbeehave': preload("res://ActionLevels/LevelCreator/DumbEnemies/DumbMisbeehave/DumbMisbeehave.tscn")
 }
@@ -13,6 +15,7 @@ func _ready():
 	player.global_position = Vector2(-215, 749)
 	spotlight_one.visible = false
 	spotlight_two.visible = false
+	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
 
 func load_enemy(enemy_name):
 	var enemy_node = dumb_enemy_list[enemy_name].instance()
@@ -30,3 +33,7 @@ func load_enemy(enemy_name):
 	spotlight_two.visible = true
 	enemy_node.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	player.modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+func _on_dialogue_box_finished(node_id):
+	print("dialogue finished in dialogue stage", node_id)
+	emit_signal("scene_dialogue_finished")

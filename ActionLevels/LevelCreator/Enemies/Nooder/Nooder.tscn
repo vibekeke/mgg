@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://imported_assets/actors/nooder/Nooder_rain.png" type="Texture" id=1]
 [ext_resource path="res://imported_assets/actors/nooder/Nooder.png" type="Texture" id=2]
@@ -74,8 +74,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 90, 146.875 )
+[sub_resource type="CapsuleShape2D" id=13]
+radius = 70.0
+height = 153.75
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 78.75, 493.75 )
 
 [node name="Nooder" type="Node2D"]
 scale = Vector2( 0.4, 0.4 )
@@ -85,7 +89,7 @@ frames = SubResource( 6 )
 playing = true
 
 [node name="Attack" type="AnimatedSprite" parent="."]
-position = Vector2( 0, 672.5 )
+position = Vector2( 0, 670 )
 frames = SubResource( 12 )
 playing = true
 
@@ -93,7 +97,6 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -2.5, -5.625 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 13 )
 
 [node name="CanDieOffScreen" parent="." instance=ExtResource( 4 )]
@@ -119,3 +122,14 @@ enemy_area = NodePath("../Area2D")
 take_damage = NodePath("../CanTakeDamage")
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="RainArea" type="Area2D" parent="."]
+position = Vector2( 0, 205 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RainArea"]
+position = Vector2( 6.24999, 483.75 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 14 )

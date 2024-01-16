@@ -38,8 +38,12 @@ signal dialogue_intro_finished
 signal overworld_player_controlled(status)
 signal bedroom_lights_on(status)
 
+signal kill_enemy_bullet
+
+# new enemy spawner
 signal enemy_spawner_enabled(enabled)
 signal enemy_spawner_difficulty(time_to_spawn, max_enemies)
+signal kill_spawned_enemies
 
 # save file location and metadata
 const SAVE_FILE_LOCATION : String = "res://mggsave.save"
