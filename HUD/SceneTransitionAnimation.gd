@@ -44,8 +44,6 @@ func _on_SceneTransitionAnimationPlayer_animation_finished(anim_name):
 		emit_signal("animation_finished")
 		yield(get_tree().create_timer(1.0), "timeout")
 		Events.emit_signal("dialogue_intro_finished")
-	elif anim_name == "stage_finished" && dialogue_over:
-		pass
 	elif anim_name == "stage_finished" && !dialogue_over:
 		dialogue_over = true
 		if dialogue_success_status:
