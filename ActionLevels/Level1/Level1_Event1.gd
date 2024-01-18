@@ -9,4 +9,5 @@ func _ready():
 
 func _on_Level1_Event1_visibility_changed():
 	if self.visible:
-		bee.enable_movement(true)
+		if is_instance_valid(bee):
+			bee.enable_movement(true)

@@ -1,6 +1,7 @@
 extends Node
 
 signal mgg_dialogue_box_finished(node_id)
+signal dialogue_finished_with_status(success_status)
 var node_id_in_use = -1
 var current_dialogue_creator_node
 
@@ -27,3 +28,6 @@ func do_something():
 func go_to_scene(scene_name: String):
 	print("going to scene ", scene_name)
 	Events.transition_to_new_scene(scene_name)
+
+func emit_dialogue_finished_with_status(success_status: bool):
+	emit_signal("dialogue_finished_with_status", success_status)

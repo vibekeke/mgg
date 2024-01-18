@@ -39,6 +39,7 @@ signal overworld_player_controlled(status)
 signal bedroom_lights_on(status)
 
 signal kill_enemy_bullet
+signal pause_level
 
 # new enemy spawner
 signal enemy_spawner_enabled(enabled)

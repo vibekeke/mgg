@@ -12,6 +12,7 @@ script = ExtResource( 2 )
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
+layer = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )

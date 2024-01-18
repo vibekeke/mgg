@@ -102,7 +102,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "DumbEnemy",
 "language": "GDScript",
-"path": "res://ActionLevels/LevelCreator/DumbEnemies/DumbEnemies.gd"
+"path": "res://ActionLevels/LevelCreator/DumbActors/DumbEnemies.gd"
 }, {
 "base": "Node2D",
 "class": "EnemyBase",

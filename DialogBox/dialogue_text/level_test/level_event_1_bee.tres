@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 4
+resource_version = 5
 syntax_version = 2
 raw_text = "~ level_event_1_bee
 I'm just a bee.
@@ -17,6 +17,7 @@ Are you a bee?
 Hmm...you don't look like a bee.
 But bees never lie. So you must be a bee!
 Okay, I'll help you out!
+do emit_dialogue_finished_with_status(true)
 
 ~ negative_response
 B-Buzz...?
@@ -25,11 +26,11 @@ BUZZ OFF?!
 [speed=3]I'm more than just a bee!
 [speed=3]I'll show you!
 BOYS! GET HER!!!
-"
+do emit_dialogue_finished_with_status(false)"
 errors = [  ]
 titles = {
 "level_event_1_bee": "1",
-"negative_response": "13",
+"negative_response": "14",
 "positive_response": "8"
 }
 lines = {
@@ -48,60 +49,74 @@ lines = {
 },
 "10": {
 "character": "",
-"next_id": "",
+"next_id": "11",
 "replacements": [  ],
 "text": "Okay, I'll help you out!",
 "translation_key": "Okay, I'll help you out!",
 "type": "dialogue"
 },
-"12": {
-"next_id": "13",
-"text": "negative_response",
-"type": "title"
+"11": {
+"mutation": {
+"expression": [ {
+"function": "emit_dialogue_finished_with_status",
+"type": "function",
+"value": [ [ {
+"type": "bool",
+"value": true
+} ] ]
+} ]
+},
+"next_id": "",
+"type": "mutation"
 },
 "13": {
-"character": "",
 "next_id": "14",
-"replacements": [  ],
-"text": "B-Buzz...?",
-"translation_key": "B-Buzz...?",
-"type": "dialogue"
+"text": "negative_response",
+"type": "title"
 },
 "14": {
 "character": "",
 "next_id": "15",
 "replacements": [  ],
-"text": "O-Off...?",
-"translation_key": "O-Off...?",
+"text": "B-Buzz...?",
+"translation_key": "B-Buzz...?",
 "type": "dialogue"
 },
 "15": {
 "character": "",
 "next_id": "16",
 "replacements": [  ],
-"text": "BUZZ OFF?!",
-"translation_key": "BUZZ OFF?!",
+"text": "O-Off...?",
+"translation_key": "O-Off...?",
 "type": "dialogue"
 },
 "16": {
 "character": "",
 "next_id": "17",
 "replacements": [  ],
-"text": "[speed=3]I'm more than just a bee!",
-"translation_key": "[speed=3]I'm more than just a bee!",
+"text": "BUZZ OFF?!",
+"translation_key": "BUZZ OFF?!",
 "type": "dialogue"
 },
 "17": {
 "character": "",
 "next_id": "18",
 "replacements": [  ],
-"text": "[speed=3]I'll show you!",
-"translation_key": "[speed=3]I'll show you!",
+"text": "[speed=3]I'm more than just a bee!",
+"translation_key": "[speed=3]I'm more than just a bee!",
 "type": "dialogue"
 },
 "18": {
 "character": "",
-"next_id": "",
+"next_id": "19",
+"replacements": [  ],
+"text": "[speed=3]I'll show you!",
+"translation_key": "[speed=3]I'll show you!",
+"type": "dialogue"
+},
+"19": {
+"character": "",
+"next_id": "20",
 "replacements": [  ],
 "text": "BOYS! GET HER!!!",
 "translation_key": "BOYS! GET HER!!!",
@@ -115,6 +130,20 @@ lines = {
 "translation_key": "I don't know what else I can bee.",
 "type": "dialogue"
 },
+"20": {
+"mutation": {
+"expression": [ {
+"function": "emit_dialogue_finished_with_status",
+"type": "function",
+"value": [ [ {
+"type": "bool",
+"value": false
+} ] ]
+} ]
+},
+"next_id": "",
+"type": "mutation"
+},
 "3": {
 "character": "",
 "next_id": "4",
@@ -124,7 +153,7 @@ lines = {
 "type": "dialogue"
 },
 "4": {
-"next_id": "13",
+"next_id": "14",
 "next_id_after": "end!",
 "replacements": [  ],
 "responses": PoolStringArray( "4", "5" ),

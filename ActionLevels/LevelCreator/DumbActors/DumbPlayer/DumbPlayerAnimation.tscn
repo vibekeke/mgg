@@ -1,0 +1,1782 @@
+[gd_scene load_steps=202 format=2]
+
+[ext_resource path="res://imported_assets/actors/mg/Player_MeleeTEST-A.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://sounds/player/basiclaser.wav" type="AudioStream" id=3]
+[ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA3-v1.webp" type="Texture" id=4]
+[ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA3-V1.webp" type="Texture" id=5]
+[ext_resource path="res://imported_assets/actors/mg/Player_Slide_Test.png" type="Texture" id=6]
+[ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA2-v1.webp" type="Texture" id=7]
+[ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA2-V1.webp" type="Texture" id=8]
+[ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.webp" type="Texture" id=9]
+[ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA1-V1.webp" type="Texture" id=10]
+[ext_resource path="res://imported_assets/actors/mg/Player_MeleeTEST-B.png" type="Texture" id=11]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 177.143, 298.572 )
+
+[sub_resource type="AtlasTexture" id=335]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=336]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=337]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 1024, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=338]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 2048, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=339]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 3072, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=340]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=341]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 1024, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=342]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 2048, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=343]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 3072, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=344]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=345]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 1024, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=346]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=347]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=348]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=349]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 2048, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=350]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 3072, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=278]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=279]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=280]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=281]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=282]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=283]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=351]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=352]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=353]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=354]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=355]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=356]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1024, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=357]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 2048, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=358]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 3072, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=359]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=360]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1024, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=361]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 2048, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=362]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 3072, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=363]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=364]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1024, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=259]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="SpriteFrames" id=120]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 335 ), SubResource( 336 ), SubResource( 337 ), SubResource( 338 ), SubResource( 339 ), SubResource( 340 ), SubResource( 341 ), SubResource( 342 ) ],
+"loop": true,
+"name": "during_jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 343 ), SubResource( 344 ), SubResource( 345 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 346 ), SubResource( 347 ), SubResource( 348 ) ],
+"loop": true,
+"name": "init_jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 349 ), SubResource( 350 ) ],
+"loop": true,
+"name": "landed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 278 ), SubResource( 279 ), SubResource( 280 ) ],
+"loop": true,
+"name": "melee_1",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 281 ), SubResource( 282 ), SubResource( 283 ) ],
+"loop": true,
+"name": "melee_2",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 351 ), SubResource( 352 ), SubResource( 353 ), SubResource( 354 ), SubResource( 355 ), SubResource( 356 ), SubResource( 357 ), SubResource( 358 ), SubResource( 359 ), SubResource( 360 ), SubResource( 361 ), SubResource( 362 ), SubResource( 363 ), SubResource( 364 ) ],
+"loop": true,
+"name": "run",
+"speed": 14.0
+}, {
+"frames": [ SubResource( 259 ) ],
+"loop": true,
+"name": "slide",
+"speed": 1.0
+} ]
+
+[sub_resource type="Animation" id=121]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=122]
+resource_name = "during_jump"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "during_jump" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=123]
+resource_name = "falling"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "falling" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=124]
+resource_name = "jump_init"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "init_jump" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=125]
+resource_name = "landing"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "landed" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=126]
+resource_name = "run"
+loop = true
+step = 0.071
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "run" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.071, 0.142, 0.213, 0.284, 0.355, 0.426, 0.497, 0.568, 0.639, 0.71, 0.781, 0.852, 0.923 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=250]
+resource_name = "slide"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "slide" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "during_jump"
+
+[sub_resource type="AnimationNodeTimeScale" id=40]
+
+[sub_resource type="AnimationNodeBlendTree" id=41]
+graph_offset = Vector2( 190.837, 280.502 )
+nodes/Animation/node = SubResource( 39 )
+nodes/Animation/position = Vector2( 350, 300 )
+nodes/TimeScale/node = SubResource( 40 )
+nodes/TimeScale/position = Vector2( 566.64, 292.32 )
+nodes/output/position = Vector2( 780, 310 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "falling"
+
+[sub_resource type="AnimationNodeTimeScale" id=43]
+
+[sub_resource type="AnimationNodeBlendTree" id=44]
+nodes/Animation/node = SubResource( 42 )
+nodes/Animation/position = Vector2( 146.88, 187.92 )
+nodes/TimeScale/node = SubResource( 43 )
+nodes/TimeScale/position = Vector2( 360, 160 )
+nodes/output/position = Vector2( 540, 170 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "landing"
+
+[sub_resource type="AnimationNodeTimeScale" id=46]
+
+[sub_resource type="AnimationNodeBlendTree" id=47]
+nodes/Animation/node = SubResource( 45 )
+nodes/Animation/position = Vector2( 200, 150 )
+nodes/TimeScale/node = SubResource( 46 )
+nodes/TimeScale/position = Vector2( 390, 140 )
+nodes/output/position = Vector2( 580, 170 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=48]
+animation = "jump_init"
+
+[sub_resource type="AnimationNodeTimeScale" id=49]
+
+[sub_resource type="AnimationNodeBlendTree" id=50]
+nodes/Animation/node = SubResource( 48 )
+nodes/Animation/position = Vector2( 185.76, 254.16 )
+nodes/TimeScale/node = SubResource( 49 )
+nodes/TimeScale/position = Vector2( 414, 256.32 )
+nodes/output/position = Vector2( 630, 280 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=51]
+animation = "run"
+
+[sub_resource type="AnimationNodeTimeScale" id=52]
+
+[sub_resource type="AnimationNodeBlendTree" id=53]
+graph_offset = Vector2( -361, 55.545 )
+nodes/Animation/node = SubResource( 51 )
+nodes/Animation/position = Vector2( -60, 140 )
+nodes/TimeScale/node = SubResource( 52 )
+nodes/TimeScale/position = Vector2( 120, 140 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=251]
+animation = "slide"
+
+[sub_resource type="AnimationNodeTimeScale" id=252]
+
+[sub_resource type="AnimationNodeBlendTree" id=249]
+nodes/Animation/node = SubResource( 251 )
+nodes/Animation/position = Vector2( 576.5, 173.5 )
+nodes/TimeScale/node = SubResource( 252 )
+nodes/TimeScale/position = Vector2( 810, 180 )
+nodes/output/position = Vector2( 1060, 190 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=55]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=56]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=239]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=240]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=253]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=254]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=256]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=257]
+
+[sub_resource type="AnimationNodeStateMachine" id=127]
+states/AboutToFall/node = SubResource( 41 )
+states/AboutToFall/position = Vector2( 200.65, 264.594 )
+states/FallingLoop/node = SubResource( 44 )
+states/FallingLoop/position = Vector2( -369.75, 258.547 )
+states/Landing/node = SubResource( 47 )
+states/Landing/position = Vector2( -371.5, 98.5 )
+states/RisingLoop/node = SubResource( 50 )
+states/RisingLoop/position = Vector2( 200.575, 93.5 )
+states/Run/node = SubResource( 53 )
+states/Run/position = Vector2( -369.875, -110.023 )
+states/Slide/node = SubResource( 249 )
+states/Slide/position = Vector2( 200.3, -109.547 )
+transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 239 ), "AboutToFall", "Landing", SubResource( 240 ), "Run", "Slide", SubResource( 253 ), "Slide", "RisingLoop", SubResource( 254 ), "Landing", "Slide", SubResource( 256 ), "Slide", "Run", SubResource( 257 ) ]
+start_node = "Run"
+graph_offset = Vector2( -853.78, 69.5925 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=128]
+
+[sub_resource type="AtlasTexture" id=365]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=366]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=367]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1024, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=368]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 2048, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=369]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 3072, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=370]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=371]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1024, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=372]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 2048, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=373]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 3072, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=374]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=375]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1024, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=376]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=377]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=378]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=379]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 2048, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=380]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 3072, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=305]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=306]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=307]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=381]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=382]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=383]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=384]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=385]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=386]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1024, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=387]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 2048, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=388]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 3072, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=389]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=390]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1024, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=391]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 2048, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=392]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 3072, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=393]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=394]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1024, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=260]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="SpriteFrames" id=189]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 365 ), SubResource( 366 ), SubResource( 367 ), SubResource( 368 ), SubResource( 369 ), SubResource( 370 ), SubResource( 371 ), SubResource( 372 ) ],
+"loop": true,
+"name": "during_jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 373 ), SubResource( 374 ), SubResource( 375 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 376 ), SubResource( 377 ), SubResource( 378 ) ],
+"loop": true,
+"name": "init_jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 379 ), SubResource( 380 ) ],
+"loop": true,
+"name": "landed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 305 ), SubResource( 306 ), SubResource( 307 ) ],
+"loop": true,
+"name": "melee_2",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 381 ), SubResource( 382 ), SubResource( 383 ), SubResource( 384 ), SubResource( 385 ), SubResource( 386 ), SubResource( 387 ), SubResource( 388 ), SubResource( 389 ), SubResource( 390 ), SubResource( 391 ), SubResource( 392 ), SubResource( 393 ), SubResource( 394 ) ],
+"loop": true,
+"name": "run",
+"speed": 14.0
+}, {
+"frames": [ SubResource( 260 ) ],
+"loop": true,
+"name": "slide",
+"speed": 1.0
+} ]
+
+[sub_resource type="Animation" id=190]
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "melee_2" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=191]
+resource_name = "during_jump"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "during_jump" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=192]
+resource_name = "falling"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "falling" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=193]
+resource_name = "jump_init"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "init_jump" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=194]
+resource_name = "landing"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "landed" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=195]
+resource_name = "run"
+loop = true
+step = 0.071
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "run" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.071, 0.142, 0.213, 0.284, 0.355, 0.426, 0.497, 0.568, 0.639, 0.71, 0.781, 0.852, 0.923 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=261]
+resource_name = "slide"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "slide" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=264]
+animation = "slide"
+
+[sub_resource type="AnimationNodeTimeScale" id=265]
+
+[sub_resource type="AnimationNodeBlendTree" id=266]
+graph_offset = Vector2( -188.572, 61.4963 )
+nodes/Animation/node = SubResource( 264 )
+nodes/Animation/position = Vector2( -90, 130 )
+nodes/TimeScale/node = SubResource( 265 )
+nodes/TimeScale/position = Vector2( 110, 150 )
+nodes/output/position = Vector2( 330, 180 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=241]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=242]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=267]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=268]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=269]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=270]
+
+[sub_resource type="AnimationNodeStateMachine" id=196]
+states/AboutToFall/node = SubResource( 41 )
+states/AboutToFall/position = Vector2( 126, 316.184 )
+states/FallingLoop/node = SubResource( 44 )
+states/FallingLoop/position = Vector2( -392.625, 341.047 )
+states/Landing/node = SubResource( 47 )
+states/Landing/position = Vector2( -390.75, 142 )
+states/RisingLoop/node = SubResource( 50 )
+states/RisingLoop/position = Vector2( 118.262, 83 )
+states/Run/node = SubResource( 53 )
+states/Run/position = Vector2( -406.5, -84.0534 )
+states/Slide/node = SubResource( 266 )
+states/Slide/position = Vector2( 117.315, -88.559 )
+transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 241 ), "AboutToFall", "Landing", SubResource( 242 ), "Run", "Slide", SubResource( 267 ), "Slide", "Run", SubResource( 268 ), "Slide", "RisingLoop", SubResource( 269 ), "Landing", "Slide", SubResource( 270 ) ]
+start_node = "Run"
+graph_offset = Vector2( -958.904, 59.2084 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=197]
+
+[sub_resource type="AtlasTexture" id=395]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=396]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=397]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 1024, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=398]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 2048, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=399]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 3072, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=400]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=401]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 1024, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=402]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 2048, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=403]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 3072, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=404]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=405]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 3072, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=406]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=407]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 1024, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=408]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=409]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=410]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=411]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 2048, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=412]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 3072, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=308]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=309]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=310]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=413]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=414]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=415]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=416]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=417]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=418]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1024, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=419]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 2048, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=420]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 3072, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=421]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=422]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1024, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=423]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 2048, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=424]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 3072, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=425]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=426]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1024, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=262]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="SpriteFrames" id=228]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 395 ), SubResource( 396 ), SubResource( 397 ), SubResource( 398 ), SubResource( 399 ), SubResource( 400 ), SubResource( 401 ), SubResource( 402 ), SubResource( 403 ), SubResource( 404 ) ],
+"loop": true,
+"name": "during_jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 405 ), SubResource( 406 ), SubResource( 407 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 408 ), SubResource( 409 ), SubResource( 410 ) ],
+"loop": true,
+"name": "init_jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 411 ), SubResource( 412 ) ],
+"loop": true,
+"name": "landed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 308 ), SubResource( 309 ), SubResource( 310 ) ],
+"loop": true,
+"name": "melee_2",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 413 ), SubResource( 414 ), SubResource( 415 ), SubResource( 416 ), SubResource( 417 ), SubResource( 418 ), SubResource( 419 ), SubResource( 420 ), SubResource( 421 ), SubResource( 422 ), SubResource( 423 ), SubResource( 424 ), SubResource( 425 ), SubResource( 426 ) ],
+"loop": true,
+"name": "run",
+"speed": 14.0
+}, {
+"frames": [ SubResource( 262 ) ],
+"loop": true,
+"name": "slide",
+"speed": 1.0
+} ]
+
+[sub_resource type="Animation" id=229]
+length = 0.001
+step = 0.0833333
+
+[sub_resource type="Animation" id=230]
+resource_name = "during_jump"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "during_jump" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=231]
+resource_name = "falling"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "falling" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=232]
+resource_name = "jump_init"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "init_jump" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=233]
+resource_name = "landing"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "landed" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=234]
+resource_name = "run"
+loop = true
+step = 0.071
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "run" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.071, 0.142, 0.213, 0.284, 0.355, 0.426, 0.497, 0.568, 0.639, 0.71, 0.781, 0.852, 0.923 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=263]
+resource_name = "slide"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "slide" ]
+}
+
+[sub_resource type="AnimationNodeBlendTree" id=59]
+
+[sub_resource type="AnimationNodeAnimation" id=271]
+animation = "slide"
+
+[sub_resource type="AnimationNodeTimeScale" id=272]
+
+[sub_resource type="AnimationNodeBlendTree" id=273]
+nodes/Animation/node = SubResource( 271 )
+nodes/Animation/position = Vector2( 50, 370 )
+nodes/TimeScale/node = SubResource( 272 )
+nodes/TimeScale/position = Vector2( 233, 359.5 )
+nodes/output/position = Vector2( 410, 400 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=243]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=244]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=274]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=275]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=276]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=277]
+
+[sub_resource type="AnimationNodeStateMachine" id=235]
+states/AboutToFall/node = SubResource( 41 )
+states/AboutToFall/position = Vector2( 152.5, 322.065 )
+states/BlendTree/node = SubResource( 59 )
+states/BlendTree/position = Vector2( 395.5, 27 )
+states/FallingLoop/node = SubResource( 44 )
+states/FallingLoop/position = Vector2( -467.5, 320.059 )
+states/Landing/node = SubResource( 47 )
+states/Landing/position = Vector2( -469, 149.5 )
+states/RisingLoop/node = SubResource( 50 )
+states/RisingLoop/position = Vector2( 152.018, 125 )
+states/Run/node = SubResource( 53 )
+states/Run/position = Vector2( -470.5, -41.6773 )
+states/Slide/node = SubResource( 273 )
+states/Slide/position = Vector2( 152.259, -26.243 )
+transitions = [ "Run", "RisingLoop", SubResource( 54 ), "RisingLoop", "AboutToFall", SubResource( 55 ), "AboutToFall", "FallingLoop", SubResource( 56 ), "FallingLoop", "Landing", SubResource( 57 ), "Landing", "Run", SubResource( 58 ), "RisingLoop", "Landing", SubResource( 243 ), "AboutToFall", "Landing", SubResource( 244 ), "Run", "Slide", SubResource( 274 ), "Slide", "Run", SubResource( 275 ), "Slide", "RisingLoop", SubResource( 276 ), "Landing", "Slide", SubResource( 277 ) ]
+start_node = "Run"
+graph_offset = Vector2( -560.75, -136.497 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=236]
+
+[sub_resource type="CapsuleShape2D" id=119]
+radius = 85.7143
+height = 305.714
+
+[sub_resource type="RectangleShape2D" id=255]
+extents = Vector2( 230, 79.6428 )
+
+[sub_resource type="CapsuleShape2D" id=258]
+radius = 68.5714
+height = 0.0
+
+[sub_resource type="CapsuleShape2D" id=301]
+radius = 445.714
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 876, 235 )
+scale = Vector2( 0.35, 0.35 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StandingCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( -154.286, 190 )
+shape = SubResource( 3 )
+
+[node name="StaffForward" type="AnimatedSprite" parent="."]
+frames = SubResource( 120 )
+animation = "run"
+frame = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaffForward"]
+anims/RESET = SubResource( 121 )
+anims/during_jump = SubResource( 122 )
+anims/falling = SubResource( 123 )
+anims/jump_init = SubResource( 124 )
+anims/landing = SubResource( 125 )
+anims/run = SubResource( 126 )
+anims/slide = SubResource( 250 )
+
+[node name="AnimationTree" type="AnimationTree" parent="StaffForward"]
+tree_root = SubResource( 127 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 128 )
+parameters/AboutToFall/TimeScale/scale = 1.0
+parameters/FallingLoop/TimeScale/scale = 1.0
+parameters/Landing/TimeScale/scale = 1.0
+parameters/RisingLoop/TimeScale/scale = 1.0
+parameters/Run/TimeScale/scale = 0.9
+parameters/Slide/TimeScale/scale = 1.0
+
+[node name="StaffUp" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 189 )
+animation = "melee_2"
+playing = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaffUp"]
+anims/RESET = SubResource( 190 )
+anims/during_jump = SubResource( 191 )
+anims/falling = SubResource( 192 )
+anims/jump_init = SubResource( 193 )
+anims/landing = SubResource( 194 )
+anims/run = SubResource( 195 )
+anims/slide = SubResource( 261 )
+
+[node name="AnimationTree" type="AnimationTree" parent="StaffUp"]
+tree_root = SubResource( 196 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 197 )
+parameters/AboutToFall/TimeScale/scale = 1.0
+parameters/FallingLoop/TimeScale/scale = 1.0
+parameters/Landing/TimeScale/scale = 1.0
+parameters/RisingLoop/TimeScale/scale = 1.0
+parameters/Run/TimeScale/scale = 0.9
+parameters/Slide/TimeScale/scale = 1.0
+
+[node name="StaffDown" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 228 )
+animation = "run"
+playing = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaffDown"]
+anims/RESET = SubResource( 229 )
+anims/during_jump = SubResource( 230 )
+anims/falling = SubResource( 231 )
+anims/jump_init = SubResource( 232 )
+anims/landing = SubResource( 233 )
+anims/run = SubResource( 234 )
+anims/slide = SubResource( 263 )
+
+[node name="AnimationTree" type="AnimationTree" parent="StaffDown"]
+tree_root = SubResource( 235 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 236 )
+parameters/AboutToFall/TimeScale/scale = 1.0
+parameters/FallingLoop/TimeScale/scale = 1.0
+parameters/Landing/TimeScale/scale = 1.0
+parameters/RisingLoop/TimeScale/scale = 1.0
+parameters/Run/TimeScale/scale = 0.9
+parameters/Slide/TimeScale/scale = 1.0
+
+[node name="BulletFire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+pitch_scale = 2.03
+
+[node name="DebugCanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Control" type="Control" parent="DebugCanvasLayer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugCanvasLayer/Control"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 71.0
+margin_top = -1041.0
+margin_right = 250.0
+margin_bottom = -763.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="AnimationStateTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_right = 179.0
+margin_bottom = 14.0
+text = "Animation"
+
+[node name="FireRateTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 18.0
+margin_right = 179.0
+margin_bottom = 32.0
+text = "Fire Rate Seconds"
+
+[node name="FireRateSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 36.0
+margin_right = 179.0
+margin_bottom = 52.0
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.01
+
+[node name="MovementSpeedTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 56.0
+margin_right = 179.0
+margin_bottom = 70.0
+text = "Movement Speed"
+
+[node name="MovementSpeedSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 74.0
+margin_right = 179.0
+margin_bottom = 90.0
+min_value = 100.0
+max_value = 10000.0
+step = 100.0
+value = 100.0
+rounded = true
+
+[node name="MaxHeightJumpTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 94.0
+margin_right = 179.0
+margin_bottom = 108.0
+text = "Max Height Jump"
+
+[node name="MaxHeightJumpSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 112.0
+margin_right = 179.0
+margin_bottom = 128.0
+min_value = 100.0
+max_value = 1000.0
+step = 10.0
+value = 100.0
+rounded = true
+
+[node name="MinHeightJumpTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 132.0
+margin_right = 179.0
+margin_bottom = 146.0
+text = "Min Height Jump"
+
+[node name="MinHeightJumpSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 150.0
+margin_right = 179.0
+margin_bottom = 166.0
+min_value = 100.0
+max_value = 1000.0
+step = 10.0
+value = 100.0
+rounded = true
+
+[node name="JumpTimeToPeakTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 170.0
+margin_right = 179.0
+margin_bottom = 184.0
+text = "Gravity Up"
+
+[node name="JumpTimeToPeakSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 188.0
+margin_right = 179.0
+margin_bottom = 204.0
+min_value = 0.01
+max_value = 2.0
+step = 0.01
+value = 0.01
+
+[node name="JumpTimeToDescentTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 208.0
+margin_right = 179.0
+margin_bottom = 222.0
+text = "Gravity Down"
+
+[node name="JumpTimeToDescentSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 226.0
+margin_right = 179.0
+margin_bottom = 242.0
+min_value = 0.01
+max_value = 4.0
+step = 0.01
+value = 0.01
+
+[node name="SlideSpeedTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 246.0
+margin_right = 179.0
+margin_bottom = 260.0
+text = "Slide Speed "
+
+[node name="SlideSpeedSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 264.0
+margin_right = 179.0
+margin_bottom = 280.0
+min_value = 100.0
+max_value = 6000.0
+step = 100.0
+value = 1600.0
+rounded = true
+
+[node name="SlideDurationTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 284.0
+margin_right = 179.0
+margin_bottom = 298.0
+text = "Slide Duration"
+
+[node name="SlideDurationSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
+margin_top = 302.0
+margin_right = 179.0
+margin_bottom = 318.0
+min_value = 0.01
+max_value = 4.0
+step = 0.01
+value = 0.01
+
+[node name="HurtArea" type="Area2D" parent="." groups=["player_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+position = Vector2( -137.143, 125.714 )
+shape = SubResource( 119 )
+
+[node name="SlidingCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( -207.143, 408.214 )
+shape = SubResource( 255 )
+disabled = true
+
+[node name="SlideHurtArea" type="Area2D" parent="." groups=["player_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlideHurtArea"]
+position = Vector2( -208.571, 394.285 )
+shape = SubResource( 258 )
+disabled = true
+
+[node name="MeleeArea" type="Area2D" parent="." groups=["player_physical_attack"]]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeArea"]
+position = Vector2( 77.1429, -5.71429 )
+shape = SubResource( 301 )
+disabled = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -154.286, 190 )
+scale = Vector2( 17.7143, 29.8571 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/FireRateSlider" to="." method="_on_FireRateSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/MovementSpeedSlider" to="." method="_on_MovementSpeedSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpSlider" to="." method="_on_MaxHeightJumpSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpSlider" to="." method="_on_MinHeightJumpSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakSlider" to="." method="_on_JumpTimeToPeakSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider" to="." method="_on_JumpTimeToDescentSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/SlideSpeedSlider" to="." method="_on_SlideSpeedSlider_value_changed"]
+[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/SlideDurationSlider" to="." method="_on_SlideDurationSlider_value_changed"]
