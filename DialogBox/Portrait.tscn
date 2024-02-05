@@ -1,0 +1,68 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://DialogBox/CharacterPortraits/PlayerMG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_BG.png" type="Texture" id=2]
+[ext_resource path="res://DialogBox/Portrait.gd" type="Script" id=3]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_sad-mouthflap.png" type="Texture" id=4]
+[ext_resource path="res://DialogBox/CharacterPortraits/AngelIntense.tscn" type="PackedScene" id=5]
+[ext_resource path="res://DialogBox/CharacterPortraits/AngelScared.tscn" type="PackedScene" id=6]
+[ext_resource path="res://DialogBox/CharacterPortraits/AngelDetermined.tscn" type="PackedScene" id=7]
+[ext_resource path="res://DialogBox/CharacterPortraits/AngelSad.tscn" type="PackedScene" id=8]
+[ext_resource path="res://DialogBox/CharacterPortraits/AngelHappy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://DialogBox/CharacterPortraits/AngelNeutral.tscn" type="PackedScene" id=10]
+[ext_resource path="res://DialogBox/CharacterPortraits/PlayerNormal.tscn" type="PackedScene" id=11]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MC_neutral.png" type="Texture" id=12]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_happy-mouthflap.png" type="Texture" id=13]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_intense-mouthflap.png" type="Texture" id=14]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_neutral-moutflap.png" type="Texture" id=15]
+
+[node name="Portrait" type="TextureRect"]
+unique_name_in_owner = true
+anchor_left = 0.65
+anchor_top = 0.6
+anchor_right = 0.65
+anchor_bottom = 0.6
+margin_right = 751.0
+margin_bottom = 728.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 3 )
+
+[node name="PlayerMG" parent="." instance=ExtResource( 1 )]
+visible = false
+portrait_name = 0
+
+[node name="PlayerNormal" parent="." instance=ExtResource( 11 )]
+visible = false
+texture = ExtResource( 12 )
+portrait_name = 0
+frame_index = 1
+
+[node name="AngelDetermined" parent="." instance=ExtResource( 7 )]
+visible = false
+portrait_name = 0
+
+[node name="AngelHappy" parent="." instance=ExtResource( 9 )]
+visible = false
+texture = ExtResource( 13 )
+frame_index = 1
+
+[node name="AngelIntense" parent="." instance=ExtResource( 5 )]
+visible = false
+texture = ExtResource( 14 )
+frame_index = 1
+
+[node name="AngelNeutral" parent="." instance=ExtResource( 10 )]
+visible = false
+texture = ExtResource( 15 )
+frame_index = 1
+
+[node name="AngelSad" parent="." instance=ExtResource( 8 )]
+visible = false
+texture = ExtResource( 4 )
+frame_index = 1
+
+[node name="AngelScared" parent="." instance=ExtResource( 6 )]
+visible = false

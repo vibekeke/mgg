@@ -7,3 +7,5 @@ enum Enemies { OUR_GUY, MISBEEHAVE, PATHED_MISBEEHAVE, GUNNERFLY, SNEAKY_SNAKE, 
 enum Placement { UPPER, MIDDLE, LOWER }
 
 enum EnemySpawnHeight { UPPER, MIDDLE, LOWER }
+
+enum CharacterPortrait { None, Player, MGPlayer, AngelDetermined, AngelHappy, AngleNeutral, AngelSad, AngelScared, AngelIntense }

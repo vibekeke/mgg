@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://DialogBox/AnimatedTextureRect.gd" type="Script" id=1]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_mouthflap.png" type="Texture" id=2]
+[ext_resource path="res://DialogBox/CharacterPortraits/PlayerMagicalGirlNormal.tres" type="SpriteFrames" id=3]
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 751, 728 )
+
+[node name="PlayerMG" type="TextureRect"]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -375.5
+margin_top = -364.0
+margin_right = 375.5
+margin_bottom = 364.0
+texture = SubResource( 3 )
+script = ExtResource( 1 )
+sprites = ExtResource( 3 )
+portrait_name = 2
+frame_index = 1
+auto_play = true
+playing = true

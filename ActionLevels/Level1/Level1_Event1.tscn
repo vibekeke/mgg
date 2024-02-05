@@ -25,6 +25,12 @@ touch_damage = NodePath("../CanDamagePlayerOnTouch")
 movement_component = NodePath("../CanMoveSingleDirection")
 enemy_name = "Misbeehave"
 
+[node name="NewMisbeehave2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2520, 892 )
+
+[node name="NewMisbeehave3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2696, 892 )
+
 [connection signal="visibility_changed" from="." to="." method="_on_Level1_Event1_visibility_changed"]
 
 [editable path="NewMisbeehave"]

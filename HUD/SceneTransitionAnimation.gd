@@ -24,6 +24,7 @@ func _on_in_battle_dialogue(status, enemy_name):
 
 func start_stage_intro():
 	self.visible = true
+	Events._disable_player_actions(true)
 	scene_transition_animation_player.play("bars_move_right")
 
 func end_stage(success_status: bool):
@@ -51,6 +52,9 @@ func _on_SceneTransitionAnimationPlayer_animation_finished(anim_name):
 		else:
 			scene_transition_animation_player.play("failure_text_typeout_finished")
 		pass
+	elif anim_name == "stage_finished" && dialogue_over:
+		Events._disable_player_actions(false)
+		Events.emit_signal("back_to_stage_from_dialogue_intro")
 	elif anim_name == "success_text_typeout_finished":
 		scene_transition_animation_player.play("success_text_flash_finished")
 		emit_signal("dialogue_stage_finished")
@@ -63,6 +67,5 @@ func _on_SceneTransitionAnimationPlayer_animation_finished(anim_name):
 		scene_transition_animation_player.play_backwards("stage_finished")
 
 func _on_dialogue_finished_with_status(success_status: bool):
-	print("ye buddy", success_status)
 	dialogue_success_status = success_status
 	end_stage(success_status)

@@ -8,6 +8,7 @@ var dialogue_begun = false
 var has_connected_signal = false
 var enable_create_dialogue_balloon = true
 export var placement: int = DataClasses.Placement.LOWER
+export(DataClasses.CharacterPortrait) var character_portrait := DataClasses.CharacterPortrait.None
 onready var timer = get_node("%Timer")
 
 func _ready():
@@ -24,6 +25,7 @@ func show_dialogue(key: String) -> void:
 	else:
 		var new_dialogue_bubble = load("res://DialogBox/DialogueContainer.tscn").instance()
 		new_dialogue_bubble.placement = placement
+		new_dialogue_bubble.character_portrait = character_portrait
 		new_dialogue_bubble.set_dialogue(dialogue)
 		self.add_child(new_dialogue_bubble)
 	show_dialogue(yield(self.get_child(1), "actioned"))

@@ -51,7 +51,6 @@ func trigger_dialogue():
 	dialogue_triggered = true
 	if movement_component_node != null and "is_moving" in movement_component_node:
 		movement_component_node.is_moving = false
-	#Events._disable_player_actions(0)
 	Events.emit_signal("in_battle_dialogue", true, enemy_name)
 
 func _on_dialogue_intro_finished():

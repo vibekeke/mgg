@@ -4,45 +4,92 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 5
+resource_version = 14
 syntax_version = 2
 raw_text = "~ bedroom_door
-
-You thought about leaving your room.
-But only for a second.
-Who actually wants to leave their room?"
+do emit_change_character_portrait(\"AngelSad\")
+Angel: Leaving your room!?
+do emit_change_character_portrait(\"AngelIntense\")
+Angel: Are you insane!?
+do emit_change_character_portrait(\"Player\")
+You: Yeah, fuck that, who actually wants to leave their room?"
 errors = [  ]
 titles = {
-"bedroom_door": "2"
+"bedroom_door": "1"
 }
 lines = {
 "0": {
-"next_id": "2",
+"next_id": "1",
 "text": "bedroom_door",
 "type": "title"
 },
+"1": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelSad"
+} ] ]
+} ]
+},
+"next_id": "2",
+"type": "mutation"
+},
 "2": {
-"character": "",
+"character": "Angel",
+"character_replacements": [  ],
 "next_id": "3",
 "replacements": [  ],
-"text": "You thought about leaving your room.",
-"translation_key": "You thought about leaving your room.",
+"text": "Leaving your room!?",
+"translation_key": "Leaving your room!?",
 "type": "dialogue"
 },
 "3": {
-"character": "",
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelIntense"
+} ] ]
+} ]
+},
 "next_id": "4",
-"replacements": [  ],
-"text": "But only for a second.",
-"translation_key": "But only for a second.",
-"type": "dialogue"
+"type": "mutation"
 },
 "4": {
-"character": "",
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "5",
+"replacements": [  ],
+"text": "Are you insane!?",
+"translation_key": "Are you insane!?",
+"type": "dialogue"
+},
+"5": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Player"
+} ] ]
+} ]
+},
+"next_id": "6",
+"type": "mutation"
+},
+"6": {
+"character": "You",
+"character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Who actually wants to leave their room?",
-"translation_key": "Who actually wants to leave their room?",
+"text": "Yeah, fuck that, who actually wants to leave their room?",
+"translation_key": "Yeah, fuck that, who actually wants to leave their room?",
 "type": "dialogue"
 }
 }

@@ -10,6 +10,7 @@ onready var character_title = get_node("%CharacterTitle")
 onready var await_cursor = get_node("%AwaitCursor")
 onready var dialogue_audio = get_node("%DialogueAudio")
 onready var star_flicker_animation_player = get_node("%StarFlickerAnimationPlayer")
+onready var margin_container = get_node("%MarginContainer")
 
 var placement_dictionary = {
 	DataClasses.Placement.LOWER: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(1396.0, 981.0)}},
@@ -18,6 +19,7 @@ var placement_dictionary = {
 }
 
 var placement = DataClasses.Placement.LOWER
+var character_portrait = DataClasses.CharacterPortrait.None
 
 var dialogue
 var is_waiting_for_input: bool = false
@@ -42,10 +44,12 @@ func add_dialogue():
 
 	self.dialogue = dialogue
 	if dialogue.character == "":
+		margin_container.add_constant_override("margin_right", 10)
 		portrait.hide()
 		character_title.hide()
 	else:
 		portrait.show()
+		margin_container.add_constant_override("margin_right", 125)
 		character_title.bbcode_text = dialogue.character
 
 		dialogue_label.rect_size.x = dialogue_label.get_parent().rect_size.x
@@ -92,7 +96,11 @@ func container_placement():
 
 	await_cursor.global_position = placement_dictionary[placement]['cursor']['position']
 
+func set_character_portrait():
+	portrait.display_character(character_portrait)
+
 func _ready() -> void:
+	set_character_portrait()
 	container_placement()
 	dialogue_label.connect("arriving_characer", self, "_on_arriving_character")
 	add_dialogue()

@@ -289,7 +289,7 @@ position = Vector2( 686, 411 )
 script = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLightsArea"]
-position = Vector2( -2, -27 )
+position = Vector2( -6, -27 )
 shape = SubResource( 46 )
 
 [node name="LightSwitchAudio" type="AudioStreamPlayer" parent="RoomLightsArea"]
@@ -302,7 +302,7 @@ unique_name_in_owner = true
 position = Vector2( 962, 417 )
 
 [node name="DoorArea" type="Area2D" parent="."]
-position = Vector2( 762, 410 )
+position = Vector2( 766, 410 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -315,5 +315,6 @@ shape = SubResource( 49 )
 title = "bedroom_door"
 dialogue = ExtResource( 24 )
 interactable_area = NodePath("..")
+initial_character_portrait = 3
 
 [editable path="ComputerScreen2D"]

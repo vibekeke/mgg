@@ -34,6 +34,8 @@ signal tutorial_element_touched(element_id)
 signal in_battle_dialogue(_in_battle_dialogue, enemy_name)
 signal dialogue_intro_finished
 
+signal back_to_stage_from_dialogue_intro
+
 # overworld related
 signal overworld_player_controlled(status)
 signal bedroom_lights_on(status)
@@ -57,7 +59,7 @@ func _ready():
 	OS.center_window()
 	Events.connect("game_over", self, "go_to_game_over")
 
-func _disable_player_actions(to_disable):
+func _disable_player_actions(to_disable: bool):
 	# for tutorial and other stuff, e.g. boss loading?
 	self.emit_signal("disable_player_action", to_disable)
 

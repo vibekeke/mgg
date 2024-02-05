@@ -5,6 +5,7 @@ export var dialogue : Resource
 export(NodePath) var interactable_area
 export var stop_player := true
 export var trigger_from_node := false
+export (DataClasses.CharacterPortrait) var initial_character_portrait = DataClasses.CharacterPortrait.None
 
 signal created_dialogue_over
 
@@ -28,7 +29,7 @@ func _on_body_exited(body):
 func display_dialogue():
 	if stop_player:
 		Events.emit_signal("overworld_player_controlled", true)
-	MggDialogue.create_dialogue_balloon(title, dialogue, self.get_parent().get_instance_id()) 
+	MggDialogue.create_dialogue_balloon(title, dialogue, self.get_parent().get_instance_id(), DataClasses.Placement.LOWER, initial_character_portrait) 
 	dialogue_open = true
 
 func _process(delta):

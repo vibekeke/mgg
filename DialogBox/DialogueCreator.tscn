@@ -3,7 +3,7 @@
 [ext_resource path="res://DialogBox/DialogueCreator.gd" type="Script" id=1]
 [ext_resource path="res://DialogBox/dialogue_text/bedroom_plant.tres" type="Resource" id=2]
 
-[node name="TestDialogueCreator" type="Node"]
+[node name="DialogueCreator" type="Node"]
 script = ExtResource( 1 )
 title = "bedroom_plant"
 dialogue_resource = ExtResource( 2 )

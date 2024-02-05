@@ -87,11 +87,8 @@ var velocity := Vector2.ZERO
 var can_double_jump = false
 var has_double_jumped = false
 
-# pausing and cutscenes
-var is_jump_disabled = false
-var is_shoot_disabled = false
-var is_move_disabled = false
-var in_battle_dialogue = false
+var in_battle_dialogue := false
+var inputs_disabled := false
 
 export (PackedScene) var gunshot
 export (PackedScene) var charge_shot
@@ -106,6 +103,16 @@ var sprite_anim_to_player_name = {
 	'init_jump': 'RisingJump',
 	'slide': 'Slide'
 }
+
+func input_handler(input_status: bool) -> bool:
+	if inputs_disabled:
+		return false
+	return input_status
+
+func input_strength_handler(strength_status: float) -> float:
+	if inputs_disabled:
+		return 0.0
+	return strength_status
 
 func _ready():
 	Events.connect("collided_with_player", self, "_on_collided_with_player")
@@ -231,9 +238,9 @@ func get_gravity() -> float:
 		gravity = jump_gravity
 		travel_to_animation("RisingLoop")
 	else:
-		if Input.is_action_pressed("float") and !is_on_floor() and !has_floated:
+		if input_handler(Input.is_action_pressed("float")) and !is_on_floor() and !has_floated:
 			gravity = float_gravity
-		elif Input.is_action_pressed("move_down"):
+		elif input_handler(Input.is_action_pressed("move_down")):
 			gravity = fast_fall_gravity
 		else:
 			gravity = fall_gravity
@@ -249,16 +256,16 @@ func get_gravity() -> float:
 	return gravity
 
 func jump_logic():
-	if Input.is_action_just_pressed("jump") and !is_on_floor() and can_double_jump:
+	if input_handler(Input.is_action_just_pressed("jump")) and !is_on_floor() and can_double_jump:
 		can_double_jump = false
 		has_double_jumped = true
 		velocity.y = double_jump_velocity
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor() and !has_double_jumped:
+	if input_handler(Input.is_action_just_pressed("jump")) and is_on_floor() and !has_double_jumped:
 		can_double_jump = false
 		velocity.y = jump_velocity
 		
-	if Input.is_action_just_released("jump") and !is_on_floor() && velocity.y < min_jump_velocity and !has_double_jumped:
+	if input_handler(Input.is_action_just_released("jump")) and !is_on_floor() && velocity.y < min_jump_velocity and !has_double_jumped:
 		can_double_jump = false
 		velocity.y = min_jump_velocity
 
@@ -289,17 +296,17 @@ func fire_charge_shot():
 func attack_logic():
 	if fire_rate_timer.is_stopped():
 		if has_charge_shot:
-			if Input.is_action_pressed("charge_shot"):
+			if input_handler(Input.is_action_pressed("charge_shot")):
 				has_charge_shot = false
 				fire_charge_shot()
 		if !charge_shot_present():
-			if Input.is_action_pressed("up"):
+			if input_handler(Input.is_action_pressed("up")):
 				current_shooting_angle = SHOOT_ANGLE.UPWARD_B
 				shoot(current_shooting_angle)
-			elif Input.is_action_pressed("down"):
+			elif input_handler(Input.is_action_pressed("down")):
 				current_shooting_angle = SHOOT_ANGLE.DOWNWARD_B
 				shoot(current_shooting_angle)
-			elif Input.is_action_pressed("right"):
+			elif input_handler(Input.is_action_pressed("right")):
 				current_shooting_angle = SHOOT_ANGLE.FORWARD_B
 				shoot(current_shooting_angle)
 
@@ -310,13 +317,8 @@ func debug_recalculate_jump_maths():
 	jump_gravity = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 	fall_gravity = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
-func _on_disable_player_action(to_disable):
-	# 0 == disable everything, including movement and jumping
-	# 1 == disable everything except movement and jumping
-	if int(to_disable) == 0:
-		is_shoot_disabled = !is_shoot_disabled
-		is_jump_disabled = !is_jump_disabled
-		is_move_disabled = !is_move_disabled
+func _on_disable_player_action(to_disable: bool):
+	self.inputs_disabled = to_disable
 
 func take_damage(damage):
 	if !in_battle_dialogue:
@@ -352,11 +354,11 @@ func _physics_process(delta):
 		travel_to_animation("Run")
 	
 	var _horizontal_direction = (
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+		input_strength_handler(Input.get_action_strength("move_right")) - input_strength_handler(Input.get_action_strength("move_left"))
 	)
 	
 	var _vertical_direction = (
-		Input.get_action_strength("move_up") - Input.get_action_strength("move_down")
+		input_strength_handler(Input.get_action_strength("move_up")) - input_strength_handler(Input.get_action_strength("move_down"))
 	)
 	
 	if charge_shot_present():
@@ -368,30 +370,29 @@ func _physics_process(delta):
 			flash_charge_shoot_timer.stop()
 			self.modulate = original_color
 
-	if !is_move_disabled:
-		velocity.y += get_gravity() * delta
-		velocity.x = _horizontal_direction * horizontal_movement_speed
-		if is_sliding:
-			velocity.x = 1 * slide_value
-		if Input.is_action_just_pressed("move_down") and is_on_floor() and slide_duration_timer.is_stopped() and !charge_shot_present():
-			if slide_again_timer.is_stopped():
-				initiate_slide()
+	velocity.y += get_gravity() * delta
+	velocity.x = _horizontal_direction * horizontal_movement_speed
+	if is_sliding:
+		velocity.x = 1 * slide_value
+	if input_handler(Input.is_action_just_pressed("move_down")) and is_on_floor() and slide_duration_timer.is_stopped() and !charge_shot_present():
+		if slide_again_timer.is_stopped():
+			initiate_slide()
 
 	handle_collision_shapes()
 #	actions_based_on_animation()
-	if !is_sliding and !is_shoot_disabled:
+	if !is_sliding:
 		attack_logic()
 	
-	if !is_sliding and !is_jump_disabled:
+	if !is_sliding:
 		jump_logic()
 	
 	# the 5 lines below are a crime against humanity and i dont actually get why this works
 	# TODO: write this in a way that makes sense lol
 	if !has_floated:
-		if Input.is_action_pressed("float") and velocity.y > 0 and !float_halt:
+		if input_handler(Input.is_action_pressed("float")) and velocity.y > 0 and !float_halt:
 			float_halt = true
 			velocity.y = 0 # halt velocity if you are floating
-		elif Input.is_action_just_released("float"):
+		elif input_handler(Input.is_action_just_released("float")):
 			float_halt = false
 			has_floated = true
 	if start_respawning_player:
@@ -414,19 +415,18 @@ func initiate_slide():
 	is_sliding = true
 
 func animation_to_show():
-	if Input.is_action_pressed("up") and !is_shoot_disabled:
+	if input_handler(Input.is_action_pressed("up")):
 		$StaffForward.visible = false
 		$StaffUp.visible = true
 		$StaffDown.visible = false
-	elif Input.is_action_pressed("down") and !is_shoot_disabled:
+	elif input_handler(Input.is_action_pressed("down")):
 		$StaffForward.visible = false
 		$StaffUp.visible = false
 		$StaffDown.visible = true
 	else:
-		if !is_shoot_disabled:
-			$StaffForward.visible = true
-			$StaffUp.visible = false
-			$StaffDown.visible = false
+		$StaffForward.visible = true
+		$StaffUp.visible = false
+		$StaffDown.visible = false
 
 func get_active_aiming_state():
 	if $StaffForward.visible:

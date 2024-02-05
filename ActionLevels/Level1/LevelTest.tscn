@@ -61,6 +61,8 @@ level = NodePath("..")
 
 [node name="Level1_Event1" parent="." instance=ExtResource( 9 )]
 unique_name_in_owner = true
+root_level_node_path = NodePath("..")
+enemy_spawner_node_path = NodePath("../EnemySpawnerNew")
 
 [node name="LevelEventTimer" type="Timer" parent="."]
 unique_name_in_owner = true

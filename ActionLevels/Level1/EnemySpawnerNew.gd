@@ -98,6 +98,11 @@ func get_number_of_enemies_on_screen(enemy_name: String) -> int:
 func get_all_enemies_for_level() -> Dictionary:
 	return level_enemy_list[level_name]
 
+func spawn_specific_enemy(enemy_node_instance):
+	if "spawn_height_component" in enemy_node_instance.get_groups():
+		enemy_node_instance.global_position = spawn_height_to_position(enemy_node_instance.spawn_height)
+		level_node.add_child(enemy_node_instance)
+
 func spawn_enemies():
 	if spawning_enabled:
 		var spawnable_enemies = get_spawnable_enemy_list().values()
