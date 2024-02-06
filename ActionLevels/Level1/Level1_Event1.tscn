@@ -25,11 +25,41 @@ touch_damage = NodePath("../CanDamagePlayerOnTouch")
 movement_component = NodePath("../CanMoveSingleDirection")
 enemy_name = "Misbeehave"
 
-[node name="NewMisbeehave2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2520, 892 )
+[node name="NewMisbeehave2" parent="." groups=["event1_beeprop"] instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 2500, 892 )
 
-[node name="NewMisbeehave3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2696, 892 )
+[node name="NewMisbeehave3" parent="." groups=["event1_beeprop"] instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 2670, 892 )
+
+[node name="NewMisbeehave4" parent="." groups=["event1_beeprop"] instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 2840, 892 )
+
+[node name="NewMisbeehave5" parent="." groups=["event1_beeprop"] instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 3080, 892 )
+
+[node name="NewMisbeehave6" parent="." groups=["event1_beeprop"] instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 3250, 892 )
+
+[node name="NewMisbeehave7" parent="." groups=["event1_beeprop"] instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 3420, 892 )
+
+[node name="NewMisbeehave8" parent="." groups=["event1_beeprop"] instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 3660, 892 )
+
+[node name="NewMisbeehave9" parent="." groups=["event1_beeprop"] instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 3830, 892 )
+
+[node name="NewMisbeehave10" parent="." groups=["event1_beeprop"] instance=ExtResource( 2 )]
+unique_name_in_owner = true
+position = Vector2( 4000, 892 )
 
 [connection signal="visibility_changed" from="." to="." method="_on_Level1_Event1_visibility_changed"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ActionLevels/EnemySpawnerNew.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ActionLevels/Level1/Level1_Event1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ActionLevels/PlatformSpawnerNew.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ActionLevels/Level1/LevelTest.gd" type="Script" id=14]
 
@@ -69,6 +70,9 @@ unique_name_in_owner = true
 wait_time = 30.0
 one_shot = true
 autostart = true
+
+[node name="PlatformSpawnerNew" parent="." instance=ExtResource( 11 )]
+level = NodePath("..")
 
 [connection signal="timeout" from="LevelEventTimer" to="." method="_on_LevelEventTimer_timeout"]
 

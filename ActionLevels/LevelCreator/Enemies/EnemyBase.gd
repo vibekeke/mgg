@@ -25,3 +25,8 @@ func disable_touch_damage(status: bool):
 	var damage_on_touch_node = get_node_by_name("CanDamagePlayerOnTouch")
 	if damage_on_touch_node != null:
 		damage_on_touch_node.is_disabled = status
+
+func modify_speed(speed_value: int):
+	var movement_node = get_node_by_name("CanMoveSingleDirection")
+	if movement_node != null:
+		movement_node.speed = speed_value

@@ -99,9 +99,10 @@ func get_all_enemies_for_level() -> Dictionary:
 	return level_enemy_list[level_name]
 
 func spawn_specific_enemy(enemy_node_instance):
-	if "spawn_height_component" in enemy_node_instance.get_groups():
-		enemy_node_instance.global_position = spawn_height_to_position(enemy_node_instance.spawn_height)
-		level_node.add_child(enemy_node_instance)
+	for node in enemy_node_instance.get_children():
+		if "spawn_height_component" in node.get_groups():
+			enemy_node_instance.global_position = spawn_height_to_position(node.spawn_height)
+			level_node.add_child(enemy_node_instance)
 
 func spawn_enemies():
 	if spawning_enabled:
