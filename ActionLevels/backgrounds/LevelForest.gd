@@ -1,9 +1,5 @@
 extends CanvasLayer
 
-
-# left timer related stuff here for now so I can remember how it works
-# in case it's necessary later
-
 export (float) var scrolling_speed_middleground = 500.0
 export (float) var scrolling_time_middleground = 10.0
 
@@ -23,3 +19,19 @@ func _physics_process(delta):
 	$BackForestBackground.scroll_offset.x -= scrolling_speed_foreground * 0.5 * delta
 	$HillBackground.scroll_offset.x -= scrolling_speed_foreground * 0.25 * delta
 	$SkyBackground.scroll_offset.x -= scrolling_speed_foreground * 0.10 * delta
+
+
+func get_foreground_node():
+	return $Foreground
+	
+func get_front_trees_background_node():
+	return $FrontTreesBackground
+
+func get_back_forest_background_node():
+	return $BackForestBackground
+
+func get_hill_background_node():
+	return $HillBackground
+	
+func get_sky_background_node():
+	return $SkyBackground

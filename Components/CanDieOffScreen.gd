@@ -12,4 +12,5 @@ func _ready():
 func _on_screen_exited():
 	if is_instance_valid(enemy_node):
 		if enemy_node.global_position.x <= 0:
+			print("hes dead jim")
 			enemy_node.queue_free()

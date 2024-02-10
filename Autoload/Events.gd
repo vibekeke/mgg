@@ -48,6 +48,11 @@ signal enemy_spawner_enabled(enabled)
 signal enemy_spawner_difficulty(time_to_spawn, max_enemies)
 signal kill_spawned_enemies
 
+# new platform spawner
+signal platform_spawner_enabled(enabled)
+signal platform_spawn_number(number_of_platforms)
+signal kill_spawned_platforms
+
 # save file location and metadata
 const SAVE_FILE_LOCATION : String = "res://mggsave.save"
 const COMPLETED_LEVELS : Array = []

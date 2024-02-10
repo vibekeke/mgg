@@ -5,7 +5,6 @@ onready var enemy_node = get_node(enemy)
 export var title := ""
 export var dialogue : Resource
 
-var tegn_mark = load("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/EnemyTegnMark.tscn")
 
 export (DataClasses.Placement) var placement
 
@@ -22,7 +21,11 @@ onready var middle_of_screen = screen_size.x / 2.0
 export (NodePath) var movement_component
 onready var movement_component_node = get_node(movement_component)
 
+export (NodePath) var tegn_mark
+onready var tegn_mark_node = get_node(tegn_mark)
+
 export var enemy_name = ""
+export var tegn_mark_position := Vector2.ZERO
 
 var dialogue_triggered := false
 
@@ -31,13 +34,10 @@ func set_dialogue(_title, dialogue_resource, dialogue_placement, enemy_name):
 	self.dialogue = dialogue_resource
 	placement = dialogue_placement
 	enemy_name = enemy_name
-	var tegn_mark_node = tegn_mark.instance()
-	enemy_node.call_deferred("add_child", tegn_mark_node)
-	# bit hacky but we ok
-	tegn_mark_node.scale = Vector2(1.5, 1.5)
-	tegn_mark_node.position = Vector2(0.0, -150.0)
 
 func _ready():
+	if is_instance_valid(tegn_mark_node):
+		tegn_mark_node.visible = true
 	Events.connect("dialogue_intro_finished", self, "_on_dialogue_intro_finished")
 	can_take_damage_node.damage_disabled = true
 	touch_damage_node.is_disabled = true
@@ -48,6 +48,8 @@ func _physics_process(delta):
 		trigger_dialogue()
 
 func trigger_dialogue():
+	if is_instance_valid(tegn_mark_node):
+		tegn_mark_node.visible = false
 	dialogue_triggered = true
 	if movement_component_node != null and "is_moving" in movement_component_node:
 		movement_component_node.is_moving = false

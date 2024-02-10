@@ -26,20 +26,15 @@ func _ready():
 
 func _on_before_bars_move_up(enemy_name):
 	var current_level_node = self.get_node(current_level_name)
-	# self.remove_child(current_level_node)
-	#current_level_node.visible = false
 	var dialogue_scene_instance = dialogue_scene.instance()
 	dialogue_scene_instance.connect("scene_dialogue_finished", self, "_on_scene_dialogue_finished")
 	self.add_child(dialogue_scene_instance)
 	dialogue_scene_instance.load_enemy(enemy_name)
 
 func _on_scene_dialogue_finished():
-	print("scene dialogue finished")
 	for node in self.get_children():
 		if node.name == "LevelDialogueStage":
 			dialogue_scene_finished = true
-			# if is_instance_valid(node):
-			# 	node.queue_free()
 	
 func _on_dialogue_stage_finished():
 	for node in self.get_children():

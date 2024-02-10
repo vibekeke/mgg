@@ -64,6 +64,7 @@ level = NodePath("..")
 unique_name_in_owner = true
 root_level_node_path = NodePath("..")
 enemy_spawner_node_path = NodePath("../EnemySpawnerNew")
+level_background_node_path = NodePath("../LevelBackground")
 
 [node name="LevelEventTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -73,6 +74,10 @@ autostart = true
 
 [node name="PlatformSpawnerNew" parent="." instance=ExtResource( 11 )]
 level = NodePath("..")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 960, 540 )
+current = true
 
 [connection signal="timeout" from="LevelEventTimer" to="." method="_on_LevelEventTimer_timeout"]
 

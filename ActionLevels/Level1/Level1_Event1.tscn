@@ -23,7 +23,9 @@ dialogue = ExtResource( 1 )
 can_take_damage = NodePath("../CanTakeDamage")
 touch_damage = NodePath("../CanDamagePlayerOnTouch")
 movement_component = NodePath("../CanMoveSingleDirection")
+tegn_mark = NodePath("../EnemyTegnMark")
 enemy_name = "Misbeehave"
+tegn_mark_position = Vector2( 1000, 1000 )
 
 [node name="NewMisbeehave2" parent="." groups=["event1_beeprop"] instance=ExtResource( 2 )]
 unique_name_in_owner = true

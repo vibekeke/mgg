@@ -274,7 +274,7 @@ func shoot(angle):
 	var _gunshot = gunshot.instance()
 	_gunshot.add_to_group("player_bullet")
 	_gunshot.set_bullet_type(angle)
-	get_tree().get_root().add_child(_gunshot)
+	self.get_parent().add_child(_gunshot)
 	if angle == SHOOT_ANGLE.FORWARD_B:
 		_gunshot.position = self.position + Vector2(180,35)
 	if angle == SHOOT_ANGLE.UPWARD_B:

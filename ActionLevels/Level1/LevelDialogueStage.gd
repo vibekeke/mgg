@@ -27,8 +27,8 @@ func load_enemy(enemy_name):
 	enemy_node.modulate = Color(0, 0, 0, 1.0)
 	player_node.modulate = Color(0, 0, 0, 1.0)
 	tween.interpolate_property(player_node, "global_position", player_node.global_position, Vector2(400, 749), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	if enemy_node.has_method("disable_components"):
-		enemy_node.disable_components()
+	# if enemy_node.has_method("disable_components"):
+	# 	enemy_node.disable_components()
 	tween.start()
 	yield(tween, "tween_all_completed")
 	spotlight_one.visible = true
