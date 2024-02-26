@@ -53,12 +53,10 @@ func make_windowed():
 	computer_tween.start()
 
 func _on_FullscreenIconArea2D_mouse_entered():
-	print("icon entered")
 	fullscreen_icon.modulate = Color(4.0, 4.0, 4.0)
 
 
 func _on_FullscreenIconArea2D_mouse_exited():
-	print("icon exited")
 	fullscreen_icon.modulate = Color(1.0, 1.0, 1.0)
 
 
