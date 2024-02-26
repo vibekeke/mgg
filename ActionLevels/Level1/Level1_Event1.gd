@@ -4,6 +4,7 @@ var bee_enemy = preload("res://ActionLevels/LevelCreator/Enemies/NewMisbeehave/N
 var number_of_enemies_to_spawn_background = 20
 var success_status : bool
 onready var talking_bee = get_node("%NewMisbeehave")
+onready var kill_talker_tween = get_node("%FadeOutKillTalker")
 onready var background_for_bees = self.level_background_node
 export var test_run := false
 var background_bees_finished := false
@@ -46,7 +47,6 @@ func _on_Level1_Event1_visibility_changed():
 
 func spawn_background_bees():
 	for _x in range(0, number_of_enemies_to_spawn_background):
-		print("making bee")
 		var bee_enemy_instance = bee_enemy.instance()
 		bee_enemy_instance.scale = Vector2(bee_enemy_instance.scale.x * -1, bee_enemy_instance.scale.y)
 		bee_enemy_instance.global_position = Vector2(0,800)
@@ -55,15 +55,20 @@ func spawn_background_bees():
 		background_for_bees.get_back_forest_background_node().add_child(bee_enemy_instance)
 
 func spawn_enemy_bees():
-	for bee in self.get_children():
-		if "event1_beeprop" in bee.get_groups():
-			enable_bee_for_combat(bee, bee_speed)
+	if is_instance_valid(talking_bee):
+		kill_talker_tween.interpolate_property(talking_bee, "modulate", talking_bee.modulate, Color(1,1,1,0), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		kill_talker_tween.start()
+	enable_bee_for_combat(talking_bee, bee_speed)
+	for _x in range(0, number_of_enemies_to_spawn_background):
+		var bee_enemy_instance = bee_enemy.instance()
+		bee_enemy_instance.global_position = Vector2(2160, 930)
+		enable_bee_for_combat(bee_enemy_instance, bee_speed)
+		yield(get_tree().create_timer(0.1), "timeout")
+		background_for_bees.get_foreground_node().add_child(bee_enemy_instance)
 
 func _on_back_to_stage_from_dialogue_intro():
 	if !success_status:
-		print("here come the bees, bees, bees, bees")
 		yield(spawn_background_bees(), "completed")
-		print("real bees comin")
 		yield(get_tree().create_timer(2.0), "timeout")
 		spawn_enemy_bees()
 	else:
@@ -71,3 +76,8 @@ func _on_back_to_stage_from_dialogue_intro():
 
 func _on_emit_dialogue_finished_with_status(_success_status: bool):
 	success_status = _success_status
+
+
+func _on_FadeOutKillTalker_tween_completed(object, key):
+	if is_instance_valid(object):
+		object.queue_free()

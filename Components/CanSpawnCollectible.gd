@@ -17,4 +17,8 @@ func _on_enemy_dead(node_id: int, death_position: Vector2):
 		var _collectible_to_spawn = droppables[randi() % droppables.size()].instance()
 		_collectible_to_spawn.scroll_speed = 250
 		_collectible_to_spawn.global_position = death_position
-		get_tree().get_root().call_deferred("add_child", _collectible_to_spawn)
+		print("spawning collectible!!!!!!")
+		for node in get_tree().get_root().get_children():
+			print("node is ", node)
+			if node.is_in_group("level"):
+				node.call_deferred("add_child", _collectible_to_spawn)

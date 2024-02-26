@@ -109,6 +109,7 @@ visibility_notifier = NodePath("../VisibilityNotifier2D")
 shoots_bullets = false
 bullets_die_with_parent = true
 node_rotator_position = NodePath("../Area2D")
+parent_node_path = NodePath("..")
 
 [node name="CanDieOffScreen" parent="." instance=ExtResource( 11 )]
 enemy = NodePath("..")

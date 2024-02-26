@@ -5,7 +5,6 @@ onready var enemy_node = get_node(enemy)
 export var title := ""
 export var dialogue : Resource
 
-
 export (DataClasses.Placement) var placement
 
 export (NodePath) var can_take_damage

@@ -1,6 +1,8 @@
 class_name EnemyBase extends Node2D
 
 export var enemy_name := ""
+export var x_spawn_offset := 0
+export var y_spawn_offset := 0
 
 func get_enemy_name():
 	return enemy_name

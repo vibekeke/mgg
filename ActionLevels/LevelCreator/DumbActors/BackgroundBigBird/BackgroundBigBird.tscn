@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdSprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ActionLevels/LevelCreator/DumbActors/BackgroundBigBird/BackgroundBigBird.gd" type="Script" id=3]
+
+[node name="BackgroundBigBird" type="Node2D"]
+modulate = Color( 0, 0, 0, 1 )
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" parent="." instance=ExtResource( 1 )]
+flip_h = true

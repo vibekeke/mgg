@@ -17,6 +17,8 @@ export (int) var radius = 135
 export (float) var time_to_fire = 2.0
 export (NodePath) var node_rotator_position
 onready var node_rotator_position_node = get_node(node_rotator_position)
+export (NodePath) var parent_node_path
+onready var parent_node = get_node_or_null(parent_node_path)
 var spawned_bullets = []
 
 func _ready():
@@ -28,7 +30,12 @@ func _ready():
 	get_tree().current_scene.call_deferred("add_child", bullet_rotator_instance)
 	shoot_timer.wait_time = time_to_fire
 	_setup_bullets()
-	
+
+func _process(delta):
+	if parent_node.modulate.a > 1.0:
+		if is_instance_valid(self):
+			self.queue_free()
+
 func _on_node_rotator_tree_exiting():
 	if bullets_die_with_parent:
 		kill_bullets()

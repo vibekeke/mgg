@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogic/Localization/translation_service.gd"
 }, {
+"base": "Area2D",
+"class": "DamageEnemyBaseClassArea",
+"language": "GDScript",
+"path": "res://Player/Projectiles/DamageEnemyBaseClassArea.gd"
+}, {
 "base": "Reference",
 "class": "DataClasses",
 "language": "GDScript",
@@ -187,6 +192,7 @@ _global_script_class_icons={
 "BroBearRotator": "",
 "BroBun": "",
 "DTS": "",
+"DamageEnemyBaseClassArea": "",
 "DataClasses": "",
 "Dialogic": "",
 "DialogicAnimaPropertiesHelper": "",

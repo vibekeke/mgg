@@ -14,7 +14,7 @@
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ActionLevels/Level1/LevelTest.gd" type="Script" id=14]
 
-[node name="LevelTest" type="Node2D"]
+[node name="LevelTest" type="Node2D" groups=["level"]]
 script = ExtResource( 14 )
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
@@ -81,4 +81,5 @@ current = true
 
 [connection signal="timeout" from="LevelEventTimer" to="." method="_on_LevelEventTimer_timeout"]
 
+[editable path="LevelBackground"]
 [editable path="EnemySpawnerNew"]

@@ -30,7 +30,6 @@ func call_death():
 	if !death_called:
 		death_called = true
 		var death_global_position = enemy_area_node.global_position
-		print("death global position is ", death_global_position)
 		Events.emit_signal("regular_enemy_death")
 		emit_signal("enemy_dead", self.get_instance_id(), death_global_position)
 		var active_death_explosion = death_explosion.instance()
@@ -42,16 +41,16 @@ func call_death():
 		enemy_sprite_node.visible = false
 		active_death_explosion.play("default", false)
 
-func take_damage():
+func take_damage(damage_value: int):
 	damage_timer.start()
 	enemy_sprite_node.modulate = hurt_colour
-	health_value = health_value - 1
+	health_value = health_value - damage_value
 	emit_signal("took_damage", self.get_instance_id())
 
 
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("damage_from_player") and health_value > 0 and !damage_disabled:
-		take_damage()
+		take_damage(area.damage)
 	if health_value <= 0:
 		call_death()
 

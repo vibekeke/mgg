@@ -22,7 +22,7 @@ func _on_area_entered(area: Area2D):
 			# check if enemy is already dead first
 			if !take_damage_node.death_called:
 				Events.emit_signal("collided_with_player", 1)
-			take_damage_node.take_damage()
+			take_damage_node.take_damage(1)
 		else:
 			# in case root node is projectile
 			Events.emit_signal("collided_with_player", 1)

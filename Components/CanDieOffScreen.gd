@@ -10,7 +10,5 @@ func _ready():
 	visibility_notifier_node.connect("screen_exited", self, "_on_screen_exited")
 
 func _on_screen_exited():
-	if is_instance_valid(enemy_node):
-		if enemy_node.global_position.x <= 0:
-			print("hes dead jim")
+	if is_instance_valid(enemy_node) && enemy_node.global_position.x <= 0:
 			enemy_node.queue_free()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://ActionLevels/Level1/EnemySpawnerNew.gd" type="Script" id=1]
+[ext_resource path="res://ActionLevels/EnemySpawnerNew.gd" type="Script" id=1]
 
 [node name="EnemySpawnerNew" type="Node"]
 script = ExtResource( 1 )
@@ -21,4 +21,8 @@ position = Vector2( 2160, 930 )
 unique_name_in_owner = true
 autostart = true
 
+[node name="FadeOutKillTween" type="Tween" parent="."]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="NewSpawnTimer" to="." method="_on_NewSpawnTimer_timeout"]
+[connection signal="tween_completed" from="FadeOutKillTween" to="." method="_on_FadeOutKillTween_tween_completed"]

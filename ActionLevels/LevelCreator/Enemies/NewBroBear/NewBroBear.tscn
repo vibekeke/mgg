@@ -137,5 +137,6 @@ speed = 200
 
 [node name="CanSpawnBulletShield" parent="." instance=ExtResource( 11 )]
 visibility_notifier = NodePath("../Path2D/PathFollow2D/AnimatedSprite/VisibilityNotifier2D")
+parent_node_path = NodePath("..")
 
 [connection signal="screen_entered" from="Path2D/PathFollow2D/AnimatedSprite/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]

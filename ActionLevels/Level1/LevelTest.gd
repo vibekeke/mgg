@@ -2,13 +2,19 @@ extends BaseLevelEvent
 
 onready var level_event_1 = get_node("%Level1_Event1")
 onready var level_event_timer = get_node("%LevelEventTimer")
-
+onready var level_background = get_node("%LevelBackground")
+onready var background_big_bird = preload("res://ActionLevels/LevelCreator/DumbActors/BackgroundBigBird/BackgroundBigBird.tscn")
 var title = "level_test"
 onready var level_event_list = [level_event_1]
 onready var number_of_events = level_event_list.size()
 var number_of_run_events := 0
 
 func _ready():
+	var big_bird_background_instance = background_big_bird.instance()
+	# big_bird_background_instance.scale = Vector2((big_bird_background_instance.scale.x * 0.25) * -1, big_bird_background_instance.scale.y * 0.25)
+	big_bird_background_instance.scale = Vector2(0.2, 0.2)
+	big_bird_background_instance.global_position = Vector2(big_bird_background_instance.speed * -1, 400)
+	level_background.get_hill_background_node().add_child(big_bird_background_instance)
 	if number_of_events > 0:
 		for level_event in level_event_list:
 			level_event.visible = false

@@ -4,6 +4,7 @@ onready var upper_position = get_node("%Upper")
 onready var middle_position = get_node("%Middle")
 onready var lower_position = get_node("%Lower")
 onready var new_spawn_timer = get_node("%NewSpawnTimer")
+onready var fade_out_kill_tween = get_node("%FadeOutKillTween")
 
 var level_name := ""
 var rng = RandomNumberGenerator.new()
@@ -112,6 +113,11 @@ func spawn_enemies():
 		for node in enemy_to_spawn_instance.get_children():
 			if "spawn_height_component" in node.get_groups():
 				enemy_to_spawn_instance.global_position = spawn_height_to_position(node.spawn_height)
+				print("spawn offsets x: ", enemy_to_spawn_instance.x_spawn_offset, " y: ", enemy_to_spawn_instance.y_spawn_offset)
+				print("enemy height before offset ", enemy_to_spawn_instance.global_position)
+				enemy_to_spawn_instance.global_position.x += enemy_to_spawn_instance.x_spawn_offset
+				enemy_to_spawn_instance.global_position.y += enemy_to_spawn_instance.y_spawn_offset
+				print("enemy height after offset ", enemy_to_spawn_instance.global_position)
 		enemy_queue.append(enemy_to_spawn_instance)
 		enemy_to_spawn_instance.connect("tree_exiting", self, "_on_enemy_exiting_tree")
 		level_node.add_child(enemy_to_spawn_instance)
@@ -140,4 +146,9 @@ func _on_enemy_spawner_difficulty(time_to_spawn, max_enemies):
 func _on_kill_spawned_enemies():
 	for enemy in valid_enemies():
 		if is_instance_valid(enemy):
-			enemy.queue_free()
+			fade_out_kill_tween.interpolate_property(enemy, "modulate", enemy.modulate, Color(1,1,1,0.0), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	fade_out_kill_tween.start()
+
+func _on_FadeOutKillTween_tween_completed(object, key):
+	if is_instance_valid(object):
+		object.queue_free()

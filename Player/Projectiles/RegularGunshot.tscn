@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://imported_assets/projectiles/Projectile_Spear_v1.png" type="Texture" id=1]
 [ext_resource path="res://Projectiles/Gunshot.gd" type="Script" id=2]
+[ext_resource path="res://Player/Projectiles/GunshotArea2D.gd" type="Script" id=3]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -22,6 +23,7 @@ playing = true
 script = ExtResource( 2 )
 
 [node name="GunshotArea2D" type="Area2D" parent="." groups=["damage_from_player"]]
+script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GunshotArea2D"]
 position = Vector2( 30.5352, 26.2419 )

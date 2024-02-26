@@ -56,6 +56,7 @@ extents = Vector2( 331.25, 65 )
 scale = Vector2( 0.4, 0.4 )
 script = ExtResource( 10 )
 enemy_name = "SneakySnake"
+y_spawn_offset = -200
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 7 )
