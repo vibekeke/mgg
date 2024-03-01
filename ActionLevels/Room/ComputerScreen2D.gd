@@ -5,6 +5,7 @@ onready var maximise_desktop_audio = get_node("%MaximiseDesktop")
 onready var minimise_desktop_audio = get_node("%MinimiseDesktop")
 onready var computer_tween = get_node("%ComputerTween")
 onready var desktop_background = get_node("%DesktopBackground")
+onready var bootscreen = get_node("%Bootscreen")
 
 onready var fullscreen_icon = get_node("%FullscreenIcon")
 
@@ -14,6 +15,7 @@ var reverse_play = false
 var is_fullscreen = false
 onready var initial_desktop_background_position = desktop_background.position
 onready var initial_parent_position = self.position
+onready var initial_bootscreen_position = bootscreen.position
 
 func _ready():
 	self.visible = false
@@ -49,6 +51,7 @@ func make_windowed():
 	is_fullscreen = false
 	desktop_background.position = initial_desktop_background_position
 	self.position = initial_parent_position
+	bootscreen.position = initial_bootscreen_position
 	computer_tween.interpolate_property(desktop_background, "scale", desktop_background.scale, Vector2(1.0, 1.0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	computer_tween.start()
 

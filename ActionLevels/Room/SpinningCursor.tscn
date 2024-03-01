@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ActionLevels/Room/SpinningCursor.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:bbcode_text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "/" ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "spinning_cursor"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:bbcode_text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "|", "/", "\\", "-" ]
+}
+
+[node name="SpinningCursor" type="RichTextLabel"]
+anchor_right = 0.042
+anchor_bottom = 0.042
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "/"
+meta_underlined = false
+text = "/"
+fit_content_height = true
+scroll_active = false
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+playback_speed = 1.25
+anims/RESET = SubResource( 2 )
+anims/spinning_cursor = SubResource( 3 )
