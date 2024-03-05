@@ -9,6 +9,8 @@ func _ready():
 	var all_labels = label_container.get_children()
 	var num_labels = len(all_labels)
 	var midpoint = num_labels / 2
+	for x in range(0, num_labels):
+		all_labels[x].visible = false
 	computer_boot_logo.modulate.a = 0
 	for x in range(0, num_labels):
 		yield(get_tree().create_timer(0.1), "timeout")
