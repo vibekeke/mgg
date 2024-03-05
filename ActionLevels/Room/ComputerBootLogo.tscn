@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://imported_assets/computer/outer-circle.png" type="Texture" id=1]
 [ext_resource path="res://imported_assets/computer/star-circle.png" type="Texture" id=2]
 [ext_resource path="res://imported_assets/computer/inner-circle.png" type="Texture" id=3]
 [ext_resource path="res://ActionLevels/Room/ComputerBootLogo.gd" type="Script" id=4]
+[ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -84,6 +85,79 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 0.0, 360.0 ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "animation_looped_first"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+outline_size = 1
+use_mipmaps = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("OSTitle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OSTitle:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -81, 23 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "text_appear"
+tracks/0/type = "value"
+tracks/0/path = NodePath("OSTitle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OSTitle:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -81, 23 ), Vector2( -26, 23 ) ]
+}
 
 [node name="ComputerBootLogo" type="Node2D"]
 script = ExtResource( 4 )
@@ -102,3 +176,24 @@ texture = ExtResource( 3 )
 
 [node name="Star" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+
+[node name="OSTitle" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -81.0
+margin_top = 23.0
+margin_right = -26.0
+margin_bottom = 40.0
+custom_colors/default_color = Color( 0.933333, 0.784314, 0.972549, 1 )
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = " Magia OS"
+meta_underlined = false
+text = " Magia OS"
+fit_content_height = true
+scroll_active = false
+
+[node name="TextAppear" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/RESET = SubResource( 4 )
+anims/text_appear = SubResource( 5 )

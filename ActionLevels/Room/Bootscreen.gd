@@ -11,17 +11,17 @@ func _ready():
 	var midpoint = num_labels / 2
 	computer_boot_logo.modulate.a = 0
 	for x in range(0, num_labels):
-		yield(get_tree().create_timer(0.1), "timeout")
-		if x == midpoint:
-			print("ye ", x)
-			logo_appear_tween.interpolate_property(computer_boot_logo, "modulate", computer_boot_logo.modulate, Color(1,1,1,1), 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			logo_appear_tween.start()
 		if all_labels[x].name != 'SpinningCursor':
 			all_labels[x].visible = false
 	start_bootscreen()
 
 func start_bootscreen():
 	var all_labels = label_container.get_children()
-	for label in all_labels:
-		label.visible = true
+	var quarter_point = round(len(all_labels) * 0.25)
+	print("quarter point", quarter_point)
+	for x in range(0, len(all_labels)):
+		if x == quarter_point:
+			logo_appear_tween.interpolate_property(computer_boot_logo, "modulate", computer_boot_logo.modulate, Color(1,1,1,1), 0.8, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			logo_appear_tween.start()
+		all_labels[x].visible = true
 		yield(get_tree().create_timer(0.5), "timeout")

@@ -305,7 +305,7 @@ size_flags_vertical = 3
 
 [node name="PageTitle" type="Panel" parent="BrowserPage/PageBody/ScrollContainer/PageContainer"]
 margin_right = 400.0
-margin_bottom = 30.0
+margin_bottom = 356.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 33 )
