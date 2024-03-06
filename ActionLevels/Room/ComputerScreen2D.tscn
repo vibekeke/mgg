@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://ActionLevels/Room/ComputerScreen2D.gd" type="Script" id=1]
 [ext_resource path="res://sounds/computer/minimize_008.wav" type="AudioStream" id=2]
@@ -6,7 +6,9 @@
 [ext_resource path="res://ActionLevels/Room/BrowserComputerScreen2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://imported_assets/computer/fullscreen.png" type="Texture" id=5]
 [ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sounds/computer/fanwhir.wav" type="AudioStream" id=7]
 [ext_resource path="res://ActionLevels/Room/Bootscreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sounds/computer/pcbeep.wav" type="AudioStream" id=9]
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
@@ -85,8 +87,8 @@ colors = PoolColorArray( 1, 0.819608, 0.933333, 1, 1, 0.819608, 0.933333, 1 )
 
 [sub_resource type="GradientTexture2D" id=2]
 gradient = SubResource( 1 )
-width = 960
-height = 540
+width = 1920
+height = 1080
 
 [sub_resource type="Shader" id=13]
 code = "shader_type canvas_item;
@@ -180,7 +182,7 @@ colors = PoolColorArray( 0.141176, 0.364706, 0.854902, 1, 0.141176, 0.364706, 0.
 
 [sub_resource type="GradientTexture2D" id=8]
 gradient = SubResource( 7 )
-width = 960
+width = 1920
 height = 32
 
 [sub_resource type="Shader" id=11]
@@ -294,6 +296,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 1e-05, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bootscreen:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "appear"
@@ -309,6 +323,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bootscreen:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -330,12 +356,12 @@ texture = SubResource( 2 )
 
 [node name="DesktopBar" type="Sprite" parent="DesktopBackground"]
 material = SubResource( 14 )
-position = Vector2( 0, 254 )
+position = Vector2( 0, 524 )
 texture = SubResource( 8 )
 
 [node name="StartMenu" type="Sprite" parent="DesktopBackground/DesktopBar"]
 material = SubResource( 12 )
-position = Vector2( -448, 0 )
+position = Vector2( -927, 0 )
 texture = SubResource( 10 )
 
 [node name="Browser" parent="DesktopBackground" instance=ExtResource( 4 )]
@@ -357,6 +383,7 @@ shape = SubResource( 15 )
 
 [node name="Bootscreen" parent="." instance=ExtResource( 8 )]
 unique_name_in_owner = true
+scale = Vector2( 1e-05, 1e-05 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -385,8 +412,20 @@ environment = SubResource( 16 )
 affected_by_light = false
 
 [node name="DesktopWhir" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 7 )
+volume_db = -2.0
+
+[node name="TestCamera" type="Camera2D" parent="."]
+visible = false
+current = true
+
+[node name="DesktopBeep" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 9 )
 
 [connection signal="input_event" from="DesktopBackground/FullscreenIcon/FullscreenIconArea2D" to="." method="_on_FullscreenIconArea2D_input_event"]
 [connection signal="mouse_entered" from="DesktopBackground/FullscreenIcon/FullscreenIconArea2D" to="." method="_on_FullscreenIconArea2D_mouse_entered"]
 [connection signal="mouse_exited" from="DesktopBackground/FullscreenIcon/FullscreenIconArea2D" to="." method="_on_FullscreenIconArea2D_mouse_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="finished" from="DesktopBeep" to="." method="_on_DesktopBeep_finished"]

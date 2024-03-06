@@ -1,10 +1,15 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://imported_assets/computer/better-close.png" type="Texture" id=1]
 [ext_resource path="res://ActionLevels/Room/BrowserComputerScreen2D.gd" type="Script" id=2]
 [ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://imported_assets/computer/browser-background-cats.png" type="Texture" id=4]
-[ext_resource path="res://imported_assets/fonts/verdana.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://imported_assets/fonts/comic_andy.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://imported_assets/fonts/verdana-bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://imported_assets/fonts/verdana.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://ActionLevels/Room/WebpageUnfocusedMenu.tres" type="StyleBox" id=8]
+[ext_resource path="res://ActionLevels/Room/MenuBarButton.gd" type="Script" id=9]
+[ext_resource path="res://imported_assets/computer/level_select/forest.png" type="Texture" id=10]
 
 [sub_resource type="Shader" id=15]
 code = "shader_type canvas_item;
@@ -99,8 +104,8 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture2D" id=18]
 gradient = SubResource( 17 )
-width = 600
-height = 360
+width = 1248
+height = 702
 
 [sub_resource type="Shader" id=19]
 code = "shader_type canvas_item;
@@ -194,7 +199,7 @@ colors = PoolColorArray( 0.858824, 0.803922, 0.941176, 1, 0.858824, 0.803922, 0.
 
 [sub_resource type="GradientTexture2D" id=22]
 gradient = SubResource( 21 )
-width = 600
+width = 1248
 height = 25
 
 [sub_resource type="RectangleShape2D" id=25]
@@ -225,8 +230,8 @@ colors = PoolColorArray( 1, 0.941176, 0.843137, 1, 1, 0.941176, 0.843137, 1 )
 
 [sub_resource type="GradientTexture2D" id=30]
 gradient = SubResource( 29 )
-width = 400
-height = 356
+width = 866
+height = 678
 
 [sub_resource type="Gradient" id=31]
 colors = PoolColorArray( 1, 0.933333, 0.843137, 1, 1, 0.815686, 0.811765, 1 )
@@ -239,9 +244,74 @@ fill_to = Vector2( 0, 1 )
 texture = SubResource( 32 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
-[sub_resource type="DynamicFont" id=34]
-use_filter = true
+[sub_resource type="Gradient" id=35]
+offsets = PoolRealArray( 0.177632, 1 )
+colors = PoolColorArray( 0.964706, 0.803922, 0.94902, 1, 0.815686, 0.611765, 1, 1 )
+
+[sub_resource type="GradientTexture2D" id=36]
+gradient = SubResource( 35 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=37]
+texture = SubResource( 36 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="DynamicFont" id=38]
+size = 32
 font_data = ExtResource( 5 )
+
+[sub_resource type="Gradient" id=39]
+offsets = PoolRealArray( 0.677632, 1 )
+colors = PoolColorArray( 0.815686, 0.611765, 1, 1, 0.717647, 0.411765, 1, 1 )
+
+[sub_resource type="GradientTexture2D" id=40]
+gradient = SubResource( 39 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=41]
+texture = SubResource( 40 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="DynamicFont" id=45]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=46]
+font_data = ExtResource( 6 )
+
+[sub_resource type="Gradient" id=42]
+offsets = PoolRealArray( 0.707237, 1 )
+colors = PoolColorArray( 0.815686, 0.611765, 1, 1, 0.909804, 0.811765, 1, 1 )
+
+[sub_resource type="GradientTexture2D" id=43]
+gradient = SubResource( 42 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=44]
+texture = SubResource( 43 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="Gradient" id=47]
+offsets = PoolRealArray( 0, 0.0411184 )
+colors = PoolColorArray( 1, 0.815686, 0.811765, 1, 1, 0.815686, 0.811765, 1 )
+
+[sub_resource type="GradientTexture2D" id=48]
+gradient = SubResource( 47 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=49]
+texture = SubResource( 48 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="DynamicFont" id=50]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=51]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=52]
+size = 18
+font_data = ExtResource( 7 )
 
 [node name="Browser" type="Sprite"]
 material = SubResource( 16 )
@@ -251,7 +321,7 @@ script = ExtResource( 2 )
 [node name="WindowBar" type="Sprite" parent="."]
 unique_name_in_owner = true
 material = SubResource( 20 )
-position = Vector2( 0, -167 )
+position = Vector2( 0, -337.938 )
 texture = SubResource( 22 )
 
 [node name="URLAddress" type="Sprite" parent="WindowBar"]
@@ -259,7 +329,7 @@ unique_name_in_owner = true
 
 [node name="CloseIcon" type="Sprite" parent="WindowBar"]
 unique_name_in_owner = true
-position = Vector2( 288, -1 )
+position = Vector2( 614, -1 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
 
@@ -270,56 +340,384 @@ position = Vector2( 0.00012207, 0 )
 shape = SubResource( 25 )
 
 [node name="WindowTitle" type="RichTextLabel" parent="WindowBar"]
-margin_left = -300.0
+margin_left = -624.0
 margin_top = -16.0
-margin_right = -199.0
+margin_right = -515.0
 margin_bottom = 13.0
 custom_fonts/normal_font = SubResource( 26 )
-text = "Browser"
+text = "Net Skate"
 fit_content_height = true
 scroll_active = false
 
 [node name="BrowserPage" type="Sprite" parent="."]
 unique_name_in_owner = true
 material = SubResource( 28 )
-position = Vector2( -4.05312e-06, 12.5 )
-scale = Vector2( 1.01351, 0.951705 )
+position = Vector2( 1.52588e-05, 12 )
+scale = Vector2( 2.10811, 1.92614 )
 texture = ExtResource( 4 )
 
-[node name="PageBody" type="Sprite" parent="BrowserPage"]
+[node name="PageBody" type="Sprite" parent="."]
+position = Vector2( 1.52588e-05, 12 )
 texture = SubResource( 30 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BrowserPage/PageBody"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -200.0
-margin_top = -178.0
-margin_right = -200.0
-margin_bottom = -178.0
-
-[node name="PageContainer" type="VBoxContainer" parent="BrowserPage/PageBody/ScrollContainer"]
-margin_right = 400.0
-margin_bottom = 356.0
+[node name="PageContainer" type="VBoxContainer" parent="PageBody"]
+margin_left = -433.0
+margin_top = -339.0
+margin_right = 433.0
+margin_bottom = 339.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PageTitle" type="Panel" parent="BrowserPage/PageBody/ScrollContainer/PageContainer"]
-margin_right = 400.0
-margin_bottom = 356.0
+[node name="PageTitle" type="Panel" parent="PageBody/PageContainer"]
+margin_right = 866.0
+margin_bottom = 678.0
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 33 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BrowserPage/PageBody/ScrollContainer/PageContainer/PageTitle"]
-margin_right = 73.0
-margin_bottom = 26.0
-custom_fonts/normal_font = SubResource( 34 )
+[node name="VBoxContainer" type="VBoxContainer" parent="PageBody/PageContainer/PageTitle"]
+margin_right = 866.0
+margin_bottom = 678.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="TopPanel" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer"]
+margin_right = 866.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 866, 40 )
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 37 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/TopPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/TopPanel/HBoxContainer2"]
+margin_left = 666.0
+margin_right = 866.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 40 )
+rect_clip_content = false
+custom_colors/default_color = Color( 0.956863, 0.266667, 0.266667, 1 )
+custom_fonts/normal_font = SubResource( 38 )
 bbcode_enabled = true
-bbcode_text = "MaGWeb"
+bbcode_text = "[right]sacred cat's domain[/right]"
 meta_underlined = false
-text = "MaGWeb"
+text = "sacred cat's domain"
 fit_content_height = true
 scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="MenuPanel" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer"]
+margin_top = 40.0
+margin_right = 866.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 866, 40 )
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 41 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = -1
+alignment = 2
+
+[node name="Dummy" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer"]
+margin_right = 499.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 0 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/Dummy"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 1
+custom_constants/margin_top = 1
+custom_constants/margin_left = 1
+custom_constants/margin_bottom = 1
+
+[node name="Panel" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/Dummy/MarginContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 498.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = ExtResource( 8 )
+
+[node name="CenterContainer" type="CenterContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/Dummy/MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/Dummy/MarginContainer/Panel/CenterContainer"]
+margin_left = 203.0
+margin_top = 9.0
+margin_right = 293.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 90, 20 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/bold_font = SubResource( 45 )
+custom_fonts/normal_font = SubResource( 46 )
+bbcode_enabled = true
+meta_underlined = false
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Locations" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer"]
+margin_left = 498.0
+margin_right = 598.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 0 )
+mouse_filter = 1
+size_flags_vertical = 3
+script = ExtResource( 9 )
+button_label = NodePath("MarginContainer/Panel/CenterContainer/LocationLabel")
+button_name = "Locations"
+
+[node name="MarginContainer" type="MarginContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/Locations"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_constants/margin_right = 1
+custom_constants/margin_top = 1
+custom_constants/margin_left = 1
+custom_constants/margin_bottom = 1
+
+[node name="Panel" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/Locations/MarginContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 99.0
+margin_bottom = 39.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 44 )
+
+[node name="CenterContainer" type="CenterContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/Locations/MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LocationLabel" type="RichTextLabel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/Locations/MarginContainer/Panel/CenterContainer"]
+unique_name_in_owner = true
+margin_left = 4.0
+margin_top = 9.0
+margin_right = 94.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 90, 20 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/bold_font = SubResource( 45 )
+custom_fonts/normal_font = SubResource( 46 )
+bbcode_enabled = true
+bbcode_text = "[b][center]Locations[/center][/b]"
+meta_underlined = false
+text = "Locations"
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="FAQ" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer"]
+margin_left = 597.0
+margin_right = 697.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 0 )
+mouse_filter = 1
+size_flags_vertical = 3
+script = ExtResource( 9 )
+button_label = NodePath("MarginContainer/Panel/CenterContainer/RichTextLabel")
+button_name = "FAQ"
+
+[node name="MarginContainer" type="MarginContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/FAQ"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_constants/margin_right = 1
+custom_constants/margin_top = 1
+custom_constants/margin_left = 1
+custom_constants/margin_bottom = 1
+
+[node name="Panel" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/FAQ/MarginContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 99.0
+margin_bottom = 39.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 44 )
+
+[node name="CenterContainer" type="CenterContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/FAQ/MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/FAQ/MarginContainer/Panel/CenterContainer"]
+margin_left = 4.0
+margin_top = 9.0
+margin_right = 94.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 90, 20 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/bold_font = SubResource( 45 )
+custom_fonts/normal_font = SubResource( 46 )
+bbcode_enabled = true
+bbcode_text = "[b][center]FAQ[/center][/b]"
+meta_underlined = false
+text = "FAQ"
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="MessageBoard" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer"]
+margin_left = 696.0
+margin_right = 866.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 170, 0 )
+mouse_filter = 1
+size_flags_vertical = 3
+script = ExtResource( 9 )
+button_label = NodePath("MarginContainer/Panel/CenterContainer/RichTextLabel")
+button_name = "MessageBoard"
+
+[node name="MarginContainer" type="MarginContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/MessageBoard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_constants/margin_right = 1
+custom_constants/margin_top = 1
+custom_constants/margin_left = 1
+custom_constants/margin_bottom = 1
+
+[node name="Panel" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/MessageBoard/MarginContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 169.0
+margin_bottom = 39.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 44 )
+
+[node name="CenterContainer" type="CenterContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/MessageBoard/MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/MenuPanel/HBoxContainer/MessageBoard/MarginContainer/Panel/CenterContainer"]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 159.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 150, 20 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/bold_font = SubResource( 45 )
+custom_fonts/normal_font = SubResource( 46 )
+bbcode_enabled = true
+bbcode_text = "[b][center]Message Board[/center][/b]"
+meta_underlined = false
+text = "Message Board"
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="PageContent" type="ScrollContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer"]
+margin_top = 80.0
+margin_right = 866.0
+margin_bottom = 678.0
+rect_min_size = Vector2( 0, 200 )
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent"]
+margin_right = 854.0
+margin_bottom = 1000.0
+rect_min_size = Vector2( 0, 1000 )
+size_flags_horizontal = 3
+
+[node name="Locations" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer"]
+margin_right = 854.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 45 )
+rect_clip_content = true
+custom_styles/panel = SubResource( 49 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/Locations"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 1200 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/Locations/VBoxContainer"]
+margin_right = 854.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/normal_font = SubResource( 50 )
+bbcode_enabled = true
+bbcode_text = "Choose your own adventure..."
+text = "Choose your own adventure..."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer"]
+margin_top = 49.0
+margin_right = 854.0
+margin_bottom = 1000.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/VBoxContainer"]
+margin_right = 854.0
+margin_bottom = 300.0
+
+[node name="LevelDescription" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 425.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 300 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 51 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/VBoxContainer/HBoxContainer/LevelDescription"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/bold_font = SubResource( 52 )
+bbcode_enabled = true
+bbcode_text = "[b]A forest that lies on the outskirts of Boopville. Lately there have been sightings of strange looking animals and cases of people being attacked by bees and snakes.
+Occassionally a large flying object over the forest has been spotted. People aren't sure if it's some kind of vehicle or an animal.[/b]"
+text = "A forest that lies on the outskirts of Boopville. Lately there have been sightings of strange looking animals and cases of people being attacked by bees and snakes.
+Occassionally a large flying object over the forest has been spotted. People aren't sure if it's some kind of vehicle or an animal."
+
+[node name="LevelPic" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 429.0
+margin_right = 854.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 300 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 51 )
+
+[node name="Sprite" type="Sprite" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/VBoxContainer/HBoxContainer/LevelPic"]
+position = Vector2( 203, 98 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 10 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 
 [connection signal="input_event" from="WindowBar/CloseIcon/CloseIconArea2D" to="." method="_on_CloseIconArea2D_input_event"]
 [connection signal="mouse_entered" from="WindowBar/CloseIcon/CloseIconArea2D" to="." method="_on_CloseIconArea2D_mouse_entered"]

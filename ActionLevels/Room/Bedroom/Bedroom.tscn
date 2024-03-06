@@ -155,11 +155,8 @@ script = ExtResource( 3 )
 
 [node name="ComputerScreen2D" parent="." instance=ExtResource( 15 )]
 unique_name_in_owner = true
-position = Vector2( 1238, 354 )
+position = Vector2( 960, 540 )
 z_index = 1
-
-[node name="DesktopBackground" parent="ComputerScreen2D" index="0"]
-position = Vector2( 175, -34 )
 
 [node name="RoomLightsBed" parent="." instance=ExtResource( 18 )]
 
