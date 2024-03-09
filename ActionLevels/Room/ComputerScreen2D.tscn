@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://ActionLevels/Room/ComputerScreen2D.gd" type="Script" id=1]
 [ext_resource path="res://sounds/computer/minimize_008.wav" type="AudioStream" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://sounds/computer/fanwhir.wav" type="AudioStream" id=7]
 [ext_resource path="res://ActionLevels/Room/Bootscreen.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sounds/computer/pcbeep.wav" type="AudioStream" id=9]
+[ext_resource path="res://imported_assets/computer/connected_world-0.png" type="Texture" id=10]
+[ext_resource path="res://imported_assets/computer/Battlenet.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
@@ -282,6 +284,12 @@ height = 31
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 260, 260 )
 
+[sub_resource type="DynamicFont" id=19]
+font_data = ExtResource( 11 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 22.6667, 20.5 )
+
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
@@ -365,6 +373,7 @@ position = Vector2( -927, 0 )
 texture = SubResource( 10 )
 
 [node name="Browser" parent="DesktopBackground" instance=ExtResource( 4 )]
+unique_name_in_owner = true
 
 [node name="FullscreenIcon" type="Sprite" parent="DesktopBackground"]
 unique_name_in_owner = true
@@ -380,6 +389,30 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopBackground/FullscreenIcon/FullscreenIconArea2D"]
 position = Vector2( 0.000976562, -0.000488281 )
 shape = SubResource( 15 )
+
+[node name="BrowserIcon" type="Sprite" parent="DesktopBackground"]
+unique_name_in_owner = true
+position = Vector2( -876, -480 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 10 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DesktopBackground/BrowserIcon"]
+margin_left = -19.6667
+margin_top = 13.3333
+margin_right = 33.3333
+margin_bottom = 32.3333
+custom_fonts/normal_font = SubResource( 19 )
+bbcode_enabled = true
+bbcode_text = "Net Surf"
+meta_underlined = false
+text = "Net Surf"
+scroll_active = false
+
+[node name="Area2D" type="Area2D" parent="DesktopBackground/BrowserIcon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopBackground/BrowserIcon/Area2D"]
+position = Vector2( 2.66666, 4.5 )
+shape = SubResource( 20 )
 
 [node name="Bootscreen" parent="." instance=ExtResource( 8 )]
 unique_name_in_owner = true
@@ -427,5 +460,7 @@ stream = ExtResource( 9 )
 [connection signal="input_event" from="DesktopBackground/FullscreenIcon/FullscreenIconArea2D" to="." method="_on_FullscreenIconArea2D_input_event"]
 [connection signal="mouse_entered" from="DesktopBackground/FullscreenIcon/FullscreenIconArea2D" to="." method="_on_FullscreenIconArea2D_mouse_entered"]
 [connection signal="mouse_exited" from="DesktopBackground/FullscreenIcon/FullscreenIconArea2D" to="." method="_on_FullscreenIconArea2D_mouse_exited"]
+[connection signal="mouse_entered" from="DesktopBackground/BrowserIcon/Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="DesktopBackground/BrowserIcon/Area2D" to="." method="_on_Area2D_mouse_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="finished" from="DesktopBeep" to="." method="_on_DesktopBeep_finished"]

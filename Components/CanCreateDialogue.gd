@@ -14,9 +14,10 @@ var dialogue_open : bool = false
 
 func _ready():
 	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
-	var _interactable_area_node = get_node(interactable_area)
-	_interactable_area_node.connect("body_entered", self, "_on_body_entered")
-	_interactable_area_node.connect("body_exited", self, "_on_body_exited")
+	var _interactable_area_node = get_node_or_null(interactable_area)
+	if _interactable_area_node != null:
+		_interactable_area_node.connect("body_entered", self, "_on_body_entered")
+		_interactable_area_node.connect("body_exited", self, "_on_body_exited")
 
 func _on_body_entered(body):
 	if body.name == "OverworldPlayer":

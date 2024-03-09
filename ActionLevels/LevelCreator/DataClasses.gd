@@ -8,4 +8,4 @@ enum Placement { UPPER, MIDDLE, LOWER }
 
 enum EnemySpawnHeight { UPPER, MIDDLE, LOWER }
 
-enum CharacterPortrait { None, Player, MGPlayer, AngelDetermined, AngelHappy, AngleNeutral, AngelSad, AngelScared, AngelIntense }
+enum CharacterPortrait { None, Player, MGPlayer, AngelDetermined, AngelHappy, AngelNeutral, AngelSad, AngelScared, AngelIntense }

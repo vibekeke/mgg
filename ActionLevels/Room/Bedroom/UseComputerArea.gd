@@ -27,7 +27,7 @@ func _process(delta):
 			overworld_player.is_controlled = true
 			overworld_player.set_facing_direction(Vector2(0, -1))
 			overworld_player.global_position = player_sit_position.global_position
-		else:
-			screen_up = false
-			computer_screen_2d.appear_reverse()
-			overworld_player.is_controlled = false
+#		else:
+#			screen_up = false
+#			computer_screen_2d.appear_reverse()
+#			overworld_player.is_controlled = false

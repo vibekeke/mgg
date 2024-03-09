@@ -18,7 +18,7 @@ onready var character_name_to_background = {
 	DataClasses.CharacterPortrait.Player: player_background,
 	DataClasses.CharacterPortrait.AngelDetermined: angel_background,
 	DataClasses.CharacterPortrait.AngelHappy: angel_background,
-	DataClasses.CharacterPortrait.AngleNeutral: angel_background,
+	DataClasses.CharacterPortrait.AngelNeutral: angel_background,
 	DataClasses.CharacterPortrait.AngelSad: angel_background,
 	DataClasses.CharacterPortrait.AngelScared: angel_background,
 	DataClasses.CharacterPortrait.AngelIntense: angel_background
@@ -29,7 +29,7 @@ onready var character_name_to_portraits = {
 	DataClasses.CharacterPortrait.MGPlayer: player_mg_portrait,
 	DataClasses.CharacterPortrait.AngelDetermined: angel_determined_portrait,
 	DataClasses.CharacterPortrait.AngelHappy: angel_happy_portrait,
-	DataClasses.CharacterPortrait.AngleNeutral: angel_neutral_portrait,
+	DataClasses.CharacterPortrait.AngelNeutral: angel_neutral_portrait,
 	DataClasses.CharacterPortrait.AngelSad: angel_sad_portrait,
 	DataClasses.CharacterPortrait.AngelScared: angel_scared_portrait,
 	DataClasses.CharacterPortrait.AngelIntense: angel_intense_portrait,

@@ -9,6 +9,8 @@ onready var bootscreen = get_node("%Bootscreen")
 onready var desktop_whir = get_node("%DesktopWhir")
 onready var desktop_beep = get_node("%DesktopBeep")
 onready var fullscreen_icon = get_node("%FullscreenIcon")
+onready var browser_icon = get_node("%BrowserIcon")
+onready var browser = get_node("%Browser")
 
 signal screen_open(status)
 
@@ -17,18 +19,25 @@ var reverse_play = false
 onready var initial_desktop_background_position = desktop_background.position
 onready var initial_parent_position = self.position
 onready var initial_bootscreen_position = bootscreen.position
+var in_browser_icon = false
 
 func _ready():
 	self.visible = false
+	browser_icon.visible = false
+	browser.visible = false
 	bootscreen.connect("bootscreen_finished", self, "_on_bootscreen_finished")
+	bootscreen.visible = true
 	#desktop_background.visible = false
-	appear()
+	#appear()
 	
 func appear():
 	emit_signal("screen_open", true)
+	#yield(get_tree().create_timer(1.0), "timeout")
 	self.visible = true
+	browser_icon.visible = true
 	reverse_play = false
 	desktop_beep.play(0.0)
+	desktop_background.visible = false
 	#maximise_desktop_audio.play(0.0)
 	animation_player.play("appear")
 
@@ -78,6 +87,7 @@ func fade_in_desktop():
 	computer_tween.start()
 
 func _on_bootscreen_finished():
+	desktop_background.visible = true
 	yield(get_tree().create_timer(1.0), "timeout")
 	bootscreen.modulate = Color(0.0,0.0,0.0,1.0)
 	yield(get_tree().create_timer(1.0), "timeout")
@@ -86,3 +96,14 @@ func _on_bootscreen_finished():
 
 func _on_DesktopBeep_finished():
 	desktop_whir.play(0.0)
+
+
+func _on_Area2D_mouse_entered():
+	in_browser_icon = true
+
+func _on_Area2D_mouse_exited():
+	in_browser_icon = false
+	
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and in_browser_icon:
+		browser.visible = true

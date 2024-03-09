@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://imported_assets/computer/better-close.png" type="Texture" id=1]
 [ext_resource path="res://ActionLevels/Room/BrowserComputerScreen2D.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://ActionLevels/Room/WebpageUnfocusedMenu.tres" type="StyleBox" id=8]
 [ext_resource path="res://ActionLevels/Room/MenuBarButton.gd" type="Script" id=9]
 [ext_resource path="res://imported_assets/computer/level_select/forest.png" type="Texture" id=10]
+[ext_resource path="res://ActionLevels/Room/GoHereButton.gd" type="Script" id=11]
+[ext_resource path="res://Components/CanCreateDialogue.tscn" type="PackedScene" id=12]
+[ext_resource path="res://DialogBox/dialogue_text/goherebutton.tres" type="Resource" id=13]
 
 [sub_resource type="Shader" id=15]
 code = "shader_type canvas_item;
@@ -313,6 +316,28 @@ bg_color = Color( 0.6, 0.6, 0.6, 0 )
 size = 18
 font_data = ExtResource( 7 )
 
+[sub_resource type="StyleBoxFlat" id=53]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.905882, 0.886275, 0.886275, 1 )
+
+[sub_resource type="Gradient" id=54]
+colors = PoolColorArray( 0.815686, 0.611765, 1, 1, 0.447059, 0, 0.85098, 1 )
+
+[sub_resource type="GradientTexture2D" id=55]
+gradient = SubResource( 54 )
+fill_from = Vector2( 0.0520833, 1 )
+fill_to = Vector2( 0.547917, 0.2375 )
+
+[sub_resource type="StyleBoxTexture" id=56]
+texture = SubResource( 55 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="DynamicFont" id=57]
+font_data = ExtResource( 6 )
+
 [node name="Browser" type="Sprite"]
 material = SubResource( 16 )
 texture = SubResource( 18 )
@@ -345,7 +370,7 @@ margin_top = -16.0
 margin_right = -515.0
 margin_bottom = 13.0
 custom_fonts/normal_font = SubResource( 26 )
-text = "Net Skate"
+text = "Net Surf"
 fit_content_height = true
 scroll_active = false
 
@@ -698,9 +723,9 @@ anchor_bottom = 1.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/bold_font = SubResource( 52 )
 bbcode_enabled = true
-bbcode_text = "[b]A forest that lies on the outskirts of Boopville. Lately there have been sightings of strange looking animals and cases of people being attacked by bees and snakes.
+bbcode_text = "[b]A forest that lies on the outskirts of Towncity. Lately there have been sightings of strange looking animals and cases of people being attacked by bees and snakes.
 Occassionally a large flying object over the forest has been spotted. People aren't sure if it's some kind of vehicle or an animal.[/b]"
-text = "A forest that lies on the outskirts of Boopville. Lately there have been sightings of strange looking animals and cases of people being attacked by bees and snakes.
+text = "A forest that lies on the outskirts of Towncity. Lately there have been sightings of strange looking animals and cases of people being attacked by bees and snakes.
 Occassionally a large flying object over the forest has been spotted. People aren't sure if it's some kind of vehicle or an animal."
 
 [node name="LevelPic" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/VBoxContainer/HBoxContainer"]
@@ -715,6 +740,44 @@ custom_styles/panel = SubResource( 51 )
 position = Vector2( 203, 98 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 10 )
+
+[node name="GoHereButton" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/VBoxContainer/HBoxContainer/LevelPic"]
+anchor_left = 0.459
+anchor_top = 0.801
+anchor_right = 0.5
+anchor_bottom = 0.801
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+rect_min_size = Vector2( 80, 40 )
+custom_styles/panel = SubResource( 53 )
+script = ExtResource( 11 )
+
+[node name="Panel" type="Panel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/VBoxContainer/HBoxContainer/LevelPic/GoHereButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_styles/panel = SubResource( 56 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/VBoxContainer/HBoxContainer/LevelPic/GoHereButton/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 5.0
+custom_fonts/bold_font = SubResource( 57 )
+bbcode_enabled = true
+bbcode_text = "[center][b][url]Go[/url] Here[/b][/center]"
+text = "Go Here"
+scroll_active = false
+
+[node name="CanCreateDialogueGoHere" parent="PageBody/PageContainer/PageTitle/VBoxContainer/PageContent/VBoxContainer/VBoxContainer/HBoxContainer/LevelPic/GoHereButton" instance=ExtResource( 12 )]
+unique_name_in_owner = true
+title = "go_here_button_forest"
+dialogue = ExtResource( 13 )
+trigger_from_node = true
+initial_character_portrait = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

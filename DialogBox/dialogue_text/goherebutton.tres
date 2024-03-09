@@ -1,0 +1,130 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 5
+syntax_version = 2
+raw_text = "~ go_here_button_forest
+do emit_change_character_portrait(\"AngelNeutral\")
+Angel: Ooh a forest! Should we check this place out?
+- Yeah => positive_response
+- Nah => negative_response
+
+~ positive_response
+do emit_change_character_portrait(\"AngelHappy\")
+Angel: Woo! Let's gooooo!
+
+~ negative_response
+do emit_change_character_portrait(\"AngelSad\")
+Angel: Aww...okay, maybe another time..."
+errors = [  ]
+titles = {
+"go_here_button_forest": "1",
+"negative_response": "11",
+"positive_response": "7"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "go_here_button_forest",
+"type": "title"
+},
+"1": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelNeutral"
+} ] ]
+} ]
+},
+"next_id": "2",
+"type": "mutation"
+},
+"10": {
+"next_id": "11",
+"text": "negative_response",
+"type": "title"
+},
+"11": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelSad"
+} ] ]
+} ]
+},
+"next_id": "12",
+"type": "mutation"
+},
+"12": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "Aww...okay, maybe another time...",
+"translation_key": "Aww...okay, maybe another time...",
+"type": "dialogue"
+},
+"2": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "3",
+"replacements": [  ],
+"text": "Ooh a forest! Should we check this place out?",
+"translation_key": "Ooh a forest! Should we check this place out?",
+"type": "dialogue"
+},
+"3": {
+"next_id": "7",
+"next_id_after": "end!",
+"replacements": [  ],
+"responses": PoolStringArray( "3", "4" ),
+"text": "Yeah",
+"translation_key": "Yeah",
+"type": "response"
+},
+"4": {
+"next_id": "11",
+"next_id_after": "end!",
+"replacements": [  ],
+"text": "Nah",
+"translation_key": "Nah",
+"type": "response"
+},
+"6": {
+"next_id": "7",
+"text": "positive_response",
+"type": "title"
+},
+"7": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelHappy"
+} ] ]
+} ]
+},
+"next_id": "8",
+"type": "mutation"
+},
+"8": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "Woo! Let's gooooo!",
+"translation_key": "Woo! Let's gooooo!",
+"type": "dialogue"
+}
+}
