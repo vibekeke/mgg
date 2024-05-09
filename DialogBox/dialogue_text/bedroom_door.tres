@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 14
+resource_version = 15
 syntax_version = 2
 raw_text = "~ bedroom_door
 do emit_change_character_portrait(\"AngelSad\")
@@ -12,7 +12,7 @@ Angel: Leaving your room!?
 do emit_change_character_portrait(\"AngelIntense\")
 Angel: Are you insane!?
 do emit_change_character_portrait(\"Player\")
-You: Yeah, fuck that, who actually wants to leave their room?"
+You: ..."
 errors = [  ]
 titles = {
 "bedroom_door": "1"
@@ -88,8 +88,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Yeah, fuck that, who actually wants to leave their room?",
-"translation_key": "Yeah, fuck that, who actually wants to leave their room?",
+"text": "...",
+"translation_key": "...",
 "type": "dialogue"
 }
 }

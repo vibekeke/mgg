@@ -95,6 +95,8 @@ export (PackedScene) var charge_shot
 
 onready var has_charge_shot = false
 
+var is_standing = false
+
 var sprite_anim_to_player_name = {
 	'run': 'Run',
 	'landed': 'Landing',
@@ -342,10 +344,17 @@ func _on_collected_heart():
 	current_health = clamp(current_health + 1, 0, max_health)
 	Events.emit_signal("player_current_health", current_health)
 
+func standing_state(standing: bool):
+	is_standing = standing
+
 func _physics_process(delta):
+	if Input.is_action_just_pressed("test_button"):
+		standing_state(!is_standing)
 	if self.global_position.y < 540 && start_respawning_player:
 		start_respawning_player = false
-	if is_on_floor() and is_sliding:
+	if is_on_floor() and is_standing:
+		travel_to_animation("JustStanding")
+	elif is_on_floor() and is_sliding:
 		travel_to_animation("Slide")
 	elif is_on_floor():
 		can_double_jump = false

@@ -113,7 +113,6 @@ curve = SubResource( 11 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
 frames = SubResource( 9 )
-frame = 2
 playing = true
 script = ExtResource( 3 )
 

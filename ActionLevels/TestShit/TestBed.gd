@@ -11,10 +11,12 @@ var number_of_run_events := 0
 func _ready():
 	if number_of_events > 0:
 		for level_event in level_event_list:
-			level_event.visible = false
-		var first_event = level_event_list[0]
-		level_event_timer.wait_time = first_event.time_until_event
-		level_event_timer.start()
+			if level_event != null:
+				level_event.visible = false
+		if level_event_list[0] != null:
+			var first_event = level_event_list[0]
+			level_event_timer.wait_time = first_event.time_until_event
+			level_event_timer.start()
 
 func _on_LevelEventTimer_timeout():
 	Events.emit_signal("enemy_spawner_enabled", false)

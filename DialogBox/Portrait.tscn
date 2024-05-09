@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://DialogBox/CharacterPortraits/PlayerMG.tscn" type="PackedScene" id=1]
 [ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_BG.png" type="Texture" id=2]
@@ -15,6 +15,12 @@
 [ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_happy-mouthflap.png" type="Texture" id=13]
 [ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_intense-mouthflap.png" type="Texture" id=14]
 [ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_neutral-moutflap.png" type="Texture" id=15]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_mouthflap.png" type="Texture" id=16]
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 751, 728 )
 
 [node name="Portrait" type="TextureRect"]
 unique_name_in_owner = true
@@ -32,6 +38,7 @@ script = ExtResource( 3 )
 
 [node name="PlayerMG" parent="." instance=ExtResource( 1 )]
 visible = false
+texture = SubResource( 3 )
 portrait_name = 0
 
 [node name="PlayerNormal" parent="." instance=ExtResource( 11 )]
@@ -42,27 +49,39 @@ frame_index = 1
 
 [node name="AngelDetermined" parent="." instance=ExtResource( 7 )]
 visible = false
+margin_top = -374.0
+margin_bottom = 354.0
 portrait_name = 0
 
 [node name="AngelHappy" parent="." instance=ExtResource( 9 )]
 visible = false
+margin_top = -371.5
+margin_bottom = 356.5
 texture = ExtResource( 13 )
 frame_index = 1
 
 [node name="AngelIntense" parent="." instance=ExtResource( 5 )]
 visible = false
+margin_top = -374.0
+margin_bottom = 354.0
 texture = ExtResource( 14 )
 frame_index = 1
 
 [node name="AngelNeutral" parent="." instance=ExtResource( 10 )]
 visible = false
+margin_top = -374.0
+margin_bottom = 354.0
 texture = ExtResource( 15 )
 frame_index = 1
 
 [node name="AngelSad" parent="." instance=ExtResource( 8 )]
 visible = false
+margin_top = -371.5
+margin_bottom = 356.5
 texture = ExtResource( 4 )
 frame_index = 1
 
 [node name="AngelScared" parent="." instance=ExtResource( 6 )]
 visible = false
+margin_top = -374.0
+margin_bottom = 354.0

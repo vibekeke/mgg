@@ -1,0 +1,30 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 1
+syntax_version = 2
+raw_text = "~ bedroom_use_bed
+
+The comfiness of the bed overwhelms you...but you aren't tired."
+errors = [  ]
+titles = {
+"bedroom_use_bed": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "bedroom_use_bed",
+"type": "title"
+},
+"2": {
+"character": "",
+"next_id": "",
+"replacements": [  ],
+"text": "The comfiness of the bed overwhelms you...but you aren't tired.",
+"translation_key": "The comfiness of the bed overwhelms you...but you aren't tired.",
+"type": "dialogue"
+}
+}
