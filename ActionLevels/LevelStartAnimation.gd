@@ -12,6 +12,7 @@ var animation_two_finished = false
 
 func _ready():
 	self.visible = false
+	level_start_animation()
 	
 func level_start_animation():
 	self.visible = true

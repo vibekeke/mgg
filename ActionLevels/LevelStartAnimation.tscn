@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://ActionLevels/Star1.gd" type="Script" id=1]
 [ext_resource path="res://imported_assets/projectiles/Projectile_star_v1.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Menus/LevelName3DText.tscn" type="PackedScene" id=4]
 [ext_resource path="res://test_fonts/neon_80s/Neon.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://ActionLevels/LevelCreator/ScalingBarsGroup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://imported_assets/backgrounds/balls.png" type="Texture" id=7]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.254934, 0.75, 1 )
@@ -157,6 +158,18 @@ tracks/11/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath("Bubbles:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "color_gradient_1"
@@ -270,6 +283,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Bubbles:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 4.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -323,6 +348,29 @@ viewport_path = NodePath("Viewport")
 [sub_resource type="DynamicFont" id=11]
 size = 62
 font_data = ExtResource( 5 )
+
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform vec2 Direction = vec2(1.0, 0.0);
+uniform float Speed = 0.1;
+
+vec4 add(vec4 base, vec4 blend){
+	return base + blend;
+}
+
+
+void fragment()
+{
+	vec4 bg_color = texture( SCREEN_TEXTURE, SCREEN_UV );
+	COLOR = texture(TEXTURE, UV + (Direction * TIME * Speed));
+	COLOR.rgb = add(bg_color, COLOR).rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
+shader_param/Direction = Vector2( -1, 0 )
+shader_param/Speed = 0.5
 
 [node name="LevelStartAnimation" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -397,9 +445,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ScalingBarsGroup" parent="." instance=ExtResource( 6 )]
+visible = false
 position = Vector2( 36, 1120 )
 rotation = 0.785398
 scale = Vector2( -2, -2 )
+
+[node name="Bubbles" type="Sprite" parent="."]
+material = SubResource( 13 )
+position = Vector2( 0, 432 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 7 )
+centered = false
 
 [connection signal="animation_finished" from="AnimationPlayerBackgroundGradient" to="." method="_on_AnimationPlayerBackgroundGradient_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayerStars" to="." method="_on_AnimationPlayerStars_animation_finished"]
