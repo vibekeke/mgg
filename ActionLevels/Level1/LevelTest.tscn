@@ -58,6 +58,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="EnemySpawnerNew" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
 level = NodePath("..")
 
 [node name="Level1_Event1" parent="." instance=ExtResource( 9 )]
@@ -70,9 +71,9 @@ level_background_node_path = NodePath("../LevelBackground")
 unique_name_in_owner = true
 wait_time = 30.0
 one_shot = true
-autostart = true
 
 [node name="PlatformSpawnerNew" parent="." instance=ExtResource( 11 )]
+unique_name_in_owner = true
 level = NodePath("..")
 
 [node name="Camera2D" type="Camera2D" parent="."]

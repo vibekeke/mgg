@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ActionLevels/TestShit/BillboardText.gd" type="Script" id=2]
+[ext_resource path="res://test_fonts/neon_80s/Neon.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="TextMesh" id=5]
+material = SubResource( 6 )
+text = "LEVEL 1"
+font = SubResource( 4 )
+depth = 0.001
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleText:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleText:mesh:material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TitleText:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "spin"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleText:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6, 1, 1.6, 2.4, 3.4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ), Vector3( 0, 720, 0 ), Vector3( 0, 1080, 0 ), Vector3( 0, 1440, 0 ), Vector3( 0, 1800, 0 ), Vector3( 0, 2160, 0 ), Vector3( 0, 2520, 0 ), Vector3( 0, 2880, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleText:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3.4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0.622831, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TitleText:mesh:material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3.4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[node name="BillboardText" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.889151 )
+keep_aspect = 0
+projection = 1
+fov = 75.5
+size = 3.45181
+
+[node name="TitleText" type="MeshInstance" parent="."]
+unique_name_in_owner = true
+use_in_baked_light = true
+generate_lightmap = false
+mesh = SubResource( 5 )
+
+[node name="SpinnyText" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/RESET = SubResource( 7 )
+anims/spin = SubResource( 8 )
+
+[connection signal="animation_finished" from="SpinnyText" to="." method="_on_SpinnyText_animation_finished"]

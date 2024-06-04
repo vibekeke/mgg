@@ -11,14 +11,25 @@ var background_bees_finished := false
 var bee_speed := 1500
 
 func _ready():
+	self.visible = false
+	talking_bee.visible = true
+	talking_bee.disable_damage(true)
+	talking_bee.enable_movement(false)
+	talking_bee.disable_touch_damage(true)
+	MggDialogue.connect("dialogue_finished_with_status", self, "_on_emit_dialogue_finished_with_status")
+	Events.connect("back_to_stage_from_dialogue_intro", self, "_on_back_to_stage_from_dialogue_intro")
+
+func start_event():
+	talking_bee.visible = true
+	talking_bee.enable_movement(true)
+
+func spawn_talking_bee():
 	for bee in self.get_children():
 		if "event1_beeprop" in bee.get_groups():
 			disable_bee_for_combat(bee)
 	talking_bee.enable_movement(false)
 	talking_bee.disable_damage(true)
 	talking_bee.disable_touch_damage(true)
-	MggDialogue.connect("dialogue_finished_with_status", self, "_on_emit_dialogue_finished_with_status")
-	Events.connect("back_to_stage_from_dialogue_intro", self, "_on_back_to_stage_from_dialogue_intro")
 
 func disable_bee_for_combat(_bee):
 	_bee.enable_movement(false)

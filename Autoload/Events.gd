@@ -9,6 +9,7 @@ signal player_global_position(global_position) # global position of the player
 signal player_local_position(local_position)
 signal has_charge_shot # whether player has charge shot or not
 signal fired_charge_shot # charge shot has just been fired
+signal player_standing(standing)
 
 # game state, e.g. scene transitions, game overs, cutscenes
 signal transition_to_scene(to_scene, to_dialogue_screen)
@@ -52,6 +53,9 @@ signal kill_spawned_enemies
 signal platform_spawner_enabled(enabled)
 signal platform_spawn_number(number_of_platforms)
 signal kill_spawned_platforms
+
+#level background
+signal background_moving_enabled(enabled)
 
 # save file location and metadata
 const SAVE_FILE_LOCATION : String = "res://mggsave.save"

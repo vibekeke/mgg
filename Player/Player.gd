@@ -95,7 +95,7 @@ export (PackedScene) var charge_shot
 
 onready var has_charge_shot = false
 
-var is_standing = false
+var is_standing = true
 
 var sprite_anim_to_player_name = {
 	'run': 'Run',
@@ -107,12 +107,12 @@ var sprite_anim_to_player_name = {
 }
 
 func input_handler(input_status: bool) -> bool:
-	if inputs_disabled:
+	if inputs_disabled or is_standing:
 		return false
 	return input_status
 
 func input_strength_handler(strength_status: float) -> float:
-	if inputs_disabled:
+	if inputs_disabled or is_standing:
 		return 0.0
 	return strength_status
 
@@ -123,6 +123,7 @@ func _ready():
 	Events.connect("collected_heart", self, "_on_collected_heart")
 	Events.connect("has_charge_shot", self, "_on_has_charge_shot")
 	Events.connect("in_battle_dialogue", self, "_on_in_battle_dialogue")
+	Events.connect("player_standing", self, "_on_player_standing")
 	
 	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
 	_forward_animation_tree.active = true
@@ -344,12 +345,10 @@ func _on_collected_heart():
 	current_health = clamp(current_health + 1, 0, max_health)
 	Events.emit_signal("player_current_health", current_health)
 
-func standing_state(standing: bool):
+func _on_player_standing(standing: bool):
 	is_standing = standing
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("test_button"):
-		standing_state(!is_standing)
 	if self.global_position.y < 540 && start_respawning_player:
 		start_respawning_player = false
 	if is_on_floor() and is_standing:

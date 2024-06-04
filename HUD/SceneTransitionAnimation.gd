@@ -18,6 +18,7 @@ func _ready():
 	MggDialogue.connect("dialogue_finished_with_status", self, "_on_dialogue_finished_with_status")
 
 func _on_in_battle_dialogue(status, enemy_name):
+	print("lay it low lay it high")
 	if status:
 		current_enemy_name = enemy_name
 		start_stage_intro()

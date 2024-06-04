@@ -57,6 +57,7 @@ var enemy_queue = []
 func _ready():
 	rng.randomize()
 	level_name = level_node.name
+	spawning_enabled = false
 	Events.connect("enemy_spawner_enabled", self, "_on_enemy_spawner_enabled")
 	Events.connect("enemy_spawner_difficulty", self, "_on_enemy_spawner_difficulty")
 	Events.connect("kill_spawned_enemies", self, "_on_kill_spawned_enemies")
@@ -113,11 +114,8 @@ func spawn_enemies():
 		for node in enemy_to_spawn_instance.get_children():
 			if "spawn_height_component" in node.get_groups():
 				enemy_to_spawn_instance.global_position = spawn_height_to_position(node.spawn_height)
-				print("spawn offsets x: ", enemy_to_spawn_instance.x_spawn_offset, " y: ", enemy_to_spawn_instance.y_spawn_offset)
-				print("enemy height before offset ", enemy_to_spawn_instance.global_position)
 				enemy_to_spawn_instance.global_position.x += enemy_to_spawn_instance.x_spawn_offset
 				enemy_to_spawn_instance.global_position.y += enemy_to_spawn_instance.y_spawn_offset
-				print("enemy height after offset ", enemy_to_spawn_instance.global_position)
 		enemy_queue.append(enemy_to_spawn_instance)
 		enemy_to_spawn_instance.connect("tree_exiting", self, "_on_enemy_exiting_tree")
 		level_node.add_child(enemy_to_spawn_instance)

@@ -39,6 +39,7 @@ var level_platform_list := {
 
 func _ready():
 	rng.randomize()
+	spawning_enabled = false
 	level_name = level_node.name
 	Events.connect("platform_spawner_enabled", self, "_on_platform_spawner_enabled")
 	Events.connect("platform_spawn_number", self, "_on_platform_spawn_number")
@@ -57,7 +58,6 @@ func spawn_platforms():
 		spawnable_platform_instance.scroll_speed = platform_speed
 		platform_queue.append(spawnable_platform_instance)
 		spawnable_platform_instance.connect("tree_exiting", self, "_on_platform_exiting_tree")
-		print("spawning platform", spawnable_platform_instance)
 		level_node.add_child(spawnable_platform_instance)
 		new_spawn_timer.wait_time = rng.randf_range(time_to_spawn + 1.0, time_to_spawn + 2.5)
 
@@ -78,7 +78,6 @@ func _on_platform_exiting_tree():
 func _on_NewSpawnTimer_timeout():
 	if platform_queue.size() < max_platforms_on_screen:
 		spawn_platforms()
-
 
 func _on_kill_spawned_platforms():
 	for platform in valid_platforms():
