@@ -38,7 +38,7 @@ scale = Vector2( 119.688, 10 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 unique_name_in_owner = true
-position = Vector2( 247, 840 )
+position = Vector2( 247, 860 )
 flash_charge_timer = 0.1
 gunshot = ExtResource( 8 )
 charge_shot = ExtResource( 2 )

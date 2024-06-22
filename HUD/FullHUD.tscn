@@ -1,34 +1,126 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://HUD/Health.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HUD/DogCollection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://HUD/ChargeCrystal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD/FullHUD.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Health:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -200 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogCollection:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1361, -249 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CrystalContainer:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 392, -203 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "fall_down"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Health:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -200 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DogCollection:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1361, -249 ), Vector2( 1361, 49 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CrystalContainer:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 392, -203 ), Vector2( 392, 3 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "go_up"
 
 [node name="FullHUD" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 4 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
+margin_top = -200.0
+margin_bottom = -44.0
 
 [node name="DogCollection" parent="." instance=ExtResource( 2 )]
 margin_left = 1361.0
-margin_top = 49.0
+margin_top = -249.0
 margin_right = 1908.0
-margin_bottom = 222.0
+margin_bottom = -76.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="CrystalContainer" type="HBoxContainer" parent="."]
 margin_left = 392.0
-margin_top = 3.0
+margin_top = -203.0
 margin_right = 625.0
-margin_bottom = 204.0
+margin_bottom = -2.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ChargeCrystal" parent="HBoxContainer" instance=ExtResource( 3 )]
+[node name="ChargeCrystal" parent="CrystalContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_bottom = 201.0
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+playback_speed = 2.0
+anims/RESET = SubResource( 3 )
+anims/fall_down = SubResource( 1 )
+anims/go_up = SubResource( 2 )

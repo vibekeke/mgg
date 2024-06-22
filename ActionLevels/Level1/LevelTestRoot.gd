@@ -20,12 +20,11 @@ func _ready():
 	level_start_animation.connect("level_start_animation_finished", self, "_on_level_start_animation_finished")
 	scene_transition_animation.connect("before_bars_move_up", self, "_on_before_bars_move_up")
 	scene_transition_animation.connect("dialogue_stage_finished", self, "_on_dialogue_stage_finished")
-	level_start_animation.level_start_animation()
+	#level_start_animation.level_start_animation()
 	Events.emit_signal("background_moving_enabled", false)
 	Events.emit_signal("platform_spawner_enabled", false)
 	Events.emit_signal("enemy_spawner_enabled", false)
-
-	#load_level()
+	load_level()
 	
 func _on_before_bars_move_up(enemy_name):
 	var current_level_node = self.get_node(current_level_name)
@@ -51,6 +50,12 @@ func load_level():
 	self.add_child(level.instance())
 
 func _on_level_start_animation_finished():
-	level_start_animation.visible = false
-	load_level()
-	pass
+	Events.emit_signal("background_moving_enabled", true)
+	Events.emit_signal("player_standing", false)
+	#Events.emit_signal("platform_spawner_enabled", false)
+	#Events.emit_signal("enemy_spawner_enabled", false)
+
+
+func _on_LevelStartAnimationTimer_timeout():
+	level_start_animation.level_start_animation()
+	Events.emit_signal("fall_down_ui")

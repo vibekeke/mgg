@@ -11,7 +11,7 @@
 [ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.webp" type="Texture" id=9]
 [ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA1-V1.webp" type="Texture" id=10]
 [ext_resource path="res://imported_assets/actors/mg/Player_MeleeTEST-B.png" type="Texture" id=11]
-[ext_resource path="res://imported_assets/actors/mg/Player_TALKING.png" type="Texture" id=12]
+[ext_resource path="res://imported_assets/actors/mg/Player_TALKING-upscale.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 177.143, 298.572 )
@@ -86,30 +86,30 @@ flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 2048, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=438]
+[sub_resource type="AtlasTexture" id=473]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 512, 512 )
+region = Rect2( 0, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=439]
+[sub_resource type="AtlasTexture" id=474]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 512, 0, 512, 512 )
+region = Rect2( 1024, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=440]
+[sub_resource type="AtlasTexture" id=475]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 1024, 0, 512, 512 )
+region = Rect2( 2048, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=441]
+[sub_resource type="AtlasTexture" id=476]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 1536, 0, 512, 512 )
+region = Rect2( 3072, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=442]
+[sub_resource type="AtlasTexture" id=477]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 0, 512, 512, 512 )
+region = Rect2( 0, 1024, 1024, 1024 )
 
 [sub_resource type="AtlasTexture" id=349]
 flags = 4
@@ -248,7 +248,7 @@ animations = [ {
 "name": "init_jump",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 438 ), SubResource( 439 ), SubResource( 440 ), SubResource( 441 ), SubResource( 442 ) ],
+"frames": [ SubResource( 473 ), SubResource( 474 ), SubResource( 475 ), SubResource( 476 ), SubResource( 477 ) ],
 "loop": true,
 "name": "just_standing",
 "speed": 5.0
@@ -520,7 +520,7 @@ nodes/Animation/position = Vector2( 350, 300 )
 nodes/TimeScale/node = SubResource( 40 )
 nodes/TimeScale/position = Vector2( 566.64, 292.32 )
 nodes/output/position = Vector2( 780, 310 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=42]
 animation = "falling"
@@ -533,7 +533,7 @@ nodes/Animation/position = Vector2( 146.88, 187.92 )
 nodes/TimeScale/node = SubResource( 43 )
 nodes/TimeScale/position = Vector2( 360, 160 )
 nodes/output/position = Vector2( 540, 170 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=444]
 animation = "just_standing"
@@ -546,7 +546,7 @@ nodes/Animation/position = Vector2( 300, 80 )
 nodes/TimeScale/node = SubResource( 445 )
 nodes/TimeScale/position = Vector2( 550, 60 )
 nodes/output/position = Vector2( 850, 90 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=45]
 animation = "landing"
@@ -559,7 +559,7 @@ nodes/Animation/position = Vector2( 200, 150 )
 nodes/TimeScale/node = SubResource( 46 )
 nodes/TimeScale/position = Vector2( 390, 140 )
 nodes/output/position = Vector2( 580, 170 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=48]
 animation = "jump_init"
@@ -572,7 +572,7 @@ nodes/Animation/position = Vector2( 185.76, 254.16 )
 nodes/TimeScale/node = SubResource( 49 )
 nodes/TimeScale/position = Vector2( 414, 256.32 )
 nodes/output/position = Vector2( 630, 280 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=51]
 animation = "run"
@@ -585,7 +585,7 @@ nodes/Animation/node = SubResource( 51 )
 nodes/Animation/position = Vector2( -60, 140 )
 nodes/TimeScale/node = SubResource( 52 )
 nodes/TimeScale/position = Vector2( 120, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=251]
 animation = "slide"
@@ -598,7 +598,7 @@ nodes/Animation/position = Vector2( 576.5, 173.5 )
 nodes/TimeScale/node = SubResource( 252 )
 nodes/TimeScale/position = Vector2( 810, 180 )
 nodes/output/position = Vector2( 1060, 190 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
 
@@ -629,7 +629,6 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=448]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=470]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id=127]
 states/AboutToFall/node = SubResource( 41 )
@@ -722,30 +721,30 @@ flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 2048, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=449]
+[sub_resource type="AtlasTexture" id=478]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 512, 512 )
+region = Rect2( 0, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=450]
+[sub_resource type="AtlasTexture" id=479]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 512, 0, 512, 512 )
+region = Rect2( 1024, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=451]
+[sub_resource type="AtlasTexture" id=480]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 1024, 0, 512, 512 )
+region = Rect2( 2048, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=452]
+[sub_resource type="AtlasTexture" id=481]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 1536, 0, 512, 512 )
+region = Rect2( 3072, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=453]
+[sub_resource type="AtlasTexture" id=482]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 0, 512, 512, 512 )
+region = Rect2( 0, 1024, 1024, 1024 )
 
 [sub_resource type="AtlasTexture" id=379]
 flags = 4
@@ -869,7 +868,7 @@ animations = [ {
 "name": "init_jump",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 449 ), SubResource( 450 ), SubResource( 451 ), SubResource( 452 ), SubResource( 453 ) ],
+"frames": [ SubResource( 478 ), SubResource( 479 ), SubResource( 480 ), SubResource( 481 ), SubResource( 482 ) ],
 "loop": true,
 "name": "just_standing",
 "speed": 5.0
@@ -1134,7 +1133,7 @@ nodes/Animation/position = Vector2( 10, 80 )
 nodes/TimeScale/node = SubResource( 464 )
 nodes/TimeScale/position = Vector2( 330, 60 )
 nodes/output/position = Vector2( 640, 100 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=264]
 animation = "slide"
@@ -1148,7 +1147,7 @@ nodes/Animation/position = Vector2( -90, 130 )
 nodes/TimeScale/node = SubResource( 265 )
 nodes/TimeScale/position = Vector2( 110, 150 )
 nodes/output/position = Vector2( 330, 180 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=241]
 
@@ -1268,30 +1267,30 @@ flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 2048, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=455]
+[sub_resource type="AtlasTexture" id=483]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 512, 512 )
+region = Rect2( 0, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=456]
+[sub_resource type="AtlasTexture" id=484]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 512, 0, 512, 512 )
+region = Rect2( 1024, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=457]
+[sub_resource type="AtlasTexture" id=485]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 1024, 0, 512, 512 )
+region = Rect2( 2048, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=458]
+[sub_resource type="AtlasTexture" id=486]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 1536, 0, 512, 512 )
+region = Rect2( 3072, 0, 1024, 1024 )
 
-[sub_resource type="AtlasTexture" id=459]
+[sub_resource type="AtlasTexture" id=487]
 flags = 4
 atlas = ExtResource( 12 )
-region = Rect2( 0, 512, 512, 512 )
+region = Rect2( 0, 1024, 1024, 1024 )
 
 [sub_resource type="AtlasTexture" id=411]
 flags = 4
@@ -1415,7 +1414,7 @@ animations = [ {
 "name": "init_jump",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 455 ), SubResource( 456 ), SubResource( 457 ), SubResource( 458 ), SubResource( 459 ) ],
+"frames": [ SubResource( 483 ), SubResource( 484 ), SubResource( 485 ), SubResource( 486 ), SubResource( 487 ) ],
 "loop": true,
 "name": "just_standing",
 "speed": 5.0
@@ -1681,7 +1680,7 @@ nodes/Animation/position = Vector2( 110, 80 )
 nodes/TimeScale/node = SubResource( 462 )
 nodes/TimeScale/position = Vector2( 320, 80 )
 nodes/output/position = Vector2( 510, 110 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=271]
 animation = "slide"
@@ -1694,7 +1693,7 @@ nodes/Animation/position = Vector2( 50, 370 )
 nodes/TimeScale/node = SubResource( 272 )
 nodes/TimeScale/position = Vector2( 233, 359.5 )
 nodes/output/position = Vector2( 410, 400 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=243]
 

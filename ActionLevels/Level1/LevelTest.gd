@@ -34,7 +34,6 @@ func add_big_bird_to_background():
 	level_background.get_hill_background_node().add_child(big_bird_background_instance)
 
 func _on_LevelEventTimer_timeout():
-	print("this ran for some reason?")
 	Events.emit_signal("enemy_spawner_enabled", false)
 	Events.emit_signal("platform_spawner_enabled", false)
 	Events.emit_signal("kill_spawned_enemies")

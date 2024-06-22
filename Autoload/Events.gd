@@ -57,6 +57,10 @@ signal kill_spawned_platforms
 #level background
 signal background_moving_enabled(enabled)
 
+# ui
+signal fall_down_ui
+signal go_up_ui
+
 # save file location and metadata
 const SAVE_FILE_LOCATION : String = "res://mggsave.save"
 const COMPLETED_LEVELS : Array = []
