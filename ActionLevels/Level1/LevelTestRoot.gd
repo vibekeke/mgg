@@ -52,8 +52,8 @@ func load_level():
 func _on_level_start_animation_finished():
 	Events.emit_signal("background_moving_enabled", true)
 	Events.emit_signal("player_standing", false)
-	#Events.emit_signal("platform_spawner_enabled", false)
-	#Events.emit_signal("enemy_spawner_enabled", false)
+	Events.emit_signal("platform_spawner_enabled", true)
+	Events.emit_signal("enemy_spawner_enabled", true)
 
 
 func _on_LevelStartAnimationTimer_timeout():
