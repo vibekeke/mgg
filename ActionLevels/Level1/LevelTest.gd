@@ -6,7 +6,7 @@ onready var level_background = get_node("%LevelBackground")
 onready var background_big_bird = preload("res://ActionLevels/LevelCreator/DumbActors/BackgroundBigBird/BackgroundBigBird.tscn")
 onready var enemy_spawner = get_node("%EnemySpawnerNew")
 onready var platform_spawner = get_node("%PlatformSpawnerNew")
-
+export var legacy_version : bool = false
 var title = "level_test"
 onready var level_event_list = [level_event_1]
 onready var number_of_events = level_event_list.size()
@@ -14,9 +14,11 @@ var number_of_run_events := 0
 
 func _ready():
 	# call this when level intro is finished instead
-	#setup_level_events()
-	#add_big_bird_to_background()
-	pass
+	if legacy_version:
+		setup_level_events()
+		add_big_bird_to_background()
+		Events.emit_signal("player_standing", false)
+		Events.emit_signal("background_moving_enabled", true)
 	
 func setup_level_events():
 	if number_of_events > 0:

@@ -16,6 +16,7 @@
 
 [node name="LevelTest" type="Node2D" groups=["level"]]
 script = ExtResource( 14 )
+legacy_version = true
 
 [node name="Floor" parent="." instance=ExtResource( 3 )]
 visible = false

@@ -69,6 +69,7 @@ shader_param/strength = 0.2
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource( 5 )
 boss_background = ExtResource( 14 )
+legacy_version = true
 
 [node name="DialogLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -125,6 +126,7 @@ platform_list = [ ExtResource( 6 ), ExtResource( 12 ), ExtResource( 33 ), ExtRes
 unique_name_in_owner = true
 
 [node name="FullHUD" parent="." instance=ExtResource( 10 )]
+unique_name_in_owner = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )

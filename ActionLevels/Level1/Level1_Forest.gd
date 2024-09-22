@@ -5,12 +5,19 @@ onready var background_music = $BackgroundMusic
 onready var boss_music = $BossMusic
 onready var level_background = get_node("%LevelBackground")
 export var boss_background : PackedScene
-
+export var legacy_version : bool = false
 export var mute_audio = false # temporary
 
 func _ready():
 	Events.connect("boss_spawned", self, "_on_boss_spawn")
 	Events.connect("level_complete", self, "_on_level_complete")
+	# if the level is the main scene with no valid parent and legacy flag is enabled run the old code
+	print(self.get_parent().name)
+	if self.get_parent().name == "root" and legacy_version:
+		Events.emit_signal("background_moving_enabled", true)
+		Events.emit_signal("player_standing", false)
+		Events.emit_signal("fall_down_ui")
+			#Events.emit_signal("platform_spawner_enabled", false)
 	var num_spawn_points = spawn_paths.get_curve().get_point_count()
 	var spawn_point_dictionary = {}
 	var spawn_point_heights = [DataClasses.SpawnHeight.HIGH_ONLY, DataClasses.SpawnHeight.MED_ONLY, DataClasses.SpawnHeight.LOW_ONLY]
