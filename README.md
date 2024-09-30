@@ -1,4 +1,4 @@
-![ezgif-4-dfe4daaf33](https://github.com/user-attachments/assets/0c8145a2-b5b7-4590-b2aa-8a4049f8c9b8)# mgg
+# mgg
 Hello! This is a game by Vibeke and Tyler, where you play as a magical girl to save the world :)
 The game is still in development, and we look forward to putting more stuff into it!!
 
