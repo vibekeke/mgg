@@ -129,7 +129,6 @@ onready var bossPaths = {
 }
 
 onready var action_level_list = {
-	"Tutorial": "res//ActionLevels/Tutorial/Level0_Tutorial.tscn",
 	"Level1": "res://ActionLevels/Level1/Level1_Forest.tscn",
 	"Level2": "res://ActionLevels/Level2/Level2_Beach.tscn",
 	"Level3": "res://ActionLevels/Level3/Level3_City.tscn",

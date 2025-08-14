@@ -31,8 +31,7 @@ func _process(delta):
 		title_screen_animation.playback_speed = 10
 
 func _on_StartButton_pressed():
-	Events.emit_signal("transition_to_scene", "TutorialSelection")
-	$AudioStreamPlayer.play(0.0)
+	send_to_level(0)
 
 func _on_OptionsButton_pressed():
 	$MenuLayer/VBoxContainer.visible = false
@@ -64,22 +63,14 @@ func _on_ResolutionList_item_activated(index: int):
 func _on_QuitButton_pressed():
 	get_tree().quit()
 
-func send_to_computer(last_completed_level: int):
-	match last_completed_level:
-		0:
-			Events.emit_signal("transition_to_scene", "TutorialSelection")
-		1:
-			Events.emit_signal("transition_to_scene", "Bedroom")
-		2:
-			Events.emit_signal("transition_to_scene", "Bedroom")
-		3:
-			Events.emit_signal("transition_to_scene", "Bedroom")
+func send_to_level(_last_completed_level: int):
+	Events.emit_signal("transition_to_scene", "Level1")
 
 func _on_LoadButton_pressed():
 	$AudioStreamPlayer.play(0.0)
 	Events.load_game()
 	var last_completed_level = Events.COMPLETED_LEVELS[Events.COMPLETED_LEVELS.size() - 1]
-	send_to_computer(last_completed_level)
+	send_to_level(last_completed_level)
 
 
 func _on_StartButton_focus_entered():
