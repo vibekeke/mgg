@@ -24,7 +24,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tscn" type="PackedScene" id=22]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn" type="PackedScene" id=23]
 [ext_resource path="res://sounds/level/forest/forest-boss.wav" type="AudioStream" id=24]
-[ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=25]
+[ext_resource path="res://HUD/PauseMenuGameplay.tscn" type="PackedScene" id=25]
 [ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=26]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.tscn" type="PackedScene" id=27]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" type="PackedScene" id=28]
@@ -79,7 +79,6 @@ layer = 101
 layer = 102
 
 [node name="PauseMenu" parent="PauseLayer" instance=ExtResource( 25 )]
-visible = false
 
 [node name="LevelBackground" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
