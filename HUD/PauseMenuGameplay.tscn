@@ -8,7 +8,7 @@
 [ext_resource path="res://imported_assets/misc/icons8-pause-button-100.png" type="Texture" id=6]
 [ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=8]
-[ext_resource path="res://addons/dialogic/Example Assets/Fonts/Jura-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://test_fonts/vibekefonts/Jura-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Themes/controls_font.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Themes/controls_arrow_font.tres" type="DynamicFont" id=11]
 [ext_resource path="res://Themes/controls_button_font.tres" type="DynamicFont" id=12]
@@ -187,7 +187,7 @@ size_flags_vertical = 3
 custom_styles/panel = SubResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-margin_right = 413.0
+margin_right = 421.0
 margin_bottom = 499.001
 custom_constants/margin_right = 33
 custom_constants/margin_top = 24
@@ -197,30 +197,30 @@ custom_constants/margin_bottom = 60
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 margin_left = 36.0
 margin_top = 24.0
-margin_right = 380.0
+margin_right = 388.0
 margin_bottom = 439.0
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
-margin_right = 344.0
-margin_bottom = 36.0
+margin_right = 352.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 10 )
 text = "    Controls"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 40.0
-margin_right = 344.0
-margin_bottom = 72.0
+margin_top = 41.0
+margin_right = 352.0
+margin_bottom = 73.0
 custom_constants/separation = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 76.0
-margin_right = 344.0
-margin_bottom = 400.0
+margin_top = 77.0
+margin_right = 352.0
+margin_bottom = 406.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 128.0
-margin_bottom = 324.0
+margin_bottom = 329.0
 custom_constants/separation = 19
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -321,53 +321,53 @@ text = " F "
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 132.0
 margin_right = 163.0
-margin_bottom = 324.0
+margin_bottom = 329.0
 custom_constants/separation = 31
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 167.0
-margin_right = 344.0
-margin_bottom = 324.0
+margin_right = 352.0
+margin_bottom = 329.0
 custom_constants/separation = 24
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 177.0
-margin_bottom = 36.0
+margin_right = 185.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 10 )
 text = "Move"
 
 [node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 60.0
-margin_right = 177.0
-margin_bottom = 96.0
+margin_top = 61.0
+margin_right = 185.0
+margin_bottom = 98.0
 custom_fonts/font = ExtResource( 10 )
 text = "Jump"
 
 [node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 120.0
-margin_right = 177.0
-margin_bottom = 156.0
+margin_top = 122.0
+margin_right = 185.0
+margin_bottom = 159.0
 custom_fonts/font = ExtResource( 10 )
 text = "Glide (Hold)"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 180.0
-margin_right = 177.0
-margin_bottom = 204.0
+margin_top = 183.0
+margin_right = 185.0
+margin_bottom = 207.0
 custom_constants/separation = 24
 
 [node name="Label4" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 228.0
-margin_right = 177.0
-margin_bottom = 264.0
+margin_top = 231.0
+margin_right = 185.0
+margin_bottom = 268.0
 custom_fonts/font = ExtResource( 10 )
 text = "Shoot"
 
 [node name="Label5" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 288.0
-margin_right = 177.0
-margin_bottom = 324.0
+margin_top = 292.0
+margin_right = 185.0
+margin_bottom = 329.0
 custom_fonts/font = ExtResource( 10 )
 text = "Beam"
 

@@ -1,0 +1,12 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float SPEED = 0.1;
+uniform float SPEED_Y = 0.05;
+
+void vertex() {
+	UV.x += TIME * SPEED;
+	UV.y -= TIME * SPEED_Y;
+}"

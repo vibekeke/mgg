@@ -1,0 +1,322 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://addons/dialogic/Example Assets/Fonts/DefaultFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://addons/dialogic/Example Assets/Fonts/DefaultBoldFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Menus/ConceptArt/running.png" type="Texture" id=4]
+[ext_resource path="res://Menus/ConceptArt/Illustration.png" type="Texture" id=5]
+[ext_resource path="res://Menus/ConceptArt/posing.png" type="Texture" id=6]
+[ext_resource path="res://Menus/DemoEndCredits.gd" type="Script" id=7]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Menus/PrettyAssets/DemoTextBox.png" type="Texture" id=9]
+[ext_resource path="res://imported_assets/actors/sharkboi/Shark_Bloons.png" type="Texture" id=10]
+[ext_resource path="res://Menus/PrettyAssets/test2.png" type="Texture" id=11]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Sharkboi/SharkboiAnimatedSprite.gd" type="Script" id=12]
+[ext_resource path="res://Menus/ConceptArt/jente.png" type="Texture" id=13]
+[ext_resource path="res://Menus/PrettyAssets/Sparkles.tscn" type="PackedScene" id=14]
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform float SPEED = 0.1;
+uniform float SPEED_Y = 0.05;
+
+void vertex() {
+	UV.x += TIME * SPEED;
+	UV.y += TIME * SPEED_Y;
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 7 )
+shader_param/SPEED = 0.1
+shader_param/SPEED_Y = 0.05
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 512, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 512, 512, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1024, 512, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 1536, 512, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 16 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=17]
+resource_name = "New Anim"
+length = 3.4
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 0, 1, 2, 3, 5, 6, 7, 7, 7, 6, 5, 4, 3, 2, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.286275, 0.396078, 0.658824, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.388235, 0.541176, 0.901961, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.388235, 0.541176, 0.901961, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="DemoEndCredits" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1918.0
+margin_bottom = 2860.0
+color = Color( 0.435294, 0.454902, 1, 1 )
+
+[node name="BGPattern" type="TextureRect" parent="."]
+modulate = Color( 0.164706, 0.0941176, 1, 0.411765 )
+material = SubResource( 6 )
+margin_left = -26.0
+margin_top = -59.0
+margin_right = 1959.0
+margin_bottom = 1112.0
+texture = ExtResource( 11 )
+stretch_mode = 2
+
+[node name="CreditScroll" type="Node2D" parent="."]
+
+[node name="Posing" type="Sprite" parent="CreditScroll"]
+position = Vector2( 1597, 1767 )
+scale = Vector2( 0.509439, 0.509439 )
+texture = ExtResource( 6 )
+
+[node name="Running" type="Sprite" parent="CreditScroll"]
+position = Vector2( 291.125, 1271.8 )
+scale = Vector2( 0.383519, 0.383519 )
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="Jente" type="Sprite" parent="CreditScroll"]
+position = Vector2( 245, 2980 )
+scale = Vector2( 0.721649, 0.721649 )
+texture = ExtResource( 13 )
+flip_h = true
+region_filter_clip = true
+
+[node name="Illustration" type="Sprite" parent="CreditScroll"]
+position = Vector2( 1589, 2652 )
+scale = Vector2( 0.474234, 0.474234 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CreditScroll"]
+position = Vector2( 252, 2112 )
+scale = Vector2( 0.9375, 0.9375 )
+frames = SubResource( 18 )
+playing = true
+flip_h = true
+script = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CreditScroll/AnimatedSprite"]
+"anims/New Anim" = SubResource( 17 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 456.0
+margin_top = 104.0
+margin_right = 1456.0
+margin_bottom = 943.0
+texture = ExtResource( 9 )
+stretch_mode = 1
+
+[node name="MessageText" type="RichTextLabel" parent="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -386.0
+margin_top = -326.5
+margin_right = 374.0
+margin_bottom = 237.5
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/italics_font = ExtResource( 2 )
+custom_fonts/bold_font = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][color=blue]...TO BE CONTINUED?[/color]
+
+Thank you so much for playing our demo! 
+
+If you liked the game, please show your support by leaving nice comments on Itch, and following our social medias.
+
+Or donate 2 dollars hehe.
+
+Also, if you haven't collected all 3 dogs yet, you should do that :^)"
+text = "...TO BE CONTINUED?
+
+Thank you so much for playing our demo! 
+
+If you liked the game, please show your support by leaving nice comments on Itch, and following our social medias.
+
+Or donate 2 dollars hehe.
+
+Also, if you haven't collected all 3 dogs yet, you should do that :^)"
+
+[node name="NextButton" type="Button" parent="TextureRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -78.0
+margin_top = -165.0
+margin_right = 80.0
+margin_bottom = -104.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = "  Next  "
+
+[node name="CreditsText" type="RichTextLabel" parent="TextureRect"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -386.0
+margin_top = -347.5
+margin_right = 374.0
+margin_bottom = 224.5
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/italics_font = ExtResource( 2 )
+custom_fonts/bold_font = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][color=blue]...CREDITS[/color]
+Boobobobobobobo thank you thank you"
+text = "...CREDITS
+Boobobobobobobo thank you thank you"
+
+[node name="CreditsButtons" type="HBoxContainer" parent="TextureRect"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -251.0
+margin_top = -175.0
+margin_right = 251.0
+margin_bottom = -114.0
+
+[node name="BackButton" type="Button" parent="TextureRect/CreditsButtons"]
+margin_right = 136.0
+margin_bottom = 61.0
+focus_mode = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = " Back "
+
+[node name="VSeparator" type="VSeparator" parent="TextureRect/CreditsButtons"]
+modulate = Color( 0, 0, 0, 0 )
+margin_left = 140.0
+margin_right = 174.0
+margin_bottom = 61.0
+custom_constants/separation = 34
+
+[node name="TitleButton" type="Button" parent="TextureRect/CreditsButtons"]
+margin_left = 178.0
+margin_right = 476.0
+margin_bottom = 61.0
+focus_mode = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = " Title Screen "
+
+[node name="Sparkles2" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1404, 907 )
+
+[node name="Sparkles" parent="." instance=ExtResource( 14 )]
+position = Vector2( 494, 163 )
+
+[connection signal="pressed" from="TextureRect/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="TextureRect/CreditsButtons/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="TextureRect/CreditsButtons/TitleButton" to="." method="_on_TitleButton_pressed"]

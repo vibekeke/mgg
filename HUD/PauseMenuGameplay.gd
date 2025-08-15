@@ -97,9 +97,8 @@ func _on_ResumeBtn_pressed():
 	self.is_paused = false
 
 func _on_QuitBtn_pressed(): #Should return to title screen!
-	print("WARNING: Should return to title, not quit!!!")
 	self.is_paused = false
-	get_tree().quit()
+	Events.emit_signal("transition_to_scene", "TitleScreen")
 
 func _on_BackBtn_pressed():	 #Should restart scene
 	self.is_paused = false
