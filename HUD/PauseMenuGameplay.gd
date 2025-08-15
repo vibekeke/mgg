@@ -71,7 +71,7 @@ func _ready():
 	if vhs_filter == null:
 		print("Could not find a node named VHS filter in this scene!")
 	var parent_node = self.get_parent()
-	if parent_node.name == "Desktop":
+	if parent_node.name == "Bedroom":
 		retry_button.visible = false
 
 func _unhandled_input(event):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://ActionLevels/Room/Bedroom/Computer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/OverworldPlayer.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://Components/CanCreateDialogue.tscn" type="PackedScene" id=23]
 [ext_resource path="res://DialogBox/dialogue_text/bedroom_door.tres" type="Resource" id=24]
 [ext_resource path="res://DialogBox/dialogue_text/bedroom_use_bed.tres" type="Resource" id=25]
+[ext_resource path="res://HUD/PauseMenuBedroom.tscn" type="PackedScene" id=26]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
@@ -330,5 +331,8 @@ shape = SubResource( 50 )
 title = "bedroom_use_bed"
 dialogue = ExtResource( 25 )
 interactable_area = NodePath("..")
+
+[node name="PauseMenu" parent="." instance=ExtResource( 26 )]
+visible = false
 
 [editable path="ComputerScreen2D"]
