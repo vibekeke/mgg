@@ -6,12 +6,22 @@ signal change_character_portrait(portrait_name)
 var node_id_in_use = -1
 var current_dialogue_creator_node
 
-func create_dialogue_balloon(title: String, dialogue_resource: Resource, node_id: int, placement: int = DataClasses.Placement.LOWER, initial_character_portrait := DataClasses.CharacterPortrait.None):
+func create_dialogue_balloon(
+	title: String, 
+	dialogue_resource: Resource,
+	node_id: int,
+	placement: int = DataClasses.Placement.LOWER,
+	initial_character_portrait := DataClasses.CharacterPortrait.None,
+	dialogue_box_colour := Color(0.12549, 0.619608, 1, 1),
+	dialogue_border_colour := Color(0.0, 0.0, 0.0, 1.0)
+	):
 	var dialogue_creator = load("res://DialogBox/DialogueCreator.tscn").instance()
 	dialogue_creator.title = title
 	dialogue_creator.dialogue_resource = dialogue_resource
 	dialogue_creator.placement = placement
 	dialogue_creator.character_portrait = initial_character_portrait
+	dialogue_creator.dialogue_box_colour = dialogue_box_colour
+	dialogue_creator.dialogue_border_colour = dialogue_border_colour
 	dialogue_creator.connect("dialogue_box_finished", self, "_on_dialogue_box_finished")
 	node_id_in_use = node_id
 	#get_tree().current_scene.add_child(dialogue_creator)
