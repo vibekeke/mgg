@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://ActionLevels/Room/Bedroom/Computer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/OverworldPlayer.tscn" type="PackedScene" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://ActionLevels/Room/Bedroom/Keyboard.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ActionLevels/Room/Bedroom/Duvet.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ActionLevels/Room/Bedroom/Chair.tscn" type="PackedScene" id=13]
-[ext_resource path="res://ActionLevels/Room/Bedroom/UseComputerArea.gd" type="Script" id=14]
 [ext_resource path="res://ActionLevels/Room/ComputerScreen2D.tscn" type="PackedScene" id=15]
 [ext_resource path="res://ActionLevels/Room/Bedroom/Room.tscn" type="PackedScene" id=16]
 [ext_resource path="res://ActionLevels/Room/Bedroom/Plant.tscn" type="PackedScene" id=17]
@@ -143,9 +142,6 @@ extents = Vector2( 21.5, 279.5 )
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 420, 17 )
 
-[sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 97, 56.5 )
-
 [sub_resource type="RectangleShape2D" id=46]
 extents = Vector2( 25, 34 )
 
@@ -272,18 +268,6 @@ shape = SubResource( 16 )
 [node name="Bottom" type="CollisionShape2D" parent="BoundaryRoom"]
 position = Vector2( 974, 939 )
 shape = SubResource( 17 )
-
-[node name="UseComputerArea" type="Area2D" parent="."]
-position = Vector2( 959, 463 )
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UseComputerArea"]
-position = Vector2( 0, -46.5 )
-shape = SubResource( 19 )
 
 [node name="RoomLight" parent="." instance=ExtResource( 21 )]
 
