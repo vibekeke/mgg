@@ -217,11 +217,6 @@ deselect_on_focus_loss_enabled = false
 [node name="LevelCityBackground" parent="." instance=ExtResource( 4 )]
 follow_viewport_enable = true
 
-[node name="SceneManager" parent="." instance=ExtResource( 2 )]
-unique_name_in_owner = true
-layer = 1
-visible = false
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 
@@ -250,6 +245,11 @@ amplitude = 0.1
 [node name="TitleScreenAnimation" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 anims/characters_appear = SubResource( 2 )
+
+[node name="SceneManager" parent="." instance=ExtResource( 2 )]
+unique_name_in_owner = true
+layer = 2
+visible = false
 
 [node name="FlashLayer" type="CanvasLayer" parent="."]
 layer = 2

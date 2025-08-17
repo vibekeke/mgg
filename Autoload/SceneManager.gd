@@ -6,6 +6,13 @@ export (String, "Level1", "Level2", "Level3", "GameOver", "None") var retry_scen
 
 onready var color_rect = get_node("%ColorRect")
 onready var tween = get_node("%Tween")
+onready var loading_text = get_node("%LoadingText")
+onready var spinning_star = get_node("%SpinningStar")
+
+var loader: ResourceInteractiveLoader
+var loading_complete: bool = false
+var loading_dots_timer: float = 0.0
+var loading_dots_count: int = 1
 
 onready var action_level_list = {
 	"Level1": "res://ActionLevels/Level1/Level1_Forest.tscn",
@@ -22,6 +29,8 @@ onready var action_level_list = {
 
 func _ready():
 	self.visible = true
+	spinning_star.visible = false
+	loading_text.visible = false
 	Events.connect("transition_to_scene", self, "_transition_to_next_scene")
 	tween.interpolate_property(color_rect, "modulate:a", 1, 0, fade_duration)
 	tween.interpolate_callback(color_rect, fade_duration, "hide")
@@ -35,7 +44,67 @@ func get_scene_path(scene_name):
 
 func _transition_to_next_scene(_next_scene, battle_dialogue_intro: bool = false):
 	color_rect.show()
+	spinning_star.visible = true
+	loading_text.visible = true
+	loading_dots_timer = 0.0
+	loading_dots_count = 1
+	loading_text.text = "Loading."
 	tween.interpolate_property(color_rect, "modulate:a", 0, 1, fade_duration)
 	tween.start()
 	yield(tween, "tween_all_completed")
-	get_tree().change_scene(get_scene_path(_next_scene))
+	
+	var scene_path = get_scene_path(_next_scene)
+	print("scene path ", scene_path)
+	if scene_path:
+		yield(_load_scene_async(scene_path), "completed")
+
+func _load_scene_async(scene_path: String):
+	loading_complete = false
+	loader = ResourceLoader.load_interactive(scene_path)
+	
+	if not loader:
+		print("Failed to start loading scene: ", scene_path)
+		return
+	
+	while true:
+		var err = loader.poll()
+		
+		var progress = float(loader.get_stage()) / float(loader.get_stage_count())
+		_update_loading_progress(progress)
+		
+		if err == ERR_FILE_EOF:
+			loading_complete = true
+			spinning_star.visible = false
+			loading_text.visible = false
+			var resource = loader.get_resource()
+			loader = null
+			
+			if resource and resource is PackedScene:
+				get_tree().change_scene_to(resource)
+			else:
+				print("Failed to load scene resource")
+			break
+		elif err != OK:
+			print("Error loading scene: ", err)
+			loader = null
+			break
+		
+		yield(get_tree(), "idle_frame")
+
+func _update_loading_progress(progress: float):
+	loading_dots_timer += get_process_delta_time()
+	
+	if loading_dots_timer >= 0.5:
+		loading_dots_timer = 0.0
+		loading_dots_count = (loading_dots_count % 3) + 1
+		
+		var dots = ""
+		for i in range(loading_dots_count):
+			dots += "."
+		
+		loading_text.text = "Loading" + dots
+
+func get_loading_progress() -> float:
+	if loader:
+		return float(loader.get_stage()) / float(loader.get_stage_count())
+	return 1.0 if loading_complete else 0.0
