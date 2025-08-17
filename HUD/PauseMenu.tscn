@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://HUD/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Menus/menubuttonfont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Menus/button_focus_and_selected.tres" type="StyleBox" id=5]
 [ext_resource path="res://imported_assets/misc/icons8-pause-button-100.png" type="Texture" id=6]
-[ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ArrayMesh" id=1]
@@ -138,9 +137,6 @@ position = Vector2( 1800, 100 )
 scale = Vector2( 2, 2 )
 mesh = SubResource( 1 )
 texture = ExtResource( 6 )
-
-[node name="SceneManager" parent="." instance=ExtResource( 7 )]
-visible = false
 
 [connection signal="focus_entered" from="CenterContainer/HBoxContainer/VBoxContainer2/ResumeBtn" to="." method="_on_ResumeBtn_focus_entered"]
 [connection signal="focus_exited" from="CenterContainer/HBoxContainer/VBoxContainer2/ResumeBtn" to="." method="_on_ResumeBtn_focus_exited"]

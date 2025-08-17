@@ -65,6 +65,9 @@ var has_floated : bool = false
 
 export (bool) var debug_mode = false
 
+# game over
+var is_dead : bool = false
+
 # sliding
 var slide_duration_timer = Timer.new()
 var slide_again_timer = Timer.new()
@@ -119,7 +122,6 @@ func input_strength_handler(strength_status: float) -> float:
 func _ready():
 	Events.connect("collided_with_player", self, "_on_collided_with_player")
 	Events.connect("disable_player_action", self, "_on_disable_player_action")
-	Events.connect("transition_to_scene", self, "_player_transition_to_scene")
 	Events.connect("collected_heart", self, "_on_collected_heart")
 	Events.connect("has_charge_shot", self, "_on_has_charge_shot")
 	Events.connect("in_battle_dialogue", self, "_on_in_battle_dialogue")
@@ -150,9 +152,6 @@ func _on_screen_exited():
 		take_damage(1)
 		if current_health > 0:
 			start_respawning_player = true
-
-func _player_transition_to_scene(scene_name, dialogue_scene):
-	print("Player will transition to scene", scene_name, dialogue_scene)
 
 func _on_has_charge_shot():
 	has_charge_shot = true
@@ -331,8 +330,9 @@ func take_damage(damage):
 		if current_health > 0:
 			invul_timer.start()
 			modulate.a = 0.5
-		if current_health <= 0:
-			Events.emit_signal("game_over")
+		if current_health <= 0 && !is_dead:
+			is_dead = true
+			Events.go_to_game_over()
 			self.queue_free()
 
 func _on_collided_with_player(damage):

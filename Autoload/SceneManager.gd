@@ -1,4 +1,4 @@
-class_name SceneManager
+
 extends CanvasLayer
 
 export (float) var fade_duration := 0.5
@@ -24,7 +24,9 @@ onready var action_level_list = {
 	"PreLevel1Cutscene": "res://Cutscenes/PreLevel1Cutscene.tscn",
 	"Bedroom": "res://ActionLevels/Room/Bedroom/Bedroom.tscn",
 	"DialogueStage": "res://ActionLevels/Level1/LevelDialogueStage.tscn",
-	"TitleScreen" : "res://Menus/MainMenu.tscn"
+	"TitleScreen" : "res://Menus/MainMenu.tscn",
+	"DemoEndCredits": "res://Menus/DemoEndCredits.tscn",
+	"DemoIntroScreen": "res://Menus/DemoIntroScreen.tscn"
 }
 
 func _ready():
@@ -43,6 +45,9 @@ func get_scene_path(scene_name):
 		print("Scene not present in action level list")
 
 func _transition_to_next_scene(_next_scene, battle_dialogue_intro: bool = false):
+	if loader != null:
+		print("Scene loading already in progress, ignoring request for ", _next_scene)
+		return
 	color_rect.show()
 	spinning_star.visible = true
 	loading_text.visible = true
@@ -74,13 +79,17 @@ func _load_scene_async(scene_path: String):
 		
 		if err == ERR_FILE_EOF:
 			loading_complete = true
-			spinning_star.visible = false
-			loading_text.visible = false
+			#color_rect.visible = false
+			#spinning_star.visible = false
+			#loading_text.visible = false
 			var resource = loader.get_resource()
 			loader = null
 			
 			if resource and resource is PackedScene:
 				get_tree().change_scene_to(resource)
+				tween.interpolate_property(color_rect, "modulate:a", 1.0, 0.0, fade_duration)
+				tween.start()
+				yield(tween, "tween_all_completed")
 			else:
 				print("Failed to load scene resource")
 			break

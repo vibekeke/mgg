@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Menus/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Menus/button_normal.tres" type="StyleBox" id=3]
 [ext_resource path="res://ActionLevels/backgrounds/LevelCityMenuBackground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menus/button_focus_and_selected.tres" type="StyleBox" id=5]
@@ -245,11 +244,6 @@ amplitude = 0.1
 [node name="TitleScreenAnimation" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 anims/characters_appear = SubResource( 2 )
-
-[node name="SceneManager" parent="." instance=ExtResource( 2 )]
-unique_name_in_owner = true
-layer = 2
-visible = false
 
 [node name="FlashLayer" type="CanvasLayer" parent="."]
 layer = 2

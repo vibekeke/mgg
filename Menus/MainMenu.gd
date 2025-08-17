@@ -8,7 +8,6 @@ onready var star_select_room = get_node("%StarSelectRoom")
 onready var title_screen_animation = get_node("%TitleScreenAnimation")
 onready var camera = get_node("%Camera2D")
 onready var tween = get_node("%Tween")
-onready var scene_manager = get_node("%SceneManager")
 
 onready var room_button : Button = get_node("%RoomButton")
 
@@ -19,7 +18,7 @@ func _ready():
 		camera.position, Vector2(961, 540), 2,
 		Tween.TRANS_SINE, Tween.EASE_IN)
 	tween.start()
-	scene_manager.visible = true
+	SceneManager.visible = true
 	var directory = Directory.new()
 	var fileExists = directory.file_exists(Events.SAVE_FILE_LOCATION)
 	if !has_completed_demo:
