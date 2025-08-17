@@ -4,7 +4,6 @@ onready var enemy_spawner = get_node("%EnemySpawner")
 onready var dialog_layer = get_node("%DialogLayer")
 export var enemy_to_spawn : PackedScene
 export var level1_event1_dialog : Resource
-# onready var new_dialog = Dialogic.start('Level1Event1', '', "res://addons/dialogic/Nodes/DialogNode.tscn", false)
 var start_event_timer = Timer.new()
 var wait_after_stopping_spawner_timer = Timer.new()
 

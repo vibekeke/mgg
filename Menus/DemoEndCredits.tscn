@@ -1,7 +1,5 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
-[ext_resource path="res://addons/dialogic/Example Assets/Fonts/DefaultFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://addons/dialogic/Example Assets/Fonts/DefaultBoldFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Menus/ConceptArt/running.png" type="Texture" id=4]
 [ext_resource path="res://Menus/ConceptArt/Illustration.png" type="Texture" id=5]
@@ -147,6 +145,10 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
+[sub_resource type="DynamicFont" id=21]
+size = 36
+font_data = ExtResource( 16 )
+
 [node name="DemoEndCredits" type="Node2D"]
 script = ExtResource( 7 )
 
@@ -270,9 +272,8 @@ margin_top = -347.5
 margin_right = 374.0
 margin_bottom = 224.5
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/italics_font = ExtResource( 2 )
 custom_fonts/bold_font = SubResource( 1 )
-custom_fonts/normal_font = ExtResource( 1 )
+custom_fonts/normal_font = SubResource( 21 )
 bbcode_enabled = true
 bbcode_text = "[center][color=blue]...CREDITS[/color]
 Boobobobobobobo thank you thank you"
