@@ -1,5 +1,7 @@
 extends LevelEvent
 
+onready var enemy_spawner = get_node("%EnemySpawner")
+onready var dialog_layer = get_node("%DialogLayer")
 onready var collected_dogs = []
 var start_event_timer = Timer.new()
 export var debug_mode : bool = false
@@ -11,6 +13,7 @@ func _ready():
 	event_name = 'Level1_EventEnd'
 	Events.connect("collected_dog", self, "_on_collected_dog")
 	if debug_mode:
+		print("event start debug")
 		event_start()
 
 
@@ -29,12 +32,18 @@ func _on_level_event_complete(level_event_name, level_event_number) -> void:
 		start_event_timer.set_wait_time(1.0)
 
 func trigger() -> void:
+	print("turigga")
 	Events.emit_signal("level_event_lock", event_name, event_number)
+	if enemy_spawner.enemy_spawner_is_running():
+		enemy_spawner.stop_enemy_spawner()
+
 	event_start()
 	
 func event_start() -> void:
+	print("Starting final event.")
 	var saved_dogs_for_level = {1 : collected_dogs}
 	Events.save_game(1, saved_dogs_for_level)
+	Events.emit_signal("transition_to_scene", "DemoEndCredits")
 	
 func end_event() -> void:
 	Events.emit_signal("level_event_complete", event_name, event_number)

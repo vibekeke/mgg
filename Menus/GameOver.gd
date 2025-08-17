@@ -10,7 +10,7 @@ func _ready():
 
 func _on_RetryButton_pressed():
 	if faded_in:
-		get_tree().change_scene("res://ActionLevels/Level1/Level1_Forest.tscn")
+		Events.emit_signal("transition_to_scene", "Level1")
 
 func _on_QuitButton_pressed():
 	if faded_in:

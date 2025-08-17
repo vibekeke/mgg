@@ -104,11 +104,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ActionLevels/Room/QuitIcon.gd"
 }, {
-"base": "CanvasLayer",
-"class": "SceneManager",
-"language": "GDScript",
-"path": "res://Autoload/SceneManager.gd"
-}, {
 "base": "Node",
 "class": "Sharkboi",
 "language": "GDScript",
@@ -149,7 +144,6 @@ _global_script_class_icons={
 "OurGuy": "",
 "PathedMisbeehave": "",
 "QuitIcon": "",
-"SceneManager": "",
 "Sharkboi": "",
 "SneakySnake": "",
 "StaticBroBear": "",
@@ -167,6 +161,7 @@ Events="*res://Autoload/Events.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 MggDialogue="*res://Autoload/MggDialogue.gd"
 Utils="*res://utils/Utils.gd"
+SceneManager="*res://Autoload/SceneManager.tscn"
 
 [debug]
 

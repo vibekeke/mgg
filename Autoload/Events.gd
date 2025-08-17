@@ -70,7 +70,6 @@ func _ready():
 	OS.min_window_size = Vector2(1280, 720)
 	OS.max_window_size = Vector2(1920, 1080)
 	OS.center_window()
-	Events.connect("game_over", self, "go_to_game_over")
 
 func _disable_player_actions(to_disable: bool):
 	# for tutorial and other stuff, e.g. boss loading?
@@ -85,7 +84,7 @@ func transition_to_new_scene(next_scene):
 	
 func go_to_game_over():
 	print("transition to game over screen")
-	self.emit_signal("transition_to_scene", "GameOver", false)
+	self.emit_signal("transition_to_scene", "GameOver")
 
 
 onready var enemyPaths = {

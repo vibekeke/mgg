@@ -61,6 +61,9 @@ func get_enemy_from_difficulty_tier():
 	elif current_difficulty_tier >= 3:
 		current_enemy_list = first_tier_enemy_list + second_tier_enemy_list + third_tier_enemy_list
 
+func enemy_spawner_is_running() -> bool:
+	return !(platform_spawn_timer.is_stopped() && spawn_timer.is_stopped() && spawn_unique_while_alive_timer.is_stopped())
+
 func stop_enemy_spawner():
 	platform_spawn_timer.stop()
 	spawn_timer.stop()
