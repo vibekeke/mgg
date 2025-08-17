@@ -8,6 +8,7 @@ signal level_start_animation_finished
 
 func _ready():
 	self.visible = false
+	level_start_animation()
 	
 func level_start_animation():
 	self.visible = true
