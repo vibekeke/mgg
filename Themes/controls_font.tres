@@ -3,5 +3,5 @@
 [ext_resource path="res://test_fonts/vibekefonts/Jura-Bold.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 64
+size = 31
 font_data = ExtResource( 1 )
