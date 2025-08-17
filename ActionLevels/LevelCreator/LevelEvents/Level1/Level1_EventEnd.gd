@@ -3,7 +3,6 @@ extends LevelEvent
 onready var enemy_spawner = get_node("%EnemySpawner")
 onready var dialog_layer = get_node("%DialogLayer")
 onready var collected_dogs = []
-#onready var new_dialog = Dialogic.start('Level1Event1', '', "res://addons/dialogic/Nodes/DialogNode.tscn", false)
 var start_event_timer = Timer.new()
 export var debug_mode : bool = false
 var LEVEL_NAME = 'Level1'

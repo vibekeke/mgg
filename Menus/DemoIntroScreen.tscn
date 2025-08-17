@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://addons/dialogic/Example Assets/Fonts/DefaultFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://addons/dialogic/Example Assets/Fonts/DefaultBoldFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://test_fonts/Comforta/Comfortaa-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Menus/PrettyAssets/PatternScroll.tres" type="Shader" id=3]
 [ext_resource path="res://Menus/PrettyAssets/WandDeco2.PNG" type="Texture" id=4]
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-Regular.ttf" type="DynamicFontData" id=5]
@@ -13,6 +13,14 @@
 shader = ExtResource( 3 )
 shader_param/SPEED = 0.1
 shader_param/SPEED_Y = 0.05
+
+[sub_resource type="DynamicFont" id=7]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 36
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 50
@@ -88,8 +96,8 @@ margin_top = -302.0
 margin_right = 448.5
 margin_bottom = 302.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/italics_font = ExtResource( 2 )
-custom_fonts/normal_font = ExtResource( 1 )
+custom_fonts/italics_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 8 )
 bbcode_enabled = true
 bbcode_text = "[center]Hello![/center]
 
