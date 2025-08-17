@@ -20,6 +20,8 @@ var placement_dictionary = {
 
 var placement = DataClasses.Placement.LOWER
 var character_portrait = DataClasses.CharacterPortrait.None
+var dialogue_box_colour := Color(0.12549, 0.619608, 1.0, 1.0)
+var dialogue_border_colour := Color(0.0, 0.0, 0.0, 1.0)
 
 var dialogue
 var is_waiting_for_input: bool = false
@@ -43,13 +45,16 @@ func add_dialogue():
 		return
 
 	self.dialogue = dialogue
-	if dialogue.character == "":
+	if character_portrait == DataClasses.CharacterPortrait.None:
 		margin_container.add_constant_override("margin_right", 10)
 		portrait.hide()
-		character_title.hide()
 	else:
 		portrait.show()
 		margin_container.add_constant_override("margin_right", 125)
+
+	if dialogue.character == "":
+		character_title.hide()
+	else:
 		character_title.bbcode_text = dialogue.character
 
 		dialogue_label.rect_size.x = dialogue_label.get_parent().rect_size.x
@@ -99,7 +104,13 @@ func container_placement():
 func set_character_portrait():
 	portrait.display_character(character_portrait)
 
+func set_stylebox_colour():
+	var stylebox = dialogue_main_window.get_stylebox("panel")
+	stylebox.bg_color = dialogue_box_colour
+	stylebox.border_color = dialogue_border_colour
+
 func _ready() -> void:
+	set_stylebox_colour()
 	set_character_portrait()
 	container_placement()
 	dialogue_label.connect("arriving_characer", self, "_on_arriving_character")

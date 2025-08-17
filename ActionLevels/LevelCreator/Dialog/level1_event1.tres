@@ -1,0 +1,84 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 2
+syntax_version = 2
+raw_text = "~ level1_event1
+
+Have the bird and fish been deployed?
+Yes sir, the girl should be awakening soon.
+What about the boy?
+That will take more time. But once he awakens the girl will have a real challenge.
+Perfect...
+Finally...
+A world where Moonlight Miko will be real!"
+errors = [  ]
+titles = {
+"level1_event1": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "level1_event1",
+"type": "title"
+},
+"2": {
+"character": "",
+"next_id": "3",
+"replacements": [  ],
+"text": "Have the bird and fish been deployed?",
+"translation_key": "Have the bird and fish been deployed?",
+"type": "dialogue"
+},
+"3": {
+"character": "",
+"next_id": "4",
+"replacements": [  ],
+"text": "Yes sir, the girl should be awakening soon.",
+"translation_key": "Yes sir, the girl should be awakening soon.",
+"type": "dialogue"
+},
+"4": {
+"character": "",
+"next_id": "5",
+"replacements": [  ],
+"text": "What about the boy?",
+"translation_key": "What about the boy?",
+"type": "dialogue"
+},
+"5": {
+"character": "",
+"next_id": "6",
+"replacements": [  ],
+"text": "That will take more time. But once he awakens the girl will have a real challenge.",
+"translation_key": "That will take more time. But once he awakens the girl will have a real challenge.",
+"type": "dialogue"
+},
+"6": {
+"character": "",
+"next_id": "7",
+"replacements": [  ],
+"text": "Perfect...",
+"translation_key": "Perfect...",
+"type": "dialogue"
+},
+"7": {
+"character": "",
+"next_id": "8",
+"replacements": [  ],
+"text": "Finally...",
+"translation_key": "Finally...",
+"type": "dialogue"
+},
+"8": {
+"character": "",
+"next_id": "",
+"replacements": [  ],
+"text": "A world where Moonlight Miko will be real!",
+"translation_key": "A world where Moonlight Miko will be real!",
+"type": "dialogue"
+}
+}

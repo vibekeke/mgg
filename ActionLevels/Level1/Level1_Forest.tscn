@@ -143,6 +143,7 @@ charge_shot = ExtResource( 21 )
 
 [node name="LevelEventsManager" parent="." instance=ExtResource( 28 )]
 unique_name_in_owner = true
+debug_trigger_event_number = -1
 
 [node name="Level1_Event1" parent="LevelEventsManager" instance=ExtResource( 27 )]
 enemy_to_spawn = ExtResource( 15 )
@@ -173,6 +174,7 @@ dog = ExtResource( 31 )
 time_until_event_start = 3.0
 
 [node name="Level1_EventBoss" parent="LevelEventsManager" instance=ExtResource( 34 )]
+level1_event1_dialog = ExtResource( 45 )
 
 [node name="Level1_EventEnd" parent="LevelEventsManager" instance=ExtResource( 43 )]
 

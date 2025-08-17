@@ -1,15 +1,17 @@
 extends Node2D
 
-onready var intro_cutscene_dialogue = Dialogic.start('Cutscenes/IntroCutscene')
 var tv_sound_finished = false
+export var intro_dialog : Resource
 
 func _ready():
+	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
 	$TVTurnOn.play()
 	$CanvasLayer/VHS.set_modulate(Color(1,1,1,0))
 	$AyyLmao.set_modulate(Color(1,1,1,0))
 	$AyyLmao2.set_modulate(Color(1,1,1,0))
-	
-	#intro_cutscene_dialogue.connect("")
+
+func display_dialogue():
+	MggDialogue.create_dialogue_balloon("intro", intro_dialog, self.get_parent().get_instance_id(), DataClasses.Placement.LOWER, DataClasses.CharacterPortrait.None)
 
 func _process(delta):
 	if tv_sound_finished:
@@ -19,4 +21,4 @@ func _process(delta):
 
 func _on_TVTurnOn_finished():
 	tv_sound_finished = true
-	self.add_child(intro_cutscene_dialogue)
+	display_dialogue()

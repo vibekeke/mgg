@@ -18,19 +18,23 @@ var background_boss_spawn_place = Vector2(-500, 700)
 var background_boss_speed = 2000
 export var time_until_event_start = 3.0
 export var debug_mode : bool = false
+export var level1_event1_dialog : Resource
 
 func _ready():
+	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
 	Events.connect("background_element_offscreen", self, "_on_background_element_offscreen")
-	boss_dialog.connect("timeline_end", self, "_on_timeline_end")
 	event_number = 6 # last level event
 	boss_warning_tape.connect("warning_finished", self, "_on_warning_finished")
 	event_name = "Level1_EventBoss"
 	if debug_mode:
 		_on_level_event_complete('dummy_event', 5)
 
-func _on_timeline_end(_timeline_name):
-	spawn_boss()
+func _on_dialogue_box_finished(node_id):
+	print("dialogue finished, node_id: ", node_id, ", self.get_instance_id(): ", self.get_instance_id())
+	if self.get_instance_id() == node_id:
+		yield(get_tree().create_timer(2.0), "timeout")
+		spawn_boss()
 	
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 5:
@@ -57,7 +61,21 @@ func _on_level_event_complete(level_event_name, level_event_number) -> void:
 		
 		start_event_timer.start()
 
+func display_dialogue():
+	print("Creating dialogue balloon for level1_event_boss")
+	MggDialogue.create_dialogue_balloon(
+		"level1_event_boss", 
+		level1_event1_dialog, 
+		self.get_instance_id(), 
+		DataClasses.Placement.LOWER, 
+		DataClasses.CharacterPortrait.None,
+		Color(0.0, 0.0, 0.0, 1.0),
+		Color(0.3, 0.1, 0.5, 1.0)
+		)
+
 func trigger() -> void:
+	print("triggering boss event")
+	print("enemy spawner is ", enemy_spawner)
 	if enemy_spawner != null:
 		Events.emit_signal("level_event_lock", event_name, event_number)
 		enemy_spawner.stop_enemy_spawner()
@@ -77,10 +95,11 @@ func spawn_boss():
 	enemy_spawner._direct_spawn_boss_at_position(boss, Vector2(1510, 620), 0)
 
 func _on_warning_finished():
-	dialog_layer.add_child(boss_dialog)
+	#dialog_layer.add_child(boss_dialog)
+	display_dialogue()
 
 func event_start() -> void:
-
+	print("starting event - boss")
 	if boss_background_to_spawn != null:
 		boss_background_to_spawn.scale.x = 0.65
 		boss_background_to_spawn.scale.y = 0.65
