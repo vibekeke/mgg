@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://addons/dialogic/Example Assets/Fonts/DefaultFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://addons/dialogic/Example Assets/Fonts/DefaultBoldFont.tres" type="DynamicFont" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Sharkboi/SharkboiAnimatedSprite.gd" type="Script" id=12]
 [ext_resource path="res://Menus/ConceptArt/jente.png" type="Texture" id=13]
 [ext_resource path="res://Menus/PrettyAssets/Sparkles.tscn" type="PackedScene" id=14]
+[ext_resource path="res://test_fonts/Comforta/Comfortaa-Bold.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=16]
 
 [sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
@@ -109,9 +111,16 @@ tracks/1/keys = {
 "values": [  ]
 }
 
+[sub_resource type="DynamicFont" id=19]
+font_data = ExtResource( 15 )
+
 [sub_resource type="DynamicFont" id=1]
 size = 36
 font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 36
+font_data = ExtResource( 16 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 50
@@ -211,9 +220,9 @@ margin_top = -326.5
 margin_right = 374.0
 margin_bottom = 237.5
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/italics_font = ExtResource( 2 )
+custom_fonts/italics_font = SubResource( 19 )
 custom_fonts/bold_font = SubResource( 1 )
-custom_fonts/normal_font = ExtResource( 1 )
+custom_fonts/normal_font = SubResource( 20 )
 bbcode_enabled = true
 bbcode_text = "[center][color=blue]...TO BE CONTINUED?[/color]
 

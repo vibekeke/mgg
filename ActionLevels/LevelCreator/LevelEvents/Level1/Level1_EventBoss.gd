@@ -12,8 +12,6 @@ onready var boss_background_swoop_timer = Timer.new()
 
 onready var boss_background_to_spawn : Object = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn").instance()
 onready var boss : PackedScene = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
-onready var boss_dialog = Dialogic.start('Level1BossIntroEvent', '', 'res://addons/dialogic/Nodes/DialogNode.tscn', false)
-onready var dialog_layer = get_node("%DialogLayer")
 var background_boss_spawn_place = Vector2(-500, 700)
 var background_boss_speed = 2000
 export var time_until_event_start = 3.0
@@ -95,7 +93,6 @@ func spawn_boss():
 	enemy_spawner._direct_spawn_boss_at_position(boss, Vector2(1510, 620), 0)
 
 func _on_warning_finished():
-	#dialog_layer.add_child(boss_dialog)
 	display_dialogue()
 
 func event_start() -> void:
