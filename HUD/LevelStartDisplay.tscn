@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://HUD/ControlsPanelContainer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test_fonts/vibekefonts/Jura-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://HUD/readable_panels.tres" type="StyleBox" id=3]
 [ext_resource path="res://HUD/LevelStartDisplay.gd" type="Script" id=4]
 [ext_resource path="res://ActionLevels/backgrounds/Bubbles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HUD/VerticalControlsPanelContainer.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -135,9 +136,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"transitions": PoolRealArray( 0.535888, 1 ),
 "update": 0,
-"values": [ Vector2( 814, 718 ), Vector2( 814, 470 ) ]
+"values": [ Vector2( 745, 560 ), Vector2( 745, 510 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:modulate")
@@ -234,13 +235,21 @@ tracks/2/keys = {
 [node name="LevelStartDisplay" type="CanvasLayer"]
 script = ExtResource( 4 )
 
+[node name="PanelContainer" parent="." instance=ExtResource( 6 )]
+unique_name_in_owner = true
+margin_left = -1018.0
+margin_top = -4.0
+margin_right = 624.0
+margin_bottom = 305.0
+
 [node name="Controls" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 2021.69
 margin_top = 294.963
 margin_right = 2442.69
-margin_bottom = 793.964
+margin_bottom = 845.963
 custom_styles/panel = ExtResource( 3 )
 
 [node name="ControlsAnimationPlayer" type="AnimationPlayer" parent="Controls"]
@@ -249,23 +258,31 @@ root_node = NodePath("../..")
 anims/RESET = SubResource( 1 )
 anims/display_controls = SubResource( 2 )
 
-[node name="TutorialConfirmation" type="PanelContainer" parent="."]
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TutorialConfirmation" type="PanelContainer" parent="CenterContainer2"]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 814.0
 margin_top = 718.0
-margin_right = 1214.0
-margin_bottom = 816.0
+margin_right = 1244.0
+margin_bottom = 818.0
+grow_horizontal = 0
+grow_vertical = 0
 custom_styles/panel = ExtResource( 3 )
 
-[node name="CenterContainer" type="CenterContainer" parent="TutorialConfirmation"]
-margin_right = 400.0
-margin_bottom = 97.9996
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer2/TutorialConfirmation"]
+margin_right = 430.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 430, 100 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TutorialConfirmation/CenterContainer"]
-margin_top = 28.0
-margin_right = 400.0
-margin_bottom = 68.0
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/TutorialConfirmation/CenterContainer"]
+margin_left = 15.0
+margin_top = 30.0
+margin_right = 415.0
+margin_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 400, 40 )
@@ -276,12 +293,12 @@ meta_underlined = false
 text = "Press Enter to start!"
 scroll_active = false
 
-[node name="TextAnimationPlayer" type="AnimationPlayer" parent="TutorialConfirmation/CenterContainer/RichTextLabel"]
+[node name="TextAnimationPlayer" type="AnimationPlayer" parent="CenterContainer2/TutorialConfirmation/CenterContainer/RichTextLabel"]
 unique_name_in_owner = true
 anims/RESET = SubResource( 4 )
 anims/confirmation_text_flash = SubResource( 5 )
 
-[node name="ConfirmationAnimationPlayer" type="AnimationPlayer" parent="TutorialConfirmation"]
+[node name="ConfirmationAnimationPlayer" type="AnimationPlayer" parent="CenterContainer2/TutorialConfirmation"]
 unique_name_in_owner = true
 anims/RESET = SubResource( 6 )
 anims/confirmation_animation = SubResource( 7 )
@@ -302,5 +319,5 @@ anims/RESET = SubResource( 10 )
 anims/bubbles_animation = SubResource( 11 )
 
 [connection signal="animation_finished" from="Controls/ControlsAnimationPlayer" to="." method="_on_ControlsAnimationPlayer_animation_finished"]
-[connection signal="animation_finished" from="TutorialConfirmation/ConfirmationAnimationPlayer" to="." method="_on_ConfirmationAnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="CenterContainer2/TutorialConfirmation/ConfirmationAnimationPlayer" to="." method="_on_ConfirmationAnimationPlayer_animation_finished"]
 [connection signal="timeout" from="ReadyToStartLevelTimer" to="." method="_on_ReadyToStartLevelTimer_timeout"]
