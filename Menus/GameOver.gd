@@ -25,15 +25,13 @@ func _on_RetryButton_pressed():
 
 func _on_QuitButton_pressed():
 	if faded_in:
-		Events.emit_signal("transition_to_scene", "MainMenu")
+		Events.emit_signal("transition_to_scene", "TitleScreen")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade_in":
 		faded_in = true
 		retry_button.grab_focus()
-		print("should have grabbed focus")
-
 
 func _on_RetryButton_focus_entered():
 	retry_star.visible = true
