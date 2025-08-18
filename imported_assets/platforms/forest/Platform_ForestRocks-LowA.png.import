@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Platform_forestrocks_Low-B.png-54d294001941d6f5c5499186c2f748f7.stex"
+path="res://.import/Platform_ForestRocks-LowA.png-769ef317dc82c08d0f549b29fab0c475.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imported_assets/platforms/forest/Platform_forestrocks_Low-B.png"
-dest_files=[ "res://.import/Platform_forestrocks_Low-B.png-54d294001941d6f5c5499186c2f748f7.stex" ]
+source_file="res://imported_assets/platforms/forest/Platform_ForestRocks-LowA.png"
+dest_files=[ "res://.import/Platform_ForestRocks-LowA.png-769ef317dc82c08d0f549b29fab0c475.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
