@@ -9,7 +9,9 @@ onready var title_screen_animation = get_node("%TitleScreenAnimation")
 onready var camera = get_node("%Camera2D")
 onready var tween = get_node("%Tween")
 
+onready var start_button : Button = get_node("%StartButton")
 onready var room_button : Button = get_node("%RoomButton")
+onready var quit_button : Button = get_node("%QuitButton")
 
 var has_completed_demo : bool = false
 
@@ -76,3 +78,16 @@ func _on_RoomButton_focus_entered():
 
 func _on_RoomButton_focus_exited():
 	star_select_room.visible = false
+
+
+
+func _on_QuitButton_mouse_entered():
+	quit_button.grab_focus()
+	
+
+func _on_RoomButton_mouse_entered():
+	if not room_button.disabled:
+		room_button.grab_focus()
+
+func _on_StartButton_mouse_entered():
+	start_button.grab_focus()
