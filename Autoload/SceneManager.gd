@@ -9,6 +9,7 @@ onready var tween = get_node("%Tween")
 onready var loading_text = get_node("%LoadingText")
 onready var spinning_star = get_node("%SpinningStar")
 
+var is_loading : bool = false
 var loader: ResourceInteractiveLoader
 var loading_complete: bool = false
 var loading_dots_timer: float = 0.0
@@ -58,8 +59,8 @@ func _transition_to_next_scene(_next_scene, battle_dialogue_intro: bool = false)
 	yield(tween, "tween_all_completed")
 	
 	var scene_path = get_scene_path(_next_scene)
-	print("scene path ", scene_path)
-	if scene_path:
+	if scene_path and !is_loading:
+		is_loading = true
 		yield(_load_scene_async(scene_path), "completed")
 
 func _load_scene_async(scene_path: String):
@@ -78,9 +79,7 @@ func _load_scene_async(scene_path: String):
 		
 		if err == ERR_FILE_EOF:
 			loading_complete = true
-			#color_rect.visible = false
-			#spinning_star.visible = false
-			#loading_text.visible = false
+			is_loading = false
 			var resource = loader.get_resource()
 			loader = null
 			
