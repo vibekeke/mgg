@@ -115,7 +115,7 @@ onready var level_background_elements = {
 
 onready var level_platforms = {
 	1 : {
-		'LongTallPlatform': 'res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn',
+		'LongTallPlatform': 'res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatformTest.tscn',
 		'TallPlatform': 'res://ActionLevels/LevelCreator/Obstacles/Forest/TallPlatform.tscn',
 		'LowPlatform1': 'res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform1.tscn',
 		'LowPlatform2': 'res://ActionLevels/LevelCreator/Obstacles/Forest/LowPlatform2.tscn',
