@@ -27,13 +27,13 @@ func get_input():
 	if is_controlled:
 		return
 	velocity = Vector2.ZERO
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
-	elif Input.is_action_pressed("left"):
+	elif Input.is_action_pressed("move_left"):
 		velocity.x -= 1
-	elif Input.is_action_pressed("down"):
+	elif Input.is_action_pressed("move_down"):
 		velocity.y += 1
-	elif Input.is_action_pressed("up"):
+	elif Input.is_action_pressed("move_up"):
 		velocity.y -= 1
 	velocity = velocity.normalized() * speed
 	
