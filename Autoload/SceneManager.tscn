@@ -21,9 +21,9 @@ color = Color( 0, 0, 0, 1 )
 [node name="LoadingText" type="RichTextLabel" parent="ColorRect"]
 unique_name_in_owner = true
 margin_left = 1723.0
-margin_top = 818.0
+margin_top = 789.0
 margin_right = 1866.0
-margin_bottom = 858.0
+margin_bottom = 838.0
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "Loading..."
@@ -33,7 +33,7 @@ scroll_active = false
 
 [node name="SpinningStar" parent="ColorRect" instance=ExtResource( 2 )]
 unique_name_in_owner = true
-position = Vector2( 1783, 986 )
+position = Vector2( 1784, 957 )
 
 [node name="Tween" type="Tween" parent="."]
 unique_name_in_owner = true
