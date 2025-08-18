@@ -2,18 +2,21 @@ extends Node2D
 
 onready var scrolling = $CreditScroll
 
-onready var message_text = $TextureRect/MessageText
-onready var message_button = $TextureRect/NextButton
-onready var credits_text = $TextureRect/CreditsText
-onready var credits_buttons = $TextureRect/CreditsButtons
+onready var animation_player = $AnimationPlayer
 
-var scroll_speed: float = 40.0
+onready var message_text = get_node("%MessageText")
+onready var message_button = get_node("%NextButton")
+onready var credits_text = get_node("%CreditsText")
+onready var credits_buttons = get_node("%CreditsButtons")
+
+var scroll_speed: float = 70.0
 
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	animation_player.play("pop_in")
 	message_text.show()
 	message_button.show()
 	credits_text.hide()

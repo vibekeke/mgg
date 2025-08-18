@@ -125,3 +125,16 @@ func _on_QuitBtn_focus_entered():
 
 func _on_QuitBtn_focus_exited():
 	spinny_star_title.visible = false
+	
+
+
+
+
+func _on_ResumeBtn_mouse_entered():
+	resume_button.grab_focus()
+
+func _on_RetryBtn_mouse_entered():
+	retry_button.grab_focus()
+
+func _on_TitleBtn_mouse_entered():
+	title_button.grab_focus()
