@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://test_fonts/Comforta/Comfortaa-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Menus/PrettyAssets/StarDeco.PNG" type="Texture" id=6]
 [ext_resource path="res://Menus/PrettyAssets/test2.png" type="Texture" id=7]
-[ext_resource path="res://Menus/PrettyAssets/DemoTextBox.png" type="Texture" id=8]
+[ext_resource path="res://Menus/PrettyAssets/DemoTextBox.webp" type="Texture" id=8]
 [ext_resource path="res://Menus/DemoIntroScreen.gd" type="Script" id=9]
 
 [sub_resource type="ShaderMaterial" id=6]
@@ -48,18 +48,6 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.627451, 0.972549, 1, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.0745098, 0.0862745, 0.223529, 1 )
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-
 [sub_resource type="Animation" id=9]
 resource_name = "pop_in"
 length = 2.0
@@ -70,7 +58,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.8, 0.8 ), Vector2( 0.8, 0.8 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
@@ -82,10 +70,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 15.352 ),
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 15.352 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="DemoIntro" type="Node2D"]
@@ -109,9 +97,7 @@ texture = ExtResource( 7 )
 stretch_mode = 2
 
 [node name="Window" type="Node2D" parent="CanvasLayer"]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 941.402, 547.726 )
-scale = Vector2( 0.8, 0.8 )
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Window"]
 margin_left = -593.75
@@ -146,7 +132,7 @@ custom_fonts/normal_font = SubResource( 8 )
 bbcode_enabled = true
 bbcode_text = "[center]Hello![/center]
 
-This is a [color=#117cd6]demo[/color] for our wonderful game,  [color=#cb115d]MOONLIGHT MIKO AND THE CRYSTAL OF DOOM[/color] [color=#353535][i](*title pending)[/i][/color]
+This is a [color=#117cd6]demo[/color] for our wonderful game,  [color=#cb115d]MOONLIGHT MIKO vs. THE ASTRAL TROUBLEMAKERS[/color] [color=#353535]
 
 The demo consists of a single level, and a [color=#117cd6]small bonus[/color] if you manage to play well!
 
@@ -155,7 +141,7 @@ Note: Your data [color=#cb115d]will not be saved[/color] when you close this gam
 "
 text = "Hello!
 
-This is a demo for our wonderful game,  MOONLIGHT MIKO AND THE CRYSTAL OF DOOM (*title pending)
+This is a demo for our wonderful game,  MOONLIGHT MIKO vs. THE ASTRAL TROUBLEMAKERS 
 
 The demo consists of a single level, and a small bonus if you manage to play well!
 
@@ -178,18 +164,6 @@ custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 text = "continue"
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -483.0
-margin_top = -347.0
-margin_right = 529.0
-margin_bottom = 322.0
-custom_styles/panel = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/pop_in = SubResource( 9 )

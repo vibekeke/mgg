@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/DemoTextBox.png-c5281e8578cb7358cedd6942f23ce398.stex"
+path="res://.import/LaserBullet.PNG-e39ca29c92d4b68a1d9e3a377c7aa4df.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Menus/PrettyAssets/DemoTextBox.png"
-dest_files=[ "res://.import/DemoTextBox.png-c5281e8578cb7358cedd6942f23ce398.stex" ]
+source_file="res://imported_assets/projectiles/LaserBullet.PNG"
+dest_files=[ "res://.import/LaserBullet.PNG-e39ca29c92d4b68a1d9e3a377c7aa4df.stex" ]
 
 [params]
 

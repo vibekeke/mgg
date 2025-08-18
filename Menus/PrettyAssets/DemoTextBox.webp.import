@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/test.png-8f34f759cb186ba8bd969bff55458a20.stex"
+path="res://.import/DemoTextBox.webp-5d63684eb3f97a9a208d7f5d3f18e5d3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Menus/PrettyAssets/test.png"
-dest_files=[ "res://.import/test.png-8f34f759cb186ba8bd969bff55458a20.stex" ]
+source_file="res://Menus/PrettyAssets/DemoTextBox.webp"
+dest_files=[ "res://.import/DemoTextBox.webp-5d63684eb3f97a9a208d7f5d3f18e5d3.stex" ]
 
 [params]
 
