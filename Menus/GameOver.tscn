@@ -1,18 +1,27 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=22 format=2]
 
+[ext_resource path="res://Menus/PrettyAssets/Spotlight2.png" type="Texture" id=1]
 [ext_resource path="res://Menus/GameOver.gd" type="Script" id=2]
 [ext_resource path="res://Menus/button_focus_and_selected.tres" type="StyleBox" id=3]
 [ext_resource path="res://Menus/button_normal.tres" type="StyleBox" id=4]
 [ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=5]
 [ext_resource path="res://Menus/menubuttonfont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Menus/PrettyAssets/GameOverLogo.png" type="Texture" id=7]
+[ext_resource path="res://Menus/PrettyAssets/Spotlight1.png" type="Texture" id=8]
+[ext_resource path="res://Menus/PrettyAssets/Spotlight3.png" type="Texture" id=9]
+[ext_resource path="res://Menus/PrettyAssets/GirlSitDetermined.png" type="Texture" id=10]
+[ext_resource path="res://Menus/PrettyAssets/GirlSitSad.png" type="Texture" id=11]
+[ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Gradient" id=7]
-colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.112305, 0.115433, 0.3125, 1 )
 
 [sub_resource type="GradientTexture2D" id=8]
 gradient = SubResource( 7 )
 width = 1920
 height = 1080
+fill_from = Vector2( 0.516667, 0 )
+fill_to = Vector2( 0.5125, 0.956938 )
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -39,6 +48,14 @@ colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
 gradient = SubResource( 3 )
 width = 1920
 height = 1080
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 1 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.5
+} ]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -69,7 +86,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "fade_in"
-length = 2.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/CenterContainer/VBoxContainer:modulate")
 tracks/0/interp = 1
@@ -77,7 +94,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1, 1.9 ),
+"times": PoolRealArray( 1, 1.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -89,7 +106,31 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1, 1.9 ),
+"times": PoolRealArray( 1, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/AnimatedSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/GirlSitSad:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -106,6 +147,7 @@ margin_bottom = 40.0
 texture = SubResource( 8 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 2 )
 anchor_right = 1.0
@@ -114,21 +156,47 @@ texture = SubResource( 4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 391.5, 505.605 )
+scale = Vector2( 0.990458, 0.990458 )
+frames = SubResource( 9 )
+playing = true
+
+[node name="GameOverLogo" type="Sprite" parent="CanvasLayer/AnimatedSprite"]
+position = Vector2( 588.56, -295.115 )
+scale = Vector2( 0.537988, 0.537988 )
+texture = ExtResource( 7 )
+
+[node name="GirlSitDetermined" type="Sprite" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+position = Vector2( 394.079, 763.169 )
+scale = Vector2( 0.742844, 0.742844 )
+texture = ExtResource( 10 )
+
+[node name="GirlSitSad" type="Sprite" parent="CanvasLayer"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 387.727, 768.54 )
+scale = Vector2( 0.742844, 0.742844 )
+texture = ExtResource( 11 )
+
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 884.0
-margin_top = 470.0
-margin_right = 1036.0
-margin_bottom = 610.0
+margin_left = 809.0
+margin_top = 459.0
+margin_right = 1111.0
+margin_bottom = 621.0
 
 [node name="RetryButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_right = 152.0
-margin_bottom = 68.0
+margin_right = 302.0
+margin_bottom = 79.0
 focus_neighbour_top = NodePath("../QuitButton")
 custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
@@ -139,13 +207,13 @@ custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = ExtResource( 3 )
 custom_styles/normal = ExtResource( 4 )
-text = "Retry"
+text = "Try Again!"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 72.0
-margin_right = 152.0
-margin_bottom = 140.0
+margin_top = 83.0
+margin_right = 302.0
+margin_bottom = 162.0
 focus_neighbour_bottom = NodePath("../RetryButton")
 custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
@@ -156,7 +224,17 @@ custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 5 )
 custom_styles/focus = ExtResource( 3 )
 custom_styles/normal = ExtResource( 4 )
-text = "Quit"
+text = "Give Up"
+
+[node name="StarSelectRetry" parent="CanvasLayer" instance=ExtResource( 12 )]
+unique_name_in_owner = true
+visible = false
+position = Vector2( 750, 508.6 )
+
+[node name="StarSelectQuit" parent="CanvasLayer" instance=ExtResource( 12 )]
+unique_name_in_owner = true
+visible = false
+position = Vector2( 792, 581.6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -164,6 +242,12 @@ playback_speed = 0.5
 anims/RESET = SubResource( 5 )
 anims/fade_in = SubResource( 6 )
 
+[connection signal="focus_entered" from="CanvasLayer/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_focus_entered"]
+[connection signal="focus_exited" from="CanvasLayer/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_focus_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="focus_entered" from="CanvasLayer/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_focus_entered"]
+[connection signal="focus_exited" from="CanvasLayer/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_focus_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
