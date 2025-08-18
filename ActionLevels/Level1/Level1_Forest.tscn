@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -40,12 +40,11 @@
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundBun.tscn" type="PackedScene" id=38]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundBear.tscn" type="PackedScene" id=39]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticBroBear/StaticBroBear.tscn" type="PackedScene" id=40]
-[ext_resource path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" type="Resource" id=41]
+[ext_resource path="res://HUD/LevelStartDisplay.tscn" type="PackedScene" id=41]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerfly.tscn" type="PackedScene" id=42]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventEnd.tscn" type="PackedScene" id=43]
 [ext_resource path="res://ActionLevels/LevelCreator/Props/BossWarningTape.tscn" type="PackedScene" id=44]
 [ext_resource path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" type="Resource" id=45]
-[ext_resource path="res://ActionLevels/Room/ComputerBootLogo.tscn" type="PackedScene" id=47]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -71,7 +70,6 @@ shader_param/strength = 0.2
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource( 5 )
 boss_background = ExtResource( 14 )
-legacy_version = true
 
 [node name="DialogLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -178,7 +176,7 @@ dog = ExtResource( 31 )
 time_until_event_start = 3.0
 
 [node name="Level1_EventBoss" parent="LevelEventsManager" instance=ExtResource( 34 )]
-level1_event1_dialog = ExtResource( 41 )
+level1_event1_dialog = ExtResource( 45 )
 
 [node name="Level1_EventEnd" parent="LevelEventsManager" instance=ExtResource( 43 )]
 
@@ -191,9 +189,5 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="LevelStartAnimation" type="CanvasLayer" parent="."]
-
-[node name="ComputerBootLogo" parent="LevelStartAnimation" instance=ExtResource( 47 )]
-position = Vector2( 850, 536 )
-
-[connection signal="timeout" from="StartLevelTimer" to="." method="_on_StartLevelTimer_timeout"]
+[node name="LevelStartDisplay" parent="." instance=ExtResource( 41 )]
+unique_name_in_owner = true
