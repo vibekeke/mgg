@@ -34,7 +34,6 @@ func _on_BackButton_pressed():
 
 
 func _on_TitleButton_pressed():
-	#TODO: it dont work, and I don't know why :T
 	Events.emit_signal("transition_to_scene", "TitleScreen")
 
 
