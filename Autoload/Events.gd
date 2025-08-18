@@ -25,6 +25,7 @@ signal collected_dog(dog_type)
 # level related
 signal enemy_taken_damage(enemy, health_value)
 signal regular_enemy_death
+signal enemy_despawned
 signal level_spawn_points(spawn_points)
 signal boss_spawned
 signal level_event_lock(level_event_name, event_number)

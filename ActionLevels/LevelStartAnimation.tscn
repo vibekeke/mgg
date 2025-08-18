@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/Bubbles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelStartAnimation.gd" type="Script" id=3]
 [ext_resource path="res://Menus/LevelName3DText.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ActionLevels/LevelCreator/ScalingBarsGroup.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -178,12 +177,6 @@ stretch_mode = 1
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="ScalingBarsGroup" parent="." instance=ExtResource( 6 )]
-visible = false
-position = Vector2( 36, 1120 )
-rotation = 0.785398
-scale = Vector2( -2, -2 )
 
 [node name="Bubbles" parent="." instance=ExtResource( 1 )]
 modulate = Color( 1, 1, 1, 0 )

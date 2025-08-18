@@ -20,10 +20,18 @@ onready var platform_spawn_timer : Timer = Timer.new()
 onready var enemies_spawned : int = 0
 onready var platforms_spawned : int = 0
 onready var current_difficulty_tier : int = 1
+onready var cached_tier_1_enemies : Array = []
+onready var cached_tier_2_enemies : Array = []
+onready var cached_tier_3_enemies : Array = []
+onready var cached_arrays_built : bool = false
 onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 onready var spawn_paths = get_node("%SpawnPaths")
 onready var level_background = get_node_or_null("%LevelBackground")
 onready var level_events_manager = get_node("%LevelEventsManager")
+onready var cached_parent_node = null
+onready var cached_high_med_points : Array = []
+onready var cached_med_low_points : Array = []
+onready var cached_high_low_points : Array = []
 
 var enemy_to_spawn = null
 var unique_enemy_to_spawn = null
@@ -32,7 +40,10 @@ var spawn_points = {}
 
 func _ready():
 	rng.randomize()
+	build_cached_arrays()
+	cached_parent_node = self.get_parent()
 	Events.connect("regular_enemy_death", self, "_on_regular_enemy_death")
+	Events.connect("enemy_despawned", self, "_on_regular_enemy_death")
 	if spawn_paths != null:
 		_on_level_spawn_points(spawn_paths.get_spawn_points())
 	spawn_timer.set_name("spawn_timer")
@@ -53,13 +64,20 @@ func _ready():
 	self.add_child(spawn_unique_while_alive_timer)
 	spawn_unique_while_alive_timer.start()
 
+func build_cached_arrays():
+	if !cached_arrays_built:
+		cached_tier_1_enemies = first_tier_enemy_list
+		cached_tier_2_enemies = first_tier_enemy_list + second_tier_enemy_list
+		cached_tier_3_enemies = first_tier_enemy_list + second_tier_enemy_list + third_tier_enemy_list
+		cached_arrays_built = true
+
 func get_enemy_from_difficulty_tier():
 	if current_difficulty_tier <= 1:
-		current_enemy_list = first_tier_enemy_list
+		current_enemy_list = cached_tier_1_enemies
 	elif current_difficulty_tier <= 2:
-		current_enemy_list = first_tier_enemy_list + second_tier_enemy_list
+		current_enemy_list = cached_tier_2_enemies
 	elif current_difficulty_tier >= 3:
-		current_enemy_list = first_tier_enemy_list + second_tier_enemy_list + third_tier_enemy_list
+		current_enemy_list = cached_tier_3_enemies
 
 func enemy_spawner_is_running() -> bool:
 	return !(platform_spawn_timer.is_stopped() && spawn_timer.is_stopped() && spawn_unique_while_alive_timer.is_stopped())
@@ -95,6 +113,9 @@ func stop_unique_enemy_spawner():
 
 func _on_level_spawn_points(_spawn_points):
 	spawn_points = _spawn_points
+	cached_high_med_points = [spawn_points.get(DataClasses.SpawnHeight.HIGH_ONLY), spawn_points.get(DataClasses.SpawnHeight.MED_ONLY)]
+	cached_med_low_points = [spawn_points.get(DataClasses.SpawnHeight.MED_ONLY), spawn_points.get(DataClasses.SpawnHeight.LOW_ONLY)]
+	cached_high_low_points = [spawn_points.get(DataClasses.SpawnHeight.HIGH_ONLY), spawn_points.get(DataClasses.SpawnHeight.LOW_ONLY)]
 
 func _on_regular_enemy_death():
 	enemies_spawned -= 1
@@ -112,18 +133,17 @@ func _spawn_platform():
 
 func _spawn_unique_while_alive_enemy():
 	if current_difficulty_tier > 1 && unique_enemy_list.size() > 0 && check_for_unique_enemies() <= 0:
-		var parent_node = self.get_parent()
-		if parent_node != null:
+		if cached_parent_node != null:
 			unique_enemy_to_spawn = unique_enemy_list[rng.randi() % unique_enemy_list.size()]
 			var _unique_enemy_to_spawn = unique_enemy_to_spawn.instance()
-			if !_unique_enemy_to_spawn.is_in_group("non_boss_enemy"):
-				_unique_enemy_to_spawn.add_to_group("non_boss_enemy")
+			_unique_enemy_to_spawn.add_to_group("non_boss_enemy")
+			_unique_enemy_to_spawn.add_to_group("unique_while_alive")
 			if _unique_enemy_to_spawn.initial_scroll_speed == 0:
 				_unique_enemy_to_spawn.initial_scroll_speed = default_scroll_speed
 			if spawn_points.size() > 0:
 				var spawn_place = spawn_at_valid_height(_unique_enemy_to_spawn)
 				_unique_enemy_to_spawn.position = spawn_place
-				parent_node.add_child(_unique_enemy_to_spawn)
+				cached_parent_node.add_child(_unique_enemy_to_spawn)
 
 func platform_to_spawn_next():
 	if platform_list.size() == 0:
@@ -152,14 +172,11 @@ func spawn_at_valid_height(_enemy_to_spawn) -> Vector2:
 		DataClasses.SpawnHeight.LOW_ONLY:
 			return spawn_points[DataClasses.SpawnHeight.LOW_ONLY]
 		DataClasses.SpawnHeight.HIGH_MED:
-			var valid_points = [spawn_points.get(DataClasses.SpawnHeight.HIGH_ONLY), spawn_points.get(DataClasses.SpawnHeight.MED_ONLY)]
-			return valid_points[rng.randi_range(0, valid_points.size() - 1)]
+			return cached_high_med_points[rng.randi_range(0, cached_high_med_points.size() - 1)]
 		DataClasses.SpawnHeight.MED_LOW:
-			var valid_points = [spawn_points.get(DataClasses.SpawnHeight.MED_ONLY), spawn_points.get(DataClasses.SpawnHeight.LOW_ONLY)]
-			return valid_points[rng.randi_range(0, valid_points.size() - 1)]
+			return cached_med_low_points[rng.randi_range(0, cached_med_low_points.size() - 1)]
 		DataClasses.SpawnHeight.HIGH_LOW:
-			var valid_points = [spawn_points.get(DataClasses.SpawnHeight.HIGH_ONLY), spawn_points.get(DataClasses.SpawnHeight.LOW_ONLY)]
-			return valid_points[rng.randi_range(0, valid_points.size() - 1)]
+			return cached_high_low_points[rng.randi_range(0, cached_high_low_points.size() - 1)]
 		DataClasses.SpawnHeight.GROUND_ONLY:		
 			if _enemy_to_spawn.custom_grounded_spawn_point != null:
 				return _enemy_to_spawn.custom_grounded_spawn_point
@@ -171,44 +188,38 @@ func spawn_at_valid_height(_enemy_to_spawn) -> Vector2:
 			return all_points[rng.randi_range(0, all_points.size() - 1)]
 
 func spawn_enemy_to_scene():
-	var parent_node = self.get_parent()
-	if parent_node != null:
+	if cached_parent_node != null:
 		var _enemy_to_spawn = enemy_to_spawn.instance()
-		if !_enemy_to_spawn.is_in_group("non_boss_enemy"):
-			_enemy_to_spawn.add_to_group("non_boss_enemy")
+		_enemy_to_spawn.add_to_group("non_boss_enemy")
 		if _enemy_to_spawn.initial_scroll_speed == 0:
 			_enemy_to_spawn.initial_scroll_speed = default_scroll_speed
 		if spawn_points.size() > 0:
 			var spawn_place = spawn_at_valid_height(_enemy_to_spawn)
 			_enemy_to_spawn.position = spawn_place
-			parent_node.add_child(_enemy_to_spawn)
+			cached_parent_node.add_child(_enemy_to_spawn)
 		else:
 			print("No spawn points found!")
 
 func spawn_platform_to_scene():
-	var parent_node = self.get_parent()
-	if parent_node != null && platform_to_spawn != null:
+	if cached_parent_node != null && platform_to_spawn != null:
 		var _platform_to_spawn = platform_to_spawn.instance()
-		if !_platform_to_spawn.is_in_group("spawned_platform"):
-			_platform_to_spawn.add_to_group("spawned_platform")
+		_platform_to_spawn.add_to_group("spawned_platform")
 		if _platform_to_spawn.scroll_speed == 0:
 			_platform_to_spawn.scroll_speed = default_scroll_speed
 		_platform_to_spawn.position = default_platform_spawn_position
-		parent_node.add_child(_platform_to_spawn)
+		cached_parent_node.add_child(_platform_to_spawn)
 
 
 func _direct_spawn_obstacle_at_position(obstacle: PackedScene, position: Vector2, scroll_speed):
-	var parent_node = self.get_parent()
 	var _obstacle_to_spawn = obstacle.instance()
 	if scroll_speed != null:
-		_obstacle_to_spawn.scroll_speed = default_scroll_speed
-	else:
 		_obstacle_to_spawn.scroll_speed = scroll_speed
+	else:
+		_obstacle_to_spawn.scroll_speed = default_scroll_speed
 	_obstacle_to_spawn.position = position
-	parent_node.add_child(_obstacle_to_spawn)
+	cached_parent_node.add_child(_obstacle_to_spawn)
 
 func _direct_spawn_dog(dog: PackedScene, dogType: String, position: Vector2, speed, disabled_float):
-	var parent_node = self.get_parent()
 	var _dog = dog.instance()
 	if speed != null:
 		_dog.scroll_speed = speed
@@ -217,8 +228,7 @@ func _direct_spawn_dog(dog: PackedScene, dogType: String, position: Vector2, spe
 	_dog.set_dogu(dogType)
 	_dog.disable_float(disabled_float)
 	_dog.position = position
-	#parent_node.add_child(_dog)
-	parent_node.call_deferred("add_child", _dog)
+	cached_parent_node.call_deferred("add_child", _dog)
 
 func spawn_instanced_background_element(element,  background_element_name: String, position: Vector2, scroll_speed):
 	var parent_node = self.get_parent()
@@ -287,6 +297,7 @@ func add_enemy_to_spawn_list(enemy_to_add : PackedScene, tier : int):
 		second_tier_enemy_list.append(enemy_to_add)
 	elif tier >= 3:
 		third_tier_enemy_list.append(enemy_to_add)
+	cached_arrays_built = false
 
 func check_for_unique_enemies():
 	var unique_while_alive_enemy = get_tree().get_nodes_in_group("unique_while_alive")
