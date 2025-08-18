@@ -10,6 +10,5 @@ func _ready():
 
 
 func animation_looped_first():
-	if !looped_once:
-		text_appear_animation_player.play("text_appear")
-		looped_once = true
+	text_appear_animation_player.play("text_appear")
+	looped_once = true

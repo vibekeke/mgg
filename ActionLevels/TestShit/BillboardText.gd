@@ -13,7 +13,6 @@ func start_spin_animation():
 
 func set_text(text_string: String):
 	title_text.mesh.text = text_string
-	
 
 func _on_SpinnyText_animation_finished(anim_name):
 	if anim_name == "spin":

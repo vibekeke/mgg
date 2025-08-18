@@ -1,0 +1,306 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://HUD/ControlsPanelContainer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://test_fonts/vibekefonts/Jura-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://HUD/readable_panels.tres" type="StyleBox" id=3]
+[ext_resource path="res://HUD/LevelStartDisplay.gd" type="Script" id=4]
+[ext_resource path="res://ActionLevels/backgrounds/Bubbles.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Controls:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2021.69, 294.963 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Controls:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "display_controls"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Controls:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2021.69, 294.963 ), Vector2( 1389.69, 294.963 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Controls:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 31
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "confirmation_text_flash"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 814, 718 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "confirmation_animation"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 814, 718 ), Vector2( 814, 470 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/Speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader_param/Direction")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "bubbles_animation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/Speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader_param/Direction")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 0 ) ]
+}
+
+[node name="LevelStartDisplay" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="Controls" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 2021.69
+margin_top = 294.963
+margin_right = 2442.69
+margin_bottom = 793.964
+custom_styles/panel = ExtResource( 3 )
+
+[node name="ControlsAnimationPlayer" type="AnimationPlayer" parent="Controls"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+anims/RESET = SubResource( 1 )
+anims/display_controls = SubResource( 2 )
+
+[node name="TutorialConfirmation" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 814.0
+margin_top = 718.0
+margin_right = 1214.0
+margin_bottom = 816.0
+custom_styles/panel = ExtResource( 3 )
+
+[node name="CenterContainer" type="CenterContainer" parent="TutorialConfirmation"]
+margin_right = 400.0
+margin_bottom = 97.9996
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TutorialConfirmation/CenterContainer"]
+margin_top = 28.0
+margin_right = 400.0
+margin_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 400, 40 )
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]Press Enter to start![/center]"
+meta_underlined = false
+text = "Press Enter to start!"
+scroll_active = false
+
+[node name="TextAnimationPlayer" type="AnimationPlayer" parent="TutorialConfirmation/CenterContainer/RichTextLabel"]
+unique_name_in_owner = true
+anims/RESET = SubResource( 4 )
+anims/confirmation_text_flash = SubResource( 5 )
+
+[node name="ConfirmationAnimationPlayer" type="AnimationPlayer" parent="TutorialConfirmation"]
+unique_name_in_owner = true
+anims/RESET = SubResource( 6 )
+anims/confirmation_animation = SubResource( 7 )
+
+[node name="ReadyToStartLevelTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 1.5
+one_shot = true
+
+[node name="Bubbles" parent="." instance=ExtResource( 5 )]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -1.80005, 432 )
+
+[node name="BubblesAnimation" type="AnimationPlayer" parent="Bubbles"]
+autoplay = "bubbles_animation"
+anims/RESET = SubResource( 10 )
+anims/bubbles_animation = SubResource( 11 )
+
+[connection signal="animation_finished" from="Controls/ControlsAnimationPlayer" to="." method="_on_ControlsAnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="TutorialConfirmation/ConfirmationAnimationPlayer" to="." method="_on_ConfirmationAnimationPlayer_animation_finished"]
+[connection signal="timeout" from="ReadyToStartLevelTimer" to="." method="_on_ReadyToStartLevelTimer_timeout"]
