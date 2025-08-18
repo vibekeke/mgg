@@ -33,6 +33,7 @@ var spawn_points = {}
 func _ready():
 	rng.randomize()
 	Events.connect("regular_enemy_death", self, "_on_regular_enemy_death")
+	Events.connect("enemy_despawned", self, "_on_regular_enemy_death")
 	if spawn_paths != null:
 		_on_level_spawn_points(spawn_paths.get_spawn_points())
 	spawn_timer.set_name("spawn_timer")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://HUD/Health.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HUD/DogCollection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://HUD/ChargeCrystal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/FullHUD.gd" type="Script" id=4]
+[ext_resource path="res://HUD/ScoreTracker.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -43,6 +44,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 392, -203 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("ScoreTracker:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 782, -115 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "fall_down"
@@ -81,6 +94,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 392, -203 ), Vector2( 392, 3 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ScoreTracker:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 782, -115 ), Vector2( 782, 29 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -124,3 +149,9 @@ playback_speed = 2.0
 anims/RESET = SubResource( 3 )
 anims/fall_down = SubResource( 1 )
 anims/go_up = SubResource( 2 )
+
+[node name="ScoreTracker" parent="." instance=ExtResource( 5 )]
+margin_left = 782.0
+margin_top = -115.0
+margin_right = 1271.0
+margin_bottom = -3.0

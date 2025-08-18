@@ -163,7 +163,7 @@ func off_screen_call():
 	if can_wrap_around:
 		self.global_position = initial_position
 	else:
-		Events.emit_signal("regular_enemy_death")
+		Events.emit_signal("enemy_despawned")
 		queue_free()
 
 func _on_screen_exited():
