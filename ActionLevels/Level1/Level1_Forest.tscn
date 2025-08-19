@@ -137,7 +137,7 @@ stream = ExtResource( 24 )
 volume_db = -30.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 247, 841 )
+position = Vector2( 247, 855 )
 gunshot = ExtResource( 20 )
 charge_shot = ExtResource( 21 )
 
