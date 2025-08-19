@@ -52,7 +52,7 @@ func _on_QuitButton_pressed():
 	get_tree().quit()
 
 func send_to_level(level_name: String):
-	Events.emit_signal("transition_to_scene", level_name)
+	Events.emit_signal("transition_to_scene", level_name, false)
 
 func _on_StartButton_focus_entered():
 	star_select_start.visible = true

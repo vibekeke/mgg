@@ -86,20 +86,20 @@ func _on_Level1_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.get_button_index() == BUTTON_LEFT and event.pressed:
 			print("transition to level 1")
-			Events.emit_signal("transition_to_scene", "Level1")
+			Events.emit_signal("transition_to_scene", "Level1", false)
 
 
 
 func _on_Level2_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.get_button_index() == BUTTON_LEFT and event.pressed:
-			Events.emit_signal("transition_to_scene", "Level2")
+			Events.emit_signal("transition_to_scene", "Level2", false)
 
 
 func _on_Level3_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.get_button_index() == BUTTON_LEFT and event.pressed:
-			Events.emit_signal("transition_to_scene", "Level3")
+			Events.emit_signal("transition_to_scene", "Level3", false)
 
 
 
