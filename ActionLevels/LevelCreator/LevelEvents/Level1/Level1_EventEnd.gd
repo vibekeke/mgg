@@ -43,7 +43,7 @@ func event_start() -> void:
 	print("Starting final event.")
 	var saved_dogs_for_level = {1 : collected_dogs}
 	Events.save_game(1, saved_dogs_for_level)
-	Events.emit_signal("transition_to_scene", "DemoEndCredits")
+	Events.emit_signal("transition_to_scene", "DemoEndCredits", false)
 	
 func end_event() -> void:
 	Events.emit_signal("level_event_complete", event_name, event_number)
