@@ -11,6 +11,7 @@ onready var await_cursor = get_node("%AwaitCursor")
 onready var dialogue_audio = get_node("%DialogueAudio")
 onready var star_flicker_animation_player = get_node("%StarFlickerAnimationPlayer")
 onready var margin_container = get_node("%MarginContainer")
+onready var dialogue_container_animation_player = get_node("%DialogueContainerAnimationPlayer")
 
 var placement_dictionary = {
 	DataClasses.Placement.LOWER: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(1396.0, 981.0)}},
@@ -115,6 +116,7 @@ func _ready() -> void:
 	container_placement()
 	dialogue_label.connect("arriving_characer", self, "_on_arriving_character")
 	add_dialogue()
+	dialogue_container_animation_player.play("fade_in")
 
 func _on_arriving_character(character: String):
 	if character != "":

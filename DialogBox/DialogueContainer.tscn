@@ -121,11 +121,11 @@ script = ExtResource( 5 )
 
 [node name="DialogueContainer" type="Control" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
 margin_top = 40.0
 margin_right = 1920.0
 margin_bottom = 1120.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -136,9 +136,6 @@ anchor_left = 0.25
 anchor_top = 0.7
 anchor_right = 0.75
 anchor_bottom = 0.95
-margin_top = 25.333
-margin_right = 0.000610352
-margin_bottom = -10.6673
 custom_styles/panel = SubResource( 10 )
 __meta__ = {
 "_edit_group_": true
@@ -148,8 +145,8 @@ __meta__ = {
 unique_name_in_owner = true
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 956.001
-margin_bottom = 228.0
+margin_right = 956.0
+margin_bottom = 264.0
 custom_constants/margin_right = 30
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -160,7 +157,7 @@ unique_name_in_owner = true
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 922.0
-margin_bottom = 203.0
+margin_bottom = 240.0
 
 [node name="CharacterTitle" type="RichTextLabel" parent="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer"]
 unique_name_in_owner = true
@@ -177,7 +174,7 @@ text = "Character"
 unique_name_in_owner = true
 margin_top = 54.0
 margin_right = 902.0
-margin_bottom = 183.0
+margin_bottom = 220.0
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 11 )
 bbcode_text = "Some dialogue"
@@ -210,6 +207,7 @@ volume_db = -10.0
 pitch_scale = 0.7
 
 [node name="DialogueContainerAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 root_node = NodePath("../StarFlickerAnimationPlayer")
 anims/RESET = SubResource( 15 )
 anims/fade_in = SubResource( 16 )
