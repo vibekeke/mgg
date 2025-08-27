@@ -54,6 +54,7 @@ signal kill_spawned_enemies
 signal platform_spawner_enabled(enabled)
 signal platform_spawn_number(number_of_platforms)
 signal kill_spawned_platforms
+signal platform_despawned
 
 #level background
 signal background_moving_enabled(enabled)

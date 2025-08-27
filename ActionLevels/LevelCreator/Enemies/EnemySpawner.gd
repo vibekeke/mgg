@@ -1,24 +1,18 @@
 extends Node2D
 
 export (int) var max_enemies_on_screen = 5
-export (int) var max_platforms_on_screen = 3
 export (float) var seconds_enemy_spawn_frequency = 1.0
-export (float) var seconds_platform_spawn_frequency = 2.0
 export (float) var seconds_spawn_unique_while_alive_frequency = 2.0
-export (Vector2) var default_platform_spawn_position = Vector2(2000, 410)
 onready var current_enemy_list : Array = []
 export (Array, PackedScene) var first_tier_enemy_list
 export (Array, PackedScene) var second_tier_enemy_list
 export (Array, PackedScene) var third_tier_enemy_list
 export (Array, PackedScene) var unique_enemy_list
-export (Array, PackedScene) var platform_list
 export (int) var default_scroll_speed = 500
 
 onready var spawn_timer : Timer = Timer.new()
 onready var spawn_unique_while_alive_timer : Timer = Timer.new()
-onready var platform_spawn_timer : Timer = Timer.new()
 onready var enemies_spawned : int = 0
-onready var platforms_spawned : int = 0
 onready var current_difficulty_tier : int = 1
 onready var cached_tier_1_enemies : Array = []
 onready var cached_tier_2_enemies : Array = []
@@ -35,7 +29,6 @@ onready var cached_high_low_points : Array = []
 
 var enemy_to_spawn = null
 var unique_enemy_to_spawn = null
-var platform_to_spawn = null
 var spawn_points = {}
 
 func _ready():
@@ -52,11 +45,6 @@ func _ready():
 	self.add_child(spawn_timer)
 	spawn_timer.start()
 
-	platform_spawn_timer.set_name("platform_spawn_timer")
-	platform_spawn_timer.connect("timeout", self, "_spawn_platform")
-	platform_spawn_timer.set_wait_time(seconds_platform_spawn_frequency + rng.randf_range(0.1, 1.0))
-	self.add_child(platform_spawn_timer)
-	platform_spawn_timer.start()
 	
 	spawn_unique_while_alive_timer.set_name("spawn_unique_while_alive_timer")
 	spawn_unique_while_alive_timer.connect("timeout", self, "_spawn_unique_while_alive_enemy")
@@ -80,23 +68,16 @@ func get_enemy_from_difficulty_tier():
 		current_enemy_list = cached_tier_3_enemies
 
 func enemy_spawner_is_running() -> bool:
-	return !(platform_spawn_timer.is_stopped() && spawn_timer.is_stopped() && spawn_unique_while_alive_timer.is_stopped())
+	return !(spawn_timer.is_stopped() && spawn_unique_while_alive_timer.is_stopped())
 
 func stop_enemy_spawner():
-	platform_spawn_timer.stop()
 	spawn_timer.stop()
 	spawn_unique_while_alive_timer.stop()
 	
 func start_enemy_spawner():
-	platform_spawn_timer.start()
 	spawn_timer.start()
 	spawn_unique_while_alive_timer.start()
 	
-func stop_platform_spawner():
-	platform_spawn_timer.stop()
-
-func start_platform_spawner():
-	platform_spawn_timer.start()
 
 func stop_spawning_enemies():
 	spawn_timer.stop()
@@ -127,9 +108,6 @@ func _spawn_enemy():
 		enemies_spawned += 1
 	spawn_timer.set_wait_time(seconds_enemy_spawn_frequency + rng.randf_range(0.1, 0.6))
 
-func _spawn_platform():
-	platform_to_spawn_next()
-	platform_spawn_timer.set_wait_time(seconds_platform_spawn_frequency + rng.randf_range(0.1, 1.0))
 
 func _spawn_unique_while_alive_enemy():
 	if current_difficulty_tier > 1 && unique_enemy_list.size() > 0 && check_for_unique_enemies() <= 0:
@@ -145,12 +123,6 @@ func _spawn_unique_while_alive_enemy():
 				_unique_enemy_to_spawn.position = spawn_place
 				cached_parent_node.add_child(_unique_enemy_to_spawn)
 
-func platform_to_spawn_next():
-	if platform_list.size() == 0:
-		print("no platforms found!")
-	else:
-		platform_to_spawn = platform_list[rng.randi() % platform_list.size()]
-		spawn_platform_to_scene()
 
 func enemy_to_spawn_next():
 	if current_enemy_list.size() == 0:
@@ -177,7 +149,7 @@ func spawn_at_valid_height(_enemy_to_spawn) -> Vector2:
 			return cached_med_low_points[rng.randi_range(0, cached_med_low_points.size() - 1)]
 		DataClasses.SpawnHeight.HIGH_LOW:
 			return cached_high_low_points[rng.randi_range(0, cached_high_low_points.size() - 1)]
-		DataClasses.SpawnHeight.GROUND_ONLY:		
+		DataClasses.SpawnHeight.GROUND_ONLY:
 			if _enemy_to_spawn.custom_grounded_spawn_point != null:
 				return _enemy_to_spawn.custom_grounded_spawn_point
 			else:
@@ -200,14 +172,6 @@ func spawn_enemy_to_scene():
 		else:
 			print("No spawn points found!")
 
-func spawn_platform_to_scene():
-	if cached_parent_node != null && platform_to_spawn != null:
-		var _platform_to_spawn = platform_to_spawn.instance()
-		_platform_to_spawn.add_to_group("spawned_platform")
-		if _platform_to_spawn.scroll_speed == 0:
-			_platform_to_spawn.scroll_speed = default_scroll_speed
-		_platform_to_spawn.position = default_platform_spawn_position
-		cached_parent_node.add_child(_platform_to_spawn)
 
 
 func _direct_spawn_obstacle_at_position(obstacle: PackedScene, position: Vector2, scroll_speed):
