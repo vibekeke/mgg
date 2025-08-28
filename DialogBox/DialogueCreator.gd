@@ -11,6 +11,8 @@ export var placement: int = DataClasses.Placement.LOWER
 export(DataClasses.CharacterPortrait) var character_portrait := DataClasses.CharacterPortrait.None
 export var dialogue_box_colour := Color(0.12549, 0.619608, 1, 1)
 export var dialogue_border_colour := Color(0.0, 0.0, 0.0, 1.0)
+var is_advancable := false
+var auto_advance_time := 1.5
 
 onready var timer = get_node("%Timer")
 
@@ -30,6 +32,8 @@ func show_dialogue(key: String) -> void:
 		new_dialogue_bubble.placement = placement
 		new_dialogue_bubble.character_portrait = character_portrait
 		new_dialogue_bubble.dialogue_box_colour = dialogue_box_colour
+		new_dialogue_bubble.is_advancable = is_advancable
+		new_dialogue_bubble.auto_advance_time = auto_advance_time
 		new_dialogue_bubble.set_dialogue(dialogue)
 		self.add_child(new_dialogue_bubble)
 	show_dialogue(yield(self.get_child(1), "actioned"))

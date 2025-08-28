@@ -13,7 +13,9 @@ func create_dialogue_balloon(
 	placement: int = DataClasses.Placement.LOWER,
 	initial_character_portrait := DataClasses.CharacterPortrait.None,
 	dialogue_box_colour := Color(0.12549, 0.619608, 1, 1),
-	dialogue_border_colour := Color(0.0, 0.0, 0.0, 1.0)
+	dialogue_border_colour := Color(0.0, 0.0, 0.0, 1.0),
+	is_advancable := false,
+	auto_advance_time := 1.5
 	):
 	var dialogue_creator = load("res://DialogBox/DialogueCreator.tscn").instance()
 	dialogue_creator.title = title
@@ -22,6 +24,8 @@ func create_dialogue_balloon(
 	dialogue_creator.character_portrait = initial_character_portrait
 	dialogue_creator.dialogue_box_colour = dialogue_box_colour
 	dialogue_creator.dialogue_border_colour = dialogue_border_colour
+	dialogue_creator.is_advancable = is_advancable
+	dialogue_creator.auto_advance_time = auto_advance_time
 	dialogue_creator.connect("dialogue_box_finished", self, "_on_dialogue_box_finished")
 	node_id_in_use = node_id
 	#get_tree().current_scene.add_child(dialogue_creator)

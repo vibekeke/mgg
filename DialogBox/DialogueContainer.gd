@@ -11,6 +11,7 @@ onready var await_cursor = get_node("%AwaitCursor")
 onready var dialogue_audio = get_node("%DialogueAudio")
 onready var star_flicker_animation_player = get_node("%StarFlickerAnimationPlayer")
 onready var margin_container = get_node("%MarginContainer")
+onready var auto_advance_timer = get_node("%AutoAdvanceTimer")
 
 var placement_dictionary = {
 	DataClasses.Placement.LOWER: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(1396.0, 981.0)}},
@@ -28,6 +29,8 @@ var is_waiting_for_input: bool = false
 var is_processing_response: bool = false
 var inputs_are_disabled: bool = false
 
+var is_advancable : bool = false
+var auto_advance_time : float = 1.5
 
 func set_dialogue(dialogue):
 	self.dialogue = dialogue
@@ -62,8 +65,12 @@ func add_dialogue():
 
 	dialogue_label.type_out()
 	yield(dialogue_label, "finished")
-	await_cursor.visible = true
-	star_flicker_animation_player.play("flicker")
+	if is_advancable:
+		auto_advance_timer.start()
+		await_cursor.visible = false
+	else:
+		await_cursor.visible = true
+		star_flicker_animation_player.play("flicker")
 	if dialogue.responses.size() > 0:
 		# show responses if they exist
 		is_processing_response = true
@@ -115,6 +122,8 @@ func _ready() -> void:
 	container_placement()
 	dialogue_label.connect("arriving_characer", self, "_on_arriving_character")
 	add_dialogue()
+	auto_advance_timer.wait_time = auto_advance_time
+	auto_advance_timer.connect("timeout", self, "_on_auto_advance_timer")
 
 func _on_arriving_character(character: String):
 	if character != "":
@@ -172,5 +181,9 @@ func _on_response_gui_input(event, item):
 
 func _on_DialogueContainer_gui_input(event):
 	if event.is_pressed() and not event.is_echo() and dialogue_container.get_focus_owner() == dialogue_container:
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") and not is_advancable:
 			next(dialogue.next_id)
+			
+func _on_auto_advance_timer():
+	if is_advancable:
+		next(dialogue.next_id)

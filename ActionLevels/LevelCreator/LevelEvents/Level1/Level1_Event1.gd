@@ -64,7 +64,9 @@ func display_dialogue():
 		DataClasses.Placement.LOWER, 
 		DataClasses.CharacterPortrait.AngelIntense,
 		Color(0.12549, 0.619608, 1, 0.25),
-		Color(0.0, 0.0, 0.0, 0.25)
+		Color(0.0, 0.0, 0.0, 0.25),
+		true,
+		1.5
 		)
 
 func _on_dialogue_box_finished(node_id):
