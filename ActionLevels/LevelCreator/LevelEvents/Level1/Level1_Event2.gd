@@ -24,7 +24,6 @@ export var enemy_to_spawn : PackedScene
 export var background_element_to_spawn : PackedScene
 export var platform_to_spawn : PackedScene
 
-# Preloaded object pools
 var preloaded_platforms = []
 var preloaded_background_enemies = []
 var preloaded_enemies = []
@@ -34,13 +33,11 @@ func _ready():
 	event_number = 2
 	event_name = "Level1_Event2"
 	
-	# Preload all objects this event will need
 	_preload_all_objects()
 
 func _preload_all_objects():
 	print("Level1_Event2: Preloading objects...")
 	
-	# Preload 3 platforms
 	for i in range(3):
 		var platform = platform_to_spawn.instance()
 		platform.scroll_speed = platform_scroll_speed
@@ -48,7 +45,6 @@ func _preload_all_objects():
 		platform.set_process(false)
 		preloaded_platforms.append(platform)
 	
-	# Preload 20 background enemies
 	for i in range(20):
 		var bg_enemy = background_element_to_spawn.instance()
 		bg_enemy.scroll_speed = enemy_speed
@@ -56,7 +52,6 @@ func _preload_all_objects():
 		bg_enemy.set_process(false)
 		preloaded_background_enemies.append(bg_enemy)
 	
-	# Preload 20 regular enemies
 	for i in range(20):
 		var enemy = enemy_to_spawn.instance()
 		enemy.initial_scroll_speed = enemy_speed
