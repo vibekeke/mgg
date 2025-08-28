@@ -23,7 +23,7 @@ func _ready():
 	sad_sprite.modulate = Color(1, 1, 1, 0)
 	
 	player_final_score = Events.get_score()
-	score_display.bbcode_text = "Score: " + str(player_final_score)
+	score_display.bbcode_text = score_display.bbcode_text + " " + str(player_final_score)
 	animation_player.play("fade_in")
 
 func _on_RetryButton_pressed():
