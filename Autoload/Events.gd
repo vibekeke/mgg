@@ -54,6 +54,8 @@ signal kill_spawned_enemies
 signal platform_spawner_enabled(enabled)
 signal platform_spawn_number(number_of_platforms)
 signal kill_spawned_platforms
+signal platform_despawned
+signal platform_return_to_pool(platform)
 
 #level background
 signal background_moving_enabled(enabled)
@@ -85,7 +87,7 @@ func transition_to_new_scene(next_scene):
 	
 func go_to_game_over():
 	print("transition to game over screen")
-	self.emit_signal("transition_to_scene", "GameOver")
+	self.emit_signal("transition_to_scene", "GameOver", true)
 
 
 onready var enemyPaths = {

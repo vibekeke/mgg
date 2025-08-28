@@ -1,6 +1,7 @@
 extends LevelEvent
 
 onready var enemy_spawner = get_node("%EnemySpawner")
+onready var platform_spawner = get_node("%PlatformSpawner")
 onready var dialog_layer = get_node("%DialogLayer")
 export var main_level_scene_path : NodePath
 onready var main_level = get_node_or_null(main_level_scene_path)
@@ -38,9 +39,12 @@ func _on_wait_after_stopping_spawner_timer():
 
 func trigger() -> void:
 	Events.emit_signal("level_event_lock", event_name, event_number)
-	if enemy_spawner != null:
+	if enemy_spawner != null and platform_spawner != null:
 		enemy_spawner.stop_enemy_spawner()
+		platform_spawner.stop_platform_spawner()
 		wait_after_stopping_spawner_timer.start()
+	else:
+		printerr("One of the spawners was not detected. Something has gone wrong here")
 
 func event_start() -> void:
 	if enemy_spawner != null:
@@ -74,6 +78,7 @@ func _on_dialogue_box_finished(node_id):
 func end_event() -> void:
 	start_event_timer.stop()
 	enemy_spawner.start_enemy_spawner()
+	platform_spawner.start_platform_spawner()
 	Events.emit_signal("level_event_complete", event_name, event_number)
 	Events.emit_signal("level_event_lock", "", -1)
 	self.queue_free()

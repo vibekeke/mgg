@@ -3,6 +3,7 @@ extends LevelEvent
 export var debug_mode : bool = false
 
 onready var enemy_spawner = get_node("%EnemySpawner")
+onready var platform_spawner = get_node("%PlatformSpawner")
 
 # Enemies
 export var background_brobun : PackedScene
@@ -46,6 +47,7 @@ func _on_background_element_offscreen(element_name):
 		num_background_elements_offscreen += 1
 		if num_background_elements_offscreen >= 2:
 			enemy_spawner.stop_enemy_spawner()
+			platform_spawner.stop_platform_spawner()
 			spawn_space_animals()
 
 func spawn_space_animals():
@@ -85,4 +87,5 @@ func end_event() -> void:
 	enemy_spawner.add_enemy_to_spawn_list(bear, 1)
 	enemy_spawner.add_enemy_to_spawn_list(bun, 1)
 	enemy_spawner.start_enemy_spawner()
+	platform_spawner.start_platform_spawner()
 	self.queue_free()

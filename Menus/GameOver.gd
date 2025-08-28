@@ -21,11 +21,11 @@ func _on_RetryButton_pressed():
 		determined_sprite.show()
 		yield(get_tree().create_timer(0.5), "timeout")
 		
-		Events.emit_signal("transition_to_scene", "Level1")
+		Events.emit_signal("transition_to_scene", "Level1", false)
 
 func _on_QuitButton_pressed():
 	if faded_in:
-		Events.emit_signal("transition_to_scene", "TitleScreen")
+		Events.emit_signal("transition_to_scene", "TitleScreen", false)
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

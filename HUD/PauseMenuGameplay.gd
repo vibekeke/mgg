@@ -98,11 +98,11 @@ func _on_ResumeBtn_pressed():
 
 func _on_QuitBtn_pressed(): #Should return to title screen!
 	self.is_paused = false
-	Events.emit_signal("transition_to_scene", "TitleScreen")
+	Events.emit_signal("transition_to_scene", "TitleScreen", false)
 
 func _on_BackBtn_pressed():	 #Should restart scene
 	self.is_paused = false
-	Events.emit_signal("transition_to_scene", "Level1")
+	Events.emit_signal("transition_to_scene", "Level1", false)
 
 func _on_ResumeBtn_focus_entered():
 	spinny_star_resume.visible = true

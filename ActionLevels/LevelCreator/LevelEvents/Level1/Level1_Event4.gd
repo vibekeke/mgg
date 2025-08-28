@@ -3,6 +3,7 @@ extends LevelEvent
 export var debug_mode : bool = false
 
 onready var enemy_spawner = get_node("%EnemySpawner")
+onready var platform_spawner = get_node("%PlatformSpawner")
 export var time_until_event_start : float = 1.0
 export var ourguy : PackedScene
 export var ourguybackground : PackedScene
@@ -41,6 +42,7 @@ func _on_background_element_offscreen(element_name):
 		num_background_elements_offscreen += 1
 		if num_background_elements_offscreen >= 2:
 			enemy_spawner.stop_enemy_spawner()
+			platform_spawner.stop_platform_spawner()
 			spawn_our_guy()
 
 func spawn_our_guy():
@@ -81,4 +83,5 @@ func end_event() -> void:
 	Events.emit_signal("level_event_lock", "", -1)
 	enemy_spawner.add_enemy_to_spawn_list(ourguy, 1)
 	enemy_spawner.start_enemy_spawner()
+	platform_spawner.start_platform_spawner()
 	self.queue_free()
