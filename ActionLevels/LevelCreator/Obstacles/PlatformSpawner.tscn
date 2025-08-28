@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LongTallPlatform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ActionLevels/LevelCreator/Obstacles/PlatformSpawner.gd" type="Script" id=2]
+
+[node name="PlatformSpawner" type="Node"]
+script = ExtResource( 2 )
+platform_list = [ ExtResource( 1 ) ]
