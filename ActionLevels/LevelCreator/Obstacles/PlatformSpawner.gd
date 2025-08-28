@@ -80,12 +80,14 @@ func _return_to_pool(platform: Node):
 		platform.queue_free()
 
 func _on_platform_despawned():
-	platforms_spawned -= 1
+	if platforms_spawned > 0:
+		platforms_spawned -= 1
 
 func _on_platform_return_to_pool(platform: Node):
 	if platform != null and is_instance_valid(platform):
 		_return_to_pool(platform)
-		platforms_spawned -= 1
+		if platforms_spawned > 0:
+			platforms_spawned -= 1
 
 func _on_enemy_spawner_enabled(enabled: bool):
 	if enabled:
