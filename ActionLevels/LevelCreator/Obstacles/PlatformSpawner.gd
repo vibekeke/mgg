@@ -31,6 +31,7 @@ func _ready():
 	platform_spawn_timer.start()
 	
 	Events.connect("platform_despawned", self, "_on_platform_despawned")
+	Events.connect("platform_return_to_pool", self, "_on_platform_return_to_pool")
 	Events.connect("enemy_spawner_enabled", self, "_on_enemy_spawner_enabled")
 	
 	_preload_platform_pool()
@@ -68,6 +69,9 @@ func _create_new_platform() -> Node:
 
 func _return_to_pool(platform: Node):
 	if platform_pool.size() < pool_size:
+		# Remove from parent first
+		if platform.get_parent() != null:
+			platform.get_parent().remove_child(platform)
 		platform.visible = false
 		platform.set_process(false)
 		platform.position = platform_spawn_point.global_position
@@ -77,6 +81,11 @@ func _return_to_pool(platform: Node):
 
 func _on_platform_despawned():
 	platforms_spawned -= 1
+
+func _on_platform_return_to_pool(platform: Node):
+	if platform != null and is_instance_valid(platform):
+		_return_to_pool(platform)
+		platforms_spawned -= 1
 
 func _on_enemy_spawner_enabled(enabled: bool):
 	if enabled:

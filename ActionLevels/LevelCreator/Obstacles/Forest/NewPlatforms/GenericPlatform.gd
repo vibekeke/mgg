@@ -7,5 +7,4 @@ func _process(delta):
 	self.position.x -= scroll_speed * delta
 
 func _on_VisibilityNotifier2D_screen_exited():
-	Events.emit_signal("platform_despawned")
-	self.queue_free()
+	Events.emit_signal("platform_return_to_pool", self)
