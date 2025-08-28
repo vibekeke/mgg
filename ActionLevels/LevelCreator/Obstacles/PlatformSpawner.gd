@@ -116,3 +116,12 @@ func clear_platform_pool():
 		if is_instance_valid(platform):
 			platform.queue_free()
 	platform_pool.clear()
+
+func _direct_spawn_obstacle_at_position(obstacle: PackedScene, position: Vector2, scroll_speed):
+	var _obstacle_to_spawn = obstacle.instance()
+	if scroll_speed != null:
+		_obstacle_to_spawn.scroll_speed = scroll_speed
+	else:
+		_obstacle_to_spawn.scroll_speed = default_scroll_speed
+	_obstacle_to_spawn.position = position
+	cached_parent_node.add_child(_obstacle_to_spawn)

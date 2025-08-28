@@ -2,6 +2,7 @@ extends LevelEvent
 
 onready var enemy_spawner = get_node("%EnemySpawner")
 onready var platform_spawner = get_node("%PlatformSpawner")
+onready var platform_spawn_point : Position2D = get_node("%PlatformSpawnPoint")
 onready var start_event_timer = Timer.new()
 onready var spawn_enemies_timer = Timer.new()
 onready var spawn_platforms_timer = Timer.new()
@@ -13,7 +14,7 @@ var num_enemies_spawned = 0
 var num_platforms_spawned = 0
 var enemy_spawn_start = false
 var background_enemy_spawn_start = false
-var platform_spawn_place = Vector2(2200, 420)
+
 var enemy_spawn_place = Vector2(2200, 799)
 var background_enemy_spawn_place = Vector2(0, 861)
 var enemy_speed = 1500
@@ -23,10 +24,87 @@ export var enemy_to_spawn : PackedScene
 export var background_element_to_spawn : PackedScene
 export var platform_to_spawn : PackedScene
 
+# Preloaded object pools
+var preloaded_platforms = []
+var preloaded_background_enemies = []
+var preloaded_enemies = []
+
 func _ready():
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
 	event_number = 2
 	event_name = "Level1_Event2"
+	
+	# Preload all objects this event will need
+	_preload_all_objects()
+
+func _preload_all_objects():
+	print("Level1_Event2: Preloading objects...")
+	
+	# Preload 3 platforms
+	for i in range(3):
+		var platform = platform_to_spawn.instance()
+		platform.scroll_speed = platform_scroll_speed
+		platform.visible = false
+		platform.set_process(false)
+		preloaded_platforms.append(platform)
+	
+	# Preload 20 background enemies
+	for i in range(20):
+		var bg_enemy = background_element_to_spawn.instance()
+		bg_enemy.scroll_speed = enemy_speed
+		bg_enemy.visible = false
+		bg_enemy.set_process(false)
+		preloaded_background_enemies.append(bg_enemy)
+	
+	# Preload 20 regular enemies
+	for i in range(20):
+		var enemy = enemy_to_spawn.instance()
+		enemy.initial_scroll_speed = enemy_speed
+		enemy.visible = false
+		enemy.set_process(false)
+		preloaded_enemies.append(enemy)
+	
+	print("Level1_Event2: Preloading complete - ", preloaded_platforms.size(), " platforms, ", 
+		  preloaded_background_enemies.size(), " bg enemies, ", preloaded_enemies.size(), " enemies")
+
+func _spawn_preloaded_platform():
+	if preloaded_platforms.size() > 0:
+		var platform = preloaded_platforms.pop_front()
+		platform.position = platform_spawn_point.global_position
+		platform.visible = true
+		platform.set_process(true)
+		platform_spawner.cached_parent_node.add_child(platform)
+		print("Level1_Event2: Spawned preloaded platform at ", platform.position)
+	else:
+		print("Level1_Event2: No more preloaded platforms available!")
+
+func _spawn_preloaded_background_enemy():
+	if preloaded_background_enemies.size() > 0:
+		var bg_enemy = preloaded_background_enemies.pop_front()
+		bg_enemy.position = background_enemy_spawn_place
+		if "initial_speed" in bg_enemy:
+			bg_enemy.initial_speed = enemy_speed
+		if "scroll_speed" in bg_enemy:
+			bg_enemy.scroll_speed = enemy_speed
+		bg_enemy.visible = true
+		bg_enemy.set_process(true)
+		enemy_spawner.level_background.get_node_or_null('BackForestBackground').add_child(bg_enemy)
+		print("Level1_Event2: Spawned preloaded background enemy")
+	else:
+		print("Level1_Event2: No more preloaded background enemies available!")
+
+func _spawn_preloaded_enemy():
+	if preloaded_enemies.size() > 0:
+		var enemy = preloaded_enemies.pop_front()
+		if !enemy.is_in_group("non_boss_enemy"):
+			enemy.add_to_group("non_boss_enemy")
+		enemy.position = enemy_spawn_place
+		enemy.visible = true
+		enemy.set_process(true)
+		enemy_spawner.get_parent().call_deferred("add_child", enemy)
+		print("Level1_Event2: Spawned preloaded enemy at ", enemy.position)
+	else:
+		print("Level1_Event2: No more preloaded enemies available!")
 
 func _on_level_event_complete(level_event_name, level_event_number):
 	if level_event_number == 1:
@@ -78,7 +156,7 @@ func trigger() -> void:
 		printerr("One of the spawners was not detected. Something has gone wrong here")
 
 func _on_spawn_platforms_timer() -> void:
-	enemy_spawner._direct_spawn_obstacle_at_position(platform_to_spawn, platform_spawn_place, platform_scroll_speed)
+	_spawn_preloaded_platform()
 	if !background_enemy_spawn_start:
 		background_enemy_spawn_start = true
 		spawn_background_enemies_timer.start()
@@ -88,13 +166,13 @@ func _on_spawn_platforms_timer() -> void:
 		spawn_enemies_timer.start()
 
 func _on_spawn_background_enemies_timer() -> void:
-	enemy_spawner.spawn_to_background_element(background_element_to_spawn, 'BackForestBackground', background_enemy_spawn_place, enemy_speed)
+	_spawn_preloaded_background_enemy()
 	num_background_enemies_spawned += 1
 	if num_background_enemies_spawned >= 20:
 		spawn_background_enemies_timer.stop()
 
 func _on_spawn_enemies_timer() -> void:
-	enemy_spawner._direct_spawn_at_position(enemy_to_spawn, enemy_spawn_place, enemy_speed)
+	_spawn_preloaded_enemy()
 	num_enemies_spawned += 1
 	if num_enemies_spawned >= 20:
 		spawn_enemies_timer.stop()
