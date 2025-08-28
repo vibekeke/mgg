@@ -68,6 +68,7 @@ signal go_up_ui
 const SAVE_FILE_LOCATION : String = "res://mggsave.save"
 const COMPLETED_LEVELS : Array = []
 var COLLECTED_DOGS : Dictionary = {}
+var tracked_score : int = 0
 
 func _ready():
 	OS.min_window_size = Vector2(1280, 720)
@@ -161,6 +162,12 @@ func save_game(level_name : int, dog_info : Dictionary):
 	save_file.open(SAVE_FILE_LOCATION,  File.WRITE)
 	save_file.store_line(to_json(save_dict))
 	save_file.close()
+
+func update_score(score: int):
+	tracked_score = score
+	
+func get_score() -> int:
+	return tracked_score
 
 func get_boss(boss_name : String):
 	return bossPaths[boss_name]

@@ -8,11 +8,22 @@ onready var quit_button = get_node("%QuitButton")
 
 onready var determined_sprite = get_node("%GirlSitDetermined")
 onready var sad_sprite = get_node("%GirlSitSad")
+onready var animated_sprite = $CanvasLayer/AnimatedSprite
 
 onready var retry_star = get_node("%StarSelectRetry")
 onready var quit_star = get_node("%StarSelectQuit")
 
+onready var score_display : RichTextLabel = get_node("%ScoreDisplay")
+
+var player_final_score : int = 0
+
 func _ready():
+	# Set initial invisible state
+	animated_sprite.modulate = Color(1, 1, 1, 0)
+	sad_sprite.modulate = Color(1, 1, 1, 0)
+	
+	player_final_score = Events.get_score()
+	score_display.bbcode_text = "Score: " + str(player_final_score)
 	animation_player.play("fade_in")
 
 func _on_RetryButton_pressed():
