@@ -65,7 +65,7 @@ func display_dialogue():
 		DataClasses.CharacterPortrait.AngelIntense,
 		Color(0.12549, 0.619608, 1, 0.25),
 		Color(0.0, 0.0, 0.0, 0.25),
-		false,
+		true,
 		1.5
 		)
 

@@ -69,7 +69,9 @@ func display_dialogue():
 		DataClasses.Placement.LOWER, 
 		DataClasses.CharacterPortrait.None,
 		Color(0.0, 0.0, 0.0, 1.0),
-		Color(0.3, 0.1, 0.5, 1.0)
+		Color(0.3, 0.1, 0.5, 1.0),
+		true,
+		3.0
 		)
 
 func trigger() -> void:

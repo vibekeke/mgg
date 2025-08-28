@@ -30,7 +30,7 @@ var is_processing_response: bool = false
 var inputs_are_disabled: bool = false
 
 var is_advancable : bool = false
-var auto_advance_time : float = false
+var auto_advance_time : float = 1.5
 
 func set_dialogue(dialogue):
 	self.dialogue = dialogue
@@ -67,6 +67,8 @@ func add_dialogue():
 	yield(dialogue_label, "finished")
 	if is_advancable:
 		auto_advance_timer.start()
+		await_cursor.visible = false
+	else:
 		await_cursor.visible = true
 		star_flicker_animation_player.play("flicker")
 	if dialogue.responses.size() > 0:
@@ -130,7 +132,7 @@ func _on_arriving_character(character: String):
 			dialogue_audio.play(0.0)
 
 func next(next_id: String) -> void:
-	if inputs_are_disabled || !is_advancable:
+	if inputs_are_disabled:
 		return
 	emit_signal("actioned", next_id)
 
@@ -179,7 +181,7 @@ func _on_response_gui_input(event, item):
 
 func _on_DialogueContainer_gui_input(event):
 	if event.is_pressed() and not event.is_echo() and dialogue_container.get_focus_owner() == dialogue_container:
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") and not is_advancable:
 			next(dialogue.next_id)
 			
 func _on_auto_advance_timer():
