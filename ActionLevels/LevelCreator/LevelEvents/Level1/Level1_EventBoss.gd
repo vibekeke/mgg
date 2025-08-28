@@ -26,17 +26,20 @@ func _ready():
 	event_number = 6 # last level event
 	boss_warning_tape.connect("warning_finished", self, "_on_warning_finished")
 	event_name = "Level1_EventBoss"
-	if debug_mode:
+	
+	# Only use internal debug mode if LevelEventsManager isn't handling debug
+	var is_manager_debug = level_events_manager.debug_trigger_event_number > 0
+	if debug_mode and not is_manager_debug:
 		_on_level_event_complete('dummy_event', 5)
 
 func _on_dialogue_box_finished(node_id):
-	print("dialogue finished, node_id: ", node_id, ", self.get_instance_id(): ", self.get_instance_id())
 	if self.get_instance_id() == node_id:
 		yield(get_tree().create_timer(2.0), "timeout")
 		spawn_boss()
 	
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 5:
+		print("LEVEL EVENT NUMBER COMPLETE")
 		start_event_timer.set_name(event_name + "_start_timer")
 		start_event_timer.connect("timeout", self, "trigger")
 		if debug_mode:
@@ -61,27 +64,43 @@ func _on_level_event_complete(level_event_name, level_event_number) -> void:
 		start_event_timer.start()
 
 func display_dialogue():
-	print("Creating dialogue balloon for level1_event_boss")
 	MggDialogue.create_dialogue_balloon(
 		"level1_event_boss", 
 		level1_event1_dialog, 
 		self.get_instance_id(), 
 		DataClasses.Placement.LOWER, 
 		DataClasses.CharacterPortrait.None,
-		Color(0.0, 0.0, 0.0, 1.0),
-		Color(0.3, 0.1, 0.5, 1.0),
+		Color(0.0, 0.0, 0.0, 0.6),
+		Color(0.3, 0.1, 0.5, 0.6),
 		true,
 		3.0
 		)
 
 func trigger() -> void:
-	print("triggering boss event")
-	print("enemy spawner is ", enemy_spawner)
+	print("I'm triggered")
+	# Set up timers if they haven't been set up yet (needed for debug mode)
+	if not wait_after_stopping_spawner_timer.is_inside_tree():
+		setup_timers()
+	
 	if enemy_spawner != null and platform_spawner != null:
 		Events.emit_signal("level_event_lock", event_name, event_number)
 		enemy_spawner.stop_enemy_spawner()
 		platform_spawner.stop_platform_spawner()
 		wait_after_stopping_spawner_timer.start()
+
+func setup_timers():
+	end_event_timer.set_name(event_name + "_end_event_timer")
+	end_event_timer.connect("timeout", self, "end_event")
+	end_event_timer.set_wait_time(3.0)
+	end_event_timer.set_one_shot(true)
+
+	wait_after_stopping_spawner_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
+	wait_after_stopping_spawner_timer.connect("timeout", self, "_on_wait_after_stopping_spawner_timer")
+	wait_after_stopping_spawner_timer.set_wait_time(1.0)
+	wait_after_stopping_spawner_timer.set_one_shot(true)
+
+	self.add_child(end_event_timer)
+	self.add_child(wait_after_stopping_spawner_timer)
 
 func _on_wait_after_stopping_spawner_timer():
 	wait_after_stopping_spawner_timer.stop()
@@ -89,8 +108,11 @@ func _on_wait_after_stopping_spawner_timer():
 
 func _on_background_element_offscreen(element_name):
 	if element_name == DataClasses.Enemies.BIG_BIRD && level_events_manager.get_currently_running_event() == 6:
-		boss_warning_tape.visible = true
-		boss_warning_tape.start_animation()
+		if not boss_warning_tape.visible:  # Only trigger once
+			boss_warning_tape.visible = true
+			boss_warning_tape.start_animation()
+			# Disconnect to prevent multiple triggers
+			Events.disconnect("background_element_offscreen", self, "_on_background_element_offscreen")
 
 func spawn_boss():
 	enemy_spawner.kill_non_boss_enemies()
@@ -105,7 +127,6 @@ func event_start() -> void:
 		boss_background_to_spawn.scale.x = 0.65
 		boss_background_to_spawn.scale.y = 0.65
 		enemy_spawner.spawn_instanced_background_element(boss_background_to_spawn, 'BackForestBackground', background_boss_spawn_place, background_boss_speed)
-	#end_event_timer.start()
 
 func end_event() -> void:
 	start_event_timer.stop()

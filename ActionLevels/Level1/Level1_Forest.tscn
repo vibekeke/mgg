@@ -149,6 +149,7 @@ charge_shot = ExtResource( 21 )
 [node name="LevelEventsManager" parent="." instance=ExtResource( 28 )]
 unique_name_in_owner = true
 debug_trigger_event_number = -1
+main_level_scene_path = NodePath("..")
 
 [node name="Level1_Event1" parent="LevelEventsManager" instance=ExtResource( 27 )]
 main_level_scene_path = NodePath("../..")
