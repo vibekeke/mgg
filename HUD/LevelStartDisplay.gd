@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+onready var how_to_panel : PanelContainer = get_node("%PanelContainer")
 onready var controls_panel : PanelContainer = get_node("%Controls")
 onready var tutorial_confirmation_panel : PanelContainer = get_node("%TutorialConfirmation")
 onready var bubbles : Sprite = get_node("%Bubbles")
@@ -31,6 +32,7 @@ func _input(event):
 	if event.is_action_pressed("confirm_action") && !level_start_confirmed && tutorial_text_displayed:
 		level_start_confirmed = true
 		self.emit_signal("confirm_level_start")
+		how_to_panel.visible = false
 		controls_panel.visible = false
 		tutorial_confirmation_panel.visible = false
 		bubbles.visible = false

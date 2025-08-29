@@ -11,6 +11,7 @@ onready var await_cursor = get_node("%AwaitCursor")
 onready var dialogue_audio = get_node("%DialogueAudio")
 onready var star_flicker_animation_player = get_node("%StarFlickerAnimationPlayer")
 onready var margin_container = get_node("%MarginContainer")
+onready var dialogue_container_animation_player = get_node("%DialogueContainerAnimationPlayer")
 onready var auto_advance_timer = get_node("%AutoAdvanceTimer")
 
 var placement_dictionary = {
@@ -122,6 +123,7 @@ func _ready() -> void:
 	container_placement()
 	dialogue_label.connect("arriving_characer", self, "_on_arriving_character")
 	add_dialogue()
+	dialogue_container_animation_player.play("fade_in")
 	auto_advance_timer.wait_time = auto_advance_time
 	auto_advance_timer.connect("timeout", self, "_on_auto_advance_timer")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Menus/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://test_fonts/vibekefonts/main_menu_font.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://ActionLevels/backgrounds/LevelCityMenuBackground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menus/button_focus_and_selected.tres" type="StyleBox" id=5]
 [ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=6]
+[ext_resource path="res://Menus/PrettyAssets/Logo-downscaled.png" type="Texture" id=7]
 [ext_resource path="res://sounds/level/selection_confirm.wav" type="AudioStream" id=9]
 [ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=10]
 [ext_resource path="res://imported_assets/Coverart-MG.png" type="Texture" id=11]
@@ -148,13 +149,13 @@ position = Vector2( 3, 244 )
 
 [node name="StartButton" type="Button" parent="MenuLayer/VBoxContainer"]
 unique_name_in_owner = true
-margin_right = 238.0
+margin_right = 239.0
 margin_bottom = 91.0
 focus_neighbour_top = NodePath("../QuitButton")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_focus = Color( 1, 0.788235, 0.552941, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_hover = Color( 1, 0.788235, 0.552941, 1 )
 custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/hover = ExtResource( 5 )
@@ -166,14 +167,14 @@ text = "Start"
 [node name="RoomButton" type="Button" parent="MenuLayer/VBoxContainer"]
 unique_name_in_owner = true
 margin_top = 98.0
-margin_right = 238.0
+margin_right = 239.0
 margin_bottom = 189.0
 focus_neighbour_top = NodePath("../StartButton")
 focus_neighbour_bottom = NodePath("../QuitButton")
 custom_colors/font_color_disabled = Color( 0.360784, 0.2, 0.501961, 1 )
-custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_focus = Color( 1, 0.788235, 0.552941, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_hover = Color( 1, 0.788235, 0.552941, 1 )
 custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/hover = ExtResource( 5 )
@@ -186,13 +187,13 @@ text = "Room"
 [node name="QuitButton" type="Button" parent="MenuLayer/VBoxContainer"]
 unique_name_in_owner = true
 margin_top = 196.0
-margin_right = 238.0
+margin_right = 239.0
 margin_bottom = 287.0
 focus_neighbour_top = NodePath("../RoomButton")
 focus_neighbour_bottom = NodePath("../StartButton")
-custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_focus = Color( 1, 0.788235, 0.552941, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_hover = Color( 1, 0.788235, 0.552941, 1 )
 custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/hover = ExtResource( 5 )
@@ -201,7 +202,13 @@ custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 3 )
 text = "Quit"
 
+[node name="Logo-downscaled" type="Sprite" parent="MenuLayer"]
+position = Vector2( 648, 343 )
+scale = Vector2( 0.731364, 0.731364 )
+texture = ExtResource( 7 )
+
 [node name="GameTitle" type="RichTextLabel" parent="MenuLayer"]
+visible = false
 margin_left = 229.0
 margin_top = 277.0
 margin_right = 910.0

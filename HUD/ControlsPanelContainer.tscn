@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Themes/controls_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Themes/controls_button_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Themes/controls_arrow_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Menus/PrettyAssets/CrystralSymbol.webp" type="Texture" id=4]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0, 0, 0, 0.607843 )
@@ -38,7 +39,7 @@ custom_styles/panel = SubResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 421.0
-margin_bottom = 499.001
+margin_bottom = 551.0
 custom_constants/margin_right = 33
 custom_constants/margin_top = 24
 custom_constants/margin_left = 36
@@ -48,7 +49,7 @@ custom_constants/margin_bottom = 60
 margin_left = 36.0
 margin_top = 24.0
 margin_right = 388.0
-margin_bottom = 439.0
+margin_bottom = 491.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 352.0
@@ -66,11 +67,11 @@ custom_constants/separation = 32
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 77.0
 margin_right = 352.0
-margin_bottom = 406.0
+margin_bottom = 467.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 128.0
-margin_bottom = 329.0
+margin_bottom = 390.0
 custom_constants/separation = 19
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -96,35 +97,54 @@ margin_right = 89.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 5 )
-text = " S "
+text = " D "
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 59.0
 margin_right = 128.0
 margin_bottom = 99.0
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 21.0
+margin_bottom = 40.0
+custom_constants/separation = 21
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 25.0
+margin_right = 64.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 5 )
+text = " S "
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 118.0
+margin_right = 128.0
+margin_bottom = 158.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 5 )
 text = " SPACE "
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 118.0
+margin_top = 177.0
 margin_right = 128.0
-margin_bottom = 158.0
+margin_bottom = 217.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 5 )
 text = " SHIFT "
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 177.0
+margin_top = 236.0
 margin_right = 128.0
-margin_bottom = 206.0
-custom_constants/separation = 29
+margin_bottom = 271.0
+custom_constants/separation = 35
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 225.0
+margin_top = 290.0
 margin_right = 128.0
-margin_bottom = 263.0
+margin_bottom = 328.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 margin_right = 40.0
@@ -156,9 +176,9 @@ text = "▽"
 align = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 282.0
+margin_top = 347.0
 margin_right = 128.0
-margin_bottom = 322.0
+margin_bottom = 387.0
 
 [node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 margin_right = 35.0
@@ -171,13 +191,13 @@ text = " F "
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 132.0
 margin_right = 163.0
-margin_bottom = 329.0
+margin_bottom = 390.0
 custom_constants/separation = 31
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 167.0
 margin_right = 352.0
-margin_bottom = 329.0
+margin_bottom = 390.0
 custom_constants/separation = 24
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
@@ -191,32 +211,46 @@ margin_top = 61.0
 margin_right = 185.0
 margin_bottom = 98.0
 custom_fonts/font = ExtResource( 1 )
-text = "Jump"
+text = "Slide"
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label6" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 122.0
 margin_right = 185.0
 margin_bottom = 159.0
+custom_fonts/font = ExtResource( 1 )
+text = "Jump"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 183.0
+margin_right = 185.0
+margin_bottom = 220.0
 custom_fonts/font = ExtResource( 1 )
 text = "Glide (Hold)"
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 183.0
+margin_top = 244.0
 margin_right = 185.0
-margin_bottom = 207.0
+margin_bottom = 268.0
 custom_constants/separation = 24
 
 [node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 231.0
-margin_right = 185.0
-margin_bottom = 268.0
-custom_fonts/font = ExtResource( 1 )
-text = "Shoot"
-
-[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 292.0
 margin_right = 185.0
 margin_bottom = 329.0
 custom_fonts/font = ExtResource( 1 )
+text = "Shoot"
+
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 353.0
+margin_right = 185.0
+margin_bottom = 390.0
+custom_colors/font_color = Color( 0, 0.984314, 0.980392, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Beam"
+
+[node name="CrystralSymbol" type="Sprite" parent="."]
+position = Vector2( 322.31, 475.037 )
+rotation = 0.546288
+scale = Vector2( 0.199489, 0.199489 )
+texture = ExtResource( 4 )
