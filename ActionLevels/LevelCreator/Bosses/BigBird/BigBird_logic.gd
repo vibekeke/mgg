@@ -69,6 +69,8 @@ func play_intro(delta):
 
 func _ready():
 	$CanvasLayer.visible = debug_mode
+	# Start boss completely invisible for smooth intro transition
+	parent_node.modulate = Color(0, 0, 0, 0)
 
 func post_intro():
 	_fire_rate_timer_setup()
