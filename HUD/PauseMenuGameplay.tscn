@@ -154,6 +154,7 @@ text = "Return to Title"
 [node name="ControlsPanelContainer" parent="." instance=ExtResource( 7 )]
 
 [node name="PauseIcon" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2( 1800, 100 )
 scale = Vector2( 2, 2 )
 mesh = SubResource( 1 )
