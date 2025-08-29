@@ -134,6 +134,7 @@ corner_radius_bottom_left = 30
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.388235, 0.541176, 0.901961, 1 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -176,6 +177,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "pop_in_sound"
+} ]
 }
 
 [node name="DemoEndCredits" type="Node2D"]
@@ -391,6 +406,8 @@ text = " Title Screen "
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/pop_in = SubResource( 22 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="Window/TextureRect/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="pressed" from="Window/TextureRect/CreditsButtons/BackButton" to="." method="_on_BackButton_pressed"]

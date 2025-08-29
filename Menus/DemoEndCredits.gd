@@ -9,6 +9,13 @@ onready var message_button = get_node("%NextButton")
 onready var credits_text = get_node("%CreditsText")
 onready var credits_buttons = get_node("%CreditsButtons")
 
+onready var audio_player = $AudioStreamPlayer
+
+var pop_in_sfx = preload("res://sounds/computer/maximize_008.wav")
+var click_sfx = preload("res://sounds/mouseclick-cut.mp3")
+var confirm_sfx = preload("res://sounds/level/selection_confirm.wav")
+
+
 var scroll_speed: float = 70.0
 
 
@@ -30,15 +37,20 @@ func _process(delta):
 
 
 func _on_BackButton_pressed():
+	audio_player.stream = click_sfx
+	audio_player.play()
 	toggle_text()
 
 
 func _on_TitleButton_pressed():
-	#TODO: it dont work, and I don't know why :T
+	audio_player.stream = confirm_sfx
+	audio_player.play()
 	Events.emit_signal("transition_to_scene", "TitleScreen", false)
 
 
 func _on_NextButton_pressed():
+	audio_player.stream = click_sfx
+	audio_player.play()
 	toggle_text()
 
 func toggle_text():
@@ -53,3 +65,6 @@ func toggle_text():
 		credits_text.hide()
 		credits_buttons.hide()
 
+func pop_in_sound():
+	audio_player.stream = pop_in_sfx
+	audio_player.play()

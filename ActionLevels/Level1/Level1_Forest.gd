@@ -5,12 +5,14 @@ signal level_start
 onready var spawn_paths = $SpawnPaths
 onready var background_music = $BackgroundMusic
 onready var boss_music = $BossMusic
+onready var sfx = $ExtraSFX
 onready var level_background = get_node("%LevelBackground")
 onready var enemy_spawner = get_node("%EnemySpawner")
 onready var platform_spawner = get_node("%PlatformSpawner")
 onready var level_start_display = get_node("%LevelStartDisplay")
 export var boss_background : PackedScene
 export var mute_audio = false # temporary
+var start_sfx = preload("res://sounds/level/selection_confirm.wav")
 
 func _ready():
 	level_start_display.connect("confirm_level_start", self, "_on_confirm_level_start")
@@ -44,6 +46,8 @@ func _on_boss_spawn():
 		boss_music.play()
 
 func _on_confirm_level_start():
+	sfx.stream = start_sfx
+	sfx.play(0.06)
 	enemy_spawner.start_enemy_spawner()
 	platform_spawner.start_platform_spawner()
 	Events.emit_signal("background_moving_enabled", true)
