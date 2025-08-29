@@ -1,7 +1,6 @@
 extends Node2D
-# should just hurt the player and not much else, not special or deflectable
 
-export (float) var speed = 100
+export (float) var speed = 200
 
 onready var area2d = $Projectile/Area2D
 onready var visual_body = $VisualStar
@@ -25,6 +24,7 @@ func _ready():
 func _on_call_area_entered(area):
 	if area.is_in_group("player_hurtbox"):
 		Events.emit_signal("collided_with_player", 1)
+		self.queue_free()
 
 
 func _on_VisibilityNotifier2D_screen_exited():

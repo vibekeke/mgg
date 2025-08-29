@@ -1,6 +1,7 @@
 extends LevelEvent
 
 onready var enemy_spawner = get_node("%EnemySpawner")
+onready var platform_spawner = get_node("%PlatformSpawner")
 onready var level_events_manager = get_node("%LevelEventsManager")
 onready var boss_warning_tape = get_node("%BossWarningTape")
 
@@ -68,15 +69,18 @@ func display_dialogue():
 		DataClasses.Placement.LOWER, 
 		DataClasses.CharacterPortrait.None,
 		Color(0.0, 0.0, 0.0, 1.0),
-		Color(0.3, 0.1, 0.5, 1.0)
+		Color(0.3, 0.1, 0.5, 1.0),
+		true,
+		3.0
 		)
 
 func trigger() -> void:
 	print("triggering boss event")
 	print("enemy spawner is ", enemy_spawner)
-	if enemy_spawner != null:
+	if enemy_spawner != null and platform_spawner != null:
 		Events.emit_signal("level_event_lock", event_name, event_number)
 		enemy_spawner.stop_enemy_spawner()
+		platform_spawner.stop_platform_spawner()
 		wait_after_stopping_spawner_timer.start()
 
 func _on_wait_after_stopping_spawner_timer():

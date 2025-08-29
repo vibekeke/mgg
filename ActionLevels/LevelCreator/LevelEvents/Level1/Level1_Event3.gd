@@ -1,6 +1,7 @@
 extends LevelEvent
 
 onready var enemy_spawner = get_node("%EnemySpawner")
+onready var platform_spawner = get_node("%PlatformSpawner")
 onready var start_event_timer = Timer.new()
 onready var end_event_timer = Timer.new()
 onready var wait_after_stopping_spawner_timer = Timer.new()
@@ -50,9 +51,12 @@ func _on_level_event_complete(level_event_name, level_event_number) -> void:
 
 func trigger() -> void:
 	Events.emit_signal("level_event_lock", event_name, event_number)
-	if enemy_spawner != null:
+	if enemy_spawner != null and platform_spawner != null:
 		enemy_spawner.stop_enemy_spawner()
+		platform_spawner.stop_platform_spawner()
 		wait_after_stopping_spawner_timer.start()
+	else:
+		printerr("One of the spawners was not detected. Something has gone wrong here")
 
 func _on_wait_after_stopping_spawner_timer():
 	event_start()
@@ -79,6 +83,7 @@ func end_event() -> void:
 	start_event_timer.stop()
 	enemy_spawner.increment_difficulty_tier()
 	enemy_spawner.start_enemy_spawner()
+	platform_spawner.start_platform_spawner()
 	Events.emit_signal("level_event_complete", event_name, event_number)
 	Events.emit_signal("level_event_lock", "", -1)
 	self.queue_free()

@@ -14,11 +14,14 @@ func _ready():
 func _on_collected_star():
 	internal_score += DEFAULT_STAR_SCORE
 	score_total.bbcode_text = str(internal_score)
+	Events.update_score(internal_score)
 
 func _on_collected_dog(_dog_type):
 	internal_score += DEFAULT_DOG_SCORE
 	score_total.bbcode_text = str(internal_score)
+	Events.update_score(internal_score)
 
 func _on_regular_enemy_death():
 	internal_score += DEFAULT_ENEMY_SCORE
 	score_total.bbcode_text = str(internal_score)
+	Events.update_score(internal_score)

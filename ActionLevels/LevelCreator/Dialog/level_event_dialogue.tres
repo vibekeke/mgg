@@ -4,11 +4,11 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 12
+resource_version = 13
 syntax_version = 2
 raw_text = "~ level1_event1
 
-Angel: Bees? Un-BEE-leivable
+Angel: Bees? Un-BEE-leivable [wait=1.5]
 
 ~ level1_event2
 
@@ -31,8 +31,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Bees? Un-BEE-leivable",
-"translation_key": "Bees? Un-BEE-leivable",
+"text": "Bees? Un-BEE-leivable [wait=1.5]",
+"translation_key": "Bees? Un-BEE-leivable [wait=1.5]",
 "type": "dialogue"
 },
 "4": {

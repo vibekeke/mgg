@@ -9,6 +9,7 @@ onready var tween = get_node("%Tween")
 onready var loading_text = get_node("%LoadingText")
 onready var spinning_star = get_node("%SpinningStar")
 
+var is_loading : bool = false
 var loader: ResourceInteractiveLoader
 var loading_complete: bool = false
 var loading_dots_timer: float = 0.0
@@ -43,24 +44,34 @@ func get_scene_path(scene_name):
 	else:
 		print("Scene not present in action level list")
 
-func _transition_to_next_scene(_next_scene, battle_dialogue_intro: bool = false):
+func _transition_to_next_scene(_next_scene, skip_loading_screen := false):
 	if loader != null:
 		print("Scene loading already in progress, ignoring request for ", _next_scene)
 		return
+	
 	color_rect.show()
-	spinning_star.visible = true
-	loading_text.visible = true
-	loading_dots_timer = 0.0
-	loading_dots_count = 1
-	loading_text.text = "Loading."
+	
+	if skip_loading_screen:
+		spinning_star.visible = false
+		loading_text.visible = false
+	else:
+		spinning_star.visible = true
+		loading_text.visible = true
+		loading_dots_timer = 0.0
+		loading_dots_count = 1
+		loading_text.text = "Loading."
+	
 	tween.interpolate_property(color_rect, "modulate:a", 0, 1, fade_duration)
 	tween.start()
 	yield(tween, "tween_all_completed")
 	
 	var scene_path = get_scene_path(_next_scene)
-	print("scene path ", scene_path)
-	if scene_path:
-		yield(_load_scene_async(scene_path), "completed")
+	if scene_path and !is_loading:
+		is_loading = true
+		if skip_loading_screen:
+			yield(_load_scene_fast(scene_path), "completed")
+		else:
+			yield(_load_scene_async(scene_path), "completed")
 
 func _load_scene_async(scene_path: String):
 	loading_complete = false
@@ -78,9 +89,7 @@ func _load_scene_async(scene_path: String):
 		
 		if err == ERR_FILE_EOF:
 			loading_complete = true
-			#color_rect.visible = false
-			#spinning_star.visible = false
-			#loading_text.visible = false
+			is_loading = false
 			var resource = loader.get_resource()
 			loader = null
 			
@@ -98,6 +107,18 @@ func _load_scene_async(scene_path: String):
 			break
 		
 		yield(get_tree(), "idle_frame")
+
+func _load_scene_fast(scene_path: String):
+	var resource = load(scene_path)
+	is_loading = false
+	
+	if resource and resource is PackedScene:
+		get_tree().change_scene_to(resource)
+		tween.interpolate_property(color_rect, "modulate:a", 1.0, 0.0, fade_duration)
+		tween.start()
+		yield(tween, "tween_all_completed")
+	else:
+		print("Failed to load scene resource")
 
 func _update_loading_progress(progress: float):
 	loading_dots_timer += get_process_delta_time()

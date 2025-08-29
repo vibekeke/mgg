@@ -101,7 +101,7 @@ func _on_QuitBtn_pressed():
 
 func _on_BackBtn_pressed():
 	self.is_paused = false
-	Events.emit_signal("transition_to_scene", "ComputerScreen")
+	Events.emit_signal("transition_to_scene", "ComputerScreen", false)
 
 func _on_ResumeBtn_focus_entered():
 	spinny_star_resume.visible = true

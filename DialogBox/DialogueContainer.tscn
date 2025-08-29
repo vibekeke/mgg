@@ -217,4 +217,8 @@ unique_name_in_owner = true
 anims/RESET = SubResource( 13 )
 anims/flicker = SubResource( 14 )
 
+[node name="AutoAdvanceTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
 [connection signal="gui_input" from="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" to="." method="_on_DialogueContainer_gui_input"]

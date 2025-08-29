@@ -14,6 +14,7 @@ onready var room_button : Button = get_node("%RoomButton")
 onready var quit_button : Button = get_node("%QuitButton")
 
 var has_completed_demo : bool = false
+var button_pressed : bool = false
 
 func _ready():
 	tween.interpolate_property(camera, "position",
@@ -36,7 +37,9 @@ func _process(delta):
 		title_screen_animation.playback_speed = 10
 
 func _on_StartButton_pressed():
-	send_to_level("Level1")
+	if !button_pressed:
+		button_pressed = true
+		send_to_level("Level1")
 
 func _on_OptionsButton_pressed():
 	$MenuLayer/VBoxContainer.visible = false
@@ -49,7 +52,7 @@ func _on_QuitButton_pressed():
 	get_tree().quit()
 
 func send_to_level(level_name: String):
-	Events.emit_signal("transition_to_scene", level_name)
+	Events.emit_signal("transition_to_scene", level_name, false)
 
 func _on_StartButton_focus_entered():
 	star_select_start.visible = true
@@ -79,11 +82,8 @@ func _on_RoomButton_focus_entered():
 func _on_RoomButton_focus_exited():
 	star_select_room.visible = false
 
-
-
 func _on_QuitButton_mouse_entered():
 	quit_button.grab_focus()
-	
 
 func _on_RoomButton_mouse_entered():
 	if not room_button.disabled:
@@ -91,3 +91,4 @@ func _on_RoomButton_mouse_entered():
 
 func _on_StartButton_mouse_entered():
 	start_button.grab_focus()
+

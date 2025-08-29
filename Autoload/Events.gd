@@ -54,6 +54,8 @@ signal kill_spawned_enemies
 signal platform_spawner_enabled(enabled)
 signal platform_spawn_number(number_of_platforms)
 signal kill_spawned_platforms
+signal platform_despawned
+signal platform_return_to_pool(platform)
 
 #level background
 signal background_moving_enabled(enabled)
@@ -66,6 +68,7 @@ signal go_up_ui
 const SAVE_FILE_LOCATION : String = "res://mggsave.save"
 const COMPLETED_LEVELS : Array = []
 var COLLECTED_DOGS : Dictionary = {}
+var tracked_score : int = 0
 
 func _ready():
 	OS.min_window_size = Vector2(1280, 720)
@@ -85,7 +88,7 @@ func transition_to_new_scene(next_scene):
 	
 func go_to_game_over():
 	print("transition to game over screen")
-	self.emit_signal("transition_to_scene", "GameOver")
+	self.emit_signal("transition_to_scene", "GameOver", true)
 
 
 onready var enemyPaths = {
@@ -159,6 +162,12 @@ func save_game(level_name : int, dog_info : Dictionary):
 	save_file.open(SAVE_FILE_LOCATION,  File.WRITE)
 	save_file.store_line(to_json(save_dict))
 	save_file.close()
+
+func update_score(score: int):
+	tracked_score = score
+	
+func get_score() -> int:
+	return tracked_score
 
 func get_boss(boss_name : String):
 	return bossPaths[boss_name]
