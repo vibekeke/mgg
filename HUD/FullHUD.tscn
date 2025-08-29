@@ -153,5 +153,5 @@ anims/go_up = SubResource( 2 )
 [node name="ScoreTracker" parent="." instance=ExtResource( 5 )]
 margin_left = 782.0
 margin_top = -115.0
-margin_right = 1271.0
-margin_bottom = -3.0
+margin_right = 3191.0
+margin_bottom = 1077.0
