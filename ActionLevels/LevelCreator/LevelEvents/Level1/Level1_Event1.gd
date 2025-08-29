@@ -12,6 +12,8 @@ var START_EVENT_WAIT_TIME = 5.0
 var start_event_timer = Timer.new()
 var wait_after_stopping_spawner_timer = Timer.new()
 
+var preloaded_enemies = []
+
 func _ready():
 	if main_level != null:
 		main_level.connect('level_start', self, "_on_level_start")
@@ -29,6 +31,31 @@ func _ready():
 	self.add_child(wait_after_stopping_spawner_timer)
 	event_number = 1
 	event_name = 'Level1_Event1'
+	
+	_preload_all_objects()
+
+func _preload_all_objects():
+	print("Level1_Event1: Preloading objects...")
+	
+	for i in range(3):
+		var enemy = enemy_to_spawn.instance()
+		enemy.visible = false
+		enemy.set_process(false)
+		preloaded_enemies.append(enemy)
+	
+	print("Level1_Event1: Preloading complete - ", preloaded_enemies.size(), " enemies")
+
+func _spawn_preloaded_enemy_at_position(position: Vector2, speed: int):
+	if preloaded_enemies.size() > 0:
+		var enemy = preloaded_enemies.pop_front()
+		enemy.position = position
+		enemy.initial_scroll_speed = speed
+		enemy.visible = true
+		enemy.set_process(true)
+		enemy_spawner.get_parent().call_deferred("add_child", enemy)
+		print("Level1_Event1: Spawned preloaded enemy at ", enemy.position)
+	else:
+		print("Level1_Event1: No more preloaded enemies available!")
 
 func start_initial_event():
 	start_event_timer.start()
@@ -48,9 +75,9 @@ func trigger() -> void:
 
 func event_start() -> void:
 	if enemy_spawner != null:
-		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 699), 300)
-		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 799), 300)
-		enemy_spawner._direct_spawn_at_position(enemy_to_spawn, Vector2(2200, 899), 300)
+		_spawn_preloaded_enemy_at_position(Vector2(2200, 699), 300)
+		_spawn_preloaded_enemy_at_position(Vector2(2200, 799), 300)
+		_spawn_preloaded_enemy_at_position(Vector2(2200, 899), 300)
 		display_dialogue()
 	else:
 		print("enemy spawner is null")

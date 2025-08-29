@@ -31,12 +31,20 @@ var enemy_to_spawn = null
 var unique_enemy_to_spawn = null
 var spawn_points = {}
 
+# Enemy pooling system
+var tier1_enemy_pool: Array = []
+var tier2_enemy_pool: Array = []
+var tier3_enemy_pool: Array = []
+var unique_enemy_pool: Array = []
+var pool_size_per_tier: int = 10
+
 func _ready():
 	rng.randomize()
 	build_cached_arrays()
 	cached_parent_node = self.get_parent()
 	Events.connect("regular_enemy_death", self, "_on_regular_enemy_death")
 	Events.connect("enemy_despawned", self, "_on_regular_enemy_death")
+	Events.connect("enemy_return_to_pool", self, "_on_enemy_return_to_pool")
 	if spawn_paths != null:
 		_on_level_spawn_points(spawn_paths.get_spawn_points())
 	spawn_timer.set_name("spawn_timer")
@@ -51,6 +59,8 @@ func _ready():
 	spawn_unique_while_alive_timer.set_wait_time(seconds_spawn_unique_while_alive_frequency + rng.randf_range(1.0, 3.5))
 	self.add_child(spawn_unique_while_alive_timer)
 	spawn_unique_while_alive_timer.start()
+	
+	_preload_enemy_pools()
 
 func build_cached_arrays():
 	if !cached_arrays_built:
@@ -112,16 +122,12 @@ func _spawn_enemy():
 func _spawn_unique_while_alive_enemy():
 	if current_difficulty_tier > 1 && unique_enemy_list.size() > 0 && check_for_unique_enemies() <= 0:
 		if cached_parent_node != null:
-			unique_enemy_to_spawn = unique_enemy_list[rng.randi() % unique_enemy_list.size()]
-			var _unique_enemy_to_spawn = unique_enemy_to_spawn.instance()
-			_unique_enemy_to_spawn.add_to_group("non_boss_enemy")
-			_unique_enemy_to_spawn.add_to_group("unique_while_alive")
-			if _unique_enemy_to_spawn.initial_scroll_speed == 0:
-				_unique_enemy_to_spawn.initial_scroll_speed = default_scroll_speed
-			if spawn_points.size() > 0:
-				var spawn_place = spawn_at_valid_height(_unique_enemy_to_spawn)
-				_unique_enemy_to_spawn.position = spawn_place
-				cached_parent_node.add_child(_unique_enemy_to_spawn)
+			var _unique_enemy_to_spawn = _get_pooled_unique_enemy()
+			if _unique_enemy_to_spawn != null:
+				if spawn_points.size() > 0:
+					var spawn_place = spawn_at_valid_height(_unique_enemy_to_spawn)
+					_unique_enemy_to_spawn.position = spawn_place
+					cached_parent_node.add_child(_unique_enemy_to_spawn)
 
 
 func enemy_to_spawn_next():
@@ -161,16 +167,16 @@ func spawn_at_valid_height(_enemy_to_spawn) -> Vector2:
 
 func spawn_enemy_to_scene():
 	if cached_parent_node != null:
-		var _enemy_to_spawn = enemy_to_spawn.instance()
-		_enemy_to_spawn.add_to_group("non_boss_enemy")
-		if _enemy_to_spawn.initial_scroll_speed == 0:
-			_enemy_to_spawn.initial_scroll_speed = default_scroll_speed
-		if spawn_points.size() > 0:
-			var spawn_place = spawn_at_valid_height(_enemy_to_spawn)
-			_enemy_to_spawn.position = spawn_place
-			cached_parent_node.add_child(_enemy_to_spawn)
+		var _enemy_to_spawn = _get_pooled_enemy(current_difficulty_tier)
+		if _enemy_to_spawn != null:
+			if spawn_points.size() > 0:
+				var spawn_place = spawn_at_valid_height(_enemy_to_spawn)
+				_enemy_to_spawn.position = spawn_place
+				cached_parent_node.add_child(_enemy_to_spawn)
+			else:
+				print("No spawn points found!")
 		else:
-			print("No spawn points found!")
+			print("Failed to get pooled enemy!")
 
 
 func _direct_spawn_dog(dog: PackedScene, dogType: String, position: Vector2, speed, disabled_float):
@@ -256,3 +262,160 @@ func add_enemy_to_spawn_list(enemy_to_add : PackedScene, tier : int):
 func check_for_unique_enemies():
 	var unique_while_alive_enemy = get_tree().get_nodes_in_group("unique_while_alive")
 	return unique_while_alive_enemy.size()
+
+# Enemy pooling system functions
+func _preload_enemy_pools():
+	print("EnemySpawner: Preloading enemy pools...")
+	
+	# Preload tier 1 enemies
+	if first_tier_enemy_list.size() > 0:
+		for i in range(pool_size_per_tier):
+			var enemy_scene = first_tier_enemy_list[rng.randi() % first_tier_enemy_list.size()]
+			var enemy_instance = enemy_scene.instance()
+			_prepare_pooled_enemy(enemy_instance)
+			tier1_enemy_pool.append(enemy_instance)
+	
+	# Preload tier 2 enemies (if available)
+	if second_tier_enemy_list.size() > 0:
+		for i in range(pool_size_per_tier):
+			var enemy_scene = second_tier_enemy_list[rng.randi() % second_tier_enemy_list.size()]
+			var enemy_instance = enemy_scene.instance()
+			_prepare_pooled_enemy(enemy_instance)
+			tier2_enemy_pool.append(enemy_instance)
+	
+	# Preload tier 3 enemies (if available)
+	if third_tier_enemy_list.size() > 0:
+		for i in range(pool_size_per_tier):
+			var enemy_scene = third_tier_enemy_list[rng.randi() % third_tier_enemy_list.size()]
+			var enemy_instance = enemy_scene.instance()
+			_prepare_pooled_enemy(enemy_instance)
+			tier3_enemy_pool.append(enemy_instance)
+	
+	# Preload unique enemies (if available)
+	if unique_enemy_list.size() > 0:
+		for i in range(pool_size_per_tier / 2):  # Fewer unique enemies
+			var enemy_scene = unique_enemy_list[rng.randi() % unique_enemy_list.size()]
+			var enemy_instance = enemy_scene.instance()
+			_prepare_pooled_enemy(enemy_instance)
+			enemy_instance.add_to_group("unique_while_alive")
+			unique_enemy_pool.append(enemy_instance)
+	
+	print("EnemySpawner: Preloading complete - ", 
+		  tier1_enemy_pool.size(), " tier1, ",
+		  tier2_enemy_pool.size(), " tier2, ",
+		  tier3_enemy_pool.size(), " tier3, ",
+		  unique_enemy_pool.size(), " unique enemies")
+
+func _prepare_pooled_enemy(enemy_instance: Node):
+	enemy_instance.add_to_group("non_boss_enemy")
+	if enemy_instance.initial_scroll_speed == 0:
+		enemy_instance.initial_scroll_speed = default_scroll_speed
+	enemy_instance.visible = false
+	enemy_instance.set_process(false)
+
+func _get_pooled_enemy(tier: int) -> Node:
+	var pool: Array
+	var fallback_list: Array
+	
+	match tier:
+		1:
+			pool = tier1_enemy_pool
+			fallback_list = first_tier_enemy_list
+		2:
+			pool = tier2_enemy_pool
+			fallback_list = second_tier_enemy_list
+		3:
+			pool = tier3_enemy_pool
+			fallback_list = third_tier_enemy_list
+		_:
+			pool = tier1_enemy_pool
+			fallback_list = first_tier_enemy_list
+	
+	if pool.size() > 0:
+		var enemy = pool.pop_back()
+		enemy.visible = true
+		enemy.set_process(true)
+		return enemy
+	else:
+		return _create_new_enemy_from_list(fallback_list)
+
+func _get_pooled_unique_enemy() -> Node:
+	if unique_enemy_pool.size() > 0:
+		var enemy = unique_enemy_pool.pop_back()
+		enemy.visible = true
+		enemy.set_process(true)
+		return enemy
+	else:
+		return _create_new_unique_enemy()
+
+func _create_new_enemy_from_list(enemy_list: Array) -> Node:
+	if enemy_list.size() > 0:
+		var enemy_scene = enemy_list[rng.randi() % enemy_list.size()]
+		var enemy_instance = enemy_scene.instance()
+		_prepare_pooled_enemy(enemy_instance)
+		enemy_instance.visible = true
+		enemy_instance.set_process(true)
+		return enemy_instance
+	return null
+
+func _create_new_unique_enemy() -> Node:
+	if unique_enemy_list.size() > 0:
+		var enemy_scene = unique_enemy_list[rng.randi() % unique_enemy_list.size()]
+		var enemy_instance = enemy_scene.instance()
+		_prepare_pooled_enemy(enemy_instance)
+		enemy_instance.add_to_group("unique_while_alive")
+		enemy_instance.visible = true
+		enemy_instance.set_process(true)
+		return enemy_instance
+	return null
+
+func _return_enemy_to_pool(enemy: Node):
+	if enemy == null or !is_instance_valid(enemy):
+		return
+	
+	# Determine which pool this enemy belongs to
+	var enemy_scene_path = enemy.filename
+	var pool: Array
+	var max_pool_size = pool_size_per_tier
+	
+	# Check if it's a unique enemy
+	if enemy.is_in_group("unique_while_alive"):
+		pool = unique_enemy_pool
+		max_pool_size = pool_size_per_tier / 2
+	else:
+		# Determine tier based on enemy type
+		for scene in first_tier_enemy_list:
+			if scene.resource_path == enemy_scene_path:
+				pool = tier1_enemy_pool
+				break
+		
+		if pool.size() == 0:  # Not found in tier 1
+			for scene in second_tier_enemy_list:
+				if scene.resource_path == enemy_scene_path:
+					pool = tier2_enemy_pool
+					break
+		
+		if pool.size() == 0:  # Not found in tier 1 or 2
+			for scene in third_tier_enemy_list:
+				if scene.resource_path == enemy_scene_path:
+					pool = tier3_enemy_pool
+					break
+		
+		if pool.size() == 0:  # Default to tier 1 if not found
+			pool = tier1_enemy_pool
+	
+	# Return to pool if there's space, otherwise destroy
+	if pool.size() < max_pool_size:
+		if enemy.get_parent() != null:
+			enemy.get_parent().remove_child(enemy)
+		enemy.visible = false
+		enemy.set_process(false)
+		# Reset enemy state if it has a reset method
+		if enemy.has_method("reset_for_pool"):
+			enemy.reset_for_pool()
+		pool.append(enemy)
+	else:
+		enemy.queue_free()
+
+func _on_enemy_return_to_pool(enemy: Node):
+	_return_enemy_to_pool(enemy)

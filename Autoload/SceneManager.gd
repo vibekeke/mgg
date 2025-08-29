@@ -95,6 +95,8 @@ func _load_scene_async(scene_path: String):
 			
 			if resource and resource is PackedScene:
 				get_tree().change_scene_to(resource)
+				yield(get_tree(), "idle_frame")
+				yield(get_tree(), "idle_frame")
 				tween.interpolate_property(color_rect, "modulate:a", 1.0, 0.0, fade_duration)
 				tween.start()
 				yield(tween, "tween_all_completed")
@@ -114,6 +116,8 @@ func _load_scene_fast(scene_path: String):
 	
 	if resource and resource is PackedScene:
 		get_tree().change_scene_to(resource)
+		yield(get_tree(), "idle_frame")
+		yield(get_tree(), "idle_frame")
 		tween.interpolate_property(color_rect, "modulate:a", 1.0, 0.0, fade_duration)
 		tween.start()
 		yield(tween, "tween_all_completed")
