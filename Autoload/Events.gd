@@ -165,7 +165,11 @@ func save_game(level_name : int, dog_info : Dictionary):
 
 func update_score(score: int):
 	tracked_score = score
-	
+
+func update_dogs(dog_type: String):
+	if not COLLECTED_DOGS.has(dog_type):
+		COLLECTED_DOGS[dog_type] = true
+
 func get_score() -> int:
 	return tracked_score
 

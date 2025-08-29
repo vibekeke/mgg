@@ -30,7 +30,6 @@ func _ready():
 		_on_level_event_complete('dummy_event', 5)
 
 func _on_dialogue_box_finished(node_id):
-	print("dialogue finished, node_id: ", node_id, ", self.get_instance_id(): ", self.get_instance_id())
 	if self.get_instance_id() == node_id:
 		yield(get_tree().create_timer(2.0), "timeout")
 		spawn_boss()
@@ -68,15 +67,13 @@ func display_dialogue():
 		self.get_instance_id(), 
 		DataClasses.Placement.LOWER, 
 		DataClasses.CharacterPortrait.None,
-		Color(0.0, 0.0, 0.0, 1.0),
-		Color(0.3, 0.1, 0.5, 1.0),
+		Color(0.0, 0.0, 0.0, 0.8),
+		Color(0.3, 0.1, 0.5, 0.8),
 		true,
 		3.0
-		)
+	)
 
 func trigger() -> void:
-	print("triggering boss event")
-	print("enemy spawner is ", enemy_spawner)
 	if enemy_spawner != null and platform_spawner != null:
 		Events.emit_signal("level_event_lock", event_name, event_number)
 		enemy_spawner.stop_enemy_spawner()
@@ -100,15 +97,12 @@ func _on_warning_finished():
 	display_dialogue()
 
 func event_start() -> void:
-	print("starting event - boss")
 	if boss_background_to_spawn != null:
 		boss_background_to_spawn.scale.x = 0.65
 		boss_background_to_spawn.scale.y = 0.65
 		enemy_spawner.spawn_instanced_background_element(boss_background_to_spawn, 'BackForestBackground', background_boss_spawn_place, background_boss_speed)
-	#end_event_timer.start()
 
 func end_event() -> void:
 	start_event_timer.stop()
 	Events.emit_signal("level_event_complete", event_name, event_number)
 	Events.emit_signal("level_event_lock", "", -1)
-	#self.queue_free()
