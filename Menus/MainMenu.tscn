@@ -203,8 +203,8 @@ custom_styles/normal = ExtResource( 3 )
 text = "Quit"
 
 [node name="Logo-downscaled" type="Sprite" parent="MenuLayer"]
-position = Vector2( 648, 343 )
-scale = Vector2( 0.731364, 0.731364 )
+position = Vector2( 581, 330 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
 
 [node name="GameTitle" type="RichTextLabel" parent="MenuLayer"]

@@ -97,9 +97,7 @@ texture = ExtResource( 7 )
 stretch_mode = 2
 
 [node name="Window" type="Node2D" parent="CanvasLayer"]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 941.402, 547.726 )
-scale = Vector2( 0.8, 0.8 )
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Window"]
 margin_left = -593.75

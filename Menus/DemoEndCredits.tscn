@@ -118,7 +118,7 @@ size = 36
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=20]
-size = 36
+size = 34
 font_data = ExtResource( 16 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -267,15 +267,15 @@ custom_fonts/italics_font = SubResource( 19 )
 custom_fonts/bold_font = SubResource( 1 )
 custom_fonts/normal_font = SubResource( 20 )
 bbcode_enabled = true
-bbcode_text = "[center][color=blue]...TO BE CONTINUED?[/color]
+bbcode_text = "[center][color=#F00080]...TO BE CONTINUED?[/color]
 
 Thank you so much for playing our demo! 
 
-If you liked the game, please show your support by leaving nice comments on Itch, and following our social medias.
+If you liked the game, please [color=#117cd6]show your support[/color] by leaving nice comments on Itch, and following our social medias.
 
 Or donate 2 dollars hehe.
 
-Also, if you haven't collected all 3 dogs yet, you should do that :^)"
+[color=#205080](also, if you haven't collected all 3 dogs yet, you should do that :^))"
 text = "...TO BE CONTINUED?
 
 Thank you so much for playing our demo! 
@@ -284,7 +284,7 @@ If you liked the game, please show your support by leaving nice comments on Itch
 
 Or donate 2 dollars hehe.
 
-Also, if you haven't collected all 3 dogs yet, you should do that :^)"
+(also, if you haven't collected all 3 dogs yet, you should do that :^))"
 
 [node name="NextButton" type="Button" parent="Window/TextureRect"]
 unique_name_in_owner = true
@@ -318,10 +318,28 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/bold_font = SubResource( 1 )
 custom_fonts/normal_font = SubResource( 21 )
 bbcode_enabled = true
-bbcode_text = "[center][color=blue]...CREDITS[/color]
-Boobobobobobobo thank you thank you"
-text = "...CREDITS
-Boobobobobobobo thank you thank you"
+bbcode_text = "[center]CREDITS
+
+This game was created by
+
+Tyler McAllister / @AwakeByDefault
+(Code & gameplay person)
+&
+Vibeke Selnes / @Bekeblob
+(Art and UI person)
+
+Also thanks to Trygvert for making the music????"
+text = "CREDITS
+
+This game was created by
+
+Tyler McAllister / @AwakeByDefault
+(Code & gameplay person)
+&
+Vibeke Selnes / @Bekeblob
+(Art and UI person)
+
+Also thanks to Trygvert for making the music????"
 
 [node name="Sparkles2" parent="Window/TextureRect" instance=ExtResource( 14 )]
 position = Vector2( 948, 803 )
