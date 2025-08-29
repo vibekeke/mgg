@@ -22,6 +22,8 @@ signal collected_star
 signal collected_heart
 signal collected_dog(dog_type)
 
+signal collected_all_dogs
+
 # level related
 signal enemy_taken_damage(enemy, health_value)
 signal regular_enemy_death
@@ -169,6 +171,8 @@ func update_score(score: int):
 func update_dogs(dog_type: String):
 	if not COLLECTED_DOGS.has(dog_type):
 		COLLECTED_DOGS[dog_type] = true
+	if COLLECTED_DOGS.size() >= 3:
+		self.emit_signal("collected_all_dogs")
 
 func get_score() -> int:
 	return tracked_score
