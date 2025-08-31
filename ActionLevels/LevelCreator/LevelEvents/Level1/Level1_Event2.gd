@@ -61,6 +61,9 @@ func _preload_all_objects():
 	
 	print("Level1_Event2: Preloading complete - ", preloaded_platforms.size(), " platforms, ", 
 		  preloaded_background_enemies.size(), " bg enemies, ", preloaded_enemies.size(), " enemies")
+	
+	# Signal that this event has finished loading
+	mark_loading_complete()
 
 func _spawn_preloaded_platform():
 	if preloaded_platforms.size() > 0:

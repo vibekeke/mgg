@@ -23,6 +23,9 @@ func _ready():
 			dog_to_spawn = 'ClearDogu'
 	if debug_mode:
 		_on_level_event_complete('dummy_event', 2)
+	
+	# This event has no heavy loading, mark as complete immediately
+	call_deferred("mark_loading_complete")
 
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 2:

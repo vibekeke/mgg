@@ -38,6 +38,11 @@ var tier3_enemy_pool: Array = []
 var unique_enemy_pool: Array = []
 var pool_size_per_tier: int = 10
 
+# Debug counters
+var instances_created: int = 0
+var instances_reused: int = 0
+var instances_returned_to_pool: int = 0
+
 func _ready():
 	rng.randomize()
 	build_cached_arrays()
@@ -61,6 +66,14 @@ func _ready():
 	spawn_unique_while_alive_timer.start()
 	
 	_preload_enemy_pools()
+	
+	# Start debug timer
+	var debug_timer = Timer.new()
+	debug_timer.set_name("pool_debug_timer")
+	debug_timer.connect("timeout", self, "_print_pool_stats")
+	debug_timer.set_wait_time(10.0)  # Print stats every 10 seconds
+	debug_timer.set_autostart(true)
+	self.add_child(debug_timer)
 
 func build_cached_arrays():
 	if !cached_arrays_built:
@@ -335,8 +348,10 @@ func _get_pooled_enemy(tier: int) -> Node:
 		var enemy = pool.pop_back()
 		enemy.visible = true
 		enemy.set_process(true)
+		instances_reused += 1
 		return enemy
 	else:
+		instances_created += 1
 		return _create_new_enemy_from_list(fallback_list)
 
 func _get_pooled_unique_enemy() -> Node:
@@ -344,8 +359,10 @@ func _get_pooled_unique_enemy() -> Node:
 		var enemy = unique_enemy_pool.pop_back()
 		enemy.visible = true
 		enemy.set_process(true)
+		instances_reused += 1
 		return enemy
 	else:
+		instances_created += 1
 		return _create_new_unique_enemy()
 
 func _create_new_enemy_from_list(enemy_list: Array) -> Node:
@@ -371,10 +388,22 @@ func _create_new_unique_enemy() -> Node:
 
 func _return_enemy_to_pool(enemy: Node):
 	if enemy == null or !is_instance_valid(enemy):
+		print("EnemySpawner: Tried to return invalid enemy to pool")
+		return
+	
+	# Skip if enemy doesn't have the expected structure (might be corrupted)
+	if !enemy.has_method("reset_for_pool"):
+		print("EnemySpawner: Enemy missing reset_for_pool method, destroying instead")
+		enemy.queue_free()
 		return
 	
 	# Determine which pool this enemy belongs to
 	var enemy_scene_path = enemy.filename
+	if enemy_scene_path == null or enemy_scene_path == "":
+		print("EnemySpawner: Enemy has no filename, destroying instead")
+		enemy.queue_free()
+		return
+		
 	var pool: Array
 	var max_pool_size = pool_size_per_tier
 	
@@ -406,16 +435,33 @@ func _return_enemy_to_pool(enemy: Node):
 	
 	# Return to pool if there's space, otherwise destroy
 	if pool.size() < max_pool_size:
+		# Safely remove from parent
 		if enemy.get_parent() != null:
 			enemy.get_parent().remove_child(enemy)
+		
+		# Safely reset visibility and processing
 		enemy.visible = false
 		enemy.set_process(false)
-		# Reset enemy state if it has a reset method
+		
+		# Reset enemy state - this might fail if enemy is corrupted
 		if enemy.has_method("reset_for_pool"):
 			enemy.reset_for_pool()
+		
 		pool.append(enemy)
+		instances_returned_to_pool += 1
+		print("EnemySpawner: Successfully returned enemy to pool. Pool size now: ", pool.size())
 	else:
+		print("EnemySpawner: Pool full, destroying enemy instead")
 		enemy.queue_free()
 
 func _on_enemy_return_to_pool(enemy: Node):
 	_return_enemy_to_pool(enemy)
+
+func _print_pool_stats():
+	print("=== ENEMY POOL STATS ===")
+	print("Instances created: ", instances_created)
+	print("Instances reused: ", instances_reused) 
+	print("Instances returned to pool: ", instances_returned_to_pool)
+	print("Pool efficiency: ", float(instances_reused) / max(instances_created + instances_reused, 1) * 100.0, "%")
+	print("Pool sizes - T1:", tier1_enemy_pool.size(), " T2:", tier2_enemy_pool.size(), " T3:", tier3_enemy_pool.size(), " Unique:", unique_enemy_pool.size())
+	print("========================")

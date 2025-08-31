@@ -187,3 +187,30 @@ func get_non_queue_free_rotator():
 
 func set_non_queue_free_rotator(non_queue_free_rotator : bool):
 	self.has_non_queue_free_rotator = non_queue_free_rotator
+
+func reset_for_pool():
+	# Reset enemy state for pooling
+	health_value = 1  # Reset to default, might need to store original value
+	hit_times = 0
+	is_move_disabled = false
+	has_invulnerability = false
+	
+	# Reset visual state
+	if is_instance_valid(sprite):
+		sprite.visible = true
+		sprite.modulate = Color(1,1,1,1)
+	
+	# Reset collision
+	if is_instance_valid(collision_shape):
+		collision_shape.disabled = false
+	
+	# Clean up death explosion if it exists
+	if active_death_explosion_node != null and is_instance_valid(active_death_explosion_node):
+		active_death_explosion_node.queue_free()
+		active_death_explosion_node = null
+	
+	# Stop timers
+	if damage_timer.is_connected("timeout", self, "_on_damage_timer"):
+		damage_timer.stop()
+	if eventually_queue_free_timer.is_connected("timeout", self, "_on_eventually_queue_free_timer"):
+		eventually_queue_free_timer.stop()

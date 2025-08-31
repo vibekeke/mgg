@@ -25,6 +25,9 @@ func _ready():
 	player_final_score = Events.get_score()
 	score_display.bbcode_text = score_display.bbcode_text + " " + str(player_final_score)
 	animation_player.play("fade_in")
+	
+	# Signal that scene is fully loaded (for SceneManager)
+	call_deferred("_emit_scene_loaded")
 
 func _on_RetryButton_pressed():
 	if faded_in:
@@ -67,3 +70,7 @@ func _on_QuitButton_focus_exited():
 
 func _on_QuitButton_mouse_entered():
 	quit_button.grab_focus()
+
+func _emit_scene_loaded():
+	print("GameOver: Scene fully loaded, emitting signal")
+	Events.emit_signal("scene_fully_loaded")

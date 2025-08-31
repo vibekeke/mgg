@@ -1,6 +1,7 @@
 extends Node2D
 
 signal level_start
+signal scene_fully_loaded
 
 onready var spawn_paths = $SpawnPaths
 onready var background_music = $BackgroundMusic
@@ -31,6 +32,9 @@ func _ready():
 	if !mute_audio:
 		if !background_music.is_playing():
 			background_music.play()
+	
+	# Wait for all events to finish loading
+	call_deferred("_wait_for_events_to_load")
 
 func add_initial_background_element():
 	if boss_background != null:
@@ -42,6 +46,52 @@ func _on_boss_spawn():
 	if !mute_audio:
 		background_music.stop()
 		boss_music.play()
+
+func _wait_for_events_to_load():
+	print("Level1_Forest: Waiting for all events to finish loading...")
+	
+	# Get all LevelEvent children
+	var events_manager = get_node("%LevelEventsManager")
+	var level_events = []
+	
+	for child in events_manager.get_children():
+		if child is LevelEvent:
+			level_events.append(child)
+			# Connect to their loading_complete signals
+			if not child.is_connected("loading_complete", self, "_on_event_loading_complete"):
+				child.connect("loading_complete", self, "_on_event_loading_complete")
+	
+	print("Level1_Forest: Found ", level_events.size(), " level events to wait for")
+	
+	# Check if any are already complete
+	_check_all_events_complete()
+
+func _on_event_loading_complete():
+	print("Level1_Forest: An event finished loading, checking if all are complete...")
+	_check_all_events_complete()
+
+func _check_all_events_complete():
+	var events_manager = get_node("%LevelEventsManager")
+	var total_events = 0
+	var completed_events = 0
+	
+	for child in events_manager.get_children():
+		if child is LevelEvent:
+			total_events += 1
+			if child.get_loading_complete():
+				completed_events += 1
+			else:
+				print("Level1_Forest: Still waiting for ", child.event_name)
+	
+	print("Level1_Forest: Events complete: ", completed_events, "/", total_events)
+	
+	if completed_events >= total_events and total_events > 0:
+		print("Level1_Forest: All events loaded! Emitting scene_fully_loaded signal")
+		Events.emit_signal("scene_fully_loaded")
+	elif total_events == 0:
+		# Fallback: no events found, emit immediately
+		print("Level1_Forest: No events found, emitting scene_fully_loaded immediately")
+		Events.emit_signal("scene_fully_loaded")
 
 func _on_confirm_level_start():
 	enemy_spawner.start_enemy_spawner()

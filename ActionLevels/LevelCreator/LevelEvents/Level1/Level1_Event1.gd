@@ -35,15 +35,61 @@ func _ready():
 	_preload_all_objects()
 
 func _preload_all_objects():
-	print("Level1_Event1: Preloading objects...")
+	print("Level1_Event1: Starting STRESS TEST preloading...")
+	var start_time = OS.get_ticks_msec()
 	
+	# Preload normal enemies
 	for i in range(3):
 		var enemy = enemy_to_spawn.instance()
 		enemy.visible = false
 		enemy.set_process(false)
 		preloaded_enemies.append(enemy)
 	
-	print("Level1_Event1: Preloading complete - ", preloaded_enemies.size(), " enemies")
+	# STRESS TEST: Create a bunch of dummy objects and do heavy processing
+	print("Level1_Event1: Creating 500 dummy objects for stress test...")
+	var dummy_objects = []
+	for i in range(500):
+		var dummy = enemy_to_spawn.instance()
+		dummy.visible = false
+		dummy.set_process(false)
+		dummy_objects.append(dummy)
+		
+		# Add some processing work every 50 objects
+		if i % 50 == 0:
+			_do_heavy_computation()
+			print("Level1_Event1: Stress test progress: ", i, "/500")
+	
+	# Clean up dummy objects
+	print("Level1_Event1: Cleaning up dummy objects...")
+	for dummy in dummy_objects:
+		dummy.queue_free()
+	dummy_objects.clear()
+	
+	# Add final heavy computation
+	print("Level1_Event1: Final heavy computation...")
+	for j in range(3):
+		_do_heavy_computation()
+	
+	# STRESS TEST: Add 20 second timer
+	print("Level1_Event1: Starting 20 second timer...")
+	yield(get_tree().create_timer(20.0), "timeout")
+	print("Level1_Event1: 20 second timer finished!")
+	
+	var end_time = OS.get_ticks_msec()
+	print("Level1_Event1: STRESS TEST complete - took ", end_time - start_time, "ms")
+	print("Level1_Event1: Normal preloading complete - ", preloaded_enemies.size(), " enemies")
+	
+	# Signal that this event has finished loading
+	mark_loading_complete()
+
+func _do_heavy_computation():
+	# Simulate heavy CPU work
+	var result = 0
+	for i in range(100000):
+		result += sin(i) * cos(i) * tan(i * 0.1)
+		if i % 10000 == 0:
+			# Force a small delay to make it more noticeable
+			yield(get_tree(), "idle_frame")
 
 func _spawn_preloaded_enemy_at_position(position: Vector2, speed: int):
 	if preloaded_enemies.size() > 0:
