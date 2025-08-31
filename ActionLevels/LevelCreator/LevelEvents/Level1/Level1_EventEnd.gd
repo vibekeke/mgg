@@ -14,7 +14,6 @@ func _ready():
 	event_name = 'Level1_EventEnd'
 	Events.connect("collected_dog", self, "_on_collected_dog")
 	if debug_mode:
-		print("event start debug")
 		event_start()
 
 

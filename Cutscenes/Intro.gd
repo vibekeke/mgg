@@ -11,7 +11,15 @@ func _ready():
 	$AyyLmao2.set_modulate(Color(1,1,1,0))
 
 func display_dialogue():
-	MggDialogue.create_dialogue_balloon("intro", intro_dialog, self.get_parent().get_instance_id(), DataClasses.Placement.LOWER, DataClasses.CharacterPortrait.None)
+	MggDialogue.create_dialogue_balloon(
+		"intro", 
+		intro_dialog,
+		self.get_parent().get_instance_id(),
+		DataClasses.Placement.LOWER, 
+		DataClasses.CharacterPortrait.None,
+		Color(0.12549, 0.619608, 1, 0.25),
+		Color(0.0, 0.0, 0.0, 0.25)
+		)
 
 func _process(delta):
 	if tv_sound_finished:

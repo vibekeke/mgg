@@ -4,17 +4,17 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 4
+resource_version = 6
 syntax_version = 2
 raw_text = "~ intro
 
-Have the bird and fish been deployed?
-Yes sir, the girl should be awakening soon.
-What about the boy?
-That will take more time. But once he awakens the girl will have a real challenge.
-Perfect...
-Finally...
-A world where Moonlight Miko will be real!"
+???: Have the bird and fish been deployed?
+???: Yes sir, the girl should be awakening soon.
+???: What about the boy?
+???: That will take more time. But once he awakens the girl will have a real challenge.
+???: Perfect...
+???: Finally...
+???: A world where Moonlight Miko will be real!"
 errors = [  ]
 titles = {
 "intro": "2"
@@ -26,7 +26,8 @@ lines = {
 "type": "title"
 },
 "2": {
-"character": "",
+"character": "???",
+"character_replacements": [  ],
 "next_id": "3",
 "replacements": [  ],
 "text": "Have the bird and fish been deployed?",
@@ -34,7 +35,8 @@ lines = {
 "type": "dialogue"
 },
 "3": {
-"character": "",
+"character": "???",
+"character_replacements": [  ],
 "next_id": "4",
 "replacements": [  ],
 "text": "Yes sir, the girl should be awakening soon.",
@@ -42,7 +44,8 @@ lines = {
 "type": "dialogue"
 },
 "4": {
-"character": "",
+"character": "???",
+"character_replacements": [  ],
 "next_id": "5",
 "replacements": [  ],
 "text": "What about the boy?",
@@ -50,7 +53,8 @@ lines = {
 "type": "dialogue"
 },
 "5": {
-"character": "",
+"character": "???",
+"character_replacements": [  ],
 "next_id": "6",
 "replacements": [  ],
 "text": "That will take more time. But once he awakens the girl will have a real challenge.",
@@ -58,7 +62,8 @@ lines = {
 "type": "dialogue"
 },
 "6": {
-"character": "",
+"character": "???",
+"character_replacements": [  ],
 "next_id": "7",
 "replacements": [  ],
 "text": "Perfect...",
@@ -66,7 +71,8 @@ lines = {
 "type": "dialogue"
 },
 "7": {
-"character": "",
+"character": "???",
+"character_replacements": [  ],
 "next_id": "8",
 "replacements": [  ],
 "text": "Finally...",
@@ -74,7 +80,8 @@ lines = {
 "type": "dialogue"
 },
 "8": {
-"character": "",
+"character": "???",
+"character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
 "text": "A world where Moonlight Miko will be real!",
