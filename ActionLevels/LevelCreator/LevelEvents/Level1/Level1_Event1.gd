@@ -52,7 +52,6 @@ func event_start() -> void:
 		print("enemy spawner is null")
 		
 func display_dialogue():
-	print("Creating dialogue balloon for level1_event1")
 	MggDialogue.create_dialogue_balloon(
 		"level1_event1", 
 		level1_event1_dialog, 
@@ -63,7 +62,7 @@ func display_dialogue():
 		Color(0.0, 0.0, 0.0, 0.25),
 		true,
 		1.5
-		)
+	)
 
 func _on_dialogue_box_finished(node_id):
 	print("dialogue finished, node_id: ", node_id, ", self.get_instance_id(): ", self.get_instance_id())

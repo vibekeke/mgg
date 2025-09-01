@@ -15,14 +15,17 @@ onready var boss_background_to_spawn : Object = preload("res://ActionLevels/Leve
 onready var boss : PackedScene = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
 var background_boss_spawn_place = Vector2(-500, 700)
 var background_boss_speed = 2000
+var boss_instance = null
 export var time_until_event_start = 3.0
 export var debug_mode : bool = false
 export var level1_event1_dialog : Resource
 
 func _ready():
+	boss_instance = boss.instance()
 	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
 	Events.connect("background_element_offscreen", self, "_on_background_element_offscreen")
+	Events.connect("big_bird_boss_defeated", self, "_on_big_bird_boss_defeated")
 	event_number = 6 # last level event
 	boss_warning_tape.connect("warning_finished", self, "_on_warning_finished")
 	event_name = "Level1_EventBoss"
@@ -77,7 +80,6 @@ func display_dialogue():
 		)
 
 func trigger() -> void:
-	print("I'm triggered")
 	# Set up timers if they haven't been set up yet (needed for debug mode)
 	if not wait_after_stopping_spawner_timer.is_inside_tree():
 		setup_timers()
@@ -116,7 +118,7 @@ func _on_background_element_offscreen(element_name):
 
 func spawn_boss():
 	enemy_spawner.kill_non_boss_enemies()
-	enemy_spawner._direct_spawn_boss_at_position(boss, Vector2(1510, 620), 0)
+	enemy_spawner._direct_spawn_boss_at_position(boss_instance, Vector2(1510, 620), 0)
 
 func _on_warning_finished():
 	display_dialogue()
@@ -128,8 +130,11 @@ func event_start() -> void:
 		boss_background_to_spawn.scale.y = 0.65
 		enemy_spawner.spawn_instanced_background_element(boss_background_to_spawn, 'BackForestBackground', background_boss_spawn_place, background_boss_speed)
 
+func _on_big_bird_boss_defeated(death_position):
+	end_event()
+
 func end_event() -> void:
+	Events.emit_signal("player_invincible", true)
 	start_event_timer.stop()
 	Events.emit_signal("level_event_complete", event_name, event_number)
 	Events.emit_signal("level_event_lock", "", -1)
-	#self.queue_free()

@@ -92,6 +92,9 @@ func call_death(count_as_regular_death: bool):
 	if count_as_regular_death:
 		Events.emit_signal("regular_enemy_death")
 	if is_boss:
+		# Emit boss-specific death signal if it's BigBird
+		if enemy_logic_instance != null and enemy_logic_instance.has_method("get_class") and enemy_logic_instance.get_class() == "BigBird":
+			Events.emit_signal("big_bird_boss_defeated", area2d.global_position)
 		Events.emit_signal("level_complete")
 	if is_instance_valid(collision_shape):
 		collision_shape.disabled = true

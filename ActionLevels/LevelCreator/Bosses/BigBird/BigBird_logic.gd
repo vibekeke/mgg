@@ -92,29 +92,7 @@ func post_intro():
 		
 		$CanvasLayer/DebugSliders/VBoxContainer/ProjectileSpeedSlider.value = projectile_speed
 		$CanvasLayer/DebugSliders/VBoxContainer/ProjectileSpeedTitle.text = "Projectile Speed: " + str(projectile_speed)
-	
-#func _ready():
-#	_fire_rate_timer_setup()
-#	apply_new_bullet_phase(current_phase)
-#	_setup_bullets()
-#	if debug_mode:
-#		$CanvasLayer/DebugSliders/VBoxContainer/RotationSpeedSlider.value = rotate_speed
-#		$CanvasLayer/DebugSliders/VBoxContainer/RotationSpeedTitle.text = "Rotation Speed: " + str(rotate_speed)
-#
-#		$CanvasLayer/DebugSliders/VBoxContainer/SpawnCountSlider.value = spawn_point_count
-#		$CanvasLayer/DebugSliders/VBoxContainer/SpawnCountTitle.text = "Spawn Count: " + str(spawn_point_count)
-#
-#		$CanvasLayer/DebugSliders/VBoxContainer/FireRateSlider.value = fire_rate_timer_wait_time
-#		$CanvasLayer/DebugSliders/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(fire_rate_timer_wait_time)
-#
-#		$CanvasLayer/DebugSliders/VBoxContainer/RadiusSlider.value = radius
-#		$CanvasLayer/DebugSliders/VBoxContainer/RadiusTitle.text = "Radius: " + str(radius)
-#
-#		$CanvasLayer/DebugSliders/VBoxContainer/ProjectileSpeedSlider.value = projectile_speed
-#		$CanvasLayer/DebugSliders/VBoxContainer/ProjectileSpeedTitle.text = "Projectile Speed: " + str(projectile_speed)
-#	else:
-#		$CanvasLayer.visible = false
-		
+
 func set_pattern_debug():
 	_setup_bullets()
 
@@ -122,7 +100,6 @@ func _fire_rate_timer_setup():
 	fire_rate_timer.set_name("boss_fire_rate_timer")
 	fire_rate_timer.connect("timeout", self, "_on_fire_rate_timeout")
 	self.add_child(fire_rate_timer)
-	#parent_node.add_child(fire_rate_timer)
 
 func _on_fire_rate_timeout():
 	for s in rotator.get_children():
@@ -153,7 +130,6 @@ func _setup_bullets():
 
 
 func apply_new_bullet_phase(phase_number: int):
-	print("transitioning to phase -> ", phase_number)
 	if debug_mode:
 		pass
 	else:
