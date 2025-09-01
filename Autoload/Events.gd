@@ -100,7 +100,6 @@ onready var enemyPaths = {
 	'Satan': 'res://ActionLevels/LevelCreator/Enemies/Satan/Satan.tscn',
 	'PathedMisbeehave': 'res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn',
 	'SneakySnake': 'res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake.tscn',
-	'NewMisbeehave': 'res://ActionLevels/LevelCreator/Enemies/NewMisbeehave/NewMisbeehave.tscn',
 	'BigBird': 'res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn'
 }
 
