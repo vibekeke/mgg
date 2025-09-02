@@ -168,6 +168,7 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 MggDialogue="*res://Autoload/MggDialogue.gd"
 Utils="*res://utils/Utils.gd"
 SceneManager="*res://Autoload/SceneManager.tscn"
+AudioManager="*res://Autoload/AudioManager.gd"
 
 [debug]
 
