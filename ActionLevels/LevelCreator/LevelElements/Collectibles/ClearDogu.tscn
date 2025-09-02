@@ -8,5 +8,4 @@ modulate = Color( 0, 0, 0, 0.52549 )
 material = ExtResource( 2 )
 scale = Vector2( 0.75, 0.75 )
 frames = ExtResource( 1 )
-frame = 8
 playing = true

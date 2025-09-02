@@ -77,13 +77,11 @@ func display_dialogue():
 		Color(0.3, 0.1, 0.5, 0.6),
 		true,
 		3.0
-		)
+	)
 
 func trigger() -> void:
-	# Set up timers if they haven't been set up yet (needed for debug mode)
 	if not wait_after_stopping_spawner_timer.is_inside_tree():
 		setup_timers()
-	
 	if enemy_spawner != null and platform_spawner != null:
 		Events.emit_signal("level_event_lock", event_name, event_number)
 		enemy_spawner.stop_enemy_spawner()
@@ -124,7 +122,6 @@ func _on_warning_finished():
 	display_dialogue()
 
 func event_start() -> void:
-	print("starting event - boss")
 	if boss_background_to_spawn != null:
 		boss_background_to_spawn.scale.x = 0.65
 		boss_background_to_spawn.scale.y = 0.65
