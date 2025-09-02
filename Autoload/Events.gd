@@ -10,6 +10,7 @@ signal player_local_position(local_position)
 signal has_charge_shot # whether player has charge shot or not
 signal fired_charge_shot # charge shot has just been fired
 signal player_standing(standing)
+signal player_invincible(invincible)
 
 # game state, e.g. scene transitions, game overs, cutscenes
 signal transition_to_scene(to_scene, to_dialogue_screen)
@@ -22,9 +23,12 @@ signal collected_star
 signal collected_heart
 signal collected_dog(dog_type)
 
+signal collected_all_dogs
+
 # level related
 signal enemy_taken_damage(enemy, health_value)
 signal regular_enemy_death
+signal big_bird_boss_defeated(death_position)
 signal enemy_despawned
 signal level_spawn_points(spawn_points)
 signal boss_spawned
@@ -100,7 +104,6 @@ onready var enemyPaths = {
 	'Satan': 'res://ActionLevels/LevelCreator/Enemies/Satan/Satan.tscn',
 	'PathedMisbeehave': 'res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn',
 	'SneakySnake': 'res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake.tscn',
-	'NewMisbeehave': 'res://ActionLevels/LevelCreator/Enemies/NewMisbeehave/NewMisbeehave.tscn',
 	'BigBird': 'res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn'
 }
 
@@ -165,7 +168,13 @@ func save_game(level_name : int, dog_info : Dictionary):
 
 func update_score(score: int):
 	tracked_score = score
-	
+
+func update_dogs(dog_type: String):
+	if not COLLECTED_DOGS.has(dog_type):
+		COLLECTED_DOGS[dog_type] = true
+	if COLLECTED_DOGS.size() >= 3:
+		self.emit_signal("collected_all_dogs")
+
 func get_score() -> int:
 	return tracked_score
 

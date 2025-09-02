@@ -11,8 +11,7 @@ onready var enemy_spawner = get_node("%EnemySpawner")
 onready var platform_spawner = get_node("%PlatformSpawner")
 onready var level_start_display = get_node("%LevelStartDisplay")
 export var boss_background : PackedScene
-export var mute_audio = false # temporary
-var start_sfx = preload("res://sounds/level/selection_confirm.wav")
+export var mute_audio = false
 
 func _ready():
 	level_start_display.connect("confirm_level_start", self, "_on_confirm_level_start")
@@ -21,6 +20,7 @@ func _ready():
 	Events.connect("boss_spawned", self, "_on_boss_spawn")
 	Events.emit_signal("background_moving_enabled", false)
 	Events.emit_signal("player_standing", true)
+	Events.COLLECTED_DOGS = {}
 
 	var num_spawn_points = spawn_paths.get_curve().get_point_count()
 	var spawn_point_dictionary = {}

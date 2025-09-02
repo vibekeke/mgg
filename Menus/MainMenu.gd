@@ -6,6 +6,7 @@ onready var star_select_start = get_node("%StarSelectStart")
 onready var star_select_quit = get_node("%StarSelectQuit")
 onready var star_select_room = get_node("%StarSelectRoom")
 onready var title_screen_animation = get_node("%TitleScreenAnimation")
+onready var all_dogs_completion_message = get_node("%AllDogsCompletion")
 onready var camera = get_node("%Camera2D")
 onready var tween = get_node("%Tween")
 
@@ -24,7 +25,13 @@ var has_completed_demo : bool = false
 var button_pressed : bool = false
 var first_focus : bool = true
 
+var all_dogs_collected : bool = false
+
 func _ready():
+	all_dogs_completion_message.connect("all_dogs_message_finished", self, "_on_all_dogs_finished_message")
+	all_dogs_collected = Events.COLLECTED_DOGS.size() >= 3
+	if all_dogs_collected:
+		all_dogs_collected_message_display()
 	tween.interpolate_property(camera, "position",
 		camera.position, Vector2(961, 540), 2,
 		Tween.TRANS_SINE, Tween.EASE_IN)
@@ -32,7 +39,7 @@ func _ready():
 	SceneManager.visible = true
 	var directory = Directory.new()
 	var fileExists = directory.file_exists(Events.SAVE_FILE_LOCATION)
-	if !has_completed_demo:
+	if !all_dogs_collected:
 		room_button.text = "???"
 		room_button.disabled = true
 	else:
@@ -42,6 +49,9 @@ func _ready():
 	audio_player2.stream = hover_sfx
 	audio_player3.stream = hover_sfx
 	
+
+func all_dogs_collected_message_display():
+	all_dogs_completion_message.display_message()
 
 func _process(delta):
 	if (title_screen_animation.is_playing() or tween.is_active()) and Input.is_action_just_pressed("ui_accept"):

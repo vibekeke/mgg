@@ -231,13 +231,12 @@ func _direct_instanced_boss_at_position(boss: PackedScene, position: Vector2, sp
 		parent_node.add_child(boss)
 		Events.emit_signal("boss_spawned")
 
-func _direct_spawn_boss_at_position(boss: PackedScene, position: Vector2, speed):
+func _direct_spawn_boss_at_position(boss_instance, position: Vector2, speed):
 	var parent_node = self.get_parent()
-	if parent_node != null && boss != null:
-		var _boss_to_spawn = boss.instance()
-		_boss_to_spawn.add_to_group("boss_enemy")
-		_boss_to_spawn.global_position = position
-		parent_node.add_child(_boss_to_spawn)
+	if parent_node != null && boss_instance != null:
+		boss_instance.add_to_group("boss_enemy")
+		boss_instance.global_position = position
+		parent_node.add_child(boss_instance)
 		Events.emit_signal("boss_spawned")
 
 

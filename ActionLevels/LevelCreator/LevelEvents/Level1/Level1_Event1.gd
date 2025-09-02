@@ -13,10 +13,6 @@ var start_event_timer = Timer.new()
 var wait_after_stopping_spawner_timer = Timer.new()
 
 func _ready():
-	if main_level != null:
-		main_level.connect('level_start', self, "_on_level_start")
-	else:
-		print("No level detected in path, events will not run")
 	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
 	start_event_timer.set_name("Level1_Event1_start_timer")
 	start_event_timer.connect("timeout", self, "trigger")
@@ -56,7 +52,6 @@ func event_start() -> void:
 		print("enemy spawner is null")
 		
 func display_dialogue():
-	print("Creating dialogue balloon for level1_event1")
 	MggDialogue.create_dialogue_balloon(
 		"level1_event1", 
 		level1_event1_dialog, 
@@ -67,7 +62,7 @@ func display_dialogue():
 		Color(0.0, 0.0, 0.0, 0.25),
 		true,
 		1.5
-		)
+	)
 
 func _on_dialogue_box_finished(node_id):
 	print("dialogue finished, node_id: ", node_id, ", self.get_instance_id(): ", self.get_instance_id())
@@ -83,5 +78,3 @@ func end_event() -> void:
 	Events.emit_signal("level_event_lock", "", -1)
 	self.queue_free()
 	
-func _on_level_start() -> void:
-	start_initial_event()

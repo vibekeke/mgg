@@ -1,0 +1,150 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://HUD/readable_panels.tres" type="StyleBox" id=2]
+[ext_resource path="res://Menus/AllDogsCompletion.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 54
+outline_size = 4
+outline_color = Color( 0.262745, 0.435294, 1, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CenterContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 400 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CenterContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "hide_message"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("CenterContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.14, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 400 ), Vector2( 0, 380 ), Vector2( 0, 360 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CenterContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "hide_message"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("CenterContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.14, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 360 ), Vector2( 0, 380 ), Vector2( 0, 400 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CenterContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.13 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="AllDogsCompletion" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -140.0
+margin_right = -360.0
+margin_bottom = 160.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer"]
+margin_left = 300.0
+margin_top = 150.0
+margin_right = 300.0
+margin_bottom = 150.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+margin_right = 600.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 600, 300 )
+custom_styles/panel = ExtResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Panel/MarginContainer"]
+margin_right = 600.0
+margin_bottom = 300.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/Panel/MarginContainer/CenterContainer"]
+margin_top = 50.0
+margin_right = 600.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 600, 200 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]For saving all of the dogs you've unlocked the secret room![/center]"
+meta_underlined = false
+text = "For saving all of the dogs you've unlocked the secret room!"
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/RESET = SubResource( 3 )
+anims/display_message = SubResource( 2 )
+anims/hide_message = SubResource( 4 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
