@@ -6,7 +6,6 @@ onready var standing_collision = $StandingCollisionShape
 onready var sliding_collision = $SlidingCollisionShape
 onready var visibility_notifier = $VisibilityNotifier2D
 
-
 onready var staff_forward = $StaffForward
 onready var _forward_animation_player = $StaffForward/AnimationPlayer
 onready var _forward_animation_tree = $StaffForward/AnimationTree
@@ -99,6 +98,7 @@ export (PackedScene) var charge_shot
 onready var has_charge_shot = false
 
 var is_standing = true
+var is_invincible = false
 
 var sprite_anim_to_player_name = {
 	'run': 'Run',
@@ -126,7 +126,7 @@ func _ready():
 	Events.connect("has_charge_shot", self, "_on_has_charge_shot")
 	Events.connect("in_battle_dialogue", self, "_on_in_battle_dialogue")
 	Events.connect("player_standing", self, "_on_player_standing")
-	
+	Events.connect("player_invincible", self, "_on_player_invincible")
 	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
 	_forward_animation_tree.active = true
 	_up_animation_tree.active = true
@@ -323,6 +323,8 @@ func _on_disable_player_action(to_disable: bool):
 	self.inputs_disabled = to_disable
 
 func take_damage(damage):
+	if debug_mode or is_invincible:
+		return
 	if !in_battle_dialogue:
 		current_health = current_health - damage
 		Events.emit_signal("player_damaged", damage)
@@ -347,6 +349,9 @@ func _on_collected_heart():
 
 func _on_player_standing(standing: bool):
 	is_standing = standing
+
+func _on_player_invincible(_is_invincible : bool):
+	is_invincible = _is_invincible
 
 func _physics_process(delta):
 	if self.global_position.y < 540 && start_respawning_player:
@@ -453,8 +458,8 @@ func _process(delta):
 	Events.emit_signal("player_local_position", self.position)
 	animation_to_show()
 	if debug_mode:
-		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
-
+		#$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
+		pass
 
 func setup_debug_canvas(debug_enabled: bool):
 	if debug_enabled:
@@ -477,7 +482,7 @@ func setup_debug_canvas(debug_enabled: bool):
 		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider.value = jump_time_to_descent
 		
 
-		$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
+		#$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
 		
 		$DebugCanvasLayer/Control/VBoxContainer/SlideDurationTitle.text = "Slide Duration: " + str(slide_duration)
 		$DebugCanvasLayer/Control/VBoxContainer/SlideDurationSlider.value = slide_duration
