@@ -2,8 +2,8 @@ extends Node2D
 
 export (float) var speed = 200
 
-onready var area2d = $Projectile/Area2D
-onready var visual_body = $VisualStar
+onready var area2d : Area2D = get_node("%Area2D")
+onready var visual_body : AnimatedSprite = get_node("%Bang")
 
 func off_leftside_screen():
 	return self.global_position.x < 0 || self.global_position.y < 0
