@@ -41,7 +41,6 @@ func _on_ResumeBtn_pressed():
 
 func _on_QuitBtn_pressed(): #Should return to title screen!
 	self.is_paused = false
-	print("pressed quit")
 	Events.emit_signal("transition_to_scene", "TitleScreen", false)
 
 func _on_BackBtn_pressed():	 #Should restart scene
