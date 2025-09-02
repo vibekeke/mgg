@@ -14,12 +14,17 @@ onready var start_button : Button = get_node("%StartButton")
 onready var room_button : Button = get_node("%RoomButton")
 onready var quit_button : Button = get_node("%QuitButton")
 
+onready var cheat_code_detection : PoolStringArray = PoolStringArray()
+var successful_cheat_code : String = "00112323"
+var cheat_code_activated : bool = false
+
 var has_completed_demo : bool = false
 var button_pressed : bool = false
 
 var all_dogs_collected : bool = false
 
 func _ready():
+	cheat_code_detection = []
 	all_dogs_completion_message.connect("all_dogs_message_finished", self, "_on_all_dogs_finished_message")
 	all_dogs_collected = Events.COLLECTED_DOGS.size() >= 3
 	if all_dogs_collected:
@@ -101,4 +106,32 @@ func _on_RoomButton_mouse_entered():
 
 func _on_StartButton_mouse_entered():
 	start_button.grab_focus()
+
+func activate_cheat_code():
+	if not cheat_code_activated:
+		cheat_code_activated = true
+		room_button.text = "Bedroom"
+		room_button.disabled = false
+
+func _input(event):
+	var input_code = ""
+	
+	if event.is_action_pressed("ui_up"):
+		input_code = "0"
+	elif event.is_action_pressed("ui_down"):
+		input_code = "1"
+	elif event.is_action_pressed("ui_left"):
+		input_code = "2"
+	elif event.is_action_pressed("ui_right"):
+		input_code = "3"
+	
+	if input_code != "":
+		cheat_code_detection.append(input_code)
+		
+		if cheat_code_detection.size() > 8:
+			cheat_code_detection.remove(0)
+		
+		if cheat_code_detection.join("") == successful_cheat_code:
+			activate_cheat_code()
+
 
