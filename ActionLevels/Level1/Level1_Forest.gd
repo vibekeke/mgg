@@ -10,10 +10,12 @@ onready var level_background = get_node("%LevelBackground")
 onready var enemy_spawner = get_node("%EnemySpawner")
 onready var platform_spawner = get_node("%PlatformSpawner")
 onready var level_start_display = get_node("%LevelStartDisplay")
+onready var vhs_filter = get_node("%VHS")
 export var boss_background : PackedScene
 export var mute_audio = false
 
 func _ready():
+	Events.set_vhs_shader(Events.vhs_filter_state_unpaused, vhs_filter)
 	level_start_display.connect("confirm_level_start", self, "_on_confirm_level_start")
 	enemy_spawner.stop_enemy_spawner()
 	platform_spawner.stop_platform_spawner()
