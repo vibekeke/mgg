@@ -38,7 +38,7 @@ scale = Vector2( 1.4, 0.65 )
 
 [node name="Bang" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 3 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
