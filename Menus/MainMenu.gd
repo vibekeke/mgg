@@ -14,10 +14,6 @@ onready var start_button : Button = get_node("%StartButton")
 onready var room_button : Button = get_node("%RoomButton")
 onready var quit_button : Button = get_node("%QuitButton")
 
-var hover_sfx = preload("res://sounds/UI sounds/vgmenuhover.wav")
-var confirm_sfx = preload("res://sounds/UI sounds/vgmenuselect.wav")
-var confirm2_sfx = preload("res://sounds/level/selection_confirm.wav")
-
 var has_completed_demo : bool = false
 var button_pressed : bool = false
 var first_focus : bool = true
