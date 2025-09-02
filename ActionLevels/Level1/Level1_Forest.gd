@@ -10,7 +10,7 @@ onready var enemy_spawner = get_node("%EnemySpawner")
 onready var platform_spawner = get_node("%PlatformSpawner")
 onready var level_start_display = get_node("%LevelStartDisplay")
 export var boss_background : PackedScene
-export var mute_audio = false # temporary
+export var mute_audio = false
 
 func _ready():
 	level_start_display.connect("confirm_level_start", self, "_on_confirm_level_start")

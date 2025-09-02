@@ -10,6 +10,7 @@ signal player_local_position(local_position)
 signal has_charge_shot # whether player has charge shot or not
 signal fired_charge_shot # charge shot has just been fired
 signal player_standing(standing)
+signal player_invincible(invincible)
 
 # game state, e.g. scene transitions, game overs, cutscenes
 signal transition_to_scene(to_scene, to_dialogue_screen)
@@ -27,6 +28,7 @@ signal collected_all_dogs
 # level related
 signal enemy_taken_damage(enemy, health_value)
 signal regular_enemy_death
+signal big_bird_boss_defeated(death_position)
 signal enemy_despawned
 signal level_spawn_points(spawn_points)
 signal boss_spawned

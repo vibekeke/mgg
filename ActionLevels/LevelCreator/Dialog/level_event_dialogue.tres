@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 13
+resource_version = 14
 syntax_version = 2
 raw_text = "~ level1_event1
 
@@ -13,18 +13,41 @@ Angel: Bees? Un-BEE-leivable [wait=1.5]
 ~ level1_event2
 
 ~ level1_event_boss
-Big Bird of Darkness: I am the [shake rate=7 level=15]darkness[/shake]. [wait=1.5] \\nI am the [shake rate=7 level=15]night[/shake]."
+Big Bird of Darkness: I am the [shake rate=7 level=15]darkness[/shake]. [wait=1.5] \\nI am the [shake rate=7 level=15]night[/shake].
+
+~ level1_event_end
+Angel: You did it!
+Angel: But what was that weird thing on top of that bird?"
 errors = [  ]
 titles = {
 "level1_event1": "2",
 "level1_event2": "6",
-"level1_event_boss": "7"
+"level1_event_boss": "7",
+"level1_event_end": "10"
 }
 lines = {
 "0": {
 "next_id": "2",
 "text": "level1_event1",
 "type": "title"
+},
+"10": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "11",
+"replacements": [  ],
+"text": "You did it!",
+"translation_key": "You did it!",
+"type": "dialogue"
+},
+"11": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "But what was that weird thing on top of that bird?",
+"translation_key": "But what was that weird thing on top of that bird?",
+"type": "dialogue"
 },
 "2": {
 "character": "Angel",
@@ -55,5 +78,10 @@ I am the [shake rate=7 level=15]night[/shake].",
 "translation_key": "I am the [shake rate=7 level=15]darkness[/shake]. [wait=1.5] 
 I am the [shake rate=7 level=15]night[/shake].",
 "type": "dialogue"
+},
+"9": {
+"next_id": "10",
+"text": "level1_event_end",
+"type": "title"
 }
 }

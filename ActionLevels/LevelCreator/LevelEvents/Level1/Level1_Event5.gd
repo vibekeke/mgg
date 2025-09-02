@@ -1,6 +1,7 @@
 extends LevelEvent
 
 export var debug_mode : bool = false
+export var level1_event1_dialog : Resource
 
 onready var enemy_spawner = get_node("%EnemySpawner")
 onready var platform_spawner = get_node("%PlatformSpawner")
