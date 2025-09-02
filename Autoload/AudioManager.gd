@@ -2,7 +2,10 @@ extends Node
 
 var voices := 15
 var sound_effects = {
-	"GunShot" : preload("res://sounds/gunnerfly/Laser-weapon 2 - Sound effects Pack 2.wav")
+	"ui_hover" : preload("res://sounds/UI sounds/vgmenuhover.wav"),
+	"ui_confirm" : preload("res://sounds/UI sounds/vgmenuselect.wav"),
+	"ui_confirm_2" : preload("res://sounds/UI sounds/vgmenuselect.wav"),
+	"gunshot" : preload("res://sounds/gunnerfly/Laser-weapon 2 - Sound effects Pack 2.wav")
 }
 var music = {}
 

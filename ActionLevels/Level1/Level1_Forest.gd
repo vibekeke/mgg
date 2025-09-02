@@ -46,8 +46,7 @@ func _on_boss_spawn():
 		boss_music.play()
 
 func _on_confirm_level_start():
-	sfx.stream = start_sfx
-	sfx.play(0.06)
+	AudioManager.playSFX("ui_confirm")
 	enemy_spawner.start_enemy_spawner()
 	platform_spawner.start_platform_spawner()
 	Events.emit_signal("background_moving_enabled", true)

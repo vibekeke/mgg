@@ -14,9 +14,6 @@ onready var start_button : Button = get_node("%StartButton")
 onready var room_button : Button = get_node("%RoomButton")
 onready var quit_button : Button = get_node("%QuitButton")
 
-onready var audio_player1 = $AudioStreamPlayer
-onready var audio_player2 = $AudioStreamPlayer2
-onready var audio_player3 = $AudioStreamPlayer3
 var hover_sfx = preload("res://sounds/UI sounds/vgmenuhover.wav")
 var confirm_sfx = preload("res://sounds/UI sounds/vgmenuselect.wav")
 var confirm2_sfx = preload("res://sounds/level/selection_confirm.wav")
@@ -45,9 +42,6 @@ func _ready():
 	else:
 		room_button.text = "Bedroom"
 		room_button.disabled = false
-	audio_player1.stream = hover_sfx
-	audio_player2.stream = hover_sfx
-	audio_player3.stream = hover_sfx
 	
 
 func all_dogs_collected_message_display():
@@ -61,8 +55,7 @@ func _process(delta):
 func _on_StartButton_pressed():
 	if !button_pressed:
 		button_pressed = true
-		audio_player1.stream = confirm_sfx
-		audio_player1.play()
+		AudioManager.playSFX("ui_confirm")
 		send_to_level("Level1")
 
 func _on_OptionsButton_pressed():
@@ -82,14 +75,14 @@ func _on_StartButton_focus_entered():
 	if first_focus:
 		first_focus = false
 	else:	
-		audio_player1.play()
+		AudioManager.playSFX("ui_hover")
 	star_select_start.visible = true
 
 func _on_StartButton_focus_exited():
 	star_select_start.visible = false
 
 func _on_QuitButton_focus_entered():
-	audio_player3.play()
+	AudioManager.playSFX("ui_hover")
 	star_select_quit.visible = true
 
 func _on_QuitButton_focus_exited():
@@ -106,7 +99,7 @@ func _on_RoomButton_pressed():
 	send_to_level("Bedroom")
 
 func _on_RoomButton_focus_entered():
-	audio_player3.play()
+	AudioManager.playSFX("ui_hover")
 	star_select_room.visible = true
 
 func _on_RoomButton_focus_exited():
