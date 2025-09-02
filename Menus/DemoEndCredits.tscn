@@ -254,9 +254,8 @@ script = ExtResource( 12 )
 "anims/New Anim" = SubResource( 17 )
 
 [node name="Window" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 975, 555 )
-scale = Vector2( 0.8, 0.8 )
+scale = Vector2( 1.05, 1.05 )
 
 [node name="TextureRect" type="TextureRect" parent="Window"]
 modulate = Color( 1, 1, 1, 0.901961 )
@@ -269,6 +268,7 @@ stretch_mode = 1
 
 [node name="MessageText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -286,7 +286,7 @@ bbcode_text = "[center][color=#F00080]...TO BE CONTINUED?[/color]
 
 Thank you so much for playing our demo! 
 
-If you liked the game, please [color=#117cd6]show your support[/color] by leaving nice comments on Itch, and following our social medias.
+If you liked the game, please [color=#117cd6]show your support[/color] by leaving nice comments on Itch, and following us on social media!
 
 Or donate 2 dollars hehe.
 
@@ -295,7 +295,7 @@ text = "...TO BE CONTINUED?
 
 Thank you so much for playing our demo! 
 
-If you liked the game, please show your support by leaving nice comments on Itch, and following our social medias.
+If you liked the game, please show your support by leaving nice comments on Itch, and following us on social media!
 
 Or donate 2 dollars hehe.
 
@@ -320,27 +320,26 @@ text = "  Next  "
 
 [node name="CreditsText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -386.0
-margin_top = -347.5
+margin_top = -333.5
 margin_right = 374.0
 margin_bottom = 224.5
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/bold_font = SubResource( 1 )
 custom_fonts/normal_font = SubResource( 21 )
 bbcode_enabled = true
-bbcode_text = "[center]CREDITS
+bbcode_text = "[center][wave][rainbow]CREDITS[/rainbow][/wave]
 
 This game was created by
 
-Tyler McAllister / @AwakeByDefault
-(Code & gameplay person)
+Ty / [color=teal][url=https://bsky.app/profile/awakebydefault.bsky.social]@AwakeByDefault
+[/url][/color](Code & gameplay person)
 &
-Vibeke Selnes / @Bekeblob
+Vibeke / [color=teal]l [url=<https://bsky.app/profile/bekeblob.bsky.social>]@Bekeblob[/url][/color]
 (Art and UI person)
 
 Also thanks to Trygvert for making the music????"
@@ -348,10 +347,10 @@ text = "CREDITS
 
 This game was created by
 
-Tyler McAllister / @AwakeByDefault
+Ty / @AwakeByDefault
 (Code & gameplay person)
 &
-Vibeke Selnes / @Bekeblob
+Vibeke / l @Bekeblob
 (Art and UI person)
 
 Also thanks to Trygvert for making the music????"
@@ -410,5 +409,6 @@ anims/pop_in = SubResource( 22 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="Window/TextureRect/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="meta_clicked" from="Window/TextureRect/CreditsText" to="." method="_on_CreditsText_meta_clicked"]
 [connection signal="pressed" from="Window/TextureRect/CreditsButtons/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Window/TextureRect/CreditsButtons/TitleButton" to="." method="_on_TitleButton_pressed"]

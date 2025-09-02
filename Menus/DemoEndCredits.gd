@@ -68,3 +68,12 @@ func toggle_text():
 func pop_in_sound():
 	audio_player.stream = pop_in_sfx
 	audio_player.play()
+
+
+
+func _on_CreditsText_meta_clicked(meta):
+	# `meta` is not guaranteed to be a String, so convert it to a String
+	# to avoid script errors at run-time.
+	audio_player.stream = click_sfx
+	audio_player.play()
+	OS.shell_open(str(meta))
