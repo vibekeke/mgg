@@ -6,7 +6,7 @@
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Autoload/SceneManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=6]
-[ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://HUD/PauseMenuGameplay.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=10]
@@ -22,8 +22,7 @@ script = ExtResource( 14 )
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 layer = 102
 
-[node name="PauseMenu" parent="PauseLayer" instance=ExtResource( 7 )]
-visible = false
+[node name="PauseMenu2" parent="PauseLayer" instance=ExtResource( 7 )]
 
 [node name="LevelBackground" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
