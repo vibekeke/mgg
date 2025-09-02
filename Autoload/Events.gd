@@ -192,3 +192,57 @@ func get_level_background_elements(level_number: int):
 
 func get_level_collectible(collectible: String):
 	return level_collectibles[collectible]
+	
+### Shaders
+
+func set_vhs_shader(shader_params : Dictionary, vhs_filter: ColorRect):
+	for param in shader_params:
+		vhs_filter.material.set_shader_param(param, shader_params[param])
+
+var vhs_filter_state_paused = {
+	'overlay': true,
+	'scanlines_opacity': 0.557,
+	'scanlines_width': 0.128,
+	'grille_opacity': 0.3,
+	'resolution': Vector2(1920, 1080),
+	'pixelate': true,
+	'roll': true,
+	'roll_speed': 1.2,
+	'roll_size': 14.963,
+	'roll_variation': 1.737,
+	'distort_intensity': 0.034,
+	'noise_opacity': 0.65,
+	'noise_speed': 5,
+	'static_noise_intensity': 0.06,
+	'aberration': 0.007,
+	'brightness': 1.2,
+	'discolor': false,
+	'warp_amount': 0,
+	'clip_warp': false,
+	'vignette_intensity': 0.4,
+	'vignette_opacity': 0.256
+}
+
+var vhs_filter_state_unpaused = {
+	'overlay': true,
+	'scanlines_opacity': 0,
+	'scanlines_width': 0,
+	'grille_opacity': 0,
+	'resolution': Vector2(1920, 1080),
+	'pixelate': false,
+	'roll': false,
+	'roll_speed': 0.0,
+	'roll_size': 0,
+	'roll_variation': 0,
+	'distort_intensity': 0.0,
+	'noise_opacity': 0.0,
+	'noise_speed': 0,
+	'static_noise_intensity': 0.0,
+	'aberration': 0.005,
+	'brightness': 1.1,
+	'discolor': false,
+	'warp_amount': 0,
+	'clip_warp': false,
+	'vignette_intensity': 0.0,
+	'vignette_opacity': 0.0
+}
