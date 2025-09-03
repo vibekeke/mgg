@@ -11,7 +11,7 @@ var sound_effects = {
 	"charge_attack" : preload("res://sounds/player/laser_beam_tractor_3,0sec.wav"),
 	"collect_heart" : preload("res://sounds/collecting/zapsplat_collect_bright_simple_mild.wav"),
 	"collect_star" : preload("res://sounds/collecting/zaplsplat_retro_simple_bright.wav"),
-	"explosion" : preload("res://sounds/damage/placeholder explosion.wav"),
+	"explosion" : preload("res://sounds/damage/zapsplat_bubblepop_designed.wav"),
 	"player_damage" : preload("res://sounds/damage/Laser-weapon 8 - Sound effects Pack 2.wav"),
 	"gunshot" : preload("res://sounds/gunnerfly/handgun 9mm silenced.wav"),
 	"gun_reload" : preload("res://sounds/gunnerfly/shotgun_reload.wav")
