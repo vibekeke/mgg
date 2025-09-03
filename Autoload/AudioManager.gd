@@ -2,9 +2,16 @@ extends Node
 
 var voices := 15
 var sound_effects = {
-	"ui_hover" : preload("res://sounds/UI sounds/mallet_focus.wav"),
+	"ui_hover" : preload("res://sounds/UI sounds/Menu Select 1.wav"),
 	"ui_confirm" : preload("res://sounds/UI sounds/vgmenuselect.wav"),
-	"ui_confirm_2" : preload("res://sounds/UI sounds/vgmenuselect.wav"),
+	"ui_confirm2" : preload("res://sounds/level/selection_confirm.wav"),
+	"ui_pop_in" : preload("res://sounds/computer/maximize_008.wav"),
+	"mouse_click" : preload("res://sounds/mouseclick-cut.mp3"),
+	"jump" : preload("res://sounds/player/Jump 4 - SFXPack2.wav"),
+	"collect_heart" : preload("res://sounds/collecting/zapsplat_collect_bright_simple_mild.wav"),
+	"collect_star" : preload("res://sounds/collecting/zaplsplat_retro_simple_bright.wav"),
+	"explosion" : preload("res://sounds/damage/placeholder explosion.wav"),
+	"player_damage" : preload("res://sounds/damage/Laser-weapon 8 - Sound effects Pack 2.wav"),
 	"gunshot" : preload("res://sounds/gunnerfly/handgun 9mm silenced.wav"),
 	"gun_reload" : preload("res://sounds/gunnerfly/shotgun_reload.wav")
 }
@@ -21,6 +28,7 @@ var fade_tween = null
 
 func _ready():
 	randomize()
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	#Default to master if they can't find the bus
 	if AudioServer.get_bus_index(sfx_bus) == -1:
 		sfx_bus = "Master"
@@ -39,7 +47,7 @@ func _ready():
 	music_player.bus = music_bus
 	add_child(music_player)
 	
-func playSFX(sound_effect : String, volume_db := 0.0, pitch_scale := 1.0) -> void:
+func playSFX(sound_effect : String, pitch_scale := 1.0, volume_db := 0.0) -> void:
 	var sfx = sound_effects[sound_effect]
 	if sfx == null:
 		print("AudioManager: Couldn't find requested sound effect, ", sound_effect)
@@ -53,9 +61,9 @@ func playSFX(sound_effect : String, volume_db := 0.0, pitch_scale := 1.0) -> voi
 	sfx_player.pitch_scale = pitch_scale
 	sfx_player.play()
 
-func play_random_pitch(sound_effect : String, volume_db := 0.0, spread := 0.04) -> void:
+func play_random_pitch(sound_effect : String, spread := 0.04, volume_db := 0.0) -> void:
 	var pitch = 1.0 + rand_range(-spread, spread)
-	playSFX(sound_effect, volume_db, pitch)
+	playSFX(sound_effect, pitch, volume_db)
 
 func stop_all_sfx() -> void:
 	for sfx_player in sfx_players: sfx_player.stop()
