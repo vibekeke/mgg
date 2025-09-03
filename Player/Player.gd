@@ -285,7 +285,8 @@ func shoot(angle):
 		_gunshot.position = self.position + Vector2(180,-90)
 	if angle == SHOOT_ANGLE.DOWNWARD_B:
 		_gunshot.position = self.position + Vector2(200,160)
-	$BulletFire.play(0.0)
+	#$BulletFire.play(0.0)
+	AudioManager.playSFX("player_shoot", 2.0, -15.0)
 	fire_rate_timer.start()
 
 func charge_shot_present():

@@ -7,6 +7,7 @@ var sound_effects = {
 	"ui_confirm2" : preload("res://sounds/level/selection_confirm.wav"),
 	"ui_pop_in" : preload("res://sounds/computer/maximize_008.wav"),
 	"mouse_click" : preload("res://sounds/mouseclick-cut.mp3"),
+	"player_shoot" : preload("res://sounds/player/zapsplat_simple_zap.wav"),
 	"jump" : preload("res://sounds/player/zapsplat_short_retro_jump5.wav"),
 	"charge_attack" : preload("res://sounds/player/laser_beam_tractor_3,0sec.wav"),
 	"collect_heart" : preload("res://sounds/collecting/zapsplat_collect_bright_simple_mild.wav"),
