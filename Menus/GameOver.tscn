@@ -304,8 +304,6 @@ playback_speed = 0.5
 anims/RESET = SubResource( 5 )
 anims/fade_in = SubResource( 6 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
 [connection signal="focus_entered" from="CanvasLayer/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_focus_entered"]
 [connection signal="focus_exited" from="CanvasLayer/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_focus_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_mouse_entered"]

@@ -406,8 +406,6 @@ text = " Title Screen "
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/pop_in = SubResource( 22 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
 [connection signal="pressed" from="Window/TextureRect/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="meta_clicked" from="Window/TextureRect/CreditsText" to="." method="_on_CreditsText_meta_clicked"]
 [connection signal="pressed" from="Window/TextureRect/CreditsButtons/BackButton" to="." method="_on_BackButton_pressed"]
