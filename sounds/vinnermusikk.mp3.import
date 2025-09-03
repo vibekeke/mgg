@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/vinnermusikk.mp3-cbf71d430854078593400d5ba95fa598.mp3str"
+
+[deps]
+
+source_file="res://sounds/vinnermusikk.mp3"
+dest_files=[ "res://.import/vinnermusikk.mp3-cbf71d430854078593400d5ba95fa598.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
