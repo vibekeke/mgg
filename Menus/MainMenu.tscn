@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Menus/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://test_fonts/vibekefonts/main_menu_font.tres" type="DynamicFont" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=6]
 [ext_resource path="res://Menus/PrettyAssets/Logo-downscaled.png" type="Texture" id=7]
 [ext_resource path="res://Menus/AllDogsCompletion.tscn" type="PackedScene" id=8]
-[ext_resource path="res://sounds/level/selection_confirm.wav" type="AudioStream" id=9]
 [ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=10]
 [ext_resource path="res://imported_assets/Coverart-MG.png" type="Texture" id=11]
 [ext_resource path="res://imported_assets/Coverart-Angel.png" type="Texture" id=12]
@@ -204,8 +203,8 @@ custom_styles/normal = ExtResource( 3 )
 text = "Quit"
 
 [node name="Logo-downscaled" type="Sprite" parent="MenuLayer"]
-position = Vector2( 648, 343 )
-scale = Vector2( 0.731364, 0.731364 )
+position = Vector2( 581, 330 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
 
 [node name="GameTitle" type="RichTextLabel" parent="MenuLayer"]
@@ -229,9 +228,6 @@ visible = false
 
 [node name="LevelCityBackground" parent="." instance=ExtResource( 4 )]
 follow_viewport_enable = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
 
 [node name="Tween" type="Tween" parent="."]
 unique_name_in_owner = true

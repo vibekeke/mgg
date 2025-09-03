@@ -94,6 +94,7 @@ margin_bottom = 89.0
 custom_constants/separation = 3
 
 [node name="ResumeBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+pause_mode = 2
 unique_name_in_owner = true
 margin_top = 99.0
 margin_right = 422.0
@@ -114,6 +115,7 @@ shortcut_in_tooltip = false
 text = "Resume"
 
 [node name="RetryBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+pause_mode = 2
 unique_name_in_owner = true
 margin_top = 188.0
 margin_right = 422.0
@@ -133,6 +135,7 @@ custom_styles/normal = ExtResource( 3 )
 text = "Retry"
 
 [node name="TitleBtn" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+pause_mode = 2
 unique_name_in_owner = true
 margin_top = 277.0
 margin_right = 422.0
@@ -154,10 +157,13 @@ text = "Return to Title"
 [node name="ControlsPanelContainer" parent="." instance=ExtResource( 7 )]
 
 [node name="PauseIcon" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2( 1800, 100 )
 scale = Vector2( 2, 2 )
 mesh = SubResource( 1 )
 texture = ExtResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="focus_entered" from="CenterContainer/HBoxContainer/VBoxContainer2/ResumeBtn" to="." method="_on_ResumeBtn_focus_entered"]
 [connection signal="focus_exited" from="CenterContainer/HBoxContainer/VBoxContainer2/ResumeBtn" to="." method="_on_ResumeBtn_focus_exited"]

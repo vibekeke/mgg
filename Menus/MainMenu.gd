@@ -20,6 +20,7 @@ var cheat_code_activated : bool = false
 
 var has_completed_demo : bool = false
 var button_pressed : bool = false
+var first_focus : bool = true
 
 var all_dogs_collected : bool = false
 
@@ -42,6 +43,7 @@ func _ready():
 	else:
 		room_button.text = "Bedroom"
 		room_button.disabled = false
+	
 
 func all_dogs_collected_message_display():
 	all_dogs_completion_message.display_message()
@@ -54,6 +56,7 @@ func _process(delta):
 func _on_StartButton_pressed():
 	if !button_pressed:
 		button_pressed = true
+		AudioManager.playSFX("ui_confirm")
 		send_to_level("Level1")
 
 func _on_OptionsButton_pressed():
@@ -70,12 +73,17 @@ func send_to_level(level_name: String):
 	Events.emit_signal("transition_to_scene", level_name, false)
 
 func _on_StartButton_focus_entered():
+	if first_focus:
+		first_focus = false
+	else:	
+		AudioManager.playSFX("ui_hover")
 	star_select_start.visible = true
 
 func _on_StartButton_focus_exited():
 	star_select_start.visible = false
 
 func _on_QuitButton_focus_entered():
+	AudioManager.playSFX("ui_hover")
 	star_select_quit.visible = true
 
 func _on_QuitButton_focus_exited():
@@ -92,6 +100,7 @@ func _on_RoomButton_pressed():
 	send_to_level("Bedroom")
 
 func _on_RoomButton_focus_entered():
+	AudioManager.playSFX("ui_hover")
 	star_select_room.visible = true
 
 func _on_RoomButton_focus_exited():

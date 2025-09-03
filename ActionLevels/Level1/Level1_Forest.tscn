@@ -108,6 +108,8 @@ unique_name_in_owner = true
 [node name="FullHUD" parent="." instance=ExtResource( 10 )]
 unique_name_in_owner = true
 
+[node name="ExtraSFX" type="AudioStreamPlayer" parent="."]
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
 volume_db = -30.0

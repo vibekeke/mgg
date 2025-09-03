@@ -36,18 +36,27 @@ func set_is_paused(value):
 	if is_paused:
 		resume_button.grab_focus()
 
+
 func _on_ResumeBtn_pressed():
+	AudioManager.playSFX("ui_confirm")
+	yield(get_tree().create_timer(0.4, true), "timeout") #Bit hacky, but this way you hear the sfx before the menu closes
 	self.is_paused = false
 
 func _on_QuitBtn_pressed(): #Should return to title screen!
+	yield(get_tree().create_timer(0.4, true), "timeout")
+	
 	self.is_paused = false
 	Events.emit_signal("transition_to_scene", "TitleScreen", false)
 
 func _on_BackBtn_pressed():	 #Should restart scene
+	AudioManager.playSFX("ui_confirm2")
+	yield(get_tree().create_timer(0.4, true), "timeout")
+	
 	self.is_paused = false
 	Events.emit_signal("transition_to_scene", "Level1", false)
 
 func _on_ResumeBtn_focus_entered():
+	AudioManager.playSFX("ui_hover")
 	spinny_star_resume.visible = true
 
 func _on_ResumeBtn_focus_exited():
@@ -55,6 +64,7 @@ func _on_ResumeBtn_focus_exited():
 
 
 func _on_BackBtn_focus_entered():
+	AudioManager.playSFX("ui_hover")
 	spinny_star_retry.visible = true
 
 
@@ -63,14 +73,13 @@ func _on_BackBtn_focus_exited():
 
 
 func _on_QuitBtn_focus_entered():
+	AudioManager.playSFX("ui_hover")
 	spinny_star_title.visible = true
 
 
 func _on_QuitBtn_focus_exited():
 	spinny_star_title.visible = false
 	
-
-
 
 
 func _on_ResumeBtn_mouse_entered():
