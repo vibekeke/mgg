@@ -8,6 +8,7 @@ var sound_effects = {
 	"ui_pop_in" : preload("res://sounds/computer/maximize_008.wav"),
 	"mouse_click" : preload("res://sounds/mouseclick-cut.mp3"),
 	"jump" : preload("res://sounds/player/Jump 4 - SFXPack2.wav"),
+	"charge_attack" : preload("res://sounds/player/laser_beam_tractor_3,0sec.wav"),
 	"collect_heart" : preload("res://sounds/collecting/zapsplat_collect_bright_simple_mild.wav"),
 	"collect_star" : preload("res://sounds/collecting/zaplsplat_retro_simple_bright.wav"),
 	"explosion" : preload("res://sounds/damage/placeholder explosion.wav"),
