@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_game_sound_win_award_bonus_complete_collect_special_item_109030.mp3-dd365bd4035fb9575e42739b01b43e17.mp3str"
+
+[deps]
+
+source_file="res://sounds/level/zapsplat_multimedia_game_sound_win_award_bonus_complete_collect_special_item_109030.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_game_sound_win_award_bonus_complete_collect_special_item_109030.mp3-dd365bd4035fb9575e42739b01b43e17.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

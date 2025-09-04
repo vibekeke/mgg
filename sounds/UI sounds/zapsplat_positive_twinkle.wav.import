@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/zapsplat_positive_twinkle.wav-c675064126f06806d5ae2d2218606f65.sample"
+
+[deps]
+
+source_file="res://sounds/UI sounds/zapsplat_positive_twinkle.wav"
+dest_files=[ "res://.import/zapsplat_positive_twinkle.wav-c675064126f06806d5ae2d2218606f65.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

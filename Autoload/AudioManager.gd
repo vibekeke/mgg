@@ -2,13 +2,18 @@ extends Node
 
 var voices := 15
 var sound_effects = {
-	"ui_hover" : preload("res://sounds/UI sounds/Menu Select 1.wav"),
+	"ui_hover" : preload("res://sounds/UI sounds/zapsplat_menu_item_select001.wav"),
 	"ui_confirm" : preload("res://sounds/UI sounds/vgmenuselect.wav"),
 	"ui_confirm2" : preload("res://sounds/level/selection_confirm.wav"),
 	"ui_pop_in" : preload("res://sounds/computer/maximize_008.wav"),
+	"twinkle" : preload("res://sounds/UI sounds/twinkle_glissando.wav"),
+	"jingle" : preload("res://sounds/UI sounds/starting_jingle.wav"),
 	"mouse_click" : preload("res://sounds/mouseclick-cut.mp3"),
+	"magic_sound" : preload("res://sounds/player/magic_sound_1.wav"),
 	"player_shoot" : preload("res://sounds/player/zapsplat_simple_zap.wav"),
 	"jump" : preload("res://sounds/player/zapsplat_short_retro_jump5.wav"),
+	"slide" : preload("res://sounds/player/zs_slide0,6s.wav"),
+	"charge_complete" : preload("res://sounds/player/1up 4 - Sound effects Pack 2.wav"),
 	"charge_attack" : preload("res://sounds/player/laser_beam_tractor_3,0sec.wav"),
 	"collect_heart" : preload("res://sounds/collecting/zapsplat_collect_bright_simple_mild.wav"),
 	"collect_star" : preload("res://sounds/collecting/zaplsplat_retro_simple_bright.wav"),
@@ -17,6 +22,7 @@ var sound_effects = {
 	"gunshot" : preload("res://sounds/gunnerfly/handgun 9mm silenced.wav"),#ty pls implement
 	"gun_reload" : preload("res://sounds/gunnerfly/shotgun_reload.wav"),	#idk, it was in the files lol
 	"our_guy" : preload("res://sounds/enemy attacks/WHYAREYOURUNNING.wav"),	#ty pls implement
+	"small_win" : preload("res://sounds/level/zapsplat_multimedia_game_sound_win_award_bonus_complete_collect_special_item_109030.mp3"),
 	"you_win" : preload("res://sounds/level/you win.ogg")
 	
 	#See sounds/enemy attacks for many cool lasery enemy attack sounds!

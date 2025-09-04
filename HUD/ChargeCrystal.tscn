@@ -121,7 +121,6 @@ script = ExtResource( 2 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 20 )
 animation = "complete"
-frame = 3
 playing = true
 centered = false
 
