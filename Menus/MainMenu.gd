@@ -43,6 +43,7 @@ func _ready():
 	else:
 		room_button.text = "Bedroom"
 		room_button.disabled = false
+	AudioManager.playSFX("twinkle")
 	
 
 func all_dogs_collected_message_display():
@@ -144,3 +145,6 @@ func _input(event):
 			activate_cheat_code()
 
 
+func play_sound(sound_key : String):
+	AudioManager.playSFX(sound_key)
+	
