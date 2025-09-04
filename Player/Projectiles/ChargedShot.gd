@@ -40,6 +40,7 @@ func _ready():
 	Events.connect("player_global_position", self, "_on_player_global_position")
 	shoot_duration_timer.start()
 	flash_collision_shape_timer.start()
+	AudioManager.playSFX("charge_attack")
 
 func expand_collision_shape(frame: int):
 	var new_collision_shape_extent = collision_shape_extents[frame]

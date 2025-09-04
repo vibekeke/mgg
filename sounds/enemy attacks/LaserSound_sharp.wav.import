@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LaserSound_sharp.wav-949124d85bea9cf3135cfadf6d7b4450.sample"
+
+[deps]
+
+source_file="res://sounds/enemy attacks/LaserSound_sharp.wav"
+dest_files=[ "res://.import/LaserSound_sharp.wav-949124d85bea9cf3135cfadf6d7b4450.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

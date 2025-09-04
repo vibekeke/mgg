@@ -38,8 +38,7 @@ func set_is_paused(value):
 
 
 func _on_ResumeBtn_pressed():
-	AudioManager.playSFX("ui_confirm")
-	yield(get_tree().create_timer(0.4, true), "timeout") #Bit hacky, but this way you hear the sfx before the menu closes
+	AudioManager.playSFX("ui_confirm", 0.0, 5.0)
 	self.is_paused = false
 
 func _on_QuitBtn_pressed(): #Should return to title screen!
@@ -49,7 +48,7 @@ func _on_QuitBtn_pressed(): #Should return to title screen!
 	Events.emit_signal("transition_to_scene", "TitleScreen", false)
 
 func _on_BackBtn_pressed():	 #Should restart scene
-	AudioManager.playSFX("ui_confirm2")
+	AudioManager.playSFX("ui_confirm", 0.0, 5.0)
 	yield(get_tree().create_timer(0.4, true), "timeout")
 	
 	self.is_paused = false

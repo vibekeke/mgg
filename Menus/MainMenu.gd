@@ -56,7 +56,7 @@ func _process(delta):
 func _on_StartButton_pressed():
 	if !button_pressed:
 		button_pressed = true
-		AudioManager.playSFX("ui_confirm")
+		AudioManager.playSFX("ui_confirm", 0.0, 5.0)
 		send_to_level("Level1")
 
 func _on_OptionsButton_pressed():

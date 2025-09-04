@@ -7,13 +7,23 @@ var sound_effects = {
 	"ui_confirm2" : preload("res://sounds/level/selection_confirm.wav"),
 	"ui_pop_in" : preload("res://sounds/computer/maximize_008.wav"),
 	"mouse_click" : preload("res://sounds/mouseclick-cut.mp3"),
-	"jump" : preload("res://sounds/player/Jump 4 - SFXPack2.wav"),
+	"player_shoot" : preload("res://sounds/player/zapsplat_simple_zap.wav"),
+	"jump" : preload("res://sounds/player/zapsplat_short_retro_jump5.wav"),
+	"charge_attack" : preload("res://sounds/player/laser_beam_tractor_3,0sec.wav"),
 	"collect_heart" : preload("res://sounds/collecting/zapsplat_collect_bright_simple_mild.wav"),
 	"collect_star" : preload("res://sounds/collecting/zaplsplat_retro_simple_bright.wav"),
-	"explosion" : preload("res://sounds/damage/placeholder explosion.wav"),
+	"explosion" : preload("res://sounds/damage/zapsplat_bubblepop_designed.wav"),
 	"player_damage" : preload("res://sounds/damage/Laser-weapon 8 - Sound effects Pack 2.wav"),
-	"gunshot" : preload("res://sounds/gunnerfly/handgun 9mm silenced.wav"),
-	"gun_reload" : preload("res://sounds/gunnerfly/shotgun_reload.wav")
+	"gunshot" : preload("res://sounds/gunnerfly/handgun 9mm silenced.wav"),#ty pls implement
+	"gun_reload" : preload("res://sounds/gunnerfly/shotgun_reload.wav"),	#idk, it was in the files lol
+	"our_guy" : preload("res://sounds/enemy attacks/WHYAREYOURUNNING.wav"),	#ty pls implement
+	"you_win" : preload("res://sounds/level/you win.ogg")
+	
+	#See sounds/enemy attacks for many cool lasery enemy attack sounds!
+	#Idk how the fuck enemies work and I can't figure it out, so I'll leave it to you to add sounds for
+	## running guy, see above
+	## gunshot & reload(?), see above
+	## the UFO guys, see sounds/enemy
 }
 
 var music = {}

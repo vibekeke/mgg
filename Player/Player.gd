@@ -259,11 +259,13 @@ func get_gravity() -> float:
 
 func jump_logic():
 	if input_handler(Input.is_action_just_pressed("jump")) and !is_on_floor() and can_double_jump:
+		AudioManager.play_random_pitch("jump", 0.08, -8.0)
 		can_double_jump = false
 		has_double_jumped = true
 		velocity.y = double_jump_velocity
 	
 	if input_handler(Input.is_action_just_pressed("jump")) and is_on_floor() and !has_double_jumped:
+		AudioManager.play_random_pitch("jump", 0.08, -8.0)
 		can_double_jump = false
 		velocity.y = jump_velocity
 		
@@ -283,7 +285,8 @@ func shoot(angle):
 		_gunshot.position = self.position + Vector2(180,-90)
 	if angle == SHOOT_ANGLE.DOWNWARD_B:
 		_gunshot.position = self.position + Vector2(200,160)
-	$BulletFire.play(0.0)
+	#$BulletFire.play(0.0)
+	AudioManager.playSFX("player_shoot", 2.0, -15.0)
 	fire_rate_timer.start()
 
 func charge_shot_present():

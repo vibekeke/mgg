@@ -23,6 +23,7 @@ func _ready():
 	message_button.show()
 	credits_text.hide()
 	credits_text.hide()
+	$AudioStreamPlayer.play()
 
 func _process(delta):
 	scrolling.position.y -= scroll_speed * delta
