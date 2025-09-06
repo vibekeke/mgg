@@ -28,6 +28,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=26]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.tscn" type="PackedScene" id=27]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" type="PackedScene" id=28]
+[ext_resource path="res://ActionLevels/LevelCreator/Props/BossWarningTape.tscn" type="PackedScene" id=29]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event2.tscn" type="PackedScene" id=30]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu.tscn" type="PackedScene" id=31]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event5.tscn" type="PackedScene" id=32]
@@ -42,7 +43,6 @@
 [ext_resource path="res://HUD/LevelStartDisplay.tscn" type="PackedScene" id=41]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerfly.tscn" type="PackedScene" id=42]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventEnd.tscn" type="PackedScene" id=43]
-[ext_resource path="res://ActionLevels/LevelCreator/Props/BossWarningTape.tscn" type="PackedScene" id=44]
 [ext_resource path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" type="Resource" id=45]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform1.tscn" type="PackedScene" id=46]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform3.tscn" type="PackedScene" id=47]
@@ -159,14 +159,11 @@ dog = ExtResource( 31 )
 time_until_event_start = 3.0
 
 [node name="Level1_EventBoss" parent="LevelEventsManager" instance=ExtResource( 34 )]
+boss_warning_tape_path = NodePath("../../BossWarningTape")
 level1_event1_dialog = ExtResource( 45 )
 
 [node name="Level1_EventEnd" parent="LevelEventsManager" instance=ExtResource( 43 )]
 level1_event_end_dialog = ExtResource( 45 )
-
-[node name="BossWarningTape" parent="." instance=ExtResource( 44 )]
-unique_name_in_owner = true
-visible = false
 
 [node name="StartLevelTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -179,3 +176,7 @@ unique_name_in_owner = true
 [node name="PlatformSpawnPoint" type="Position2D" parent="."]
 unique_name_in_owner = true
 position = Vector2( 2452, 992 )
+
+[node name="BossWarningTape" parent="." instance=ExtResource( 29 )]
+unique_name_in_owner = true
+visible = false

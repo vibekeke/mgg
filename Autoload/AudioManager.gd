@@ -23,7 +23,8 @@ var sound_effects = {
 	"gun_reload" : preload("res://sounds/gunnerfly/shotgun_reload.wav"),	#idk, it was in the files lol
 	"our_guy" : preload("res://sounds/enemy attacks/WHYAREYOURUNNING.wav"),	#ty pls implement
 	"small_win" : preload("res://sounds/level/zapsplat_multimedia_game_sound_win_award_bonus_complete_collect_special_item_109030.mp3"),
-	"you_win" : preload("res://sounds/level/you win.ogg")
+	"you_win" : preload("res://sounds/level/you win.ogg"),
+	"boss_warning": preload("res://sounds/level/warning-sound.wav")
 	
 	#See sounds/enemy attacks for many cool lasery enemy attack sounds!
 	#Idk how the fuck enemies work and I can't figure it out, so I'll leave it to you to add sounds for
@@ -69,7 +70,7 @@ func playSFX(sound_effect : String, pitch_scale := 1.0, volume_db := 0.0) -> voi
 		print("AudioManager: Couldn't find requested sound effect, ", sound_effect)
 		return
 	
-	var sfx_player = sfx_players[next] 
+	var sfx_player : AudioStreamPlayer = sfx_players[next] 
 	next = (next + 1) % sfx_players.size()
 	sfx_player.stop()
 	sfx_player.stream = sfx
@@ -83,7 +84,6 @@ func play_random_pitch(sound_effect : String, spread := 0.04, volume_db := 0.0) 
 
 func stop_all_sfx() -> void:
 	for sfx_player in sfx_players: sfx_player.stop()
-
 
 ### MUSIC STUFF ###
 #IDK how the music has previously been implemented, but we can have cool fade in and out logic here.

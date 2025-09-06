@@ -3,7 +3,8 @@ extends LevelEvent
 onready var enemy_spawner = get_node("%EnemySpawner")
 onready var platform_spawner = get_node("%PlatformSpawner")
 onready var level_events_manager = get_node("%LevelEventsManager")
-onready var boss_warning_tape = get_node("%BossWarningTape")
+export var boss_warning_tape_path : NodePath
+onready var boss_warning_tape = get_node(boss_warning_tape_path)
 
 # timers
 onready var start_event_timer = Timer.new()
