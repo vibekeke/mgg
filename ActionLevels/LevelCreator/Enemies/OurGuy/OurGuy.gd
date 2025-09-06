@@ -8,7 +8,6 @@ var player_position
 var current_health_value 
 
 func _ready():
-	AudioManager.playSFX("our_guy")
 	Events.connect("player_global_position", self, "_on_player_global_position")
 	Events.connect("enemy_taken_damage", self, "_on_taken_damage")
 	current_health_value = parent_node.health_value
@@ -23,6 +22,7 @@ func get_custom_grounded_spawn_point():
 	return self.custom_grounded_spawn_point
 
 func _on_taken_damage(enemy, health_value):
+	AudioManager.playSFX("our_guy")
 	if parent_node == enemy:
 		parent_node.initial_scroll_speed += speed_up_value
 
