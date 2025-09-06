@@ -427,6 +427,7 @@ func initiate_slide():
 	# allow slide to be actionable before it's fully complete
 	# e.g. you can jump some number of frames before the slide is over
 	travel_to_animation("Slide")
+	AudioManager.play_random_pitch("slide", 0.08, -5.0)
 	slide_duration_timer.start()
 	is_sliding = true
 

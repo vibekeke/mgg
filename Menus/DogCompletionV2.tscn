@@ -136,16 +136,27 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "delete_self"
+} ]
+}
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 300.0
-margin_bottom = 300.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 margin_left = 681.0
@@ -255,7 +266,6 @@ SECRET BONUS CONTENT !"
 fit_content_height = true
 
 [node name="Node2D" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 718, 252 )
 
 [node name="Sparkles" parent="Node2D" instance=ExtResource( 6 )]
