@@ -22,6 +22,7 @@ func get_custom_grounded_spawn_point():
 	return self.custom_grounded_spawn_point
 
 func _on_taken_damage(enemy, health_value):
+	AudioManager.playSFX("our_guy")
 	if parent_node == enemy:
 		parent_node.initial_scroll_speed += speed_up_value
 

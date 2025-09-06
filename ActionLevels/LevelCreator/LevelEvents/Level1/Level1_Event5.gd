@@ -81,7 +81,8 @@ func event_start() -> void:
 	enemy_spawner.spawn_to_background_element(background_dog, 'BackForestBackground', background_dog_spawn_place, background_element_speed)
 	enemy_spawner.spawn_to_background_element(background_brobun, 'BackForestBackground', first_background_enemy_spawn_place, background_element_speed)
 	enemy_spawner.spawn_to_background_element(background_brobear, 'BackForestBackground', second_background_enemy_spawn_place, background_element_speed)
-
+	AudioManager.playSFX("UFO_long", 0.5, -10.0)
+	
 func end_event() -> void:
 	Events.emit_signal("level_event_complete", event_name, event_number)
 	Events.emit_signal("level_event_lock", "", -1)

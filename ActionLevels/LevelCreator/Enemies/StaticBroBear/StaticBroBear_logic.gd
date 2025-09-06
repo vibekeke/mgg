@@ -71,6 +71,7 @@ func _ready():
 	_fire_again_timer_setup()
 	_setup_bullets()
 	Events.connect("player_global_position", self, "_on_player_global_position")
+	AudioManager.playSFX("UFO", 0.6, -20.0)
 
 func _on_player_global_position(player_global_position):
 	player_position = player_global_position
