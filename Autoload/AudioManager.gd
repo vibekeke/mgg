@@ -19,8 +19,8 @@ var sound_effects = {
 	"collect_star" : preload("res://sounds/collecting/zaplsplat_retro_simple_bright.wav"),
 	"explosion" : preload("res://sounds/damage/zapsplat_bubblepop_designed.wav"),
 	"player_damage" : preload("res://sounds/damage/Laser-weapon 8 - Sound effects Pack 2.wav"),
-	"gunshot" : preload("res://sounds/gunnerfly/handgun 9mm silenced.wav"),#ty pls implement
-	"gun_reload" : preload("res://sounds/gunnerfly/shotgun_reload.wav"),	#idk, it was in the files lol
+	"gunshot" : preload("res://sounds/gunnerfly/handgun 9mm silenced.wav"),
+	"gun_reload" : preload("res://sounds/gunnerfly/shotgun_reload.wav"),
 	"our_guy" : preload("res://sounds/enemy attacks/WHYAREYOURUNNING.wav"),	#ty pls implement
 	"small_win" : preload("res://sounds/level/zapsplat_multimedia_game_sound_win_award_bonus_complete_collect_special_item_109030.mp3"),
 	"you_win" : preload("res://sounds/level/you win.ogg")
