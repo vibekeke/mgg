@@ -8,7 +8,6 @@ onready var responses_list = get_node("%ResponsesList")
 onready var portrait = get_node("%Portrait")
 onready var character_title = get_node("%CharacterTitle")
 onready var await_cursor = get_node("%AwaitCursor")
-onready var dialogue_audio = get_node("%DialogueAudio")
 onready var star_flicker_animation_player = get_node("%StarFlickerAnimationPlayer")
 onready var margin_container = get_node("%MarginContainer")
 onready var dialogue_container_animation_player = get_node("%DialogueContainerAnimationPlayer")
@@ -131,7 +130,7 @@ func _on_arriving_character(character: String):
 	if character != "":
 		var lower_case_character = character.to_lower()
 		if lower_case_character in "aeiou":
-			dialogue_audio.play(0.0)
+			AudioManager.playSFX("dialogue", 0.7, -10.0)
 
 func next(next_id: String) -> void:
 	if inputs_are_disabled:
