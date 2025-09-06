@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -47,27 +47,6 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform1.tscn" type="PackedScene" id=46]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform3.tscn" type="PackedScene" id=47]
 
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-uniform sampler2D offset_image : hint_white;
-uniform float strength = 1.0;
-
-void fragment() {
-	vec4 output = texture(SCREEN_TEXTURE, SCREEN_UV);
-	
-	float shift = strength * texture(offset_image, SCREEN_UV).r / 100.0;
-	output.r = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + shift, SCREEN_UV.y)).r;
-	output.g = texture(SCREEN_TEXTURE, SCREEN_UV).g;
-	output.b = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - shift, SCREEN_UV.y)).b;
-	
-	COLOR = output;
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/strength = 0.2
-
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource( 5 )
 boss_background = ExtResource( 14 )
@@ -81,21 +60,17 @@ layer = 102
 
 [node name="PauseMenu" parent="PauseLayer" instance=ExtResource( 25 )]
 visible = false
+vhs_filter_path = NodePath("../../LevelBackground/Control/VHS")
 
 [node name="LevelBackground" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
 layer = 100
 
-[node name="VHS" parent="LevelBackground" instance=ExtResource( 13 )]
-
 [node name="Control" type="Control" parent="LevelBackground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="ColorRect" type="ColorRect" parent="LevelBackground/Control"]
-material = SubResource( 2 )
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="VHS" parent="LevelBackground/Control" instance=ExtResource( 13 )]
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
@@ -133,6 +108,8 @@ unique_name_in_owner = true
 [node name="FullHUD" parent="." instance=ExtResource( 10 )]
 unique_name_in_owner = true
 
+[node name="ExtraSFX" type="AudioStreamPlayer" parent="."]
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
 volume_db = -30.0
@@ -142,13 +119,14 @@ stream = ExtResource( 24 )
 volume_db = -30.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 247, 855 )
+position = Vector2( 247, 860 )
 gunshot = ExtResource( 20 )
 charge_shot = ExtResource( 21 )
 
 [node name="LevelEventsManager" parent="." instance=ExtResource( 28 )]
 unique_name_in_owner = true
 debug_trigger_event_number = -1
+main_level_scene_path = NodePath("..")
 
 [node name="Level1_Event1" parent="LevelEventsManager" instance=ExtResource( 27 )]
 main_level_scene_path = NodePath("../..")
@@ -184,6 +162,7 @@ time_until_event_start = 3.0
 level1_event1_dialog = ExtResource( 45 )
 
 [node name="Level1_EventEnd" parent="LevelEventsManager" instance=ExtResource( 43 )]
+level1_event_end_dialog = ExtResource( 45 )
 
 [node name="BossWarningTape" parent="." instance=ExtResource( 44 )]
 unique_name_in_owner = true

@@ -14,7 +14,8 @@ func _ready():
 
 func play_fully_charged():
 	$AnimatedSprite.speed_scale = 1.5
-	$AudioStreamPlayer.play(0.0)
+	#$AudioStreamPlayer.play(0.0)
+	AudioManager.playSFX("charge_complete")
 	$AnimatedSprite.play("complete")
 	Events.emit_signal("has_charge_shot")
 

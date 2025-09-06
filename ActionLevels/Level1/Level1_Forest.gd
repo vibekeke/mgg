@@ -5,20 +5,24 @@ signal level_start
 onready var spawn_paths = $SpawnPaths
 onready var background_music = $BackgroundMusic
 onready var boss_music = $BossMusic
+onready var sfx = $ExtraSFX
 onready var level_background = get_node("%LevelBackground")
 onready var enemy_spawner = get_node("%EnemySpawner")
 onready var platform_spawner = get_node("%PlatformSpawner")
 onready var level_start_display = get_node("%LevelStartDisplay")
+onready var vhs_filter = get_node("%VHS")
 export var boss_background : PackedScene
-export var mute_audio = false # temporary
+export var mute_audio = false
 
 func _ready():
+	Events.set_vhs_shader(Events.vhs_filter_state_unpaused, vhs_filter)
 	level_start_display.connect("confirm_level_start", self, "_on_confirm_level_start")
 	enemy_spawner.stop_enemy_spawner()
 	platform_spawner.stop_platform_spawner()
 	Events.connect("boss_spawned", self, "_on_boss_spawn")
 	Events.emit_signal("background_moving_enabled", false)
 	Events.emit_signal("player_standing", true)
+	Events.COLLECTED_DOGS = {}
 
 	var num_spawn_points = spawn_paths.get_curve().get_point_count()
 	var spawn_point_dictionary = {}
@@ -44,6 +48,7 @@ func _on_boss_spawn():
 		boss_music.play()
 
 func _on_confirm_level_start():
+	AudioManager.playSFX("ui_confirm")
 	enemy_spawner.start_enemy_spawner()
 	platform_spawner.start_platform_spawner()
 	Events.emit_signal("background_moving_enabled", true)

@@ -9,6 +9,8 @@ onready var message_button = get_node("%NextButton")
 onready var credits_text = get_node("%CreditsText")
 onready var credits_buttons = get_node("%CreditsButtons")
 
+
+
 var scroll_speed: float = 70.0
 
 
@@ -21,6 +23,7 @@ func _ready():
 	message_button.show()
 	credits_text.hide()
 	credits_text.hide()
+	$AudioStreamPlayer.play()
 
 func _process(delta):
 	scrolling.position.y -= scroll_speed * delta
@@ -30,15 +33,17 @@ func _process(delta):
 
 
 func _on_BackButton_pressed():
+	AudioManager.playSFX("mouse_click")
 	toggle_text()
 
 
 func _on_TitleButton_pressed():
-	#TODO: it dont work, and I don't know why :T
+	AudioManager.playSFX("mouse_click")
 	Events.emit_signal("transition_to_scene", "TitleScreen", false)
 
 
 func _on_NextButton_pressed():
+	AudioManager.playSFX("mouse_click")
 	toggle_text()
 
 func toggle_text():
@@ -53,3 +58,13 @@ func toggle_text():
 		credits_text.hide()
 		credits_buttons.hide()
 
+func pop_in_sound():
+	AudioManager.playSFX("ui_pop_in")
+
+
+
+func _on_CreditsText_meta_clicked(meta):
+	# `meta` is not guaranteed to be a String, so convert it to a String
+	# to avoid script errors at run-time.
+	AudioManager.playSFX("mouse_click")
+	OS.shell_open(str(meta))

@@ -18,7 +18,6 @@ func _on_collected_dog(dog_breed):
 	if node_to_change != null:
 		node_to_change.set_collected_dog(dog_breed)
 
-	
 func _on_level_load():
 	for i in 3:
 		var dog_sprite_node = collected_dog_sprite.instance()

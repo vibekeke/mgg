@@ -45,6 +45,7 @@ func last_heart_with_alive_state():
 	return null
 
 func _on_player_damaged(damage):
+	AudioManager.playSFX("player_damage")
 	var heart_to_damage = last_heart_with_alive_state()
 	if heart_to_damage != null:
 		heart_to_damage.call_anim("hurt")

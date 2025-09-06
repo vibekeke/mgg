@@ -92,17 +92,20 @@ func call_death(count_as_regular_death: bool):
 	if count_as_regular_death:
 		Events.emit_signal("regular_enemy_death")
 	if is_boss:
+		# Emit boss-specific death signal if it's BigBird
+		if enemy_logic_instance != null and enemy_logic_instance.has_method("get_class") and enemy_logic_instance.get_class() == "BigBird":
+			Events.emit_signal("big_bird_boss_defeated", area2d.global_position)
 		Events.emit_signal("level_complete")
 	if is_instance_valid(collision_shape):
 		collision_shape.disabled = true
 	if is_instance_valid(area2d):
 		active_death_explosion_node = death_explosion.instance()
 		active_death_explosion_node.add_to_group("death_explosion")
-		var death_position = area2d.position
 		var death_global_position = area2d.global_position
-		active_death_explosion_node.position = death_position
+		active_death_explosion_node.global_position = death_global_position
+		active_death_explosion_node.scale = area2d.scale
 		active_death_explosion_node.connect("animation_finished", self, "_on_explosion_finished")
-		active_death_explosion_node.scroll_speed = initial_scroll_speed
+		self.get_parent().add_child(active_death_explosion_node)
 		area2d.add_child(active_death_explosion_node)
 		sprite.visible = false
 		active_death_explosion_node.play("default", false)

@@ -7,7 +7,7 @@
 [ext_resource path="res://Menus/button_focus_and_selected.tres" type="StyleBox" id=5]
 [ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=6]
 [ext_resource path="res://Menus/PrettyAssets/Logo-downscaled.png" type="Texture" id=7]
-[ext_resource path="res://sounds/level/selection_confirm.wav" type="AudioStream" id=9]
+[ext_resource path="res://Menus/AllDogsCompletion.tscn" type="PackedScene" id=8]
 [ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=10]
 [ext_resource path="res://imported_assets/Coverart-MG.png" type="Texture" id=11]
 [ext_resource path="res://imported_assets/Coverart-Angel.png" type="Texture" id=12]
@@ -94,6 +94,20 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "magic_sound" ],
+"method": "play_sound"
+} ]
 }
 
 [sub_resource type="Gradient" id=3]
@@ -203,8 +217,8 @@ custom_styles/normal = ExtResource( 3 )
 text = "Quit"
 
 [node name="Logo-downscaled" type="Sprite" parent="MenuLayer"]
-position = Vector2( 648, 343 )
-scale = Vector2( 0.731364, 0.731364 )
+position = Vector2( 581, 330 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
 
 [node name="GameTitle" type="RichTextLabel" parent="MenuLayer"]
@@ -222,11 +236,12 @@ text = "MAGICAL GIRL GAME"
 scroll_active = false
 deselect_on_focus_loss_enabled = false
 
+[node name="AllDogsCompletion" parent="MenuLayer" instance=ExtResource( 8 )]
+unique_name_in_owner = true
+visible = false
+
 [node name="LevelCityBackground" parent="." instance=ExtResource( 4 )]
 follow_viewport_enable = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
 
 [node name="Tween" type="Tween" parent="."]
 unique_name_in_owner = true

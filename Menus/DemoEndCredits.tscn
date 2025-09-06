@@ -8,12 +8,12 @@
 [ext_resource path="res://Menus/ConceptArt/posing.png" type="Texture" id=6]
 [ext_resource path="res://Menus/DemoEndCredits.gd" type="Script" id=7]
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://sounds/vinnermusikk.mp3" type="AudioStream" id=9]
 [ext_resource path="res://imported_assets/actors/sharkboi/Shark_Bloons.png" type="Texture" id=10]
 [ext_resource path="res://Menus/PrettyAssets/test2.png" type="Texture" id=11]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Sharkboi/SharkboiAnimatedSprite.gd" type="Script" id=12]
 [ext_resource path="res://Menus/ConceptArt/jente.png" type="Texture" id=13]
 [ext_resource path="res://Menus/PrettyAssets/Sparkles.tscn" type="PackedScene" id=14]
-[ext_resource path="res://test_fonts/Comforta/Comfortaa-Bold.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=16]
 
 [sub_resource type="Shader" id=7]
@@ -110,15 +110,14 @@ tracks/1/keys = {
 "values": [  ]
 }
 
-[sub_resource type="DynamicFont" id=19]
-font_data = ExtResource( 15 )
-
-[sub_resource type="DynamicFont" id=1]
-size = 36
-font_data = ExtResource( 3 )
+[sub_resource type="DynamicFont" id=23]
+size = 34
+outline_size = 3
+outline_color = Color( 0.0352941, 0.184314, 0.501961, 1 )
+font_data = ExtResource( 16 )
 
 [sub_resource type="DynamicFont" id=20]
-size = 36
+size = 34
 font_data = ExtResource( 16 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -134,6 +133,7 @@ corner_radius_bottom_left = 30
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.388235, 0.541176, 0.901961, 1 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -146,8 +146,14 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
+[sub_resource type="DynamicFont" id=24]
+size = 42
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
 [sub_resource type="DynamicFont" id=21]
-size = 36
+size = 32
 font_data = ExtResource( 16 )
 
 [sub_resource type="Animation" id=22]
@@ -160,7 +166,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 3 ),
+"times": PoolRealArray( 0, 2.4, 3 ),
 "transitions": PoolRealArray( 1, 0.435275, 1 ),
 "update": 0,
 "values": [ Vector2( 0.8, 0.8 ), Vector2( 0.8, 0.8 ), Vector2( 1.05, 1.05 ) ]
@@ -172,10 +178,36 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2, 3 ),
+"times": PoolRealArray( 0, 2.4, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "pop_in_sound"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BlackSquare:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="DemoEndCredits" type="Node2D"]
@@ -254,6 +286,7 @@ stretch_mode = 1
 
 [node name="MessageText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -263,28 +296,27 @@ margin_top = -326.5
 margin_right = 374.0
 margin_bottom = 237.5
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/italics_font = SubResource( 19 )
-custom_fonts/bold_font = SubResource( 1 )
+custom_fonts/bold_font = SubResource( 23 )
 custom_fonts/normal_font = SubResource( 20 )
 bbcode_enabled = true
-bbcode_text = "[center][color=blue]...TO BE CONTINUED?[/color]
+bbcode_text = "[center][color=#F00080]...TO BE CONTINUED?[/color]
 
 Thank you so much for playing our demo! 
 
-If you liked the game, please show your support by leaving nice comments on Itch, and following our social medias.
+If you liked the game, please [color=#117cd6][wave]show your support[/wave][/color] by leaving nice comments on Itch, and following us on bsky and other social media!
 
 Or donate 2 dollars hehe.
 
-Also, if you haven't collected all 3 dogs yet, you should do that :^)"
+[color=#205080](also, if you haven't collected all 3 dogs yet, you should do that :)"
 text = "...TO BE CONTINUED?
 
 Thank you so much for playing our demo! 
 
-If you liked the game, please show your support by leaving nice comments on Itch, and following our social medias.
+If you liked the game, please show your support by leaving nice comments on Itch, and following us on bsky and other social media!
 
 Or donate 2 dollars hehe.
 
-Also, if you haven't collected all 3 dogs yet, you should do that :^)"
+(also, if you haven't collected all 3 dogs yet, you should do that :)"
 
 [node name="NextButton" type="Button" parent="Window/TextureRect"]
 unique_name_in_owner = true
@@ -292,9 +324,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -78.0
+margin_left = -78.0001
 margin_top = -165.0
-margin_right = 80.0
+margin_right = 79.9999
 margin_bottom = -104.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -305,29 +337,46 @@ text = "  Next  "
 
 [node name="CreditsText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -386.0
-margin_top = -347.5
+margin_top = -346.5
 margin_right = 374.0
-margin_bottom = 224.5
+margin_bottom = 251.5
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/bold_font = SubResource( 1 )
+custom_fonts/bold_font = SubResource( 24 )
 custom_fonts/normal_font = SubResource( 21 )
 bbcode_enabled = true
-bbcode_text = "[center][color=blue]...CREDITS[/color]
-Boobobobobobobo thank you thank you"
-text = "...CREDITS
-Boobobobobobobo thank you thank you"
+bbcode_text = "[center][wave][b][rainbow  sat=0.5]CREDITS[/rainbow][/b][/wave]
 
-[node name="Sparkles2" parent="Window/TextureRect" instance=ExtResource( 14 )]
-position = Vector2( 948, 803 )
+Ty / [color=teal][url=https://bsky.app/profile/awakebydefault.bsky.social]@AwakeByDefault
+[/url][/color](Code & gameplay lead)
+&
+Vibeke / [color=teal] [url=<https://bsky.app/profile/bekeblob.bsky.social>]@Bekeblob[/url][/color]
+(Art and Visuals lead)
 
-[node name="Sparkles" parent="Window/TextureRect" instance=ExtResource( 14 )]
-position = Vector2( 38, 59 )
+-
+
+Music by Trygvert
+
+Sound Effects from ZapSplat.com
+"
+text = "CREDITS
+
+Ty / @AwakeByDefault
+(Code & gameplay lead)
+&
+Vibeke /  @Bekeblob
+(Art and Visuals lead)
+
+-
+
+Music by Trygvert
+
+Sound Effects from ZapSplat.com
+"
 
 [node name="CreditsButtons" type="HBoxContainer" parent="Window/TextureRect"]
 unique_name_in_owner = true
@@ -371,9 +420,25 @@ custom_styles/pressed = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 text = " Title Screen "
 
+[node name="Sparkles2" parent="Window/TextureRect" instance=ExtResource( 14 )]
+position = Vector2( 948, 803 )
+
+[node name="Sparkles" parent="Window/TextureRect" instance=ExtResource( 14 )]
+position = Vector2( 38, 59 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/pop_in = SubResource( 22 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="BlackSquare" type="ColorRect" parent="."]
+margin_right = 1924.0
+margin_bottom = 1085.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
 [connection signal="pressed" from="Window/TextureRect/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="meta_clicked" from="Window/TextureRect/CreditsText" to="." method="_on_CreditsText_meta_clicked"]
 [connection signal="pressed" from="Window/TextureRect/CreditsButtons/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Window/TextureRect/CreditsButtons/TitleButton" to="." method="_on_TitleButton_pressed"]
