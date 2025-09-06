@@ -140,7 +140,15 @@ func _ready():
 	staff_forward.frame = 0
 	staff_up.frame = 0
 	staff_down.frame = 0
-	travel_to_animation("Run")
+	
+	# Wait one frame for physics to initialize
+	yield(get_tree(), "idle_frame")
+	
+	if is_on_floor() and is_standing:
+		travel_to_animation("JustStanding")
+	else:
+		travel_to_animation("Run")
+	
 	setup_debug_canvas(debug_mode)
 
 func _on_in_battle_dialogue(_in_battle_dialogue, _enemy_name):
