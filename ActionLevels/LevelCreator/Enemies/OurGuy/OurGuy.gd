@@ -8,6 +8,7 @@ var player_position
 var current_health_value 
 
 func _ready():
+	AudioManager.playSFX("our_guy")
 	Events.connect("player_global_position", self, "_on_player_global_position")
 	Events.connect("enemy_taken_damage", self, "_on_taken_damage")
 	current_health_value = parent_node.health_value
