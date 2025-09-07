@@ -5,7 +5,7 @@ export var duration : float  = 5
 
 func _ready():
 	animation_player.play("fade_in")
-	AudioManager.playSFX("you_win")
+	AudioManager.playSFX("small_win")
 	
 
 func display_for_seconds():
