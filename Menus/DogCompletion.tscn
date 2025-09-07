@@ -195,6 +195,9 @@ custom_styles/panel = SubResource( 4 )
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/PanelContainer"]
 margin_right = 369.596
 margin_bottom = 101.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 8
+custom_constants/shadow_offset_y = 8
 custom_fonts/normal_font = SubResource( 5 )
 bbcode_enabled = true
 bbcode_text = "[center][rainbow sat=0.4][wave]DOGS GET!"
