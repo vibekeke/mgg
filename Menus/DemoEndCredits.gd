@@ -13,14 +13,12 @@ var scroll_speed: float = 70.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("ready called")
 	animation_player.play("pop_in")
 	message_text.show()
 	message_button.show()
 	credits_text.hide()
 	credits_text.hide()
 	$AudioStreamPlayer.play()
-	print("ready finished")
 
 func _process(delta):
 	scrolling.position.y -= scroll_speed * delta
