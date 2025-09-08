@@ -9,6 +9,7 @@ var sound_effects = {
 	"twinkle" : preload("res://sounds/UI sounds/twinkle_glissando.wav"),
 	"jingle" : preload("res://sounds/UI sounds/starting_jingle.wav"),
 	"mouse_click" : preload("res://sounds/mouseclick-cut.mp3"),
+	"coin" : preload("res://sounds/collecting/Coins 9 - Sound effects Pack 2.wav"),
 	"magic_sound" : preload("res://sounds/player/magic_sound_1.wav"),
 	"player_shoot" : preload("res://sounds/player/zapsplat_simple_zap.wav"),
 	"jump" : preload("res://sounds/player/zapsplat_short_retro_jump5.wav"),
