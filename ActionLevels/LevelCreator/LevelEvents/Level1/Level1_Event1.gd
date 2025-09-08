@@ -58,7 +58,7 @@ func display_dialogue():
 		self.get_instance_id(), 
 		DataClasses.Placement.LOWER, 
 		DataClasses.CharacterPortrait.AngelIntense,
-		Color(0.12549, 0.619608, 1, 0.25),
+		Color(0.12549, 0.519608, 0.8, 0.4),
 		Color(0.0, 0.0, 0.0, 0.25),
 		true,
 		1.5

@@ -50,6 +50,7 @@
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource( 5 )
 boss_background = ExtResource( 14 )
+level1_event1_dialog = ExtResource( 45 )
 
 [node name="DialogLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

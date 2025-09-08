@@ -13,6 +13,8 @@ onready var level_start_display = get_node("%LevelStartDisplay")
 onready var vhs_filter = get_node("%VHS")
 export var boss_background : PackedScene
 export var mute_audio = false
+export var level1_event1_dialog : Resource
+
 
 func _ready():
 	Events.set_vhs_shader(Events.vhs_filter_state_unpaused, vhs_filter)
