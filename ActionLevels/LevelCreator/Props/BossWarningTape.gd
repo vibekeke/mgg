@@ -43,4 +43,6 @@ func _on_Timer_timeout():
 	animation_player.play_backwards("boss_approaching")
 	yield(animation_player,"animation_finished")
 	color_rect_tween.stop_all()
+	background_layer.visible = false
+	visible_elements_layer.visible = false
 	emit_signal("warning_finished")
