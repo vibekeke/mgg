@@ -27,7 +27,9 @@ var sound_effects = {
 	"boss_warning": preload("res://sounds/level/warning-sound.wav"),
 	"dialogue": preload("res://sounds/dialogue/beep.wav"),
 	"UFO": preload("res://sounds/enemy attacks/BloopyLaser.wav"),
-	"UFO_long": preload("res://sounds/enemy attacks/zs_UFO.wav")
+	"UFO_long": preload("res://sounds/enemy attacks/zs_UFO.wav"),
+	"LaserBlipShort": preload("res://sounds/enemy attacks/LaserSound_ShortBlip.wav"),
+	"LaserBlipSharp": preload("res://sounds/enemy attacks/LaserSound_sharp.wav")
   
 	#See sounds/enemy attacks for many cool lasery enemy attack sounds!
 	#Idk how the fuck enemies work and I can't figure it out, so I'll leave it to you to add sounds for
