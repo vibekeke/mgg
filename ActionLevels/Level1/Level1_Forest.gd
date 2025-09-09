@@ -14,12 +14,15 @@ onready var vhs_filter = get_node("%VHS")
 export var boss_background : PackedScene
 export var mute_audio = false
 
+export var dog_completion_popup : PackedScene
+
 func _ready():
 	Events.set_vhs_shader(Events.vhs_filter_state_unpaused, vhs_filter)
 	level_start_display.connect("confirm_level_start", self, "_on_confirm_level_start")
 	enemy_spawner.stop_enemy_spawner()
 	platform_spawner.stop_platform_spawner()
 	Events.connect("boss_spawned", self, "_on_boss_spawn")
+	Events.connect("all_dogs_collected", self, "_on_all_dogs_collected")
 	Events.emit_signal("background_moving_enabled", false)
 	Events.emit_signal("player_standing", true)
 	Events.COLLECTED_DOGS = {}
@@ -56,3 +59,10 @@ func _on_confirm_level_start():
 	Events.emit_signal("fall_down_ui")
 	self.emit_signal("level_start")
 	add_initial_background_element()
+
+func _on_all_dogs_collected():
+	if not Events.dogs_complete:
+		var new_instance = dog_completion_popup
+		get_tree().current_scene.add_child(new_instance)
+	Events.dogs_complete = true
+	

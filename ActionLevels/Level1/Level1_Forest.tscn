@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -43,6 +43,7 @@
 [ext_resource path="res://HUD/LevelStartDisplay.tscn" type="PackedScene" id=41]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerfly.tscn" type="PackedScene" id=42]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventEnd.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Menus/DogCompletion.tscn" type="PackedScene" id=44]
 [ext_resource path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" type="Resource" id=45]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform1.tscn" type="PackedScene" id=46]
 [ext_resource path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform3.tscn" type="PackedScene" id=47]
@@ -50,6 +51,7 @@
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource( 5 )
 boss_background = ExtResource( 14 )
+dog_completion_popup = ExtResource( 44 )
 
 [node name="DialogLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
