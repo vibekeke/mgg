@@ -23,8 +23,9 @@ func _ready():
 		event_start()
 
 func _on_dialogue_box_finished(node_id):
-	var new_instance = win_popup.instance()
-	add_child(new_instance)
+	if self.get_instance_id() == node_id:
+		var new_instance = win_popup.instance()
+		add_child(new_instance)
 
 	#if self.get_instance_id() == node_id:
 	#	yield(get_tree().create_timer(2.0), "timeout")

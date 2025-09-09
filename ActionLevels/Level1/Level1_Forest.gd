@@ -24,7 +24,7 @@ func _ready():
 	enemy_spawner.stop_enemy_spawner()
 	platform_spawner.stop_platform_spawner()
 	Events.connect("boss_spawned", self, "_on_boss_spawn")
-	Events.connect("all_dogs_collected", self, "_on_all_dogs_collected")
+	Events.connect("collected_all_dogs", self, "_on_all_dogs_collected")
 	Events.emit_signal("background_moving_enabled", false)
 	Events.emit_signal("player_standing", true)
 	Events.COLLECTED_DOGS = {}
@@ -64,7 +64,7 @@ func _on_confirm_level_start():
 
 func _on_all_dogs_collected():
 	if not Events.dogs_complete:
-		var new_instance = dog_completion_popup
+		var new_instance = dog_completion_popup.instance()
 		get_tree().current_scene.add_child(new_instance)
 	Events.dogs_complete = true
 	
