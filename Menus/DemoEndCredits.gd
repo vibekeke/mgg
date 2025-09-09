@@ -17,8 +17,7 @@ func _ready():
 	message_text.show()
 	message_button.show()
 	credits_text.hide()
-	credits_text.hide()
-	$AudioStreamPlayer.play()
+	AudioManager.play_music("credits", -10)
 
 func _process(delta):
 	scrolling.position.y -= scroll_speed * delta
@@ -29,6 +28,7 @@ func _on_BackButton_pressed():
 
 func _on_TitleButton_pressed():
 	AudioManager.playSFX("mouse_click")
+	AudioManager.stop_music()
 	Events.emit_signal("transition_to_scene", "TitleScreen", false)
 
 func _on_NextButton_pressed():
@@ -49,7 +49,6 @@ func toggle_text():
 
 func pop_in_sound():
 	AudioManager.playSFX("ui_pop_in")
-
 
 
 func _on_CreditsText_meta_clicked(meta):

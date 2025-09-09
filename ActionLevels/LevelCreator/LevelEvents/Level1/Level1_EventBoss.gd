@@ -39,6 +39,7 @@ func _ready():
 func _on_dialogue_box_finished(node_id):
 	if self.get_instance_id() == node_id:
 		yield(get_tree().create_timer(2.0), "timeout")
+		AudioManager.play_music("level1_boss")
 		spawn_boss()
 	
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
@@ -109,6 +110,7 @@ func _on_wait_after_stopping_spawner_timer():
 func _on_background_element_offscreen(element_name):
 	if element_name == DataClasses.Enemies.BIG_BIRD && level_events_manager.get_currently_running_event() == 6:
 		if not boss_warning_tape.visible:  # Only trigger once
+			AudioManager.fade_out_music(5)
 			boss_warning_tape.visible = true
 			boss_warning_tape.start_animation()
 			# Disconnect to prevent multiple triggers
@@ -129,6 +131,8 @@ func event_start() -> void:
 		AudioManager.playSFX("BirdDescend", 1.0, -10)
 
 func _on_big_bird_boss_defeated(death_position):
+	AudioManager.fade_out_music(3)
+	#TODO: Add ending dialogue?? + Defeated flag so it doesnt crash with the other ondialoguehwatever
 	end_event()
 
 func end_event() -> void:
