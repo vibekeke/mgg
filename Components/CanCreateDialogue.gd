@@ -30,7 +30,15 @@ func _on_body_exited(body):
 func display_dialogue():
 	if stop_player:
 		Events.emit_signal("overworld_player_controlled", true)
-	MggDialogue.create_dialogue_balloon(title, dialogue, self.get_parent().get_instance_id(), DataClasses.Placement.LOWER, initial_character_portrait) 
+	MggDialogue.create_dialogue_balloon(
+		title, 
+		dialogue, 
+		self.get_parent().get_instance_id(), 
+		DataClasses.Placement.LOWER, 
+		initial_character_portrait,
+		Color(0.12549, 0.519608, 0.8, 0.4),
+		Color(0.0, 0.0, 0.0, 0.25)
+	) 
 	dialogue_open = true
 
 func _process(delta):
