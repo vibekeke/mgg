@@ -43,7 +43,6 @@ func _on_dialogue_box_finished(node_id):
 	
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 5:
-		print("LEVEL EVENT NUMBER COMPLETE")
 		start_event_timer.set_name(event_name + "_start_timer")
 		start_event_timer.connect("timeout", self, "trigger")
 		if debug_mode:
@@ -127,6 +126,7 @@ func event_start() -> void:
 		boss_background_to_spawn.scale.x = 0.65
 		boss_background_to_spawn.scale.y = 0.65
 		enemy_spawner.spawn_instanced_background_element(boss_background_to_spawn, 'BackForestBackground', background_boss_spawn_place, background_boss_speed)
+		AudioManager.playSFX("BirdDescend", 1.0, -10)
 
 func _on_big_bird_boss_defeated(death_position):
 	end_event()
