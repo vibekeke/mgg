@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/chirp2.mp3-f4633bad7b6789bf4dd337875212424d.mp3str"
+
+[deps]
+
+source_file="res://sounds/boss/chirp2.mp3"
+dest_files=[ "res://.import/chirp2.mp3-f4633bad7b6789bf4dd337875212424d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

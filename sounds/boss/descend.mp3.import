@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/descend.mp3-37877db0e5a43a91e7e3d3932cdbf09c.mp3str"
+
+[deps]
+
+source_file="res://sounds/boss/descend.mp3"
+dest_files=[ "res://.import/descend.mp3-37877db0e5a43a91e7e3d3932cdbf09c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
