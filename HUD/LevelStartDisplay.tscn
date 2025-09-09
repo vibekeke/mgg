@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://HUD/ControlsPanelContainer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test_fonts/vibekefonts/Jura-Bold.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://HUD/LevelStartDisplay.gd" type="Script" id=4]
 [ext_resource path="res://ActionLevels/backgrounds/Bubbles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD/VerticalControlsPanelContainer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" type="Resource" id=7]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -234,6 +235,7 @@ tracks/2/keys = {
 
 [node name="LevelStartDisplay" type="CanvasLayer"]
 script = ExtResource( 4 )
+level1_event1_dialog = ExtResource( 7 )
 
 [node name="PanelContainer" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true
@@ -246,9 +248,10 @@ margin_bottom = 305.0
 unique_name_in_owner = true
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 101.69
-margin_right = 522.69
-margin_bottom = 305.963
+margin_left = 2021.69
+margin_top = 294.963
+margin_right = 2442.7
+margin_bottom = 845.963
 custom_styles/panel = ExtResource( 3 )
 
 [node name="ControlsAnimationPlayer" type="AnimationPlayer" parent="Controls"]
@@ -304,7 +307,7 @@ anims/confirmation_animation = SubResource( 7 )
 
 [node name="ReadyToStartLevelTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 1.5
+wait_time = 0.5
 one_shot = true
 
 [node name="Bubbles" parent="." instance=ExtResource( 5 )]

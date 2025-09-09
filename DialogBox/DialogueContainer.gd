@@ -14,7 +14,7 @@ onready var dialogue_container_animation_player = get_node("%DialogueContainerAn
 onready var auto_advance_timer = get_node("%AutoAdvanceTimer")
 
 var placement_dictionary = {
-	DataClasses.Placement.LOWER: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(1396.0, 981.0)}},
+	DataClasses.Placement.LOWER: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(1385.0, 1005.0)}},
 	DataClasses.Placement.MIDDLE: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(0.0,0.0)}},
 	DataClasses.Placement.UPPER: {'dialogue_main_window': {'top': 0.05, 'bottom': 0.3}, 'portrait': {'top': 0.0, 'bottom': 0.0}, 'cursor': {'position': Vector2(1396.0, 290.0)}}
 }
@@ -188,3 +188,6 @@ func _on_DialogueContainer_gui_input(event):
 func _on_auto_advance_timer():
 	if is_advancable:
 		next(dialogue.next_id)
+
+func play_popup_sound():
+	AudioManager.playSFX("ui_pop_in", 1.2, 0.0)

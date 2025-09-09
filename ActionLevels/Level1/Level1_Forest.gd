@@ -13,6 +13,8 @@ onready var level_start_display = get_node("%LevelStartDisplay")
 onready var vhs_filter = get_node("%VHS")
 export var boss_background : PackedScene
 export var mute_audio = false
+export var level1_event1_dialog : Resource
+
 
 export var dog_completion_popup : PackedScene
 

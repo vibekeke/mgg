@@ -22,7 +22,7 @@ var sound_effects = {
 	"player_damage" : preload("res://sounds/damage/Laser-weapon 8 - Sound effects Pack 2.wav"),
 	"gunshot" : preload("res://sounds/gunnerfly/handgun 9mm silenced.wav"),
 	"gun_reload" : preload("res://sounds/gunnerfly/shotgun_reload.wav"),
-	"our_guy" : preload("res://sounds/enemy attacks/WHYAREYOURUNNING.wav"),	#ty pls implement
+	"our_guy" : preload("res://sounds/enemy attacks/WHYAREYOURUNNING.wav"),
 	"small_win" : preload("res://sounds/level/zapsplat_multimedia_game_sound_win_award_bonus_complete_collect_special_item_109030.mp3"),
 	"you_win" : preload("res://sounds/level/you win.ogg"),
 	"boss_warning": preload("res://sounds/level/warning-sound.wav"),
@@ -30,7 +30,11 @@ var sound_effects = {
 	"UFO": preload("res://sounds/enemy attacks/BloopyLaser.wav"),
 	"UFO_long": preload("res://sounds/enemy attacks/zs_UFO.wav"),
 	"LaserBlipShort": preload("res://sounds/enemy attacks/LaserSound_ShortBlip.wav"),
-	"LaserBlipSharp": preload("res://sounds/enemy attacks/LaserSound_sharp.wav")
+	"LaserBlipSharp": preload("res://sounds/enemy attacks/LaserSound_sharp.wav"),
+	"BirdDescend": preload("res://sounds/boss/descend.mp3"),
+	"BirdAppear": preload("res://sounds/boss/bird_appear.mp3"),
+	"BirdChirp1": preload("res://sounds/boss/chirp.mp3"),
+	"BirdChirp2": preload("res://sounds/boss/chirp2.mp3")
   
 	#See sounds/enemy attacks for many cool lasery enemy attack sounds!
 	#Idk how the fuck enemies work and I can't figure it out, so I'll leave it to you to add sounds for
