@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 49
+resource_version = 51
 syntax_version = 2
 raw_text = "~ level1_intro
 Angel: Welcome, brave Magical Girl!
@@ -37,8 +37,8 @@ Angel: Bees? Un-BEE-leivable [wait=1.5]
 ~ level1_event2
 
 ~ level1_event_boss
-Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS.[/shake]. 
-Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]NIGHT.[/shake].
+Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS[/shake]. 
+Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]NIGHT[/shake].
 
 ~ level1_event_end
 Angel: You did it! You defeated the Bird of Darkness and saved the forest!
@@ -294,8 +294,8 @@ lmao",
 "character_replacements": [  ],
 "next_id": "32",
 "replacements": [  ],
-"text": "[speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS.[/shake].",
-"translation_key": "[speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS.[/shake].",
+"text": "[speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS[/shake].",
+"translation_key": "[speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS[/shake].",
 "type": "dialogue"
 },
 "32": {
@@ -303,8 +303,8 @@ lmao",
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "[speed=0.2] I AM THE [shake rate=7 level=15]NIGHT.[/shake].",
-"translation_key": "[speed=0.2] I AM THE [shake rate=7 level=15]NIGHT.[/shake].",
+"text": "[speed=0.2] I AM THE [shake rate=7 level=15]NIGHT[/shake].",
+"translation_key": "[speed=0.2] I AM THE [shake rate=7 level=15]NIGHT[/shake].",
 "type": "dialogue"
 },
 "34": {
