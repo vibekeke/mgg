@@ -44,6 +44,7 @@ func _ready():
 		room_button.text = "Bedroom"
 		room_button.disabled = false
 	AudioManager.playSFX("twinkle")
+	AudioManager.play_music("main_menu")
 	
 
 func all_dogs_collected_message_display():
@@ -58,6 +59,7 @@ func _on_StartButton_pressed():
 	if !button_pressed:
 		button_pressed = true
 		AudioManager.playSFX("ui_confirm", 0.0, 5.0)
+		AudioManager.fade_out_music(1)
 		send_to_level("Level1")
 
 func _on_OptionsButton_pressed():
