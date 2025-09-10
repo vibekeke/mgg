@@ -120,10 +120,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CenterContainer:rect_position")
@@ -132,10 +132,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 0.554785, 1 ),
+"times": PoolRealArray( 0, 0.5, 1.1 ),
+"transitions": PoolRealArray( 0.554785, 0.554785, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 300 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 300 ), Vector2( 0, 300 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Node2D:modulate")
@@ -144,10 +144,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer/ScoreLabel:modulate")
@@ -293,8 +293,11 @@ tracks/3/keys = {
 script = ExtResource( 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 300.0
+margin_bottom = 300.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 margin_left = 538.0
@@ -393,6 +396,7 @@ align = 2
 
 [node name="ScoreLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 299.0
 margin_right = 506.0
 margin_bottom = 60.0
@@ -413,6 +417,7 @@ align = 2
 
 [node name="DamageLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 299.0
 margin_top = 64.0
 margin_right = 506.0
@@ -434,6 +439,7 @@ align = 2
 
 [node name="DogsLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 299.0
 margin_top = 128.0
 margin_right = 506.0
@@ -471,6 +477,7 @@ text = "                Grade:     "
 
 [node name="GradeLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 409.0
 margin_right = 492.0
 margin_bottom = 142.0
@@ -496,6 +503,7 @@ custom_constants/margin_bottom = 70
 
 [node name="NextButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 200.0
 margin_right = 636.0
 margin_bottom = 99.0
@@ -509,6 +517,7 @@ text = "  Continue     "
 position = Vector2( 385, 56 )
 
 [node name="Node2D" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 718, 252 )
 
 [node name="Sparkles" parent="Node2D" instance=ExtResource( 6 )]
