@@ -34,7 +34,9 @@ var sound_effects = {
 	"BirdDescend": preload("res://sounds/boss/descend.mp3"),
 	"BirdAppear": preload("res://sounds/boss/bird_appear.mp3"),
 	"BirdChirp1": preload("res://sounds/boss/chirp.mp3"),
-	"BirdChirp2": preload("res://sounds/boss/chirp2.mp3")
+	"BirdChirp2": preload("res://sounds/boss/chirp2.mp3"),
+	"paper_rustle": preload("res://sounds/paper_rustle.wav"),
+	"step": preload("res://sounds/UI sounds/short_blip.wav")
   
 	#See sounds/enemy attacks for many cool lasery enemy attack sounds!
 	#Idk how the fuck enemies work and I can't figure it out, so I'll leave it to you to add sounds for
