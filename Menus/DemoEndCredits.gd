@@ -9,7 +9,7 @@ onready var message_button = get_node("%NextButton")
 onready var credits_text = get_node("%CreditsText")
 onready var credits_buttons = get_node("%CreditsButtons")
 
-var scroll_speed: float = 70.0
+var scroll_speed: float = 80.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

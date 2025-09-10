@@ -10,6 +10,7 @@ func _ready():
 
 func _increment_stars():
 	Events.emit_signal("collected_star")
+	Events.emit_signal("score_popup_requested", "star", global_position)
 
 func _on_call_body_entered(body):
 	if body.name == "Player":

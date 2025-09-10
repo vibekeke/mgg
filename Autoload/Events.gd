@@ -25,6 +25,8 @@ signal collected_dog(dog_type)
 
 signal collected_all_dogs
 
+signal score_popup_requested(collectible_type, position)
+
 # level related
 signal enemy_taken_damage(enemy, health_value)
 signal regular_enemy_death

@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://test_fonts/vibekefonts/Jura-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://HUD/ScoreLabel.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+outline_size = 2
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "slide_up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 4.59479 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -150, -160 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_destroy_self"
+} ]
+}
+
+[node name="ScoreLabel" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+margin_right = 74.0
+margin_bottom = 51.0
+custom_colors/font_outline_modulate = Color( 0.294118, 0.615686, 0.929412, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "+10"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/slide_up = SubResource( 2 )
