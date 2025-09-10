@@ -12,10 +12,10 @@ export var boss_background : PackedScene
 export var mute_audio = false
 export var level1_event1_dialog : Resource
 
-
 export var dog_completion_popup : PackedScene
 
 func _ready():
+	ScoreManager.reset_level_score()
 	Events.set_vhs_shader(Events.vhs_filter_state_unpaused, vhs_filter)
 	level_start_display.connect("confirm_level_start", self, "_on_confirm_level_start")
 	enemy_spawner.stop_enemy_spawner()

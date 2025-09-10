@@ -23,7 +23,7 @@ func _ready():
 	animated_sprite.modulate = Color(1, 1, 1, 0)
 	sad_sprite.modulate = Color(1, 1, 1, 0)
 	
-	player_final_score = Events.get_score()
+	player_final_score = ScoreManager.get_score()
 	score_display.bbcode_text = score_display.bbcode_text + " " + str(player_final_score)
 	animation_player.play("fade_in")
 	

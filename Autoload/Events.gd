@@ -72,9 +72,9 @@ signal go_up_ui
 const SAVE_FILE_LOCATION : String = "res://mggsave.save"
 const COMPLETED_LEVELS : Array = []
 var COLLECTED_DOGS : Dictionary = {}
-var tracked_score : int = 0
 var dogs_complete = false  
 var first_time_playing = true
+
 
 func _ready():
 	OS.min_window_size = Vector2(1280, 720)
@@ -168,17 +168,12 @@ func save_game(level_name : int, dog_info : Dictionary):
 	save_file.store_line(to_json(save_dict))
 	save_file.close()
 
-func update_score(score: int):
-	tracked_score = score
-
 func update_dogs(dog_type: String):
 	if not COLLECTED_DOGS.has(dog_type):
 		COLLECTED_DOGS[dog_type] = true
 	if COLLECTED_DOGS.size() >= 3:
 		self.emit_signal("collected_all_dogs")
-
-func get_score() -> int:
-	return tracked_score
+		
 
 func get_boss(boss_name : String):
 	return bossPaths[boss_name]
@@ -194,7 +189,7 @@ func get_level_background_elements(level_number: int):
 
 func get_level_collectible(collectible: String):
 	return level_collectibles[collectible]
-	
+
 ### Shaders
 
 func set_vhs_shader(shader_params : Dictionary, vhs_filter: ColorRect):
