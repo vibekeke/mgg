@@ -20,7 +20,7 @@ func _ready():
 	AudioManager.playSFX("you_win")
 	next_button.grab_focus()
 	score_label.text = str(ScoreManager.get_score())
-	damage_label.text = str(ScoreManager.get_hits()) + " hits taken"
+	damage_label.text = "-" + str(ScoreManager.get_hits())
 	grade_label.text = ScoreManager.calculate_rank()
 	dogs_label.text = str(ScoreManager.get_dog_count()) + "/3"
 
