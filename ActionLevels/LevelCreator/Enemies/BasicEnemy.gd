@@ -109,6 +109,7 @@ func call_death(count_as_regular_death: bool):
 		sprite.visible = false
 		active_death_explosion_node.play("default", false)
 		spawn_possible_collectible(death_global_position)
+		Events.emit_signal("score_popup_requested", "enemy", death_global_position)
 
 func _on_explosion_finished():
 	if !has_non_queue_free_rotator:

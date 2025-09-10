@@ -37,6 +37,7 @@ func disable_float(disable: bool):
 func _increment_dogs():
 	if self.dog_breed != 'ClearDogu':
 		Events.emit_signal("collected_dog", self.dog_breed)
+		Events.emit_signal("score_popup_requested", "dog", global_position)
 
 func _on_call_body_entered(body):
 	if body.name == "Player":
