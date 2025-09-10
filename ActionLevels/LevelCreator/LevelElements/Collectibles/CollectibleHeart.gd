@@ -20,3 +20,6 @@ func _on_call_body_entered(body):
 
 func _physics_process(delta):
 	self.position.x -= scroll_speed * delta
+
+func _on_VisibilityNotifier2D_screen_exited():
+	self.queue_free()

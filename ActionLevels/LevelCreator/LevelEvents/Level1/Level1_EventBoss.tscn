@@ -4,3 +4,9 @@
 
 [node name="Level1_EventBoss" type="Node"]
 script = ExtResource( 1 )
+
+[node name="CollectibleTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 4.0
+
+[connection signal="timeout" from="CollectibleTimer" to="." method="_on_CollectibleTimer_timeout"]

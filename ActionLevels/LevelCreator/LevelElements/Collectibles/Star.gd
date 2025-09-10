@@ -3,7 +3,6 @@ extends Node2D
 export (int) var scroll_speed
 
 onready var area2d = $Area2D
-var time = 0
 
 func _ready():
 	area2d.connect("body_entered", self, "_on_call_body_entered")
@@ -21,3 +20,7 @@ func _on_call_body_entered(body):
 
 func _physics_process(delta):
 	self.position.x -= scroll_speed * delta
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	self.queue_free()

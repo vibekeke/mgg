@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/LevelForest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn" type="PackedScene" id=15]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BeeBackground.tscn" type="PackedScene" id=16]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event4.tscn" type="PackedScene" id=17]
+[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=18]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=21]
@@ -151,6 +152,9 @@ time_until_event_start = 3.0
 
 [node name="Level1_EventBoss" parent="LevelEventsManager" instance=ExtResource( 34 )]
 boss_warning_tape_path = NodePath("../../BossWarningTape")
+spawn_paths_path = NodePath("../../SpawnPaths")
+star_collectible = ExtResource( 18 )
+spawn_collectible_to_node_path = NodePath("../..")
 level1_event1_dialog = ExtResource( 45 )
 
 [node name="Level1_EventEnd" parent="LevelEventsManager" instance=ExtResource( 43 )]
