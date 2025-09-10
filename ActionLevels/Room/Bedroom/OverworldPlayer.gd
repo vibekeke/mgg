@@ -12,6 +12,10 @@ func _ready():
 
 func _on_overworld_player_controlled(status):
 	is_controlled = status
+	if is_controlled:
+		animation_tree.get("parameters/playback").travel("Idle")
+		velocity = Vector2.ZERO
+		
 
 func set_reaction(name: String, state: bool):
 	if name == "question_mark" and state:
@@ -49,3 +53,6 @@ func _physics_process(delta):
 	get_input()
 
 	velocity = move_and_slide(velocity, Vector2.ZERO, false)
+
+func play_stepSFX():
+	AudioManager.play_random_pitch("step", 0.04, -12)
