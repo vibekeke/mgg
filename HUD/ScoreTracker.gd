@@ -5,6 +5,7 @@ export var score_popup : PackedScene
 
 func _ready():
 	ScoreManager.connect("score_updated", self, "_on_score_updated")
+	Events.connect("score_popup_requested", self, "spawn_score_popup")
 
 func _on_score_updated(new_score: int):
 	score_total.bbcode_text = str(new_score)
