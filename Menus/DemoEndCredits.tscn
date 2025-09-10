@@ -1,6 +1,6 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=96 format=2]
 
-[ext_resource path="res://Menus/ConceptArt/floating.png" type="Texture" id=1]
+[ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menus/PrettyAssets/DemoTextBox.webp" type="Texture" id=2]
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Menus/ConceptArt/running.png" type="Texture" id=4]
@@ -8,12 +8,24 @@
 [ext_resource path="res://Menus/ConceptArt/posing.png" type="Texture" id=6]
 [ext_resource path="res://Menus/DemoEndCredits.gd" type="Script" id=7]
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://test_fonts/vibekefonts/Jura-Bold.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://imported_assets/actors/sharkboi/Shark_Bloons.png" type="Texture" id=10]
 [ext_resource path="res://Menus/PrettyAssets/test2.png" type="Texture" id=11]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Sharkboi/SharkboiAnimatedSprite.gd" type="Script" id=12]
 [ext_resource path="res://Menus/ConceptArt/jente.png" type="Texture" id=13]
 [ext_resource path="res://Menus/PrettyAssets/Sparkles.tscn" type="PackedScene" id=14]
+[ext_resource path="res://test_fonts/vibekefonts/Jura-SemiBold.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tres" type="SpriteFrames" id=17]
+[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tres" type="SpriteFrames" id=18]
+[ext_resource path="res://imported_assets/actors/flybutt/Butterfly.png" type="Texture" id=19]
+[ext_resource path="res://imported_assets/actors/regularsnaker/Snake_Regular.png" type="Texture" id=20]
+[ext_resource path="res://imported_assets/actors/gunnerfly/Gunnerfly.png" type="Texture" id=21]
+[ext_resource path="res://imported_assets/actors/nooder/Nooder.png" type="Texture" id=22]
+[ext_resource path="res://imported_assets/actors/misbeehave/Bee_Stressed.png" type="Texture" id=23]
+[ext_resource path="res://imported_assets/actors/satan/satan.png" type="Texture" id=24]
+[ext_resource path="res://imported_assets/actors/ourguy/Guy.png" type="Texture" id=25]
+[ext_resource path="res://Cutscenes/alien1.PNG" type="Texture" id=26]
 
 [sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
@@ -31,12 +43,249 @@ shader = SubResource( 7 )
 shader_param/SPEED = 0.1
 shader_param/SPEED_Y = 0.05
 
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color : hint_color = vec4(1.0);
+uniform float flash_modifier : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=25]
+resource_local_to_scene = true
+shader = SubResource( 8 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 19 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 19 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 19 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=26]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 21 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 21 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 21 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 21 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 24 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 24 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 24 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 512, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 24 )
+region = Rect2( 512, 512, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 24 )
+region = Rect2( 1024, 512, 512, 512 )
+
 [sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 24 )
+region = Rect2( 1536, 512, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=35]
+animations = [ {
+"frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 25 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 25 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 25 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=40]
+animations = [ {
+"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 255, 341 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 22 )
+region = Rect2( 0, 341, 255, 341 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 4
+atlas = ExtResource( 22 )
+region = Rect2( 0, 682, 255, 341 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 4
+atlas = ExtResource( 22 )
+region = Rect2( 0, 1023, 255, 341 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 4
+atlas = ExtResource( 22 )
+region = Rect2( 0, 1364, 255, 341 )
+
+[sub_resource type="SpriteFrames" id=45]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 23 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 512, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 23 )
+region = Rect2( 512, 512, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 1024, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 23 )
+region = Rect2( 512, 1024, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=52]
+animations = [ {
+"frames": [ SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="AtlasTexture" id=53]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=54]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=55]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=56]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 1024, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 0, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=58]
+flags = 4
+atlas = ExtResource( 20 )
+region = Rect2( 1024, 2048, 1024, 1024 )
+
+[sub_resource type="SpriteFrames" id=59]
+animations = [ {
+"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="AtlasTexture" id=60]
 flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=61]
 flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 512, 0, 512, 512 )
@@ -46,12 +295,12 @@ flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 1024, 0, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=62]
 flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 1536, 0, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=63]
 flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 0, 512, 512, 512 )
@@ -66,14 +315,14 @@ flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 1024, 512, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=64]
 flags = 4
 atlas = ExtResource( 10 )
 region = Rect2( 1536, 512, 512, 512 )
 
 [sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 16 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 8 ) ],
+"frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 16 ), SubResource( 62 ), SubResource( 63 ), SubResource( 14 ), SubResource( 15 ), SubResource( 64 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -109,6 +358,14 @@ tracks/1/keys = {
 "values": [  ]
 }
 
+[sub_resource type="DynamicFont" id=65]
+size = 42
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=66]
+size = 46
+font_data = ExtResource( 9 )
+
 [sub_resource type="DynamicFont" id=23]
 size = 34
 outline_size = 3
@@ -119,18 +376,18 @@ font_data = ExtResource( 16 )
 size = 34
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=67]
 size = 50
 font_data = ExtResource( 8 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=68]
 bg_color = Color( 0.286275, 0.396078, 0.658824, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=69]
 bg_color = Color( 0.388235, 0.541176, 0.901961, 1 )
 border_color = Color( 0.8, 0.8, 0.8, 0 )
 corner_radius_top_left = 30
@@ -138,7 +395,7 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=70]
 bg_color = Color( 0.388235, 0.541176, 0.901961, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -216,7 +473,7 @@ script = ExtResource( 7 )
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = 4.0
 margin_right = 1922.0
-margin_bottom = 2988.0
+margin_bottom = 1206.0
 
 [node name="BGPattern" type="TextureRect" parent="."]
 modulate = Color( 1, 0.905882, 0.388235, 0.258824 )
@@ -249,26 +506,237 @@ flip_h = true
 region_filter_clip = true
 
 [node name="Illustration" type="Sprite" parent="CreditScroll"]
-position = Vector2( 1622, 2875 )
+position = Vector2( 1588, 2148 )
 scale = Vector2( 0.406612, 0.410315 )
 texture = ExtResource( 5 )
 flip_h = true
 
-[node name="Floating" type="Sprite" parent="CreditScroll"]
-position = Vector2( 1653, 2143 )
-scale = Vector2( 0.416859, 0.416859 )
-texture = ExtResource( 1 )
+[node name="BroBear" type="AnimatedSprite" parent="CreditScroll"]
+position = Vector2( 166, 4044 )
+scale = Vector2( 0.75, 0.75 )
+frames = ExtResource( 17 )
+speed_scale = 2.0
+playing = true
+flip_h = true
+
+[node name="GunnerFly" type="AnimatedSprite" parent="CreditScroll"]
+unique_name_in_owner = true
+material = SubResource( 25 )
+position = Vector2( 157, 3244 )
+scale = Vector2( 0.75, 0.75 )
+frames = SubResource( 26 )
+speed_scale = 2.0
+playing = true
+flip_h = true
+
+[node name="GunnerFly2" type="AnimatedSprite" parent="CreditScroll"]
+position = Vector2( 640, 3670 )
+scale = Vector2( 0.75, 0.75 )
+frames = SubResource( 27 )
+speed_scale = 2.0
+playing = true
+offset = Vector2( 1421, -74 )
+
+[node name="BroBun" type="AnimatedSprite" parent="CreditScroll"]
+position = Vector2( 131, 4996 )
+scale = Vector2( 0.75, 0.75 )
+frames = ExtResource( 18 )
+speed_scale = 2.0
+playing = true
+offset = Vector2( 2121, -712 )
+
+[node name="SeaGull" type="AnimatedSprite" parent="CreditScroll"]
+position = Vector2( 1700, 5396 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 35 )
+speed_scale = 1.5
+playing = true
+
+[node name="OurGuy" type="AnimatedSprite" parent="CreditScroll"]
+position = Vector2( 177, 5787 )
+scale = Vector2( 0.75, 0.75 )
+frames = SubResource( 40 )
+speed_scale = 6.0
+playing = true
+flip_h = true
+
+[node name="Nooder" type="AnimatedSprite" parent="CreditScroll"]
+position = Vector2( 5205, 5818 )
+scale = Vector2( 1.2, 1.2 )
+frames = SubResource( 45 )
+playing = true
+offset = Vector2( -2925, 355 )
+flip_h = true
+
+[node name="Big Bird of Darkness" parent="CreditScroll" instance=ExtResource( 1 )]
+position = Vector2( 130, 6827 )
+scale = Vector2( 0.75, 0.75 )
+flip_h = true
+
+[node name="Alien1" type="Sprite" parent="CreditScroll"]
+position = Vector2( 1721, 7432 )
+texture = ExtResource( 26 )
+flip_h = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CreditScroll"]
-position = Vector2( 267, 2440 )
+position = Vector2( 1718, 2809 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 52 )
+speed_scale = 2.0
+playing = true
+
+[node name="Snake" type="AnimatedSprite" parent="CreditScroll"]
+position = Vector2( -2351, 3229 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 59 )
+speed_scale = 1.1
+playing = true
+offset = Vector2( 4315, -1332 )
+flip_h = true
+
+[node name="SharkAttack" type="AnimatedSprite" parent="CreditScroll"]
+position = Vector2( 236, 4905 )
 scale = Vector2( 0.9375, 0.9375 )
 frames = SubResource( 18 )
 playing = true
 flip_h = true
 script = ExtResource( 12 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CreditScroll/AnimatedSprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CreditScroll/SharkAttack"]
 "anims/New Anim" = SubResource( 17 )
+
+[node name="Label" type="Label" parent="CreditScroll"]
+margin_left = 64.0
+margin_top = 2204.0
+margin_right = 236.0
+margin_bottom = 2363.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 65 )
+text = "Special 
+  thanks 
+   to... "
+
+[node name="Label2" type="Label" parent="CreditScroll"]
+margin_left = 70.0
+margin_top = 2566.0
+margin_right = 418.0
+margin_bottom = 2725.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "SNEAKY SNAKE"
+
+[node name="Label3" type="Label" parent="CreditScroll"]
+margin_left = 1541.0
+margin_top = 2982.0
+margin_right = 1889.0
+margin_bottom = 3141.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "MISBEEHAVE"
+
+[node name="Label4" type="Label" parent="CreditScroll"]
+margin_left = 62.0
+margin_top = 3444.0
+margin_right = 410.0
+margin_bottom = 3603.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "PRETTYFLY"
+
+[node name="Label5" type="Label" parent="CreditScroll"]
+margin_left = 1529.0
+margin_top = 3805.0
+margin_right = 1877.0
+margin_bottom = 3979.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "PRETTYFLY
+WITH
+A GUN"
+align = 1
+
+[node name="Label6" type="Label" parent="CreditScroll"]
+margin_left = 42.0
+margin_top = 4304.0
+margin_right = 390.0
+margin_bottom = 4463.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "ROBRO-BEAR"
+
+[node name="Label7" type="Label" parent="CreditScroll"]
+margin_left = 1551.0
+margin_top = 4736.0
+margin_right = 1899.0
+margin_bottom = 4895.0
+rect_pivot_offset = Vector2( 280, 80 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "ROBRO-BUN"
+
+[node name="Label8" type="Label" parent="CreditScroll"]
+margin_left = 66.0
+margin_top = 5173.0
+margin_right = 414.0
+margin_bottom = 5332.0
+rect_pivot_offset = Vector2( 280, 80 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "SHARKTANKS"
+
+[node name="Label9" type="Label" parent="CreditScroll"]
+margin_left = 1560.0
+margin_top = 5605.0
+margin_right = 1908.0
+margin_bottom = 5764.0
+rect_pivot_offset = Vector2( 280, 80 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "A SEAGULL"
+
+[node name="Label10" type="Label" parent="CreditScroll"]
+margin_left = 41.0
+margin_top = 6005.0
+margin_right = 586.0
+margin_bottom = 6164.0
+rect_pivot_offset = Vector2( 280, 80 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "WHY ARE YOU RUNNING"
+
+[node name="Label11" type="Label" parent="CreditScroll"]
+margin_left = 1600.0
+margin_top = 6455.0
+margin_right = 2145.0
+margin_bottom = 6614.0
+rect_pivot_offset = Vector2( 280, 80 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "NOODER"
+
+[node name="Label12" type="Label" parent="CreditScroll"]
+margin_left = -100.0
+margin_top = 7208.0
+margin_right = 445.0
+margin_bottom = 7382.0
+rect_pivot_offset = Vector2( 280, 80 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "BIG BIRD 
+OF 
+DARKNESS"
+align = 1
+
+[node name="Label13" type="Label" parent="CreditScroll"]
+margin_left = 1449.0
+margin_top = 7689.0
+margin_right = 1994.0
+margin_bottom = 7863.0
+rect_pivot_offset = Vector2( 280, 80 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "???"
+align = 1
 
 [node name="Window" type="Node2D" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -330,10 +798,10 @@ margin_right = 79.9999
 margin_bottom = -104.0
 mouse_filter = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 67 )
+custom_styles/hover = SubResource( 68 )
+custom_styles/pressed = SubResource( 69 )
+custom_styles/normal = SubResource( 70 )
 text = "  Next  "
 
 [node name="CreditsText" type="RichTextLabel" parent="Window/TextureRect"]
@@ -396,10 +864,10 @@ margin_right = 136.0
 margin_bottom = 61.0
 focus_mode = 0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 67 )
+custom_styles/hover = SubResource( 68 )
+custom_styles/pressed = SubResource( 69 )
+custom_styles/normal = SubResource( 70 )
 text = " Back "
 
 [node name="VSeparator" type="VSeparator" parent="Window/TextureRect/CreditsButtons"]
@@ -415,10 +883,10 @@ margin_right = 476.0
 margin_bottom = 61.0
 focus_mode = 0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 67 )
+custom_styles/hover = SubResource( 68 )
+custom_styles/pressed = SubResource( 69 )
+custom_styles/normal = SubResource( 70 )
 text = " Title Screen "
 
 [node name="Sparkles2" parent="Window/TextureRect" instance=ExtResource( 14 )]
