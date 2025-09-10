@@ -9,22 +9,24 @@
 [ext_resource path="res://test_fonts/vt323/VT323-Regular.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 1, 0.964706, 0.772549, 0.560784 )
+bg_color = Color( 1, 0.972549, 0.827451, 0.654902 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
+border_color = Color( 1, 0.996078, 0.882353, 1 )
 corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[sub_resource type="StyleBoxFlat" id=21]
-bg_color = Color( 1, 0.964706, 0.772549, 0.560784 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 1, 0.964706, 0.772549, 0 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 0.996078, 0.858824, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -316,7 +318,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 826.0
 margin_bottom = 820.0
-custom_styles/panel = SubResource( 21 )
+custom_styles/panel = SubResource( 24 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 margin_left = 4.0
@@ -510,7 +512,7 @@ position = Vector2( 385, 56 )
 position = Vector2( 718, 252 )
 
 [node name="Sparkles" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( -13, -85 )
+position = Vector2( -89, -89 )
 
 [node name="Sparkles2" parent="Node2D" instance=ExtResource( 6 )]
 position = Vector2( 583, 724 )

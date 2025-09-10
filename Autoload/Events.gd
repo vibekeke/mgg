@@ -73,6 +73,8 @@ const SAVE_FILE_LOCATION : String = "res://mggsave.save"
 const COMPLETED_LEVELS : Array = []
 var COLLECTED_DOGS : Dictionary = {}
 var tracked_score : int = 0
+var dogs_complete = false  
+var first_time_playing = true
 
 func _ready():
 	OS.min_window_size = Vector2(1280, 720)

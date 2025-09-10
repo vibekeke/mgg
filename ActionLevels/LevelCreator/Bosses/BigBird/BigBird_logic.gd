@@ -9,10 +9,11 @@ export (float) var fire_rate_timer_wait_time = 0.2
 export (int) var radius = 100
 export (float) var projectile_speed = 100.0
 var debug_mode = false
-var intro_complete = false
+onready var intro_complete = false
 
-var initial_color_value = 0.0
-var initial_alpha_value = 0.0
+onready var initial_color_value = 0.0
+onready var initial_alpha_value = 0.0
+onready var intro_audio_played = false
 
 onready var parent_node = self.get_parent()
 onready var initial_health_value: int = parent_node.health_value
@@ -20,6 +21,9 @@ onready var fire_rate_timer = Timer.new()
 onready var rotator = parent_node.get_node("Rotator")
 onready var current_phase: int = 0
 onready var debug_texture = preload("res://icon.png")
+
+onready var audio_phase_1_played : bool = false
+onready var audio_phase_2_played : bool = false
 
 const phase_patterns = {
 	0: {
@@ -53,6 +57,9 @@ const phase_patterns = {
 }
 
 func play_intro(delta):
+	if !intro_audio_played:
+		AudioManager.playSFX("BirdAppear", 1.2, -20)
+		intro_audio_played = true
 	if initial_alpha_value < 1.0:
 		initial_alpha_value = initial_alpha_value + delta * 0.5
 		initial_alpha_value = clamp(initial_alpha_value, 0.0, 1.0)
@@ -141,14 +148,24 @@ func apply_new_bullet_phase(phase_number: int):
 		projectile_speed = phase_patterns[phase_number]['projectile_speed']
 		_setup_bullets()
 
+func trigger_audio_phases(current_phase: int):
+	if current_phase == 1 and !audio_phase_1_played:
+		audio_phase_1_played = true
+		AudioManager.playSFX("BirdChirp1", 0.5, -10)
+	if current_phase == 2 and !audio_phase_2_played:
+		audio_phase_2_played = true
+		AudioManager.playSFX("BirdChirp2", 0.5, -10)
+
 func _process(delta):
 	if !intro_complete:
 		play_intro(delta)
 	if parent_node.health_value < (initial_health_value * 0.6) and current_phase != 1 and current_phase != 2:
 		current_phase = 1
+		trigger_audio_phases(current_phase)
 		apply_new_bullet_phase(current_phase)
 	elif parent_node.health_value < (initial_health_value * 0.3) and current_phase != 2:
 		current_phase = 2
+		trigger_audio_phases(current_phase)
 		apply_new_bullet_phase(current_phase)
 
 func _physics_process(delta):

@@ -211,7 +211,7 @@ tracks/3/keys = {
 }
 
 [node name="DemoEndCredits" type="CanvasLayer"]
-layer = 101
+layer = 99
 script = ExtResource( 7 )
 
 [node name="ColorRect" type="ColorRect" parent="."]

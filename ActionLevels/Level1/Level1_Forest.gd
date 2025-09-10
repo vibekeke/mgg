@@ -5,7 +5,6 @@ signal level_start
 onready var spawn_paths = $SpawnPaths
 onready var background_music = $BackgroundMusic
 onready var boss_music = $BossMusic
-onready var sfx = $ExtraSFX
 onready var level_background = get_node("%LevelBackground")
 onready var enemy_spawner = get_node("%EnemySpawner")
 onready var platform_spawner = get_node("%PlatformSpawner")
@@ -13,6 +12,10 @@ onready var level_start_display = get_node("%LevelStartDisplay")
 onready var vhs_filter = get_node("%VHS")
 export var boss_background : PackedScene
 export var mute_audio = false
+export var level1_event1_dialog : Resource
+
+
+export var dog_completion_popup : PackedScene
 
 func _ready():
 	Events.set_vhs_shader(Events.vhs_filter_state_unpaused, vhs_filter)
@@ -20,6 +23,7 @@ func _ready():
 	enemy_spawner.stop_enemy_spawner()
 	platform_spawner.stop_platform_spawner()
 	Events.connect("boss_spawned", self, "_on_boss_spawn")
+	Events.connect("collected_all_dogs", self, "_on_all_dogs_collected")
 	Events.emit_signal("background_moving_enabled", false)
 	Events.emit_signal("player_standing", true)
 	Events.COLLECTED_DOGS = {}
@@ -56,3 +60,10 @@ func _on_confirm_level_start():
 	Events.emit_signal("fall_down_ui")
 	self.emit_signal("level_start")
 	add_initial_background_element()
+
+func _on_all_dogs_collected():
+	if not Events.dogs_complete:
+		var new_instance = dog_completion_popup.instance()
+		get_tree().current_scene.add_child(new_instance)
+	Events.dogs_complete = true
+	

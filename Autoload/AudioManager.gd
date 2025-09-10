@@ -22,7 +22,7 @@ var sound_effects = {
 	"player_damage" : preload("res://sounds/damage/Laser-weapon 8 - Sound effects Pack 2.wav"),
 	"gunshot" : preload("res://sounds/gunnerfly/handgun 9mm silenced.wav"),
 	"gun_reload" : preload("res://sounds/gunnerfly/shotgun_reload.wav"),
-	"our_guy" : preload("res://sounds/enemy attacks/WHYAREYOURUNNING.wav"),	#ty pls implement
+	"our_guy" : preload("res://sounds/enemy attacks/WHYAREYOURUNNING.wav"),
 	"small_win" : preload("res://sounds/level/zapsplat_multimedia_game_sound_win_award_bonus_complete_collect_special_item_109030.mp3"),
 	"you_win" : preload("res://sounds/level/you win.ogg"),
 	"boss_warning": preload("res://sounds/level/warning-sound.wav"),
@@ -30,7 +30,11 @@ var sound_effects = {
 	"UFO": preload("res://sounds/enemy attacks/BloopyLaser.wav"),
 	"UFO_long": preload("res://sounds/enemy attacks/zs_UFO.wav"),
 	"LaserBlipShort": preload("res://sounds/enemy attacks/LaserSound_ShortBlip.wav"),
-	"LaserBlipSharp": preload("res://sounds/enemy attacks/LaserSound_sharp.wav")
+	"LaserBlipSharp": preload("res://sounds/enemy attacks/LaserSound_sharp.wav"),
+	"BirdDescend": preload("res://sounds/boss/descend.mp3"),
+	"BirdAppear": preload("res://sounds/boss/bird_appear.mp3"),
+	"BirdChirp1": preload("res://sounds/boss/chirp.mp3"),
+	"BirdChirp2": preload("res://sounds/boss/chirp2.mp3")
   
 	#See sounds/enemy attacks for many cool lasery enemy attack sounds!
 	#Idk how the fuck enemies work and I can't figure it out, so I'll leave it to you to add sounds for
@@ -39,7 +43,12 @@ var sound_effects = {
 	## the UFO guys, see sounds/enemy
 }
 
-var music = {}
+var music = {
+	"main_menu" : preload("res://sounds/level/forest/timetravel_uvokal.mp3"), #PLACEHOLDER
+	"level1" : preload("res://sounds/level/forest/timetravel_uvokal.mp3"),
+	"level1_boss" : preload("res://sounds/level/forest/Prosjekt2.mp3"),
+	"victory" : preload("res://sounds/level/you win.ogg")
+}
 
 var sfx_players = []
 var next = 0
@@ -105,4 +114,17 @@ func play_music(track : String, volume_db := 0.0):
 	music_player.play()
 
 func stop_music() -> void:
-	if music_player and music_player.playing: music_player.stop()
+	music_player.stop()
+
+func fade_out_music(duration := 1.0) -> void:
+	if not music_player or not music_player.playing:
+		return
+	
+	var tween = Tween.new()
+	add_child(tween)
+	tween.interpolate_property(music_player, "volume_db", music_player.volume_db, -80.0, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.connect("tween_all_completed", self, "_on_fade_out_done", [], CONNECT_ONESHOT)
+	tween.start()
+
+func _on_fade_out_done() -> void:
+	music_player.stop()
