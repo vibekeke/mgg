@@ -3,8 +3,6 @@ extends Node2D
 signal level_start
 
 onready var spawn_paths = $SpawnPaths
-onready var background_music = $BackgroundMusic
-onready var boss_music = $BossMusic
 onready var level_background = get_node("%LevelBackground")
 onready var enemy_spawner = get_node("%EnemySpawner")
 onready var platform_spawner = get_node("%PlatformSpawner")
@@ -36,9 +34,8 @@ func _ready():
 		spawn_point_array.append(spawn_paths.get_curve().get_point_position(x))
 		spawn_point_dictionary[spawn_point_heights[x]] = spawn_paths.get_curve().get_point_position(x)
 	Events.emit_signal("level_spawn_points", spawn_point_dictionary)
-	if !mute_audio:
-		if !background_music.is_playing():
-			background_music.play()
+	AudioManager.play_music("level1")
+	
 
 func add_initial_background_element():
 	if boss_background != null:
@@ -47,9 +44,7 @@ func add_initial_background_element():
 		level_background.get_node_or_null('SkyBackground').add_child(_boss_background)
 
 func _on_boss_spawn():
-	if !mute_audio:
-		background_music.stop()
-		boss_music.play()
+	AudioManager.play_music("level1_boss")
 
 func _on_confirm_level_start():
 	AudioManager.playSFX("ui_confirm")

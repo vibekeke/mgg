@@ -47,7 +47,7 @@ var music = {
 	"main_menu" : preload("res://sounds/level/forest/timetravel_uvokal.mp3"), #PLACEHOLDER
 	"level1" : preload("res://sounds/level/forest/timetravel_uvokal.mp3"),
 	"level1_boss" : preload("res://sounds/level/forest/Prosjekt2.mp3"),
-	"victory" : preload("res://sounds/level/you win.ogg")
+	"credits" : preload("res://sounds/vinnermusikk.mp3")
 }
 
 var sfx_players = []
@@ -112,6 +112,8 @@ func play_music(track : String, volume_db := 0.0):
 	music_player.stream = song
 	music_player.volume_db = volume_db
 	music_player.play()
+	print("volume", music_player.volume_db)
+	print("is_playing", music_player.playing)
 
 func stop_music() -> void:
 	music_player.stop()
@@ -123,8 +125,4 @@ func fade_out_music(duration := 1.0) -> void:
 	var tween = Tween.new()
 	add_child(tween)
 	tween.interpolate_property(music_player, "volume_db", music_player.volume_db, -80.0, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.connect("tween_all_completed", self, "_on_fade_out_done", [], CONNECT_ONESHOT)
 	tween.start()
-
-func _on_fade_out_done() -> void:
-	music_player.stop()
