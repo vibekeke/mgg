@@ -2,33 +2,13 @@ extends MarginContainer
 
 onready var score_total : RichTextLabel = get_node("%ScoreTotal")
 export var score_popup : PackedScene
-var internal_score : int = 0
-const DEFAULT_ENEMY_SCORE : int = 10
-const DEFAULT_STAR_SCORE : int = 50
-const DEFAULT_DOG_SCORE : int = 150
 
 func _ready():
-	Events.connect("regular_enemy_death", self, "_on_regular_enemy_death")
-	Events.connect("collected_dog", self, "_on_collected_dog")
-	Events.connect("collected_star", self, "_on_collected_star")
+	ScoreManager.connect("score_updated", self, "_on_score_updated")
 	Events.connect("score_popup_requested", self, "spawn_score_popup")
 
-func _on_collected_star():
-	internal_score += DEFAULT_STAR_SCORE
-	score_total.bbcode_text = str(internal_score)
-	Events.update_score(internal_score)
-
-func _on_collected_dog(_dog_type):
-	internal_score += DEFAULT_DOG_SCORE
-	score_total.bbcode_text = str(internal_score)
-	Events.update_score(internal_score)
-	Events.update_dogs(_dog_type)
-
-func _on_regular_enemy_death():
-	internal_score += DEFAULT_ENEMY_SCORE
-	score_total.bbcode_text = str(internal_score)
-	Events.update_score(internal_score)
-
+func _on_score_updated(new_score: int):
+	score_total.bbcode_text = str(new_score)
 
 func spawn_score_popup(type, position):
 	var popup = score_popup.instance()
@@ -39,12 +19,12 @@ func spawn_score_popup(type, position):
 	
 	match type:
 		"enemy":
-			amount = DEFAULT_ENEMY_SCORE
+			amount = ScoreManager.DEFAULT_ENEMY_SCORE
 		"star":
-			amount = DEFAULT_STAR_SCORE
+			amount = ScoreManager.DEFAULT_STAR_SCORE
 			popup.size = 1.2
 		"dog":
-			amount = DEFAULT_DOG_SCORE
+			amount = ScoreManager.DEFAULT_DOG_SCORE
 			popup.outline_color = Color(1, 0.71, 0.32)
 			popup.size = 1.4
 		_:

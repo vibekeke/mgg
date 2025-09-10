@@ -166,9 +166,9 @@ run/main_scene="res://Menus/MainMenu.tscn"
 Events="*res://Autoload/Events.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 MggDialogue="*res://Autoload/MggDialogue.gd"
-Utils="*res://utils/Utils.gd"
 SceneManager="*res://Autoload/SceneManager.tscn"
 AudioManager="*res://Autoload/AudioManager.gd"
+ScoreManager="*res://Autoload/ScoreManager.gd"
 
 [debug]
 
@@ -180,6 +180,9 @@ settings/stdout/print_fps=true
 window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
+window/size/fullscreen=true
+window/size/test_width=1920
+window/size/test_height=1080
 window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
