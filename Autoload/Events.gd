@@ -79,6 +79,7 @@ var first_time_playing = true
 
 
 func _ready():
+	randomize()
 	OS.min_window_size = Vector2(1280, 720)
 	OS.max_window_size = Vector2(1920, 1080)
 	OS.center_window()
