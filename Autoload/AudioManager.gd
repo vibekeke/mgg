@@ -46,11 +46,11 @@ var sound_effects = {
 }
 
 var music = {
-	"main_menu" : preload("res://sounds/level/forest/timetravel_uvokal.mp3"), #PLACEHOLDER
-	"level1" : preload("res://sounds/level/forest/timetravel_uvokal.mp3"),
-	"level1_boss" : preload("res://sounds/level/forest/Prosjekt2.mp3"),
-	"credits" : preload("res://sounds/vinnermusikk.mp3"),
-	"game_over" : preload("res://sounds/emily_rocketrommer.mp3")
+	"main_menu" : preload("res://sounds/music/bekespill2_Ambient.mp3"), #PLACEHOLDER
+	"level1" : preload("res://sounds/music/bekespill_v2.mp3"),
+	"level1_boss" : preload("res://sounds/music/Prosjekt2.mp3"),
+	"credits" : preload("res://sounds/music/vinnermusikk.mp3"),
+	"game_over" : preload("res://sounds/music/emily_rocketrommer.mp3")
 }
 
 var sfx_players = []
