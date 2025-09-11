@@ -277,9 +277,8 @@ custom_constants/separation = 194
 [node name="ScoreDisplay" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 100.0
 margin_top = 777.0
-margin_right = 600.0
+margin_right = 500.0
 margin_bottom = 877.0
 rect_min_size = Vector2( 500, 100 )
 custom_fonts/normal_font = SubResource( 10 )
