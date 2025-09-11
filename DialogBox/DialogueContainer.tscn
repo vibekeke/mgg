@@ -240,9 +240,9 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="Portrait" parent="DialogueContainer" instance=ExtResource( 2 )]
-margin_left = 48.0001
+margin_left = 30.0001
 margin_top = 18.0001
-margin_right = 799.0
+margin_right = 781.0
 margin_bottom = 746.0
 
 [node name="AwaitCursor" type="Sprite" parent="DialogueContainer"]

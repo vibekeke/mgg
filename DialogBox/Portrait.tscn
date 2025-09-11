@@ -42,6 +42,7 @@ portrait_name = 0
 frame_index = 0
 
 [node name="PlayerNormal" parent="." instance=ExtResource( 11 )]
+visible = false
 margin_left = -395.5
 margin_right = 355.5
 portrait_name = 0
