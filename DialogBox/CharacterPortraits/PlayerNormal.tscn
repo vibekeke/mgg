@@ -20,3 +20,9 @@ sprites = ExtResource( 3 )
 portrait_name = 1
 auto_play = true
 playing = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_top = -3.0
+margin_right = 751.0
+margin_bottom = 725.0
+texture = ExtResource( 2 )
