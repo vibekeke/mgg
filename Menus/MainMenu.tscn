@@ -153,6 +153,7 @@ position = Vector2( -11, 48 )
 
 [node name="StarSelectRoom" parent="MenuLayer/VBoxContainer" instance=ExtResource( 10 )]
 unique_name_in_owner = true
+visible = false
 position = Vector2( -25, 148 )
 
 [node name="StarSelectQuit" parent="MenuLayer/VBoxContainer" instance=ExtResource( 10 )]

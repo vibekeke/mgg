@@ -103,7 +103,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "fade_in"
-length = 1.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/CenterContainer/VBoxContainer:modulate")
 tracks/0/interp = 1
@@ -111,7 +111,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1, 1.4 ),
+"times": PoolRealArray( 1.6, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -123,7 +123,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1, 1.4 ),
+"times": PoolRealArray( 1.6, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -135,7 +135,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.6, 1.4 ),
+"times": PoolRealArray( 1.2, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -147,7 +147,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.9 ),
+"times": PoolRealArray( 0.9, 1.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -159,10 +159,36 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 1, 1.4 ),
+"times": PoolRealArray( 1.6, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_game_over_music"
+} ]
 }
 
 [node name="GameOver" type="Control"]
@@ -186,6 +212,7 @@ texture = SubResource( 4 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.00249177 )
 position = Vector2( 391.5, 505.605 )
 scale = Vector2( 0.990458, 0.990458 )
 frames = SubResource( 9 )
@@ -205,6 +232,7 @@ texture = ExtResource( 10 )
 
 [node name="GirlSitSad" type="Sprite" parent="CanvasLayer"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0.00249758 )
 position = Vector2( 387.727, 768.54 )
 scale = Vector2( 0.742844, 0.742844 )
 texture = ExtResource( 11 )
@@ -297,6 +325,11 @@ position = Vector2( 757, 544.6 )
 unique_name_in_owner = true
 visible = false
 position = Vector2( 792, 635.6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1919.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

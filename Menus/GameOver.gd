@@ -26,7 +26,6 @@ func _ready():
 	player_final_score = ScoreManager.get_score()
 	score_display.bbcode_text = score_display.bbcode_text + " " + str(player_final_score)
 	animation_player.play("fade_in")
-	AudioManager.play_music("game_over", 10.0)
 	
 
 func _on_RetryButton_pressed():
@@ -78,3 +77,7 @@ func _on_QuitButton_focus_exited():
 
 func _on_QuitButton_mouse_entered():
 	quit_button.grab_focus()
+	
+func play_game_over_music():
+	AudioManager.play_music("game_over", 10.0)
+	
