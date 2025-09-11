@@ -163,6 +163,7 @@ anchor_left = 0.25
 anchor_top = 0.7
 anchor_right = 0.75
 anchor_bottom = 0.95
+margin_right = 25.0
 custom_styles/panel = SubResource( 10 )
 __meta__ = {
 "_edit_group_": true
@@ -171,7 +172,7 @@ __meta__ = {
 [node name="MarginContainer2" type="MarginContainer" parent="DialogueContainer/DialogueBackground"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 956.0
+margin_right = 981.0
 margin_bottom = 264.0
 custom_constants/margin_right = 9
 custom_constants/margin_top = 9
@@ -181,7 +182,7 @@ custom_constants/margin_bottom = 9
 [node name="PanelContainer" type="PanelContainer" parent="DialogueContainer/DialogueBackground/MarginContainer2"]
 margin_left = 9.0
 margin_top = 9.0
-margin_right = 943.0
+margin_right = 968.0
 margin_bottom = 251.0
 custom_styles/panel = SubResource( 17 )
 
@@ -189,9 +190,9 @@ custom_styles/panel = SubResource( 17 )
 unique_name_in_owner = true
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 956.0
+margin_right = 981.0
 margin_bottom = 264.0
-custom_constants/margin_right = 154
+custom_constants/margin_right = 164
 custom_constants/margin_top = 25
 custom_constants/margin_left = 25
 custom_constants/margin_bottom = 25
@@ -200,12 +201,12 @@ custom_constants/margin_bottom = 25
 unique_name_in_owner = true
 margin_left = 25.0
 margin_top = 25.0
-margin_right = 798.0
+margin_right = 813.0
 margin_bottom = 235.0
 
 [node name="CharacterTitle" type="RichTextLabel" parent="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer"]
 unique_name_in_owner = true
-margin_right = 773.0
+margin_right = 788.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
@@ -220,7 +221,7 @@ text = "Character"
 [node name="DialogueLabel" parent="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" instance=ExtResource( 1 )]
 unique_name_in_owner = true
 margin_top = 54.0
-margin_right = 773.0
+margin_right = 788.0
 margin_bottom = 210.0
 size_flags_vertical = 3
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.329412 )
