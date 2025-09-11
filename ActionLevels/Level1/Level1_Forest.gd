@@ -16,6 +16,7 @@ export var dog_completion_popup : PackedScene
 
 var fun_value : float = 0.0
 var first_run : bool 
+var hello = true
 
 func _ready():
 	randomize()
