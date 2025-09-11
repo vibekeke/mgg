@@ -47,7 +47,8 @@ var music = {
 	"main_menu" : preload("res://sounds/level/forest/timetravel_uvokal.mp3"), #PLACEHOLDER
 	"level1" : preload("res://sounds/level/forest/timetravel_uvokal.mp3"),
 	"level1_boss" : preload("res://sounds/level/forest/Prosjekt2.mp3"),
-	"credits" : preload("res://sounds/vinnermusikk.mp3")
+	"credits" : preload("res://sounds/vinnermusikk.mp3"),
+	"game_over" : preload("res://sounds/emily_rocketrommer.mp3")
 }
 
 var sfx_players = []
@@ -56,7 +57,7 @@ var sfx_bus = "SFX"
 
 var music_player
 var music_bus = "Music"
-var fade_tween = null
+var fade_tween : Tween = null
 
 func _ready():
 	randomize()
@@ -100,13 +101,14 @@ func play_random_pitch(sound_effect : String, spread := 0.04, volume_db := 0.0) 
 func stop_all_sfx() -> void:
 	for sfx_player in sfx_players: sfx_player.stop()
 
+
 ### MUSIC STUFF ###
-#IDK how the music has previously been implemented, but we can have cool fade in and out logic here.
-#I'm just gonna not do that for now, because it seems to work fine as is.
 func play_music(track : String, volume_db := 0.0):
 	var song = music[track]
 	if song == null:
 		return
+		
+	_kill_fade()
 	
 	music_player.stop()
 	music_player.stream = song
@@ -116,13 +118,28 @@ func play_music(track : String, volume_db := 0.0):
 	print("is_playing", music_player.playing)
 
 func stop_music() -> void:
+	_kill_fade()
 	music_player.stop()
 
 func fade_out_music(duration := 1.0) -> void:
 	if not music_player or not music_player.playing:
 		return
 	
-	var tween = Tween.new()
-	add_child(tween)
-	tween.interpolate_property(music_player, "volume_db", music_player.volume_db, -80.0, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
+	_kill_fade() #Avoid overlapping tweens
+	
+	fade_tween = Tween.new()
+	add_child(fade_tween)
+	fade_tween.interpolate_property(music_player, "volume_db", music_player.volume_db, -80.0, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	fade_tween.start()
+	#Apparrently tweens in the scene-tree won't be garbage collected so it's best practice to kill it every time.
+	fade_tween.connect("tween_all_completed", self, "_on_fade_done")
+
+func _kill_fade() -> void:
+	if is_instance_valid(fade_tween):
+		# stop only this property or just stop_all()
+		fade_tween.stop(music_player, "volume_db")
+		fade_tween.queue_free()
+		fade_tween = null
+
+func _on_fade_done() -> void:
+	_kill_fade()
