@@ -32,7 +32,7 @@ func launch_bullet(bullet: Object):
 	if player_position != null:
 		bullet.player_position = player_position
 		bullet.shoot_towards = true
-		AudioManager.playSFX("LaserBlipShort", 1.0, -20)
+		AudioManager.playSFX("LaserBlipShort", 1.0, -10)
 	else:
 		print_debug("No player position found! Did you check the scene tree?")
 

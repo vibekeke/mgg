@@ -13,7 +13,7 @@ func _increment_hearts():
 
 func _on_call_body_entered(body):
 	if body.name == "Player":
-		AudioManager.playSFX("collect_heart")
+		AudioManager.play_random_pitch("collect_heart", 0.03, -3.0)
 		self.visible = false
 		_increment_hearts()
 		queue_free()
