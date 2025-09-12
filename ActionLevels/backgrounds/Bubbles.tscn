@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://imported_assets/backgrounds/balls.png" type="Texture" id=1]
+[ext_resource path="res://imported_assets/backgrounds/balls-intro-loopable.png" type="Texture" id=1]
 
 [sub_resource type="Shader" id=12]
 code = "shader_type canvas_item;
@@ -28,7 +28,7 @@ shader_param/Speed = 0.5
 [node name="Bubbles" type="Sprite"]
 modulate = Color( 1, 1, 1, 0.783133 )
 material = SubResource( 13 )
-position = Vector2( -1196.8, 432 )
+position = Vector2( -1196, 432 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
 centered = false
