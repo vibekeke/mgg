@@ -83,7 +83,7 @@ void fragment() {
 shader = SubResource( 12 )
 shader_param/Direction = Vector2( 1, 0 )
 shader_param/Speed = 0.025
-shader_param/Gamma = 1.2
+shader_param/Gamma = 1.353
 
 [sub_resource type="Shader" id=14]
 code = "shader_type canvas_item;
