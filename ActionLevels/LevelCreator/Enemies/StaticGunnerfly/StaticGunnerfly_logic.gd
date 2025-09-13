@@ -68,11 +68,11 @@ func _on_fire_rate_timeout():
 		var bullet = gunnerfly_bullet.instance()
 		bullet.add_to_group("static_gunnerfly_bullets")
 		bullet.speed = projectile_speed
-		AudioManager.playSFX("gunshot", 1.0, -10.0)
+		AudioManager.playSFX("gunshot", 1.0, -1.0)
 		get_tree().get_root().add_child(bullet)
 		bullet.position = s.global_position
 		bullet.rotation = s.global_rotation
-		yield(get_tree().create_timer(0.2), "timeout")
+		yield(get_tree().create_timer(0.3), "timeout")
 		AudioManager.playSFX("gun_reload", 1.0, -10.0)
 
 func _setup_bullets():

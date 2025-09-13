@@ -99,7 +99,7 @@ export (PackedScene) var charge_shot
 
 onready var has_charge_shot = false
 
-var is_standing = true
+export var is_standing : bool = true
 var is_invincible = false
 
 var sprite_anim_to_player_name = {
@@ -271,13 +271,13 @@ func get_gravity() -> float:
 
 func jump_logic():
 	if input_handler(Input.is_action_just_pressed("jump")) and !is_on_floor() and can_double_jump:
-		AudioManager.play_random_pitch("jump", 0.08, -8.0)
+		AudioManager.play_random_pitch("jump", 0.08, -6.0)
 		can_double_jump = false
 		has_double_jumped = true
 		velocity.y = double_jump_velocity
 	
 	if input_handler(Input.is_action_just_pressed("jump")) and is_on_floor() and !has_double_jumped:
-		AudioManager.play_random_pitch("jump", 0.08, -8.0)
+		AudioManager.play_random_pitch("jump", 0.08, -6.0)
 		can_double_jump = false
 		velocity.y = jump_velocity
 		

@@ -48,7 +48,6 @@ light_affected_item = NodePath("..")
 
 [node name="PianoMusic" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-volume_db = -10.0
 script = ExtResource( 4 )
 audio_stream = [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 8 ) ]
 

@@ -13,7 +13,7 @@ func _increment_stars():
 
 func _on_call_body_entered(body):
 	if body.name == "Player":
-		AudioManager.playSFX("collect_star")
+		AudioManager.play_random_pitch("collect_star", 0.04, -6.0)
 		self.visible = false
 		_increment_stars()
 		queue_free()

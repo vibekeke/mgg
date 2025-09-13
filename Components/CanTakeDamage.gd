@@ -9,6 +9,9 @@ onready var enemy_area_node = get_node(enemy_area)
 export (NodePath) var enemy_sprite
 onready var enemy_sprite_node = get_node(enemy_sprite)
 
+export var visibility_notifier_path : NodePath
+onready var visibility_notifier : VisibilityNotifier2D = get_node(visibility_notifier_path)
+
 onready var death_explosion = load("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/AnimatedEnemyExplosion.tscn")
 export var health_value = 2
 
@@ -18,6 +21,7 @@ export (Color) var hurt_colour = Color(10,10,10,1)
 
 signal took_damage(node_id)
 signal enemy_dead(node_id, death_position)
+signal enemy_return_to_pool(enemy_node)
 
 var death_called := false
 var damage_disabled := false
@@ -25,6 +29,7 @@ var damage_disabled := false
 func _ready():
 	enemy_area_node.connect("area_entered", self, "_on_area_entered")
 	damage_timer.connect("timeout", self, "_on_damage_timer")
+	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
 
 func call_death():
 	if !death_called:
@@ -47,15 +52,18 @@ func take_damage(damage_value: int):
 	health_value = health_value - damage_value
 	emit_signal("took_damage", self.get_instance_id())
 
-
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("damage_from_player") and health_value > 0 and !damage_disabled:
 		take_damage(area.damage)
 	if health_value <= 0:
 		call_death()
+		
+func _on_screen_exited():
+	print("goodbye im off screen")
+	emit_signal("enemy_return_to_pool", enemy_node)
 
 func _on_explosion_finished():
-	enemy_node.queue_free()
+	emit_signal("enemy_return_to_pool", enemy_node)
 
 func _on_damage_timer():
 	enemy_sprite_node.modulate = Color(1,1,1,1)
