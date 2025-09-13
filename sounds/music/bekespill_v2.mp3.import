@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bekespill_v2.mp3-94b46486a85368c9ea40f2dd412c0f6d.mp3str"
+
+[deps]
+
+source_file="res://sounds/music/bekespill_v2.mp3"
+dest_files=[ "res://.import/bekespill_v2.mp3-94b46486a85368c9ea40f2dd412c0f6d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -143,7 +143,7 @@ func event_start() -> void:
 		boss_background_to_spawn.scale.x = 0.65
 		boss_background_to_spawn.scale.y = 0.65
 		enemy_spawner.spawn_instanced_background_element(boss_background_to_spawn, 'BackForestBackground', background_boss_spawn_place, background_boss_speed)
-		AudioManager.playSFX("BirdDescend", 1.0, -10)
+		AudioManager.playSFX("BirdDescend", 1.0, -2)
 
 func _on_big_bird_boss_defeated(death_position):
 	AudioManager.fade_out_music(3)

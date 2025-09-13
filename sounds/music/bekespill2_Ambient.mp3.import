@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bekespill2_Ambient.mp3-e640de30ccd56a17f310f5788f6290b6.mp3str"
+
+[deps]
+
+source_file="res://sounds/music/bekespill2_Ambient.mp3"
+dest_files=[ "res://.import/bekespill2_Ambient.mp3-e640de30ccd56a17f310f5788f6290b6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
