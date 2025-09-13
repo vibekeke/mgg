@@ -3,7 +3,8 @@
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 74
+size = 66
 outline_size = 4
-outline_color = Color( 0.262745, 0.435294, 1, 1 )
+outline_color = Color( 0.0490189, 0.0518435, 0.250977, 1 )
+extra_spacing_char = 2
 font_data = ExtResource( 1 )

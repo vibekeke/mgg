@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Menus/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://test_fonts/vibekefonts/main_menu_font.tres" type="DynamicFont" id=2]
@@ -8,12 +8,18 @@
 [ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=6]
 [ext_resource path="res://Menus/PrettyAssets/Logo-downscaled.png" type="Texture" id=7]
 [ext_resource path="res://Menus/AllDogsCompletion.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Menus/PrettyAssets/Crown.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=10]
 [ext_resource path="res://imported_assets/Coverart-MG.png" type="Texture" id=11]
 [ext_resource path="res://imported_assets/Coverart-Angel.png" type="Texture" id=12]
 [ext_resource path="res://test_fonts/neon_80s/Neon.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Menus/CoverArtMC.gd" type="Script" id=14]
 [ext_resource path="res://Menus/CoverArtSidekick.gd" type="Script" id=15]
+[ext_resource path="res://test_fonts/gradienttexture.tres" type="Texture" id=16]
+[ext_resource path="res://Menus/Logo.gd" type="Script" id=17]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0.647059 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 64
@@ -132,94 +138,114 @@ editor_draw_drag_margin = true
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer"]
+margin_left = -8.0
+margin_top = 605.0
+margin_right = 654.0
+margin_bottom = 914.0
+rect_pivot_offset = Vector2( 71, 24 )
+texture = ExtResource( 16 )
+expand = true
+
+[node name="Panel" type="Panel" parent="MenuLayer"]
 visible = false
+margin_left = -58.0
+margin_top = -116.0
+margin_right = 505.0
+margin_bottom = 1196.0
+custom_styles/panel = SubResource( 6 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -626.855
-margin_top = 40.325
-margin_right = -387.855
-margin_bottom = 327.325
+margin_left = -766.0
+margin_top = 72.0
+margin_right = -297.0
+margin_bottom = 356.0
 custom_constants/separation = 7
 alignment = 1
 
 [node name="StarSelectStart" parent="MenuLayer/VBoxContainer" instance=ExtResource( 10 )]
 unique_name_in_owner = true
-visible = false
-position = Vector2( -11, 48 )
+position = Vector2( -61.5449, 58.2751 )
 
 [node name="StarSelectRoom" parent="MenuLayer/VBoxContainer" instance=ExtResource( 10 )]
 unique_name_in_owner = true
 visible = false
-position = Vector2( -25, 148 )
+position = Vector2( -61.5449, 145.275 )
 
 [node name="StarSelectQuit" parent="MenuLayer/VBoxContainer" instance=ExtResource( 10 )]
 unique_name_in_owner = true
 visible = false
-position = Vector2( 3, 244 )
+position = Vector2( -61.5449, 232.275 )
 
 [node name="StartButton" type="Button" parent="MenuLayer/VBoxContainer"]
 unique_name_in_owner = true
-margin_right = 239.0
-margin_bottom = 91.0
+margin_top = 13.0
+margin_right = 469.0
+margin_bottom = 94.0
 focus_neighbour_top = NodePath("../QuitButton")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 1, 0.858824, 0.717647, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 0.858824, 0.717647, 1 )
-custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0.509804, 0.721569, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.129412, 0.196078, 0.501961, 1 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 3 )
 text = "Start"
+align = 0
 
 [node name="RoomButton" type="Button" parent="MenuLayer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 98.0
-margin_right = 239.0
-margin_bottom = 189.0
+margin_top = 101.0
+margin_right = 469.0
+margin_bottom = 182.0
 focus_neighbour_top = NodePath("../StartButton")
 focus_neighbour_bottom = NodePath("../QuitButton")
-custom_colors/font_color_disabled = Color( 0.360784, 0.2, 0.501961, 1 )
-custom_colors/font_color_focus = Color( 1, 0.858824, 0.717647, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 0.858824, 0.717647, 1 )
-custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
+custom_colors/font_color_disabled = Color( 0.113725, 0.192157, 0.439216, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0.509804, 0.721569, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.129412, 0.196078, 0.501961, 1 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/disabled = ExtResource( 3 )
 custom_styles/normal = ExtResource( 3 )
-text = "Room"
+text = "Bedroom"
+align = 0
 
 [node name="QuitButton" type="Button" parent="MenuLayer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 196.0
-margin_right = 239.0
-margin_bottom = 287.0
+margin_top = 189.0
+margin_right = 469.0
+margin_bottom = 270.0
 focus_neighbour_top = NodePath("../RoomButton")
 focus_neighbour_bottom = NodePath("../StartButton")
-custom_colors/font_color_focus = Color( 1, 0.858824, 0.717647, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 0.858824, 0.717647, 1 )
-custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0.509804, 0.721569, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.129412, 0.196078, 0.501961, 1 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/hover = ExtResource( 5 )
 custom_styles/pressed = ExtResource( 6 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 3 )
 text = "Quit"
+align = 0
 
 [node name="Logo-downscaled" type="Sprite" parent="MenuLayer"]
-position = Vector2( 581, 330 )
-scale = Vector2( 0.7, 0.7 )
+position = Vector2( 683, 340 )
+scale = Vector2( 0.731799, 0.731799 )
 texture = ExtResource( 7 )
+script = ExtResource( 17 )
 
 [node name="GameTitle" type="RichTextLabel" parent="MenuLayer"]
 visible = false
@@ -249,23 +275,27 @@ playback_speed = 1.5
 playback/speed = 1.5
 
 [node name="CharacterLayer" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="CoverArtMC" type="Sprite" parent="CharacterLayer"]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -572, 568 )
+position = Vector2( 1273, 568 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 11 )
 script = ExtResource( 14 )
 amplitude = 1.0
 
 [node name="CoverArtSidekick" type="Sprite" parent="CharacterLayer"]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 2567, 829 )
+position = Vector2( 1207, 829 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 12 )
 script = ExtResource( 15 )
 frequency = 2.0
 amplitude = 0.1
+
+[node name="WinnerCrown" parent="CharacterLayer" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 1390, 90.9999 )
+scale = Vector2( 0.55888, 0.55888 )
 
 [node name="TitleScreenAnimation" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

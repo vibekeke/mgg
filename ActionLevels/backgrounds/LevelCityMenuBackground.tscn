@@ -71,16 +71,19 @@ code = "shader_type canvas_item;
 
 uniform vec2 Direction = vec2(1.0, 0.0);
 uniform float Speed = 0.1;
+uniform float Gamma = 1.2; // >1 darkens shadows more
 
-void fragment()
-{
-	COLOR = texture(TEXTURE, UV + (Direction * TIME * Speed));
+void fragment() {
+    vec4 src = texture(TEXTURE, UV + (Direction * TIME * Speed));
+    vec3 curved = pow(src.rgb, vec3(Gamma));
+    COLOR = vec4(curved, src.a);
 }"
 
 [sub_resource type="ShaderMaterial" id=13]
 shader = SubResource( 12 )
 shader_param/Direction = Vector2( 1, 0 )
 shader_param/Speed = 0.025
+shader_param/Gamma = 1.353
 
 [sub_resource type="Shader" id=14]
 code = "shader_type canvas_item;
@@ -128,6 +131,7 @@ centered = false
 
 [node name="MiddleBuildings" type="Sprite" parent="."]
 material = SubResource( 11 )
+position = Vector2( 0, -3 )
 texture = ExtResource( 6 )
 centered = false
 
@@ -138,6 +142,6 @@ centered = false
 
 [node name="Bubbles" type="Sprite" parent="."]
 material = SubResource( 15 )
-position = Vector2( 0, 253 )
+position = Vector2( 0, 255 )
 texture = ExtResource( 10 )
 centered = false

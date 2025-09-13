@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Menus/YouWinPopup.gd" type="Script" id=1]
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=2]
@@ -7,9 +7,12 @@
 [ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Menus/PrettyAssets/Sparkles.tscn" type="PackedScene" id=6]
 [ext_resource path="res://test_fonts/vt323/VT323-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Menus/overlay_hueshift.gdshader" type="Shader" id=12]
+[ext_resource path="res://Menus/PrettyAssets/Crown.tscn" type="PackedScene" id=13]
+[ext_resource path="res://imported_assets/particles/ColorSparkles_V1.png" type="Texture" id=14]
 
 [sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 1, 0.972549, 0.827451, 0.654902 )
+bg_color = Color( 0.552941, 0.972549, 1, 0.737255 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -35,19 +38,34 @@ corner_radius_bottom_left = 30
 [sub_resource type="StyleBoxEmpty" id=13]
 
 [sub_resource type="DynamicFont" id=15]
-size = 130
+size = 109
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 12
+extra_spacing_space = -25
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=16]
 size = 38
+extra_spacing_char = 3
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=496]
 size = 49
-outline_size = 4
-outline_color = Color( 0.439216, 0.584314, 1, 1 )
+outline_size = 3
+extra_spacing_char = 6
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=498]
+size = 49
+outline_size = 3
+extra_spacing_char = 6
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=497]
+size = 49
+outline_size = 3
+extra_spacing_char = 6
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=19]
@@ -59,14 +77,64 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=18]
 size = 50
 outline_size = 4
-outline_color = Color( 0.156209, 0.421119, 0.761719, 1 )
+outline_color = Color( 0.101961, 0.423529, 0.654902, 1 )
+extra_spacing_char = 7
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=20]
 size = 117
 outline_size = 7
-outline_color = Color( 0.176471, 0.729412, 1, 1 )
 font_data = ExtResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=494]
+shader = ExtResource( 12 )
+shader_param/OverlayColor = Color( 0.807843, 1, 0.772549, 1 )
+shader_param/Overlay = 1.0
+shader_param/HueShift = -0.752
+
+[sub_resource type="AtlasTexture" id=488]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=489]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=490]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=491]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=492]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 2048, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=493]
+flags = 4
+atlas = ExtResource( 14 )
+region = Rect2( 2560, 0, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=495]
+animations = [ {
+"frames": [ SubResource( 488 ), SubResource( 489 ), SubResource( 490 ), SubResource( 491 ), SubResource( 492 ), SubResource( 493 ) ],
+"loop": true,
+"name": "On",
+"speed": 4.0
+} ]
+
+[sub_resource type="ShaderMaterial" id=25]
+shader = ExtResource( 12 )
+shader_param/OverlayColor = Color( 1, 0.94902, 0.913725, 1 )
+shader_param/Overlay = 0.499
+shader_param/HueShift = 0.694
 
 [sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.701961, 0.792157, 1, 1 )
@@ -146,7 +214,7 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
@@ -158,7 +226,7 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1e+06, 1e-05 ),
-"update": 0,
+"update": 1,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
@@ -170,7 +238,7 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0, 1.4 ),
 "transitions": PoolRealArray( 1e+06, 1e-05 ),
-"update": 0,
+"update": 1,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
@@ -182,7 +250,7 @@ tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0, 1.8 ),
 "transitions": PoolRealArray( 1e+06, 1e-05 ),
-"update": 0,
+"update": 1,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/6/type = "value"
@@ -194,7 +262,7 @@ tracks/6/enabled = true
 tracks/6/keys = {
 "times": PoolRealArray( 0, 2.2 ),
 "transitions": PoolRealArray( 1e+06, 1e-05 ),
-"update": 0,
+"update": 1,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/7/type = "value"
@@ -206,7 +274,7 @@ tracks/7/enabled = true
 tracks/7/keys = {
 "times": PoolRealArray( 0, 2.6 ),
 "transitions": PoolRealArray( 1e+06, 1 ),
-"update": 0,
+"update": 1,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/8/type = "method"
@@ -234,6 +302,30 @@ tracks/8/keys = {
 "args": [  ],
 "method": "_playTextSound2"
 } ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CenterContainer/PanelContainer/VBoxContainer/DamageSparkles:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.8 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("CenterContainer/PanelContainer/VBoxContainer/GradeSparkles:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -293,66 +385,63 @@ tracks/3/keys = {
 script = ExtResource( 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 300.0
-margin_bottom = 300.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
-margin_left = 538.0
-margin_top = 121.0
-margin_right = 1382.0
-margin_bottom = 959.0
+margin_left = 607.0
+margin_top = 120.0
+margin_right = 1313.0
+margin_bottom = 960.0
 custom_styles/panel = SubResource( 12 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 840.0
-margin_bottom = 834.0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
+margin_right = 702.0
+margin_bottom = 836.0
+custom_constants/margin_right = 12
+custom_constants/margin_top = 12
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 12
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 826.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 686.0
 margin_bottom = 820.0
 custom_styles/panel = SubResource( 24 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 840.0
-margin_bottom = 834.0
+margin_right = 702.0
+margin_bottom = 836.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
-margin_right = 836.0
-margin_bottom = 657.0
+margin_right = 698.0
+margin_bottom = 663.0
 custom_constants/margin_right = 40
-custom_constants/margin_top = 50
+custom_constants/margin_top = 39
 custom_constants/margin_left = 40
 custom_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer"]
 margin_left = 40.0
-margin_top = 50.0
-margin_right = 796.0
-margin_bottom = 657.0
+margin_top = 39.0
+margin_right = 658.0
+margin_bottom = 663.0
 alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 756.0
-margin_bottom = 131.0
+margin_right = 618.0
+margin_bottom = 111.0
 rect_min_size = Vector2( 600, 0 )
 custom_styles/panel = SubResource( 13 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/PanelContainer"]
-margin_right = 756.0
-margin_bottom = 131.0
+margin_right = 618.0
+margin_bottom = 111.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 9
 custom_constants/shadow_offset_y = 9
@@ -364,29 +453,29 @@ fit_content_height = true
 
 [node name="HSeparator3" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_top = 135.0
-margin_right = 756.0
-margin_bottom = 194.0
+margin_top = 115.0
+margin_right = 618.0
+margin_bottom = 174.0
 custom_constants/separation = 59
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 198.0
-margin_right = 756.0
-margin_bottom = 437.0
+margin_top = 178.0
+margin_right = 618.0
+margin_bottom = 454.0
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer"]
-margin_left = 125.0
-margin_right = 631.0
-margin_bottom = 239.0
+margin_left = 39.0
+margin_right = 578.0
+margin_bottom = 276.0
 custom_constants/vseparation = 4
 custom_constants/hseparation = 45
 columns = 2
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
 margin_top = 6.0
-margin_right = 254.0
+margin_right = 287.0
 margin_bottom = 53.0
-custom_colors/font_color = Color( 0.0775221, 0.298245, 0.582031, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.372549 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
@@ -396,40 +485,21 @@ align = 2
 
 [node name="ScoreLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 299.0
-margin_right = 506.0
+margin_left = 332.0
+margin_right = 539.0
 margin_bottom = 60.0
-custom_fonts/font = SubResource( 17 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.501961, 0.203922, 0.203922, 0.0509804 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 496 )
 text = "1000"
 
-[node name="Label3" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
-margin_top = 70.0
-margin_right = 254.0
-margin_bottom = 117.0
-custom_colors/font_color = Color( 0.507812, 0.138494, 0.225053, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.411765 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 3
-custom_fonts/font = SubResource( 16 )
-text = "DAMAGE :"
-align = 2
-
-[node name="DamageLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
-unique_name_in_owner = true
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 299.0
-margin_top = 64.0
-margin_right = 506.0
-margin_bottom = 124.0
-custom_fonts/font = SubResource( 17 )
-text = "NONE!"
-
 [node name="Label5" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
-margin_top = 134.0
-margin_right = 254.0
-margin_bottom = 181.0
-custom_colors/font_color = Color( 0.466667, 0.301961, 0.0705882, 1 )
+margin_top = 70.0
+margin_right = 287.0
+margin_bottom = 117.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.380392 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 3
@@ -439,74 +509,132 @@ align = 2
 
 [node name="DogsLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 299.0
-margin_top = 128.0
-margin_right = 506.0
-margin_bottom = 188.0
-custom_fonts/font = SubResource( 17 )
+margin_left = 332.0
+margin_top = 64.0
+margin_right = 539.0
+margin_bottom = 124.0
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0352941 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 498 )
 text = "2/3"
 
+[node name="Label3" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
+margin_top = 128.0
+margin_right = 287.0
+margin_bottom = 225.0
+custom_colors/font_color = Color( 0.507812, 0.138494, 0.225053, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.411765 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 16 )
+text = "DAMAGE 
+TAKEN:"
+align = 2
+
+[node name="DamageLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
+unique_name_in_owner = true
+margin_left = 332.0
+margin_top = 146.0
+margin_right = 539.0
+margin_bottom = 206.0
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0745098 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 497 )
+text = "NONE!"
+
 [node name="Empty2" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
-margin_top = 192.0
-margin_right = 254.0
-margin_bottom = 239.0
+margin_top = 229.0
+margin_right = 287.0
+margin_bottom = 276.0
 custom_fonts/font = SubResource( 19 )
 align = 2
 
 [node name="Empty3" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
-margin_left = 299.0
-margin_top = 192.0
-margin_right = 506.0
-margin_bottom = 239.0
+margin_left = 332.0
+margin_top = 229.0
+margin_right = 539.0
+margin_bottom = 276.0
 custom_fonts/font = SubResource( 19 )
 text = "                       "
 align = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 441.0
-margin_right = 756.0
-margin_bottom = 583.0
+margin_top = 458.0
+margin_right = 618.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( -601, -138 )
 
 [node name="Label7" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_top = 40.0
-margin_right = 405.0
+margin_right = 354.0
 margin_bottom = 101.0
 custom_fonts/font = SubResource( 18 )
-text = "                Grade:     "
+text = "     GRADE:  "
 
 [node name="GradeLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 409.0
-margin_right = 492.0
+margin_left = 358.0
+margin_right = 422.0
 margin_bottom = 142.0
+custom_colors/font_outline_modulate = Color( 0, 0.486275, 0.654902, 1 )
+custom_colors/font_color_shadow = Color( 0, 0.486275, 0.654902, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 4
 custom_fonts/font = SubResource( 20 )
-text = "A"
+text = "S"
 align = 2
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 587.0
-margin_right = 756.0
-margin_bottom = 607.0
+margin_top = 604.0
+margin_right = 618.0
+margin_bottom = 624.0
 custom_constants/separation = 20
 
+[node name="DamageSparkles" type="AnimatedSprite" parent="CenterContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource( 494 )
+position = Vector2( 490, 373 )
+scale = Vector2( 0.556641, 0.556641 )
+frames = SubResource( 495 )
+animation = "On"
+playing = true
+flip_h = true
+
+[node name="GradeSparkles" type="AnimatedSprite" parent="CenterContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource( 494 )
+position = Vector2( 439, 552 )
+scale = Vector2( 0.556641, 0.556641 )
+frames = SubResource( 495 )
+animation = "On"
+playing = true
+flip_h = true
+
+[node name="Crown" parent="CenterContainer/PanelContainer/VBoxContainer" instance=ExtResource( 13 )]
+material = SubResource( 25 )
+position = Vector2( 332, -32 )
+scale = Vector2( 0.75, 0.75 )
+
 [node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
-margin_top = 661.0
-margin_right = 836.0
-margin_bottom = 830.0
-custom_constants/margin_right = 200
+margin_top = 667.0
+margin_right = 698.0
+margin_bottom = 832.0
+rect_min_size = Vector2( 0.198, 0 )
+custom_constants/margin_right = 140
 custom_constants/margin_top = 0
-custom_constants/margin_left = 200
-custom_constants/margin_bottom = 70
+custom_constants/margin_left = 140
+custom_constants/margin_bottom = 76
 
 [node name="NextButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 200.0
-margin_right = 636.0
-margin_bottom = 99.0
+margin_left = 140.0
+margin_right = 558.0
+margin_bottom = 89.0
 custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = SubResource( 23 )
 custom_styles/pressed = SubResource( 22 )
@@ -514,16 +642,17 @@ custom_styles/normal = SubResource( 14 )
 text = "  Continue     "
 
 [node name="StarSelect" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2/NextButton" instance=ExtResource( 5 )]
-position = Vector2( 385, 56 )
+position = Vector2( 374, 48 )
 
 [node name="Node2D" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 718, 252 )
 
 [node name="Sparkles" parent="Node2D" instance=ExtResource( 6 )]
+visible = false
 position = Vector2( -89, -89 )
 
 [node name="Sparkles2" parent="Node2D" instance=ExtResource( 6 )]
+visible = false
 position = Vector2( 583, 724 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
