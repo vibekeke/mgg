@@ -30,11 +30,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		is_visible = true
 
 func check_completed_challenges():
-	level_challenges['Level1']['no_float'] = StatsTracker.no_float_run()
-	level_challenges['Level1']['no_damage'] = StatsTracker.no_damage_taken()
-	level_challenges['Level1']['pacifist'] = StatsTracker.full_pacifist()
-	level_challenges['Level1']['high_score'] = StatsTracker.high_score_over_threshold()
-	print("level challenges ", level_challenges)
+	level_challenges['Level1']['no_float'] = StatsTracker.no_float_run_completed
+	level_challenges['Level1']['no_damage'] = StatsTracker.no_damage_taken_run_completed
+	level_challenges['Level1']['pacifist'] = StatsTracker.pacifist_run_completed
+	level_challenges['Level1']['high_score'] = StatsTracker.high_score_run_completed
 
 func _on_PaperArea_open_challenge_menu():
 	toggle_visible()

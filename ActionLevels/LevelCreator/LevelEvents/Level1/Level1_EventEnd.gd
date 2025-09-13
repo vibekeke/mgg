@@ -69,12 +69,15 @@ func event_start() -> void:
 	Events.emit_signal("player_standing", true)
 	Events.emit_signal("background_moving_enabled", false)
 	yield(get_tree().create_timer(2.0), "timeout")
+	if StatsTracker.current_level_stats:
+		StatsTracker.current_level_stats.last_run_completed = true
+		StatsTracker.calculate_level1_challenges()
+	else:
+		print_debug("Couldn't find any level stats, something weird happened")
 	display_dialogue()
 
 
 func end_event() -> void:
 	Events.emit_signal("level_event_complete", event_name, event_number)
 	Events.emit_signal("level_event_lock", "", -1)
-	if StatsTracker.current_level_stats:
-		StatsTracker.current_level_stats.last_run_completed = true
 	Events.emit_signal("transition_to_scene", "Intro", true)
