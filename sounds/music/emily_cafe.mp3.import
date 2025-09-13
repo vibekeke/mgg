@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/emily_cafe.mp3-c75421083c7a0de02f3ddc4878a60a4a.mp3str"
+
+[deps]
+
+source_file="res://sounds/music/emily_cafe.mp3"
+dest_files=[ "res://.import/emily_cafe.mp3-c75421083c7a0de02f3ddc4878a60a4a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

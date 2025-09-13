@@ -60,7 +60,7 @@ func play_intro_dialogue():
 				self.get_instance_id(), 
 				DataClasses.Placement.LOWER, 
 				DataClasses.CharacterPortrait.AngelNeutral,
-				Color(0.10, 0.25, 0.4, 0.60),
+				Color(0.0, 0.42, 0.628, 0.5),
 				Color(0.0, 0.0, 0.0, 0.25),
 				false,
 				3.0

@@ -61,7 +61,7 @@ func display_dialogue():
 		self.get_instance_id(), 
 		DataClasses.Placement.LOWER, 
 		DataClasses.CharacterPortrait.AngelHappy,
-		Color(0.12549, 0.519608, 0.8, 0.4),
+		Color(0.0, 0.42, 0.628, 0.5),
 		Color(0.0, 0.0, 0.0, 0.25)
 	)
 	

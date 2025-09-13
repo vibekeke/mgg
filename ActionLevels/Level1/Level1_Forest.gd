@@ -14,7 +14,13 @@ export var level1_event1_dialog : Resource
 
 export var dog_completion_popup : PackedScene
 
+var fun_value : float = 0.0
+var first_run : bool 
+
 func _ready():
+	randomize()
+	fun_value = rand_range(0, 10)
+	first_run = Events.first_time_playing
 	ScoreManager.reset_level_score()
 	Events.set_vhs_shader(Events.vhs_filter_state_unpaused, vhs_filter)
 	level_start_display.connect("confirm_level_start", self, "_on_confirm_level_start")

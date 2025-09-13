@@ -100,6 +100,7 @@ func _on_TitleScreenAnimation_animation_finished(anim_name):
 		$MenuLayer/VBoxContainer/StartButton.grab_focus()
 
 func _on_RoomButton_pressed():
+	AudioManager.fade_out_music(1.0)
 	send_to_level("Bedroom")
 
 func _on_RoomButton_focus_entered():

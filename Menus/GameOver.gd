@@ -33,12 +33,14 @@ func _on_RetryButton_pressed():
 		sad_sprite.hide()
 		determined_sprite.show()
 		AudioManager.playSFX("ui_confirm")
-		yield(get_tree().create_timer(0.5), "timeout")
+		AudioManager.fade_out_music(1.0)
+		yield(get_tree().create_timer(0.5), "timeout") #Wait for the determined animation (:
 		
 		Events.emit_signal("transition_to_scene", "Level1", false)
 
 func _on_QuitButton_pressed():
 	if faded_in:
+		AudioManager.fade_out_music(1.0)
 		Events.emit_signal("transition_to_scene", "TitleScreen", false)
 
 
@@ -75,3 +77,7 @@ func _on_QuitButton_focus_exited():
 
 func _on_QuitButton_mouse_entered():
 	quit_button.grab_focus()
+	
+func play_game_over_music():
+	AudioManager.play_music("game_over", 10.0)
+	

@@ -22,7 +22,7 @@ func display_dialogue():
 		self.get_instance_id(),
 		DataClasses.Placement.LOWER,
 		DataClasses.CharacterPortrait.None,
-		Color(0.25, 0.18, 0.7, 0.5),
+		Color(0.2902, 0.2745, 0.4588, 0.5),
 		Color(0.0, 0.0, 0.0, 0.25)
 	)
 

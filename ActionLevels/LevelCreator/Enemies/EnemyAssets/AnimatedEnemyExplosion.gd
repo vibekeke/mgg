@@ -3,7 +3,7 @@ extends AnimatedSprite
 export var scroll_speed : float = 500.0
 
 func _ready():
-	AudioManager.play_random_pitch("explosion", 0.2)
+	AudioManager.play_random_pitch("explosion", 0.2, 2)
 	pass
 
 func _process(delta):
