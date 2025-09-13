@@ -19,6 +19,7 @@ onready var action_level_list = {
 	"Level1": "res://ActionLevels/Level1/Level1_Forest.tscn",
 	"Level2": "res://ActionLevels/Level2/Level2_Beach.tscn",
 	"Level3": "res://ActionLevels/Level3/Level3_City.tscn",
+	"SpecialBeachLevel": "res://ActionLevels/SpecialBeachLevel/SpecialBeachLevel.tscn",
 	"GameOver": "res://Menus/GameOver.tscn",
 	"ComputerScreen": "res://ActionLevels/Room/ComputerScreen.tscn",
 	"Intro": "res://Cutscenes/Intro.tscn",

@@ -122,6 +122,7 @@ margin_top = -200.0
 margin_bottom = -44.0
 
 [node name="DogCollection" parent="." instance=ExtResource( 2 )]
+unique_name_in_owner = true
 margin_left = 1361.0
 margin_top = -249.0
 margin_right = 1908.0
@@ -155,6 +156,6 @@ anims/go_up = SubResource( 2 )
 unique_name_in_owner = true
 margin_left = 782.0
 margin_top = -115.0
-margin_right = 37751.0
-margin_bottom = 20517.0
+margin_right = 41591.0
+margin_bottom = 22677.0
 score_popup = ExtResource( 6 )

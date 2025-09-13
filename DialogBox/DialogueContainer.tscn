@@ -2,7 +2,7 @@
 
 [ext_resource path="res://addons/dialogue_manager/dialogue_label.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DialogBox/Portrait.tscn" type="PackedScene" id=2]
-[ext_resource path="res://test_fonts/Comforta/Comfortaa-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://test_fonts/Comforta/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://imported_assets/hud/collectibles/Collected_Stars.png" type="Texture" id=4]
 [ext_resource path="res://DialogBox/DialogueContainer.gd" type="Script" id=5]
 [ext_resource path="res://test_fonts/Comforta/Comfortaa-SemiBold.ttf" type="DynamicFontData" id=6]
@@ -34,11 +34,11 @@ corner_radius_bottom_left = 15
 anti_aliasing = false
 
 [sub_resource type="DynamicFont" id=12]
-size = 32
+size = 36
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=11]
-size = 44
+size = 42
 use_filter = true
 font_data = ExtResource( 6 )
 
@@ -163,6 +163,7 @@ anchor_left = 0.25
 anchor_top = 0.7
 anchor_right = 0.75
 anchor_bottom = 0.95
+margin_right = 25.0
 custom_styles/panel = SubResource( 10 )
 __meta__ = {
 "_edit_group_": true
@@ -171,7 +172,7 @@ __meta__ = {
 [node name="MarginContainer2" type="MarginContainer" parent="DialogueContainer/DialogueBackground"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 956.0
+margin_right = 981.0
 margin_bottom = 264.0
 custom_constants/margin_right = 9
 custom_constants/margin_top = 9
@@ -181,7 +182,7 @@ custom_constants/margin_bottom = 9
 [node name="PanelContainer" type="PanelContainer" parent="DialogueContainer/DialogueBackground/MarginContainer2"]
 margin_left = 9.0
 margin_top = 9.0
-margin_right = 943.0
+margin_right = 968.0
 margin_bottom = 251.0
 custom_styles/panel = SubResource( 17 )
 
@@ -189,9 +190,9 @@ custom_styles/panel = SubResource( 17 )
 unique_name_in_owner = true
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 956.0
+margin_right = 981.0
 margin_bottom = 264.0
-custom_constants/margin_right = 154
+custom_constants/margin_right = 164
 custom_constants/margin_top = 25
 custom_constants/margin_left = 25
 custom_constants/margin_bottom = 25
@@ -200,15 +201,18 @@ custom_constants/margin_bottom = 25
 unique_name_in_owner = true
 margin_left = 25.0
 margin_top = 25.0
-margin_right = 798.0
+margin_right = 813.0
 margin_bottom = 235.0
 
 [node name="CharacterTitle" type="RichTextLabel" parent="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer"]
 unique_name_in_owner = true
-margin_right = 773.0
+margin_right = 788.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 custom_fonts/normal_font = SubResource( 12 )
 bbcode_enabled = true
 bbcode_text = "Character"
@@ -217,9 +221,12 @@ text = "Character"
 [node name="DialogueLabel" parent="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" instance=ExtResource( 1 )]
 unique_name_in_owner = true
 margin_top = 54.0
-margin_right = 773.0
+margin_right = 788.0
 margin_bottom = 210.0
 size_flags_vertical = 3
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.329412 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 custom_fonts/normal_font = SubResource( 11 )
 bbcode_text = "Some dialogu ee ee eee e eeee e e e ee ee"
 text = "Some dialogu ee ee eee e eeee e e e ee ee"
@@ -234,9 +241,9 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="Portrait" parent="DialogueContainer" instance=ExtResource( 2 )]
-margin_left = 12.0001
+margin_left = 30.0001
 margin_top = 18.0001
-margin_right = 763.0
+margin_right = 781.0
 margin_bottom = 746.0
 
 [node name="AwaitCursor" type="Sprite" parent="DialogueContainer"]

@@ -21,6 +21,8 @@ onready var _down_animation_player = $StaffDown/AnimationPlayer
 onready var _down_animation_tree = $StaffDown/AnimationTree
 onready var _down_anim_state = _down_animation_tree.get("parameters/playback")
 
+onready var sparkles = $ColorSparkles
+
 onready var _floor = get_node_or_null("%Floor")
 
 const UP_DIRECTION := Vector2.UP
@@ -97,7 +99,7 @@ export (PackedScene) var charge_shot
 
 onready var has_charge_shot = false
 
-var is_standing = true
+export var is_standing : bool = true
 var is_invincible = false
 
 var sprite_anim_to_player_name = {
@@ -140,6 +142,7 @@ func _ready():
 	staff_forward.frame = 0
 	staff_up.frame = 0
 	staff_down.frame = 0
+	sparkles.hide()
 	
 	# Wait one frame for physics to initialize
 	yield(get_tree(), "idle_frame")
@@ -249,6 +252,7 @@ func get_gravity() -> float:
 		travel_to_animation("RisingLoop")
 	else:
 		if input_handler(Input.is_action_pressed("float")) and !is_on_floor() and !has_floated:
+			sparkles.show()
 			gravity = float_gravity
 		elif input_handler(Input.is_action_pressed("move_down")):
 			gravity = fast_fall_gravity
@@ -267,13 +271,13 @@ func get_gravity() -> float:
 
 func jump_logic():
 	if input_handler(Input.is_action_just_pressed("jump")) and !is_on_floor() and can_double_jump:
-		AudioManager.play_random_pitch("jump", 0.08, -8.0)
+		AudioManager.play_random_pitch("jump", 0.08, -6.0)
 		can_double_jump = false
 		has_double_jumped = true
 		velocity.y = double_jump_velocity
 	
 	if input_handler(Input.is_action_just_pressed("jump")) and is_on_floor() and !has_double_jumped:
-		AudioManager.play_random_pitch("jump", 0.08, -8.0)
+		AudioManager.play_random_pitch("jump", 0.08, -6.0)
 		can_double_jump = false
 		velocity.y = jump_velocity
 		
@@ -372,6 +376,7 @@ func _physics_process(delta):
 	elif is_on_floor() and is_sliding:
 		travel_to_animation("Slide")
 	elif is_on_floor():
+		sparkles.hide()
 		can_double_jump = false
 		has_double_jumped = false
 		has_floated = false
@@ -417,6 +422,7 @@ func _physics_process(delta):
 			float_halt = true
 			velocity.y = 0 # halt velocity if you are floating
 		elif input_handler(Input.is_action_just_released("float")):
+			sparkles.hide()
 			float_halt = false
 			has_floated = true
 	if start_respawning_player:

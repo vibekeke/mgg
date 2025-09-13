@@ -167,6 +167,8 @@ autostart = true
 
 [node name="LevelStartDisplay" parent="." instance=ExtResource( 41 )]
 unique_name_in_owner = true
+before_level_dialogue = ExtResource( 45 )
+before_level_dialogue_script_name = "level1_intro"
 
 [node name="PlatformSpawnPoint" type="Position2D" parent="."]
 unique_name_in_owner = true

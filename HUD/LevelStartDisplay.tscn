@@ -63,8 +63,8 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=3]
-size = 31
+[sub_resource type="DynamicFont" id=12]
+size = 34
 font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=4]
@@ -248,10 +248,9 @@ margin_bottom = 305.0
 unique_name_in_owner = true
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 2021.69
-margin_top = 294.963
-margin_right = 2442.7
-margin_bottom = 845.963
+margin_left = 101.69
+margin_right = 522.7
+margin_bottom = 305.963
 custom_styles/panel = ExtResource( 3 )
 
 [node name="ControlsAnimationPlayer" type="AnimationPlayer" parent="Controls"]
@@ -267,10 +266,10 @@ anchor_bottom = 1.0
 [node name="TutorialConfirmation" type="PanelContainer" parent="CenterContainer2"]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 814.0
-margin_top = 718.0
-margin_right = 1244.0
-margin_bottom = 818.0
+margin_left = 745.0
+margin_top = 490.0
+margin_right = 1175.0
+margin_bottom = 590.0
 grow_horizontal = 0
 grow_vertical = 0
 custom_styles/panel = ExtResource( 3 )
@@ -288,7 +287,7 @@ margin_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 400, 40 )
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 12 )
 bbcode_enabled = true
 bbcode_text = "[center]Press Enter to start![/center]"
 meta_underlined = false

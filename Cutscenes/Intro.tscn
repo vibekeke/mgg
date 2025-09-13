@@ -295,6 +295,5 @@ __meta__ = {
 
 [node name="TVTurnOn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -11.0
 
 [connection signal="finished" from="TVTurnOn" to="." method="_on_TVTurnOn_finished"]

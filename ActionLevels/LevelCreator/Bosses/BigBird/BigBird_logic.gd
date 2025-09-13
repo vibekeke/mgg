@@ -58,7 +58,7 @@ const phase_patterns = {
 
 func play_intro(delta):
 	if !intro_audio_played:
-		AudioManager.playSFX("BirdAppear", 1.2, -20)
+		AudioManager.playSFX("BirdAppear", 1.2, -10)
 		intro_audio_played = true
 	if initial_alpha_value < 1.0:
 		initial_alpha_value = initial_alpha_value + delta * 0.5
@@ -151,10 +151,10 @@ func apply_new_bullet_phase(phase_number: int):
 func trigger_audio_phases(current_phase: int):
 	if current_phase == 1 and !audio_phase_1_played:
 		audio_phase_1_played = true
-		AudioManager.playSFX("BirdChirp1", 0.5, -10)
+		AudioManager.playSFX("BirdChirp1", 0.5, -8)
 	if current_phase == 2 and !audio_phase_2_played:
 		audio_phase_2_played = true
-		AudioManager.playSFX("BirdChirp2", 0.5, -10)
+		AudioManager.playSFX("BirdChirp2", 0.5, -8)
 
 func _process(delta):
 	if !intro_complete:

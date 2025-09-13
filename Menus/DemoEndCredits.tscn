@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=144 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menus/PrettyAssets/DemoTextBox.webp" type="Texture" id=2]
@@ -26,6 +26,12 @@
 [ext_resource path="res://imported_assets/actors/satan/satan.png" type="Texture" id=24]
 [ext_resource path="res://imported_assets/actors/ourguy/Guy.png" type="Texture" id=25]
 [ext_resource path="res://Cutscenes/alien1.PNG" type="Texture" id=26]
+[ext_resource path="res://Menus/ConceptArt/Angel_concept.png" type="Texture" id=27]
+[ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA1-V1.webp" type="Texture" id=28]
+[ext_resource path="res://imported_assets/actors/mg/Player_TALKING-upscale.png" type="Texture" id=29]
+[ext_resource path="res://imported_assets/actors/mg/Player_Slide_Test.png" type="Texture" id=30]
+[ext_resource path="res://imported_assets/actors/mg/Player_MeleeTEST-B.png" type="Texture" id=31]
+[ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.webp" type="Texture" id=32]
 
 [sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
@@ -358,6 +364,249 @@ tracks/1/keys = {
 "values": [  ]
 }
 
+[sub_resource type="AtlasTexture" id=365]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=366]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=367]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 1024, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=368]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 2048, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=369]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 3072, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=370]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 0, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=371]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 1024, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=372]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 2048, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=373]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 3072, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=374]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 0, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=375]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 1024, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=376]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=377]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=378]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=478]
+flags = 4
+atlas = ExtResource( 29 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=479]
+flags = 4
+atlas = ExtResource( 29 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=480]
+flags = 4
+atlas = ExtResource( 29 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=481]
+flags = 4
+atlas = ExtResource( 29 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=482]
+flags = 4
+atlas = ExtResource( 29 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=379]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 2048, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=380]
+flags = 4
+atlas = ExtResource( 28 )
+region = Rect2( 3072, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=305]
+flags = 4
+atlas = ExtResource( 31 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=306]
+flags = 4
+atlas = ExtResource( 31 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=307]
+flags = 4
+atlas = ExtResource( 31 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=381]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=382]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1024, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=383]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2048, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=384]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3072, 0, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=385]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=386]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1024, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=387]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2048, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=388]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3072, 1024, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=389]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=390]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1024, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=391]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2048, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=392]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3072, 2048, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=393]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=394]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1024, 3072, 1024, 1024 )
+
+[sub_resource type="AtlasTexture" id=260]
+flags = 4
+atlas = ExtResource( 30 )
+region = Rect2( 0, 0, 1024, 1024 )
+
+[sub_resource type="SpriteFrames" id=483]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 365 ), SubResource( 366 ), SubResource( 367 ), SubResource( 368 ), SubResource( 369 ), SubResource( 370 ), SubResource( 371 ), SubResource( 372 ) ],
+"loop": true,
+"name": "during_jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 373 ), SubResource( 374 ), SubResource( 375 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 376 ), SubResource( 377 ), SubResource( 378 ) ],
+"loop": true,
+"name": "init_jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 478 ), SubResource( 479 ), SubResource( 480 ), SubResource( 481 ), SubResource( 482 ) ],
+"loop": true,
+"name": "just_standing",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 379 ), SubResource( 380 ) ],
+"loop": true,
+"name": "landed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 305 ), SubResource( 306 ), SubResource( 307 ) ],
+"loop": true,
+"name": "melee_2",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 381 ), SubResource( 382 ), SubResource( 383 ), SubResource( 384 ), SubResource( 385 ), SubResource( 386 ), SubResource( 387 ), SubResource( 388 ), SubResource( 389 ), SubResource( 390 ), SubResource( 391 ), SubResource( 392 ), SubResource( 393 ), SubResource( 394 ) ],
+"loop": true,
+"name": "run",
+"speed": 14.0
+}, {
+"frames": [ SubResource( 260 ) ],
+"loop": true,
+"name": "slide",
+"speed": 1.0
+} ]
+
 [sub_resource type="DynamicFont" id=65]
 size = 42
 font_data = ExtResource( 15 )
@@ -366,14 +615,19 @@ font_data = ExtResource( 15 )
 size = 46
 font_data = ExtResource( 9 )
 
+[sub_resource type="DynamicFont" id=487]
+size = 32
+extra_spacing_char = 4
+font_data = ExtResource( 16 )
+
 [sub_resource type="DynamicFont" id=23]
-size = 34
+size = 32
 outline_size = 3
 outline_color = Color( 0.0352941, 0.184314, 0.501961, 1 )
 font_data = ExtResource( 16 )
 
 [sub_resource type="DynamicFont" id=20]
-size = 34
+size = 32
 font_data = ExtResource( 16 )
 
 [sub_resource type="DynamicFont" id=67]
@@ -402,14 +656,23 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="DynamicFont" id=24]
-size = 42
+[sub_resource type="DynamicFont" id=486]
+size = 32
+extra_spacing_bottom = 3
+extra_spacing_char = 2
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=484]
+size = 50
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = 10
+extra_spacing_char = 12
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=21]
-size = 32
+[sub_resource type="DynamicFont" id=485]
+size = 29
+extra_spacing_bottom = 3
 font_data = ExtResource( 16 )
 
 [sub_resource type="Animation" id=22]
@@ -488,8 +751,8 @@ stretch_mode = 2
 [node name="CreditScroll" type="Node2D" parent="."]
 
 [node name="Posing" type="Sprite" parent="CreditScroll"]
-position = Vector2( 1580, 1262.87 )
-scale = Vector2( 0.509439, 0.509439 )
+position = Vector2( 1612.72, 1229.77 )
+scale = Vector2( 0.461464, 0.461464 )
 texture = ExtResource( 6 )
 
 [node name="Running" type="Sprite" parent="CreditScroll"]
@@ -506,7 +769,7 @@ flip_h = true
 region_filter_clip = true
 
 [node name="Illustration" type="Sprite" parent="CreditScroll"]
-position = Vector2( 1588, 2148 )
+position = Vector2( 1630, 2154 )
 scale = Vector2( 0.406612, 0.410315 )
 texture = ExtResource( 5 )
 flip_h = true
@@ -566,7 +829,6 @@ scale = Vector2( 1.2, 1.2 )
 frames = SubResource( 45 )
 playing = true
 offset = Vector2( -2925, 355 )
-flip_h = true
 
 [node name="Big Bird of Darkness" parent="CreditScroll" instance=ExtResource( 1 )]
 position = Vector2( 130, 6827 )
@@ -604,6 +866,20 @@ script = ExtResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CreditScroll/SharkAttack"]
 "anims/New Anim" = SubResource( 17 )
+
+[node name="AngelConcept" type="Sprite" parent="CreditScroll"]
+position = Vector2( 153, 7980 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 27 )
+flip_h = true
+
+[node name="StaffUp" type="AnimatedSprite" parent="CreditScroll"]
+position = Vector2( 1583, 8305 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 483 )
+animation = "just_standing"
+playing = true
+flip_h = true
 
 [node name="Label" type="Label" parent="CreditScroll"]
 margin_left = 64.0
@@ -719,7 +995,7 @@ margin_left = -100.0
 margin_top = 7208.0
 margin_right = 445.0
 margin_bottom = 7382.0
-rect_pivot_offset = Vector2( 280, 80 )
+rect_pivot_offset = Vector2( 410, 222 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 66 )
 text = "BIG BIRD 
@@ -738,10 +1014,31 @@ custom_fonts/font = SubResource( 66 )
 text = "???"
 align = 1
 
+[node name="Label14" type="Label" parent="CreditScroll"]
+margin_left = -100.0
+margin_top = 8137.0
+margin_right = 445.0
+margin_bottom = 8311.0
+rect_pivot_offset = Vector2( 273, 13 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "ANGEL"
+align = 1
+
+[node name="Label15" type="Label" parent="CreditScroll"]
+margin_left = 1407.0
+margin_top = 8642.0
+margin_right = 1952.0
+margin_bottom = 8816.0
+rect_pivot_offset = Vector2( 273, 13 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 66 )
+text = "YOU <3"
+align = 1
+
 [node name="Window" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 975, 555 )
-scale = Vector2( 0.8, 0.8 )
+scale = Vector2( 1.05, 1.05 )
 
 [node name="TextureRect" type="TextureRect" parent="Window"]
 modulate = Color( 1, 1, 1, 0.901961 )
@@ -754,37 +1051,39 @@ stretch_mode = 1
 
 [node name="MessageText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -386.0
-margin_top = -326.5
+margin_top = -301.738
 margin_right = 374.0
-margin_bottom = 237.5
+margin_bottom = 262.262
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/mono_font = SubResource( 487 )
 custom_fonts/bold_font = SubResource( 23 )
 custom_fonts/normal_font = SubResource( 20 )
 bbcode_enabled = true
-bbcode_text = "[center][color=#F00080]...TO BE CONTINUED?[/color]
+bbcode_text = "[center][code][color=#F00080]...TO BE CONTINUED?[/color][/code]
 
 Thank you so much for playing our demo! 
 
-If you liked the game, please [color=#117cd6][wave]show your support[/wave][/color] by leaving nice comments on Itch, and following us on bsky and other social media!
+If you liked the game, please [color=#F00080][wave]show your support[/wave][/color] by leaving nice comments on Itch, and following us on various social media!
 
 Or donate 2 dollars hehe.
 
-[color=#205080](also, if you haven't collected all 3 dogs yet, you should do that :)"
+[color=#205080]...also, if you haven't collected all 
+3 dogs yet, you should do that :)"
 text = "...TO BE CONTINUED?
 
 Thank you so much for playing our demo! 
 
-If you liked the game, please show your support by leaving nice comments on Itch, and following us on bsky and other social media!
+If you liked the game, please show your support by leaving nice comments on Itch, and following us on various social media!
 
 Or donate 2 dollars hehe.
 
-(also, if you haven't collected all 3 dogs yet, you should do that :)"
+...also, if you haven't collected all 
+3 dogs yet, you should do that :)"
 
 [node name="NextButton" type="Button" parent="Window/TextureRect"]
 unique_name_in_owner = true
@@ -806,46 +1105,44 @@ text = "  Next  "
 
 [node name="CreditsText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -386.0
-margin_top = -346.5
+margin_top = -358.5
 margin_right = 374.0
-margin_bottom = 251.5
+margin_bottom = 250.5
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/bold_font = SubResource( 24 )
-custom_fonts/normal_font = SubResource( 21 )
+custom_fonts/mono_font = SubResource( 486 )
+custom_fonts/bold_font = SubResource( 484 )
+custom_fonts/normal_font = SubResource( 485 )
 bbcode_enabled = true
 bbcode_text = "[center][wave][b][rainbow  sat=0.5]CREDITS[/rainbow][/b][/wave]
+[code][wave]This game was created by..[/wave][/code]
 
 Ty / [color=teal][url=https://bsky.app/profile/awakebydefault.bsky.social]@AwakeByDefault
-[/url][/color](Code & gameplay lead)
+[/url][/color](Code & Gameplay lead)
 &
 Vibeke / [color=teal] [url=<https://bsky.app/profile/bekeblob.bsky.social>]@Bekeblob[/url][/color]
-(Art and Visuals lead)
-
--
+(Art and Visual lead)
 
 Music by Trygvert
 
-Sound Effects from ZapSplat.com
-"
+Sound Effects from ZapSplat.com"
 text = "CREDITS
+This game was created by..
 
 Ty / @AwakeByDefault
-(Code & gameplay lead)
+(Code & Gameplay lead)
 &
 Vibeke /  @Bekeblob
-(Art and Visuals lead)
-
--
+(Art and Visual lead)
 
 Music by Trygvert
 
-Sound Effects from ZapSplat.com
-"
+Sound Effects from ZapSplat.com"
 
 [node name="CreditsButtons" type="HBoxContainer" parent="Window/TextureRect"]
 unique_name_in_owner = true
@@ -900,6 +1197,7 @@ anims/pop_in = SubResource( 22 )
 
 [node name="BlackSquare" type="ColorRect" parent="."]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 1924.0
 margin_bottom = 1085.0
 mouse_filter = 2

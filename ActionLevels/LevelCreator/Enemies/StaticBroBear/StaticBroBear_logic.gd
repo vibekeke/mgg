@@ -59,7 +59,7 @@ func launch_bullet(bullet: Object):
 		rotator.rotator_has_fired = true
 		bullet.player_position = player_position
 		bullet.shoot_towards = true
-		AudioManager.playSFX("LaserBlipShort", 1.0, -20.0)
+		AudioManager.playSFX("LaserBlipShort", 1.0, -10.0)
 		fire_again_timer.set_wait_time(1.5)
 		if fire_again_timer.is_stopped():
 			fire_again_timer.start()

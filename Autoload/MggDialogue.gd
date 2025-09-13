@@ -12,7 +12,7 @@ func create_dialogue_balloon(
 	node_id: int,
 	placement: int = DataClasses.Placement.LOWER,
 	initial_character_portrait := DataClasses.CharacterPortrait.None,
-	dialogue_box_colour := Color(0.12549, 0.619608, 1, 1),
+	dialogue_box_colour := Color(0.07, 0.40, 0.54, 0.9),
 	dialogue_border_colour := Color(0.0, 0.0, 0.0, 1.0),
 	is_advancable := false,
 	auto_advance_time := 1.5

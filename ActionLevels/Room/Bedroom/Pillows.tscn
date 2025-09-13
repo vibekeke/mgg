@@ -8,7 +8,7 @@
 [ext_resource path="res://ActionLevels/Room/Bedroom/Pillows.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 328.75, 140 )
+extents = Vector2( 273.75, 96.25 )
 
 [node name="Pillows" type="Sprite"]
 material = ExtResource( 2 )
@@ -27,7 +27,8 @@ light_affected_item = NodePath("..")
 [node name="InteractableArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
-position = Vector2( 8.75, -5 )
+position = Vector2( -3.75, 18.75 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="CanCreateDialogue" parent="." instance=ExtResource( 4 )]
