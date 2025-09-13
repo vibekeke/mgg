@@ -26,6 +26,8 @@ func _ready():
 	player_final_score = ScoreManager.get_score()
 	score_display.bbcode_text = score_display.bbcode_text + " " + str(player_final_score)
 	animation_player.play("fade_in")
+	if StatsTracker.current_level_stats:
+		StatsTracker.current_level_stats.last_run_completed = false
 	
 
 func _on_RetryButton_pressed():

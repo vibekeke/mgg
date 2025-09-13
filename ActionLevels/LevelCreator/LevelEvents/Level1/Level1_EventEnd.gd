@@ -7,7 +7,6 @@ onready var dialog_layer = get_node("%DialogLayer")
 onready var collected_dogs = []
 var start_event_timer = Timer.new()
 export var debug_mode : bool = false
-var LEVEL_NAME = 'Level1'
 
 onready var win_popup = preload("res://Menus/YouWinPopup.tscn")
 
@@ -76,4 +75,6 @@ func event_start() -> void:
 func end_event() -> void:
 	Events.emit_signal("level_event_complete", event_name, event_number)
 	Events.emit_signal("level_event_lock", "", -1)
+	if StatsTracker.current_level_stats:
+		StatsTracker.current_level_stats.last_run_completed = true
 	Events.emit_signal("transition_to_scene", "Intro", true)

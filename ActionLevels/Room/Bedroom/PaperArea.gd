@@ -1,6 +1,5 @@
 extends Sprite
 
-onready var can_create_dialogue = get_node("%CanCreateDialogue")
 onready var sparkles = get_node("%Sparkles")
 onready var tween = get_node("%Tween")
 

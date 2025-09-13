@@ -23,7 +23,7 @@ func _ready():
 	var level_stats : Resource = LevelStats.new()
 	level_stats.level_name = 'Level1_Forest'
 	level_stats.level_number = 1
-
+	level_stats.level_started = true
 	StatsTracker.set_current_level(level_stats)
 
 	fun_value = rand_range(0, 10)

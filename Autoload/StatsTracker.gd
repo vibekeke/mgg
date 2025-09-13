@@ -23,17 +23,21 @@ func get_current_level_stats() -> LevelStats:
 ## Level 1 challenges
 
 func no_float_run() -> bool:
-	if current_level_stats:
+	if current_level_stats and current_level_stats.last_run_completed:
 		return current_level_stats.player_performed_actions['float'] == 0
 	return false
 
 func no_damage_taken() -> bool:
-	return ScoreManager.get_hits() == 0
+	if current_level_stats and current_level_stats.last_run_completed:
+		return ScoreManager.get_hits() == 0
+	return false
 	
 func full_pacifist() -> bool:
-	if current_level_stats:
+	if current_level_stats and current_level_stats.last_run_completed:
 		return current_level_stats.killed_enemies == 0
 	return false
 	
 func high_score_over_threshold() -> bool:
-	return ScoreManager.get_score() >= 2500
+	if current_level_stats and current_level_stats.last_run_completed:
+		return ScoreManager.get_score() >= 2500
+	return false

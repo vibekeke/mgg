@@ -3,6 +3,8 @@ extends Resource
 
 var level_name : String
 var level_number : int
+var level_started : bool
+var last_run_completed : bool
 var killed_enemies : int = 0
 var current_achieved_score : int = 0
 
