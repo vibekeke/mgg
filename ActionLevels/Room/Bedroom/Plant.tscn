@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://imported_assets/bedroom/room_plant-1.webp" type="Texture" id=1]
 [ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=2]
@@ -7,19 +7,19 @@
 [ext_resource path="res://Components/CanCreateDialogue.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 57.5001, 78.7498 )
+extents = Vector2( 57.5001, 51.2499 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 15.625, 83.125 )
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 110, 177.5 )
+extents = Vector2( 106.25, 17.5 )
 
 [node name="Plant" type="Node2D"]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Plant" type="Sprite" parent="."]
 material = ExtResource( 2 )
-position = Vector2( 2, -69 )
+position = Vector2( 2, -89 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )
 __meta__ = {
@@ -30,7 +30,8 @@ __meta__ = {
 position = Vector2( -5, -2.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plant/StaticBody2D"]
-position = Vector2( -0.000244141, 176.25 )
+position = Vector2( -0.000244141, 203.75 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 10 )
 
 [node name="LightAlteringComponent" parent="Plant" instance=ExtResource( 3 )]
@@ -39,8 +40,14 @@ light_affected_item = NodePath("..")
 [node name="InteractableArea" type="Area2D" parent="Plant"]
 position = Vector2( -5, -2.5 )
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Plant/InteractableArea"]
+position = Vector2( -0.625004, 153.125 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 12 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plant/InteractableArea"]
-position = Vector2( -10, -79.9996 )
+position = Vector2( -6.25001, 235 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 11 )
 
 [node name="CanCreateDialogue" parent="." instance=ExtResource( 6 )]

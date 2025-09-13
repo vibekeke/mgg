@@ -30,7 +30,6 @@ func _ready():
 	score_label.add_color_override("font_outline_modulate", default_outline_color)
 	
 	var damage = ScoreManager.get_hits()
-	damage = 1
 	if damage == 0:
 		damage_label.text = "None!"
 		damage_label.add_color_override("font_outline_modulate", Color(0.01, 0.63, 0.75, 1)) #green
@@ -44,7 +43,6 @@ func _ready():
 	
 	
 	var grade = ScoreManager.calculate_rank()
-	grade = "D"
 	grade_label.text = grade
 	
 	var grade_color = Color(1, 1, 1, 1)
