@@ -32,3 +32,4 @@ func reset_all():
 	killed_enemies = 0
 	killed_enemy_environment = { "Air": 0, "Ground": 0 }
 	player_performed_actions = { "jump": 0, "float": 0, "shoot": 0, "slide": 0 }
+	last_run_completed = false

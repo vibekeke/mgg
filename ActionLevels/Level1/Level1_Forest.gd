@@ -24,6 +24,7 @@ func _ready():
 	level_stats.level_name = 'Level1_Forest'
 	level_stats.level_number = 1
 	level_stats.level_started = true
+	level_stats.reset_all()
 	StatsTracker.set_current_level(level_stats)
 
 	fun_value = rand_range(0, 10)
