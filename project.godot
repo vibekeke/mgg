@@ -160,6 +160,8 @@ _global_script_class_icons={
 
 config/name="Mgg"
 run/main_scene="res://Menus/MainMenu.tscn"
+config/icon="res://mggicon.PNG"
+config/windows_native_icon="res://mggicon.ico"
 
 [autoload]
 
