@@ -671,7 +671,7 @@ extra_spacing_char = 12
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=485]
-size = 29
+size = 30
 extra_spacing_bottom = 3
 font_data = ExtResource( 16 )
 
@@ -1051,6 +1051,7 @@ stretch_mode = 1
 
 [node name="MessageText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1085,17 +1086,17 @@ Or donate 2 dollars hehe.
 ...also, if you haven't collected all 
 3 dogs yet, you should do that :)"
 
-[node name="NextButton" type="Button" parent="Window/TextureRect"]
+[node name="MessageButtons" type="HBoxContainer" parent="Window/TextureRect"]
 unique_name_in_owner = true
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -78.0001
-margin_top = -165.0
-margin_right = 79.9999
-margin_bottom = -104.0
-mouse_filter = 1
+margin_left = 422.0
+margin_top = 674.0
+margin_right = 462.0
+margin_bottom = 714.0
+
+[node name="NextButton" type="Button" parent="Window/TextureRect/MessageButtons"]
+margin_right = 158.0
+margin_bottom = 61.0
+focus_mode = 0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 67 )
 custom_styles/hover = SubResource( 68 )
@@ -1105,7 +1106,6 @@ text = "  Next  "
 
 [node name="CreditsText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1113,7 +1113,7 @@ anchor_bottom = 0.5
 margin_left = -386.0
 margin_top = -358.5
 margin_right = 374.0
-margin_bottom = 250.5
+margin_bottom = 255.5
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/mono_font = SubResource( 486 )
 custom_fonts/bold_font = SubResource( 484 )
@@ -1122,10 +1122,10 @@ bbcode_enabled = true
 bbcode_text = "[center][wave][b][rainbow  sat=0.5]CREDITS[/rainbow][/b][/wave]
 [code][wave]This game was created by..[/wave][/code]
 
-Ty / [color=teal][url=https://bsky.app/profile/awakebydefault.bsky.social]@AwakeByDefault
-[/url][/color](Code & Gameplay lead)
+                    Ty / [color=teal][url=https://bsky.app/profile/awakebydefault.bsky.social]@AwakeByDefault[/url][/color]   [color=#69b4b8]<-- click[/color]
+(Code & Gameplay lead)
 &
-Vibeke / [color=teal] [url=<https://bsky.app/profile/bekeblob.bsky.social>]@Bekeblob[/url][/color]
+                   Vibeke / [color=teal] [url=<https://bsky.app/profile/bekeblob.bsky.social>]@Bekeblob[/url][/color][color=#69b4b8]   <-- click[/color]
 (Art and Visual lead)
 
 Music by Trygvert
@@ -1134,10 +1134,10 @@ Sound Effects from ZapSplat.com"
 text = "CREDITS
 This game was created by..
 
-Ty / @AwakeByDefault
+                    Ty / @AwakeByDefault   <-- click
 (Code & Gameplay lead)
 &
-Vibeke /  @Bekeblob
+                   Vibeke /  @Bekeblob   <-- click
 (Art and Visual lead)
 
 Music by Trygvert
@@ -1157,7 +1157,7 @@ margin_right = 251.0
 margin_bottom = -114.0
 
 [node name="BackButton" type="Button" parent="Window/TextureRect/CreditsButtons"]
-margin_right = 136.0
+margin_right = 162.0
 margin_bottom = 61.0
 focus_mode = 0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -1165,18 +1165,18 @@ custom_fonts/font = SubResource( 67 )
 custom_styles/hover = SubResource( 68 )
 custom_styles/pressed = SubResource( 69 )
 custom_styles/normal = SubResource( 70 )
-text = " Back "
+text = "  Back  "
 
 [node name="VSeparator" type="VSeparator" parent="Window/TextureRect/CreditsButtons"]
 modulate = Color( 0, 0, 0, 0 )
-margin_left = 140.0
-margin_right = 174.0
+margin_left = 166.0
+margin_right = 200.0
 margin_bottom = 61.0
 custom_constants/separation = 34
 
 [node name="TitleButton" type="Button" parent="Window/TextureRect/CreditsButtons"]
-margin_left = 178.0
-margin_right = 476.0
+margin_left = 204.0
+margin_right = 515.0
 margin_bottom = 61.0
 focus_mode = 0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -1184,7 +1184,7 @@ custom_fonts/font = SubResource( 67 )
 custom_styles/hover = SubResource( 68 )
 custom_styles/pressed = SubResource( 69 )
 custom_styles/normal = SubResource( 70 )
-text = " Title Screen "
+text = " Title Screen  "
 
 [node name="Sparkles2" parent="Window/TextureRect" instance=ExtResource( 14 )]
 position = Vector2( 948, 803 )
@@ -1203,7 +1203,7 @@ margin_bottom = 1085.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
-[connection signal="pressed" from="Window/TextureRect/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="Window/TextureRect/MessageButtons/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="meta_clicked" from="Window/TextureRect/CreditsText" to="." method="_on_CreditsText_meta_clicked"]
 [connection signal="pressed" from="Window/TextureRect/CreditsButtons/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Window/TextureRect/CreditsButtons/TitleButton" to="." method="_on_TitleButton_pressed"]
