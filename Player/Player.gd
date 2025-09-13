@@ -97,7 +97,7 @@ export (PackedScene) var charge_shot
 
 onready var has_charge_shot = false
 
-var is_standing = true
+export var is_standing : bool = true
 var is_invincible = false
 
 var sprite_anim_to_player_name = {
