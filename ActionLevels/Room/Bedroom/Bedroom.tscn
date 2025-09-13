@@ -28,13 +28,6 @@
 [ext_resource path="res://HUD/PauseMenuBedroom.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Menus/ChallengeMenu.tscn" type="PackedScene" id=27]
 
-[sub_resource type="StyleBoxFlat" id=51]
-bg_color = Color( 0.0235294, 0.0352941, 0.0901961, 0.329412 )
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
 
@@ -194,7 +187,6 @@ margin_left = 1093.0
 margin_top = 806.0
 margin_right = 1285.0
 margin_bottom = 842.0
-custom_styles/panel = SubResource( 51 )
 
 [node name="ComputerScreen2D" parent="." instance=ExtResource( 15 )]
 unique_name_in_owner = true
@@ -222,7 +214,7 @@ material = SubResource( 37 )
 
 [node name="OverworldPlayer" parent="YSort" instance=ExtResource( 2 )]
 unique_name_in_owner = true
-position = Vector2( 1279, 871 )
+position = Vector2( 991, 655 )
 
 [node name="PaperArea" parent="YSort" instance=ExtResource( 14 )]
 material = SubResource( 52 )
