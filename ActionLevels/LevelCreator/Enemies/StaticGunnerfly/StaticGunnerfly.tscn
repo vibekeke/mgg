@@ -49,6 +49,7 @@ health_value = 10
 enemy_logic = ExtResource( 3 )
 is_unique_while_alive = true
 droppables = [ ExtResource( 4 ) ]
+environment = "Air"
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )

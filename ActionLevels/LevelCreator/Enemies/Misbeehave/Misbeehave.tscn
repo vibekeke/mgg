@@ -53,6 +53,7 @@ initial_scroll_speed = 650.0
 health_value = 2
 enemy_logic = ExtResource( 3 )
 droppables = [ ExtResource( 5 ), ExtResource( 4 ) ]
+environment = "Air"
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )

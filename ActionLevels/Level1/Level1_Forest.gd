@@ -19,6 +19,13 @@ var first_run : bool
 
 func _ready():
 	randomize()
+	
+	var level_stats : Resource = LevelStats.new()
+	level_stats.level_name = 'Level1_Forest'
+	level_stats.level_number = 1
+
+	StatsTracker.set_current_level(level_stats)
+
 	fun_value = rand_range(0, 10)
 	first_run = Events.first_time_playing
 	ScoreManager.reset_level_score()

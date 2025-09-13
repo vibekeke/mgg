@@ -418,8 +418,15 @@ func _physics_process(delta):
 	# the 5 lines below are a crime against humanity and i dont actually get why this works
 	# TODO: write this in a way that makes sense lol
 	if !has_floated:
-		if input_handler(Input.is_action_pressed("float")) and velocity.y > 0 and !float_halt:
+		if input_handler(Input.is_action_pressed("float")) and velocity.y > 0 and !float_halt and !is_on_floor():
 			float_halt = true
+			print("Player started floating! Recording stat...")
+			StatsTracker.record_player_float()
+			var stats = StatsTracker.get_current_level_stats()
+			if stats:
+				print("Current float count: ", stats.player_performed_actions["float"])
+			else:
+				print("No level stats found!")
 			velocity.y = 0 # halt velocity if you are floating
 		elif input_handler(Input.is_action_just_released("float")):
 			sparkles.hide()
