@@ -58,6 +58,7 @@ custom_grounded_spawn_point = Vector2( 2006, 951 )
 initial_scroll_speed = 600.0
 enemy_logic = ExtResource( 3 )
 droppables = [ ExtResource( 4 ) ]
+environment = "Ground"
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )

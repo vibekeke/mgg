@@ -36,14 +36,14 @@ func set_is_paused(value):
 	if is_paused:
 		resume_button.grab_focus()
 
-
 func _on_ResumeBtn_pressed():
 	AudioManager.playSFX("ui_confirm", 0.0, 5.0)
 	self.is_paused = false
 
 func _on_QuitBtn_pressed(): #Should return to title screen!
 	yield(get_tree().create_timer(0.4, true), "timeout")
-	
+	if StatsTracker.current_level_stats:
+		StatsTracker.current_level_stats.last_run_completed = false
 	self.is_paused = false
 	Events.emit_signal("transition_to_scene", "TitleScreen", false)
 

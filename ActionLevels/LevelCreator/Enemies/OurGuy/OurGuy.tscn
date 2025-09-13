@@ -50,6 +50,7 @@ health_value = 4
 enemy_logic = ExtResource( 3 )
 droppables = [ ExtResource( 5 ), ExtResource( 4 ) ]
 enemy_difficulty_tier = 1
+environment = "Ground"
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )

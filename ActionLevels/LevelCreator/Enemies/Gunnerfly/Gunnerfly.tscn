@@ -67,6 +67,7 @@ __meta__ = {
 spawn_height = 2
 initial_scroll_speed = 600.0
 enemy_logic = ExtResource( 3 )
+environment = "Air"
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )

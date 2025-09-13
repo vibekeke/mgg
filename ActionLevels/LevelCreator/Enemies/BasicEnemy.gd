@@ -17,6 +17,7 @@ export (bool) var has_non_queue_free_rotator = false # hack to ensure rotator an
 export (Array, PackedScene) var droppables
 export (int) var enemy_difficulty_tier
 export (Color) var hurt_colour = Color(10,10,10,1)
+export (String, "Air", "Ground") var environment
 
 onready var enemy_follower = $Path2D/PathFollow2D
 onready var area2d = $Path2D/PathFollow2D/Area2D
@@ -90,6 +91,7 @@ func spawn_possible_collectible(death_position: Vector2):
 
 func call_death(count_as_regular_death: bool):
 	if count_as_regular_death:
+		StatsTracker.record_enemy_kill(environment)
 		Events.emit_signal("regular_enemy_death")
 	if is_boss:
 		# Emit boss-specific death signal if it's BigBird

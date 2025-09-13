@@ -7,7 +7,6 @@ onready var dialog_layer = get_node("%DialogLayer")
 onready var collected_dogs = []
 var start_event_timer = Timer.new()
 export var debug_mode : bool = false
-var LEVEL_NAME = 'Level1'
 
 onready var win_popup = preload("res://Menus/YouWinPopup.tscn")
 
@@ -70,6 +69,11 @@ func event_start() -> void:
 	Events.emit_signal("player_standing", true)
 	Events.emit_signal("background_moving_enabled", false)
 	yield(get_tree().create_timer(2.0), "timeout")
+	if StatsTracker.current_level_stats:
+		StatsTracker.current_level_stats.last_run_completed = true
+		StatsTracker.calculate_level1_challenges()
+	else:
+		print_debug("Couldn't find any level stats, something weird happened")
 	display_dialogue()
 
 

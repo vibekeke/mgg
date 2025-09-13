@@ -25,6 +25,7 @@ enemy_logic = ExtResource( 3 )
 has_non_queue_free_rotator = true
 droppables = [ ExtResource( 5 ), ExtResource( 4 ) ]
 enemy_difficulty_tier = 2
+environment = "Air"
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 1 )

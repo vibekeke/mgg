@@ -167,8 +167,8 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 300.0
-margin_right = 7680.0
-margin_bottom = 4620.0
+margin_right = 13440.0
+margin_bottom = 7860.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 margin_left = 560.0
@@ -240,8 +240,8 @@ margin_bottom = 224.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 24 )
 bbcode_enabled = true
-bbcode_text = "* Only defeat enemies that can fly."
-text = "* Only defeat enemies that can fly."
+bbcode_text = "* Complete the level without taking damage"
+text = "* Complete the level without taking damage"
 fit_content_height = true
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
