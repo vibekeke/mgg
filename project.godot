@@ -124,6 +124,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ActionLevels/Room/QuitIcon.gd"
 }, {
+"base": "Resource",
+"class": "SaveFile",
+"language": "GDScript",
+"path": "res://Autoload/SaveFile.gd"
+}, {
 "base": "Node",
 "class": "Sharkboi",
 "language": "GDScript",
@@ -168,6 +173,7 @@ _global_script_class_icons={
 "PathedMisbeehave": "",
 "PooledEnemy": "",
 "QuitIcon": "",
+"SaveFile": "",
 "Sharkboi": "",
 "SneakySnake": "",
 "StaticBroBear": "",
@@ -191,6 +197,8 @@ SceneManager="*res://Autoload/SceneManager.tscn"
 AudioManager="*res://Autoload/AudioManager.gd"
 ScoreManager="*res://Autoload/ScoreManager.gd"
 StatsTracker="*res://Autoload/StatsTracker.gd"
+SaveFileManager="*res://Autoload/SaveFileManager.gd"
+MouseManager="*res://Autoload/MouseManager.gd"
 
 [debug]
 

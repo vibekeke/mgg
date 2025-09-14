@@ -4,6 +4,15 @@ var current_level_stats: LevelStats = null
 
 var notification_queue = []
 
+func _ready():
+	initialize()
+
+func initialize():
+	# Ensure SaveFileManager is initialized first
+	SaveFileManager.initialize()
+	# Load challenge states from save file
+	SaveFileManager.sync_to_stats_tracker()
+
 func set_current_level(stats: LevelStats):
 	current_level_stats = stats
 
@@ -42,6 +51,7 @@ func no_float_run() -> void:
 		if current_level_stats.player_performed_actions['float'] == 0:
 			no_float_run_completed = true
 			notification_queue.append("no_float_run")
+			SaveFileManager.set_no_float_run_completed(true)
 
 func no_damage_taken() -> void:
 	if no_damage_taken_run_completed:
@@ -50,6 +60,7 @@ func no_damage_taken() -> void:
 		if ScoreManager.get_hits() == 0:
 			no_damage_taken_run_completed = true
 			notification_queue.append("no_damage_taken_run")
+			SaveFileManager.set_no_damage_taken_run_completed(true)
 
 func full_pacifist() -> void:
 	if pacifist_run_completed:
@@ -58,6 +69,7 @@ func full_pacifist() -> void:
 		if current_level_stats.killed_enemies == 0:
 			pacifist_run_completed = true
 			notification_queue.append("pacifist_run")
+			SaveFileManager.set_pacifist_run_completed(true)
 	
 func high_score_over_threshold() -> void:
 	if high_score_run_completed:
@@ -66,6 +78,7 @@ func high_score_over_threshold() -> void:
 		if ScoreManager.get_score() >= 2500:
 			high_score_run_completed = true
 			notification_queue.append("high_score_run")
+			SaveFileManager.set_high_score_run_completed(true)
 
 func drain_notification_queue() -> Array:
 	var out = notification_queue.duplicate()

@@ -33,6 +33,7 @@ func _on_ReadyToStartLevelTimer_timeout():
 	if Events.first_time_playing:
 		play_intro_dialogue()
 		Events.first_time_playing = false
+		SaveFileManager.set_first_time_playing(false)
 	else:
 		play_confirmation_animations()
 
