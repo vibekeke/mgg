@@ -1042,16 +1042,16 @@ scale = Vector2( 1.05, 1.05 )
 
 [node name="TextureRect" type="TextureRect" parent="Window"]
 modulate = Color( 1, 1, 1, 0.901961 )
-margin_left = -496.0
-margin_top = -404.0
-margin_right = 504.0
-margin_bottom = 435.0
+margin_left = -469.524
+margin_top = -405.714
+margin_right = 445.476
+margin_bottom = 433.286
 texture = ExtResource( 2 )
+expand = true
 stretch_mode = 1
 
 [node name="MessageText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1088,10 +1088,10 @@ Or donate 2 dollars hehe.
 
 [node name="MessageButtons" type="HBoxContainer" parent="Window/TextureRect"]
 unique_name_in_owner = true
-margin_left = 422.0
+margin_left = 383.905
 margin_top = 674.0
-margin_right = 462.0
-margin_bottom = 714.0
+margin_right = 541.905
+margin_bottom = 735.0
 
 [node name="NextButton" type="Button" parent="Window/TextureRect/MessageButtons"]
 margin_right = 158.0
@@ -1106,6 +1106,7 @@ text = "  Next  "
 
 [node name="CreditsText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
