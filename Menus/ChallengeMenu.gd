@@ -26,6 +26,8 @@ func _ready():
 	if ascend_unlocked:
 		ascend_button.visible = true
 		$ButtonAnimationPlayer.play("button_bob")
+	else:
+		ascend_button.visible = false
 
 func toggle_visible():
 	if is_visible:
