@@ -18,6 +18,9 @@ onready var quit_button : Button = get_node("%QuitButton")
 onready var credits_menu = get_node("%Credits")
 onready var credits_hide_button = get_node("%CreditsHideButton")
 
+onready var delete_save_button = get_node("%DeleteSaveButton")
+onready var delete_save_panel = get_node("%DeleteSavePanel")
+
 onready var cheat_code_detection : PoolStringArray = PoolStringArray()
 var successful_cheat_code : String = "00112323"
 var cheat_code_activated : bool = false
@@ -137,6 +140,7 @@ func _on_CreditsButton_mouse_entered():
 
 func _on_CreditsHideButton_pressed():
 	credits_menu.visible = false
+	delete_save_panel.visible = false
 	credits_button.grab_focus()
 
 
@@ -178,3 +182,36 @@ func _on_FullscreenCheckbox_toggled(button_pressed):
 		OS.window_fullscreen = true
 	else:
 		OS.window_fullscreen = false
+
+
+
+## Delete Save
+func _on_DeleteSaveButton_pressed():
+	if delete_save_panel.visible:
+		delete_save_panel.visible = false
+	else:
+		delete_save_panel.visible = true
+	
+	$"%AreYouSureLabel".text = "Are you want to delete your save? \nThis action cannot be undone."
+	$"%YesDeleteButton".show()
+	$"%NoDeleteButton".show()
+
+func _on_YesDeleteButton_pressed():
+	#TODO: Actually delete file lol.
+	
+	AudioManager.playSFX("player_damage")
+	$"%AreYouSureLabel".text ="\nSave Data Deleted."
+	$"%YesDeleteButton".hide()
+	$"%NoDeleteButton".hide()
+	yield(get_tree().create_timer(2.0), "timeout")
+	delete_save_panel.visible = false
+
+
+func _on_NoDeleteButton_pressed():
+	delete_save_panel.visible = false
+
+func _on_YesDeleteButton_focus_entered():
+	AudioManager.playSFX("ui_hover")
+
+func _on_NoDeleteButton_focus_entered():
+	AudioManager.playSFX("ui_hover")
