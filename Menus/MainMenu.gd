@@ -200,7 +200,7 @@ func _on_DeleteSaveButton_pressed():
 
 func _on_YesDeleteButton_pressed():
 	#TODO: Actually delete file lol.
-	
+	SaveFileManager.reset_save_file()
 	AudioManager.playSFX("player_damage")
 	$"%AreYouSureLabel".text ="\nSave Data Deleted."
 	$"%YesDeleteButton".hide()
