@@ -4,6 +4,10 @@ extends CanvasLayer
 var is_visible = false
 var ascend_unlocked = false
 
+onready var line_no_float = get_node("%NoFloatLine")
+onready var line_no_damage = get_node("%NoDamageLine")
+onready var line_pacifist = get_node("%PacifistLine")
+onready var line_high_score = get_node("%HighScoreLine")
 onready var ascend_button = get_node("%AscendButton")
 
 var level_challenges = {
@@ -12,8 +16,16 @@ var level_challenges = {
 
 func _ready():
 	check_completed_challenges()
-	if ascend_unlocked: 
+	
+	line_no_float.visible   = level_challenges["Level1"]["no_float"]
+	line_no_damage.visible  = level_challenges["Level1"]["no_damage"]
+	line_pacifist.visible   = level_challenges["Level1"]["pacifist"]
+	line_high_score.visible = level_challenges["Level1"]["high_score"]
+
+	ascend_unlocked = not level_challenges["Level1"].values().has(false)
+	if ascend_unlocked:
 		ascend_button.visible = true
+		$ButtonAnimationPlayer.play("button_bob")
 
 func toggle_visible():
 	if is_visible:

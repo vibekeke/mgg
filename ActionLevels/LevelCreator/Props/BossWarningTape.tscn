@@ -189,9 +189,10 @@ visible = false
 
 [node name="ColorRect" type="ColorRect" parent="BackgroundLayer"]
 unique_name_in_owner = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0980392, 0.0784314, 0.341176, 1 )
+color = Color( 0.101961, 0.0941176, 0.215686, 1 )
 
 [node name="ColorRectTween" type="Tween" parent="BackgroundLayer"]
 unique_name_in_owner = true
@@ -227,7 +228,7 @@ scroll_active = false
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 3.0
+wait_time = 2.8
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

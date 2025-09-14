@@ -2,6 +2,8 @@ extends Node
 
 var current_level_stats: LevelStats = null
 
+var notification_queue = []
+
 func set_current_level(stats: LevelStats):
 	current_level_stats = stats
 
@@ -34,17 +36,39 @@ func calculate_level1_challenges() -> void:
 	high_score_over_threshold()
 
 func no_float_run() -> void:
-	if current_level_stats and current_level_stats.last_run_completed and !no_float_run_completed:
-		no_float_run_completed = current_level_stats.player_performed_actions['float'] == 0
+	if no_float_run_completed:
+		return
+	if current_level_stats and current_level_stats.last_run_completed:
+		if current_level_stats.player_performed_actions['float'] == 0:
+			no_float_run_completed = true
+			notification_queue.append("no_float_run")
 
 func no_damage_taken() -> void:
-	if current_level_stats and current_level_stats.last_run_completed and !no_damage_taken_run_completed:
-		no_damage_taken_run_completed = ScoreManager.get_hits() == 0
+	if no_damage_taken_run_completed:
+		return
+	if current_level_stats and current_level_stats.last_run_completed:
+		if ScoreManager.get_hits() == 0:
+			no_damage_taken_run_completed = true
+			notification_queue.append("no_damage_taken_run")
 
 func full_pacifist() -> void:
-	if current_level_stats and current_level_stats.last_run_completed and !pacifist_run_completed:
-		pacifist_run_completed = current_level_stats.killed_enemies == 0
+	if pacifist_run_completed:
+		return
+	if current_level_stats and current_level_stats.last_run_completed:
+		if current_level_stats.killed_enemies == 0:
+			pacifist_run_completed = true
+			notification_queue.append("pacifist_run")
 	
 func high_score_over_threshold() -> void:
-	if current_level_stats and current_level_stats.last_run_completed and !high_score_run_completed:
-		high_score_run_completed = ScoreManager.get_score() >= 2500
+	if high_score_run_completed:
+		return
+	if current_level_stats and current_level_stats.last_run_completed:
+		if ScoreManager.get_score() >= 2500:
+			high_score_run_completed = true
+			notification_queue.append("high_score_run")
+
+func drain_notification_queue() -> Array:
+	var out = notification_queue.duplicate()
+	notification_queue.clear()
+	return out
+	

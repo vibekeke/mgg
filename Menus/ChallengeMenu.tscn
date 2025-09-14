@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Menus/ChallengeMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menus/PrettyAssets/Sol.png" type="Texture" id=2]
-[ext_resource path="res://test_fonts/vibekefonts/main_menu_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://test_fonts/vt323/VT323-Regular.ttf" type="DynamicFontData" id=7]
 
@@ -21,6 +21,13 @@ corner_radius_bottom_left = 5
 size = 42
 font_data = ExtResource( 7 )
 
+[sub_resource type="DynamicFont" id=26]
+size = 66
+outline_size = 4
+outline_color = Color( 0.486275, 0.431373, 1, 1 )
+extra_spacing_char = 2
+font_data = ExtResource( 3 )
+
 [sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.701961, 0.792157, 1, 1 )
 border_width_left = 4
@@ -28,10 +35,10 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0.439216, 0.447059, 1, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 shadow_size = 4
 shadow_offset = Vector2( 8, 8 )
 
@@ -42,24 +49,24 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0.439216, 0.447059, 1, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 shadow_size = 4
 shadow_offset = Vector2( 8, 8 )
 
 [sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 1, 0.941176, 0.807843, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 border_color = Color( 0.439216, 0.447059, 1, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 shadow_color = Color( 0, 0, 0, 0.243137 )
 shadow_size = 4
 shadow_offset = Vector2( 8, 8 )
@@ -159,6 +166,23 @@ tracks/2/keys = {
 "values": [  ]
 }
 
+[sub_resource type="Animation" id=27]
+resource_name = "button_bob"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CenterContainer/PanelContainer/VBoxContainer/MarginContainer2/AscendButton:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 1.05 ), Vector2( 1, 1 ) ]
+}
+
 [node name="SecretChallengeMenu" type="CanvasLayer"]
 script = ExtResource( 1 )
 
@@ -167,8 +191,8 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 300.0
-margin_right = 13440.0
-margin_bottom = 7860.0
+margin_right = 26880.0
+margin_bottom = 15420.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 margin_left = 560.0
@@ -183,11 +207,39 @@ position = Vector2( 580, 752 )
 scale = Vector2( 1.37726, 1.37726 )
 texture = ExtResource( 2 )
 
+[node name="NoFloatLine" type="Line2D" parent="CenterContainer/PanelContainer"]
+unique_name_in_owner = true
+position = Vector2( -560, 170 )
+points = PoolVector2Array( 600, 0, 1320, 0 )
+width = 6.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="NoDamageLine" type="Line2D" parent="CenterContainer/PanelContainer"]
+unique_name_in_owner = true
+position = Vector2( -560, 238 )
+points = PoolVector2Array( 600, 0, 1320, 0 )
+width = 6.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="PacifistLine" type="Line2D" parent="CenterContainer/PanelContainer"]
+unique_name_in_owner = true
+position = Vector2( -560, 305 )
+points = PoolVector2Array( 600, 0, 1200, 0 )
+width = 6.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="HighScoreLine" type="Line2D" parent="CenterContainer/PanelContainer"]
+unique_name_in_owner = true
+position = Vector2( -560, 374 )
+points = PoolVector2Array( 600, 0, 1250, 0 )
+width = 7.0
+default_color = Color( 0, 0, 0, 1 )
+
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 836.0
-margin_bottom = 1675.0
+margin_bottom = 1551.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
 margin_right = 832.0
@@ -300,40 +352,48 @@ margin_bottom = 672.0
 [node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
 margin_top = 706.0
 margin_right = 832.0
-margin_bottom = 1671.0
+margin_bottom = 1448.0
 custom_constants/margin_right = 180
-custom_constants/margin_top = 300
+custom_constants/margin_top = 10
 custom_constants/margin_left = 180
 custom_constants/margin_bottom = 645
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 180.0
-margin_top = 300.0
+margin_top = 10.0
 margin_right = 652.0
-margin_bottom = 320.0
+margin_bottom = 97.0
 custom_constants/separation = 20
 
 [node name="AscendButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
-visible = false
 margin_left = 180.0
-margin_top = 300.0
+margin_top = 10.0
 margin_right = 652.0
-margin_bottom = 399.0
-custom_fonts/font = ExtResource( 3 )
+margin_bottom = 97.0
+rect_scale = Vector2( 1.04064, 1.04064 )
+rect_pivot_offset = Vector2( 240, 0 )
+custom_fonts/font = SubResource( 26 )
 custom_styles/hover = SubResource( 23 )
 custom_styles/pressed = SubResource( 22 )
 custom_styles/normal = SubResource( 14 )
 text = "ASCEND"
 
 [node name="StarSelect" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2/AscendButton" instance=ExtResource( 5 )]
-position = Vector2( 427, 50 )
+position = Vector2( 44.0002, 44 )
+
+[node name="StarSelect2" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2/AscendButton" instance=ExtResource( 5 )]
+position = Vector2( 427, 46 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 25 )
 anims/fade_in = SubResource( 10 )
 anims/fade_out = SubResource( 11 )
+
+[node name="ButtonAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+anims/button_bob = SubResource( 27 )
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2/AscendButton" to="." method="_on_NextButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
