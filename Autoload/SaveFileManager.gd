@@ -1,6 +1,8 @@
 extends Node
 
-const SAVE_FILE_PATH = "user://savefile.res"
+const SAVE_FILE_PATH = "user://savefile.dat"
+const BACKUP_SAVE_PATH = "user://savefile_backup.dat"
+const TEMP_SAVE_PATH = "user://savefile_temp.dat"
 
 var current_save_file : SaveFile
 var is_initialized : bool = false
@@ -16,17 +18,50 @@ func initialize():
 	print("SaveFileManager: Initialized")
 
 func load_save_file():
-	if ResourceLoader.exists(SAVE_FILE_PATH):
-		current_save_file = ResourceLoader.load(SAVE_FILE_PATH)
-		if current_save_file == null:
-			print("Failed to load save file, creating new one")
-			create_new_save_file()
+	var file = File.new()
+	if file.file_exists(SAVE_FILE_PATH):
+		if file.open(SAVE_FILE_PATH, File.READ) == OK:
+			var data = file.get_var(false) # false = no objects, secure
+			file.close()
+
+			if data != null and typeof(data) == TYPE_DICTIONARY:
+				current_save_file = SaveFile.new()
+				if current_save_file.from_dict(data):
+					print("Save file loaded successfully!")
+					print_save_file_contents()
+					return
+				else:
+					print("Save file data invalid, trying backup...")
+			else:
+				print("Save file corrupted, trying backup...")
 		else:
-			print("Save file loaded successfully!")
-			print_save_file_contents()
+			print("Failed to open save file, trying backup...")
+
+		if try_load_backup():
+			return
+		else:
+			print("Backup failed too, creating new one")
+			create_new_save_file()
 	else:
 		print("No save file found, creating new one")
 		create_new_save_file()
+
+func try_load_backup() -> bool:
+	var file = File.new()
+	if file.file_exists(BACKUP_SAVE_PATH):
+		if file.open(BACKUP_SAVE_PATH, File.READ) == OK:
+			var data = file.get_var(false) # false = no objects, secure
+			file.close()
+
+			if data != null and typeof(data) == TYPE_DICTIONARY:
+				current_save_file = SaveFile.new()
+				if current_save_file.from_dict(data):
+					print("Backup save file loaded successfully!")
+					print_save_file_contents()
+					# Restore main save from backup
+					save_to_disk()
+					return true
+	return false
 
 func print_save_file_contents():
 	print("=== SAVE FILE CONTENTS ===")
@@ -47,11 +82,27 @@ func create_new_save_file():
 	save_to_disk()
 
 func save_to_disk():
-	var error = ResourceSaver.save(SAVE_FILE_PATH, current_save_file)
-	if error != OK:
-		print("Failed to save file: ", error)
-	else:
-		print("Save file saved successfully")
+	# Atomic save: write to temp file first, then move to main location
+	var file = File.new()
+	if file.open(TEMP_SAVE_PATH, File.WRITE) != OK:
+		print("Failed to open temp file for writing")
+		return
+
+	file.store_var(current_save_file.to_dict(), false) # false = no objects, secure
+	file.close()
+
+	# Create backup from current save file before overwriting
+	var dir = Directory.new()
+	if dir.file_exists(SAVE_FILE_PATH):
+		if dir.copy(SAVE_FILE_PATH, BACKUP_SAVE_PATH) != OK:
+			print("Warning: Failed to create backup")
+
+	# Move temp file to main location
+	if dir.rename(TEMP_SAVE_PATH, SAVE_FILE_PATH) != OK:
+		print("Failed to move temp file to main save location")
+		return
+
+	print("Save file saved successfully")
 
 # Getters for save data
 func get_no_float_run_completed() -> bool:
