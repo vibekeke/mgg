@@ -53,7 +53,7 @@ func add_dialogue():
 		portrait.hide()
 	else:
 		portrait.show()
-		margin_container.add_constant_override("margin_right", 125)
+		margin_container.add_constant_override("margin_right", 160)
 
 	if dialogue.character == "":
 		character_title.hide()
