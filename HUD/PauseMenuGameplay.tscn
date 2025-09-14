@@ -65,12 +65,12 @@ position = Vector2( 50.912, 137.742 )
 [node name="SpinnyStarRetry" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
 unique_name_in_owner = true
 visible = false
-position = Vector2( 96.35, 224.419 )
+position = Vector2( 93.3501, 233.419 )
 
 [node name="SpinnyStarTitle" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
 unique_name_in_owner = true
 visible = false
-position = Vector2( -30.356, 310.152 )
+position = Vector2( -35.356, 317.152 )
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
 margin_left = 4.0
@@ -102,9 +102,9 @@ margin_bottom = 178.0
 focus_neighbour_top = NodePath("../TitleBtn")
 focus_neighbour_bottom = NodePath("../RetryBtn")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_focus = Color( 1, 0.862745, 0.568627, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
-custom_colors/font_color_hover = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_hover = Color( 1, 0.862745, 0.568627, 1 )
 custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/hover = ExtResource( 5 )
@@ -123,9 +123,9 @@ margin_bottom = 267.0
 focus_neighbour_top = NodePath("../ResumeBtn")
 focus_neighbour_bottom = NodePath("../TitleBtn")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_focus = Color( 1, 0.862745, 0.568627, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
-custom_colors/font_color_hover = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_hover = Color( 1, 0.862745, 0.568627, 1 )
 custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/hover = ExtResource( 5 )
@@ -143,9 +143,9 @@ margin_bottom = 356.0
 focus_neighbour_top = NodePath("../RetryBtn")
 focus_neighbour_bottom = NodePath("../ResumeBtn")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_focus = Color( 1, 0.862745, 0.568627, 1 )
 custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
-custom_colors/font_color_hover = Color( 0.898039, 0.890196, 0.0745098, 1 )
+custom_colors/font_color_hover = Color( 1, 0.862745, 0.568627, 1 )
 custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/hover = ExtResource( 5 )
