@@ -78,11 +78,26 @@ var dogs_complete = false
 var first_time_playing = true
 
 
+var is_initialized : bool = false
+
 func _ready():
 	randomize()
 	OS.min_window_size = Vector2(1280, 720)
 	OS.max_window_size = Vector2(1920, 1080)
 	OS.center_window()
+	initialize()
+
+func initialize():
+	if is_initialized:
+		return
+	# Ensure SaveFileManager is initialized first
+	SaveFileManager.initialize()
+
+	# Now load persistent variables
+	first_time_playing = SaveFileManager.get_first_time_playing()
+	dogs_complete = SaveFileManager.get_all_dogs_collected()
+	is_initialized = true
+	print("Events: Loaded from save: first_time_playing = ", first_time_playing, ", dogs_complete = ", dogs_complete)
 
 func _disable_player_actions(to_disable: bool):
 	# for tutorial and other stuff, e.g. boss loading?
@@ -176,6 +191,8 @@ func update_dogs(dog_type: String):
 	if not COLLECTED_DOGS.has(dog_type):
 		COLLECTED_DOGS[dog_type] = true
 	if COLLECTED_DOGS.size() >= 3:
+		dogs_complete = true
+		SaveFileManager.set_all_dogs_collected(true)
 		self.emit_signal("collected_all_dogs")
 		
 

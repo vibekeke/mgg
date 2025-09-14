@@ -22,6 +22,8 @@ var button_pressed : bool = false
 var first_focus : bool = true
 
 func _ready():
+	Events.initialize()
+
 	cheat_code_detection = []
 	tween.interpolate_property(camera, "position",
 		camera.position, Vector2(961, 540), 2,
@@ -30,7 +32,7 @@ func _ready():
 	SceneManager.visible = true
 	var directory = Directory.new()
 	var fileExists = directory.file_exists(Events.SAVE_FILE_LOCATION)
-	
+	print("MainMenu: Events dogs complete = ", Events.dogs_complete)
 	if !Events.dogs_complete:
 		room_button.text = "???"
 		room_button.disabled = true
