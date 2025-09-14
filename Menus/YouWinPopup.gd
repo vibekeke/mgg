@@ -11,6 +11,11 @@ onready var grade_label = get_node("%GradeLabel")
 onready var damage_sparkles = get_node("%DamageSparkles")
 onready var grade_sparkles = get_node("%GradeSparkles")
 
+onready var no_damage_label = get_node("%NoDamageLabel")
+onready var no_float_label = get_node("%NoFloatLabel")
+onready var big_score_label = get_node("%BigScoreLabel")
+onready var pacifist_label = get_node("%PacifistLabel")
+
 #TODO: Fetch stats and update the scores
 #Preferably with cool colors or something.
 
@@ -25,7 +30,6 @@ func _ready():
 	next_button.grab_focus()
 	damage_sparkles.hide()
 	grade_sparkles.hide()
-	
 	score_label.text = str(ScoreManager.get_score())
 	score_label.add_color_override("font_outline_modulate", default_outline_color)
 	
@@ -41,6 +45,10 @@ func _ready():
 	dogs_label.text = str(ScoreManager.get_dog_count()) + "/3"
 	dogs_label.add_color_override("font_outline_modulate", default_outline_color)
 	
+	no_damage_label.hide()
+	no_float_label.hide()
+	big_score_label.hide()
+	pacifist_label.hide()
 	
 	var grade = ScoreManager.calculate_rank()
 	grade_label.text = grade
@@ -69,6 +77,19 @@ func _ready():
 	grade_label.add_color_override("font_outline_modulate", grade_outline_color)
 	grade_label.add_color_override("font_color_shadow", grade_outline_color)
 	
+	#very duct tape solution sorry, ideally we would spawn in labels as children but who caaaares its 6am
+	for challenge_name in StatsTracker.drain_notification_queue():
+		match challenge_name:
+			"no_float_run": 
+				no_float_label.show()
+			"no_damage_taken_run":
+				no_damage_label.show()
+			"high_score_run":
+				big_score_label.show()
+			"pacifist_run":
+				pacifist_label.show()
+
+	
 func _playTextSound():
 	AudioManager.playSFX("ui_hover")
 
@@ -76,6 +97,7 @@ func _playTextSound2():
 	AudioManager.playSFX("coin")
 
 func _on_NextButton_pressed():
-	animation_player.play("fade_out")
 	AudioManager.playSFX("ui_confirm")
+	animation_player.play("fade_out")
+	yield(animation_player, "animation_finished")
 	Events.emit_signal("transition_to_scene", "Intro", false)
