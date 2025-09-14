@@ -198,6 +198,7 @@ AudioManager="*res://Autoload/AudioManager.gd"
 ScoreManager="*res://Autoload/ScoreManager.gd"
 StatsTracker="*res://Autoload/StatsTracker.gd"
 SaveFileManager="*res://Autoload/SaveFileManager.gd"
+MouseManager="*res://Autoload/MouseManager.gd"
 
 [debug]
 
