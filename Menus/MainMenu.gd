@@ -204,6 +204,8 @@ func _on_YesDeleteButton_pressed():
 	$"%YesDeleteButton".hide()
 	$"%NoDeleteButton".hide()
 	yield(get_tree().create_timer(2.0), "timeout")
+	room_button.text = "???"
+	room_button.disabled = true
 	delete_save_panel.visible = false
 
 
