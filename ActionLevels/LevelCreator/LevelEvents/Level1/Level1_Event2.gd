@@ -8,7 +8,7 @@ onready var spawn_enemies_timer = Timer.new()
 onready var spawn_platforms_timer = Timer.new()
 onready var spawn_background_enemies_timer = Timer.new()
 onready var wait_after_stopping_spawner_timer = Timer.new()
-export var time_until_event_start = 10.0
+export var time_until_event_start = 20.0
 var num_background_enemies_spawned = 0
 var num_enemies_spawned = 0
 var num_platforms_spawned = 0
@@ -36,8 +36,6 @@ func _ready():
 	_preload_all_objects()
 
 func _preload_all_objects():
-	print("Level1_Event2: Preloading objects...")
-	
 	for i in range(3):
 		var platform = platform_to_spawn.instance()
 		platform.scroll_speed = platform_scroll_speed
@@ -58,9 +56,6 @@ func _preload_all_objects():
 		enemy.visible = false
 		enemy.set_process(false)
 		preloaded_enemies.append(enemy)
-	
-	print("Level1_Event2: Preloading complete - ", preloaded_platforms.size(), " platforms, ", 
-		  preloaded_background_enemies.size(), " bg enemies, ", preloaded_enemies.size(), " enemies")
 
 func _spawn_preloaded_platform():
 	if preloaded_platforms.size() > 0:
@@ -69,9 +64,8 @@ func _spawn_preloaded_platform():
 		platform.visible = true
 		platform.set_process(true)
 		platform_spawner.cached_parent_node.add_child(platform)
-		print("Level1_Event2: Spawned preloaded platform at ", platform.position)
 	else:
-		print("Level1_Event2: No more preloaded platforms available!")
+		print_debug("Level1_Event2: No more preloaded platforms available!")
 
 func _spawn_preloaded_background_enemy():
 	if preloaded_background_enemies.size() > 0:
@@ -84,9 +78,8 @@ func _spawn_preloaded_background_enemy():
 		bg_enemy.visible = true
 		bg_enemy.set_process(true)
 		enemy_spawner.level_background.get_node_or_null('BackForestBackground').add_child(bg_enemy)
-		print("Level1_Event2: Spawned preloaded background enemy")
 	else:
-		print("Level1_Event2: No more preloaded background enemies available!")
+		print_debug("Level1_Event2: No more preloaded background enemies available!")
 
 func _spawn_preloaded_enemy():
 	if preloaded_enemies.size() > 0:
@@ -97,9 +90,8 @@ func _spawn_preloaded_enemy():
 		enemy.visible = true
 		enemy.set_process(true)
 		enemy_spawner.get_parent().call_deferred("add_child", enemy)
-		print("Level1_Event2: Spawned preloaded enemy at ", enemy.position)
 	else:
-		print("Level1_Event2: No more preloaded enemies available!")
+		print_debug("Level1_Event2: No more preloaded enemies available!")
 
 func _on_level_event_complete(level_event_name, level_event_number):
 	if level_event_number == 1:
