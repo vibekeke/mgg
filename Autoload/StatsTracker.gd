@@ -8,8 +8,6 @@ func _ready():
 	initialize()
 
 func initialize():
-	# Ensure SaveFileManager is initialized first
-	SaveFileManager.initialize()
 	# Load challenge states from save file
 	SaveFileManager.sync_to_stats_tracker()
 

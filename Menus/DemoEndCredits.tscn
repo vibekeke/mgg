@@ -1,7 +1,6 @@
-[gd_scene load_steps=144 format=2]
+[gd_scene load_steps=145 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdSprite.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Menus/PrettyAssets/DemoTextBox.webp" type="Texture" id=2]
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Menus/ConceptArt/running.png" type="Texture" id=4]
 [ext_resource path="res://Menus/ConceptArt/Illustration.png" type="Texture" id=5]
@@ -615,6 +614,18 @@ font_data = ExtResource( 15 )
 size = 46
 font_data = ExtResource( 9 )
 
+[sub_resource type="StyleBoxFlat" id=488]
+bg_color = Color( 1, 0.968627, 0.87451, 1 )
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color( 1, 0.835294, 0.443137, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [sub_resource type="DynamicFont" id=487]
 size = 32
 extra_spacing_char = 4
@@ -674,6 +685,58 @@ font_data = ExtResource( 3 )
 size = 30
 extra_spacing_bottom = 3
 font_data = ExtResource( 16 )
+
+[sub_resource type="Animation" id=489]
+resource_name = "RESET"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Window:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 0.8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Window:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BlackSquare:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=22]
 resource_name = "pop_in"
@@ -751,26 +814,26 @@ stretch_mode = 2
 [node name="CreditScroll" type="Node2D" parent="."]
 
 [node name="Posing" type="Sprite" parent="CreditScroll"]
-position = Vector2( 1612.72, 1229.77 )
-scale = Vector2( 0.461464, 0.461464 )
+position = Vector2( 1659.72, 1182.22 )
+scale = Vector2( 0.39255, 0.39255 )
 texture = ExtResource( 6 )
 
 [node name="Running" type="Sprite" parent="CreditScroll"]
-position = Vector2( 291, 829.869 )
-scale = Vector2( 0.383519, 0.383519 )
+position = Vector2( 273.562, 808.66 )
+scale = Vector2( 0.357685, 0.357685 )
 texture = ExtResource( 4 )
 flip_h = true
 
 [node name="Jente" type="Sprite" parent="CreditScroll"]
-position = Vector2( 187, 1634 )
-scale = Vector2( 0.63402, 0.63402 )
+position = Vector2( 179, 1614.37 )
+scale = Vector2( 0.592783, 0.592783 )
 texture = ExtResource( 13 )
 flip_h = true
 region_filter_clip = true
 
 [node name="Illustration" type="Sprite" parent="CreditScroll"]
-position = Vector2( 1630, 2154 )
-scale = Vector2( 0.406612, 0.410315 )
+position = Vector2( 1662.32, 2123.23 )
+scale = Vector2( 0.361096, 0.364385 )
 texture = ExtResource( 5 )
 flip_h = true
 
@@ -1037,21 +1100,25 @@ text = "YOU <3"
 align = 1
 
 [node name="Window" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 975, 555 )
-scale = Vector2( 1.05, 1.05 )
+scale = Vector2( 0.8, 0.8 )
 
-[node name="TextureRect" type="TextureRect" parent="Window"]
+[node name="TextureRect" type="Control" parent="Window"]
 modulate = Color( 1, 1, 1, 0.901961 )
-margin_left = -496.0
-margin_top = -404.0
-margin_right = 504.0
-margin_bottom = 435.0
-texture = ExtResource( 2 )
-stretch_mode = 1
+margin_left = -469.524
+margin_top = -405.714
+margin_right = 445.476
+margin_bottom = 433.286
+
+[node name="Panel" type="Panel" parent="Window/TextureRect"]
+margin_left = 34.0
+margin_right = 857.0
+margin_bottom = 843.0
+custom_styles/panel = SubResource( 488 )
 
 [node name="MessageText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1060,7 +1127,7 @@ margin_left = -386.0
 margin_top = -301.738
 margin_right = 374.0
 margin_bottom = 262.262
-custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/default_color = Color( 0.0196078, 0.0196078, 0.219608, 1 )
 custom_fonts/mono_font = SubResource( 487 )
 custom_fonts/bold_font = SubResource( 23 )
 custom_fonts/normal_font = SubResource( 20 )
@@ -1088,10 +1155,10 @@ Or donate 2 dollars hehe.
 
 [node name="MessageButtons" type="HBoxContainer" parent="Window/TextureRect"]
 unique_name_in_owner = true
-margin_left = 422.0
+margin_left = 368.667
 margin_top = 674.0
-margin_right = 462.0
-margin_bottom = 714.0
+margin_right = 526.667
+margin_bottom = 735.0
 
 [node name="NextButton" type="Button" parent="Window/TextureRect/MessageButtons"]
 margin_right = 158.0
@@ -1110,11 +1177,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -386.0
+margin_left = -395.524
 margin_top = -358.5
-margin_right = 374.0
+margin_right = 364.476
 margin_bottom = 255.5
-custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/default_color = Color( 0.0196078, 0.0196078, 0.219608, 1 )
+custom_colors/selection_color = Color( 0.878431, 0.231373, 0.231373, 1 )
 custom_fonts/mono_font = SubResource( 486 )
 custom_fonts/bold_font = SubResource( 484 )
 custom_fonts/normal_font = SubResource( 485 )
@@ -1122,10 +1190,10 @@ bbcode_enabled = true
 bbcode_text = "[center][wave][b][rainbow  sat=0.5]CREDITS[/rainbow][/b][/wave]
 [code][wave]This game was created by..[/wave][/code]
 
-                    Ty / [color=teal][url=https://bsky.app/profile/awakebydefault.bsky.social]@AwakeByDefault[/url][/color]   [color=#69b4b8]<-- click[/color]
+                    Ty / [url=https://bsky.app/profile/awakebydefault.bsky.social]@AwakeByDefault[/url]  [color=#69b4b8]<-- click[/color]
 (Code & Gameplay lead)
 &
-                   Vibeke / [color=teal] [url=<https://bsky.app/profile/bekeblob.bsky.social>]@Bekeblob[/url][/color][color=#69b4b8]   <-- click[/color]
+                   Vibeke / [url=<https://bsky.app/profile/bekeblob.bsky.social>]@Bekeblob[/url][color=#69b4b8]   <-- click[/color]
 (Art and Visual lead)
 
 Music by Trygvert
@@ -1134,10 +1202,10 @@ Sound Effects from ZapSplat.com"
 text = "CREDITS
 This game was created by..
 
-                    Ty / @AwakeByDefault   <-- click
+                    Ty / @AwakeByDefault  <-- click
 (Code & Gameplay lead)
 &
-                   Vibeke /  @Bekeblob   <-- click
+                   Vibeke / @Bekeblob   <-- click
 (Art and Visual lead)
 
 Music by Trygvert
@@ -1193,11 +1261,11 @@ position = Vector2( 948, 803 )
 position = Vector2( 38, 59 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 489 )
 anims/pop_in = SubResource( 22 )
 
 [node name="BlackSquare" type="ColorRect" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
 margin_right = 1924.0
 margin_bottom = 1085.0
 mouse_filter = 2

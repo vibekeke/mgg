@@ -162,3 +162,31 @@ func sync_to_stats_tracker():
 	StatsTracker.no_damage_taken_run_completed = current_save_file.no_damage_taken_run_completed
 	StatsTracker.pacifist_run_completed = current_save_file.pacifist_run_completed
 	StatsTracker.high_score_run_completed = current_save_file.high_score_run_completed
+
+func delete_all_save_files():
+	var dir = Directory.new()
+
+	# Delete main save file
+	if dir.file_exists(SAVE_FILE_PATH):
+		if dir.remove(SAVE_FILE_PATH) != OK:
+			print("Warning: Failed to delete save file")
+
+	# Delete backup save file
+	if dir.file_exists(BACKUP_SAVE_PATH):
+		if dir.remove(BACKUP_SAVE_PATH) != OK:
+			print("Warning: Failed to delete backup save file")
+
+	# Delete temp file if it exists
+	if dir.file_exists(TEMP_SAVE_PATH):
+		if dir.remove(TEMP_SAVE_PATH) != OK:
+			print("Warning: Failed to delete temp save file")
+
+	print("All save files deleted")
+
+func reset_save_file():
+	delete_all_save_files()
+	create_new_save_file()
+	sync_to_stats_tracker()
+	Events.first_time_playing = true
+	Events.dogs_complete = false
+	print("Save file reset to defaults")

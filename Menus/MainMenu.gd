@@ -4,6 +4,7 @@ export (PackedScene) var root_scene
 
 onready var star_select_start = get_node("%StarSelectStart")
 onready var star_select_quit = get_node("%StarSelectQuit")
+onready var star_select_credits = get_node("%StarSelectCredits")
 onready var star_select_room = get_node("%StarSelectRoom")
 onready var title_screen_animation = get_node("%TitleScreenAnimation")
 onready var camera = get_node("%Camera2D")
@@ -11,7 +12,14 @@ onready var tween = get_node("%Tween")
 
 onready var start_button : Button = get_node("%StartButton")
 onready var room_button : Button = get_node("%RoomButton")
+onready var credits_button : Button = get_node("%CreditsButton")
 onready var quit_button : Button = get_node("%QuitButton")
+
+onready var credits_menu = get_node("%Credits")
+onready var credits_hide_button = get_node("%CreditsHideButton")
+
+onready var delete_save_button = get_node("%DeleteSaveButton")
+onready var delete_save_panel = get_node("%DeleteSavePanel")
 
 onready var cheat_code_detection : PoolStringArray = PoolStringArray()
 var successful_cheat_code : String = "00112323"
@@ -41,6 +49,7 @@ func _ready():
 		room_button.disabled = false
 	AudioManager.playSFX("twinkle")
 	AudioManager.play_music("main_menu")
+	credits_menu.visible = false
 
 func _process(delta):
 	if (title_screen_animation.is_playing() or tween.is_active()) and Input.is_action_just_pressed("ui_accept"):
@@ -112,6 +121,31 @@ func _on_RoomButton_mouse_entered():
 func _on_StartButton_mouse_entered():
 	start_button.grab_focus()
 
+func _on_CreditsButton_pressed():
+	AudioManager.playSFX("ui_confirm")
+	credits_menu.visible = true
+	credits_hide_button.grab_focus()
+
+
+func _on_CreditsButton_focus_entered():
+	AudioManager.playSFX("ui_hover")
+	star_select_credits.visible = true
+
+
+func _on_CreditsButton_focus_exited():
+	star_select_credits.visible = false
+
+
+func _on_CreditsButton_mouse_entered():
+	credits_button.grab_focus()
+
+
+func _on_CreditsHideButton_pressed():
+	credits_menu.visible = false
+	delete_save_panel.visible = false
+	credits_button.grab_focus()
+
+
 func activate_cheat_code():
 	if not cheat_code_activated:
 		cheat_code_activated = true
@@ -143,3 +177,45 @@ func _input(event):
 func play_sound(sound_key : String):
 	AudioManager.playSFX(sound_key)
 	
+
+
+func _on_FullscreenCheckbox_toggled(button_pressed):
+	if button_pressed:
+		OS.window_fullscreen = true
+	else:
+		OS.window_fullscreen = false
+
+
+
+## Delete Save
+func _on_DeleteSaveButton_pressed():
+	if delete_save_panel.visible:
+		delete_save_panel.visible = false
+	else:
+		delete_save_panel.visible = true
+	
+	$"%AreYouSureLabel".text = "Are you want to delete your save? \nThis action cannot be undone."
+	$"%YesDeleteButton".show()
+	$"%NoDeleteButton".show()
+
+func _on_YesDeleteButton_pressed():
+	#TODO: Actually delete file lol.
+	SaveFileManager.reset_save_file()
+	AudioManager.playSFX("player_damage")
+	$"%AreYouSureLabel".text ="\nSave Data Deleted."
+	$"%YesDeleteButton".hide()
+	$"%NoDeleteButton".hide()
+	yield(get_tree().create_timer(2.0), "timeout")
+	room_button.text = "???"
+	room_button.disabled = true
+	delete_save_panel.visible = false
+
+
+func _on_NoDeleteButton_pressed():
+	delete_save_panel.visible = false
+
+func _on_YesDeleteButton_focus_entered():
+	AudioManager.playSFX("ui_hover")
+
+func _on_NoDeleteButton_focus_entered():
+	AudioManager.playSFX("ui_hover")
