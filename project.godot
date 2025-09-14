@@ -191,6 +191,7 @@ SceneManager="*res://Autoload/SceneManager.tscn"
 AudioManager="*res://Autoload/AudioManager.gd"
 ScoreManager="*res://Autoload/ScoreManager.gd"
 StatsTracker="*res://Autoload/StatsTracker.gd"
+MouseManager="*res://Autoload/MouseManager.gd"
 
 [debug]
 
