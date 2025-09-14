@@ -580,7 +580,7 @@ margin_left = -8.0
 margin_top = -3.0
 margin_right = 1920.0
 margin_bottom = 1080.0
-color = Color( 0, 0, 0, 0.47451 )
+color = Color( 0, 0.0196078, 0.0352941, 0.588235 )
 
 [node name="CreditsPanel" type="Panel" parent="CharacterLayer/Credits"]
 modulate = Color( 1, 1, 1, 0.952941 )
