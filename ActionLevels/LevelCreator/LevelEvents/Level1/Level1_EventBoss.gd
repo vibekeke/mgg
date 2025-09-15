@@ -28,6 +28,9 @@ var boss_instance = null
 export var time_until_event_start = 3.0
 export var debug_mode : bool = false
 export var level1_event1_dialog : Resource
+export var level1_event_pacificist_boss_dialogue : Resource
+
+onready var is_pacifist_run : bool = false
 
 func star_spawn():
 	var star_instance = star_collectible.instance()
@@ -41,6 +44,7 @@ func _ready():
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
 	Events.connect("background_element_offscreen", self, "_on_background_element_offscreen")
 	Events.connect("big_bird_boss_defeated", self, "_on_big_bird_boss_defeated")
+	Events.connect("pacifist_successful", self, "_on_pacifist_successful")
 	event_number = 6 # last level event
 	boss_warning_tape.connect("warning_finished", self, "_on_warning_finished")
 	event_name = "Level1_EventBoss"
@@ -50,13 +54,16 @@ func _ready():
 	if debug_mode and not is_manager_debug:
 		_on_level_event_complete('dummy_event', 5)
 
+
 func _on_dialogue_box_finished(node_id):
 	if self.get_instance_id() == node_id:
 		yield(get_tree().create_timer(2.0), "timeout")
 		AudioManager.play_music("level1_boss")
 		spawn_boss()
 		collectible_spawn_timer.start()
-	
+	if node_id == 666:
+		end_event()
+
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 5:
 		start_event_timer.set_name(event_name + "_start_timer")
@@ -94,6 +101,18 @@ func display_dialogue():
 		true,
 		3.0
 	)
+	
+func create_pacifist_dialogue():
+	MggDialogue.create_dialogue_balloon(
+		"level1_event_boss_pacifist_complete",
+		level1_event1_dialog,
+		666,
+		DataClasses.Placement.LOWER,
+		DataClasses.CharacterPortrait.None,
+		Color(0.0, 0.0, 0.0, 0.6),
+		Color(0.3, 0.1, 0.5, 0.6),
+		false
+	)
 
 func trigger() -> void:
 	if not wait_after_stopping_spawner_timer.is_inside_tree():
@@ -124,7 +143,7 @@ func _on_wait_after_stopping_spawner_timer():
 
 func _on_background_element_offscreen(element_name):
 	if element_name == DataClasses.Enemies.BIG_BIRD && level_events_manager.get_currently_running_event() == 6:
-		if not boss_warning_tape.visible:  # Only trigger once
+		if not boss_warning_tape.visible:
 			AudioManager.fade_out_music(5)
 			boss_warning_tape.visible = true
 			boss_warning_tape.start_animation()
@@ -150,6 +169,15 @@ func _on_big_bird_boss_defeated(death_position):
 	collectible_spawn_timer.stop()
 	#TODO: Add ending dialogue?? + Defeated flag so it doesnt crash with the other ondialoguehwatever
 	end_event()
+
+func _on_pacifist_successful():
+	AudioManager.fade_out_music(3)
+	collectible_spawn_timer.stop()
+	Events.emit_signal("disable_player_action")
+	Events.emit_signal("player_invincible", true)
+	Events.emit_signal("player_standing", true)
+	Events.emit_signal("background_moving_enabled", false)
+	create_pacifist_dialogue()
 
 func end_event() -> void:
 	Events.emit_signal("player_invincible", true)

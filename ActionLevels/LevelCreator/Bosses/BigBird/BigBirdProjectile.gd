@@ -5,6 +5,9 @@ export (float) var speed = 100
 
 onready var area2d = $LilBird/Area2D
 onready var visual_body = $LilBird2
+onready var animation_player = get_node("%AnimationPlayer")
+
+var is_invalid : bool = false
 
 func off_leftside_screen():
 	return self.global_position.x < 0 || self.global_position.y < 0
@@ -15,9 +18,16 @@ func _process(delta):
 	if off_leftside_screen():
 		self.queue_free()
 
+func allow_fade_out_death():
+	pass
+
 func _ready():
+	Events.connect("pacifist_successful", self, "_on_pacifist_successful")
 	if area2d != null:
 		area2d.connect("area_entered", self, "_on_call_area_entered")
+
+func _on_pacifist_successful():
+	animation_player.play("fade_out")
 
 func _on_call_area_entered(area):
 	if area.is_in_group("player_hurtbox"):
@@ -25,4 +35,7 @@ func _on_call_area_entered(area):
 
 
 func _on_VisibilityNotifier2D_screen_exited():
+	self.queue_free()
+
+func _on_AnimationPlayer_animation_finished(anim_name):
 	self.queue_free()

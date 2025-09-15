@@ -20,6 +20,10 @@ onready var debug_texture = preload("res://icon.png")
 onready var path2d = parent_node.get_node_or_null("Path2D")
 onready var path_follow = path2d.get_node_or_null("PathFollow2D")
 
+const ON_SCREEN_TIME : float = 8.0 # seconds
+onready var on_screen_timer : Timer = Timer.new()
+var allow_move_forward : bool = false
+
 var default_path_speed = 300
 var hit_end : bool = false
 
@@ -33,7 +37,18 @@ const phase_patterns = {
 	}
 }
 
+func setup_on_screen_timer():
+	on_screen_timer.wait_time = ON_SCREEN_TIME
+	on_screen_timer.autostart = true
+	on_screen_timer.connect("timeout", self, "_on_screen_timer_timeout")
+	add_child(on_screen_timer)
+	on_screen_timer.start()
+
+func _on_screen_timer_timeout():
+	allow_move_forward = true
+
 func _ready():
+	setup_on_screen_timer()
 	$CanvasLayer.visible = debug_mode
 	_fire_rate_timer_setup()
 	apply_new_bullet_phase(current_phase)
@@ -113,6 +128,8 @@ func _physics_process(delta):
 	if parent_node.global_position.x >= 1000:
 		parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
 	path_follow.set_offset(path_follow.get_offset() + default_path_speed * delta)
+	if allow_move_forward:
+		parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
 
 func get_spawn_height():
 	return DataClasses.SpawnHeight.MED_ONLY

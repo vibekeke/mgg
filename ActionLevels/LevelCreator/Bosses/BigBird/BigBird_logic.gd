@@ -19,11 +19,18 @@ onready var parent_node = self.get_parent()
 onready var initial_health_value: int = parent_node.health_value
 onready var fire_rate_timer = Timer.new()
 onready var rotator = parent_node.get_node("Rotator")
+onready var animation_player = parent_node.get_node("AnimationPlayer")
 onready var current_phase: int = 0
 onready var debug_texture = preload("res://icon.png")
 
 onready var audio_phase_1_played : bool = false
 onready var audio_phase_2_played : bool = false
+
+export var pacifist_mode : bool = false
+const PACIFIST_TIMEOUT : float = 5.0 # 45 seconds for each phase
+onready var pacifist_timer : Timer = Timer.new()
+onready var pacifist_complete : bool = false
+
 
 const phase_patterns = {
 	0: {
@@ -74,10 +81,49 @@ func play_intro(delta):
 		intro_complete = true
 		post_intro()
 
+func pacifist_run_away():
+	pass
+
+func initialise_pacifist_timer():
+	pacifist_timer.connect("timeout", self, "_on_pacifist_timeout")
+	pacifist_timer.wait_time = PACIFIST_TIMEOUT
+	pacifist_timer.autostart = false
+	pacifist_timer.one_shot = false
+	add_child(pacifist_timer)
+	pacifist_timer.start()
+
+func _on_pacifist_timeout():
+	if current_phase < 2:
+		transition_to_phase(current_phase + 1)
+	elif current_phase == 2:
+		current_phase = 3
+		Events.emit_signal("pacifist_successful")
+		pacifist_complete = true
+	else:
+		pacifist_timer.stop()
+
 func _ready():
+	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
 	$CanvasLayer.visible = debug_mode
-	# Start boss completely invisible for smooth intro transition
+	pacifist_mode = StatsTracker.current_level_stats.killed_enemies == 0
+	if pacifist_mode:
+		initialise_pacifist_timer()
 	parent_node.modulate = Color(0, 0, 0, 0)
+
+func _on_dialogue_box_finished(node_id):
+	parent_node.scale.x = -1
+
+	var tween = Tween.new()
+	add_child(tween)
+
+	var target_x = parent_node.position.x + 3000
+	tween.interpolate_property(parent_node, "position:x", parent_node.position.x, target_x, 2.0, Tween.TRANS_QUART, Tween.EASE_IN)
+	tween.connect("tween_completed", self, "_on_escape_tween_completed", [tween])
+	tween.start()
+
+func _on_escape_tween_completed(object, key, tween):
+	tween.queue_free()
+	parent_node.queue_free()
 
 func post_intro():
 	_fire_rate_timer_setup()
@@ -156,19 +202,38 @@ func trigger_audio_phases(current_phase: int):
 		audio_phase_2_played = true
 		AudioManager.playSFX("BirdChirp2", 0.5, -8)
 
+func check_phase_transitions():
+	if pacifist_mode:
+		return # Timer-based phases handled separately
+
+	var health_percentage = float(parent_node.health_value) / float(initial_health_value)
+	var target_phase = get_phase_from_health(health_percentage)
+
+	if target_phase != current_phase and target_phase > current_phase:
+		transition_to_phase(target_phase)
+
+func get_phase_from_health(health_percentage: float) -> int:
+	if health_percentage > 0.6:
+		return 0
+	elif health_percentage > 0.3:
+		return 1
+	else:
+		return 2
+
+func transition_to_phase(new_phase: int):
+	current_phase = new_phase
+	trigger_audio_phases(current_phase)
+	apply_new_bullet_phase(current_phase)
+
 func _process(delta):
 	if !intro_complete:
 		play_intro(delta)
-	if parent_node.health_value < (initial_health_value * 0.6) and current_phase != 1 and current_phase != 2:
-		current_phase = 1
-		trigger_audio_phases(current_phase)
-		apply_new_bullet_phase(current_phase)
-	elif parent_node.health_value < (initial_health_value * 0.3) and current_phase != 2:
-		current_phase = 2
-		trigger_audio_phases(current_phase)
-		apply_new_bullet_phase(current_phase)
+	else:
+		check_phase_transitions()
 
 func _physics_process(delta):
+	if pacifist_complete and !fire_rate_timer.is_stopped():
+		fire_rate_timer.stop()
 	var new_rotation = rotator.rotation_degrees + rotate_speed * delta
 	rotator.rotation_degrees = fmod(new_rotation, 360)
 	if !parent_node.is_move_disabled:

@@ -65,7 +65,7 @@ func display_dialogue():
 	)
 	
 func event_start() -> void:
-	Events.emit_signal("disable_player_action")
+	Events.emit_signal("disable_player_action", true)
 	Events.emit_signal("player_standing", true)
 	Events.emit_signal("background_moving_enabled", false)
 	yield(get_tree().create_timer(2.0), "timeout")

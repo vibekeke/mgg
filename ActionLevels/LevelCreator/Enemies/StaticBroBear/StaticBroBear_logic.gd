@@ -2,6 +2,7 @@ extends Node
 
 class_name StaticBroBear
 # good luck understanding how this shit works in a week lol
+# yo I was right I don't understand a thing!
 onready var parent_node = self.get_parent()
 
 const bro_bear_bullet = preload("res://ActionLevels/LevelCreator/Enemies/StaticBroBear/StaticBroBearProjectile.tscn")
@@ -20,6 +21,21 @@ onready var path_follow = path2d.get_node_or_null("PathFollow2D")
 var player_position
 var has_fired = false
 var default_path_speed = 300
+
+const ON_SCREEN_TIME : float = 5.0 # seconds
+onready var on_screen_timer : Timer = Timer.new()
+var allow_move_forward : bool = false
+
+func setup_on_screen_timer():
+	on_screen_timer.wait_time = ON_SCREEN_TIME
+	on_screen_timer.one_shot = false
+	on_screen_timer.connect("timeout", self, "_on_screen_timer_timeout")
+	add_child(on_screen_timer)
+	on_screen_timer.start()
+
+func _on_screen_timer_timeout():
+	print("ye")
+	allow_move_forward = true
 
 func _fire_again_timer_setup():
 	fire_again_timer.set_name("static_bro_bear_fire_again_timer")
@@ -67,6 +83,7 @@ func launch_bullet(bullet: Object):
 		print_debug("No player position found! Did you check the scene tree?")
 
 func _ready():
+	setup_on_screen_timer()
 	parent_node.has_non_queue_free_rotator = false
 	_fire_rate_timer_setup()
 	_fire_again_timer_setup()
@@ -94,12 +111,16 @@ func get_spawn_height():
 	return DataClasses.SpawnHeight.HIGH_ONLY
 
 func _physics_process(delta):
+	# haha what the fuck is the code below this even doing jesus christ
 	if parent_node.global_position.x >= 1843:
 		parent_node.position.x -= 200 * 1.25 * delta
 	else:
 		var new_rotation = rotator.rotation_degrees - rotate_speed * delta
 		rotator.rotation_degrees = fmod(new_rotation, 360)
-		path_follow.set_offset(path_follow.get_offset() + default_path_speed * delta)
+		if !allow_move_forward:
+			path_follow.set_offset(path_follow.get_offset() + default_path_speed * delta)
+	if allow_move_forward:
+		parent_node.global_position.x -= 500.0 * 1.5 * delta
 	
 func get_class():
 	return "StaticBroBear"

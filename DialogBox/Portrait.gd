@@ -10,6 +10,8 @@ onready var angel_intense_portrait = get_node("%AngelIntense")
 onready var angel_neutral_portrait = get_node("%AngelNeutral")
 onready var angel_sad_portrait = get_node("%AngelSad")
 onready var angel_scared_portrait = get_node("%AngelScared")
+onready var angel_intense_static_portrait = get_node("%AngelIntenseStatic")
+onready var player_mg_neutral_static_portrait = get_node("%MGPlayerNeutralStatic")
 
 var angel_background = load("res://imported_assets/dialog/portraits/Portrait_ANGEL_BG.png")
 var player_background = load("res://imported_assets/dialog/portraits/Portrait_MG_BG.png")
@@ -21,7 +23,9 @@ onready var character_name_to_background = {
 	DataClasses.CharacterPortrait.AngelNeutral: angel_background,
 	DataClasses.CharacterPortrait.AngelSad: angel_background,
 	DataClasses.CharacterPortrait.AngelScared: angel_background,
-	DataClasses.CharacterPortrait.AngelIntense: angel_background
+	DataClasses.CharacterPortrait.AngelIntense: angel_background,
+	DataClasses.CharacterPortrait.AngelIntenseStatic: angel_background,
+	DataClasses.CharacterPortrait.MGPlayerNeutralStatic: player_background
 }
 
 onready var character_name_to_portraits = {
@@ -33,6 +37,8 @@ onready var character_name_to_portraits = {
 	DataClasses.CharacterPortrait.AngelSad: angel_sad_portrait,
 	DataClasses.CharacterPortrait.AngelScared: angel_scared_portrait,
 	DataClasses.CharacterPortrait.AngelIntense: angel_intense_portrait,
+	DataClasses.CharacterPortrait.AngelIntenseStatic: angel_intense_static_portrait,
+	DataClasses.CharacterPortrait.MGPlayerNeutralStatic: player_mg_neutral_static_portrait
 }
 
 func display_character(_character_name: int):
