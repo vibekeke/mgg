@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Menus/YouWinPopup.gd" type="Script" id=1]
 [ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=2]
@@ -181,6 +181,165 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_size = 4
 shadow_offset = Vector2( 8, 8 )
+
+[sub_resource type="Animation" id=500]
+resource_name = "RESET"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("CenterContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CenterContainer:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.554785 ),
+"update": 0,
+"values": [ Vector2( 0, 300 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Node2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer/ScoreLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1e+06 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer/DamageLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1e+06 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer/DogsLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1e+06 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/GradeLabel:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1e+06 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CenterContainer/PanelContainer/VBoxContainer/MarginContainer2/NextButton:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1e+06 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CenterContainer/PanelContainer/VBoxContainer/DamageSparkles:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1e+06 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("CenterContainer/PanelContainer/VBoxContainer/GradeSparkles:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1e+06 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("ChallengeMessage:rect_position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("ChallengeMessage:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.152941, 0.141176, 0.141176, 0 ) ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "fade_in"
@@ -413,6 +572,7 @@ tracks/3/keys = {
 script = ExtResource( 1 )
 
 [node name="ChallengeMessage" type="VBoxContainer" parent="."]
+modulate = Color( 0.152941, 0.141176, 0.141176, 0 )
 margin_left = 15.0
 margin_top = 15.0
 margin_right = 876.0
@@ -455,8 +615,11 @@ custom_fonts/font = SubResource( 499 )
 text = "Challenge complete: \"pacifist run\""
 
 [node name="CenterContainer" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 300.0
+margin_bottom = 300.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 margin_left = 610.0
@@ -555,6 +718,7 @@ align = 2
 
 [node name="ScoreLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 332.0
 margin_right = 539.0
 margin_bottom = 60.0
@@ -579,6 +743,7 @@ align = 2
 
 [node name="DogsLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 332.0
 margin_top = 64.0
 margin_right = 539.0
@@ -605,6 +770,7 @@ align = 2
 
 [node name="DamageLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 332.0
 margin_top = 146.0
 margin_right = 539.0
@@ -647,6 +813,7 @@ text = "     GRADE:  "
 
 [node name="GradeLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 358.0
 margin_right = 422.0
 margin_bottom = 142.0
@@ -667,6 +834,7 @@ custom_constants/separation = 20
 
 [node name="DamageSparkles" type="AnimatedSprite" parent="CenterContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 494 )
 position = Vector2( 490, 373 )
 scale = Vector2( 0.556641, 0.556641 )
@@ -677,6 +845,7 @@ flip_h = true
 
 [node name="GradeSparkles" type="AnimatedSprite" parent="CenterContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 494 )
 position = Vector2( 439, 552 )
 scale = Vector2( 0.556641, 0.556641 )
@@ -702,6 +871,7 @@ custom_constants/margin_bottom = 76
 
 [node name="NextButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 140.0
 margin_right = 558.0
 margin_bottom = 89.0
@@ -715,6 +885,7 @@ text = "  Continue     "
 position = Vector2( 374, 48 )
 
 [node name="Node2D" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 718, 252 )
 
 [node name="Sparkles" parent="Node2D" instance=ExtResource( 6 )]
@@ -726,6 +897,7 @@ visible = false
 position = Vector2( 583, 724 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 500 )
 anims/fade_in = SubResource( 10 )
 anims/fade_out = SubResource( 11 )
 
