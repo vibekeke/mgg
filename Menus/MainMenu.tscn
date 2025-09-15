@@ -33,7 +33,7 @@ font_data = ExtResource( 13 )
 [sub_resource type="ImageTexture" id=8]
 
 [sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.133333, 0.227451, 0.501961, 1 )
+bg_color = Color( 0.0901961, 0.168627, 0.4, 1 )
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -438,7 +438,7 @@ margin_right = 469.0
 margin_bottom = 169.0
 focus_neighbour_top = NodePath("../StartButton")
 focus_neighbour_bottom = NodePath("../CreditsButton")
-custom_colors/font_color_disabled = Color( 0.113725, 0.192157, 0.439216, 1 )
+custom_colors/font_color_disabled = Color( 0.262745, 0.317647, 0.572549, 1 )
 custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.509804, 0.721569, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -523,6 +523,7 @@ margin_top = 997.0
 margin_right = 1942.0
 margin_bottom = 1107.0
 rect_scale = Vector2( 0.62, 0.62 )
+focus_mode = 0
 custom_icons/checked = ExtResource( 19 )
 custom_icons/unchecked = SubResource( 8 )
 custom_styles/hover = SubResource( 10 )
@@ -530,6 +531,7 @@ custom_styles/pressed = SubResource( 9 )
 custom_styles/hover_pressed = SubResource( 10 )
 custom_styles/normal = SubResource( 9 )
 pressed = true
+enabled_focus_mode = 0
 
 [node name="FullscreenLabel" type="Label" parent="MenuLayer"]
 margin_left = 1384.0
@@ -575,6 +577,7 @@ scale = Vector2( 0.55888, 0.55888 )
 
 [node name="Credits" type="ColorRect" parent="CharacterLayer"]
 unique_name_in_owner = true
+visible = false
 modulate = Color( 1, 1, 1, 0.901961 )
 margin_left = -8.0
 margin_top = -3.0
