@@ -218,7 +218,7 @@ func _on_NoDeleteButton_pressed():
 	delete_save_panel.visible = false
 
 func _on_YesDeleteButton_focus_entered():
-	SaveFileManager.delete_all_save_files()
+	SaveFileManager.reset_save_file()
 	AudioManager.playSFX("ui_hover", 0.0, -5.0)
 
 func _on_NoDeleteButton_focus_entered():
