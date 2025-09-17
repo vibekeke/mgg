@@ -19,7 +19,6 @@ var first_run : bool
 
 func _ready():
 	randomize()
-	
 	var level_stats : Resource = LevelStats.new()
 	level_stats.level_name = 'Level1_Forest'
 	level_stats.level_number = 1

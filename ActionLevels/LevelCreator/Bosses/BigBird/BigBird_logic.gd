@@ -19,7 +19,6 @@ onready var parent_node = self.get_parent()
 onready var initial_health_value: int = parent_node.health_value
 onready var fire_rate_timer = Timer.new()
 onready var rotator = parent_node.get_node("Rotator")
-onready var animation_player = parent_node.get_node("AnimationPlayer")
 onready var current_phase: int = 0
 onready var debug_texture = preload("res://icon.png")
 
@@ -27,10 +26,12 @@ onready var audio_phase_1_played : bool = false
 onready var audio_phase_2_played : bool = false
 
 export var pacifist_mode : bool = false
-const PACIFIST_TIMEOUT : float = 5.0 # 45 seconds for each phase
+onready var hurt_during_pacifist : bool = false
+const PACIFIST_TIMEOUT : float = 30.0
 onready var pacifist_timer : Timer = Timer.new()
 onready var pacifist_complete : bool = false
 
+export var level1_event_betrayal_dialog : Resource
 
 const phase_patterns = {
 	0: {
@@ -81,8 +82,32 @@ func play_intro(delta):
 		intro_complete = true
 		post_intro()
 
-func pacifist_run_away():
-	pass
+func _on_shot_during_pacifist():
+	if pacifist_mode and !hurt_during_pacifist:
+		pacifist_betrayal_reaction()
+
+func display_betrayal_dialogue():
+	MggDialogue.create_dialogue_balloon(
+		"level1_event_boss_betrayal", 
+		level1_event_betrayal_dialog, 
+		# i'm sorry this exists god
+		777, 
+		DataClasses.Placement.LOWER, 
+		DataClasses.CharacterPortrait.None,
+		Color(0.0, 0.0, 0.0, 0.6),
+		Color(0.3, 0.1, 0.5, 0.6),
+		true,
+		3.0
+	)
+
+
+func pacifist_betrayal_reaction():
+	pacifist_mode = false
+	hurt_during_pacifist = true
+	pacifist_timer.stop()
+	display_betrayal_dialogue()
+	current_phase = 0
+	transition_to_phase(0)
 
 func initialise_pacifist_timer():
 	pacifist_timer.connect("timeout", self, "_on_pacifist_timeout")
@@ -104,22 +129,26 @@ func _on_pacifist_timeout():
 
 func _ready():
 	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
+	parent_node.connect("enemy_shot_by_player", self, "_on_shot_during_pacifist")
 	$CanvasLayer.visible = debug_mode
+	print("Is this pacifist mode!!!!?!?!?!?!?? ", StatsTracker.current_level_stats.killed_enemies)
 	pacifist_mode = StatsTracker.current_level_stats.killed_enemies == 0
 	if pacifist_mode:
 		initialise_pacifist_timer()
 	parent_node.modulate = Color(0, 0, 0, 0)
 
 func _on_dialogue_box_finished(node_id):
-	parent_node.scale.x = -1
+	print("node id was ", node_id)
+	if node_id == 666:
+		parent_node.scale.x = -1
 
-	var tween = Tween.new()
-	add_child(tween)
+		var tween = Tween.new()
+		add_child(tween)
 
-	var target_x = parent_node.position.x + 3000
-	tween.interpolate_property(parent_node, "position:x", parent_node.position.x, target_x, 2.0, Tween.TRANS_QUART, Tween.EASE_IN)
-	tween.connect("tween_completed", self, "_on_escape_tween_completed", [tween])
-	tween.start()
+		var target_x = parent_node.position.x + 3000
+		tween.interpolate_property(parent_node, "position:x", parent_node.position.x, target_x, 2.0, Tween.TRANS_QUART, Tween.EASE_IN)
+		tween.connect("tween_completed", self, "_on_escape_tween_completed", [tween])
+		tween.start()
 
 func _on_escape_tween_completed(object, key, tween):
 	tween.queue_free()

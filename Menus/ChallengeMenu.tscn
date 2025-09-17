@@ -303,8 +303,8 @@ margin_bottom = 292.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 24 )
 bbcode_enabled = true
-bbcode_text = "* Pacifist run: No one has to die"
-text = "* Pacifist run: No one has to die"
+bbcode_text = "* No one has to die"
+text = "* No one has to die"
 fit_content_height = true
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
@@ -372,7 +372,6 @@ margin_left = 180.0
 margin_top = 10.0
 margin_right = 652.0
 margin_bottom = 97.0
-rect_scale = Vector2( 1.04064, 1.04064 )
 rect_pivot_offset = Vector2( 240, 0 )
 custom_fonts/font = SubResource( 26 )
 custom_styles/hover = SubResource( 23 )

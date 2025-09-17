@@ -30,8 +30,6 @@ export var debug_mode : bool = false
 export var level1_event1_dialog : Resource
 export var level1_event_pacificist_boss_dialogue : Resource
 
-onready var is_pacifist_run : bool = false
-
 func star_spawn():
 	var star_instance = star_collectible.instance()
 	star_instance.scroll_speed = 250
