@@ -9,6 +9,7 @@ var last_mouse_position: Vector2
 var is_cursor_hidden: bool = false
 
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	setup_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	last_mouse_position = get_viewport().get_mouse_position()

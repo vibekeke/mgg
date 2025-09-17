@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Menus/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://test_fonts/vibekefonts/main_menu_font.tres" type="DynamicFont" id=2]
@@ -30,10 +30,16 @@ outline_size = 4
 outline_color = Color( 0.0901961, 0.376471, 0.741176, 1 )
 font_data = ExtResource( 13 )
 
+[sub_resource type="DynamicFont" id=19]
+size = 48
+outline_size = 5
+outline_color = Color( 0.0470588, 0.0509804, 0.25098, 1 )
+font_data = ExtResource( 18 )
+
 [sub_resource type="ImageTexture" id=8]
 
 [sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.133333, 0.227451, 0.501961, 1 )
+bg_color = Color( 0.0901961, 0.168627, 0.4, 1 )
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -62,11 +68,21 @@ shadow_color = Color( 0, 0, 0, 0.388235 )
 shadow_size = 1
 shadow_offset = Vector2( 8, 8 )
 
-[sub_resource type="DynamicFont" id=19]
-size = 48
-outline_size = 5
-outline_color = Color( 0.0470588, 0.0509804, 0.25098, 1 )
-font_data = ExtResource( 18 )
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.192157, 0.313726, 0.682353, 1 )
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.0470588, 0.0509804, 0.25098, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color( 0, 0, 0, 0.388235 )
+shadow_size = 1
+shadow_offset = Vector2( 8, 8 )
 
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.0470588, 0.054902, 0.215686, 1 )
@@ -395,7 +411,6 @@ alignment = 1
 
 [node name="StarSelectStart" parent="MenuLayer/VBoxContainer" instance=ExtResource( 10 )]
 unique_name_in_owner = true
-visible = false
 position = Vector2( -61.5449, 42.2751 )
 
 [node name="StarSelectRoom" parent="MenuLayer/VBoxContainer" instance=ExtResource( 10 )]
@@ -418,6 +433,7 @@ unique_name_in_owner = true
 margin_right = 469.0
 margin_bottom = 81.0
 focus_neighbour_top = NodePath("../QuitButton")
+focus_neighbour_right = NodePath("../../FullscreenCheckbox")
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.509804, 0.721569, 1, 1 )
@@ -437,8 +453,9 @@ margin_top = 88.0
 margin_right = 469.0
 margin_bottom = 169.0
 focus_neighbour_top = NodePath("../StartButton")
+focus_neighbour_right = NodePath("../../FullscreenCheckbox")
 focus_neighbour_bottom = NodePath("../CreditsButton")
-custom_colors/font_color_disabled = Color( 0.113725, 0.192157, 0.439216, 1 )
+custom_colors/font_color_disabled = Color( 0.262745, 0.317647, 0.572549, 1 )
 custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.509804, 0.721569, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -458,6 +475,7 @@ margin_top = 176.0
 margin_right = 469.0
 margin_bottom = 257.0
 focus_neighbour_top = NodePath("../RoomButton")
+focus_neighbour_right = NodePath("../../FullscreenCheckbox")
 focus_neighbour_bottom = NodePath("../QuitButton")
 custom_colors/font_color_disabled = Color( 0.113725, 0.192157, 0.439216, 1 )
 custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
@@ -479,6 +497,7 @@ margin_top = 264.0
 margin_right = 469.0
 margin_bottom = 345.0
 focus_neighbour_top = NodePath("../CreditsButton")
+focus_neighbour_right = NodePath("../../FullscreenCheckbox")
 focus_neighbour_bottom = NodePath("../StartButton")
 custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.509804, 0.721569, 1, 1 )
@@ -517,28 +536,40 @@ deselect_on_focus_loss_enabled = false
 unique_name_in_owner = true
 visible = false
 
+[node name="FullscreenLabel" type="Label" parent="MenuLayer"]
+unique_name_in_owner = true
+margin_left = 1506.32
+margin_top = 999.935
+margin_right = 1813.32
+margin_bottom = 1092.94
+custom_fonts/font = SubResource( 19 )
+text = "FULLSCREEN"
+align = 2
+
 [node name="FullscreenCheckbox" type="CheckBox" parent="MenuLayer"]
 margin_left = 1832.0
 margin_top = 997.0
 margin_right = 1942.0
 margin_bottom = 1107.0
-rect_scale = Vector2( 0.62, 0.62 )
+rect_scale = Vector2( 0.6, 0.6 )
+focus_neighbour_left = NodePath("../VBoxContainer/StartButton")
+focus_neighbour_top = NodePath("../VBoxContainer/StartButton")
+focus_neighbour_right = NodePath("../VBoxContainer/StartButton")
+focus_neighbour_bottom = NodePath("../VBoxContainer/StartButton")
 custom_icons/checked = ExtResource( 19 )
 custom_icons/unchecked = SubResource( 8 )
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 28 )
 custom_styles/hover_pressed = SubResource( 10 )
 custom_styles/normal = SubResource( 9 )
 pressed = true
 
-[node name="FullscreenLabel" type="Label" parent="MenuLayer"]
-margin_left = 1384.0
-margin_top = 1001.0
-margin_right = 1818.0
-margin_bottom = 1094.0
-custom_fonts/font = SubResource( 19 )
-text = "FULLSCREEN"
-align = 2
+[node name="StarSelectFullscreen" parent="MenuLayer/FullscreenCheckbox" instance=ExtResource( 10 )]
+unique_name_in_owner = true
+visible = false
+position = Vector2( -605.004, 53.3328 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="LevelCityBackground" parent="." instance=ExtResource( 4 )]
 follow_viewport_enable = true
@@ -575,6 +606,7 @@ scale = Vector2( 0.55888, 0.55888 )
 
 [node name="Credits" type="ColorRect" parent="CharacterLayer"]
 unique_name_in_owner = true
+visible = false
 modulate = Color( 1, 1, 1, 0.901961 )
 margin_left = -8.0
 margin_top = -3.0
@@ -759,6 +791,9 @@ centered = false
 [connection signal="focus_exited" from="MenuLayer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_focus_exited"]
 [connection signal="mouse_entered" from="MenuLayer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_mouse_entered"]
 [connection signal="pressed" from="MenuLayer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="focus_entered" from="MenuLayer/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_focus_entered"]
+[connection signal="focus_exited" from="MenuLayer/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_focus_exited"]
+[connection signal="mouse_entered" from="MenuLayer/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_mouse_entered"]
 [connection signal="toggled" from="MenuLayer/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_toggled"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="pressed" from="CharacterLayer/Credits/CreditsPanel/CreditsHideButton" to="." method="_on_CreditsHideButton_pressed"]

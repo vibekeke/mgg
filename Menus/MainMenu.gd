@@ -6,6 +6,8 @@ onready var star_select_start = get_node("%StarSelectStart")
 onready var star_select_quit = get_node("%StarSelectQuit")
 onready var star_select_credits = get_node("%StarSelectCredits")
 onready var star_select_room = get_node("%StarSelectRoom")
+onready var star_select_fullscreen = get_node("%StarSelectFullscreen")
+
 onready var title_screen_animation = get_node("%TitleScreenAnimation")
 onready var camera = get_node("%Camera2D")
 onready var tween = get_node("%Tween")
@@ -14,6 +16,7 @@ onready var start_button : Button = get_node("%StartButton")
 onready var room_button : Button = get_node("%RoomButton")
 onready var credits_button : Button = get_node("%CreditsButton")
 onready var quit_button : Button = get_node("%QuitButton")
+onready var fullscreen_label = get_node("%FullscreenLabel")
 
 onready var credits_menu = get_node("%Credits")
 onready var credits_hide_button = get_node("%CreditsHideButton")
@@ -215,7 +218,19 @@ func _on_NoDeleteButton_pressed():
 	delete_save_panel.visible = false
 
 func _on_YesDeleteButton_focus_entered():
-	AudioManager.playSFX("ui_hover")
+	SaveFileManager.reset_save_file()
+	AudioManager.playSFX("ui_hover", 0.0, -5.0)
 
 func _on_NoDeleteButton_focus_entered():
 	AudioManager.playSFX("ui_hover")
+
+
+func _on_FullscreenCheckbox_focus_entered():
+	AudioManager.playSFX("ui_hover")
+	star_select_fullscreen.visible = true
+	fullscreen_label.modulate = Color(1, 0.87, 0.73, 1)
+	
+func _on_FullscreenCheckbox_focus_exited():
+	star_select_fullscreen.visible = false
+	fullscreen_label.modulate = Color(1, 1, 1, 1)
+	

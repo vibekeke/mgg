@@ -184,7 +184,9 @@ func _on_DialogueContainer_gui_input(event):
 	if event.is_pressed() and not event.is_echo() and dialogue_container.get_focus_owner() == dialogue_container:
 		if Input.is_action_just_pressed("ui_accept") and not is_advancable:
 			next(dialogue.next_id)
-			
+		elif event is InputEventMouseButton and event.button_index == BUTTON_LEFT and not is_advancable:
+			next(dialogue.next_id)
+
 func _on_auto_advance_timer():
 	if is_advancable:
 		next(dialogue.next_id)

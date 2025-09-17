@@ -6,6 +6,8 @@ onready var audio_player = $AudioStreamPlayer
 
 func _ready():
 	animation_player.play("pop_in")
+	$CanvasLayer/Window/TextureRect/Button.grab_focus()
+	
 
 func _on_Button_pressed():
 	AudioManager.playSFX("mouse_click")
