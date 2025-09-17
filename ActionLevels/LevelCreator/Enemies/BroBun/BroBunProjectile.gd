@@ -15,7 +15,7 @@ func _physics_process(delta):
 	if shoot_towards:
 		if detach_from_parent:
 			get_parent().remove_child(self)
-			get_tree().get_root().add_child(self)
+			get_tree().current_scene.add_child(self)
 		go_towards_point(delta)
 
 func go_towards_point(delta):

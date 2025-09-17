@@ -69,7 +69,7 @@ func _on_fire_rate_timeout():
 		bullet.add_to_group("static_gunnerfly_bullets")
 		bullet.speed = projectile_speed
 		AudioManager.playSFX("gunshot", 1.0, -1.0)
-		get_tree().get_root().add_child(bullet)
+		get_tree().current_scene.add_child(bullet)
 		bullet.position = s.global_position
 		bullet.rotation = s.global_rotation
 		yield(get_tree().create_timer(0.3), "timeout")

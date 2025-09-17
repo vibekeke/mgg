@@ -46,7 +46,7 @@ func _on_fire_rate_timeout():
 		new_bullet.player_position = player_position
 		new_bullet.shoot_towards = true
 		new_bullet.speed = bullet.speed
-		get_tree().get_root().call_deferred("add_child", new_bullet)
+		get_tree().current_scene.call_deferred("add_child", new_bullet)
 		#launch_bullet(bullet)
 		has_fired = true
 		fire_again_timer.set_wait_time(1.0)

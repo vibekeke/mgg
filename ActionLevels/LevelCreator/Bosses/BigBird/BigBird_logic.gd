@@ -112,7 +112,7 @@ func _on_fire_rate_timeout():
 	for s in rotator.get_children():
 		var bullet = lil_bird_bullet.instance()
 		bullet.speed = projectile_speed
-		get_tree().get_root().add_child(bullet)
+		get_tree().current_scene.add_child(bullet)
 		bullet.position = s.global_position
 		bullet.rotation = s.global_rotation
 

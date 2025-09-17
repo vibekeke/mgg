@@ -111,7 +111,6 @@ func transition_to_new_scene(next_scene):
 	self.emit_signal("transition_to_scene", next_scene, true)
 	
 func go_to_game_over():
-	print("transition to game over screen")
 	AudioManager.fade_out_music(1.0)
 	self.emit_signal("transition_to_scene", "GameOver", true)
 
