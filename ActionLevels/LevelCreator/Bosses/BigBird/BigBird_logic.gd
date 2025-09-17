@@ -122,7 +122,8 @@ func _on_pacifist_timeout():
 		transition_to_phase(current_phase + 1)
 	elif current_phase == 2:
 		current_phase = 3
-		Events.emit_signal("pacifist_successful")
+		if !hurt_during_pacifist:
+			Events.emit_signal("pacifist_successful")
 		pacifist_complete = true
 	else:
 		pacifist_timer.stop()
@@ -137,7 +138,6 @@ func _ready():
 	parent_node.modulate = Color(0, 0, 0, 0)
 
 func _on_dialogue_box_finished(node_id):
-	print("node id was ", node_id)
 	if node_id == 666:
 		parent_node.scale.x = -1
 
