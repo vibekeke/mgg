@@ -131,7 +131,6 @@ func _ready():
 	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
 	parent_node.connect("enemy_shot_by_player", self, "_on_shot_during_pacifist")
 	$CanvasLayer.visible = debug_mode
-	print("Is this pacifist mode!!!!?!?!?!?!?? ", StatsTracker.current_level_stats.killed_enemies)
 	pacifist_mode = StatsTracker.current_level_stats.killed_enemies == 0
 	if pacifist_mode:
 		initialise_pacifist_timer()

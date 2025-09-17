@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 99
+resource_version = 100
 syntax_version = 2
 raw_text = "~ level1_intro
 
@@ -51,9 +51,9 @@ Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS[/shak
 Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]NIGHT[/shake].
 
 ~ level1_event_boss_betrayal
-Big Bird of Darkness: [speed=1.5][shake rate=7 level=1] OUCH! [/shake][/speed]
+Big Bird of Darkness: [speed=1.5]OUCH![/speed]
 Big Bird of Darkness: Now you're choosing to pick a fight!?
-Big Bird of Darkness: I'll show you what the [shake rate=7]DARKNESS[/shake] can do!
+Big Bird of Darkness: I'll show you what the [shake rate=7 level=15]DARKNESS[/shake] can do!
  
 ~ level1_event_boss_pacifist_complete
 Big Bird of Darkness: ...
@@ -450,8 +450,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "46",
 "replacements": [  ],
-"text": "[speed=1.5][shake rate=7 level=1] OUCH! [/shake][/speed]",
-"translation_key": "[speed=1.5][shake rate=7 level=1] OUCH! [/shake][/speed]",
+"text": "[speed=1.5]OUCH![/speed]",
+"translation_key": "[speed=1.5]OUCH![/speed]",
 "type": "dialogue"
 },
 "46": {
@@ -468,8 +468,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "I'll show you what the [shake rate=7]DARKNESS[/shake] can do!",
-"translation_key": "I'll show you what the [shake rate=7]DARKNESS[/shake] can do!",
+"text": "I'll show you what the [shake rate=7 level=15]DARKNESS[/shake] can do!",
+"translation_key": "I'll show you what the [shake rate=7 level=15]DARKNESS[/shake] can do!",
 "type": "dialogue"
 },
 "49": {
