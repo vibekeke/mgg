@@ -41,6 +41,7 @@ signal background_element_offscreen(element_name)
 signal tutorial_element_touched(element_id)
 signal in_battle_dialogue(_in_battle_dialogue, enemy_name)
 signal dialogue_intro_finished
+signal pacifist_successful
 
 signal back_to_stage_from_dialogue_intro
 

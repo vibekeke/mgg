@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird_logic.gd" type="Script" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemyAssets/BulletDebugCanvas.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" type="Resource" id=3]
 
 [node name="EnemyLogic" type="Node"]
 script = ExtResource( 1 )
 spawn_point_count = 2
 fire_rate_timer_wait_time = 0.6
+level1_event_betrayal_dialog = ExtResource( 3 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 2 )]
 

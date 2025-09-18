@@ -49,4 +49,7 @@ func character_name_to_enum(portrait_name: String):
 	return DataClasses.CharacterPortrait[portrait_name]
 
 func emit_change_character_portrait(portrait_name: String):
-	emit_signal("change_character_portrait", DataClasses.CharacterPortrait[portrait_name])
+	if portrait_name == "":
+		emit_signal("change_character_portrait", DataClasses.CharacterPortrait.None)
+	else:
+		emit_signal("change_character_portrait", DataClasses.CharacterPortrait[portrait_name])

@@ -321,8 +321,8 @@ margin_bottom = 360.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 24 )
 bbcode_enabled = true
-bbcode_text = "* Pacifist run: No one has to die"
-text = "* Pacifist run: No one has to die"
+bbcode_text = "* No one has to die"
+text = "* No one has to die"
 fit_content_height = true
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]

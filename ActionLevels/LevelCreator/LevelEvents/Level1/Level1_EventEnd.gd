@@ -9,6 +9,7 @@ var start_event_timer = Timer.new()
 export var debug_mode : bool = false
 
 onready var win_popup = preload("res://Menus/YouWinPopup.tscn")
+onready var completed_pacifist : bool = false;
 
 func _ready():
 	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
@@ -17,9 +18,13 @@ func _ready():
 	event_name = 'Level1_EventEnd'
 	Events.connect("collected_dog", self, "_on_collected_dog")
 	Events.connect("level_event_complete", self, "_on_level_event_complete")
+	Events.connect("pacifist_successful", self, "_on_pacifist_successful")
 	if debug_mode:
 		print("event start debug")
 		event_start()
+
+func _on_pacifist_successful():
+	completed_pacifist = true
 
 func _on_dialogue_box_finished(node_id):
 	if self.get_instance_id() == node_id:
@@ -53,6 +58,17 @@ func trigger() -> void:
 		platform_spawner.stop_platform_spawner()
 	event_start()
 	
+func display_pacifist_dialogue():
+	MggDialogue.create_dialogue_balloon(
+		"level1_event_end_pacifist",
+		level1_event_end_dialog,
+		self.get_instance_id(),
+		DataClasses.Placement.LOWER,
+		DataClasses.CharacterPortrait.AngelIntense,
+		Color(0.0, 0.42, 0.628, 0.5),
+		Color(0.0, 0.0, 0.0, 0.25)
+	)
+
 func display_dialogue():
 	MggDialogue.create_dialogue_balloon(
 		"level1_event_end", 
@@ -65,16 +81,20 @@ func display_dialogue():
 	)
 	
 func event_start() -> void:
-	Events.emit_signal("disable_player_action")
+	Events.emit_signal("disable_player_action", true)
 	Events.emit_signal("player_standing", true)
 	Events.emit_signal("background_moving_enabled", false)
 	yield(get_tree().create_timer(2.0), "timeout")
 	if StatsTracker.current_level_stats:
 		StatsTracker.current_level_stats.last_run_completed = true
 		StatsTracker.calculate_level1_challenges()
+		print("Looking at stats tracker", StatsTracker.current_level_stats.killed_enemies)
 	else:
 		print_debug("Couldn't find any level stats, something weird happened")
-	display_dialogue()
+	if completed_pacifist:
+		display_pacifist_dialogue()
+	else:
+		display_dialogue()
 
 
 func end_event() -> void:

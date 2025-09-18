@@ -1,5 +1,6 @@
 extends Node2D
 
+signal enemy_shot_by_player
 
 onready var death_explosion = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/AnimatedEnemyExplosion.tscn")
 
@@ -138,17 +139,28 @@ func take_damage(damage_value:= 1):
 	if health_value <= 0:
 		call_deferred("call_death", true)
 
+func take_damage_collision(damage_value:= 1):
+	damage_timer.start()
+	sprite.modulate = hurt_colour
+	if !is_boss:
+		self.position.x = self.position.x + 5 # slight knockback if not a boss
+	health_value -= damage_value
+	Events.emit_signal("enemy_taken_damage", self, health_value)
+	if health_value <= 0:
+		call_deferred("call_death", false)
+
 func _on_call_body_entered(body):
 	if death_by_collision_with_player && body.name == 'Player':
 			Events.emit_signal("collided_with_player", 1)
 			if !has_invulnerability:
-				take_damage()
+				take_damage_collision()
 
 func _on_call_area_entered(player_bullet):
 	if player_bullet.get_parent() != null:
 		var parent_groups = player_bullet.get_parent().get_groups()
 		if "player_charge_shot" in parent_groups:
 			if !has_invulnerability:
+				emit_signal("enemy_shot_by_player")
 				hit_times += 1
 				take_damage(2)
 		elif "player_bullet" in parent_groups:
@@ -156,6 +168,7 @@ func _on_call_area_entered(player_bullet):
 				if has_invulnerability:
 					player_bullet.get_parent().queue_free()
 				if !has_invulnerability:
+					emit_signal("enemy_shot_by_player")
 					take_damage()
 					player_bullet.get_parent().queue_free()
 

@@ -121,6 +121,7 @@ func _ready() -> void:
 	set_character_portrait()
 	container_placement()
 	dialogue_label.connect("arriving_characer", self, "_on_arriving_character")
+	MggDialogue.connect("change_character_portrait", self, "_on_change_character_portrait")
 	add_dialogue()
 	dialogue_container_animation_player.play("fade_in")
 	auto_advance_timer.wait_time = auto_advance_time
@@ -131,6 +132,17 @@ func _on_arriving_character(character: String):
 		var lower_case_character = character.to_lower()
 		if lower_case_character in "aeiou":
 			AudioManager.playSFX("dialogue", 0.7, -10.0)
+
+func _on_change_character_portrait(new_portrait: int):
+	character_portrait = new_portrait
+	set_character_portrait()
+	# Update portrait visibility dynamically
+	if character_portrait == DataClasses.CharacterPortrait.None:
+		margin_container.add_constant_override("margin_right", 10)
+		portrait.hide()
+	else:
+		portrait.show()
+		margin_container.add_constant_override("margin_right", 160)
 
 func next(next_id: String) -> void:
 	if inputs_are_disabled:
