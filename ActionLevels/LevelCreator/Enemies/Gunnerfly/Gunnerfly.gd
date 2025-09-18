@@ -39,7 +39,7 @@ func _shoot():
 		_gunshot.belongs_to_player = false
 		_gunshot.move_rightward = false
 		_gunshot.set_bullet_type(default_shooting_angle)
-		get_tree().get_root().add_child(_gunshot)
+		get_tree().current_scene.add_child(_gunshot)
 		_gunshot.position = parent_node.position + Vector2(-76,3)
 
 func start_flashing():

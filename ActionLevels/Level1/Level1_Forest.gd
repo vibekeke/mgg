@@ -36,6 +36,7 @@ func _ready():
 	Events.connect("boss_spawned", self, "_on_boss_spawn")
 	Events.connect("collected_all_dogs", self, "_on_all_dogs_collected")
 	Events.emit_signal("background_moving_enabled", false)
+	Events.emit_signal("player_invincible", true)
 	Events.emit_signal("player_standing", true)
 	Events.COLLECTED_DOGS = {}
 
@@ -65,6 +66,7 @@ func _on_confirm_level_start():
 	platform_spawner.start_platform_spawner()
 	Events.emit_signal("background_moving_enabled", true)
 	Events.emit_signal("player_standing", false)
+	Events.emit_signal("player_invincible", false)
 	Events.emit_signal("fall_down_ui")
 	self.emit_signal("level_start")
 	add_initial_background_element()
