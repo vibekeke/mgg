@@ -23,7 +23,7 @@
 [ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=21]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tscn" type="PackedScene" id=22]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn" type="PackedScene" id=23]
-[ext_resource path="res://ActionLevels/CameraController.gd" type="Script" id=24]
+[ext_resource path="res://ActionLevels/Camera/StageCamera.tscn" type="PackedScene" id=24]
 [ext_resource path="res://HUD/PauseMenuGameplay.tscn" type="PackedScene" id=25]
 [ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=26]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.tscn" type="PackedScene" id=27]
@@ -182,8 +182,4 @@ visible = false
 [node name="PopupLayer" type="CanvasLayer" parent="."]
 layer = 120
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 3, 1 )
-anchor_mode = 0
-current = true
-script = ExtResource( 24 )
+[node name="StageCamera" parent="." instance=ExtResource( 24 )]

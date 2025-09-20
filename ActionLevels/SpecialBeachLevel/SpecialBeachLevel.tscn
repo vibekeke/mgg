@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/LevelBoundaries.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HUD/PauseMenuGameplay.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://ActionLevels/SpecialBeachLevel/SpecialBeachLevel.gd" type="Script" id=11]
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=12]
 [ext_resource path="res://HUD/LevelStartDisplay.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ActionLevels/Camera/StageCamera.tscn" type="PackedScene" id=14]
 
 [node name="SpecialBeachLevel" type="Node2D"]
 script = ExtResource( 11 )
@@ -64,3 +65,5 @@ is_standing = false
 
 [node name="PopupLayer" type="CanvasLayer" parent="."]
 layer = 120
+
+[node name="StageCamera" parent="." instance=ExtResource( 14 )]

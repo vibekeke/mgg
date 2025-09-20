@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ActionLevels/CameraController.gd" type="Script" id=1]
+
+[node name="StageCamera" type="Camera2D"]
+position = Vector2( 3, 1 )
+anchor_mode = 0
+current = true
+script = ExtResource( 1 )
