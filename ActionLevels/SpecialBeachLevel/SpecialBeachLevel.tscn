@@ -27,7 +27,6 @@ hide_tutorial = true
 
 [node name="FullHUD" parent="." instance=ExtResource( 10 )]
 hide_health = true
-auto_start = true
 hide_dogs = true
 hide_crystal = true
 
