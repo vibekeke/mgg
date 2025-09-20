@@ -11,18 +11,23 @@ onready var spinny_star_resume = get_node("%SpinnyStarResume")
 onready var spinny_star_retry = get_node("%SpinnyStarRetry")
 onready var spinny_star_title = get_node("%SpinnyStarTitle")
 
-
 onready var vhs_filter = get_node_or_null(vhs_filter_path)
 
+var pausing_allowed : bool = true
+
 func _ready():
+	Events.connect("pausing_allowed", self, "_on_pausing_allowed")
 	if vhs_filter == null:
 		print("Could not find a node named VHS filter in this scene!")
 	var parent_node = self.get_parent()
 	if parent_node.name == "Bedroom":
 		retry_button.visible = false
 
+func _on_pausing_allowed(pause_allowed: bool):
+	pausing_allowed = pause_allowed
+
 func _unhandled_input(event):
-	if event.is_action_pressed("paused"):
+	if event.is_action_pressed("paused") and pausing_allowed:
 		self.is_paused = !is_paused
 
 func set_is_paused(value):

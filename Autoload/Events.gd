@@ -71,6 +71,9 @@ signal background_moving_enabled(enabled)
 signal fall_down_ui
 signal go_up_ui
 
+# pausing
+signal pausing_allowed(pause_allowed)
+
 # save file location and metadata
 const SAVE_FILE_LOCATION : String = "res://mggsave.save"
 const COMPLETED_LEVELS : Array = []
