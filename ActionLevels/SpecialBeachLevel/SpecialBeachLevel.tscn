@@ -61,3 +61,6 @@ charge_shot = ExtResource( 9 )
 is_standing = false
 
 [node name="SpawnPaths" parent="." instance=ExtResource( 5 )]
+
+[node name="PopupLayer" type="CanvasLayer" parent="."]
+layer = 120
