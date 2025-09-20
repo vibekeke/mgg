@@ -45,6 +45,7 @@ func call_death():
 		get_tree().current_scene.add_child(active_death_explosion)
 		enemy_sprite_node.visible = false
 		active_death_explosion.play("default", false)
+		Events.emit_signal("score_popup_requested", "enemy", death_global_position)
 
 func take_damage(damage_value: int):
 	damage_timer.start()
