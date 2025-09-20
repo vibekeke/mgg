@@ -118,6 +118,7 @@ anchor_bottom = 1.0
 script = ExtResource( 4 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
 margin_top = -200.0
 margin_bottom = -44.0
 
@@ -129,6 +130,7 @@ margin_right = 1908.0
 margin_bottom = -76.0
 
 [node name="CrystalContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
 margin_left = 392.0
 margin_top = -203.0
 margin_right = 625.0
@@ -156,6 +158,6 @@ anims/go_up = SubResource( 2 )
 unique_name_in_owner = true
 margin_left = 782.0
 margin_top = -115.0
-margin_right = 41591.0
-margin_bottom = 22677.0
+margin_right = 47351.0
+margin_bottom = 25917.0
 score_popup = ExtResource( 6 )

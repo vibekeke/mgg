@@ -36,5 +36,5 @@ func reset_for_pool():
 		sprite.modulate = Color(1,1,1,1)
 	
 	if area2d:
-		area2d.monitoring = true
-		area2d.monitorable = true
+		area2d.monitoring = false
+		area2d.monitorable = false

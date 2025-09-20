@@ -51,16 +51,16 @@ func take_damage(damage_value: int):
 	enemy_sprite_node.modulate = hurt_colour
 	health_value = health_value - damage_value
 	emit_signal("took_damage", self.get_instance_id())
+	if health_value <= 0 and !death_called:
+		call_death()
 
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("damage_from_player") and health_value > 0 and !damage_disabled:
 		take_damage(area.damage)
-	if health_value <= 0:
-		call_death()
-		
+
 func _on_screen_exited():
-	print("goodbye im off screen")
-	emit_signal("enemy_return_to_pool", enemy_node)
+	if !death_called:
+		emit_signal("enemy_return_to_pool", enemy_node)
 
 func _on_explosion_finished():
 	emit_signal("enemy_return_to_pool", enemy_node)

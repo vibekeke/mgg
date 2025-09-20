@@ -8,7 +8,10 @@ func _ready():
 	Events.connect("score_popup_requested", self, "spawn_score_popup")
 
 func _on_score_updated(new_score: int):
-	score_total.bbcode_text = str(new_score)
+	if new_score > 9999999:
+		score_total.bbcode_text = "∞!!!"
+	else:
+		score_total.bbcode_text = str(new_score)
 
 func spawn_score_popup(type, position):
 	var popup = score_popup.instance()

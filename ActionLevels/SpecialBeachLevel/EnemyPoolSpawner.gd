@@ -99,7 +99,12 @@ func activate_enemy(enemy):
 	enemy.position = spawn_pos
 	enemy.visible = true
 	enemy.set_physics_process(true)
-	
+
+	# Re-enable collision detection
+	if enemy.area2d:
+		enemy.area2d.monitoring = true
+		enemy.area2d.monitorable = true
+
 	var can_take_damage = enemy.get_node_or_null("CanTakeDamage")
 	if can_take_damage:
 		can_take_damage.death_called = false
@@ -110,8 +115,7 @@ func _return_to_enemy_pool(dead_enemy):
 		active_enemies.erase(dead_enemy)
 	
 	dead_enemy.reset_for_pool()
-	
-	# Return to appropriate pool (just use first pool for now)
+
 	if enemy_pools.size() > 0:
 		var first_pool = enemy_pools.values()[0]
 		first_pool.append(dead_enemy)
