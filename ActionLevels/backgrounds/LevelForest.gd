@@ -19,11 +19,11 @@ func _ready():
 
 func _physics_process(delta):
 	if background_moving:
-		$Foreground.scroll_offset.x -= scrolling_speed_foreground * delta
-		$FrontTreesBackground.scroll_offset.x -= scrolling_speed_foreground * 0.75 * delta
-		$BackForestBackground.scroll_offset.x -= scrolling_speed_foreground * 0.5 * delta
-		$HillBackground.scroll_offset.x -= scrolling_speed_foreground * 0.25 * delta
-		$SkyBackground.scroll_offset.x -= scrolling_speed_foreground * 0.10 * delta
+		$Foreground.scroll_base_offset.x -= scrolling_speed_foreground * delta
+		$FrontTreesBackground.scroll_base_offset.x -= scrolling_speed_foreground * 0.75 * delta
+		$BackForestBackground.scroll_base_offset.x -= scrolling_speed_foreground * 0.5 * delta
+		$HillBackground.scroll_base_offset.x -= scrolling_speed_foreground * 0.25 * delta
+		$SkyBackground.scroll_base_offset.x -= scrolling_speed_foreground * 0.10 * delta
 
 func _on_background_moving_enabled(enabled: bool):
 	background_moving = enabled
