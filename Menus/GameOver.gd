@@ -15,16 +15,16 @@ onready var quit_star = get_node("%StarSelectQuit")
 
 onready var score_display : RichTextLabel = get_node("%ScoreDisplay")
 
-var player_final_score : int = 0
 var first_focus = true
 
 func _ready():
 	# Set initial invisible state
 	animated_sprite.modulate = Color(1, 1, 1, 0)
 	sad_sprite.modulate = Color(1, 1, 1, 0)
-	
-	player_final_score = ScoreManager.get_score()
-	score_display.bbcode_text = score_display.bbcode_text + " " + str(player_final_score)
+	var current_score = ScoreManager.get_score()
+	score_display.bbcode_text = score_display.bbcode_text + " " + str(current_score)
+	if current_score > SaveFileManager.get_high_score():
+		SaveFileManager.set_high_score(current_score)
 	animation_player.play("fade_in")
 	if StatsTracker.current_level_stats:
 		StatsTracker.current_level_stats.last_run_completed = false

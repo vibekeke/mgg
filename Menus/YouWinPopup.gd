@@ -16,11 +16,7 @@ onready var no_float_label = get_node("%NoFloatLabel")
 onready var big_score_label = get_node("%BigScoreLabel")
 onready var pacifist_label = get_node("%PacifistLabel")
 
-#TODO: Fetch stats and update the scores
-#Preferably with cool colors or something.
-
-#TODO: Calculate some sort of grade based on the score :P
-#Need to figure out the max possible score for the S+ rank
+onready var high_score = SaveFileManager.get_high_score()
 
 var default_outline_color = Color(0.11, 0.31, 0.52, 1)
 
@@ -30,8 +26,12 @@ func _ready():
 	next_button.grab_focus()
 	damage_sparkles.hide()
 	grade_sparkles.hide()
-	score_label.text = str(ScoreManager.get_score())
+	var current_score : int = ScoreManager.get_score()
+	score_label.text = str(current_score)
 	score_label.add_color_override("font_outline_modulate", default_outline_color)
+	
+	if current_score > high_score:
+		SaveFileManager.set_high_score(current_score)
 	
 	var damage = ScoreManager.get_hits()
 	if damage == 0:

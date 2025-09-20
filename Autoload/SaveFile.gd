@@ -18,6 +18,9 @@ var has_beaten_first_stage_before : bool = false
 var first_time_playing : bool = true
 var all_dogs_collected : bool = false
 
+# High score
+var high_score : int = 0
+
 func _init():
 	save_created_at =  Time.get_datetime_string_from_datetime_dict(Time.get_datetime_dict_from_system(true), false)
 	save_version = 1
@@ -32,7 +35,8 @@ func to_dict() -> Dictionary:
 		"pacifist_run_completed": pacifist_run_completed,
 		"high_score_run_completed": high_score_run_completed,
 		"first_time_playing": first_time_playing,
-		"all_dogs_collected": all_dogs_collected
+		"all_dogs_collected": all_dogs_collected,
+		"high_score": high_score
 	}
 
 func from_dict(data: Dictionary) -> bool:
@@ -50,5 +54,6 @@ func from_dict(data: Dictionary) -> bool:
 	high_score_run_completed = data.get("high_score_run_completed", false)
 	first_time_playing = data.get("first_time_playing", true)
 	all_dogs_collected = data.get("all_dogs_collected", false)
+	high_score = data.get("high_score", 0)
 
 	return true
