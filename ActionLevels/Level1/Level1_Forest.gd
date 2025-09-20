@@ -19,6 +19,7 @@ var first_run : bool
 
 func _ready():
 	randomize()
+	Events.emit_signal("pausing_allowed", false)
 	var level_stats : Resource = LevelStats.new()
 	level_stats.level_name = 'Level1_Forest'
 	level_stats.level_number = 1
@@ -61,6 +62,7 @@ func _on_boss_spawn():
 	AudioManager.play_music("level1_boss")
 
 func _on_confirm_level_start():
+	Events.emit_signal("pausing_allowed", true)
 	AudioManager.playSFX("ui_confirm")
 	enemy_spawner.start_enemy_spawner()
 	platform_spawner.start_platform_spawner()
