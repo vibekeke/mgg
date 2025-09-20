@@ -105,6 +105,9 @@ func save_to_disk():
 	print("Save file saved successfully")
 
 # Getters for save data
+func get_beaten_first_level_before() -> bool:
+	return current_save_file.has_beaten_first_stage_before
+	
 func get_no_float_run_completed() -> bool:
 	return current_save_file.no_float_run_completed
 
@@ -126,6 +129,10 @@ func get_all_dogs_collected() -> bool:
 	return current_save_file.all_dogs_collected
 
 # Setters for save data
+func set_beaten_first_level_before(value: bool):
+	current_save_file.has_beaten_first_stage_before = value
+	save_to_disk()
+
 func set_no_float_run_completed(value: bool):
 	current_save_file.no_float_run_completed = value
 	save_to_disk()

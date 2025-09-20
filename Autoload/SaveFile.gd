@@ -14,11 +14,11 @@ var pacifist_run_completed : bool = false
 var high_score_run_completed : bool = false
 
 # Additional persistent game flags
+var has_beaten_first_stage_before : bool = false
 var first_time_playing : bool = true
 var all_dogs_collected : bool = false
 
 func _init():
-	print("date time is ", Time.get_datetime_string_from_datetime_dict(Time.get_datetime_dict_from_system(true), false))
 	save_created_at =  Time.get_datetime_string_from_datetime_dict(Time.get_datetime_dict_from_system(true), false)
 	save_version = 1
 
@@ -26,6 +26,7 @@ func to_dict() -> Dictionary:
 	return {
 		"save_version": save_version,
 		"save_created_at": save_created_at,
+		"has_beaten_first_stage_before": has_beaten_first_stage_before,
 		"no_float_run_completed": no_float_run_completed,
 		"no_damage_taken_run_completed": no_damage_taken_run_completed,
 		"pacifist_run_completed": pacifist_run_completed,
@@ -42,6 +43,7 @@ func from_dict(data: Dictionary) -> bool:
 
 	save_version = data.get("save_version", 1)
 	save_created_at = data.get("save_created_at", "")
+	has_beaten_first_stage_before = data.get("has_beaten_first_stage_before", false)
 	no_float_run_completed = data.get("no_float_run_completed", false)
 	no_damage_taken_run_completed = data.get("no_damage_taken_run_completed", false)
 	pacifist_run_completed = data.get("pacifist_run_completed", false)

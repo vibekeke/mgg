@@ -88,7 +88,6 @@ func event_start() -> void:
 	if StatsTracker.current_level_stats:
 		StatsTracker.current_level_stats.last_run_completed = true
 		StatsTracker.calculate_level1_challenges()
-		print("Looking at stats tracker", StatsTracker.current_level_stats.killed_enemies)
 	else:
 		print_debug("Couldn't find any level stats, something weird happened")
 	if completed_pacifist:
