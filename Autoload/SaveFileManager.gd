@@ -105,6 +105,9 @@ func save_to_disk():
 	print("Save file saved successfully")
 
 # Getters for save data
+func get_high_score() -> int:
+	return current_save_file.high_score
+
 func get_beaten_first_level_before() -> bool:
 	return current_save_file.has_beaten_first_stage_before
 	
@@ -123,12 +126,14 @@ func get_high_score_run_completed() -> bool:
 func get_first_time_playing() -> bool:
 	return current_save_file.first_time_playing
 
-
-
 func get_all_dogs_collected() -> bool:
 	return current_save_file.all_dogs_collected
 
 # Setters for save data
+func set_high_score(value: int):
+	current_save_file.high_score = value
+	save_to_disk()
+
 func set_beaten_first_level_before(value: bool):
 	current_save_file.has_beaten_first_stage_before = value
 	save_to_disk()

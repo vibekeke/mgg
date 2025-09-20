@@ -24,6 +24,8 @@ onready var credits_hide_button = get_node("%CreditsHideButton")
 onready var delete_save_button = get_node("%DeleteSaveButton")
 onready var delete_save_panel = get_node("%DeleteSavePanel")
 
+onready var high_score : int = SaveFileManager.get_high_score()
+
 onready var cheat_code_detection : PoolStringArray = PoolStringArray()
 var successful_cheat_code : String = "00112323"
 var cheat_code_activated : bool = false
