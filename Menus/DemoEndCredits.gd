@@ -23,6 +23,8 @@ var scroll_speed: float = 80.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if !SaveFileManager.get_beaten_first_level_before():
+		SaveFileManager.set_beaten_first_level_before(true)
 	animation_player.play("pop_in")
 	message_text.show()
 	message_buttons.show()

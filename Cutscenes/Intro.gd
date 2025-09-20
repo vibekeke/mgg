@@ -3,6 +3,8 @@ extends Node2D
 var tv_sound_finished = false
 export var intro_dialog : Resource
 
+onready var is_cutscene_skippable : bool = SaveFileManager.get_beaten_first_level_before()
+
 func _ready():
 	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
 	$TVTurnOn.play()
