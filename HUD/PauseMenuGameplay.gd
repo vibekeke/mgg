@@ -40,17 +40,18 @@ func _on_ResumeBtn_pressed():
 	AudioManager.playSFX("ui_confirm", 0.0, 5.0)
 	self.is_paused = false
 
-func _on_QuitBtn_pressed(): #Should return to title screen!
+func _on_QuitBtn_pressed():
+	Events.emit_signal("player_invincible", true)
 	yield(get_tree().create_timer(0.4, true), "timeout")
 	if StatsTracker.current_level_stats:
 		StatsTracker.current_level_stats.last_run_completed = false
 	self.is_paused = false
 	Events.emit_signal("transition_to_scene", "TitleScreen", false)
 
-func _on_BackBtn_pressed():	 #Should restart scene
+func _on_BackBtn_pressed():
+	Events.emit_signal("player_invincible", true)
 	AudioManager.playSFX("ui_confirm", 0.0, 5.0)
 	yield(get_tree().create_timer(0.4, true), "timeout")
-	
 	self.is_paused = false
 	Events.emit_signal("transition_to_scene", "Level1", false)
 
@@ -61,25 +62,19 @@ func _on_ResumeBtn_focus_entered():
 func _on_ResumeBtn_focus_exited():
 	spinny_star_resume.visible = false
 
-
 func _on_BackBtn_focus_entered():
 	AudioManager.playSFX("ui_hover")
 	spinny_star_retry.visible = true
 
-
 func _on_BackBtn_focus_exited():
 	spinny_star_retry.visible = false
-
 
 func _on_QuitBtn_focus_entered():
 	AudioManager.playSFX("ui_hover")
 	spinny_star_title.visible = true
 
-
 func _on_QuitBtn_focus_exited():
 	spinny_star_title.visible = false
-	
-
 
 func _on_ResumeBtn_mouse_entered():
 	resume_button.grab_focus()
