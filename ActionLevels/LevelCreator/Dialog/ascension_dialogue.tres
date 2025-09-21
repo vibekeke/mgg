@@ -4,104 +4,104 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 36
+resource_version = 51
 syntax_version = 2
 raw_text = "~ you_did_it
-Angel: You did it! [wait=1]You completed all the special challenges this game has to offer. [wait=1]
+Angel: [speed=0.8]You did it! [wait=1]You completed all the special challenges this game has to offer. [wait=1]
 do emit_change_character_portrait(\"AngelHappy\")
-Angel: I hereby declare you a \\n[wave]R E A L  G A M E R [/wave]! [wait=2]
+Angel: [speed=0.8]I hereby declare you a \\n[wave]R E A L  G A M E R [/wave]! [wait=2]
 
 ~ true_completionist
-Angel: A true completionist! [wait=1]You finished everything. [wait=1]
+Angel: [speed=0.8]A true completionist! [wait=1]You finished everything. [wait=1]
 do emit_change_character_portrait(\"AngelHappy\")
-Angel: Congratulations! [wait=2]
+Angel: [speed=0.8]Congratulations! [wait=2]
 
 ~ proud
-Angel: I am seriously proud of you![wait=1] You played the game so well! [wait=2]
+Angel: [speed=0.8]I am seriously proud of you![wait=1] You played the game so well! [wait=2]
 
 ~ wow
-Angel: Wow! You really are the best! [wait=2]
+Angel: [speed=0.8]Wow. You really are the best! [wait=2]
 
 ~ good_job
-Angel: Good job![wait=2]
+Angel: [speed=0.8]Good job![wait=2]
 
 ~ dotdot
 
 do emit_change_character_portrait(\"AngelNeutral\")
-Angel: ...[wait=2]
+Angel: [speed=0.8]...[wait=2]
 
 ~ this_is_it
-Angel: So... this is it. This is all our little world has to offer. [wait=0.5]For now. [wait=1]
+Angel: [speed=0.6]So... this is it. [wait=1]This is all our little world has to offer. [wait=1]For now. [wait=1.5]
 do emit_change_character_portrait(\"AngelIntense\")
-Angel: I wonder.. was it difficult? Or, more importantly, was it fun? [wait=1]
-Angel: I wonder what you expected would happen in the end. [wait=2]
+Angel: [speed=0.6]I wonder.. was it difficult? Or, more importantly, was it fun? [wait=1]
+Angel: [speed=0.6]I wonder what you expected would happen in the end. [wait=2]
 
 ~ doesnt_matter
-Angel: But I guess it doesn't matter. We are both here, [wait=0.5]right now. 
+Angel: [speed=0.6]But I guess it doesn't matter. We are both here, [wait=0.5]right now. 
 do emit_change_character_portrait(\"AngelHappy\")
-Angel: Just enjoy the moment for however long you'd like. [wait=1.5]
+Angel: [speed=0.6]Just enjoy the moment for however long you'd like. [wait=1.5]
 
 ~ video_games
-Angel: Video games are hard to make, y'know? [wait=0.5]A lot harder than people think, [wait=0.5]even with modern tools! [wait=1.5]
-Angel: We had so many ideas... So many visions for this game. [wait=1]
-Angel: This is what it turned into. [wait=1]A mere fraction of what we imagined. [wait=1.5]
+Angel: [speed=0.6]Video games are hard to make, y'know? [wait=1]A lot harder than people think, [wait=1]even with modern tools. [wait=1.5]
+Angel: [speed=0.6]We had so many ideas... So many visions for this game. [wait=1]
+Angel: [speed=0.6]This is what it turned into. [wait=1]A mere fraction of what we imagined. [wait=1.5]
 do emit_change_character_portrait(\"AngelHappy\")
-Angel: Yet the satisfaction of watching it come to life makes it all worth it! [wait=2]
+Angel: [speed=0.6]Yet the satisfaction of watching it come to life makes it all worth it! [wait=2.5]
 
 ~ greatest_honor
-Angel: And when players explore every nook and cranny of a game.. [wait=1]
-Angel: ..that's the greatest honor for a game developer! [wait=1.5]
-Angel: So, from the bottom of my heart... [wait=1]
-Angel: My angel-heart.. [wait=1]
+Angel: [speed=0.6]And when players explore every nook and cranny of a game.. [wait=1]
+Angel: [speed=0.6]..that's the greatest honor for a game developer! [wait=1.5]
+Angel: [speed=0.6]So, from the bottom of my heart... [wait=1]
+Angel: [speed=0.6]My angel-heart.. [wait=1]
 do emit_change_character_portrait(\"AngelHappy\")
-Angel: Thank you so much for playing! [wait=2]
+Angel: [speed=0.6]Thank you so much for playing! [wait=2]
 
 ~ thanks
 
 do emit_change_character_portrait(\"AngelHappy\")
-Angel: Thank you so much! [wait=2]
+Angel: [speed=0.6]Thank you so much! [wait=2]
 
 ~ thanksss
-Angel: ...
+Angel: [speed=0.6]...
 do emit_change_character_portrait(\"AngelHappy\")
-Angel: Thanks again! [wait=2]
+Angel: [speed=0.6]Thanks again! [wait=2]
 
 ~ are_you_still_here
-Angel: Are you still here? [wait=1]Hmm...
+Angel: [speed=0.6]Are you still here? [wait=1]Hmm...
 do emit_change_character_portrait(\"AngelScared\") 
-Angel: I can't really think of much else to say. [wait=1.5]
+Angel: [speed=0.6]I can't really think of much else to say. [wait=1.5]
 do emit_change_character_portrait(\"AngelIntense\")
-Angel: I guess I can just wish you a good day? [wait=1]
+Angel: [speed=0.6]I guess I can just wish you a good day? [wait=1]
 do emit_change_character_portrait(\"AngelHappy\")
-Angel: I hope you have a good day! [wait=2]
+Angel: [speed=0.6]I hope you have a good day! [wait=2]
 
 ~ dotdotdot
 do emit_change_character_portrait(\"AngelNeutral\")
-Angel: ... [wait=2]
+Angel: [speed=0.6]... [wait=2]
 
 ~ for_real
-Angel: For real, I don't think there's gonna be any more interesting dialogue after this. [wait=1.5]
+Angel: [speed=0.6]For real, I don't think there's gonna be any more interesting dialogue after this. [wait=1.5]
 do emit_change_character_portrait(\"AngelHappy\")
-Angel: Feel free to leave. [wait=2]
+Angel: [speed=0.6]Feel free to leave. [wait=2]
 
 ~ for_real2
-Angel: It's not a bit. [wait=1]
-Angel: There's no secret easter egg to be found by staying here longer. [wait=1.5]
-Angel: I promise! [wait=2]
+Angel: [speed=0.6]It's not a bit. [wait=1]There's no secret easter egg to be found by staying here longer. [wait=1.5]
+Angel: [speed=0.6]I promise! [wait=2]
 
 ~ ok_fine
-Angel: Ok, fine! [wait=1]
+Angel: [speed=0.6]Ok, fine! [wait=1]
 do emit_change_character_portrait(\"AngelIntense\")
-Angel: Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1]
+Angel: [speed=0.6]Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1.5]
 do show_easter_egg()
 
 ~ for_real3
-Angel: That was seriously the last thing. We can't keep extending it forever. [wait=1]
+Angel: [speed=0.6]That was seriously the last thing. We can't keep extending it forever. [wait=1]
 do emit_change_character_portrait(\"AngelNeutral\")
-Angel: It's only a demo after all! [wait=1.5]
-Angel: ...So, goodbye![wait=1]
+Angel: [speed=0.6]It's only a demo after all! [wait=1.5]
+Angel: [speed=0.6]...So, goodbye![wait=1]
+Angel: And for the final time...[wait=1]
 do emit_change_character_portrait(\"AngelHappy\")
-Angel: [wave]Thanks for playing~![/wave][wait=5]
+Angel: [speed=0.6][wave]Thanks for playing~![/wave][wait=5]
 "
 errors = [  ]
 titles = {
@@ -111,10 +111,10 @@ titles = {
 "dotdotdot": "70",
 "for_real": "74",
 "for_real2": "79",
-"for_real3": "90",
+"for_real3": "89",
 "good_job": "17",
 "greatest_honor": "43",
-"ok_fine": "84",
+"ok_fine": "83",
 "proud": "11",
 "thanks": "52",
 "thanksss": "56",
@@ -135,8 +135,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "2",
 "replacements": [  ],
-"text": "You did it! [wait=1]You completed all the special challenges this game has to offer. [wait=1]",
-"translation_key": "You did it! [wait=1]You completed all the special challenges this game has to offer. [wait=1]",
+"text": "[speed=0.8]You did it! [wait=1]You completed all the special challenges this game has to offer. [wait=1]",
+"translation_key": "[speed=0.8]You did it! [wait=1]You completed all the special challenges this game has to offer. [wait=1]",
 "type": "dialogue"
 },
 "10": {
@@ -149,8 +149,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "I am seriously proud of you![wait=1] You played the game so well! [wait=2]",
-"translation_key": "I am seriously proud of you![wait=1] You played the game so well! [wait=2]",
+"text": "[speed=0.8]I am seriously proud of you![wait=1] You played the game so well! [wait=2]",
+"translation_key": "[speed=0.8]I am seriously proud of you![wait=1] You played the game so well! [wait=2]",
 "type": "dialogue"
 },
 "13": {
@@ -163,8 +163,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Wow! You really are the best! [wait=2]",
-"translation_key": "Wow! You really are the best! [wait=2]",
+"text": "[speed=0.8]Wow. You really are the best! [wait=2]",
+"translation_key": "[speed=0.8]Wow. You really are the best! [wait=2]",
 "type": "dialogue"
 },
 "16": {
@@ -177,8 +177,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Good job![wait=2]",
-"translation_key": "Good job![wait=2]",
+"text": "[speed=0.8]Good job![wait=2]",
+"translation_key": "[speed=0.8]Good job![wait=2]",
 "type": "dialogue"
 },
 "19": {
@@ -219,8 +219,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "...[wait=2]",
-"translation_key": "...[wait=2]",
+"text": "[speed=0.8]...[wait=2]",
+"translation_key": "[speed=0.8]...[wait=2]",
 "type": "dialogue"
 },
 "24": {
@@ -233,8 +233,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "26",
 "replacements": [  ],
-"text": "So... this is it. This is all our little world has to offer. [wait=0.5]For now. [wait=1]",
-"translation_key": "So... this is it. This is all our little world has to offer. [wait=0.5]For now. [wait=1]",
+"text": "[speed=0.6]So... this is it. [wait=1]This is all our little world has to offer. [wait=1]For now. [wait=1.5]",
+"translation_key": "[speed=0.6]So... this is it. [wait=1]This is all our little world has to offer. [wait=1]For now. [wait=1.5]",
 "type": "dialogue"
 },
 "26": {
@@ -256,8 +256,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "28",
 "replacements": [  ],
-"text": "I wonder.. was it difficult? Or, more importantly, was it fun? [wait=1]",
-"translation_key": "I wonder.. was it difficult? Or, more importantly, was it fun? [wait=1]",
+"text": "[speed=0.6]I wonder.. was it difficult? Or, more importantly, was it fun? [wait=1]",
+"translation_key": "[speed=0.6]I wonder.. was it difficult? Or, more importantly, was it fun? [wait=1]",
 "type": "dialogue"
 },
 "28": {
@@ -265,8 +265,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "I wonder what you expected would happen in the end. [wait=2]",
-"translation_key": "I wonder what you expected would happen in the end. [wait=2]",
+"text": "[speed=0.6]I wonder what you expected would happen in the end. [wait=2]",
+"translation_key": "[speed=0.6]I wonder what you expected would happen in the end. [wait=2]",
 "type": "dialogue"
 },
 "3": {
@@ -274,9 +274,9 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "I hereby declare you a 
+"text": "[speed=0.8]I hereby declare you a 
 [wave]R E A L  G A M E R [/wave]! [wait=2]",
-"translation_key": "I hereby declare you a 
+"translation_key": "[speed=0.8]I hereby declare you a 
 [wave]R E A L  G A M E R [/wave]! [wait=2]",
 "type": "dialogue"
 },
@@ -290,8 +290,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "32",
 "replacements": [  ],
-"text": "But I guess it doesn't matter. We are both here, [wait=0.5]right now.",
-"translation_key": "But I guess it doesn't matter. We are both here, [wait=0.5]right now.",
+"text": "[speed=0.6]But I guess it doesn't matter. We are both here, [wait=0.5]right now.",
+"translation_key": "[speed=0.6]But I guess it doesn't matter. We are both here, [wait=0.5]right now.",
 "type": "dialogue"
 },
 "32": {
@@ -313,8 +313,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Just enjoy the moment for however long you'd like. [wait=1.5]",
-"translation_key": "Just enjoy the moment for however long you'd like. [wait=1.5]",
+"text": "[speed=0.6]Just enjoy the moment for however long you'd like. [wait=1.5]",
+"translation_key": "[speed=0.6]Just enjoy the moment for however long you'd like. [wait=1.5]",
 "type": "dialogue"
 },
 "35": {
@@ -327,8 +327,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "37",
 "replacements": [  ],
-"text": "Video games are hard to make, y'know? [wait=0.5]A lot harder than people think, [wait=0.5]even with modern tools! [wait=1.5]",
-"translation_key": "Video games are hard to make, y'know? [wait=0.5]A lot harder than people think, [wait=0.5]even with modern tools! [wait=1.5]",
+"text": "[speed=0.6]Video games are hard to make, y'know? [wait=1]A lot harder than people think, [wait=1]even with modern tools. [wait=1.5]",
+"translation_key": "[speed=0.6]Video games are hard to make, y'know? [wait=1]A lot harder than people think, [wait=1]even with modern tools. [wait=1.5]",
 "type": "dialogue"
 },
 "37": {
@@ -336,8 +336,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "38",
 "replacements": [  ],
-"text": "We had so many ideas... So many visions for this game. [wait=1]",
-"translation_key": "We had so many ideas... So many visions for this game. [wait=1]",
+"text": "[speed=0.6]We had so many ideas... So many visions for this game. [wait=1]",
+"translation_key": "[speed=0.6]We had so many ideas... So many visions for this game. [wait=1]",
 "type": "dialogue"
 },
 "38": {
@@ -345,8 +345,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "39",
 "replacements": [  ],
-"text": "This is what it turned into. [wait=1]A mere fraction of what we imagined. [wait=1.5]",
-"translation_key": "This is what it turned into. [wait=1]A mere fraction of what we imagined. [wait=1.5]",
+"text": "[speed=0.6]This is what it turned into. [wait=1]A mere fraction of what we imagined. [wait=1.5]",
+"translation_key": "[speed=0.6]This is what it turned into. [wait=1]A mere fraction of what we imagined. [wait=1.5]",
 "type": "dialogue"
 },
 "39": {
@@ -368,8 +368,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Yet the satisfaction of watching it come to life makes it all worth it! [wait=2]",
-"translation_key": "Yet the satisfaction of watching it come to life makes it all worth it! [wait=2]",
+"text": "[speed=0.6]Yet the satisfaction of watching it come to life makes it all worth it! [wait=2.5]",
+"translation_key": "[speed=0.6]Yet the satisfaction of watching it come to life makes it all worth it! [wait=2.5]",
 "type": "dialogue"
 },
 "42": {
@@ -382,8 +382,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "44",
 "replacements": [  ],
-"text": "And when players explore every nook and cranny of a game.. [wait=1]",
-"translation_key": "And when players explore every nook and cranny of a game.. [wait=1]",
+"text": "[speed=0.6]And when players explore every nook and cranny of a game.. [wait=1]",
+"translation_key": "[speed=0.6]And when players explore every nook and cranny of a game.. [wait=1]",
 "type": "dialogue"
 },
 "44": {
@@ -391,8 +391,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "45",
 "replacements": [  ],
-"text": "..that's the greatest honor for a game developer! [wait=1.5]",
-"translation_key": "..that's the greatest honor for a game developer! [wait=1.5]",
+"text": "[speed=0.6]..that's the greatest honor for a game developer! [wait=1.5]",
+"translation_key": "[speed=0.6]..that's the greatest honor for a game developer! [wait=1.5]",
 "type": "dialogue"
 },
 "45": {
@@ -400,8 +400,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "46",
 "replacements": [  ],
-"text": "So, from the bottom of my heart... [wait=1]",
-"translation_key": "So, from the bottom of my heart... [wait=1]",
+"text": "[speed=0.6]So, from the bottom of my heart... [wait=1]",
+"translation_key": "[speed=0.6]So, from the bottom of my heart... [wait=1]",
 "type": "dialogue"
 },
 "46": {
@@ -409,8 +409,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "47",
 "replacements": [  ],
-"text": "My angel-heart.. [wait=1]",
-"translation_key": "My angel-heart.. [wait=1]",
+"text": "[speed=0.6]My angel-heart.. [wait=1]",
+"translation_key": "[speed=0.6]My angel-heart.. [wait=1]",
 "type": "dialogue"
 },
 "47": {
@@ -432,8 +432,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Thank you so much for playing! [wait=2]",
-"translation_key": "Thank you so much for playing! [wait=2]",
+"text": "[speed=0.6]Thank you so much for playing! [wait=2]",
+"translation_key": "[speed=0.6]Thank you so much for playing! [wait=2]",
 "type": "dialogue"
 },
 "5": {
@@ -465,8 +465,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Thank you so much! [wait=2]",
-"translation_key": "Thank you so much! [wait=2]",
+"text": "[speed=0.6]Thank you so much! [wait=2]",
+"translation_key": "[speed=0.6]Thank you so much! [wait=2]",
 "type": "dialogue"
 },
 "55": {
@@ -479,8 +479,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "57",
 "replacements": [  ],
-"text": "...",
-"translation_key": "...",
+"text": "[speed=0.6]...",
+"translation_key": "[speed=0.6]...",
 "type": "dialogue"
 },
 "57": {
@@ -502,8 +502,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Thanks again! [wait=2]",
-"translation_key": "Thanks again! [wait=2]",
+"text": "[speed=0.6]Thanks again! [wait=2]",
+"translation_key": "[speed=0.6]Thanks again! [wait=2]",
 "type": "dialogue"
 },
 "6": {
@@ -511,8 +511,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "7",
 "replacements": [  ],
-"text": "A true completionist! [wait=1]You finished everything. [wait=1]",
-"translation_key": "A true completionist! [wait=1]You finished everything. [wait=1]",
+"text": "[speed=0.8]A true completionist! [wait=1]You finished everything. [wait=1]",
+"translation_key": "[speed=0.8]A true completionist! [wait=1]You finished everything. [wait=1]",
 "type": "dialogue"
 },
 "60": {
@@ -525,8 +525,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "62",
 "replacements": [  ],
-"text": "Are you still here? [wait=1]Hmm...",
-"translation_key": "Are you still here? [wait=1]Hmm...",
+"text": "[speed=0.6]Are you still here? [wait=1]Hmm...",
+"translation_key": "[speed=0.6]Are you still here? [wait=1]Hmm...",
 "type": "dialogue"
 },
 "62": {
@@ -548,8 +548,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "64",
 "replacements": [  ],
-"text": "I can't really think of much else to say. [wait=1.5]",
-"translation_key": "I can't really think of much else to say. [wait=1.5]",
+"text": "[speed=0.6]I can't really think of much else to say. [wait=1.5]",
+"translation_key": "[speed=0.6]I can't really think of much else to say. [wait=1.5]",
 "type": "dialogue"
 },
 "64": {
@@ -571,8 +571,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "66",
 "replacements": [  ],
-"text": "I guess I can just wish you a good day? [wait=1]",
-"translation_key": "I guess I can just wish you a good day? [wait=1]",
+"text": "[speed=0.6]I guess I can just wish you a good day? [wait=1]",
+"translation_key": "[speed=0.6]I guess I can just wish you a good day? [wait=1]",
 "type": "dialogue"
 },
 "66": {
@@ -594,8 +594,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "I hope you have a good day! [wait=2]",
-"translation_key": "I hope you have a good day! [wait=2]",
+"text": "[speed=0.6]I hope you have a good day! [wait=2]",
+"translation_key": "[speed=0.6]I hope you have a good day! [wait=2]",
 "type": "dialogue"
 },
 "69": {
@@ -636,8 +636,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "... [wait=2]",
-"translation_key": "... [wait=2]",
+"text": "[speed=0.6]... [wait=2]",
+"translation_key": "[speed=0.6]... [wait=2]",
 "type": "dialogue"
 },
 "73": {
@@ -650,8 +650,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "75",
 "replacements": [  ],
-"text": "For real, I don't think there's gonna be any more interesting dialogue after this. [wait=1.5]",
-"translation_key": "For real, I don't think there's gonna be any more interesting dialogue after this. [wait=1.5]",
+"text": "[speed=0.6]For real, I don't think there's gonna be any more interesting dialogue after this. [wait=1.5]",
+"translation_key": "[speed=0.6]For real, I don't think there's gonna be any more interesting dialogue after this. [wait=1.5]",
 "type": "dialogue"
 },
 "75": {
@@ -673,8 +673,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Feel free to leave. [wait=2]",
-"translation_key": "Feel free to leave. [wait=2]",
+"text": "[speed=0.6]Feel free to leave. [wait=2]",
+"translation_key": "[speed=0.6]Feel free to leave. [wait=2]",
 "type": "dialogue"
 },
 "78": {
@@ -687,8 +687,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "80",
 "replacements": [  ],
-"text": "It's not a bit. [wait=1]",
-"translation_key": "It's not a bit. [wait=1]",
+"text": "[speed=0.6]It's not a bit. [wait=1]There's no secret easter egg to be found by staying here longer. [wait=1.5]",
+"translation_key": "[speed=0.6]It's not a bit. [wait=1]There's no secret easter egg to be found by staying here longer. [wait=1.5]",
 "type": "dialogue"
 },
 "8": {
@@ -696,43 +696,34 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "Congratulations! [wait=2]",
-"translation_key": "Congratulations! [wait=2]",
+"text": "[speed=0.8]Congratulations! [wait=2]",
+"translation_key": "[speed=0.8]Congratulations! [wait=2]",
 "type": "dialogue"
 },
 "80": {
 "character": "Angel",
 "character_replacements": [  ],
-"next_id": "81",
-"replacements": [  ],
-"text": "There's no secret easter egg to be found by staying here longer. [wait=1.5]",
-"translation_key": "There's no secret easter egg to be found by staying here longer. [wait=1.5]",
-"type": "dialogue"
-},
-"81": {
-"character": "Angel",
-"character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "I promise! [wait=2]",
-"translation_key": "I promise! [wait=2]",
+"text": "[speed=0.6]I promise! [wait=2]",
+"translation_key": "[speed=0.6]I promise! [wait=2]",
 "type": "dialogue"
 },
-"83": {
-"next_id": "84",
+"82": {
+"next_id": "83",
 "text": "ok_fine",
 "type": "title"
 },
-"84": {
+"83": {
 "character": "Angel",
 "character_replacements": [  ],
-"next_id": "85",
+"next_id": "84",
 "replacements": [  ],
-"text": "Ok, fine! [wait=1]",
-"translation_key": "Ok, fine! [wait=1]",
+"text": "[speed=0.6]Ok, fine! [wait=1]",
+"translation_key": "[speed=0.6]Ok, fine! [wait=1]",
 "type": "dialogue"
 },
-"85": {
+"84": {
 "mutation": {
 "expression": [ {
 "function": "emit_change_character_portrait",
@@ -743,19 +734,19 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "86",
+"next_id": "85",
 "type": "mutation"
 },
-"86": {
+"85": {
 "character": "Angel",
 "character_replacements": [  ],
-"next_id": "87",
+"next_id": "86",
 "replacements": [  ],
-"text": "Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1]",
-"translation_key": "Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1]",
+"text": "[speed=0.6]Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1.5]",
+"translation_key": "[speed=0.6]Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1.5]",
 "type": "dialogue"
 },
-"87": {
+"86": {
 "mutation": {
 "expression": [ {
 "function": "show_easter_egg",
@@ -766,21 +757,21 @@ lines = {
 "next_id": "",
 "type": "mutation"
 },
-"89": {
-"next_id": "90",
+"88": {
+"next_id": "89",
 "text": "for_real3",
 "type": "title"
 },
-"90": {
+"89": {
 "character": "Angel",
 "character_replacements": [  ],
-"next_id": "91",
+"next_id": "90",
 "replacements": [  ],
-"text": "That was seriously the last thing. We can't keep extending it forever. [wait=1]",
-"translation_key": "That was seriously the last thing. We can't keep extending it forever. [wait=1]",
+"text": "[speed=0.6]That was seriously the last thing. We can't keep extending it forever. [wait=1]",
+"translation_key": "[speed=0.6]That was seriously the last thing. We can't keep extending it forever. [wait=1]",
 "type": "dialogue"
 },
-"91": {
+"90": {
 "mutation": {
 "expression": [ {
 "function": "emit_change_character_portrait",
@@ -791,16 +782,25 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "92",
+"next_id": "91",
 "type": "mutation"
+},
+"91": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "92",
+"replacements": [  ],
+"text": "[speed=0.6]It's only a demo after all! [wait=1.5]",
+"translation_key": "[speed=0.6]It's only a demo after all! [wait=1.5]",
+"type": "dialogue"
 },
 "92": {
 "character": "Angel",
 "character_replacements": [  ],
 "next_id": "93",
 "replacements": [  ],
-"text": "It's only a demo after all! [wait=1.5]",
-"translation_key": "It's only a demo after all! [wait=1.5]",
+"text": "[speed=0.6]...So, goodbye![wait=1]",
+"translation_key": "[speed=0.6]...So, goodbye![wait=1]",
 "type": "dialogue"
 },
 "93": {
@@ -808,8 +808,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "94",
 "replacements": [  ],
-"text": "...So, goodbye![wait=1]",
-"translation_key": "...So, goodbye![wait=1]",
+"text": "And for the final time...[wait=1]",
+"translation_key": "And for the final time...[wait=1]",
 "type": "dialogue"
 },
 "94": {
@@ -831,8 +831,8 @@ lines = {
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "[wave]Thanks for playing~![/wave][wait=5]",
-"translation_key": "[wave]Thanks for playing~![/wave][wait=5]",
+"text": "[speed=0.6][wave]Thanks for playing~![/wave][wait=5]",
+"translation_key": "[speed=0.6][wave]Thanks for playing~![/wave][wait=5]",
 "type": "dialogue"
 }
 }

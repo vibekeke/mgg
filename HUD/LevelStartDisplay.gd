@@ -10,6 +10,7 @@ onready var confirmation_animation_player : AnimationPlayer = get_node("%Confirm
 onready var text_animation_player : AnimationPlayer = get_node("%TextAnimationPlayer")
 onready var ready_to_start_level_timer : Timer = get_node("%ReadyToStartLevelTimer")
 
+export var ready_to_start_level_delay := 0.5
 export var before_level_dialogue : Resource
 export var before_level_dialogue_script_name : String
 export var level1_event1_dialog : Resource
@@ -42,6 +43,7 @@ func play_confirmation_animations():
 	text_animation_player.play("confirmation_text_flash")
 
 func _on_ControlsAnimationPlayer_animation_finished(anim_name):
+	ready_to_start_level_timer.wait_time = ready_to_start_level_delay
 	ready_to_start_level_timer.start()
 
 func _input(event):

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Emili zen.mp3-9b5cb464bd89942c108c635a3ee2ebaf.mp3str"
+
+[deps]
+
+source_file="res://sounds/music/Emili zen.mp3"
+dest_files=[ "res://.import/Emili zen.mp3-9b5cb464bd89942c108c635a3ee2ebaf.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

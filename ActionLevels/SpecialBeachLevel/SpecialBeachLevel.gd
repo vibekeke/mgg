@@ -32,7 +32,8 @@ func _ready():
 
 
 func _on_LevelStartDisplay_confirm_level_start():
-	AudioManager.play_music("cafe")
+	#AudioManager.play_music("zenmily")
+	$CafeMusic.play()
 	start_dialogue_timer()
 
 func _on_dialogue_box_finished(node_id):
@@ -40,7 +41,7 @@ func _on_dialogue_box_finished(node_id):
 		start_dialogue_timer()
 
 func start_dialogue_timer():
-	var time = rand_range(4, 9)
+	var time = rand_range(4, 8)
 	$"%DialogueTimer".wait_time = time
 	$"%DialogueTimer".start()
 
@@ -55,6 +56,9 @@ func play_next_dialogue():
 	var dialogue_name = elem[0]
 	var portrait = elem[1]
 	
+	if dialogue_name == "this_is_it":
+		$ZenMusic.play()
+
 	MggDialogue.create_dialogue_balloon(
 		dialogue_name, 
 		special_beach_dialogue, 
@@ -64,7 +68,7 @@ func play_next_dialogue():
 		Color(0.0, 0.42, 0.62, 0.6),
 		Color(0.0, 0.0, 0.0, 0.25),
 		true,
-		1.5
+		1
 	)
 
 func _get_next_dialogue():
@@ -75,3 +79,4 @@ func _get_next_dialogue():
 func show_easter_egg():
 	var new_instance = easter_egg.instance()
 	get_tree().current_scene.add_child(new_instance)
+

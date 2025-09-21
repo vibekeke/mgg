@@ -249,10 +249,9 @@ margin_bottom = 305.0
 unique_name_in_owner = true
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 2021.69
-margin_top = 294.963
-margin_right = 2442.7
-margin_bottom = 845.963
+margin_left = 101.69
+margin_right = 522.7
+margin_bottom = 305.963
 custom_styles/panel = ExtResource( 3 )
 
 [node name="ControlsAnimationPlayer" type="AnimationPlayer" parent="Controls"]
