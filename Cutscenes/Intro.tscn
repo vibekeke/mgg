@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cutscenes/AyyLmao_SpriteOne.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Cutscenes/alien2.PNG" type="Texture" id=7]
 [ext_resource path="res://test_fonts/vt323/VT323-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Menus/SkipCutscene.gd" type="Script" id=9]
+[ext_resource path="res://ActionLevels/Camera/StageCamera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Cutscenes/ShakeyCam.gd" type="Script" id=11]
 
 [sub_resource type="Shader" id=1]
 code = "/*
@@ -273,6 +275,12 @@ font_data = ExtResource( 8 )
 script = ExtResource( 3 )
 intro_dialog = ExtResource( 5 )
 
+[node name="StageCamera" parent="." instance=ExtResource( 10 )]
+zoom = Vector2( 0.99, 0.99 )
+
+[node name="ShakeyCam" type="Node" parent="StageCamera"]
+script = ExtResource( 11 )
+
 [node name="AyyLmao" parent="." instance=ExtResource( 2 )]
 modulate = Color( 1, 1, 1, 0.196078 )
 position = Vector2( 1194, 477 )
@@ -284,8 +292,10 @@ position = Vector2( 678, 487 )
 texture = ExtResource( 6 )
 
 [node name="Background" type="ColorRect" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 2020.0
+margin_bottom = 1180.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_lock_": true
