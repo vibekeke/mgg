@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=2]
+[gd_scene load_steps=152 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=2]
@@ -32,6 +32,8 @@
 [ext_resource path="res://imported_assets/actors/mg/Player_Slide_Test.png" type="Texture" id=30]
 [ext_resource path="res://imported_assets/actors/mg/Player_MeleeTEST-B.png" type="Texture" id=31]
 [ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.webp" type="Texture" id=32]
+[ext_resource path="res://test_fonts/vt323/VT323-Regular.ttf" type="DynamicFontData" id=33]
+[ext_resource path="res://Menus/SkipCutscene.gd" type="Script" id=34]
 
 [sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
@@ -803,8 +805,13 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="DynamicFont" id=493]
+size = 48
+outline_size = 4
+font_data = ExtResource( 33 )
+
 [node name="DemoEndCredits" type="CanvasLayer"]
-layer = 99
+layer = 95
 script = ExtResource( 7 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -1187,7 +1194,6 @@ text = "  Next      "
 unique_name_in_owner = true
 visible = false
 position = Vector2( 169.667, 32.1902 )
-scale = Vector2( 0.2, 0.2 )
 
 [node name="CreditsText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
@@ -1259,7 +1265,6 @@ text = "  Back     "
 unique_name_in_owner = true
 visible = false
 position = Vector2( 165.835, 32.1902 )
-scale = Vector2( 0.2, 0.2 )
 
 [node name="VSeparator" type="VSeparator" parent="Window/TextureRect/CreditsButtons"]
 modulate = Color( 0, 0, 0, 0 )
@@ -1286,7 +1291,6 @@ text = " Title Screen     "
 unique_name_in_owner = true
 visible = false
 position = Vector2( 560.167, 32.1902 )
-scale = Vector2( 0.2, 0.2 )
 
 [node name="Sparkles2" parent="Window/TextureRect" instance=ExtResource( 14 )]
 position = Vector2( 941.905, 800 )
@@ -1305,6 +1309,23 @@ margin_bottom = 1085.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
+[node name="SkipCutscene" type="CanvasLayer" parent="."]
+layer = 99
+script = ExtResource( 34 )
+hide_hint_after = 2.0
+hold_seconds = 1.0
+
+[node name="SkipLabel" type="Label" parent="SkipCutscene"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 43.0
+margin_top = 1010.0
+margin_right = 323.0
+margin_bottom = 1059.0
+custom_colors/font_color = Color( 0.294118, 0.352941, 0.737255, 1 )
+custom_fonts/font = SubResource( 493 )
+text = "hold X to skip"
+
 [connection signal="focus_entered" from="Window/TextureRect/MessageButtons/NextButton" to="." method="_on_NextButton_focus_entered"]
 [connection signal="focus_exited" from="Window/TextureRect/MessageButtons/NextButton" to="." method="_on_NextButton_focus_exited"]
 [connection signal="pressed" from="Window/TextureRect/MessageButtons/NextButton" to="." method="_on_NextButton_pressed"]
@@ -1317,3 +1338,4 @@ color = Color( 0, 0, 0, 1 )
 [connection signal="focus_exited" from="Window/TextureRect/CreditsButtons/TitleButton" to="." method="_on_TitleButton_focus_exited"]
 [connection signal="mouse_entered" from="Window/TextureRect/CreditsButtons/TitleButton" to="." method="_on_TitleButton_mouse_entered"]
 [connection signal="pressed" from="Window/TextureRect/CreditsButtons/TitleButton" to="." method="_on_TitleButton_pressed"]
+[connection signal="skip_cutscene" from="SkipCutscene" to="." method="_on_SkipCutscene_skip_cutscene"]

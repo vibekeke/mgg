@@ -31,7 +31,7 @@ position = Vector2( -1, -6 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 200, 200 )
+position = Vector2( -196, 200 )
 
 [node name="CanTakeDamage" parent="." instance=ExtResource( 4 )]
 enemy = NodePath("..")
