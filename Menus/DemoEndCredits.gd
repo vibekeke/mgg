@@ -102,3 +102,8 @@ func _on_TitleButton_mouse_entered():
 	title_button.grab_focus()
 
 
+
+
+func _on_SkipCutscene_skip_cutscene():
+	AudioManager.stop_music()
+	Events.emit_signal("transition_to_scene", "TitleScreen", false)
