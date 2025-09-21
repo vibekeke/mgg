@@ -41,7 +41,6 @@ var active_death_explosion_node = null
 
 var damage_timer = Timer.new()
 var eventually_queue_free_timer = Timer.new()
-onready var off_screen_timer = Timer.new()
 
 func _ready():
 	rng.randomize()
@@ -57,14 +56,7 @@ func _ready():
 	Events.connect("player_local_position", self, "_on_player_local_position")
 	Events.connect("player_global_position", self, "_on_player_global_position")
 	Events.connect("disable_enemy_action", self, "_on_disable_enemy_action")
-	
 	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
-	off_screen_timer.wait_time = 2.0
-	off_screen_timer.one_shot = true
-	off_screen_timer.autostart = false
-	off_screen_timer.connect("timeout", self, "_off_screen_timer_timeout")
-	self.add_child(off_screen_timer)
-	
 	if is_unique_while_alive:
 		self.add_to_group("unique_while_alive")
 	enemy_spawn_point()
@@ -192,22 +184,18 @@ func off_screen_call():
 		Events.emit_signal("enemy_despawned")
 		queue_free()
 
-func _off_screen_timer_timeout():
-	queue_free()
-
 func _on_screen_exited():
 	if can_wrap_around:
 		self.global_position = initial_position
 	else:
-		if off_screen_timer.is_inside_tree():
-			off_screen_timer.start()
+		queue_free()
 
 func is_on_screen():
 	return visibility_notifier.is_on_screen()
 
-#func _physics_process(delta):
-#	if self.global_position.x < 0 || self.global_position.y < 0:
-#		off_screen_call()
+func _physics_process(delta):
+	if self.global_position.x < 0 || self.global_position.y < 0:
+		off_screen_call()
 
 func get_enemy_name():
 	return self.name
