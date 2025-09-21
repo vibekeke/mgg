@@ -194,7 +194,7 @@ func is_on_screen():
 	return visibility_notifier.is_on_screen()
 
 func _physics_process(delta):
-	if self.global_position.x < 0 || self.global_position.y < 0:
+	if self.global_position.x < -100 || self.global_position.y < 0:
 		off_screen_call()
 
 func get_enemy_name():
