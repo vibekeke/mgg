@@ -50,12 +50,15 @@ func _fire_rate_timer_setup():
 	parent_node.add_child(fire_rate_timer)
 
 func _on_fire_again_timeout():
+	if has_fired:
+		return
 	rotator.rotator_has_fired = false
 	fire_rate_timer.set_wait_time(fire_rate_timer_wait_time)
 	fire_rate_timer.start()
 	
 func _on_fire_rate_timeout():
-	pass
+	if has_fired:
+		return
 	for bullet in get_tree().get_nodes_in_group("static_bro_bear_bullets"):
 		var new_bullet = bro_bear_bullet.instance()
 		new_bullet.position = bullet.global_position
@@ -63,11 +66,7 @@ func _on_fire_rate_timeout():
 		new_bullet.shoot_towards = true
 		new_bullet.speed = bullet.speed
 		get_tree().current_scene.call_deferred("add_child", new_bullet)
-		#launch_bullet(bullet)
-		has_fired = true
-		fire_again_timer.set_wait_time(1.0)
-		if fire_again_timer.is_stopped():
-			fire_again_timer.start()
+	has_fired = true
 
 func launch_bullet(bullet: Object):
 	if player_position != null:
