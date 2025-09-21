@@ -16,7 +16,6 @@ onready var death_explosion = load("res://ActionLevels/LevelCreator/Enemies/Enem
 export var health_value = 2
 
 onready var damage_timer = get_node("%DamageTimer")
-onready var off_screen_timer = get_node("%OffscreenTimer")
 
 export (Color) var hurt_colour = Color(10,10,10,1)
 
@@ -68,7 +67,9 @@ func _on_screen_entered():
 	damageable = true
 
 func _on_screen_exited():
-	off_screen_timer.start()
+	damageable = false
+	if !death_called:
+		emit_signal("enemy_return_to_pool", enemy_node)
 
 func _on_explosion_finished():
 	emit_signal("enemy_return_to_pool", enemy_node)
@@ -76,8 +77,3 @@ func _on_explosion_finished():
 func _on_damage_timer():
 	enemy_sprite_node.modulate = Color(1,1,1,1)
 	damage_timer.stop()
-
-func _on_OffscreenTimer_timeout():
-	damageable = false
-	if !death_called:
-		emit_signal("enemy_return_to_pool", enemy_node)
