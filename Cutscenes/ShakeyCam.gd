@@ -2,8 +2,8 @@ extends Node
 
 export var shake_intensity: float = 15.0
 export var rotation_intensity: float = 0.01
-export var shake_duration_min: float = 0.8
-export var shake_duration_max: float = 2.0
+export var shake_duration_min: float = 1.5
+export var shake_duration_max: float = 3.0
 
 var camera: Camera2D
 var tween: Tween
