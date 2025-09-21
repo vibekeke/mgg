@@ -30,6 +30,9 @@ export var debug_mode : bool = false
 export var level1_event1_dialog : Resource
 export var level1_event_pacificist_boss_dialogue : Resource
 
+onready var number_of_stars_spawned : int = 0
+const MAX_NUM_STARS : int = 7
+
 func star_spawn():
 	var star_instance = star_collectible.instance()
 	star_instance.scroll_speed = 250
@@ -186,5 +189,8 @@ func end_event() -> void:
 
 
 func _on_CollectibleTimer_timeout():
+	if number_of_stars_spawned >= MAX_NUM_STARS:
+		return
 	star_spawn()
 	collectible_spawn_timer.wait_time = randi() % 5 + 4
+	number_of_stars_spawned += 1
