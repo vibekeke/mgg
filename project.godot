@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://DialogBox/AnimatedTextureRect.gd"
 }, {
-"base": "Node2D",
-"class": "BaseLevelEvent",
-"language": "GDScript",
-"path": "res://ActionLevels/BaseLevelEvent.gd"
-}, {
 "base": "Node",
 "class": "BigBird",
 "language": "GDScript",
@@ -114,11 +109,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ActionLevels/LevelCreator/Enemies/PooledEnemy.gd"
 }, {
-"base": "DesktopIcon",
-"class": "QuitIcon",
-"language": "GDScript",
-"path": "res://ActionLevels/Room/QuitIcon.gd"
-}, {
 "base": "Reference",
 "class": "SaveFile",
 "language": "GDScript",
@@ -146,7 +136,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AnimatedTextureRect": "",
-"BaseLevelEvent": "",
 "BigBird": "",
 "BroBear": "",
 "BroBearRotator": "",
@@ -166,7 +155,6 @@ _global_script_class_icons={
 "OurGuy": "",
 "PathedMisbeehave": "",
 "PooledEnemy": "",
-"QuitIcon": "",
 "SaveFile": "",
 "Sharkboi": "",
 "SneakySnake": "",
