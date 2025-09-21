@@ -31,7 +31,7 @@ export var level1_event1_dialog : Resource
 export var level1_event_pacificist_boss_dialogue : Resource
 
 onready var number_of_stars_spawned : int = 0
-const MAX_NUM_STARS : int = 7
+const MAX_NUM_STARS : int = 10
 
 func star_spawn():
 	var star_instance = star_collectible.instance()
