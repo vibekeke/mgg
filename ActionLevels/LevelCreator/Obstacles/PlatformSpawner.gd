@@ -71,7 +71,7 @@ func _return_to_pool(platform: Node):
 	if platform_pool.size() < pool_size:
 		# Remove from parent first
 		if platform.get_parent() != null:
-			platform.get_parent().remove_child(platform)
+			platform.get_parent().call_deferred("remove_child", platform)
 		platform.visible = false
 		platform.set_process(false)
 		platform.position = platform_spawn_point.global_position
