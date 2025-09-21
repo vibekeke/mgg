@@ -1,0 +1,838 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+resource_version = 51
+syntax_version = 2
+raw_text = "~ you_did_it
+Angel: [speed=0.8]You did it! [wait=1]You completed all the special challenges this game has to offer. [wait=1]
+do emit_change_character_portrait(\"AngelHappy\")
+Angel: [speed=0.8]I hereby declare you a \\n[wave]R E A L  G A M E R [/wave]! [wait=2]
+
+~ true_completionist
+Angel: [speed=0.8]A true completionist! [wait=1]You finished everything. [wait=1]
+do emit_change_character_portrait(\"AngelHappy\")
+Angel: [speed=0.8]Congratulations! [wait=2]
+
+~ proud
+Angel: [speed=0.8]I am seriously proud of you![wait=1] You played the game so well! [wait=2]
+
+~ wow
+Angel: [speed=0.8]Wow. You really are the best! [wait=2]
+
+~ good_job
+Angel: [speed=0.8]Good job![wait=2]
+
+~ dotdot
+
+do emit_change_character_portrait(\"AngelNeutral\")
+Angel: [speed=0.8]...[wait=2]
+
+~ this_is_it
+Angel: [speed=0.6]So... this is it. [wait=1]This is all our little world has to offer. [wait=1]For now. [wait=1.5]
+do emit_change_character_portrait(\"AngelIntense\")
+Angel: [speed=0.6]I wonder.. was it difficult? Or, more importantly, was it fun? [wait=1]
+Angel: [speed=0.6]I wonder what you expected would happen in the end. [wait=2]
+
+~ doesnt_matter
+Angel: [speed=0.6]But I guess it doesn't matter. We are both here, [wait=0.5]right now. 
+do emit_change_character_portrait(\"AngelHappy\")
+Angel: [speed=0.6]Just enjoy the moment for however long you'd like. [wait=1.5]
+
+~ video_games
+Angel: [speed=0.6]Video games are hard to make, y'know? [wait=1]A lot harder than people think, [wait=1]even with modern tools. [wait=1.5]
+Angel: [speed=0.6]We had so many ideas... So many visions for this game. [wait=1]
+Angel: [speed=0.6]This is what it turned into. [wait=1]A mere fraction of what we imagined. [wait=1.5]
+do emit_change_character_portrait(\"AngelHappy\")
+Angel: [speed=0.6]Yet the satisfaction of watching it come to life makes it all worth it! [wait=2.5]
+
+~ greatest_honor
+Angel: [speed=0.6]And when players explore every nook and cranny of a game.. [wait=1]
+Angel: [speed=0.6]..that's the greatest honor for a game developer! [wait=1.5]
+Angel: [speed=0.6]So, from the bottom of my heart... [wait=1]
+Angel: [speed=0.6]My angel-heart.. [wait=1]
+do emit_change_character_portrait(\"AngelHappy\")
+Angel: [speed=0.6]Thank you so much for playing! [wait=2]
+
+~ thanks
+
+do emit_change_character_portrait(\"AngelHappy\")
+Angel: [speed=0.6]Thank you so much! [wait=2]
+
+~ thanksss
+Angel: [speed=0.6]...
+do emit_change_character_portrait(\"AngelHappy\")
+Angel: [speed=0.6]Thanks again! [wait=2]
+
+~ are_you_still_here
+Angel: [speed=0.6]Are you still here? [wait=1]Hmm...
+do emit_change_character_portrait(\"AngelScared\") 
+Angel: [speed=0.6]I can't really think of much else to say. [wait=1.5]
+do emit_change_character_portrait(\"AngelIntense\")
+Angel: [speed=0.6]I guess I can just wish you a good day? [wait=1]
+do emit_change_character_portrait(\"AngelHappy\")
+Angel: [speed=0.6]I hope you have a good day! [wait=2]
+
+~ dotdotdot
+do emit_change_character_portrait(\"AngelNeutral\")
+Angel: [speed=0.6]... [wait=2]
+
+~ for_real
+Angel: [speed=0.6]For real, I don't think there's gonna be any more interesting dialogue after this. [wait=1.5]
+do emit_change_character_portrait(\"AngelHappy\")
+Angel: [speed=0.6]Feel free to leave. [wait=2]
+
+~ for_real2
+Angel: [speed=0.6]It's not a bit. [wait=1]There's no secret easter egg to be found by staying here longer. [wait=1.5]
+Angel: [speed=0.6]I promise! [wait=2]
+
+~ ok_fine
+Angel: [speed=0.6]Ok, fine! [wait=1]
+do emit_change_character_portrait(\"AngelIntense\")
+Angel: [speed=0.6]Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1.5]
+do show_easter_egg()
+
+~ for_real3
+Angel: [speed=0.6]That was seriously the last thing. We can't keep extending it forever. [wait=1]
+do emit_change_character_portrait(\"AngelNeutral\")
+Angel: [speed=0.6]It's only a demo after all! [wait=1.5]
+Angel: [speed=0.6]...So, goodbye![wait=1]
+Angel: And for the final time...[wait=1]
+do emit_change_character_portrait(\"AngelHappy\")
+Angel: [speed=0.6][wave]Thanks for playing~![/wave][wait=5]
+"
+errors = [  ]
+titles = {
+"are_you_still_here": "61",
+"doesnt_matter": "31",
+"dotdot": "21",
+"dotdotdot": "70",
+"for_real": "74",
+"for_real2": "79",
+"for_real3": "89",
+"good_job": "17",
+"greatest_honor": "43",
+"ok_fine": "83",
+"proud": "11",
+"thanks": "52",
+"thanksss": "56",
+"this_is_it": "25",
+"true_completionist": "6",
+"video_games": "36",
+"wow": "14",
+"you_did_it": "1"
+}
+lines = {
+"0": {
+"next_id": "1",
+"text": "you_did_it",
+"type": "title"
+},
+"1": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "2",
+"replacements": [  ],
+"text": "[speed=0.8]You did it! [wait=1]You completed all the special challenges this game has to offer. [wait=1]",
+"translation_key": "[speed=0.8]You did it! [wait=1]You completed all the special challenges this game has to offer. [wait=1]",
+"type": "dialogue"
+},
+"10": {
+"next_id": "11",
+"text": "proud",
+"type": "title"
+},
+"11": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.8]I am seriously proud of you![wait=1] You played the game so well! [wait=2]",
+"translation_key": "[speed=0.8]I am seriously proud of you![wait=1] You played the game so well! [wait=2]",
+"type": "dialogue"
+},
+"13": {
+"next_id": "14",
+"text": "wow",
+"type": "title"
+},
+"14": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.8]Wow. You really are the best! [wait=2]",
+"translation_key": "[speed=0.8]Wow. You really are the best! [wait=2]",
+"type": "dialogue"
+},
+"16": {
+"next_id": "17",
+"text": "good_job",
+"type": "title"
+},
+"17": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.8]Good job![wait=2]",
+"translation_key": "[speed=0.8]Good job![wait=2]",
+"type": "dialogue"
+},
+"19": {
+"next_id": "21",
+"text": "dotdot",
+"type": "title"
+},
+"2": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelHappy"
+} ] ]
+} ]
+},
+"next_id": "3",
+"type": "mutation"
+},
+"21": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelNeutral"
+} ] ]
+} ]
+},
+"next_id": "22",
+"type": "mutation"
+},
+"22": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.8]...[wait=2]",
+"translation_key": "[speed=0.8]...[wait=2]",
+"type": "dialogue"
+},
+"24": {
+"next_id": "25",
+"text": "this_is_it",
+"type": "title"
+},
+"25": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "26",
+"replacements": [  ],
+"text": "[speed=0.6]So... this is it. [wait=1]This is all our little world has to offer. [wait=1]For now. [wait=1.5]",
+"translation_key": "[speed=0.6]So... this is it. [wait=1]This is all our little world has to offer. [wait=1]For now. [wait=1.5]",
+"type": "dialogue"
+},
+"26": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelIntense"
+} ] ]
+} ]
+},
+"next_id": "27",
+"type": "mutation"
+},
+"27": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "28",
+"replacements": [  ],
+"text": "[speed=0.6]I wonder.. was it difficult? Or, more importantly, was it fun? [wait=1]",
+"translation_key": "[speed=0.6]I wonder.. was it difficult? Or, more importantly, was it fun? [wait=1]",
+"type": "dialogue"
+},
+"28": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.6]I wonder what you expected would happen in the end. [wait=2]",
+"translation_key": "[speed=0.6]I wonder what you expected would happen in the end. [wait=2]",
+"type": "dialogue"
+},
+"3": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.8]I hereby declare you a 
+[wave]R E A L  G A M E R [/wave]! [wait=2]",
+"translation_key": "[speed=0.8]I hereby declare you a 
+[wave]R E A L  G A M E R [/wave]! [wait=2]",
+"type": "dialogue"
+},
+"30": {
+"next_id": "31",
+"text": "doesnt_matter",
+"type": "title"
+},
+"31": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "32",
+"replacements": [  ],
+"text": "[speed=0.6]But I guess it doesn't matter. We are both here, [wait=0.5]right now.",
+"translation_key": "[speed=0.6]But I guess it doesn't matter. We are both here, [wait=0.5]right now.",
+"type": "dialogue"
+},
+"32": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelHappy"
+} ] ]
+} ]
+},
+"next_id": "33",
+"type": "mutation"
+},
+"33": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.6]Just enjoy the moment for however long you'd like. [wait=1.5]",
+"translation_key": "[speed=0.6]Just enjoy the moment for however long you'd like. [wait=1.5]",
+"type": "dialogue"
+},
+"35": {
+"next_id": "36",
+"text": "video_games",
+"type": "title"
+},
+"36": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "37",
+"replacements": [  ],
+"text": "[speed=0.6]Video games are hard to make, y'know? [wait=1]A lot harder than people think, [wait=1]even with modern tools. [wait=1.5]",
+"translation_key": "[speed=0.6]Video games are hard to make, y'know? [wait=1]A lot harder than people think, [wait=1]even with modern tools. [wait=1.5]",
+"type": "dialogue"
+},
+"37": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "38",
+"replacements": [  ],
+"text": "[speed=0.6]We had so many ideas... So many visions for this game. [wait=1]",
+"translation_key": "[speed=0.6]We had so many ideas... So many visions for this game. [wait=1]",
+"type": "dialogue"
+},
+"38": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "39",
+"replacements": [  ],
+"text": "[speed=0.6]This is what it turned into. [wait=1]A mere fraction of what we imagined. [wait=1.5]",
+"translation_key": "[speed=0.6]This is what it turned into. [wait=1]A mere fraction of what we imagined. [wait=1.5]",
+"type": "dialogue"
+},
+"39": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelHappy"
+} ] ]
+} ]
+},
+"next_id": "40",
+"type": "mutation"
+},
+"40": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.6]Yet the satisfaction of watching it come to life makes it all worth it! [wait=2.5]",
+"translation_key": "[speed=0.6]Yet the satisfaction of watching it come to life makes it all worth it! [wait=2.5]",
+"type": "dialogue"
+},
+"42": {
+"next_id": "43",
+"text": "greatest_honor",
+"type": "title"
+},
+"43": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "44",
+"replacements": [  ],
+"text": "[speed=0.6]And when players explore every nook and cranny of a game.. [wait=1]",
+"translation_key": "[speed=0.6]And when players explore every nook and cranny of a game.. [wait=1]",
+"type": "dialogue"
+},
+"44": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "45",
+"replacements": [  ],
+"text": "[speed=0.6]..that's the greatest honor for a game developer! [wait=1.5]",
+"translation_key": "[speed=0.6]..that's the greatest honor for a game developer! [wait=1.5]",
+"type": "dialogue"
+},
+"45": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "46",
+"replacements": [  ],
+"text": "[speed=0.6]So, from the bottom of my heart... [wait=1]",
+"translation_key": "[speed=0.6]So, from the bottom of my heart... [wait=1]",
+"type": "dialogue"
+},
+"46": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "47",
+"replacements": [  ],
+"text": "[speed=0.6]My angel-heart.. [wait=1]",
+"translation_key": "[speed=0.6]My angel-heart.. [wait=1]",
+"type": "dialogue"
+},
+"47": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelHappy"
+} ] ]
+} ]
+},
+"next_id": "48",
+"type": "mutation"
+},
+"48": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.6]Thank you so much for playing! [wait=2]",
+"translation_key": "[speed=0.6]Thank you so much for playing! [wait=2]",
+"type": "dialogue"
+},
+"5": {
+"next_id": "6",
+"text": "true_completionist",
+"type": "title"
+},
+"50": {
+"next_id": "52",
+"text": "thanks",
+"type": "title"
+},
+"52": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelHappy"
+} ] ]
+} ]
+},
+"next_id": "53",
+"type": "mutation"
+},
+"53": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.6]Thank you so much! [wait=2]",
+"translation_key": "[speed=0.6]Thank you so much! [wait=2]",
+"type": "dialogue"
+},
+"55": {
+"next_id": "56",
+"text": "thanksss",
+"type": "title"
+},
+"56": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "57",
+"replacements": [  ],
+"text": "[speed=0.6]...",
+"translation_key": "[speed=0.6]...",
+"type": "dialogue"
+},
+"57": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelHappy"
+} ] ]
+} ]
+},
+"next_id": "58",
+"type": "mutation"
+},
+"58": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.6]Thanks again! [wait=2]",
+"translation_key": "[speed=0.6]Thanks again! [wait=2]",
+"type": "dialogue"
+},
+"6": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "7",
+"replacements": [  ],
+"text": "[speed=0.8]A true completionist! [wait=1]You finished everything. [wait=1]",
+"translation_key": "[speed=0.8]A true completionist! [wait=1]You finished everything. [wait=1]",
+"type": "dialogue"
+},
+"60": {
+"next_id": "61",
+"text": "are_you_still_here",
+"type": "title"
+},
+"61": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "62",
+"replacements": [  ],
+"text": "[speed=0.6]Are you still here? [wait=1]Hmm...",
+"translation_key": "[speed=0.6]Are you still here? [wait=1]Hmm...",
+"type": "dialogue"
+},
+"62": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelScared"
+} ] ]
+} ]
+},
+"next_id": "63",
+"type": "mutation"
+},
+"63": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "64",
+"replacements": [  ],
+"text": "[speed=0.6]I can't really think of much else to say. [wait=1.5]",
+"translation_key": "[speed=0.6]I can't really think of much else to say. [wait=1.5]",
+"type": "dialogue"
+},
+"64": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelIntense"
+} ] ]
+} ]
+},
+"next_id": "65",
+"type": "mutation"
+},
+"65": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "66",
+"replacements": [  ],
+"text": "[speed=0.6]I guess I can just wish you a good day? [wait=1]",
+"translation_key": "[speed=0.6]I guess I can just wish you a good day? [wait=1]",
+"type": "dialogue"
+},
+"66": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelHappy"
+} ] ]
+} ]
+},
+"next_id": "67",
+"type": "mutation"
+},
+"67": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.6]I hope you have a good day! [wait=2]",
+"translation_key": "[speed=0.6]I hope you have a good day! [wait=2]",
+"type": "dialogue"
+},
+"69": {
+"next_id": "70",
+"text": "dotdotdot",
+"type": "title"
+},
+"7": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelHappy"
+} ] ]
+} ]
+},
+"next_id": "8",
+"type": "mutation"
+},
+"70": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelNeutral"
+} ] ]
+} ]
+},
+"next_id": "71",
+"type": "mutation"
+},
+"71": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.6]... [wait=2]",
+"translation_key": "[speed=0.6]... [wait=2]",
+"type": "dialogue"
+},
+"73": {
+"next_id": "74",
+"text": "for_real",
+"type": "title"
+},
+"74": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "75",
+"replacements": [  ],
+"text": "[speed=0.6]For real, I don't think there's gonna be any more interesting dialogue after this. [wait=1.5]",
+"translation_key": "[speed=0.6]For real, I don't think there's gonna be any more interesting dialogue after this. [wait=1.5]",
+"type": "dialogue"
+},
+"75": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelHappy"
+} ] ]
+} ]
+},
+"next_id": "76",
+"type": "mutation"
+},
+"76": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.6]Feel free to leave. [wait=2]",
+"translation_key": "[speed=0.6]Feel free to leave. [wait=2]",
+"type": "dialogue"
+},
+"78": {
+"next_id": "79",
+"text": "for_real2",
+"type": "title"
+},
+"79": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "80",
+"replacements": [  ],
+"text": "[speed=0.6]It's not a bit. [wait=1]There's no secret easter egg to be found by staying here longer. [wait=1.5]",
+"translation_key": "[speed=0.6]It's not a bit. [wait=1]There's no secret easter egg to be found by staying here longer. [wait=1.5]",
+"type": "dialogue"
+},
+"8": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.8]Congratulations! [wait=2]",
+"translation_key": "[speed=0.8]Congratulations! [wait=2]",
+"type": "dialogue"
+},
+"80": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.6]I promise! [wait=2]",
+"translation_key": "[speed=0.6]I promise! [wait=2]",
+"type": "dialogue"
+},
+"82": {
+"next_id": "83",
+"text": "ok_fine",
+"type": "title"
+},
+"83": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "84",
+"replacements": [  ],
+"text": "[speed=0.6]Ok, fine! [wait=1]",
+"translation_key": "[speed=0.6]Ok, fine! [wait=1]",
+"type": "dialogue"
+},
+"84": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelIntense"
+} ] ]
+} ]
+},
+"next_id": "85",
+"type": "mutation"
+},
+"85": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "86",
+"replacements": [  ],
+"text": "[speed=0.6]Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1.5]",
+"translation_key": "[speed=0.6]Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1.5]",
+"type": "dialogue"
+},
+"86": {
+"mutation": {
+"expression": [ {
+"function": "show_easter_egg",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "",
+"type": "mutation"
+},
+"88": {
+"next_id": "89",
+"text": "for_real3",
+"type": "title"
+},
+"89": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "90",
+"replacements": [  ],
+"text": "[speed=0.6]That was seriously the last thing. We can't keep extending it forever. [wait=1]",
+"translation_key": "[speed=0.6]That was seriously the last thing. We can't keep extending it forever. [wait=1]",
+"type": "dialogue"
+},
+"90": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelNeutral"
+} ] ]
+} ]
+},
+"next_id": "91",
+"type": "mutation"
+},
+"91": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "92",
+"replacements": [  ],
+"text": "[speed=0.6]It's only a demo after all! [wait=1.5]",
+"translation_key": "[speed=0.6]It's only a demo after all! [wait=1.5]",
+"type": "dialogue"
+},
+"92": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "93",
+"replacements": [  ],
+"text": "[speed=0.6]...So, goodbye![wait=1]",
+"translation_key": "[speed=0.6]...So, goodbye![wait=1]",
+"type": "dialogue"
+},
+"93": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "94",
+"replacements": [  ],
+"text": "And for the final time...[wait=1]",
+"translation_key": "And for the final time...[wait=1]",
+"type": "dialogue"
+},
+"94": {
+"mutation": {
+"expression": [ {
+"function": "emit_change_character_portrait",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "AngelHappy"
+} ] ]
+} ]
+},
+"next_id": "95",
+"type": "mutation"
+},
+"95": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "",
+"replacements": [  ],
+"text": "[speed=0.6][wave]Thanks for playing~![/wave][wait=5]",
+"translation_key": "[speed=0.6][wave]Thanks for playing~![/wave][wait=5]",
+"type": "dialogue"
+}
+}

@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 onready var animation_player = $AnimationPlayer
-export var duration : float  = 5
+export var duration : float  = 3
 
 func _ready():
 	animation_player.play("fade_in")

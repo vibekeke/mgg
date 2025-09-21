@@ -57,9 +57,10 @@ func _ready():
 	else:
 		room_button.text = "Bedroom"
 		room_button.disabled = false
-	AudioManager.playSFX("twinkle")
 	AudioManager.play_music("main_menu")
 	credits_menu.visible = false
+	
+	title_screen_animation.play("characters_appear")
 
 func _process(delta):
 	if (title_screen_animation.is_playing() or tween.is_active() or !camera_timer.is_stopped()) and Input.is_action_just_pressed("ui_accept"):
@@ -107,7 +108,7 @@ func _on_QuitButton_focus_exited():
 	star_select_quit.visible = false
 
 func _on_Tween_tween_all_completed():
-	title_screen_animation.play("characters_appear")
+	pass
 
 func _on_TitleScreenAnimation_animation_finished(anim_name):
 	if anim_name == "characters_appear":
@@ -187,8 +188,8 @@ func _input(event):
 			activate_cheat_code()
 
 
-func play_sound(sound_key : String):
-	AudioManager.playSFX(sound_key)
+func play_sound(sound_key : String, volume : float):
+	AudioManager.playSFX(sound_key, 0.0, volume)
 	
 
 
@@ -249,7 +250,7 @@ func start_camera_sequence():
 
 func _start_camera_tween():
 	tween.interpolate_property(camera, "position",
-		camera.position, Vector2(961, 540), 3.5,
+		camera.position, Vector2(961, 540), 4,
 		Tween.TRANS_QUART, Tween.EASE_OUT)
 	tween.start()
 

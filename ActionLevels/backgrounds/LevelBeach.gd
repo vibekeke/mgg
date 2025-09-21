@@ -17,3 +17,7 @@ func _physics_process(delta):
 
 func _on_background_moving_enabled(enabled: bool):
 	background_moving = enabled
+
+
+func _on_LevelStartDisplay_confirm_level_start():
+	$BeachForeground/SunShine/AnimatedSprite.play()

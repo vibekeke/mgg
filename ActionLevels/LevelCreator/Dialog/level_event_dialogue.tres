@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 100
+resource_version = 101
 syntax_version = 2
 raw_text = "~ level1_intro
 

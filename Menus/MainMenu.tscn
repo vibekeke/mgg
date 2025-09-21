@@ -269,6 +269,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "characters_appear"
+length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CharacterLayer/CoverArtMC:position")
 tracks/0/interp = 1
@@ -276,10 +277,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -572, 568 ), Vector2( 1273, 568 ) ]
+"values": [ Vector2( -572, 568 ), Vector2( -572, 568 ), Vector2( 1273, 568 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CharacterLayer/CoverArtSidekick:position")
@@ -288,10 +289,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2567, 829 ), Vector2( 1207, 829 ) ]
+"values": [ Vector2( 2567, 829 ), Vector2( 2567, 829 ), Vector2( 1207, 829 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CharacterLayer/CoverArtMC:modulate")
@@ -300,10 +301,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CharacterLayer/CoverArtSidekick:modulate")
@@ -312,10 +313,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("FlashLayer:visible")
@@ -324,10 +325,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1.5, 2.4, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, false ]
+"values": [ false, false, true, false ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("MenuLayer:visible")
@@ -336,10 +337,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false, false, true ]
 }
 tracks/6/type = "method"
 tracks/6/path = NodePath(".")
@@ -348,10 +349,13 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 2.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [ "magic_sound" ],
+"args": [ "twinkle", -6.0 ],
+"method": "play_sound"
+}, {
+"args": [ "magic_sound", -2.0 ],
 "method": "play_sound"
 } ]
 }
