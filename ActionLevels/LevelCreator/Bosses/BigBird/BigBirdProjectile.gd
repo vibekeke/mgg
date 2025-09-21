@@ -18,11 +18,9 @@ func _process(delta):
 	if off_leftside_screen():
 		self.queue_free()
 
-func allow_fade_out_death():
-	pass
-
 func _ready():
 	Events.connect("pacifist_successful", self, "_on_pacifist_successful")
+	Events.connect("level_event_complete", self, "_on_level_event_complete")
 	if area2d != null:
 		area2d.connect("area_entered", self, "_on_call_area_entered")
 
@@ -33,6 +31,9 @@ func _on_call_area_entered(area):
 	if area.is_in_group("player_hurtbox"):
 		Events.emit_signal("collided_with_player", 1)
 
+func _on_level_event_complete(event_name, event_number):
+	if event_number == 6:
+		animation_player.play("fade_out")
 
 func _on_VisibilityNotifier2D_screen_exited():
 	self.queue_free()

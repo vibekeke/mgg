@@ -169,6 +169,7 @@ func _on_big_bird_boss_defeated(death_position):
 	end_event()
 
 func _on_pacifist_successful():
+	Events.emit_signal("pausing_allowed", false)
 	AudioManager.fade_out_music(3)
 	collectible_spawn_timer.stop()
 	Events.emit_signal("disable_player_action", true)
