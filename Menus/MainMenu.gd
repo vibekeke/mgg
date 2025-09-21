@@ -73,7 +73,7 @@ func _process(delta):
 func _on_StartButton_pressed():
 	if !button_pressed:
 		button_pressed = true
-		AudioManager.playSFX("ui_confirm", 0.0, 5.0)
+		AudioManager.playSFX("ui_confirm", 1.0, 5.0)
 		AudioManager.fade_out_music(1)
 		send_to_level("Level1")
 
@@ -189,7 +189,7 @@ func _input(event):
 
 
 func play_sound(sound_key : String, volume : float):
-	AudioManager.playSFX(sound_key, 0.0, volume)
+	AudioManager.playSFX(sound_key, 1.0, volume)
 	
 
 
@@ -230,7 +230,7 @@ func _on_NoDeleteButton_pressed():
 
 func _on_YesDeleteButton_focus_entered():
 	SaveFileManager.reset_save_file()
-	AudioManager.playSFX("ui_hover", 0.0, -5.0)
+	AudioManager.playSFX("ui_hover", 1.0, -5.0)
 
 func _on_NoDeleteButton_focus_entered():
 	AudioManager.playSFX("ui_hover")

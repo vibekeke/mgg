@@ -42,7 +42,7 @@ func set_is_paused(value):
 		resume_button.grab_focus()
 
 func _on_ResumeBtn_pressed():
-	AudioManager.playSFX("ui_confirm", 0.0, 5.0)
+	AudioManager.playSFX("ui_confirm", 1.0, 5.0)
 	self.is_paused = false
 
 func _on_QuitBtn_pressed():
@@ -55,7 +55,7 @@ func _on_QuitBtn_pressed():
 
 func _on_BackBtn_pressed():
 	Events.emit_signal("player_invincible", true)
-	AudioManager.playSFX("ui_confirm", 0.0, 5.0)
+	AudioManager.playSFX("ui_confirm", 1.0, 5.0)
 	yield(get_tree().create_timer(0.4, true), "timeout")
 	self.is_paused = false
 	Events.emit_signal("transition_to_scene", "Level1", false)
