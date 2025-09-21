@@ -24,6 +24,7 @@ onready var credits_hide_button = get_node("%CreditsHideButton")
 onready var delete_save_button = get_node("%DeleteSaveButton")
 onready var delete_save_panel = get_node("%DeleteSavePanel")
 
+onready var camera_timer : Timer = Timer.new()
 onready var high_score : int = SaveFileManager.get_high_score()
 
 onready var cheat_code_detection : PoolStringArray = PoolStringArray()
@@ -38,10 +39,14 @@ func _ready():
 	Events.initialize()
 
 	cheat_code_detection = []
-	tween.interpolate_property(camera, "position",
-		camera.position, Vector2(961, 540), 2,
-		Tween.TRANS_SINE, Tween.EASE_IN)
-	tween.start()
+
+	# Setup camera timer
+	add_child(camera_timer)
+	camera_timer.wait_time = 1.5
+	camera_timer.one_shot = true
+	camera_timer.connect("timeout", self, "_start_camera_tween")
+
+	start_camera_sequence()
 	SceneManager.visible = true
 	var directory = Directory.new()
 	var fileExists = directory.file_exists(Events.SAVE_FILE_LOCATION)
@@ -57,9 +62,12 @@ func _ready():
 	credits_menu.visible = false
 
 func _process(delta):
-	if (title_screen_animation.is_playing() or tween.is_active()) and Input.is_action_just_pressed("ui_accept"):
+	if (title_screen_animation.is_playing() or tween.is_active() or !camera_timer.is_stopped()) and Input.is_action_just_pressed("ui_accept"):
 		tween.playback_speed = 10
 		title_screen_animation.playback_speed = 10
+		# Speed up camera timer by reducing wait time significantly
+		if !camera_timer.is_stopped():
+			camera_timer.wait_time = 0.1
 
 func _on_StartButton_pressed():
 	if !button_pressed:
@@ -235,4 +243,13 @@ func _on_FullscreenCheckbox_focus_entered():
 func _on_FullscreenCheckbox_focus_exited():
 	star_select_fullscreen.visible = false
 	fullscreen_label.modulate = Color(1, 1, 1, 1)
-	
+
+func start_camera_sequence():
+	camera_timer.start()
+
+func _start_camera_tween():
+	tween.interpolate_property(camera, "position",
+		camera.position, Vector2(961, 540), 3.5,
+		Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.start()
+
