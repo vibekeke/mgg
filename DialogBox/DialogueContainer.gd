@@ -14,7 +14,7 @@ onready var dialogue_container_animation_player = get_node("%DialogueContainerAn
 onready var auto_advance_timer = get_node("%AutoAdvanceTimer")
 
 var placement_dictionary = {
-	DataClasses.Placement.LOWER: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(1385.0, 1005.0)}},
+	DataClasses.Placement.LOWER: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(1388.0, 1008.0)}},
 	DataClasses.Placement.MIDDLE: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(0.0,0.0)}},
 	DataClasses.Placement.UPPER: {'dialogue_main_window': {'top': 0.05, 'bottom': 0.3}, 'portrait': {'top': 0.0, 'bottom': 0.0}, 'cursor': {'position': Vector2(1396.0, 290.0)}}
 }

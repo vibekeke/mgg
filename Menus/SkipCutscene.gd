@@ -71,10 +71,6 @@ func _input(event):
 		if not event.is_action("ui_accept"):
 			show_hint = true
 			hide_timer = hide_hint_after
-	elif event is InputEventMouseButton and event.pressed:
-		if not event.is_action("click"):
-			show_hint = true
-			hide_timer = hide_hint_after
 
 func _apply_shake(delta):
 	shake_time += delta
