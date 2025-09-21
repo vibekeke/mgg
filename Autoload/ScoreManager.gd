@@ -6,9 +6,9 @@ var internal_score : int = 0
 var hits_taken : int = 0
 var collected_dogs : int = 0
 
-const DEFAULT_ENEMY_SCORE : int = 10
-const DEFAULT_STAR_SCORE : int = 50
-const DEFAULT_DOG_SCORE : int = 150
+const DEFAULT_ENEMY_SCORE : int = 20
+const DEFAULT_STAR_SCORE : int = 30
+const DEFAULT_DOG_SCORE : int = 100
 
 func _ready():
 	Events.connect("regular_enemy_death", self, "_on_regular_enemy_death")

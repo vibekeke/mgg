@@ -332,8 +332,8 @@ margin_bottom = 428.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 24 )
 bbcode_enabled = true
-bbcode_text = "* Get a HIGH SCHORE of more than 2500"
-text = "* Get a HIGH SCHORE of more than 2500"
+bbcode_text = "* Get a HIGH SCHORE of more than 3000"
+text = "* Get a HIGH SCHORE of more than 3000"
 fit_content_height = true
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
