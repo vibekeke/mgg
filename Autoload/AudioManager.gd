@@ -51,7 +51,8 @@ var music = {
 	"level1_boss" : preload("res://sounds/music/Prosjekt2.mp3"),
 	"credits" : preload("res://sounds/music/vinnermusikk.mp3"),
 	"game_over" : preload("res://sounds/music/emily_rocketrommer.mp3"),
-	"cafe" : preload("res://sounds/music/emily_cafe.mp3")
+	"cafe" : preload("res://sounds/music/emily_cafe.mp3"),
+	"zenmily" : preload("res://sounds/music/Emili zen.mp3")
 }
 
 var sfx_players = []

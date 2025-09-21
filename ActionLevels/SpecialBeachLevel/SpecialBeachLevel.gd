@@ -3,6 +3,7 @@ extends Level
 export var special_beach_dialogue : Resource
 export var easter_egg : PackedScene
 
+var text_speed = 0.7
 #I made the queue a bunch of tuples with the portraits cause it won't change the first portrait otherwise
 var dialogue_queue = [
 	["you_did_it", DataClasses.CharacterPortrait.AngelIntense],
