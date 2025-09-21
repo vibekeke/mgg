@@ -569,6 +569,7 @@ tracks/3/keys = {
 }
 
 [node name="YouWinPopup" type="CanvasLayer"]
+layer = 100
 script = ExtResource( 1 )
 
 [node name="ChallengeMessage" type="VBoxContainer" parent="."]
@@ -619,7 +620,8 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 300.0
-margin_bottom = 300.0
+margin_right = 1920.0
+margin_bottom = 1380.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 margin_left = 610.0
