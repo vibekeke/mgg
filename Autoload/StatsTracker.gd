@@ -73,7 +73,7 @@ func high_score_over_threshold() -> void:
 	if high_score_run_completed:
 		return
 	if current_level_stats and current_level_stats.last_run_completed:
-		if ScoreManager.get_score() >= 2500:
+		if ScoreManager.get_score() >= 3000:
 			high_score_run_completed = true
 			notification_queue.append("high_score_run")
 			SaveFileManager.set_high_score_run_completed(true)
