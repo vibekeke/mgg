@@ -3,7 +3,6 @@ extends Node2D
 var tv_sound_finished = false
 export var intro_dialog : Resource
 
-onready var is_cutscene_skippable : bool = SaveFileManager.get_beaten_first_level_before()
 
 func _ready():
 	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
@@ -24,16 +23,20 @@ func display_dialogue():
 		self.get_instance_id(),
 		DataClasses.Placement.LOWER,
 		DataClasses.CharacterPortrait.None,
-		Color(0.2902, 0.2745, 0.4588, 0.5),
-		Color(0.0, 0.0, 0.0, 0.25)
+		Color(0.2202, 0.2245, 0.4188, 0.5),
+		Color(1, 1, 1, 0.25)
 	)
 
 func _process(delta):
 	if tv_sound_finished:
 		$CanvasLayer/VHS.set_modulate(lerp($CanvasLayer/VHS.get_modulate(), Color(1,1,1,1), 0.05))
-		$AyyLmao.set_modulate(lerp($AyyLmao.get_modulate(), Color(1,1,1,0.1), 0.05))
-		$AyyLmao2.set_modulate(lerp($AyyLmao2.get_modulate(), Color(1,1,1,0.1), 0.05))
+		$AyyLmao.set_modulate(lerp($AyyLmao.get_modulate(), Color(1,1,1,0.22), 0.05))
+		$AyyLmao2.set_modulate(lerp($AyyLmao2.get_modulate(), Color(1,1,1,0.22), 0.05))
 
 func _on_TVTurnOn_finished():
 	tv_sound_finished = true
 	display_dialogue()
+
+func _on_SkipCutscene_skip_cutscene():
+	$TVTurnOn.stop()
+	Events.emit_signal("transition_to_scene", "DemoEndCredits", false)

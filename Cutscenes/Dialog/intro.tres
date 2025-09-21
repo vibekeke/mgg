@@ -4,16 +4,16 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 21
+resource_version = 23
 syntax_version = 2
 raw_text = "~ intro
-[color=black][shake level=7]???: [speed=0.5][color=black][shake level=12]Have the bird and fish been deployed?
-[color=black][shake level=7]???: [speed=0.5][color=black][shake level=8]Yes sir, the girl should be awakening soon.
-[color=black][shake level=7]???: [speed=0.5][color=black][shake level=12]What about the boy?
-[color=black][shake level=7]???: [speed=0.5][color=black][shake level=8]That will take more time. But once he awakens the girl will have a [wave]real challenge.[/wave]
-[color=black][shake level=7]???: [speed=0.5][color=black][shake level=12]Perfect...
-[color=black][shake level=7]???: [speed=0.5][color=black][shake level=12]Finally...
-[color=black][shake level=7]???: [speed=0.5][color=black][shake level=12]A world where Moonlight Miko will be real!"
+[color=gray][shake level=7]???: [speed=0.5][color=gray][shake level=12]Have the bird and fish been deployed?
+[color=gray][shake level=7]???: [speed=0.5][color=gray][shake level=8]Yes sir, the girl should be awakening soon.
+[color=gray][shake level=7]???: [speed=0.5][color=gray][shake level=12]What about the boy?
+[color=gray][shake level=7]???: [speed=0.5][color=gray][shake level=8]That will take more time. But once he awakens the girl will have a [wave]real challenge.[/wave]
+[color=gray][shake level=7]???: [speed=0.5][color=gray][shake level=12]Perfect...
+[color=gray][shake level=7]???: [speed=0.5][color=gray][shake level=12]Finally...
+[color=gray][shake level=7]???: [speed=0.5][color=gray][shake level=12]A world where Moonlight Miko will be real!"
 errors = [  ]
 titles = {
 "intro": "1"
@@ -25,66 +25,66 @@ lines = {
 "type": "title"
 },
 "1": {
-"character": "[color=black][shake level=7]???",
+"character": "[color=gray][shake level=7]???",
 "character_replacements": [  ],
 "next_id": "2",
 "replacements": [  ],
-"text": "[speed=0.5][color=black][shake level=12]Have the bird and fish been deployed?",
-"translation_key": "[speed=0.5][color=black][shake level=12]Have the bird and fish been deployed?",
+"text": "[speed=0.5][color=gray][shake level=12]Have the bird and fish been deployed?",
+"translation_key": "[speed=0.5][color=gray][shake level=12]Have the bird and fish been deployed?",
 "type": "dialogue"
 },
 "2": {
-"character": "[color=black][shake level=7]???",
+"character": "[color=gray][shake level=7]???",
 "character_replacements": [  ],
 "next_id": "3",
 "replacements": [  ],
-"text": "[speed=0.5][color=black][shake level=8]Yes sir, the girl should be awakening soon.",
-"translation_key": "[speed=0.5][color=black][shake level=8]Yes sir, the girl should be awakening soon.",
+"text": "[speed=0.5][color=gray][shake level=8]Yes sir, the girl should be awakening soon.",
+"translation_key": "[speed=0.5][color=gray][shake level=8]Yes sir, the girl should be awakening soon.",
 "type": "dialogue"
 },
 "3": {
-"character": "[color=black][shake level=7]???",
+"character": "[color=gray][shake level=7]???",
 "character_replacements": [  ],
 "next_id": "4",
 "replacements": [  ],
-"text": "[speed=0.5][color=black][shake level=12]What about the boy?",
-"translation_key": "[speed=0.5][color=black][shake level=12]What about the boy?",
+"text": "[speed=0.5][color=gray][shake level=12]What about the boy?",
+"translation_key": "[speed=0.5][color=gray][shake level=12]What about the boy?",
 "type": "dialogue"
 },
 "4": {
-"character": "[color=black][shake level=7]???",
+"character": "[color=gray][shake level=7]???",
 "character_replacements": [  ],
 "next_id": "5",
 "replacements": [  ],
-"text": "[speed=0.5][color=black][shake level=8]That will take more time. But once he awakens the girl will have a [wave]real challenge.[/wave]",
-"translation_key": "[speed=0.5][color=black][shake level=8]That will take more time. But once he awakens the girl will have a [wave]real challenge.[/wave]",
+"text": "[speed=0.5][color=gray][shake level=8]That will take more time. But once he awakens the girl will have a [wave]real challenge.[/wave]",
+"translation_key": "[speed=0.5][color=gray][shake level=8]That will take more time. But once he awakens the girl will have a [wave]real challenge.[/wave]",
 "type": "dialogue"
 },
 "5": {
-"character": "[color=black][shake level=7]???",
+"character": "[color=gray][shake level=7]???",
 "character_replacements": [  ],
 "next_id": "6",
 "replacements": [  ],
-"text": "[speed=0.5][color=black][shake level=12]Perfect...",
-"translation_key": "[speed=0.5][color=black][shake level=12]Perfect...",
+"text": "[speed=0.5][color=gray][shake level=12]Perfect...",
+"translation_key": "[speed=0.5][color=gray][shake level=12]Perfect...",
 "type": "dialogue"
 },
 "6": {
-"character": "[color=black][shake level=7]???",
+"character": "[color=gray][shake level=7]???",
 "character_replacements": [  ],
 "next_id": "7",
 "replacements": [  ],
-"text": "[speed=0.5][color=black][shake level=12]Finally...",
-"translation_key": "[speed=0.5][color=black][shake level=12]Finally...",
+"text": "[speed=0.5][color=gray][shake level=12]Finally...",
+"translation_key": "[speed=0.5][color=gray][shake level=12]Finally...",
 "type": "dialogue"
 },
 "7": {
-"character": "[color=black][shake level=7]???",
+"character": "[color=gray][shake level=7]???",
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "[speed=0.5][color=black][shake level=12]A world where Moonlight Miko will be real!",
-"translation_key": "[speed=0.5][color=black][shake level=12]A world where Moonlight Miko will be real!",
+"text": "[speed=0.5][color=gray][shake level=12]A world where Moonlight Miko will be real!",
+"translation_key": "[speed=0.5][color=gray][shake level=12]A world where Moonlight Miko will be real!",
 "type": "dialogue"
 }
 }
