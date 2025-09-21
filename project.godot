@@ -55,11 +55,6 @@ _global_script_classes=[ {
 "path": "res://addons/dialogue_manager/dialogue_resource.gd"
 }, {
 "base": "Node2D",
-"class": "DumbEnemy",
-"language": "GDScript",
-"path": "res://ActionLevels/LevelCreator/DumbActors/DumbEnemies.gd"
-}, {
-"base": "Node2D",
 "class": "EnemyBase",
 "language": "GDScript",
 "path": "res://ActionLevels/LevelCreator/Enemies/EnemyBase.gd"
@@ -159,7 +154,6 @@ _global_script_class_icons={
 "DamageEnemyBaseClassArea": "",
 "DataClasses": "",
 "DialogueResource": "",
-"DumbEnemy": "",
 "EnemyBase": "",
 "FakeSnowParticles": "",
 "GenericPlatform": "",
