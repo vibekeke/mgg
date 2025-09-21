@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-resource_version = 29
+resource_version = 36
 syntax_version = 2
 raw_text = "~ you_did_it
 Angel: You did it! [wait=1]You completed all the special challenges this game has to offer. [wait=1]
@@ -92,7 +92,8 @@ Angel: I promise! [wait=2]
 ~ ok_fine
 Angel: Ok, fine! [wait=1]
 do emit_change_character_portrait(\"AngelIntense\")
-Angel: Here, have an easter egg. [wait=1]But don't tell anyone, ok? [wait=2]
+Angel: Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1]
+do show_easter_egg()
 
 ~ for_real3
 Angel: That was seriously the last thing. We can't keep extending it forever. [wait=1]
@@ -100,20 +101,17 @@ do emit_change_character_portrait(\"AngelNeutral\")
 Angel: It's only a demo after all! [wait=1.5]
 Angel: ...So, goodbye![wait=1]
 do emit_change_character_portrait(\"AngelHappy\")
-Angel: [wave]Thanks for playing~![/wave][wait=3]
-
-~ finish
-Angel: Goodbye <3 [wait=2]"
+Angel: [wave]Thanks for playing~![/wave][wait=5]
+"
 errors = [  ]
 titles = {
 "are_you_still_here": "61",
 "doesnt_matter": "31",
 "dotdot": "21",
 "dotdotdot": "70",
-"finish": "97",
 "for_real": "74",
 "for_real2": "79",
-"for_real3": "89",
+"for_real3": "90",
 "good_job": "17",
 "greatest_honor": "43",
 "ok_fine": "84",
@@ -751,27 +749,38 @@ lines = {
 "86": {
 "character": "Angel",
 "character_replacements": [  ],
-"next_id": "",
+"next_id": "87",
 "replacements": [  ],
-"text": "Here, have an easter egg. [wait=1]But don't tell anyone, ok? [wait=2]",
-"translation_key": "Here, have an easter egg. [wait=1]But don't tell anyone, ok? [wait=2]",
+"text": "Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1]",
+"translation_key": "Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1]",
 "type": "dialogue"
 },
-"88": {
-"next_id": "89",
+"87": {
+"mutation": {
+"expression": [ {
+"function": "show_easter_egg",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "",
+"type": "mutation"
+},
+"89": {
+"next_id": "90",
 "text": "for_real3",
 "type": "title"
 },
-"89": {
+"90": {
 "character": "Angel",
 "character_replacements": [  ],
-"next_id": "90",
+"next_id": "91",
 "replacements": [  ],
 "text": "That was seriously the last thing. We can't keep extending it forever. [wait=1]",
 "translation_key": "That was seriously the last thing. We can't keep extending it forever. [wait=1]",
 "type": "dialogue"
 },
-"90": {
+"91": {
 "mutation": {
 "expression": [ {
 "function": "emit_change_character_portrait",
@@ -782,28 +791,28 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "91",
-"type": "mutation"
-},
-"91": {
-"character": "Angel",
-"character_replacements": [  ],
 "next_id": "92",
-"replacements": [  ],
-"text": "It's only a demo after all! [wait=1.5]",
-"translation_key": "It's only a demo after all! [wait=1.5]",
-"type": "dialogue"
+"type": "mutation"
 },
 "92": {
 "character": "Angel",
 "character_replacements": [  ],
 "next_id": "93",
 "replacements": [  ],
+"text": "It's only a demo after all! [wait=1.5]",
+"translation_key": "It's only a demo after all! [wait=1.5]",
+"type": "dialogue"
+},
+"93": {
+"character": "Angel",
+"character_replacements": [  ],
+"next_id": "94",
+"replacements": [  ],
 "text": "...So, goodbye![wait=1]",
 "translation_key": "...So, goodbye![wait=1]",
 "type": "dialogue"
 },
-"93": {
+"94": {
 "mutation": {
 "expression": [ {
 "function": "emit_change_character_portrait",
@@ -814,30 +823,16 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "94",
+"next_id": "95",
 "type": "mutation"
 },
-"94": {
+"95": {
 "character": "Angel",
 "character_replacements": [  ],
 "next_id": "",
 "replacements": [  ],
-"text": "[wave]Thanks for playing~![/wave][wait=3]",
-"translation_key": "[wave]Thanks for playing~![/wave][wait=3]",
-"type": "dialogue"
-},
-"96": {
-"next_id": "97",
-"text": "finish",
-"type": "title"
-},
-"97": {
-"character": "Angel",
-"character_replacements": [  ],
-"next_id": "",
-"replacements": [  ],
-"text": "Goodbye <3 [wait=2]",
-"translation_key": "Goodbye <3 [wait=2]",
+"text": "[wave]Thanks for playing~![/wave][wait=5]",
+"translation_key": "[wave]Thanks for playing~![/wave][wait=5]",
 "type": "dialogue"
 }
 }

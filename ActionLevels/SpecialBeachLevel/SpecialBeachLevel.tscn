@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/LevelBoundaries.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HUD/PauseMenuGameplay.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://ActionLevels/Camera/StageCamera.tscn" type="PackedScene" id=14]
 [ext_resource path="res://sounds/music/beach_ambience.mp3" type="AudioStream" id=15]
 [ext_resource path="res://ActionLevels/LevelCreator/Dialog/ascension_dialogue.tres" type="Resource" id=16]
+[ext_resource path="res://Menus/Egg.tscn" type="PackedScene" id=17]
 
 [node name="SpecialBeachLevel" type="Node2D"]
 script = ExtResource( 11 )
@@ -28,6 +29,7 @@ enemy_pooler_path = NodePath("EnemyPoolSpawner")
 screen_filter_path = NodePath("LevelBeach/VHS")
 level_start_display_path = NodePath("LevelStartDisplay")
 special_beach_dialogue = ExtResource( 16 )
+easter_egg = ExtResource( 17 )
 
 [node name="LevelStartDisplay" parent="." instance=ExtResource( 13 )]
 hide_tutorial = true

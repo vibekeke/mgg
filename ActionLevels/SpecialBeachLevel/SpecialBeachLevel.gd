@@ -1,6 +1,7 @@
 extends Level
 
 export var special_beach_dialogue : Resource
+export var easter_egg : PackedScene
 
 #I made the queue a bunch of tuples with the portraits cause it won't change the first portrait otherwise
 var dialogue_queue = [
@@ -22,7 +23,6 @@ var dialogue_queue = [
 	["for_real2", DataClasses.CharacterPortrait.AngelNeutral],
 	["ok_fine",DataClasses.CharacterPortrait.AngelScared],
 	["for_real3", DataClasses.CharacterPortrait.AngelIntense],
-	["finish", DataClasses.CharacterPortrait.AngelHappy]
 ]
 
 func _ready():
@@ -40,7 +40,7 @@ func _on_dialogue_box_finished(node_id):
 		start_dialogue_timer()
 
 func start_dialogue_timer():
-	var time = rand_range(1, 3)
+	var time = rand_range(4, 9)
 	$"%DialogueTimer".wait_time = time
 	$"%DialogueTimer".start()
 
@@ -61,7 +61,7 @@ func play_next_dialogue():
 		self.get_instance_id(), 
 		DataClasses.Placement.UPPER, 
 		portrait,
-		Color(0.0, 0.38, 0.58, 0.6),
+		Color(0.0, 0.42, 0.62, 0.6),
 		Color(0.0, 0.0, 0.0, 0.25),
 		true,
 		1.5
@@ -71,3 +71,7 @@ func _get_next_dialogue():
 	if dialogue_queue.size() > 0:
 		return dialogue_queue.pop_front()
 	return null   # or null if you prefer
+
+func show_easter_egg():
+	var new_instance = easter_egg.instance()
+	get_tree().current_scene.add_child(new_instance)
