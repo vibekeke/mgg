@@ -42,7 +42,7 @@ func _ready():
 
 	# Setup camera timer
 	add_child(camera_timer)
-	camera_timer.wait_time = 1.5
+	camera_timer.wait_time = 0.5
 	camera_timer.one_shot = true
 	camera_timer.connect("timeout", self, "_start_camera_tween")
 
