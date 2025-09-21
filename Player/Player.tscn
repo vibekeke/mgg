@@ -1832,7 +1832,8 @@ parameters/Slide/TimeScale/scale = 1.0
 [node name="StaffUp" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 189 )
-animation = "melee_2"
+animation = "run"
+frame = 10
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -1898,153 +1899,6 @@ stream = ExtResource( 3 )
 volume_db = -20.0
 pitch_scale = 2.03
 
-[node name="DebugCanvasLayer" type="CanvasLayer" parent="."]
-layer = 128
-
-[node name="Control" type="Control" parent="DebugCanvasLayer"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -40.0
-margin_right = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DebugCanvasLayer/Control"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 71.0
-margin_top = -1041.0
-margin_right = 250.0
-margin_bottom = -763.0
-rect_scale = Vector2( 2, 2 )
-
-[node name="AnimationStateTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_right = 179.0
-margin_bottom = 14.0
-text = "Animation"
-
-[node name="FireRateTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 18.0
-margin_right = 179.0
-margin_bottom = 32.0
-text = "Fire Rate Seconds"
-
-[node name="FireRateSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 36.0
-margin_right = 179.0
-margin_bottom = 52.0
-min_value = 0.01
-max_value = 1.0
-step = 0.01
-value = 0.01
-
-[node name="MovementSpeedTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 56.0
-margin_right = 179.0
-margin_bottom = 70.0
-text = "Movement Speed"
-
-[node name="MovementSpeedSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 74.0
-margin_right = 179.0
-margin_bottom = 90.0
-min_value = 100.0
-max_value = 10000.0
-step = 100.0
-value = 100.0
-rounded = true
-
-[node name="MaxHeightJumpTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 94.0
-margin_right = 179.0
-margin_bottom = 108.0
-text = "Max Height Jump"
-
-[node name="MaxHeightJumpSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 112.0
-margin_right = 179.0
-margin_bottom = 128.0
-min_value = 100.0
-max_value = 1000.0
-step = 10.0
-value = 100.0
-rounded = true
-
-[node name="MinHeightJumpTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 132.0
-margin_right = 179.0
-margin_bottom = 146.0
-text = "Min Height Jump"
-
-[node name="MinHeightJumpSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 150.0
-margin_right = 179.0
-margin_bottom = 166.0
-min_value = 100.0
-max_value = 1000.0
-step = 10.0
-value = 100.0
-rounded = true
-
-[node name="JumpTimeToPeakTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 170.0
-margin_right = 179.0
-margin_bottom = 184.0
-text = "Gravity Up"
-
-[node name="JumpTimeToPeakSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 188.0
-margin_right = 179.0
-margin_bottom = 204.0
-min_value = 0.01
-max_value = 2.0
-step = 0.01
-value = 0.01
-
-[node name="JumpTimeToDescentTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 208.0
-margin_right = 179.0
-margin_bottom = 222.0
-text = "Gravity Down"
-
-[node name="JumpTimeToDescentSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 226.0
-margin_right = 179.0
-margin_bottom = 242.0
-min_value = 0.01
-max_value = 4.0
-step = 0.01
-value = 0.01
-
-[node name="SlideSpeedTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 246.0
-margin_right = 179.0
-margin_bottom = 260.0
-text = "Slide Speed "
-
-[node name="SlideSpeedSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 264.0
-margin_right = 179.0
-margin_bottom = 280.0
-min_value = 100.0
-max_value = 6000.0
-step = 100.0
-value = 1600.0
-rounded = true
-
-[node name="SlideDurationTitle" type="Label" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 284.0
-margin_right = 179.0
-margin_bottom = 298.0
-text = "Slide Duration"
-
-[node name="SlideDurationSlider" type="HSlider" parent="DebugCanvasLayer/Control/VBoxContainer"]
-margin_top = 302.0
-margin_right = 179.0
-margin_bottom = 318.0
-min_value = 0.01
-max_value = 4.0
-step = 0.01
-value = 0.01
-
 [node name="HurtArea" type="Area2D" parent="." groups=["player_hurtbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
@@ -2080,12 +1934,3 @@ scale = Vector2( 17.7143, 29.8571 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/FireRateSlider" to="." method="_on_FireRateSlider_value_changed"]
-[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/MovementSpeedSlider" to="." method="_on_MovementSpeedSlider_value_changed"]
-[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpSlider" to="." method="_on_MaxHeightJumpSlider_value_changed"]
-[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpSlider" to="." method="_on_MinHeightJumpSlider_value_changed"]
-[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakSlider" to="." method="_on_JumpTimeToPeakSlider_value_changed"]
-[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider" to="." method="_on_JumpTimeToDescentSlider_value_changed"]
-[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/SlideSpeedSlider" to="." method="_on_SlideSpeedSlider_value_changed"]
-[connection signal="value_changed" from="DebugCanvasLayer/Control/VBoxContainer/SlideDurationSlider" to="." method="_on_SlideDurationSlider_value_changed"]

@@ -151,8 +151,6 @@ func _ready():
 		travel_to_animation("JustStanding")
 	else:
 		travel_to_animation("Run")
-	
-	setup_debug_canvas(debug_mode)
 
 func _on_in_battle_dialogue(_in_battle_dialogue, _enemy_name):
 	in_battle_dialogue = _in_battle_dialogue
@@ -201,7 +199,6 @@ func _flash_charge_shoot_setup():
 
 func _respawn_timer_setup():
 	respawn_timer.set_name("respawn_timer")
-	#respawn_timer.connect("timeout", self, "_on_respawn_timeout")
 	respawn_timer.set_wait_time(1.0)
 	respawn_timer.set_one_shot(true)
 	self.add_child(respawn_timer)
@@ -297,7 +294,6 @@ func shoot(angle):
 		_gunshot.position = self.position + Vector2(180,-90)
 	if angle == SHOOT_ANGLE.DOWNWARD_B:
 		_gunshot.position = self.position + Vector2(200,160)
-	#$BulletFire.play(0.0)
 	AudioManager.playSFX("player_shoot", 2.0, -15.0)
 	fire_rate_timer.start()
 
@@ -482,88 +478,3 @@ func _process(delta):
 	Events.emit_signal("player_global_position", self.global_position)
 	Events.emit_signal("player_local_position", self.position)
 	animation_to_show()
-	if debug_mode:
-		#$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
-		pass
-
-func setup_debug_canvas(debug_enabled: bool):
-	if debug_enabled:
-		$DebugCanvasLayer/Control/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(fire_rate_secs)
-		$DebugCanvasLayer/Control/VBoxContainer/FireRateSlider.value = fire_rate_secs
-
-		$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedTitle.text = "Movement Speed: " + str(horizontal_movement_speed)
-		$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedSlider.value = horizontal_movement_speed
-		
-		$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpTitle.text = "Max Jump Height: " + str(max_jump_height)
-		$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpSlider.value = max_jump_height
-
-		$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpTitle.text = "Min Jump Height: " + str(min_jump_height)
-		$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpSlider.value = min_jump_height
-		
-		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakTitle.text = "Gravity Up: " + str(jump_time_to_peak)
-		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakSlider.value = jump_time_to_peak
-		
-		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentTitle.text = "Gravity Down: " + str(jump_time_to_descent)
-		$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider.value = jump_time_to_descent
-		
-
-		#$DebugCanvasLayer/Control/VBoxContainer/AnimationStateTitle.text = "Animation: " + sprite_anim_to_player_name[$StaffForward.animation]
-		
-		$DebugCanvasLayer/Control/VBoxContainer/SlideDurationTitle.text = "Slide Duration: " + str(slide_duration)
-		$DebugCanvasLayer/Control/VBoxContainer/SlideDurationSlider.value = slide_duration
-		
-		$DebugCanvasLayer/Control/VBoxContainer/SlideSpeedTitle.text = "Slide Speed: " + str(slide_value)
-		$DebugCanvasLayer/Control/VBoxContainer/SlideSpeedSlider.value = slide_value
-		
-	else:
-		$DebugCanvasLayer.visible = false
-
-
-func _on_MovementSpeedSlider_value_changed(value):
-	$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedSlider.value = value
-	$DebugCanvasLayer/Control/VBoxContainer/MovementSpeedTitle.text = "Movement Speed: " + str(value)
-	horizontal_movement_speed = value
-
-
-func _on_MaxHeightJumpSlider_value_changed(value):
-	$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpSlider.value = value
-	$DebugCanvasLayer/Control/VBoxContainer/MaxHeightJumpTitle.text = "Max Height Jump: " + str(value)
-	max_jump_height = value
-	debug_recalculate_jump_maths()
-
-func _on_MinHeightJumpSlider_value_changed(value):
-	$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpSlider.value = value
-	$DebugCanvasLayer/Control/VBoxContainer/MinHeightJumpTitle.text = "Min Height Jump: " + str(value)
-	min_jump_height = value
-	debug_recalculate_jump_maths()
-	
-func _on_JumpTimeToPeakSlider_value_changed(value):
-	$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakSlider.value = value
-	$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToPeakTitle.text = "Gravity Up: " + str(value)
-	jump_time_to_peak = value
-	debug_recalculate_jump_maths()
-
-func _on_JumpTimeToDescentSlider_value_changed(value):
-	$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentSlider.value = value
-	$DebugCanvasLayer/Control/VBoxContainer/JumpTimeToDescentTitle.text = "Gravity Down: " + str(value)
-	jump_time_to_descent = value
-	debug_recalculate_jump_maths()
-
-func _on_FireRateSlider_value_changed(value):
-	$DebugCanvasLayer/Control/VBoxContainer/FireRateSlider.value = value
-	$DebugCanvasLayer/Control/VBoxContainer/FireRateTitle.text = "Fire Rate Seconds: " + str(value)
-	fire_rate_secs = value
-	fire_rate_timer.set_wait_time(fire_rate_secs)
-
-
-func _on_SlideSpeedSlider_value_changed(value):
-	$DebugCanvasLayer/Control/VBoxContainer/SlideSpeedSlider.value = value
-	$DebugCanvasLayer/Control/VBoxContainer/SlideSpeedTitle.text = "Slide Speed: " + str(value)
-	slide_value = value
-
-
-func _on_SlideDurationSlider_value_changed(value):
-	$DebugCanvasLayer/Control/VBoxContainer/SlideDurationSlider.value = value
-	$DebugCanvasLayer/Control/VBoxContainer/SlideDurationTitle.text = "Slide Duration: " + str(value)
-	slide_duration = value
-	slide_duration_timer.set_wait_time(slide_duration)
