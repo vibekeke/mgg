@@ -191,8 +191,8 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 300.0
-margin_right = 28800.0
-margin_bottom = 16500.0
+margin_right = 34560.0
+margin_bottom = 19740.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 margin_left = 560.0
@@ -394,6 +394,7 @@ rect_pivot_offset = Vector2( 240, 0 )
 custom_fonts/font = SubResource( 26 )
 custom_styles/hover = SubResource( 23 )
 custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 14 )
 custom_styles/normal = SubResource( 14 )
 text = "ASCEND"
 
@@ -412,5 +413,5 @@ anims/fade_out = SubResource( 11 )
 root_node = NodePath("../AnimationPlayer")
 anims/button_bob = SubResource( 27 )
 
-[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2/AscendButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2/AscendButton" to="." method="_on_AscendButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
