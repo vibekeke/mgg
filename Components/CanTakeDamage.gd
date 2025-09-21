@@ -23,6 +23,8 @@ signal took_damage(node_id)
 signal enemy_dead(node_id, death_position)
 signal enemy_return_to_pool(enemy_node)
 
+onready var damageable: bool = false
+
 var death_called := false
 var damage_disabled := false
 
@@ -30,6 +32,7 @@ func _ready():
 	enemy_area_node.connect("area_entered", self, "_on_area_entered")
 	damage_timer.connect("timeout", self, "_on_damage_timer")
 	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
+	visibility_notifier.connect("screen_entered", self, "_on_screen_entered")
 
 func call_death():
 	if !death_called:
@@ -48,18 +51,23 @@ func call_death():
 		Events.emit_signal("score_popup_requested", "enemy", death_global_position)
 
 func take_damage(damage_value: int):
-	damage_timer.start()
-	enemy_sprite_node.modulate = hurt_colour
-	health_value = health_value - damage_value
-	emit_signal("took_damage", self.get_instance_id())
-	if health_value <= 0 and !death_called:
-		call_death()
+	if damageable:
+		damage_timer.start()
+		enemy_sprite_node.modulate = hurt_colour
+		health_value = health_value - damage_value
+		emit_signal("took_damage", self.get_instance_id())
+		if health_value <= 0 and !death_called:
+			call_death()
 
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("damage_from_player") and health_value > 0 and !damage_disabled:
 		take_damage(area.damage)
 
+func _on_screen_entered():
+	damageable = true
+
 func _on_screen_exited():
+	damageable = false
 	if !death_called:
 		emit_signal("enemy_return_to_pool", enemy_node)
 
