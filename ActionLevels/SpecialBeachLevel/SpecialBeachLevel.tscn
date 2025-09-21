@@ -49,11 +49,11 @@ hide_crystal = true
 [node name="DialogLayer" type="CanvasLayer" parent="."]
 layer = 101
 
+[node name="PauseMenu" parent="." instance=ExtResource( 2 )]
+visible = false
+
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 layer = 102
-
-[node name="PauseMenu" parent="PauseLayer" instance=ExtResource( 2 )]
-visible = false
 
 [node name="LevelBeach" parent="." instance=ExtResource( 3 )]
 
