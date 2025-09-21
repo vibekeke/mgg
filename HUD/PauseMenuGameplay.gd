@@ -33,7 +33,7 @@ func _unhandled_input(event):
 func set_is_paused(value):
 	is_paused = value
 	if value && vhs_filter != null:
-		Events.set_vhs_shader(Events.vhs_filter_state_paused, vhs_filter)
+		Events.set_vhs_shader(Events.vhs_filter_state_unpaused, vhs_filter)
 	elif value == false && vhs_filter != null:
 		Events.set_vhs_shader(Events.vhs_filter_state_unpaused, vhs_filter)
 	get_tree().paused = is_paused
