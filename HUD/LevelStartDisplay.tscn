@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://HUD/ControlsPanelContainer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test_fonts/vibekefonts/Jura-Bold.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ActionLevels/backgrounds/Bubbles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD/VerticalControlsPanelContainer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" type="Resource" id=7]
+[ext_resource path="res://imported_assets/backgrounds/balls.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -248,9 +249,10 @@ margin_bottom = 305.0
 unique_name_in_owner = true
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 101.69
-margin_right = 522.7
-margin_bottom = 305.963
+margin_left = 2021.69
+margin_top = 294.963
+margin_right = 2442.7
+margin_bottom = 845.963
 custom_styles/panel = ExtResource( 3 )
 
 [node name="ControlsAnimationPlayer" type="AnimationPlayer" parent="Controls"]
@@ -266,10 +268,10 @@ anchor_bottom = 1.0
 [node name="TutorialConfirmation" type="PanelContainer" parent="CenterContainer2"]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 745.0
-margin_top = 490.0
-margin_right = 1175.0
-margin_bottom = 590.0
+margin_left = 814.0
+margin_top = 718.0
+margin_right = 1244.0
+margin_bottom = 818.0
 grow_horizontal = 0
 grow_vertical = 0
 custom_styles/panel = ExtResource( 3 )
@@ -313,6 +315,7 @@ one_shot = true
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -1.80005, 432 )
+texture = ExtResource( 8 )
 
 [node name="BubblesAnimation" type="AnimationPlayer" parent="Bubbles"]
 autoplay = "bubbles_animation"
