@@ -23,7 +23,6 @@ var default_outline_color = Color(0.11, 0.31, 0.52, 1)
 func _ready():
 	animation_player.play("fade_in")
 	AudioManager.playSFX("you_win")
-	next_button.grab_focus()
 	damage_sparkles.hide()
 	grade_sparkles.hide()
 	var current_score : int = ScoreManager.get_score()
@@ -63,10 +62,10 @@ func _ready():
 			grade_sparkles.visible = true
 		"A":
 			grade_color = Color(0.48, 0.96, 0.73, 1) 
-			grade_outline_color = Color(0.00, 0.45, 0.30, 1)		
+			grade_outline_color = Color(0.00, 0.45, 0.30, 1)
 		"B":
 			grade_color = Color(0.96, 0.89, 0.48, 1) 
-			grade_outline_color = Color(0.62, 0.40, 0.05, 1)		
+			grade_outline_color = Color(0.62, 0.40, 0.05, 1)
 		"C":
 			grade_color = Color(1, 0.58, 0.3, 1) 
 			grade_outline_color = Color(0.62, 0.20, 0.0, 1)
@@ -89,7 +88,6 @@ func _ready():
 			"pacifist_run":
 				pacifist_label.show()
 
-	
 func _playTextSound():
 	AudioManager.playSFX("ui_hover")
 
