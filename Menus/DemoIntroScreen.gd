@@ -11,7 +11,7 @@ func _ready():
 
 func _on_Button_pressed():
 	AudioManager.playSFX("mouse_click")
-	Events.emit_signal("transition_to_scene", "TitleScreen")
+	Events.emit_signal("transition_to_scene", "TitleScreen", true)
 
 func pop_in_sound():
 	AudioManager.playSFX("ui_pop_in")
