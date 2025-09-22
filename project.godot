@@ -165,7 +165,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Mgg"
-run/main_scene="res://Menus/MainMenu.tscn"
+run/main_scene="res://Menus/DemoIntroScreen.tscn"
 config/icon="res://mggicon.PNG"
 config/macos_native_icon="res://mggicon.icns"
 config/windows_native_icon="res://mggicon.ico"
