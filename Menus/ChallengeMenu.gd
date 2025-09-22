@@ -51,3 +51,7 @@ func check_completed_challenges():
 
 func _on_PaperArea_open_challenge_menu():
 	toggle_visible()
+
+
+func _on_AscendButton_pressed():
+	Events.emit_signal("transition_to_scene", "SpecialBeachLevel", false)

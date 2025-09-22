@@ -3,6 +3,7 @@ extends CanvasLayer
 var is_paused = false setget set_is_paused
 
 export var vhs_filter_path : NodePath
+
 onready var resume_button = get_node("%ResumeBtn")
 onready var retry_button = get_node("%RetryBtn")
 onready var title_button = get_node("%TitleBtn")
@@ -22,6 +23,9 @@ func _ready():
 	var parent_node = self.get_parent()
 	if parent_node.name == "Bedroom":
 		retry_button.visible = false
+	if parent_node.name == "SpecialBeachLevel":
+		retry_button.text = "Bedroom"
+		spinny_star_retry.position = Vector2(47, 233)
 
 func _on_pausing_allowed(pause_allowed: bool):
 	pausing_allowed = pause_allowed
@@ -58,7 +62,12 @@ func _on_BackBtn_pressed():
 	AudioManager.playSFX("ui_confirm", 1.0, 5.0)
 	yield(get_tree().create_timer(0.4, true), "timeout")
 	self.is_paused = false
-	Events.emit_signal("transition_to_scene", "Level1", false)
+	
+	var parent_node = self.get_parent()
+	if parent_node.name == "SpecialBeachLevel":
+		Events.emit_signal("transition_to_scene", "Bedroom", false)
+	else:
+		Events.emit_signal("transition_to_scene", "Level1", false)
 
 func _on_ResumeBtn_focus_entered():
 	AudioManager.playSFX("ui_hover")
