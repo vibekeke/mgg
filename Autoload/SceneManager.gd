@@ -4,8 +4,8 @@ extends CanvasLayer
 export (float) var fade_duration := 0.5
 export (String, "Level1", "Level2", "Level3", "GameOver", "None") var retry_scene
 
-onready var color_rect = get_node("%ColorRect")
-onready var tween = get_node("%Tween")
+onready var color_rect : ColorRect = get_node("%ColorRect")
+#onready var tween = get_node("%Tween")
 onready var loading_text = get_node("%LoadingText")
 onready var spinning_star = get_node("%SpinningStar")
 
@@ -36,9 +36,9 @@ func _ready():
 	spinning_star.visible = false
 	loading_text.visible = false
 	Events.connect("transition_to_scene", self, "_transition_to_next_scene")
-	tween.interpolate_property(color_rect, "modulate:a", 1, 0, fade_duration)
-	tween.interpolate_callback(color_rect, fade_duration, "hide")
-	tween.start()
+	var tween : SceneTreeTween = get_tree().create_tween()
+	tween.tween_property(color_rect, "modulate:a", 0, fade_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_callback(color_rect, "hide")
 
 func can_process_input() -> bool:
 	return not is_transitioning
@@ -66,10 +66,9 @@ func _transition_to_next_scene(_next_scene, skip_loading_screen := false):
 		loading_dots_timer = 0.0
 		loading_dots_count = 1
 		loading_text.text = "Loading."
-
-	tween.interpolate_property(color_rect, "modulate:a", 0, 1, fade_duration)
-	tween.start()
-	yield(tween, "tween_all_completed")
+	var tween : SceneTreeTween = get_tree().create_tween()
+	tween.tween_property(color_rect, "modulate:a", 1, fade_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	yield(tween, "finished")
 	
 	var scene_path = get_scene_path(_next_scene)
 	if scene_path and !is_loading:
@@ -101,9 +100,9 @@ func _load_scene_async(scene_path: String):
 			
 			if resource and resource is PackedScene:
 				get_tree().change_scene_to(resource)
-				tween.interpolate_property(color_rect, "modulate:a", 1.0, 0.0, fade_duration)
-				tween.start()
-				yield(tween, "tween_all_completed")
+				var fade_tween = get_tree().create_tween()
+				fade_tween.tween_property(color_rect, "modulate:a", 0.0, fade_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+				yield(fade_tween, "finished")
 				is_transitioning = false
 			else:
 				print("Failed to load scene resource")
@@ -123,9 +122,9 @@ func _load_scene_fast(scene_path: String):
 	
 	if resource and resource is PackedScene:
 		get_tree().change_scene_to(resource)
-		tween.interpolate_property(color_rect, "modulate:a", 1.0, 0.0, fade_duration)
-		tween.start()
-		yield(tween, "tween_all_completed")
+		var fade_tween = get_tree().create_tween()
+		fade_tween.tween_property(color_rect, "modulate:a", 0.0, fade_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		yield(fade_tween, "finished")
 		is_transitioning = false
 	else:
 		print("Failed to load scene resource")

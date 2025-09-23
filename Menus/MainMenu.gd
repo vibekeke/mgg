@@ -93,7 +93,7 @@ func send_to_level(level_name: String):
 func _on_StartButton_focus_entered():
 	if first_focus:
 		first_focus = false
-	else:	
+	else:
 		AudioManager.playSFX("ui_hover")
 	star_select_start.visible = true
 
