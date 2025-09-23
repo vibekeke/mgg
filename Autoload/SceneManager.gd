@@ -10,6 +10,7 @@ onready var loading_text = get_node("%LoadingText")
 onready var spinning_star = get_node("%SpinningStar")
 
 var is_loading : bool = false
+var is_transitioning : bool = false
 var loader: ResourceInteractiveLoader
 var loading_complete: bool = false
 var loading_dots_timer: float = 0.0
@@ -39,6 +40,9 @@ func _ready():
 	tween.interpolate_callback(color_rect, fade_duration, "hide")
 	tween.start()
 
+func can_process_input() -> bool:
+	return not is_transitioning
+
 func get_scene_path(scene_name):
 	if scene_name in action_level_list:
 		return action_level_list[scene_name]
@@ -50,8 +54,9 @@ func _transition_to_next_scene(_next_scene, skip_loading_screen := false):
 		print("Scene loading already in progress, ignoring request for ", _next_scene)
 		return
 	
+	is_transitioning = true
 	color_rect.show()
-	
+
 	if skip_loading_screen:
 		spinning_star.visible = false
 		loading_text.visible = false
@@ -61,7 +66,7 @@ func _transition_to_next_scene(_next_scene, skip_loading_screen := false):
 		loading_dots_timer = 0.0
 		loading_dots_count = 1
 		loading_text.text = "Loading."
-	
+
 	tween.interpolate_property(color_rect, "modulate:a", 0, 1, fade_duration)
 	tween.start()
 	yield(tween, "tween_all_completed")
@@ -99,12 +104,15 @@ func _load_scene_async(scene_path: String):
 				tween.interpolate_property(color_rect, "modulate:a", 1.0, 0.0, fade_duration)
 				tween.start()
 				yield(tween, "tween_all_completed")
+				is_transitioning = false
 			else:
 				print("Failed to load scene resource")
+				is_transitioning = false
 			break
 		elif err != OK:
 			print("Error loading scene: ", err)
 			loader = null
+			is_transitioning = false
 			break
 		
 		yield(get_tree(), "idle_frame")
@@ -118,8 +126,10 @@ func _load_scene_fast(scene_path: String):
 		tween.interpolate_property(color_rect, "modulate:a", 1.0, 0.0, fade_duration)
 		tween.start()
 		yield(tween, "tween_all_completed")
+		is_transitioning = false
 	else:
 		print("Failed to load scene resource")
+		is_transitioning = false
 
 func _update_loading_progress(progress: float):
 	loading_dots_timer += get_process_delta_time()
