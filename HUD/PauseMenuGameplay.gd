@@ -35,8 +35,8 @@ func _unhandled_input(event):
 		self.is_paused = !is_paused
 
 func set_is_paused(value):
-#	if SceneManager.is_transitioning:
-#		return
+	if SceneManager.is_transitioning:
+		return
 	is_paused = value
 	if value && vhs_filter != null:
 		Events.set_vhs_shader(Events.vhs_filter_state_unpaused, vhs_filter)
