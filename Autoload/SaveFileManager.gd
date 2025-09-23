@@ -77,8 +77,8 @@ func print_save_file_contents():
 
 func create_new_save_file():
 	current_save_file = SaveFile.new()
-	print("Created new save file with initial values:")
-	print_save_file_contents()
+	#print("Created new save file with initial values:")
+	#print_save_file_contents()
 	save_to_disk()
 
 func save_to_disk():

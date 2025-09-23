@@ -17,6 +17,7 @@ func _ready():
 	Events.connect("player_damaged", self, "_on_player_damaged")
 
 func reset_level_score():
+	collected_dogs = 0
 	internal_score = 0
 	hits_taken = 0
 	emit_signal("score_updated", internal_score)
