@@ -21,6 +21,7 @@ onready var high_score = SaveFileManager.get_high_score()
 var default_outline_color = Color(0.11, 0.31, 0.52, 1)
 
 func _ready():
+	Events.emit_signal("pausing_allowed", false)
 	animation_player.play("fade_in")
 	AudioManager.playSFX("you_win")
 	damage_sparkles.hide()
