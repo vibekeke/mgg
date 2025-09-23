@@ -10,6 +10,7 @@ export var debug_mode : bool = false
 
 onready var win_popup = preload("res://Menus/YouWinPopup.tscn")
 onready var completed_pacifist : bool = false;
+onready var you_win_shown : bool = false
 
 func _ready():
 	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
@@ -27,7 +28,8 @@ func _on_pacifist_successful():
 	completed_pacifist = true
 
 func _on_dialogue_box_finished(node_id):
-	if self.get_instance_id() == node_id:
+	if self.get_instance_id() == node_id and !you_win_shown:
+		you_win_shown = true
 		var new_instance = win_popup.instance()
 		add_child(new_instance)
 
