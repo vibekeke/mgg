@@ -141,16 +141,23 @@ func _on_dialogue_box_finished(node_id):
 	if node_id == 666:
 		parent_node.scale.x = -1
 
-		var tween = Tween.new()
-		add_child(tween)
+		# Old tween code commented out for Godot 4 compatibility:
+		# var tween = Tween.new()
+		# add_child(tween)
+		# var target_x = parent_node.position.x + 3000
+		# tween.interpolate_property(parent_node, "position:x", parent_node.position.x, target_x, 2.0, Tween.TRANS_QUART, Tween.EASE_IN)
+		# tween.connect("tween_completed", self, "_on_escape_tween_completed", [tween])
+		# tween.start()
 
+		# New Godot 4 tween:
 		var target_x = parent_node.position.x + 3000
-		tween.interpolate_property(parent_node, "position:x", parent_node.position.x, target_x, 2.0, Tween.TRANS_QUART, Tween.EASE_IN)
-		tween.connect("tween_completed", self, "_on_escape_tween_completed", [tween])
-		tween.start()
+		var escape_tween = get_tree().create_tween()
+		escape_tween.tween_property(parent_node, "position:x", target_x, 2.0).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+		escape_tween.connect("finished", self, "_on_escape_tween_completed", [escape_tween])
 
-func _on_escape_tween_completed(object, key, tween):
-	tween.queue_free()
+func _on_escape_tween_completed(tween):
+	# Old tween signature: func _on_escape_tween_completed(object, key, tween)
+	# tween.queue_free()  # SceneTreeTween auto-frees
 	parent_node.queue_free()
 
 func post_intro():

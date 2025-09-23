@@ -61,7 +61,8 @@ var sfx_bus = "SFX"
 
 var music_player
 var music_bus = "Music"
-var fade_tween : Tween = null
+# var fade_tween : Tween = null  # Commented out for Godot 4 compatibility
+var fade_tween : SceneTreeTween = null  # New Godot 4 tween
 
 func _ready():
 	randomize()
@@ -131,18 +132,26 @@ func fade_out_music(duration := 1.0) -> void:
 	
 	_kill_fade() #Avoid overlapping tweens
 	
-	fade_tween = Tween.new()
-	add_child(fade_tween)
-	fade_tween.interpolate_property(music_player, "volume_db", music_player.volume_db, -80.0, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	fade_tween.start()
-	#Apparrently tweens in the scene-tree won't be garbage collected so it's best practice to kill it every time.
-	fade_tween.connect("tween_all_completed", self, "_on_fade_done")
+	# Old tween code commented out for Godot 4 compatibility:
+	# fade_tween = Tween.new()
+	# add_child(fade_tween)
+	# fade_tween.interpolate_property(music_player, "volume_db", music_player.volume_db, -80.0, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	# fade_tween.start()
+	# fade_tween.connect("tween_all_completed", self, "_on_fade_done")
+
+	# New Godot 4 tween:
+	fade_tween = get_tree().create_tween()
+	fade_tween.tween_property(music_player, "volume_db", -80.0, duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	fade_tween.connect("finished", self, "_on_fade_done")
 
 func _kill_fade() -> void:
-	if is_instance_valid(fade_tween):
-		# stop only this property or just stop_all()
-		fade_tween.stop(music_player, "volume_db")
-		fade_tween.queue_free()
+	if fade_tween != null and fade_tween.is_valid():
+		# Old tween code commented out for Godot 4 compatibility:
+		# fade_tween.stop(music_player, "volume_db")
+		# fade_tween.queue_free()
+
+		# New Godot 4 tween:
+		fade_tween.kill()  # SceneTreeTween cleanup
 		fade_tween = null
 
 func _on_fade_done() -> void:

@@ -7,7 +7,8 @@ onready var background_layer : CanvasLayer = get_node("%BackgroundLayer")
 onready var visible_elements_layer : CanvasLayer = get_node("%VisibleElementsLayer")
 
 onready var color_rect : ColorRect = get_node("%ColorRect")
-onready var color_rect_tween : Tween = get_node("%ColorRectTween")
+# onready var color_rect_tween : Tween = get_node("%ColorRectTween")  # Commented out for Godot 4 compatibility
+var color_rect_tween : SceneTreeTween  # New Godot 4 tween
 onready var warning_symbol : Sprite = get_node("%WarningSymbol")
 var color_rect_tween_modulate_values = [Color(1.0,1.0,1.0,0.8), Color(1.0,1.0,1.0,0.0)]
 
@@ -27,22 +28,40 @@ func _ready():
 
 func tween_background_color():
 	color_rect.visible = true
-	color_rect_tween.interpolate_property(color_rect, "modulate", color_rect_tween_modulate_values[0], color_rect_tween_modulate_values[1], 1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
-	color_rect_tween.start()
-	color_rect_tween.connect("tween_completed", self, "_on_tween_completed")
+	# Old tween code commented out for Godot 4 compatibility:
+	# color_rect_tween.interpolate_property(color_rect, "modulate", color_rect_tween_modulate_values[0], color_rect_tween_modulate_values[1], 1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	# color_rect_tween.start()
+	# color_rect_tween.connect("tween_completed", self, "_on_tween_completed")
 
-func _on_tween_completed(object, key):
+	# New Godot 4 tween:
+	color_rect_tween = get_tree().create_tween()
+	color_rect_tween.tween_property(color_rect, "modulate", color_rect_tween_modulate_values[1], 1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	color_rect_tween.connect("finished", self, "_on_tween_completed")
+
+func _on_tween_completed():
+	# Old tween signature: func _on_tween_completed(object, key)
 	var temp = color_rect_tween_modulate_values[0]
-	color_rect_tween_modulate_values[0] = color_rect_tween_modulate_values[1] 
+	color_rect_tween_modulate_values[0] = color_rect_tween_modulate_values[1]
 	color_rect_tween_modulate_values[1] = temp
-	
-	color_rect_tween.interpolate_property(color_rect, "modulate", color_rect_tween_modulate_values[0], color_rect_tween_modulate_values[1], 1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
-	color_rect_tween.start()
+
+	# Old tween code commented out for Godot 4 compatibility:
+	# color_rect_tween.interpolate_property(color_rect, "modulate", color_rect_tween_modulate_values[0], color_rect_tween_modulate_values[1], 1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	# color_rect_tween.start()
+
+	# New Godot 4 tween:
+	color_rect_tween = get_tree().create_tween()
+	color_rect_tween.tween_property(color_rect, "modulate", color_rect_tween_modulate_values[1], 1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	color_rect_tween.connect("finished", self, "_on_tween_completed")
 
 func _on_Timer_timeout():
 	animation_player.play_backwards("boss_approaching")
 	yield(animation_player,"animation_finished")
-	color_rect_tween.stop_all()
+	# Old tween code commented out for Godot 4 compatibility:
+	# color_rect_tween.stop_all()
+
+	# New Godot 4 tween:
+	if color_rect_tween != null and color_rect_tween.is_valid():
+		color_rect_tween.kill()
 	background_layer.visible = false
 	visible_elements_layer.visible = false
 	emit_signal("warning_finished")

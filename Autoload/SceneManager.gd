@@ -5,7 +5,6 @@ export (float) var fade_duration := 0.5
 export (String, "Level1", "Level2", "Level3", "GameOver", "None") var retry_scene
 
 onready var color_rect : ColorRect = get_node("%ColorRect")
-#onready var tween = get_node("%Tween")
 onready var loading_text = get_node("%LoadingText")
 onready var spinning_star = get_node("%SpinningStar")
 

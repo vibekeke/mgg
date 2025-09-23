@@ -10,7 +10,8 @@ onready var star_select_fullscreen = get_node("%StarSelectFullscreen")
 
 onready var title_screen_animation = get_node("%TitleScreenAnimation")
 onready var camera = get_node("%Camera2D")
-onready var tween = get_node("%Tween")
+# onready var tween = get_node("%Tween")  # Commented out for Godot 4 compatibility
+var camera_tween : SceneTreeTween  # New Godot 4 tween
 
 onready var start_button : Button = get_node("%StartButton")
 onready var room_button : Button = get_node("%RoomButton")
@@ -63,8 +64,9 @@ func _ready():
 	title_screen_animation.play("characters_appear")
 
 func _process(delta):
-	if (title_screen_animation.is_playing() or tween.is_active() or !camera_timer.is_stopped()) and Input.is_action_just_pressed("ui_accept"):
-		tween.playback_speed = 10
+	if (title_screen_animation.is_playing() or (camera_tween != null and camera_tween.is_valid()) or !camera_timer.is_stopped()) and Input.is_action_just_pressed("ui_accept"):
+		if camera_tween != null and camera_tween.is_valid():
+			camera_tween.set_speed_scale(10.0)  # New Godot 4 speed control
 		title_screen_animation.playback_speed = 10
 		# Speed up camera timer by reducing wait time significantly
 		if !camera_timer.is_stopped():
@@ -249,8 +251,13 @@ func start_camera_sequence():
 	camera_timer.start()
 
 func _start_camera_tween():
-	tween.interpolate_property(camera, "position",
-		camera.position, Vector2(961, 540), 4,
-		Tween.TRANS_QUART, Tween.EASE_OUT)
-	tween.start()
+	# Old tween code commented out for Godot 4 compatibility:
+	# tween.interpolate_property(camera, "position",
+	# 	camera.position, Vector2(961, 540), 4,
+	# 	Tween.TRANS_QUART, Tween.EASE_OUT)
+	# tween.start()
+
+	# New Godot 4 tween:
+	camera_tween = get_tree().create_tween()
+	camera_tween.tween_property(camera, "position", Vector2(961, 540), 4).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
 

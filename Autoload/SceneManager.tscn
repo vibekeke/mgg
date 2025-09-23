@@ -35,6 +35,3 @@ scroll_active = false
 [node name="SpinningStar" parent="ColorRect" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 position = Vector2( 1784, 957 )
-
-[node name="Tween" type="Tween" parent="."]
-unique_name_in_owner = true
