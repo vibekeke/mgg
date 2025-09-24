@@ -3,7 +3,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundSpaceAnimal.gd" type="Script" id=2]
 
-[node name="BackgroundBear" type="AnimatedSprite"]
+[node name="BackgroundBear" type="AnimatedSprite2D"]
 modulate = Color( 0, 0, 0, 1 )
 scale = Vector2( 0.4, 0.4 )
 frames = ExtResource( 1 )

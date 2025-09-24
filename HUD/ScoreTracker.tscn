@@ -1,9 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="FontFile" id=1]
 [ext_resource path="res://HUD/ScoreTracker.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 64
 outline_size = 4
 outline_color = Color( 0.101961, 0.423529, 0.654902, 1 )
@@ -16,32 +16,32 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
-custom_constants/separation = -11
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/separation = -11
 
 [node name="ScoreTitle" type="RichTextLabel" parent="HBoxContainer"]
-margin_right = 250.0
-margin_bottom = 1080.0
-rect_min_size = Vector2( 250, 60 )
-rect_clip_content = false
-custom_fonts/normal_font = SubResource( 1 )
+offset_right = 250.0
+offset_bottom = 1080.0
+custom_minimum_size = Vector2( 250, 60 )
+clip_contents = false
+theme_override_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "SCORE"
+text = "SCORE"
 text = "SCORE"
 fit_content_height = true
 scroll_active = false
 
 [node name="ScoreTotal" type="RichTextLabel" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 239.0
-margin_right = 489.0
-margin_bottom = 1080.0
-rect_min_size = Vector2( 250, 60 )
-rect_clip_content = false
-custom_fonts/normal_font = SubResource( 1 )
+offset_left = 239.0
+offset_right = 489.0
+offset_bottom = 1080.0
+custom_minimum_size = Vector2( 250, 60 )
+clip_contents = false
+theme_override_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "0"
+text = "0"
 meta_underlined = false
 text = "0"
 fit_content_height = true

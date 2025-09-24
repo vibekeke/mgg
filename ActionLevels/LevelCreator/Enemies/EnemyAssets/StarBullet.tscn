@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://imported_assets/projectiles/Projectile_star_v1.png" type="Texture" id=1]
+[ext_resource path="res://imported_assets/projectiles/Projectile_star_v1.png" type="Texture2D" id=1]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -10,6 +10,6 @@ animations = [ {
 "speed": 1.0
 } ]
 
-[node name="Star" type="AnimatedSprite"]
+[node name="Star" type="AnimatedSprite2D"]
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )

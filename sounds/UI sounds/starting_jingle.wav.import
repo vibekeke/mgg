@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/starting_jingle.wav-352700a137d0611df7b2dbbe2c904a33.sample"
+type="AudioStreamWAV"
+uid="uid://djxnfyek4d4c2"
+path="res://.godot/imported/starting_jingle.wav-352700a137d0611df7b2dbbe2c904a33.sample"
 
 [deps]
 
 source_file="res://sounds/UI sounds/starting_jingle.wav"
-dest_files=[ "res://.import/starting_jingle.wav-352700a137d0611df7b2dbbe2c904a33.sample" ]
+dest_files=["res://.godot/imported/starting_jingle.wav-352700a137d0611df7b2dbbe2c904a33.sample"]
 
 [params]
 

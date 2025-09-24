@@ -1,39 +1,39 @@
 extends Node
 
-export (NodePath) var enemy
-onready var enemy_node = get_node(enemy)
+@export var enemy: NodePath
+@onready var enemy_node = get_node(enemy)
 
-export (NodePath) var enemy_area
-onready var enemy_area_node = get_node(enemy_area)
+@export var enemy_area: NodePath
+@onready var enemy_area_node = get_node(enemy_area)
 
-export (NodePath) var enemy_sprite
-onready var enemy_sprite_node = get_node(enemy_sprite)
+@export var enemy_sprite: NodePath
+@onready var enemy_sprite_node = get_node(enemy_sprite)
 
-export var visibility_notifier_path : NodePath
-onready var visibility_notifier : VisibilityNotifier2D = get_node(visibility_notifier_path)
+@export var visibility_notifier_path : NodePath
+@onready var visibility_notifier : VisibleOnScreenNotifier2D = get_node(visibility_notifier_path)
 
-onready var death_explosion = load("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/AnimatedEnemyExplosion.tscn")
-export var health_value = 2
+@onready var death_explosion = load("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/AnimatedEnemyExplosion.tscn")
+@export var health_value = 2
 
-onready var damage_timer = get_node("%DamageTimer")
-onready var off_screen_timer = get_node("%OffscreenTimer")
+@onready var damage_timer = get_node("%DamageTimer")
+@onready var off_screen_timer = get_node("%OffscreenTimer")
 
-export (Color) var hurt_colour = Color(10,10,10,1)
+@export var hurt_colour: Color = Color(10,10,10,1)
 
 signal took_damage(node_id)
 signal enemy_dead(node_id, death_position)
 signal enemy_return_to_pool(enemy_node)
 
-onready var damageable: bool = false
+@onready var damageable: bool = false
 
 var death_called := false
 var damage_disabled := false
 
 func _ready():
-	enemy_area_node.connect("area_entered", self, "_on_area_entered")
-	damage_timer.connect("timeout", self, "_on_damage_timer")
-	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
-	visibility_notifier.connect("screen_entered", self, "_on_screen_entered")
+	enemy_area_node.connect("area_entered", Callable(self, "_on_area_entered"))
+	damage_timer.connect("timeout", Callable(self, "_on_damage_timer"))
+	visibility_notifier.connect("screen_exited", Callable(self, "_on_screen_exited"))
+	visibility_notifier.connect("screen_entered", Callable(self, "_on_screen_entered"))
 
 func call_death():
 	if !death_called:
@@ -41,11 +41,11 @@ func call_death():
 		var death_global_position = enemy_area_node.global_position
 		Events.emit_signal("regular_enemy_death")
 		emit_signal("enemy_dead", self.get_instance_id(), death_global_position)
-		var active_death_explosion = death_explosion.instance()
+		var active_death_explosion = death_explosion.instantiate()
 		active_death_explosion.scale = enemy_node.scale
 		active_death_explosion.global_position = death_global_position
 		active_death_explosion.add_to_group("death_explosion")
-		active_death_explosion.connect("animation_finished", self, "_on_explosion_finished")
+		active_death_explosion.connect("animation_finished", Callable(self, "_on_explosion_finished"))
 		get_tree().current_scene.add_child(active_death_explosion)
 		enemy_sprite_node.visible = false
 		active_death_explosion.play("default", false)

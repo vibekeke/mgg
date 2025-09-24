@@ -1,14 +1,14 @@
 extends Node2D
 class_name Hurtable
 
-onready var lifetime = Timer.new()
+@onready var lifetime = Timer.new()
 
 var player_local_position = Vector2(0,0)
 var location_offset = Vector2(0,0)
 
 func _ready():
-	lifetime.connect("timeout", self, "_on_death_cleanup")
-	Events.connect("player_local_position", self, "_on_player_local_position")
+	lifetime.connect("timeout", Callable(self, "_on_death_cleanup"))
+	Events.connect("player_local_position", Callable(self, "_on_player_local_position"))
 	ready_lifetime()
 
 func ready_lifetime():

@@ -1,15 +1,15 @@
 extends Node2D
 
-onready var spawn_paths = $SpawnPaths
-onready var background_music = $BackgroundMusic
-onready var boss_music = $BossMusic
-onready var level_background = get_node("%LevelBackground")
+@onready var spawn_paths = $SpawnPaths
+@onready var background_music = $BackgroundMusic
+@onready var boss_music = $BossMusic
+@onready var level_background = get_node("%LevelBackground")
 #onready var boss = preload("res://ActionLevels/LevelCreator/Bosses/IcePrince/IcePrince.tscn")
-export var mute_audio = false # temporary
+@export var mute_audio = false # temporary
 
 func _ready():
-	Events.connect("boss_spawned", self, "_on_boss_spawn")
-	Events.connect("level_complete", self, "_on_level_complete")
+	Events.connect("boss_spawned", Callable(self, "_on_boss_spawn"))
+	Events.connect("level_complete", Callable(self, "_on_level_complete"))
 	var num_spawn_points = spawn_paths.get_curve().get_point_count()
 	var spawn_point_dictionary = {}
 	var spawn_point_heights = [DataClasses.SpawnHeight.HIGH_ONLY, DataClasses.SpawnHeight.MED_ONLY, DataClasses.SpawnHeight.LOW_ONLY]

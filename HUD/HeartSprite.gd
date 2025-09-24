@@ -1,6 +1,6 @@
 extends Control
 
-onready var sprite = $AnimatedSprite
+@onready var sprite = $AnimatedSprite2D
 
 func _ready():
 	sprite.set_animation("default")

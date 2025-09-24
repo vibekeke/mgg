@@ -1,27 +1,27 @@
 extends Node
 
 class_name BroBun
-onready var parent_node = self.get_parent()
+@onready var parent_node = self.get_parent()
 
 const bro_bun_bullet = preload("res://ActionLevels/LevelCreator/Enemies/BroBun/BroBunProjectile.tscn")
-export (int) var rotate_speed = 100
-export (int) var spawn_point_count = 8
-export (float) var fire_rate_timer_wait_time = 1.0
-export (int) var radius = 135
-export (float) var projectile_speed = 100.0
+@export var rotate_speed: int = 100
+@export var spawn_point_count: int = 8
+@export var fire_rate_timer_wait_time: float = 1.0
+@export var radius: int = 135
+@export var projectile_speed: float = 100.0
 
-onready var spawned_bullets = 0
-onready var fire_rate_timer = Timer.new()
-onready var rotator = parent_node.get_node("Rotator")
-onready var bullet_list = []
-onready var rotate_lock_value
-onready var debug_texture = preload("res://icon.png")
+@onready var spawned_bullets = 0
+@onready var fire_rate_timer = Timer.new()
+@onready var rotator = parent_node.get_node("Rotator")
+@onready var bullet_list = []
+@onready var rotate_lock_value
+@onready var debug_texture = preload("res://icon.png")
 var player_position
 var has_fired = false
 
 func _fire_rate_timer_setup():
 	fire_rate_timer.set_name("bro_bun_fire_rate_timer")
-	fire_rate_timer.connect("timeout", self, "_on_fire_rate_timeout")
+	fire_rate_timer.connect("timeout", Callable(self, "_on_fire_rate_timeout"))
 	fire_rate_timer.one_shot = true
 	parent_node.add_child(fire_rate_timer)
 
@@ -44,7 +44,7 @@ func _ready():
 	parent_node.has_non_queue_free_rotator = true
 	_fire_rate_timer_setup()
 	_setup_bullets()
-	Events.connect("player_global_position", self, "_on_player_global_position")
+	Events.connect("player_global_position", Callable(self, "_on_player_global_position"))
 	AudioManager.playSFX("UFO", 0.6, -20.0)
 
 func _on_player_global_position(player_global_position):
@@ -56,7 +56,7 @@ func get_spawn_height():
 func _setup_bullets():
 	var step = 2 * PI / spawn_point_count
 	for i in range(spawn_point_count):
-		var spawn_point = bro_bun_bullet.instance()
+		var spawn_point = bro_bun_bullet.instantiate()
 		var pos = Vector2(radius, 0).rotated(step * i)
 		spawn_point.position = pos
 		spawn_point.rotation = pos.angle()
@@ -77,5 +77,5 @@ func _physics_process(delta):
 		rotator.rotation_degrees = fmod(new_rotation, 360)
 
 
-func get_class():
+func get_enemy_class():
 	return self.name

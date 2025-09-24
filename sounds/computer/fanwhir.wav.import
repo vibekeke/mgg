@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/fanwhir.wav-59587a745b76ad645b18a0944a94a1e2.sample"
+type="AudioStreamWAV"
+uid="uid://d2hblefg4hn3l"
+path="res://.godot/imported/fanwhir.wav-59587a745b76ad645b18a0944a94a1e2.sample"
 
 [deps]
 
 source_file="res://sounds/computer/fanwhir.wav"
-dest_files=[ "res://.import/fanwhir.wav-59587a745b76ad645b18a0944a94a1e2.sample" ]
+dest_files=["res://.godot/imported/fanwhir.wav-59587a745b76ad645b18a0944a94a1e2.sample"]
 
 [params]
 

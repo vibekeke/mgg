@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Coins 9 - Sound effects Pack 2.wav-459f78fb2f5bfc5029dcbe701b7ce544.sample"
+type="AudioStreamWAV"
+uid="uid://b7iubfrhwnmmq"
+path="res://.godot/imported/Coins 9 - Sound effects Pack 2.wav-459f78fb2f5bfc5029dcbe701b7ce544.sample"
 
 [deps]
 
 source_file="res://sounds/collecting/Coins 9 - Sound effects Pack 2.wav"
-dest_files=[ "res://.import/Coins 9 - Sound effects Pack 2.wav-459f78fb2f5bfc5029dcbe701b7ce544.sample" ]
+dest_files=["res://.godot/imported/Coins 9 - Sound effects Pack 2.wav-459f78fb2f5bfc5029dcbe701b7ce544.sample"]
 
 [params]
 

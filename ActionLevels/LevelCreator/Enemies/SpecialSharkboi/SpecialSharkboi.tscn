@@ -11,17 +11,17 @@ extents = Vector2( 204, 69 )
 
 [node name="SpecialSharkboi" type="Node2D"]
 script = ExtResource( 2 )
-sprite_path = NodePath("AnimatedSprite")
+sprite_path = NodePath("AnimatedSprite2D")
 area2d_path = NodePath("Area2D")
 can_take_damage_path = NodePath("CanTakeDamage")
-visibility_notifier_path = NodePath("VisibilityNotifier2D")
+visibility_notifier_path = NodePath("VisibleOnScreenNotifier2D")
 spawn_height = 3
 enemy_name = "SpecialSharkBoi"
 initial_scroll_speed = 100.0
 enemy_difficulty_tier = 1
 death_explosion = ExtResource( 3 )
 
-[node name="AnimatedSprite" parent="." instance=ExtResource( 1 )]
+[node name="AnimatedSprite2D" parent="." instance=ExtResource( 1 )]
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 0, 144 )
@@ -30,14 +30,14 @@ position = Vector2( 0, 144 )
 position = Vector2( -1, -6 )
 shape = SubResource( 1 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2( -196, 200 )
 
 [node name="CanTakeDamage" parent="." instance=ExtResource( 4 )]
 enemy = NodePath("..")
 enemy_area = NodePath("../Area2D")
-enemy_sprite = NodePath("../AnimatedSprite")
-visibility_notifier_path = NodePath("../VisibilityNotifier2D")
+enemy_sprite = NodePath("../AnimatedSprite2D")
+visibility_notifier_path = NodePath("../VisibleOnScreenNotifier2D")
 
 [node name="CanDamagePlayerOnTouch" parent="." instance=ExtResource( 5 )]
 enemy = NodePath("..")

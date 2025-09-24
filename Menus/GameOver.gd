@@ -2,18 +2,18 @@ extends Control
 
 var level_to_retry = null
 var faded_in = false
-onready var animation_player = $AnimationPlayer
-onready var retry_button = get_node("%RetryButton")
-onready var quit_button = get_node("%QuitButton")
+@onready var animation_player = $AnimationPlayer
+@onready var retry_button = get_node("%RetryButton")
+@onready var quit_button = get_node("%QuitButton")
 
-onready var determined_sprite = get_node("%GirlSitDetermined")
-onready var sad_sprite = get_node("%GirlSitSad")
-onready var animated_sprite = $CanvasLayer/AnimatedSprite
+@onready var determined_sprite = get_node("%GirlSitDetermined")
+@onready var sad_sprite = get_node("%GirlSitSad")
+@onready var animated_sprite = $CanvasLayer/AnimatedSprite2D
 
-onready var retry_star = get_node("%StarSelectRetry")
-onready var quit_star = get_node("%StarSelectQuit")
+@onready var retry_star = get_node("%StarSelectRetry")
+@onready var quit_star = get_node("%StarSelectQuit")
 
-onready var score_display : RichTextLabel = get_node("%ScoreDisplay")
+@onready var score_display : RichTextLabel = get_node("%ScoreDisplay")
 
 var first_focus = true
 
@@ -22,7 +22,7 @@ func _ready():
 	animated_sprite.modulate = Color(1, 1, 1, 0)
 	sad_sprite.modulate = Color(1, 1, 1, 0)
 	var current_score = ScoreManager.get_score()
-	score_display.bbcode_text = score_display.bbcode_text + " " + str(current_score)
+	score_display.text = score_display.text + " " + str(current_score)
 	if current_score > SaveFileManager.get_high_score():
 		SaveFileManager.set_high_score(current_score)
 	animation_player.play("fade_in")
@@ -36,7 +36,7 @@ func _on_RetryButton_pressed():
 		determined_sprite.show()
 		AudioManager.playSFX("ui_confirm")
 		AudioManager.fade_out_music(1.0)
-		yield(get_tree().create_timer(0.5), "timeout") #Wait for the determined animation (:
+		await get_tree().create_timer(0.5).timeout #Wait for the determined animation (:
 		
 		Events.emit_signal("transition_to_scene", "Level1", false)
 

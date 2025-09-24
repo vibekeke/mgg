@@ -1,11 +1,11 @@
 extends CanvasLayer
 
-export (float) var base_scrolling_speed = 500.0
+@export var base_scrolling_speed: float = 500.0
 
 var background_moving : bool = false
 
 func _ready():
-	Events.connect("background_moving_enabled", self, "_on_background_moving_enabled")
+	Events.connect("background_moving_enabled", Callable(self, "_on_background_moving_enabled"))
 
 func _physics_process(delta):
 	if background_moving:
@@ -20,4 +20,4 @@ func _on_background_moving_enabled(enabled: bool):
 
 
 func _on_LevelStartDisplay_confirm_level_start():
-	$BeachForeground/SunShine/AnimatedSprite.play()
+	$BeachForeground/SunShine/AnimatedSprite2D.play()

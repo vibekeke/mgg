@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/handgun 9mm silenced.wav-1f17400faaa627aea36ed9d60234bee8.sample"
+type="AudioStreamWAV"
+uid="uid://crdtsg12xi6s3"
+path="res://.godot/imported/handgun 9mm silenced.wav-1f17400faaa627aea36ed9d60234bee8.sample"
 
 [deps]
 
 source_file="res://sounds/gunnerfly/handgun 9mm silenced.wav"
-dest_files=[ "res://.import/handgun 9mm silenced.wav-1f17400faaa627aea36ed9d60234bee8.sample" ]
+dest_files=["res://.godot/imported/handgun 9mm silenced.wav-1f17400faaa627aea36ed9d60234bee8.sample"]
 
 [params]
 

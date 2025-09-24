@@ -1,14 +1,14 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-onready var animation_tree = get_node("%AnimationTree")
-onready var overworld_reactions = get_node("%OverworldPlayerReactions")
+@onready var animation_tree = get_node("%AnimationTree")
+@onready var overworld_reactions = get_node("%OverworldPlayerReactions")
 
 var speed = 200
 var velocity = Vector2.ZERO
 var is_controlled = false
 
 func _ready():
-	Events.connect("overworld_player_controlled", self, "_on_overworld_player_controlled")
+	Events.connect("overworld_player_controlled", Callable(self, "_on_overworld_player_controlled"))
 
 func _on_overworld_player_controlled(status):
 	is_controlled = status
@@ -52,7 +52,11 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 
-	velocity = move_and_slide(velocity, Vector2.ZERO, false)
+	set_velocity(velocity)
+	set_up_direction(Vector2.ZERO)
+	set_floor_stop_on_slope_enabled(false)
+	move_and_slide()
+	velocity = velocity
 
 func play_stepSFX():
 	AudioManager.play_random_pitch("step", 0.04, -12)

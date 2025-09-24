@@ -3,35 +3,35 @@ extends Node
 class_name BigBird
 
 const lil_bird_bullet = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdProjectile.tscn")
-export (int) var rotate_speed = 80
-export (int) var spawn_point_count = 3
-export (float) var fire_rate_timer_wait_time = 0.2
-export (int) var radius = 100
-export (float) var projectile_speed = 100.0
+@export var rotate_speed: int = 80
+@export var spawn_point_count: int = 3
+@export var fire_rate_timer_wait_time: float = 0.2
+@export var radius: int = 100
+@export var projectile_speed: float = 100.0
 var debug_mode = false
-onready var intro_complete = false
+@onready var intro_complete = false
 
-onready var initial_color_value = 0.0
-onready var initial_alpha_value = 0.0
-onready var intro_audio_played = false
+@onready var initial_color_value = 0.0
+@onready var initial_alpha_value = 0.0
+@onready var intro_audio_played = false
 
-onready var parent_node = self.get_parent()
-onready var initial_health_value: int = parent_node.health_value
-onready var fire_rate_timer = Timer.new()
-onready var rotator = parent_node.get_node("Rotator")
-onready var current_phase: int = 0
-onready var debug_texture = preload("res://icon.png")
+@onready var parent_node = self.get_parent()
+@onready var initial_health_value: int = parent_node.health_value
+@onready var fire_rate_timer = Timer.new()
+@onready var rotator = parent_node.get_node("Rotator")
+@onready var current_phase: int = 0
+@onready var debug_texture = preload("res://icon.png")
 
-onready var audio_phase_1_played : bool = false
-onready var audio_phase_2_played : bool = false
+@onready var audio_phase_1_played : bool = false
+@onready var audio_phase_2_played : bool = false
 
-export var pacifist_mode : bool = false
-onready var hurt_during_pacifist : bool = false
+@export var pacifist_mode : bool = false
+@onready var hurt_during_pacifist : bool = false
 const PACIFIST_TIMEOUT : float = 30.0
-onready var pacifist_timer : Timer = Timer.new()
-onready var pacifist_complete : bool = false
+@onready var pacifist_timer : Timer = Timer.new()
+@onready var pacifist_complete : bool = false
 
-export var level1_event_betrayal_dialog : Resource
+@export var level1_event_betrayal_dialog : Resource
 
 const phase_patterns = {
 	0: {
@@ -110,7 +110,7 @@ func pacifist_betrayal_reaction():
 	transition_to_phase(0)
 
 func initialise_pacifist_timer():
-	pacifist_timer.connect("timeout", self, "_on_pacifist_timeout")
+	pacifist_timer.connect("timeout", Callable(self, "_on_pacifist_timeout"))
 	pacifist_timer.wait_time = PACIFIST_TIMEOUT
 	pacifist_timer.autostart = false
 	pacifist_timer.one_shot = false
@@ -129,8 +129,8 @@ func _on_pacifist_timeout():
 		pacifist_timer.stop()
 
 func _ready():
-	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
-	parent_node.connect("enemy_shot_by_player", self, "_on_shot_during_pacifist")
+	MggDialogue.connect("mgg_dialogue_box_finished", Callable(self, "_on_dialogue_box_finished"))
+	parent_node.connect("enemy_shot_by_player", Callable(self, "_on_shot_during_pacifist"))
 	$CanvasLayer.visible = debug_mode
 	pacifist_mode = StatsTracker.current_level_stats.killed_enemies == 0
 	if pacifist_mode:
@@ -153,7 +153,7 @@ func _on_dialogue_box_finished(node_id):
 		var target_x = parent_node.position.x + 3000
 		var escape_tween = get_tree().create_tween()
 		escape_tween.tween_property(parent_node, "position:x", target_x, 2.0).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
-		escape_tween.connect("finished", self, "_on_escape_tween_completed", [escape_tween])
+		escape_tween.connect("finished", Callable(self, "_on_escape_tween_completed").bind(escape_tween))
 
 func _on_escape_tween_completed(tween):
 	# Old tween signature: func _on_escape_tween_completed(object, key, tween)
@@ -186,12 +186,12 @@ func set_pattern_debug():
 
 func _fire_rate_timer_setup():
 	fire_rate_timer.set_name("boss_fire_rate_timer")
-	fire_rate_timer.connect("timeout", self, "_on_fire_rate_timeout")
+	fire_rate_timer.connect("timeout", Callable(self, "_on_fire_rate_timeout"))
 	self.add_child(fire_rate_timer)
 
 func _on_fire_rate_timeout():
 	for s in rotator.get_children():
-		var bullet = lil_bird_bullet.instance()
+		var bullet = lil_bird_bullet.instantiate()
 		bullet.speed = projectile_speed
 		get_tree().current_scene.add_child(bullet)
 		bullet.position = s.global_position
@@ -206,7 +206,7 @@ func _setup_bullets():
 	for i in range(spawn_point_count):
 		var spawn_point = Node2D.new()
 		if debug_mode:
-			spawn_point = Sprite.new()
+			spawn_point = Sprite2D.new()
 			spawn_point.texture = debug_texture
 		var pos = Vector2(radius, 0).rotated(step * i)
 		spawn_point.position = pos
@@ -274,7 +274,7 @@ func _physics_process(delta):
 	if !parent_node.is_move_disabled:
 		parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
 
-func get_class():
+func get_enemy_class():
 	return "BigBird"
 
 

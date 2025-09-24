@@ -1,6 +1,6 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 
-export var scroll_speed : float = 500.0
+@export var scroll_speed : float = 500.0
 
 func _ready():
 	AudioManager.play_random_pitch("explosion", 0.2, 2)

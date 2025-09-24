@@ -4,7 +4,7 @@
 
 [node name="CanSpawnBulletShield" type="Node" groups=["component"]]
 script = ExtResource( 1 )
-node_rotator_position = NodePath("../Path2D/PathFollow2D/AnimatedSprite/Area2D")
+node_rotator_position = NodePath("../Path2D/PathFollow2D/AnimatedSprite2D/Area2D")
 
 [node name="ShootTimer" type="Timer" parent="."]
 unique_name_in_owner = true

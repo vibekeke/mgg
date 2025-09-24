@@ -1,13 +1,13 @@
 extends Node
 
-onready var _parent = self.get_parent()
-onready var _initial_parent_position = _parent.global_position.y
-export var enabled : bool = true
-export var enable_only_when_visible : bool = false
+@onready var _parent = self.get_parent()
+@onready var _initial_parent_position = _parent.global_position.y
+@export var enabled : bool = true
+@export var enable_only_when_visible : bool = false
 
 var totalTime = 0.0
-export var frequency : float = 2
-export var amplitude : float = 5
+@export var frequency : float = 2
+@export var amplitude : float = 5
 
 func set_enabled(_enabled):
 	enabled = _enabled

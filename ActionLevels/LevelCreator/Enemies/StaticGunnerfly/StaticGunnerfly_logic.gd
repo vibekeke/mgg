@@ -3,25 +3,25 @@ extends Node
 class_name StaticGunnerfly
 
 const gunnerfly_bullet = preload("res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerflyProjectile.tscn")
-export (int) var rotate_speed = 80
-export (int) var spawn_point_count = 3
-export (float) var fire_rate_timer_wait_time = 0.2
-export (int) var radius = 100
-export (float) var projectile_speed = 100.0
+@export var rotate_speed: int = 80
+@export var spawn_point_count: int = 3
+@export var fire_rate_timer_wait_time: float = 0.2
+@export var radius: int = 100
+@export var projectile_speed: float = 100.0
 var debug_mode = false
 
 
-onready var parent_node = self.get_parent()
-onready var initial_health_value: int = parent_node.health_value
-onready var fire_rate_timer = Timer.new()
-onready var rotator = parent_node.get_node("%Rotator")
-onready var current_phase: int = 0
-onready var debug_texture = preload("res://icon.png")
-onready var path2d = parent_node.get_node_or_null("Path2D")
-onready var path_follow = path2d.get_node_or_null("PathFollow2D")
+@onready var parent_node = self.get_parent()
+@onready var initial_health_value: int = parent_node.health_value
+@onready var fire_rate_timer = Timer.new()
+@onready var rotator = parent_node.get_node("%Rotator")
+@onready var current_phase: int = 0
+@onready var debug_texture = preload("res://icon.png")
+@onready var path2d = parent_node.get_node_or_null("Path2D")
+@onready var path_follow = path2d.get_node_or_null("PathFollow2D")
 
 const ON_SCREEN_TIME : float = 8.0 # seconds
-onready var on_screen_timer : Timer = Timer.new()
+@onready var on_screen_timer : Timer = Timer.new()
 var allow_move_forward : bool = false
 
 var default_path_speed = 300
@@ -40,7 +40,7 @@ const phase_patterns = {
 func setup_on_screen_timer():
 	on_screen_timer.wait_time = ON_SCREEN_TIME
 	on_screen_timer.autostart = true
-	on_screen_timer.connect("timeout", self, "_on_screen_timer_timeout")
+	on_screen_timer.connect("timeout", Callable(self, "_on_screen_timer_timeout"))
 	add_child(on_screen_timer)
 	on_screen_timer.start()
 
@@ -75,19 +75,19 @@ func set_pattern_debug():
 
 func _fire_rate_timer_setup():
 	fire_rate_timer.set_name("fire_rate_timer")
-	fire_rate_timer.connect("timeout", self, "_on_fire_rate_timeout")
+	fire_rate_timer.connect("timeout", Callable(self, "_on_fire_rate_timeout"))
 	self.add_child(fire_rate_timer)
 
 func _on_fire_rate_timeout():
 	for s in rotator.get_children():
-		var bullet = gunnerfly_bullet.instance()
+		var bullet = gunnerfly_bullet.instantiate()
 		bullet.add_to_group("static_gunnerfly_bullets")
 		bullet.speed = projectile_speed
 		AudioManager.playSFX("gunshot", 1.0, -1.0)
 		get_tree().current_scene.add_child(bullet)
 		bullet.position = s.global_position
 		bullet.rotation = s.global_rotation
-		yield(get_tree().create_timer(0.3), "timeout")
+		await get_tree().create_timer(0.3).timeout
 		AudioManager.playSFX("gun_reload", 1.0, -10.0)
 
 func _setup_bullets():
@@ -99,7 +99,7 @@ func _setup_bullets():
 	for i in range(spawn_point_count):
 		var spawn_point = Node2D.new()
 		if debug_mode:
-			spawn_point = Sprite.new()
+			spawn_point = Sprite2D.new()
 			spawn_point.texture = debug_texture
 		var pos = Vector2(radius, 0).rotated(step * i)
 		spawn_point.position = pos
@@ -134,7 +134,7 @@ func _physics_process(delta):
 func get_spawn_height():
 	return DataClasses.SpawnHeight.MED_ONLY
 
-func get_class():
+func get_enemy_class():
 	return "StaticGunnerfly"
 
 

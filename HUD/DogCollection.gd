@@ -1,9 +1,9 @@
 extends Control
 
-onready var collected_dog_sprite = preload("CollectedDog.tscn")
+@onready var collected_dog_sprite = preload("CollectedDog.tscn")
 
 func _ready():
-	Events.connect("collected_dog", self, "_on_collected_dog")
+	Events.connect("collected_dog", Callable(self, "_on_collected_dog"))
 	_on_level_load()
 
 func _on_collected_dog(dog_breed):
@@ -20,5 +20,5 @@ func _on_collected_dog(dog_breed):
 
 func _on_level_load():
 	for i in 3:
-		var dog_sprite_node = collected_dog_sprite.instance()
+		var dog_sprite_node = collected_dog_sprite.instantiate()
 		self.add_child(dog_sprite_node)

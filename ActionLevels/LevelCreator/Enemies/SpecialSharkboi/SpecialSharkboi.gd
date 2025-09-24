@@ -1,6 +1,6 @@
 extends PooledEnemy
-export (float, 1, 1000) var amplitude := 8.0
-export (float, 1, 1000) var frequency := 0.005
+@export var amplitude := 8.0 # (float, 1, 1000)
+@export var frequency := 0.005 # (float, 1, 1000)
 var start_x: float
 
 func _ready():

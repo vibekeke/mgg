@@ -1,7 +1,7 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 
-export onready var rotate_around : Vector2
-onready var background_dogu = get_node_or_null("../BackgroundDog")
+@export var rotate_around : Vector2
+@onready var background_dogu = get_node_or_null("../BackgroundDog")
 var scroll_speed = 100
 
 func _process(delta):

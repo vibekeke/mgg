@@ -1,30 +1,30 @@
-tool
+@tool
 class_name FakeSnowParticles
 extends Node2D
 
 ## If `true`, particles are being emitted.
-export (bool) var emitting = false setget _set_emitting
+@export var emitting: bool = false: set = _set_emitting
 ## The number of particles.
-export (int) var amount = 200 setget _set_amount
+@export var amount: int = 200: set = _set_amount
 ## Controls the visibility of the particles.
-export (Rect2) var visibility_rect = Rect2(0.0, -100.0, 320.0, 180.0) setget _set_visibility_rect
+@export var visibility_rect: Rect2 = Rect2(0.0, -100.0, 320.0, 180.0): set = _set_visibility_rect
 ## The color/s of the particles.
 ## 
 ## If there is more than 1 color, these colors will be applied randomly \
 ## on the "background" particles along with the main color.
-export (PoolColorArray) var colors = [Color(1.0, 1.0, 1.0, 1.0)] setget _set_colors
+@export var colors: PackedColorArray = [Color(1.0, 1.0, 1.0, 1.0)]: set = _set_colors
 ## The possible minimum velocity of the particles.
-export (float) var min_velocity = 10.0 setget _set_min_velocity
+@export var min_velocity: float = 10.0: set = _set_min_velocity
 ## The possible maximum velocity of the particles.
-export (float) var max_velocity = 50.0 setget _set_max_velocity
+@export var max_velocity: float = 50.0: set = _set_max_velocity
 ## The amount of time (in seconds) until the next cycle of particles is emitted.
-export (float) var timer_wait_time = 5.0 setget _set_timer_wait_time
+@export var timer_wait_time: float = 5.0: set = _set_timer_wait_time
 ## If `true`, @link_name {visibility_rect} will be full of particles when loading the scene.
-export (bool) var preprocess = false
+@export var preprocess: bool = false
 
 var colors_weights = []
 var direction = Vector2.DOWN
-onready var initial_visibility_rect = visibility_rect
+@onready var initial_visibility_rect = visibility_rect
 var initial_timer_wait_time = timer_wait_time
 var particles = []
 var timer = 0.0
@@ -42,7 +42,7 @@ func _ready():
 		timer_wait_time = 0.1
 
 	set_process(false)
-	self.emitting = not Engine.editor_hint
+	self.emitting = not Engine.is_editor_hint()
 
 
 func _process(delta):
@@ -63,8 +63,8 @@ func _process(delta):
 
 		if particle.timer > particle.timer_wait_time:
 			particle.timer = 0.0
-			particle.timer_wait_time = rand_range(1.0, 5.0)
-			particle.sin_wave_freq = rand_range(1.0, 5.0)
+			particle.timer_wait_time = randf_range(1.0, 5.0)
+			particle.sin_wave_freq = randf_range(1.0, 5.0)
 
 		particle.position.x += (
 			cos(particle.sin_wave_time * particle.sin_wave_freq)
@@ -83,9 +83,9 @@ func _draw():
 	for particle in particles:
 		draw_rect(Rect2(particle.position, particle.size), particle.color)
 
-	if Engine.editor_hint:
+	if Engine.is_editor_hint():
 		draw_polyline(
-			PoolVector2Array(
+			PackedVector2Array(
 				[
 					Vector2(visibility_rect.position.x, visibility_rect.position.y),
 					Vector2(
@@ -106,11 +106,11 @@ func _draw():
 					Vector2(visibility_rect.position.x, visibility_rect.position.y),
 				]
 			),
-			Color.gold,
+			Color.GOLD,
 			2.0
 		)
 		draw_polyline(
-			PoolVector2Array(
+			PackedVector2Array(
 				[
 					Vector2(0.0, 0.0),
 					Vector2(visibility_rect.size.x, 0.0),
@@ -119,7 +119,7 @@ func _draw():
 					Vector2(0.0, 0.0)
 				]
 			),
-			Color.aqua,
+			Color.AQUA,
 			2.0
 		)
 
@@ -129,22 +129,22 @@ func _create_particles(particles_ammount):
 		var particle = {
 			color = colors[0],
 			position = Vector2(
-				rand_range(
+				randf_range(
 					visibility_rect.position.x,
 					(
 						visibility_rect.position.x
 						+ (visibility_rect.size.x + abs(visibility_rect.position.x))
 					)
 				),
-				rand_range(0.0, visibility_rect.position.y)
+				randf_range(0.0, visibility_rect.position.y)
 			),
 			sin_wave_time = 0.0,
-			sin_wave_freq = rand_range(1.0, 5.0),
-			sin_wave_amplitude = rand_range(0.1, 0.5),
+			sin_wave_freq = randf_range(1.0, 5.0),
+			sin_wave_amplitude = randf_range(0.1, 0.5),
 			size = Vector2.ONE * (randi() % 2 + 5),
 			timer = 0.0,
-			timer_wait_time = rand_range(1.0, 5.0),
-			velocity = rand_range(min_velocity, max_velocity),
+			timer_wait_time = randf_range(1.0, 5.0),
+			velocity = randf_range(min_velocity, max_velocity),
 		}
 
 		if particle.size == Vector2.ONE:

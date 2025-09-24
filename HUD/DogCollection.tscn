@@ -3,7 +3,7 @@
 [ext_resource path="res://HUD/DogCollection.gd" type="Script" id=1]
 
 [node name="DogCollection" type="HBoxContainer"]
-margin_right = 312.0
-margin_bottom = 108.0
-custom_constants/separation = 130
+offset_right = 312.0
+offset_bottom = 108.0
+theme_override_constants/separation = 130
 script = ExtResource( 1 )

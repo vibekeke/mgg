@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/LaserSound_sharp.wav-949124d85bea9cf3135cfadf6d7b4450.sample"
+type="AudioStreamWAV"
+uid="uid://7l3wn48jppfa"
+path="res://.godot/imported/LaserSound_sharp.wav-949124d85bea9cf3135cfadf6d7b4450.sample"
 
 [deps]
 
 source_file="res://sounds/enemy attacks/LaserSound_sharp.wav"
-dest_files=[ "res://.import/LaserSound_sharp.wav-949124d85bea9cf3135cfadf6d7b4450.sample" ]
+dest_files=["res://.godot/imported/LaserSound_sharp.wav-949124d85bea9cf3135cfadf6d7b4450.sample"]
 
 [params]
 

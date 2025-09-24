@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zs_raybeam.wav-d5ec9fe0f0b535e0cb2f5a67488cddbe.sample"
+type="AudioStreamWAV"
+uid="uid://dsqxebidoap66"
+path="res://.godot/imported/zs_raybeam.wav-d5ec9fe0f0b535e0cb2f5a67488cddbe.sample"
 
 [deps]
 
 source_file="res://sounds/enemy attacks/zs_raybeam.wav"
-dest_files=[ "res://.import/zs_raybeam.wav-d5ec9fe0f0b535e0cb2f5a67488cddbe.sample" ]
+dest_files=["res://.godot/imported/zs_raybeam.wav-d5ec9fe0f0b535e0cb2f5a67488cddbe.sample"]
 
 [params]
 

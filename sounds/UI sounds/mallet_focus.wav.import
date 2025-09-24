@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/mallet_focus.wav-ea6e70a7dc7b93260dbab478aec4c1e7.sample"
+type="AudioStreamWAV"
+uid="uid://bl6kp57sd4bul"
+path="res://.godot/imported/mallet_focus.wav-ea6e70a7dc7b93260dbab478aec4c1e7.sample"
 
 [deps]
 
 source_file="res://sounds/UI sounds/mallet_focus.wav"
-dest_files=[ "res://.import/mallet_focus.wav-ea6e70a7dc7b93260dbab478aec4c1e7.sample" ]
+dest_files=["res://.godot/imported/mallet_focus.wav-ea6e70a7dc7b93260dbab478aec4c1e7.sample"]
 
 [params]
 

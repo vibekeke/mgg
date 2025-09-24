@@ -13,7 +13,7 @@
 [ext_resource path="res://ActionLevels/SpecialBeachLevel/SpecialBeachLevel.gd" type="Script" id=11]
 [ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=12]
 [ext_resource path="res://HUD/LevelStartDisplay.tscn" type="PackedScene" id=13]
-[ext_resource path="res://ActionLevels/Camera/StageCamera.tscn" type="PackedScene" id=14]
+[ext_resource path="res://ActionLevels/Camera3D/StageCamera.tscn" type="PackedScene" id=14]
 [ext_resource path="res://sounds/music/beach_ambience.mp3" type="AudioStream" id=15]
 [ext_resource path="res://ActionLevels/LevelCreator/Dialog/ascension_dialogue.tres" type="Resource" id=16]
 [ext_resource path="res://Menus/Egg.tscn" type="PackedScene" id=17]
@@ -38,10 +38,10 @@ ready_to_start_level_delay = 3.0
 hide_tutorial = true
 
 [node name="FullHUD" parent="." instance=ExtResource( 10 )]
-margin_left = -756.0
-margin_top = -63.0
-margin_right = -756.0
-margin_bottom = -63.0
+offset_left = -756.0
+offset_top = -63.0
+offset_right = -756.0
+offset_bottom = -63.0
 hide_health = true
 hide_dogs = true
 hide_crystal = true

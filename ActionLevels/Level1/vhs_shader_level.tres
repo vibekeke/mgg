@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://da471tfwky2hm"]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id="1"]
 code = "/*
 Shader from Godot Shaders - the free shader library.
 godotshaders.com/shader/VHS-and-CRT-monitor-effect
@@ -232,25 +232,4 @@ void fragment()
 }"
 
 [resource]
-shader = SubResource( 1 )
-shader_param/overlay = true
-shader_param/scanlines_opacity = 0.0
-shader_param/scanlines_width = 0.0
-shader_param/grille_opacity = 0.0
-shader_param/resolution = Vector2( 1920, 1080 )
-shader_param/pixelate = false
-shader_param/roll = false
-shader_param/roll_speed = 2.0
-shader_param/roll_size = 0.0
-shader_param/roll_variation = 0.1
-shader_param/distort_intensity = 0.0
-shader_param/noise_opacity = 0.0
-shader_param/noise_speed = 5.0
-shader_param/static_noise_intensity = 0.0
-shader_param/aberration = 0.01
-shader_param/brightness = 1.0
-shader_param/discolor = false
-shader_param/warp_amount = 0.0
-shader_param/clip_warp = false
-shader_param/vignette_intensity = 0.0
-shader_param/vignette_opacity = 0.0
+shader = SubResource("1")

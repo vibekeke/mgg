@@ -1,20 +1,20 @@
 extends LevelEvent
 
-onready var enemy_spawner = get_node("%EnemySpawner")
-onready var platform_spawner = get_node("%PlatformSpawner")
-onready var start_event_timer = Timer.new()
-onready var end_event_timer = Timer.new()
-onready var wait_after_stopping_spawner_timer = Timer.new()
-export var time_until_event_start = 3.0
-export var debug_mode : bool = false
+@onready var enemy_spawner = get_node("%EnemySpawner")
+@onready var platform_spawner = get_node("%PlatformSpawner")
+@onready var start_event_timer = Timer.new()
+@onready var end_event_timer = Timer.new()
+@onready var wait_after_stopping_spawner_timer = Timer.new()
+@export var time_until_event_start = 3.0
+@export var debug_mode : bool = false
 
-export var dog : PackedScene
-export var bee : PackedScene
+@export var dog : PackedScene
+@export var bee : PackedScene
 
-onready var dog_to_spawn = 'Golden'
+@onready var dog_to_spawn = 'Golden'
 
 func _ready():
-	Events.connect("level_event_complete", self, "_on_level_event_complete")
+	Events.connect("level_event_complete", Callable(self, "_on_level_event_complete"))
 	event_number = 3
 	event_name = "Level1_Event3"
 	if '1' in Events.COLLECTED_DOGS:
@@ -27,19 +27,19 @@ func _ready():
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 2:
 		start_event_timer.set_name(event_name + "_start_timer")
-		start_event_timer.connect("timeout", self, "trigger")
+		start_event_timer.connect("timeout", Callable(self, "trigger"))
 		if debug_mode:
 			time_until_event_start = 0.1
 		start_event_timer.set_wait_time(time_until_event_start)
 		start_event_timer.set_one_shot(true)
 
 		end_event_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
-		end_event_timer.connect("timeout", self, "end_event")
+		end_event_timer.connect("timeout", Callable(self, "end_event"))
 		end_event_timer.set_wait_time(3.0)
 		end_event_timer.set_one_shot(true)
 
 		wait_after_stopping_spawner_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
-		wait_after_stopping_spawner_timer.connect("timeout", self, "_on_wait_after_stopping_spawner_timer")
+		wait_after_stopping_spawner_timer.connect("timeout", Callable(self, "_on_wait_after_stopping_spawner_timer"))
 		wait_after_stopping_spawner_timer.set_wait_time(1.0)
 		wait_after_stopping_spawner_timer.set_one_shot(true)
 

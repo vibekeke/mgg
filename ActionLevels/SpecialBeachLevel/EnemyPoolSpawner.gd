@@ -1,29 +1,29 @@
 extends Node
 
-export (Array, PackedScene) var regular_enemies
-export var level_scene_path : NodePath
-onready var level_main_scene = get_node(level_scene_path)
+@export var regular_enemies # (Array, PackedScene)
+@export var level_scene_path : NodePath
+@onready var level_main_scene = get_node(level_scene_path)
 
-export var spawn_points_path : NodePath
+@export var spawn_points_path : NodePath
 
-onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
-onready var spawn_paths_node = get_node(spawn_points_path)
-onready var spawn_points = spawn_paths_node.get_spawn_points()
+@onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+@onready var spawn_paths_node = get_node(spawn_points_path)
+@onready var spawn_points = spawn_paths_node.get_spawn_points()
 
-onready var high_med_points = [spawn_points.get(DataClasses.SpawnHeight.HIGH_ONLY), spawn_points.get(DataClasses.SpawnHeight.MED_ONLY)]
-onready var med_points = [spawn_points.get(DataClasses.SpawnHeight.MED_ONLY), spawn_points.get(DataClasses.SpawnHeight.LOW_ONLY)]
-onready var high_low_points = [spawn_points.get(DataClasses.SpawnHeight.HIGH_ONLY), spawn_points.get(DataClasses.SpawnHeight.LOW_ONLY)]
+@onready var high_med_points = [spawn_points.get(DataClasses.SpawnHeight.HIGH_ONLY), spawn_points.get(DataClasses.SpawnHeight.MED_ONLY)]
+@onready var med_points = [spawn_points.get(DataClasses.SpawnHeight.MED_ONLY), spawn_points.get(DataClasses.SpawnHeight.LOW_ONLY)]
+@onready var high_low_points = [spawn_points.get(DataClasses.SpawnHeight.HIGH_ONLY), spawn_points.get(DataClasses.SpawnHeight.LOW_ONLY)]
 
-onready var spawn_frequency_timer : Timer = get_node("%SpawnFrequencyTimer")
+@onready var spawn_frequency_timer : Timer = get_node("%SpawnFrequencyTimer")
 
-onready var enemy_pools : Dictionary = {}
-onready var active_enemies : Array = []
+@onready var enemy_pools : Dictionary = {}
+@onready var active_enemies : Array = []
 
-export var enemy_pool_size : int = 50
-export var max_active_enemes : int = 4
+@export var enemy_pool_size : int = 50
+@export var max_active_enemes : int = 4
 
-export var enemy_spawn_frequency : float = 0.1
-export var enemy_spawn_variance : float = 0.05
+@export var enemy_spawn_frequency : float = 0.1
+@export var enemy_spawn_variance : float = 0.05
 
 func spawn_at_valid_height(_enemy_to_spawn) -> Vector2:
 	var spawn_height = _enemy_to_spawn.spawn_height
@@ -68,13 +68,13 @@ func _initialize_enemy_pools():
 	for enemy_scene in regular_enemies:
 		var pool = []
 		for i in range(enemy_pool_size):
-			var enemy = enemy_scene.instance()
+			var enemy = enemy_scene.instantiate()
 			enemy.visible = false
 			enemy.set_physics_process(false)
 			
 			var can_take_damage_component = enemy.get_node_or_null("CanTakeDamage")
 			if can_take_damage_component:
-				can_take_damage_component.connect("enemy_return_to_pool", self, "_return_to_enemy_pool")
+				can_take_damage_component.connect("enemy_return_to_pool", Callable(self, "_return_to_enemy_pool"))
 			
 			level_main_scene.call_deferred("add_child", enemy)
 			pool.append(enemy)

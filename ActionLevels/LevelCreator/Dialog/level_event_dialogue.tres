@@ -8,13 +8,13 @@ resource_version = 114
 syntax_version = 2
 raw_text = "~ level1_intro
 
-do emit_change_character_portrait(\"AngelIntense\")
+#do emit_change_character_portrait(\"AngelIntense\")
 Angel: Welcome, brave Magical Girl!
-do emit_change_character_portrait(\"AngelIntense\")
+#do emit_change_character_portrait(\"AngelIntense\")
 Angel: There is a lot of [shake rate=7 level=15]EVIL[/shake] things going on in this forest... so thank goodness you're here!
-do emit_change_character_portrait(\"AngelNeutral\")
+#do emit_change_character_portrait(\"AngelNeutral\")
 Angel: Make sure to take a look at the controls before you start. [wait=1.5]
-do emit_change_character_portrait(\"AngelHappy\")
+#do emit_change_character_portrait(\"AngelHappy\")
 Angel: You ready? Let's go [wave]save the day![/wave]
 
 

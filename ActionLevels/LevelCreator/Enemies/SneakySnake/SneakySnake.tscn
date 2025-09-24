@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=1]
-[ext_resource path="res://imported_assets/actors/regularsnaker/Snake_Regular.png" type="Texture" id=2]
+[ext_resource path="res://imported_assets/actors/regularsnaker/Snake_Regular.png" type="Texture2D" id=2]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake_logic.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array(  )
+"points": PackedVector2Array(  )
 }
 
 [sub_resource type="AtlasTexture" id=2]
@@ -68,7 +68,7 @@ curve = SubResource( 1 )
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
 scale = Vector2( 0.4, 0.4 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Area2D"]
 frames = SubResource( 8 )
 speed_scale = 1.1
 playing = true
@@ -77,6 +77,6 @@ playing = true
 position = Vector2( -2.5, 87.5 )
 shape = SubResource( 9 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D/Area2D"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Path2D/PathFollow2D/Area2D"]
 position = Vector2( -3.75002, 82.5 )
 scale = Vector2( 34.875, 7 )

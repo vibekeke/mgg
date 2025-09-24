@@ -1,9 +1,9 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 
-export var speed = 200
-export var move_rightward = true
-export var belongs_to_player = true
-export var is_queue_freeable = true
+@export var speed = 200
+@export var move_rightward = true
+@export var belongs_to_player = true
+@export var is_queue_freeable = true
 
 enum ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
 
@@ -14,11 +14,12 @@ var angle_map = { ANGLE.FORWARD_B: 0, ANGLE.UPWARD_B: -30, ANGLE.DOWNWARD_B: -33
 var bullet_type = ANGLE.FORWARD_B
 
 func _ready():
-	self.playing = true
+	#self.playing = true
+	self.play("default")
 	if belongs_to_player == false:
 		var area2d = $EnemyGunshotArea2D
 		if area2d != null:
-			area2d.connect("area_entered", self, "_on_call_area_entered")
+			area2d.connect("area_entered", Callable(self, "_on_call_area_entered"))
 
 func _on_call_area_entered(area):
 	# hit area 2d = player melee attack wow strings are bad
@@ -35,7 +36,7 @@ func num_to_enum(number):
 
 func set_bullet_type(angle):
 	bullet_type = num_to_enum(angle)
-	self.rotate(deg2rad(angle_map[bullet_type]))
+	self.rotate(deg_to_rad(angle_map[bullet_type]))
 
 func _physics_process(delta):
 	var movement_speed = speed * 10 * delta
@@ -44,10 +45,10 @@ func _physics_process(delta):
 	if bullet_type == ANGLE.FORWARD_B:
 		position += Vector2(movement_speed, 0)
 	elif bullet_type == ANGLE.UPWARD_B:
-		var radian = deg2rad(abs(angle_map[bullet_type]))
+		var radian = deg_to_rad(abs(angle_map[bullet_type]))
 		position += Vector2(movement_speed * cos(radian), -(movement_speed * sin(radian)))
 	elif bullet_type == ANGLE.DOWNWARD_B:
-		var radian = deg2rad(abs(angle_map[bullet_type]))
+		var radian = deg_to_rad(abs(angle_map[bullet_type]))
 		position += Vector2(movement_speed * cos(radian), -(movement_speed * sin(radian)))
 
 

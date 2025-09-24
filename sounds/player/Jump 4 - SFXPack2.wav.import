@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Jump 4 - SFXPack2.wav-6217420e761196a6ac88dcc9dbe8c078.sample"
+type="AudioStreamWAV"
+uid="uid://cl26fdf8jcnia"
+path="res://.godot/imported/Jump 4 - SFXPack2.wav-6217420e761196a6ac88dcc9dbe8c078.sample"
 
 [deps]
 
 source_file="res://sounds/player/Jump 4 - SFXPack2.wav"
-dest_files=[ "res://.import/Jump 4 - SFXPack2.wav-6217420e761196a6ac88dcc9dbe8c078.sample" ]
+dest_files=["res://.godot/imported/Jump 4 - SFXPack2.wav-6217420e761196a6ac88dcc9dbe8c078.sample"]
 
 [params]
 

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Laser-weapon 2 - Sound effects Pack 2.wav-afa79a93bacd58a2e4b3347b88f91dbf.sample"
+type="AudioStreamWAV"
+uid="uid://b3l670ebpipbj"
+path="res://.godot/imported/Laser-weapon 2 - Sound effects Pack 2.wav-afa79a93bacd58a2e4b3347b88f91dbf.sample"
 
 [deps]
 
 source_file="res://sounds/gunnerfly/Laser-weapon 2 - Sound effects Pack 2.wav"
-dest_files=[ "res://.import/Laser-weapon 2 - Sound effects Pack 2.wav-afa79a93bacd58a2e4b3347b88f91dbf.sample" ]
+dest_files=["res://.godot/imported/Laser-weapon 2 - Sound effects Pack 2.wav-afa79a93bacd58a2e4b3347b88f91dbf.sample"]
 
 [params]
 

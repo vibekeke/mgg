@@ -1,3 +1,3 @@
 extends Node
 
-export (Array, DataClasses.EnemySpawnHeight) var spawn_height
+@export var spawn_height # (Array, DataClasses.EnemySpawnHeight)

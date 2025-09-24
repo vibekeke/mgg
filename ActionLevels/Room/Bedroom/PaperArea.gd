@@ -1,11 +1,11 @@
-extends Sprite
+extends Sprite2D
 
-onready var sparkles = get_node("%Sparkles")
+@onready var sparkles = get_node("%Sparkles")
 # onready var tween = get_node("%Tween")  # Commented out for Godot 4 compatibility
-var sparkle_tween : SceneTreeTween  # New Godot 4 tween
+var sparkle_tween : Tween  # New Godot 4 tween
 
-export var dialogue_resource: Resource
-export var dialogue_title := "bedroom_piano"
+@export var dialogue_resource: Resource
+@export var dialogue_title := "bedroom_piano"
 
 signal open_challenge_menu
 

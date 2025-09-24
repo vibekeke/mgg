@@ -6,16 +6,16 @@ var decay : float = 1.2
 var max_offset : Vector2 = Vector2(20, 15)
 var max_roll : float = 0.02
 
-var noise : OpenSimplexNoise
+var noise : FastNoiseLite
 var noise_y : int = 0
 
 func _ready():
-	noise = OpenSimplexNoise.new()
+	noise = FastNoiseLite.new()
 	noise.seed = randi()
-	noise.period = 4
-	noise.octaves = 2
+	noise.frequency = 0.25
+	noise.fractal_octaves = 2
 
-	Events.connect("player_damaged", self, "_on_player_damaged")
+	Events.connect("player_damaged", Callable(self, "_on_player_damaged"))
 
 func _process(delta):
 	if trauma:

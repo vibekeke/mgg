@@ -1,12 +1,12 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Menus/DogCompletion.gd" type="Script" id=1]
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Menus/PrettyAssets/egg2.png" type="Texture" id=3]
-[ext_resource path="res://Menus/PrettyAssets/egg3.png" type="Texture" id=4]
-[ext_resource path="res://Menus/PrettyAssets/egg1.png" type="Texture" id=5]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="FontFile" id=2]
+[ext_resource path="res://Menus/PrettyAssets/egg2.png" type="Texture2D" id=3]
+[ext_resource path="res://Menus/PrettyAssets/egg3.png" type="Texture2D" id=4]
+[ext_resource path="res://Menus/PrettyAssets/egg1.png" type="Texture2D" id=5]
 [ext_resource path="res://Menus/PrettyAssets/Sparkles.tscn" type="PackedScene" id=6]
-[ext_resource path="res://test_fonts/vt323/VT323-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://test_fonts/vt323/VT323-Regular.ttf" type="FontFile" id=7]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.619608, 0.858824, 1, 0.560784 )
@@ -47,19 +47,19 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="FontFile" id=5]
 size = 99
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="FontFile" id=8]
 size = 35
 outline_size = 3
 outline_color = Color( 0.235294, 0.254902, 0.772549, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="FontFile" id=9]
 size = 35
 outline_color = Color( 0.235294, 0.254902, 0.772549, 1 )
 font_data = ExtResource( 2 )
@@ -76,20 +76,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CenterContainer:rect_position")
+tracks/1/path = NodePath("CenterContainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 0.554785, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 0.554785, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 300 ), Vector2( 0, 0 ) ]
 }
@@ -100,8 +100,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -112,8 +112,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.4 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "display_for_seconds"
@@ -129,20 +129,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CenterContainer:rect_position")
+tracks/1/path = NodePath("CenterContainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 2.73208 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 2.73208 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -300 ) ]
 }
@@ -153,8 +153,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -165,8 +165,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.9 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.9 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "delete_self"
@@ -182,75 +182,75 @@ duration = 5.0
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 300.0
-margin_bottom = 300.0
+offset_top = 300.0
+offset_bottom = 300.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
-margin_left = 671.0
-margin_top = 235.0
-margin_right = 1231.0
-margin_bottom = 849.0
-custom_styles/panel = SubResource( 3 )
+offset_left = 671.0
+offset_top = 235.0
+offset_right = 1231.0
+offset_bottom = 849.0
+theme_override_styles/panel = SubResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 556.0
-margin_bottom = 610.0
-custom_constants/margin_right = 7
-custom_constants/margin_top = 7
-custom_constants/margin_left = 7
-custom_constants/margin_bottom = 7
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 556.0
+offset_bottom = 610.0
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_bottom = 7
 
 [node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 545.0
-margin_bottom = 599.0
-custom_styles/panel = SubResource( 12 )
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 545.0
+offset_bottom = 599.0
+theme_override_styles/panel = SubResource( 12 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 556.0
-margin_bottom = 610.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 556.0
+offset_bottom = 610.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
-margin_right = 552.0
-margin_bottom = 472.0
-custom_constants/margin_right = 70
-custom_constants/margin_top = 25
-custom_constants/margin_left = 70
-custom_constants/margin_bottom = 0
+offset_right = 552.0
+offset_bottom = 472.0
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer"]
-margin_left = 70.0
-margin_top = 25.0
-margin_right = 482.0
-margin_bottom = 472.0
+offset_left = 70.0
+offset_top = 25.0
+offset_right = 482.0
+offset_bottom = 472.0
 alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 412.0
-margin_bottom = 202.0
-rect_min_size = Vector2( 369.596, 0 )
-custom_styles/panel = SubResource( 4 )
+offset_right = 412.0
+offset_bottom = 202.0
+custom_minimum_size = Vector2( 369.596, 0 )
+theme_override_styles/panel = SubResource( 4 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/PanelContainer"]
 position = Vector2( 202.25, 317.704 )
 scale = Vector2( 0.835079, 0.835079 )
 frames = SubResource( 13 )
 playing = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/PanelContainer"]
-margin_right = 412.0
-margin_bottom = 202.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 8
-custom_constants/shadow_offset_y = 8
-custom_fonts/normal_font = SubResource( 5 )
+offset_right = 412.0
+offset_bottom = 202.0
+theme_override_colors/font_shadow_color = Color( 0, 0, 0, 1 )
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_fonts/normal_font = SubResource( 5 )
 bbcode_enabled = true
-bbcode_text = "[center][rainbow sat=0.4][wave]EASTER EGG
+text = "[center][rainbow sat=0.4][wave]EASTER EGG
 GET!"
 text = "EASTER EGG
 GET!"
@@ -258,28 +258,28 @@ fit_content_height = true
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 206.0
-margin_right = 412.0
-margin_bottom = 447.0
-custom_constants/separation = 241
+offset_top = 206.0
+offset_right = 412.0
+offset_bottom = 447.0
+theme_override_constants/separation = 241
 
 [node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
-margin_top = 476.0
-margin_right = 552.0
-margin_bottom = 606.0
-custom_constants/margin_right = 20
-custom_constants/margin_top = 0
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 40
+offset_top = 476.0
+offset_right = 552.0
+offset_bottom = 606.0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_bottom = 40
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer2"]
-margin_left = 20.0
-margin_right = 532.0
-margin_bottom = 90.0
-custom_fonts/bold_font = SubResource( 8 )
-custom_fonts/normal_font = SubResource( 9 )
+offset_left = 20.0
+offset_right = 532.0
+offset_bottom = 90.0
+theme_override_fonts/bold_font = SubResource( 8 )
+theme_override_fonts/normal_font = SubResource( 9 )
 bbcode_enabled = true
-bbcode_text = "[center][color=black]Remember to go [color=#ccceff][wave][b]
+text = "[center][color=black]Remember to go [color=#ccceff][wave][b]
 BRAG ABOUT IT ![/b][/wave][color=black]"
 text = "Remember to go 
 BRAG ABOUT IT !"

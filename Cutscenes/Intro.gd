@@ -1,11 +1,11 @@
 extends Node2D
 
 var tv_sound_finished = false
-export var intro_dialog : Resource
+@export var intro_dialog : Resource
 
 
 func _ready():
-	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
+	MggDialogue.connect("mgg_dialogue_box_finished", Callable(self, "_on_dialogue_box_finished"))
 	$TVTurnOn.play()
 	$CanvasLayer/VHS.set_modulate(Color(1,1,1,0))
 	$AyyLmao.set_modulate(Color(1,1,1,0))
@@ -13,7 +13,7 @@ func _ready():
 
 func _on_dialogue_box_finished(node_id):
 	if self.get_instance_id() == node_id:
-		yield(get_tree().create_timer(2.0), "timeout")
+		await get_tree().create_timer(2.0).timeout
 		Events.emit_signal("transition_to_scene", "DemoEndCredits", false)
 
 func display_dialogue():

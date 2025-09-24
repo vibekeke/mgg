@@ -1,16 +1,16 @@
 extends Node2D
 
-export (float, 1, 1000) var amplitude := 5.0
-export (float, 1, 1000) var frequency := 150.0
-export (PackedScene) var dog_sprite
-export (int) var scroll_speed
-export (int) var y_init
-export (int) var x_init
+@export var amplitude := 5.0 # (float, 1, 1000)
+@export var frequency := 150.0 # (float, 1, 1000)
+@export var dog_sprite: PackedScene
+@export var scroll_speed: int
+@export var y_init: int
+@export var x_init: int
 
-onready var area2d = $Area2D
+@onready var area2d = $Area2D
 var time = 0
 var dog_breed
-onready var float_disabled = false
+@onready var float_disabled = false
 
 var dog_sprites = {
 	'Golden': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Golden.tscn',
@@ -21,11 +21,11 @@ var dog_sprites = {
 
 func _ready():
 	if dog_sprite != null:
-		var _dog_sprite = dog_sprite.instance()
+		var _dog_sprite = dog_sprite.instantiate()
 		dog_breed = _dog_sprite.name
 		_dog_sprite.set_name("DogSprite")
 		area2d.add_child(_dog_sprite)
-		area2d.connect("body_entered", self, "_on_call_body_entered")
+		area2d.connect("body_entered", Callable(self, "_on_call_body_entered"))
 
 # only call if ready hasnt been called yet, e.g. making this node manually in code
 func set_dogu(dog_name: String):
@@ -44,7 +44,7 @@ func _on_call_body_entered(body):
 		self.visible = false
 		_increment_dogs()
 		$AudioStreamPlayer.play()
-		yield($AudioStreamPlayer, "finished")
+		await $AudioStreamPlayer.finished
 		queue_free()
 
 func _physics_process(delta):

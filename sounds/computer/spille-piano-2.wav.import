@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/spille-piano-2.wav-0caae0aaf9aab3ed2ace64f9451021ef.sample"
+type="AudioStreamWAV"
+uid="uid://dnevsfrydp3kn"
+path="res://.godot/imported/spille-piano-2.wav-0caae0aaf9aab3ed2ace64f9451021ef.sample"
 
 [deps]
 
 source_file="res://sounds/computer/spille-piano-2.wav"
-dest_files=[ "res://.import/spille-piano-2.wav-0caae0aaf9aab3ed2ace64f9451021ef.sample" ]
+dest_files=["res://.godot/imported/spille-piano-2.wav-0caae0aaf9aab3ed2ace64f9451021ef.sample"]
 
 [params]
 

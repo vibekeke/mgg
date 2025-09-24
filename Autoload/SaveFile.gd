@@ -1,5 +1,5 @@
 class_name SaveFile
-extends Reference
+extends RefCounted
 
 # Basic save metadata
 var save_owner : String = ""

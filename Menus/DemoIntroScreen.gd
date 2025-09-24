@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var animation_player = $AnimationPlayer
-onready var audio_player = $AudioStreamPlayer
+@onready var animation_player = $AnimationPlayer
+@onready var audio_player = $AudioStreamPlayer
 
 
 func _ready():

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zapsplat_short_retro_jump5.wav-cffe54dfffbc653a36fa627acb3b875e.sample"
+type="AudioStreamWAV"
+uid="uid://dksx60g42b2ef"
+path="res://.godot/imported/zapsplat_short_retro_jump5.wav-cffe54dfffbc653a36fa627acb3b875e.sample"
 
 [deps]
 
 source_file="res://sounds/player/zapsplat_short_retro_jump5.wav"
-dest_files=[ "res://.import/zapsplat_short_retro_jump5.wav-cffe54dfffbc653a36fa627acb3b875e.sample" ]
+dest_files=["res://.godot/imported/zapsplat_short_retro_jump5.wav-cffe54dfffbc653a36fa627acb3b875e.sample"]
 
 [params]
 

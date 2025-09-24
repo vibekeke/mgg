@@ -1,9 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://duoyf7tkr1lo6"]
 
-[ext_resource path="res://ActionLevels/CameraController.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://gy0uo6gf5065" path="res://ActionLevels/CameraController.gd" id="1"]
 
 [node name="StageCamera" type="Camera2D"]
-position = Vector2( 3, 1 )
 anchor_mode = 0
-current = true
-script = ExtResource( 1 )
+script = ExtResource("1")

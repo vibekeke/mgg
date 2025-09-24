@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/beep.wav-835daaf335ef2bfc16a8b5e3fa142f03.sample"
+type="AudioStreamWAV"
+uid="uid://bub72yebo8m7e"
+path="res://.godot/imported/beep.wav-835daaf335ef2bfc16a8b5e3fa142f03.sample"
 
 [deps]
 
 source_file="res://sounds/dialogue/beep.wav"
-dest_files=[ "res://.import/beep.wav-835daaf335ef2bfc16a8b5e3fa142f03.sample" ]
+dest_files=["res://.godot/imported/beep.wav-835daaf335ef2bfc16a8b5e3fa142f03.sample"]
 
 [params]
 

@@ -11,10 +11,10 @@ const DEFAULT_STAR_SCORE : int = 30
 const DEFAULT_DOG_SCORE : int = 100
 
 func _ready():
-	Events.connect("regular_enemy_death", self, "_on_regular_enemy_death")
-	Events.connect("collected_dog", self, "_on_collected_dog")
-	Events.connect("collected_star", self, "_on_collected_star")
-	Events.connect("player_damaged", self, "_on_player_damaged")
+	Events.connect("regular_enemy_death", Callable(self, "_on_regular_enemy_death"))
+	Events.connect("collected_dog", Callable(self, "_on_collected_dog"))
+	Events.connect("collected_star", Callable(self, "_on_collected_star"))
+	Events.connect("player_damaged", Callable(self, "_on_player_damaged"))
 
 func reset_level_score():
 	collected_dogs = 0

@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var animation = get_node("%AnimationPlayer")
-onready var label = get_node("%Label")
+@onready var animation = get_node("%AnimationPlayer")
+@onready var label = get_node("%Label")
 
 #Set this value to whatever is needed,
 var score = 10 
@@ -14,7 +14,7 @@ func _ready():
 	position = start_position
 	scale = Vector2(size, size)
 
-	label.add_color_override("font_outline_modulate", outline_color)
+	label.add_theme_color_override("font_outline_modulate", outline_color)
 	
 	animation.play("slide_up")
 	

@@ -1,19 +1,19 @@
 extends LevelEvent
 
-export var debug_mode : bool = false
-export var level1_event1_dialog : Resource
+@export var debug_mode : bool = false
+@export var level1_event1_dialog : Resource
 
-onready var enemy_spawner = get_node("%EnemySpawner")
-onready var platform_spawner = get_node("%PlatformSpawner")
+@onready var enemy_spawner = get_node("%EnemySpawner")
+@onready var platform_spawner = get_node("%PlatformSpawner")
 
 # Enemies
-export var background_brobun : PackedScene
-export var background_brobear : PackedScene
-export var background_dog : PackedScene
+@export var background_brobun : PackedScene
+@export var background_brobear : PackedScene
+@export var background_dog : PackedScene
 
-export var bun : PackedScene
-export var bear : PackedScene
-export var dog : PackedScene
+@export var bun : PackedScene
+@export var bear : PackedScene
+@export var dog : PackedScene
 
 var first_background_enemy_spawn_place : Vector2 = Vector2(-206, 378)
 var second_background_enemy_spawn_place : Vector2 = Vector2(-206, 811)
@@ -31,13 +31,13 @@ var num_background_elements_offscreen = 0
 var spawned_element_speed = 600
 
 # Timers
-onready var start_event_timer = Timer.new()
-onready var wait_for_spawn_restart_timer = Timer.new()
-export var time_until_event_start : float = 1.0
+@onready var start_event_timer = Timer.new()
+@onready var wait_for_spawn_restart_timer = Timer.new()
+@export var time_until_event_start : float = 1.0
 
 func _ready():
-	Events.connect("level_event_complete", self, "_on_level_event_complete")
-	Events.connect("background_element_offscreen", self, "_on_background_element_offscreen")
+	Events.connect("level_event_complete", Callable(self, "_on_level_event_complete"))
+	Events.connect("background_element_offscreen", Callable(self, "_on_background_element_offscreen"))
 	event_number = 5
 	event_name = "Level1_Event5"
 	if debug_mode:
@@ -60,7 +60,7 @@ func spawn_space_animals():
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 4:
 		start_event_timer.set_name(event_name + "_start_timer")
-		start_event_timer.connect("timeout", self, "trigger")
+		start_event_timer.connect("timeout", Callable(self, "trigger"))
 		if debug_mode:
 			time_until_event_start = 0.1
 		start_event_timer.set_wait_time(time_until_event_start)
@@ -69,7 +69,7 @@ func _on_level_event_complete(level_event_name, level_event_number) -> void:
 		start_event_timer.start()
 
 		wait_for_spawn_restart_timer.set_name(event_name + "_wait_for_spawn_restart_timer")
-		wait_for_spawn_restart_timer.connect("timeout", self, "end_event")
+		wait_for_spawn_restart_timer.connect("timeout", Callable(self, "end_event"))
 		wait_for_spawn_restart_timer.set_wait_time(2.5)
 		self.add_child(wait_for_spawn_restart_timer)
 

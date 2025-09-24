@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=5 format=2]
 
-[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_mouthflap.png" type="Texture" id=1]
-[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_neutral.png" type="Texture" id=2]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_mouthflap.png" type="Texture2D" id=1]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_neutral.png" type="Texture2D" id=2]
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4

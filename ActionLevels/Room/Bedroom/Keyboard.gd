@@ -1,10 +1,10 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 
-onready var piano_music = get_node("%PianoMusic")
-onready var can_create_dialogue = get_node("%CanCreateDialogue")
+@onready var piano_music = get_node("%PianoMusic")
+@onready var can_create_dialogue = get_node("%CanCreateDialogue")
 
-export var dialogue_resource: Resource
-export var dialogue_title := "bedroom_piano"
+@export var dialogue_resource: Resource
+@export var dialogue_title := "bedroom_piano"
 
 var player_in_area : bool = false
 var dialogue_over : bool = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://imported_assets/projectiles/Projectile_star_v1.png" type="Texture" id=1]
+[ext_resource path="res://imported_assets/projectiles/Projectile_star_v1.png" type="Texture2D" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBunProjectile.gd" type="Script" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -17,7 +17,7 @@ extents = Vector2( 25, 25 )
 [node name="BroBunProjectile" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Star" type="AnimatedSprite" parent="."]
+[node name="Star" type="AnimatedSprite2D" parent="."]
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
 
@@ -29,8 +29,8 @@ frames = SubResource( 1 )
 position = Vector2( -1, -2 )
 shape = SubResource( 2 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2( -1, -2 )
 scale = Vector2( 2.5, 2.5 )
 
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

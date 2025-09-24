@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Emili zen.mp3-9b5cb464bd89942c108c635a3ee2ebaf.mp3str"
+uid="uid://dh3hg5kumuqgj"
+path="res://.godot/imported/Emili zen.mp3-9b5cb464bd89942c108c635a3ee2ebaf.mp3str"
 
 [deps]
 
 source_file="res://sounds/music/Emili zen.mp3"
-dest_files=[ "res://.import/Emili zen.mp3-9b5cb464bd89942c108c635a3ee2ebaf.mp3str" ]
+dest_files=["res://.godot/imported/Emili zen.mp3-9b5cb464bd89942c108c635a3ee2ebaf.mp3str"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

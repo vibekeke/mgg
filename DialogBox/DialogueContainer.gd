@@ -1,17 +1,17 @@
 extends CanvasLayer
 
 signal actioned(next_id)
-onready var dialogue_main_window = get_node("%DialogueBackground")
-onready var dialogue_label = get_node("%DialogueLabel")
-onready var dialogue_container = get_node("%DialogueContainer")
-onready var responses_list = get_node("%ResponsesList")
-onready var portrait = get_node("%Portrait")
-onready var character_title = get_node("%CharacterTitle")
-onready var await_cursor = get_node("%AwaitCursor")
-onready var star_flicker_animation_player = get_node("%StarFlickerAnimationPlayer")
-onready var margin_container = get_node("%MarginContainer")
-onready var dialogue_container_animation_player = get_node("%DialogueContainerAnimationPlayer")
-onready var auto_advance_timer = get_node("%AutoAdvanceTimer")
+@onready var dialogue_main_window = get_node("%DialogueBackground")
+@onready var dialogue_label = get_node("%DialogueLabel")
+@onready var dialogue_container = get_node("%DialogueContainer")
+@onready var responses_list = get_node("%ResponsesList")
+@onready var portrait = get_node("%Portrait")
+@onready var character_title = get_node("%CharacterTitle")
+@onready var await_cursor = get_node("%AwaitCursor")
+@onready var star_flicker_animation_player = get_node("%StarFlickerAnimationPlayer")
+@onready var margin_container = get_node("%MarginContainer")
+@onready var dialogue_container_animation_player = get_node("%DialogueContainerAnimationPlayer")
+@onready var auto_advance_timer = get_node("%AutoAdvanceTimer")
 
 var placement_dictionary = {
 	DataClasses.Placement.LOWER: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(1388.0, 1008.0)}},
@@ -49,22 +49,22 @@ func add_dialogue():
 
 	self.dialogue = dialogue
 	if character_portrait == DataClasses.CharacterPortrait.None:
-		margin_container.add_constant_override("margin_right", 10)
+		margin_container.add_theme_constant_override("offset_right", 10)
 		portrait.hide()
 	else:
 		portrait.show()
-		margin_container.add_constant_override("margin_right", 160)
+		margin_container.add_theme_constant_override("offset_right", 160)
 
 	if dialogue.character == "":
 		character_title.hide()
 	else:
-		character_title.bbcode_text = dialogue.character
+		character_title.text = dialogue.character
 
-		dialogue_label.rect_size.x = dialogue_label.get_parent().rect_size.x
+		dialogue_label.size.x = dialogue_label.get_parent().size.x
 	dialogue_label.dialogue_line = dialogue
 
 	dialogue_label.type_out()
-	yield(dialogue_label, "finished")
+	await dialogue_label.finished
 	if is_advancable:
 		auto_advance_timer.start()
 		await_cursor.visible = false
@@ -75,11 +75,11 @@ func add_dialogue():
 		# show responses if they exist
 		is_processing_response = true
 		for response in dialogue.responses:
-			var response_item = preload("res://DialogBox/ResponseTemplate.tscn").instance()
+			var response_item = preload("res://DialogBox/ResponseTemplate.tscn").instantiate()
 			response_item.name = "Response" + str(responses_list.get_child_count())
 			if not response.is_allowed:
 				response_item.name += "Disallowed"
-			response_item.connect("gui_input", self, "_on_response_gui_input", [response_item])
+			response_item.connect("gui_input", Callable(self, "_on_response_gui_input").bind(response_item))
 			response_item.show()
 			responses_list.add_child(response_item)
 			response_item.set_text(response.text)
@@ -88,7 +88,7 @@ func add_dialogue():
 		configure_focus()
 	elif dialogue.time != null:
 		var time = dialogue.dialogue.length() * 0.02 if dialogue.time == "auto" else dialogue.time.to_float()
-		yield(get_tree().create_timer(time), "timeout")
+		await get_tree().create_timer(time).timeout
 		next(dialogue.next_id)
 	else:
 		is_waiting_for_input = true
@@ -120,12 +120,12 @@ func _ready() -> void:
 	set_stylebox_colour()
 	set_character_portrait()
 	container_placement()
-	dialogue_label.connect("arriving_characer", self, "_on_arriving_character")
-	MggDialogue.connect("change_character_portrait", self, "_on_change_character_portrait")
+	dialogue_label.connect("arriving_characer", Callable(self, "_on_arriving_character"))
+	MggDialogue.connect("change_character_portrait", Callable(self, "_on_change_character_portrait"))
 	add_dialogue()
 	dialogue_container_animation_player.play("fade_in")
 	auto_advance_timer.wait_time = auto_advance_time
-	auto_advance_timer.connect("timeout", self, "_on_auto_advance_timer")
+	auto_advance_timer.connect("timeout", Callable(self, "_on_auto_advance_timer"))
 
 func _on_arriving_character(character: String):
 	if character != "":
@@ -138,11 +138,11 @@ func _on_change_character_portrait(new_portrait: int):
 	set_character_portrait()
 	# Update portrait visibility dynamically
 	if character_portrait == DataClasses.CharacterPortrait.None:
-		margin_container.add_constant_override("margin_right", 10)
+		margin_container.add_theme_constant_override("offset_right", 10)
 		portrait.hide()
 	else:
 		portrait.show()
-		margin_container.add_constant_override("margin_right", 160)
+		margin_container.add_theme_constant_override("offset_right", 160)
 
 func next(next_id: String) -> void:
 	if inputs_are_disabled:
@@ -156,21 +156,21 @@ func configure_focus() -> void:
 		var item: Control = items[i]
 
 		item.focus_mode = Control.FOCUS_ALL
-		item.focus_neighbour_top = item.get_path()
-		item.focus_neighbour_bottom = item.get_path()
+		item.focus_neighbor_top = item.get_path()
+		item.focus_neighbor_bottom = item.get_path()
 
 		if i == 0:
-			item.focus_neighbour_left = item.get_path()
+			item.focus_neighbor_left = item.get_path()
 			item.focus_previous = item.get_path()
 		else:
-			item.focus_neighbour_left = items[i - 1].get_path()
+			item.focus_neighbor_left = items[i - 1].get_path()
 			item.focus_previous = items[i - 1].get_path()
 		
 		if i == items.size() - 1:
-			item.focus_neighbour_right = item.get_path()
+			item.focus_neighbor_right = item.get_path()
 			item.focus_next = item.get_path()
 		else:
-			item.focus_neighbour_right = items[i + 1].get_path()
+			item.focus_neighbor_right = items[i + 1].get_path()
 			item.focus_next = items[i + 1].get_path()
 	
 	
@@ -193,10 +193,10 @@ func _on_response_gui_input(event, item):
 			next(dialogue.responses[item.get_index()].next_id)
 
 func _on_DialogueContainer_gui_input(event):
-	if event.is_pressed() and not event.is_echo() and dialogue_container.get_focus_owner() == dialogue_container:
+	if event.is_pressed() and not event.is_echo() and dialogue_container.get_viewport().gui_get_focus_owner() == dialogue_container:
 		if Input.is_action_just_pressed("ui_accept") and not is_advancable:
 			next(dialogue.next_id)
-		elif event is InputEventMouseButton and event.button_index == BUTTON_LEFT and not is_advancable:
+		elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not is_advancable:
 			next(dialogue.next_id)
 
 func _on_auto_advance_timer():

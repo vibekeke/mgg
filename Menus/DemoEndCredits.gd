@@ -1,23 +1,23 @@
 extends CanvasLayer
 
-onready var scrolling = $CreditScroll
+@onready var scrolling = $CreditScroll
 
-onready var animation_player = $AnimationPlayer
+@onready var animation_player = $AnimationPlayer
 
-onready var message_text = get_node("%MessageText")
-onready var message_buttons = get_node("%MessageButtons")
-onready var credits_text = get_node("%CreditsText")
-onready var credits_buttons = get_node("%CreditsButtons")
+@onready var message_text = get_node("%MessageText")
+@onready var message_buttons = get_node("%MessageButtons")
+@onready var credits_text = get_node("%CreditsText")
+@onready var credits_buttons = get_node("%CreditsButtons")
 
-onready var next_button = get_node("%NextButton")
-onready var back_button = get_node("%BackButton")
-onready var title_button = get_node("%TitleButton")
+@onready var next_button = get_node("%NextButton")
+@onready var back_button = get_node("%BackButton")
+@onready var title_button = get_node("%TitleButton")
 
-onready var star_next = get_node("%StarSelectNext")
-onready var star_back = get_node("%StarSelectBack")
-onready var star_title = get_node("%StarSelectTitle")
+@onready var star_next = get_node("%StarSelectNext")
+@onready var star_back = get_node("%StarSelectBack")
+@onready var star_title = get_node("%StarSelectTitle")
 
-onready var link_cursor = load("res://imported_assets/hand_small_point_n.png")
+@onready var link_cursor = load("res://imported_assets/hand_small_point_n.png")
 
 var scroll_speed: float = 80.0
 

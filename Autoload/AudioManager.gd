@@ -62,11 +62,11 @@ var sfx_bus = "SFX"
 var music_player
 var music_bus = "Music"
 # var fade_tween : Tween = null  # Commented out for Godot 4 compatibility
-var fade_tween : SceneTreeTween = null  # New Godot 4 tween
+var fade_tween : Tween = null  # New Godot 4 tween
 
 func _ready():
 	randomize()
-	pause_mode = Node.PAUSE_MODE_PROCESS
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	#Default to master if they can't find the bus
 	if AudioServer.get_bus_index(sfx_bus) == -1:
 		sfx_bus = "Master"
@@ -100,7 +100,7 @@ func playSFX(sound_effect : String, pitch_scale := 1.0, volume_db := 0.0) -> voi
 	sfx_player.play()
 
 func play_random_pitch(sound_effect : String, spread := 0.04, volume_db := 0.0) -> void:
-	var pitch = 1.0 + rand_range(-spread, spread)
+	var pitch = 1.0 + randf_range(-spread, spread)
 	playSFX(sound_effect, pitch, volume_db)
 
 func stop_all_sfx() -> void:
@@ -142,7 +142,7 @@ func fade_out_music(duration := 1.0) -> void:
 	# New Godot 4 tween:
 	fade_tween = get_tree().create_tween()
 	fade_tween.tween_property(music_player, "volume_db", -80.0, duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	fade_tween.connect("finished", self, "_on_fade_done")
+	fade_tween.connect("finished", Callable(self, "_on_fade_done"))
 
 func _kill_fade() -> void:
 	if fade_tween != null and fade_tween.is_valid():
@@ -151,7 +151,7 @@ func _kill_fade() -> void:
 		# fade_tween.queue_free()
 
 		# New Godot 4 tween:
-		fade_tween.kill()  # SceneTreeTween cleanup
+		fade_tween.kill()  # Tween cleanup
 		fade_tween = null
 
 func _on_fade_done() -> void:

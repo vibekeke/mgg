@@ -2,37 +2,37 @@
 
 [ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=2]
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Menus/ConceptArt/running.png" type="Texture" id=4]
-[ext_resource path="res://Menus/ConceptArt/Illustration.png" type="Texture" id=5]
-[ext_resource path="res://Menus/ConceptArt/posing.png" type="Texture" id=6]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="FontFile" id=3]
+[ext_resource path="res://Menus/ConceptArt/running.png" type="Texture2D" id=4]
+[ext_resource path="res://Menus/ConceptArt/Illustration.png" type="Texture2D" id=5]
+[ext_resource path="res://Menus/ConceptArt/posing.png" type="Texture2D" id=6]
 [ext_resource path="res://Menus/DemoEndCredits.gd" type="Script" id=7]
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Regular.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://test_fonts/vibekefonts/Jura-Bold.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://imported_assets/actors/sharkboi/Shark_Bloons.png" type="Texture" id=10]
-[ext_resource path="res://Menus/PrettyAssets/test2.png" type="Texture" id=11]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Regular.ttf" type="FontFile" id=8]
+[ext_resource path="res://test_fonts/vibekefonts/Jura-Bold.ttf" type="FontFile" id=9]
+[ext_resource path="res://imported_assets/actors/sharkboi/Shark_Bloons.png" type="Texture2D" id=10]
+[ext_resource path="res://Menus/PrettyAssets/test2.png" type="Texture2D" id=11]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/Sharkboi/SharkboiAnimatedSprite.gd" type="Script" id=12]
-[ext_resource path="res://Menus/ConceptArt/jente.png" type="Texture" id=13]
+[ext_resource path="res://Menus/ConceptArt/jente.png" type="Texture2D" id=13]
 [ext_resource path="res://Menus/PrettyAssets/Sparkles.tscn" type="PackedScene" id=14]
-[ext_resource path="res://test_fonts/vibekefonts/Jura-SemiBold.ttf" type="DynamicFontData" id=15]
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://test_fonts/vibekefonts/Jura-SemiBold.ttf" type="FontFile" id=15]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="FontFile" id=16]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tres" type="SpriteFrames" id=17]
 [ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tres" type="SpriteFrames" id=18]
-[ext_resource path="res://imported_assets/actors/flybutt/Butterfly.png" type="Texture" id=19]
-[ext_resource path="res://imported_assets/actors/regularsnaker/Snake_Regular.png" type="Texture" id=20]
-[ext_resource path="res://imported_assets/actors/gunnerfly/Gunnerfly.png" type="Texture" id=21]
-[ext_resource path="res://imported_assets/actors/nooder/Nooder.png" type="Texture" id=22]
-[ext_resource path="res://imported_assets/actors/misbeehave/Bee_Stressed.png" type="Texture" id=23]
-[ext_resource path="res://imported_assets/actors/satan/satan.png" type="Texture" id=24]
-[ext_resource path="res://imported_assets/actors/ourguy/Guy.png" type="Texture" id=25]
-[ext_resource path="res://Cutscenes/alien1.PNG" type="Texture" id=26]
-[ext_resource path="res://Menus/ConceptArt/Angel_concept.png" type="Texture" id=27]
-[ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA1-V1.webp" type="Texture" id=28]
-[ext_resource path="res://imported_assets/actors/mg/Player_TALKING-upscale.png" type="Texture" id=29]
-[ext_resource path="res://imported_assets/actors/mg/Player_Slide_Test.png" type="Texture" id=30]
-[ext_resource path="res://imported_assets/actors/mg/Player_MeleeTEST-B.png" type="Texture" id=31]
-[ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.webp" type="Texture" id=32]
-[ext_resource path="res://test_fonts/vt323/VT323-Regular.ttf" type="DynamicFontData" id=33]
+[ext_resource path="res://imported_assets/actors/flybutt/Butterfly.png" type="Texture2D" id=19]
+[ext_resource path="res://imported_assets/actors/regularsnaker/Snake_Regular.png" type="Texture2D" id=20]
+[ext_resource path="res://imported_assets/actors/gunnerfly/Gunnerfly.png" type="Texture2D" id=21]
+[ext_resource path="res://imported_assets/actors/nooder/Nooder.png" type="Texture2D" id=22]
+[ext_resource path="res://imported_assets/actors/misbeehave/Bee_Stressed.png" type="Texture2D" id=23]
+[ext_resource path="res://imported_assets/actors/satan/satan.png" type="Texture2D" id=24]
+[ext_resource path="res://imported_assets/actors/ourguy/Guy.png" type="Texture2D" id=25]
+[ext_resource path="res://Cutscenes/alien1.PNG" type="Texture2D" id=26]
+[ext_resource path="res://Menus/ConceptArt/Angel_concept.png" type="Texture2D" id=27]
+[ext_resource path="res://imported_assets/actors/mg/Player_JUMP_SpearA1-V1.webp" type="Texture2D" id=28]
+[ext_resource path="res://imported_assets/actors/mg/Player_TALKING-upscale.png" type="Texture2D" id=29]
+[ext_resource path="res://imported_assets/actors/mg/Player_Slide_Test.png" type="Texture2D" id=30]
+[ext_resource path="res://imported_assets/actors/mg/Player_MeleeTEST-B.png" type="Texture2D" id=31]
+[ext_resource path="res://imported_assets/actors/mg/Player_RUNNING_SpearA1-v1.webp" type="Texture2D" id=32]
+[ext_resource path="res://test_fonts/vt323/VT323-Regular.ttf" type="FontFile" id=33]
 [ext_resource path="res://Menus/SkipCutscene.gd" type="Script" id=34]
 
 [sub_resource type="Shader" id=7]
@@ -54,7 +54,7 @@ shader_param/SPEED_Y = 0.05
 [sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
 
-uniform vec4 flash_color : hint_color = vec4(1.0);
+uniform vec4 flash_color : source_color = vec4(1.0);
 uniform float flash_modifier : hint_range(0.0, 1.0) = 0.0;
 
 void fragment() {
@@ -348,8 +348,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 0, 0, 1, 2, 3, 5, 6, 7, 7, 7, 6, 5, 4, 3, 2, 1 ]
 }
@@ -360,8 +360,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PackedFloat32Array(  ),
+"transitions": PackedFloat32Array(  ),
 "update": 1,
 "values": [  ]
 }
@@ -609,11 +609,11 @@ animations = [ {
 "speed": 1.0
 } ]
 
-[sub_resource type="DynamicFont" id=65]
+[sub_resource type="FontFile" id=65]
 size = 42
 font_data = ExtResource( 15 )
 
-[sub_resource type="DynamicFont" id=66]
+[sub_resource type="FontFile" id=66]
 size = 46
 font_data = ExtResource( 9 )
 
@@ -629,22 +629,22 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="DynamicFont" id=487]
+[sub_resource type="FontFile" id=487]
 size = 32
 extra_spacing_char = 4
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=23]
+[sub_resource type="FontFile" id=23]
 size = 32
 outline_size = 3
 outline_color = Color( 0.0352941, 0.184314, 0.501961, 1 )
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="FontFile" id=20]
 size = 32
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=67]
+[sub_resource type="FontFile" id=67]
 size = 50
 font_data = ExtResource( 8 )
 
@@ -674,23 +674,23 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="DynamicFont" id=486]
+[sub_resource type="FontFile" id=486]
 size = 32
-extra_spacing_bottom = 3
+spacing_bottom = 3
 extra_spacing_char = 2
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=484]
+[sub_resource type="FontFile" id=484]
 size = 50
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_bottom = 10
+spacing_bottom = 10
 extra_spacing_char = 12
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=485]
+[sub_resource type="FontFile" id=485]
 size = 30
-extra_spacing_bottom = 3
+spacing_bottom = 3
 font_data = ExtResource( 16 )
 
 [sub_resource type="StyleBoxFlat" id=491]
@@ -710,8 +710,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0.8, 0.8 ) ]
 }
@@ -722,8 +722,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -734,8 +734,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PackedFloat32Array(  ),
+"transitions": PackedFloat32Array(  ),
 "values": [  ]
 }
 tracks/3/type = "value"
@@ -745,8 +745,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -761,8 +761,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.4, 3 ),
-"transitions": PoolRealArray( 1, 0.435275, 1 ),
+"times": PackedFloat32Array( 0, 2.4, 3 ),
+"transitions": PackedFloat32Array( 1, 0.435275, 1 ),
 "update": 0,
 "values": [ Vector2( 0.8, 0.8 ), Vector2( 0.8, 0.8 ), Vector2( 1.05, 1.05 ) ]
 }
@@ -773,8 +773,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2.4, 3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.4, 3 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -785,8 +785,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 2.4 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 2.4 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "pop_in_sound"
@@ -799,13 +799,13 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=493]
+[sub_resource type="FontFile" id=493]
 size = 48
 outline_size = 4
 font_data = ExtResource( 33 )
@@ -815,47 +815,47 @@ layer = 95
 script = ExtResource( 7 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 4.0
-margin_right = 1922.0
-margin_bottom = 1206.0
+offset_left = 4.0
+offset_right = 1922.0
+offset_bottom = 1206.0
 
 [node name="BGPattern" type="TextureRect" parent="."]
 modulate = Color( 1, 0.905882, 0.388235, 0.258824 )
 material = SubResource( 6 )
-margin_left = -26.0
-margin_top = -59.0
-margin_right = 1959.0
-margin_bottom = 1112.0
+offset_left = -26.0
+offset_top = -59.0
+offset_right = 1959.0
+offset_bottom = 1112.0
 texture = ExtResource( 11 )
 stretch_mode = 2
 
 [node name="CreditScroll" type="Node2D" parent="."]
 
-[node name="Posing" type="Sprite" parent="CreditScroll"]
+[node name="Posing" type="Sprite2D" parent="CreditScroll"]
 position = Vector2( 1659.72, 1182.22 )
 scale = Vector2( 0.39255, 0.39255 )
 texture = ExtResource( 6 )
 
-[node name="Running" type="Sprite" parent="CreditScroll"]
+[node name="Running" type="Sprite2D" parent="CreditScroll"]
 position = Vector2( 273.562, 808.66 )
 scale = Vector2( 0.357685, 0.357685 )
 texture = ExtResource( 4 )
 flip_h = true
 
-[node name="Jente" type="Sprite" parent="CreditScroll"]
+[node name="Jente" type="Sprite2D" parent="CreditScroll"]
 position = Vector2( 179, 1614.37 )
 scale = Vector2( 0.592783, 0.592783 )
 texture = ExtResource( 13 )
 flip_h = true
-region_filter_clip = true
+region_filter_clip_enabled = true
 
-[node name="Illustration" type="Sprite" parent="CreditScroll"]
+[node name="Illustration" type="Sprite2D" parent="CreditScroll"]
 position = Vector2( 1662.32, 2123.23 )
 scale = Vector2( 0.361096, 0.364385 )
 texture = ExtResource( 5 )
 flip_h = true
 
-[node name="BroBear" type="AnimatedSprite" parent="CreditScroll"]
+[node name="BroBear" type="AnimatedSprite2D" parent="CreditScroll"]
 position = Vector2( 166, 4044 )
 scale = Vector2( 0.75, 0.75 )
 frames = ExtResource( 17 )
@@ -863,7 +863,7 @@ speed_scale = 2.0
 playing = true
 flip_h = true
 
-[node name="GunnerFly" type="AnimatedSprite" parent="CreditScroll"]
+[node name="GunnerFly" type="AnimatedSprite2D" parent="CreditScroll"]
 unique_name_in_owner = true
 material = SubResource( 25 )
 position = Vector2( 157, 3244 )
@@ -873,7 +873,7 @@ speed_scale = 2.0
 playing = true
 flip_h = true
 
-[node name="GunnerFly2" type="AnimatedSprite" parent="CreditScroll"]
+[node name="GunnerFly2" type="AnimatedSprite2D" parent="CreditScroll"]
 position = Vector2( 640, 3670 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 27 )
@@ -881,7 +881,7 @@ speed_scale = 2.0
 playing = true
 offset = Vector2( 1421, -74 )
 
-[node name="BroBun" type="AnimatedSprite" parent="CreditScroll"]
+[node name="BroBun" type="AnimatedSprite2D" parent="CreditScroll"]
 position = Vector2( 131, 4996 )
 scale = Vector2( 0.75, 0.75 )
 frames = ExtResource( 18 )
@@ -889,14 +889,14 @@ speed_scale = 2.0
 playing = true
 offset = Vector2( 2121, -712 )
 
-[node name="SeaGull" type="AnimatedSprite" parent="CreditScroll"]
+[node name="SeaGull" type="AnimatedSprite2D" parent="CreditScroll"]
 position = Vector2( 1700, 5396 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 35 )
 speed_scale = 1.5
 playing = true
 
-[node name="OurGuy" type="AnimatedSprite" parent="CreditScroll"]
+[node name="OurGuy" type="AnimatedSprite2D" parent="CreditScroll"]
 position = Vector2( 177, 5787 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 40 )
@@ -904,7 +904,7 @@ speed_scale = 6.0
 playing = true
 flip_h = true
 
-[node name="Nooder" type="AnimatedSprite" parent="CreditScroll"]
+[node name="Nooder" type="AnimatedSprite2D" parent="CreditScroll"]
 position = Vector2( 5205, 5818 )
 scale = Vector2( 1.2, 1.2 )
 frames = SubResource( 45 )
@@ -916,19 +916,19 @@ position = Vector2( 130, 6827 )
 scale = Vector2( 0.75, 0.75 )
 flip_h = true
 
-[node name="Alien1" type="Sprite" parent="CreditScroll"]
+[node name="Alien1" type="Sprite2D" parent="CreditScroll"]
 position = Vector2( 1721, 7432 )
 texture = ExtResource( 26 )
 flip_h = true
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CreditScroll"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CreditScroll"]
 position = Vector2( 1718, 2809 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 52 )
 speed_scale = 2.0
 playing = true
 
-[node name="Snake" type="AnimatedSprite" parent="CreditScroll"]
+[node name="Snake" type="AnimatedSprite2D" parent="CreditScroll"]
 position = Vector2( -2351, 3229 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 59 )
@@ -937,7 +937,7 @@ playing = true
 offset = Vector2( 4315, -1332 )
 flip_h = true
 
-[node name="SharkAttack" type="AnimatedSprite" parent="CreditScroll"]
+[node name="SharkAttack" type="AnimatedSprite2D" parent="CreditScroll"]
 position = Vector2( 236, 4905 )
 scale = Vector2( 0.9375, 0.9375 )
 frames = SubResource( 18 )
@@ -948,13 +948,13 @@ script = ExtResource( 12 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CreditScroll/SharkAttack"]
 "anims/New Anim" = SubResource( 17 )
 
-[node name="AngelConcept" type="Sprite" parent="CreditScroll"]
+[node name="AngelConcept" type="Sprite2D" parent="CreditScroll"]
 position = Vector2( 153, 7980 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 27 )
 flip_h = true
 
-[node name="StaffUp" type="AnimatedSprite" parent="CreditScroll"]
+[node name="StaffUp" type="AnimatedSprite2D" parent="CreditScroll"]
 position = Vector2( 1583, 8305 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 483 )
@@ -963,157 +963,157 @@ playing = true
 flip_h = true
 
 [node name="Label" type="Label" parent="CreditScroll"]
-margin_left = 64.0
-margin_top = 2204.0
-margin_right = 236.0
-margin_bottom = 2363.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 65 )
+offset_left = 64.0
+offset_top = 2204.0
+offset_right = 236.0
+offset_bottom = 2363.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 65 )
 text = "Special 
   thanks 
    to... "
 
 [node name="Label2" type="Label" parent="CreditScroll"]
-margin_left = 70.0
-margin_top = 2566.0
-margin_right = 418.0
-margin_bottom = 2725.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 70.0
+offset_top = 2566.0
+offset_right = 418.0
+offset_bottom = 2725.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "SNEAKY SNAKE"
 
 [node name="Label3" type="Label" parent="CreditScroll"]
-margin_left = 1541.0
-margin_top = 2982.0
-margin_right = 1889.0
-margin_bottom = 3141.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 1541.0
+offset_top = 2982.0
+offset_right = 1889.0
+offset_bottom = 3141.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "MISBEEHAVE"
 
 [node name="Label4" type="Label" parent="CreditScroll"]
-margin_left = 62.0
-margin_top = 3444.0
-margin_right = 410.0
-margin_bottom = 3603.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 62.0
+offset_top = 3444.0
+offset_right = 410.0
+offset_bottom = 3603.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "PRETTYFLY"
 
 [node name="Label5" type="Label" parent="CreditScroll"]
-margin_left = 1529.0
-margin_top = 3805.0
-margin_right = 1877.0
-margin_bottom = 3979.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 1529.0
+offset_top = 3805.0
+offset_right = 1877.0
+offset_bottom = 3979.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "PRETTYFLY
 WITH
 A GUN"
 align = 1
 
 [node name="Label6" type="Label" parent="CreditScroll"]
-margin_left = 42.0
-margin_top = 4304.0
-margin_right = 390.0
-margin_bottom = 4463.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 42.0
+offset_top = 4304.0
+offset_right = 390.0
+offset_bottom = 4463.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "ROBRO-BEAR"
 
 [node name="Label7" type="Label" parent="CreditScroll"]
-margin_left = 1551.0
-margin_top = 4736.0
-margin_right = 1899.0
-margin_bottom = 4895.0
-rect_pivot_offset = Vector2( 280, 80 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 1551.0
+offset_top = 4736.0
+offset_right = 1899.0
+offset_bottom = 4895.0
+pivot_offset = Vector2( 280, 80 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "ROBRO-BUN"
 
 [node name="Label8" type="Label" parent="CreditScroll"]
-margin_left = 66.0
-margin_top = 5173.0
-margin_right = 414.0
-margin_bottom = 5332.0
-rect_pivot_offset = Vector2( 280, 80 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 66.0
+offset_top = 5173.0
+offset_right = 414.0
+offset_bottom = 5332.0
+pivot_offset = Vector2( 280, 80 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "SHARKTANKS"
 
 [node name="Label9" type="Label" parent="CreditScroll"]
-margin_left = 1560.0
-margin_top = 5605.0
-margin_right = 1908.0
-margin_bottom = 5764.0
-rect_pivot_offset = Vector2( 280, 80 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 1560.0
+offset_top = 5605.0
+offset_right = 1908.0
+offset_bottom = 5764.0
+pivot_offset = Vector2( 280, 80 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "A SEAGULL"
 
 [node name="Label10" type="Label" parent="CreditScroll"]
-margin_left = 41.0
-margin_top = 6005.0
-margin_right = 586.0
-margin_bottom = 6164.0
-rect_pivot_offset = Vector2( 280, 80 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 41.0
+offset_top = 6005.0
+offset_right = 586.0
+offset_bottom = 6164.0
+pivot_offset = Vector2( 280, 80 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "WHY ARE YOU RUNNING"
 
 [node name="Label11" type="Label" parent="CreditScroll"]
-margin_left = 1600.0
-margin_top = 6455.0
-margin_right = 2145.0
-margin_bottom = 6614.0
-rect_pivot_offset = Vector2( 280, 80 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 1600.0
+offset_top = 6455.0
+offset_right = 2145.0
+offset_bottom = 6614.0
+pivot_offset = Vector2( 280, 80 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "NOODER"
 
 [node name="Label12" type="Label" parent="CreditScroll"]
-margin_left = -100.0
-margin_top = 7208.0
-margin_right = 445.0
-margin_bottom = 7382.0
-rect_pivot_offset = Vector2( 410, 222 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = -100.0
+offset_top = 7208.0
+offset_right = 445.0
+offset_bottom = 7382.0
+pivot_offset = Vector2( 410, 222 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "BIG BIRD 
 OF 
 DARKNESS"
 align = 1
 
 [node name="Label13" type="Label" parent="CreditScroll"]
-margin_left = 1449.0
-margin_top = 7689.0
-margin_right = 1994.0
-margin_bottom = 7863.0
-rect_pivot_offset = Vector2( 280, 80 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 1449.0
+offset_top = 7689.0
+offset_right = 1994.0
+offset_bottom = 7863.0
+pivot_offset = Vector2( 280, 80 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "???"
 align = 1
 
 [node name="Label14" type="Label" parent="CreditScroll"]
-margin_left = -100.0
-margin_top = 8137.0
-margin_right = 445.0
-margin_bottom = 8311.0
-rect_pivot_offset = Vector2( 273, 13 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = -100.0
+offset_top = 8137.0
+offset_right = 445.0
+offset_bottom = 8311.0
+pivot_offset = Vector2( 273, 13 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "ANGEL"
 align = 1
 
 [node name="Label15" type="Label" parent="CreditScroll"]
-margin_left = 1407.0
-margin_top = 8642.0
-margin_right = 1952.0
-margin_bottom = 8816.0
-rect_pivot_offset = Vector2( 273, 13 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 66 )
+offset_left = 1407.0
+offset_top = 8642.0
+offset_right = 1952.0
+offset_bottom = 8816.0
+pivot_offset = Vector2( 273, 13 )
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 66 )
 text = "YOU <3"
 align = 1
 
@@ -1124,16 +1124,16 @@ scale = Vector2( 0.8, 0.8 )
 
 [node name="TextureRect" type="Control" parent="Window"]
 modulate = Color( 1, 1, 1, 0.901961 )
-margin_left = -469.524
-margin_top = -405.714
-margin_right = 445.476
-margin_bottom = 433.286
+offset_left = -469.524
+offset_top = -405.714
+offset_right = 445.476
+offset_bottom = 433.286
 
 [node name="Panel" type="Panel" parent="Window/TextureRect"]
-margin_left = 34.0
-margin_right = 857.0
-margin_bottom = 843.0
-custom_styles/panel = SubResource( 488 )
+offset_left = 34.0
+offset_right = 857.0
+offset_bottom = 843.0
+theme_override_styles/panel = SubResource( 488 )
 
 [node name="MessageText" type="RichTextLabel" parent="Window/TextureRect"]
 unique_name_in_owner = true
@@ -1141,16 +1141,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -386.0
-margin_top = -301.738
-margin_right = 374.0
-margin_bottom = 262.262
-custom_colors/default_color = Color( 0.0196078, 0.0196078, 0.219608, 1 )
-custom_fonts/mono_font = SubResource( 487 )
-custom_fonts/bold_font = SubResource( 23 )
-custom_fonts/normal_font = SubResource( 20 )
+offset_left = -386.0
+offset_top = -301.738
+offset_right = 374.0
+offset_bottom = 262.262
+theme_override_colors/default_color = Color( 0.0196078, 0.0196078, 0.219608, 1 )
+theme_override_fonts/mono_font = SubResource( 487 )
+theme_override_fonts/bold_font = SubResource( 23 )
+theme_override_fonts/normal_font = SubResource( 20 )
 bbcode_enabled = true
-bbcode_text = "[center][code][color=#F00080]...TO BE CONTINUED?[/color][/code]
+text = "[center][code][color=#F00080]...TO BE CONTINUED?[/color][/code]
 
 Thank you so much for playing our demo! 
 
@@ -1173,21 +1173,21 @@ Or donate 2 dollars hehe.
 
 [node name="MessageButtons" type="HBoxContainer" parent="Window/TextureRect"]
 unique_name_in_owner = true
-margin_left = 343.905
-margin_top = 673.048
-margin_right = 553.905
-margin_bottom = 734.048
+offset_left = 343.905
+offset_top = 673.048
+offset_right = 553.905
+offset_bottom = 734.048
 
 [node name="NextButton" type="Button" parent="Window/TextureRect/MessageButtons"]
 unique_name_in_owner = true
-margin_right = 210.0
-margin_bottom = 61.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 67 )
-custom_styles/hover = SubResource( 68 )
-custom_styles/pressed = SubResource( 69 )
-custom_styles/focus = SubResource( 490 )
-custom_styles/normal = SubResource( 70 )
+offset_right = 210.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/font = SubResource( 67 )
+theme_override_styles/hover = SubResource( 68 )
+theme_override_styles/pressed = SubResource( 69 )
+theme_override_styles/focus = SubResource( 490 )
+theme_override_styles/normal = SubResource( 70 )
 text = "  Next      "
 
 [node name="StarSelectNext" parent="Window/TextureRect/MessageButtons" instance=ExtResource( 2 )]
@@ -1201,17 +1201,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -395.524
-margin_top = -358.5
-margin_right = 364.476
-margin_bottom = 255.5
-custom_colors/default_color = Color( 0.0196078, 0.0196078, 0.219608, 1 )
-custom_colors/selection_color = Color( 0.878431, 0.231373, 0.231373, 1 )
-custom_fonts/mono_font = SubResource( 486 )
-custom_fonts/bold_font = SubResource( 484 )
-custom_fonts/normal_font = SubResource( 485 )
+offset_left = -395.524
+offset_top = -358.5
+offset_right = 364.476
+offset_bottom = 255.5
+theme_override_colors/default_color = Color( 0.0196078, 0.0196078, 0.219608, 1 )
+theme_override_colors/selection_color = Color( 0.878431, 0.231373, 0.231373, 1 )
+theme_override_fonts/mono_font = SubResource( 486 )
+theme_override_fonts/bold_font = SubResource( 484 )
+theme_override_fonts/normal_font = SubResource( 485 )
 bbcode_enabled = true
-bbcode_text = "[center][wave][b][rainbow  sat=0.5]CREDITS[/rainbow][/b][/wave]
+text = "[center][wave][b][rainbow  sat=0.5]CREDITS[/rainbow][/b][/wave]
 [code][wave]This game was created by..[/wave][/code]
 
                     Ty / [url=https://bsky.app/profile/awakebydefault.bsky.social]@AwakeByDefault[/url]  [color=#69b4b8]<-- click[/color]
@@ -1243,22 +1243,22 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -293.857
-margin_top = -175.0
-margin_right = 299.143
-margin_bottom = -114.0
+offset_left = -293.857
+offset_top = -175.0
+offset_right = 299.143
+offset_bottom = -114.0
 
 [node name="BackButton" type="Button" parent="Window/TextureRect/CreditsButtons"]
 unique_name_in_owner = true
-margin_right = 201.0
-margin_bottom = 61.0
-focus_neighbour_right = NodePath("../TitleButton")
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 67 )
-custom_styles/hover = SubResource( 68 )
-custom_styles/pressed = SubResource( 69 )
-custom_styles/focus = SubResource( 491 )
-custom_styles/normal = SubResource( 70 )
+offset_right = 201.0
+offset_bottom = 61.0
+focus_neighbor_right = NodePath("../TitleButton")
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/font = SubResource( 67 )
+theme_override_styles/hover = SubResource( 68 )
+theme_override_styles/pressed = SubResource( 69 )
+theme_override_styles/focus = SubResource( 491 )
+theme_override_styles/normal = SubResource( 70 )
 text = "  Back     "
 
 [node name="StarSelectBack" parent="Window/TextureRect/CreditsButtons" instance=ExtResource( 2 )]
@@ -1268,23 +1268,23 @@ position = Vector2( 165.835, 32.1902 )
 
 [node name="VSeparator" type="VSeparator" parent="Window/TextureRect/CreditsButtons"]
 modulate = Color( 0, 0, 0, 0 )
-margin_left = 205.0
-margin_right = 239.0
-margin_bottom = 61.0
-custom_constants/separation = 34
+offset_left = 205.0
+offset_right = 239.0
+offset_bottom = 61.0
+theme_override_constants/separation = 34
 
 [node name="TitleButton" type="Button" parent="Window/TextureRect/CreditsButtons"]
 unique_name_in_owner = true
-margin_left = 243.0
-margin_right = 593.0
-margin_bottom = 61.0
-focus_neighbour_right = NodePath("../BackButton")
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 67 )
-custom_styles/hover = SubResource( 68 )
-custom_styles/pressed = SubResource( 69 )
-custom_styles/focus = SubResource( 492 )
-custom_styles/normal = SubResource( 70 )
+offset_left = 243.0
+offset_right = 593.0
+offset_bottom = 61.0
+focus_neighbor_right = NodePath("../BackButton")
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/font = SubResource( 67 )
+theme_override_styles/hover = SubResource( 68 )
+theme_override_styles/pressed = SubResource( 69 )
+theme_override_styles/focus = SubResource( 492 )
+theme_override_styles/normal = SubResource( 70 )
 text = " Title Screen     "
 
 [node name="StarSelectTitle" parent="Window/TextureRect/CreditsButtons" instance=ExtResource( 2 )]
@@ -1304,8 +1304,8 @@ anims/pop_in = SubResource( 22 )
 
 [node name="BlackSquare" type="ColorRect" parent="."]
 visible = false
-margin_right = 1924.0
-margin_bottom = 1085.0
+offset_right = 1924.0
+offset_bottom = 1085.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
@@ -1318,12 +1318,12 @@ hold_seconds = 1.0
 [node name="SkipLabel" type="Label" parent="SkipCutscene"]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 43.0
-margin_top = 1010.0
-margin_right = 323.0
-margin_bottom = 1059.0
-custom_colors/font_color = Color( 0.294118, 0.352941, 0.737255, 1 )
-custom_fonts/font = SubResource( 493 )
+offset_left = 43.0
+offset_top = 1010.0
+offset_right = 323.0
+offset_bottom = 1059.0
+theme_override_colors/font_color = Color( 0.294118, 0.352941, 0.737255, 1 )
+theme_override_fonts/font = SubResource( 493 )
 text = "hold X to skip"
 
 [connection signal="focus_entered" from="Window/TextureRect/MessageButtons/NextButton" to="." method="_on_NextButton_focus_entered"]

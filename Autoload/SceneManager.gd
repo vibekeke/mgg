@@ -1,21 +1,21 @@
 
 extends CanvasLayer
 
-export (float) var fade_duration := 0.5
-export (String, "Level1", "Level2", "Level3", "GameOver", "None") var retry_scene
+@export var fade_duration := 0.5
+@export_enum("Level1", "Level2", "Level3", "GameOver", "None") var retry_scene : String
 
-onready var color_rect : ColorRect = get_node("%ColorRect")
-onready var loading_text = get_node("%LoadingText")
-onready var spinning_star = get_node("%SpinningStar")
+@onready var color_rect : ColorRect = get_node("%ColorRect")
+@onready var loading_text = get_node("%LoadingText")
+@onready var spinning_star = get_node("%SpinningStar")
 
 var is_loading : bool = false
 var is_transitioning : bool = false
-var loader: ResourceInteractiveLoader
+var loader: ResourceLoader
 var loading_complete: bool = false
 var loading_dots_timer: float = 0.0
 var loading_dots_count: int = 1
 
-onready var action_level_list = {
+@onready var action_level_list = {
 	"Level1": "res://ActionLevels/Level1/Level1_Forest.tscn",
 	"Level2": "res://ActionLevels/Level2/Level2_Beach.tscn",
 	"Level3": "res://ActionLevels/Level3/Level3_City.tscn",
@@ -34,10 +34,10 @@ func _ready():
 	self.visible = true
 	spinning_star.visible = false
 	loading_text.visible = false
-	Events.connect("transition_to_scene", self, "_transition_to_next_scene")
-	var tween : SceneTreeTween = get_tree().create_tween()
+	Events.connect("transition_to_scene", Callable(self, "_transition_to_next_scene"))
+	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(color_rect, "modulate:a", 0, fade_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_callback(color_rect, "hide")
+	tween.tween_callback(Callable(color_rect, "hide"))
 
 func can_process_input() -> bool:
 	return not is_transitioning
@@ -65,65 +65,66 @@ func _transition_to_next_scene(_next_scene, skip_loading_screen := false):
 		loading_dots_timer = 0.0
 		loading_dots_count = 1
 		loading_text.text = "Loading."
-	var tween : SceneTreeTween = get_tree().create_tween()
+	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(color_rect, "modulate:a", 1, fade_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	yield(tween, "finished")
+	await tween.finished
 	
 	var scene_path = get_scene_path(_next_scene)
 	if scene_path and !is_loading:
 		is_loading = true
 		if skip_loading_screen:
-			yield(_load_scene_fast(scene_path), "completed")
+			await _load_scene_fast(scene_path)
 		else:
-			yield(_load_scene_async(scene_path), "completed")
+			await _load_scene_async(scene_path)
 
 func _load_scene_async(scene_path: String):
 	loading_complete = false
-	loader = ResourceLoader.load_interactive(scene_path)
-	
-	if not loader:
+	var error = ResourceLoader.load_threaded_request(scene_path)
+
+	if error != OK:
 		print("Failed to start loading scene: ", scene_path)
 		return
-	
+
 	while true:
-		var err = loader.poll()
-		
-		var progress = float(loader.get_stage()) / float(loader.get_stage_count())
+		var status = ResourceLoader.load_threaded_get_status(scene_path)
+
+		var progress_array = []
+		ResourceLoader.load_threaded_get_status(scene_path, progress_array)
+		var progress = progress_array[0] if progress_array.size() > 0 else 0.0
 		_update_loading_progress(progress)
-		
-		if err == ERR_FILE_EOF:
+
+		if status == ResourceLoader.THREAD_LOAD_LOADED:
 			loading_complete = true
 			is_loading = false
-			var resource = loader.get_resource()
-			loader = null
-			
+			var resource = ResourceLoader.load_threaded_get(scene_path)
+
 			if resource and resource is PackedScene:
-				get_tree().change_scene_to(resource)
+				get_tree().change_scene_to_packed(resource)
 				var fade_tween = get_tree().create_tween()
 				fade_tween.tween_property(color_rect, "modulate:a", 0.0, fade_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-				yield(fade_tween, "finished")
+				await fade_tween.finished
 				is_transitioning = false
 			else:
 				print("Failed to load scene resource")
 				is_transitioning = false
 			break
-		elif err != OK:
-			print("Error loading scene: ", err)
-			loader = null
+		elif status == ResourceLoader.THREAD_LOAD_FAILED:
+			print("Error loading scene: ", scene_path)
+			is_loading = false
 			is_transitioning = false
 			break
-		
-		yield(get_tree(), "idle_frame")
+
+		await get_tree().process_frame
 
 func _load_scene_fast(scene_path: String):
 	var resource = load(scene_path)
 	is_loading = false
 	
 	if resource and resource is PackedScene:
-		get_tree().change_scene_to(resource)
+		get_tree().change_scene_to_packed(resource)
 		var fade_tween = get_tree().create_tween()
 		fade_tween.tween_property(color_rect, "modulate:a", 0.0, fade_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-		yield(fade_tween, "finished")
+		await fade_tween.finished
 		is_transitioning = false
 	else:
 		print("Failed to load scene resource")
@@ -143,6 +144,8 @@ func _update_loading_progress(progress: float):
 		loading_text.text = "Loading" + dots
 
 func get_loading_progress() -> float:
-	if loader:
-		return float(loader.get_stage()) / float(loader.get_stage_count())
+	if is_loading:
+		var progress_array = []
+		ResourceLoader.load_threaded_get_status("", progress_array)
+		return progress_array[0] if progress_array.size() > 0 else 0.0
 	return 1.0 if loading_complete else 0.0

@@ -1,4 +1,4 @@
-extends Sprite
+extends Sprite2D
 
 # NOTE
 # turns on/off for everything, currently only the player cares

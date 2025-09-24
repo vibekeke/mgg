@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://imported_assets/projectiles/ChargeBeam V1.png" type="Texture" id=1]
+[ext_resource path="res://imported_assets/projectiles/ChargeBeam V1.png" type="Texture2D" id=1]
 [ext_resource path="res://Player/Projectiles/ChargedShot.gd" type="Script" id=2]
 [ext_resource path="res://Player/Projectiles/ChargeShotArea2D.gd" type="Script" id=3]
 
@@ -120,7 +120,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 0, 0 )
 
-[node name="ChargedShot" type="AnimatedSprite" groups=["player_bullet", "player_charge_shot"]]
+[node name="ChargedShot" type="AnimatedSprite2D" groups=["player_bullet", "player_charge_shot"]]
 frames = SubResource( 17 )
 speed_scale = 0.7
 playing = true

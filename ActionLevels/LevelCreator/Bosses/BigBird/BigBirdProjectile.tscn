@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://imported_assets/actors/bigbird/Bird_Tiny_V1.png" type="Texture" id=1]
+[ext_resource path="res://imported_assets/actors/bigbird/Bird_Tiny_V1.png" type="Texture2D" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdProjectile.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=14]
@@ -83,8 +83,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -98,8 +98,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -115,10 +115,10 @@ scale = Vector2( 0.3, 0.3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LilBird/Area2D"]
 shape = SubResource( 14 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2( 2.835, 2.385 )
 
-[node name="LilBird2" type="AnimatedSprite" parent="."]
+[node name="LilBird2" type="AnimatedSprite2D" parent="."]
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 13 )
 playing = true
@@ -128,5 +128,5 @@ unique_name_in_owner = true
 anims/RESET = SubResource( 15 )
 anims/fade_out = SubResource( 16 )
 
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

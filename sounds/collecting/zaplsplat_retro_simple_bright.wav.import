@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zaplsplat_retro_simple_bright.wav-823f63064368e337ed31d9b9330b629f.sample"
+type="AudioStreamWAV"
+uid="uid://bgy77cs2dv3mx"
+path="res://.godot/imported/zaplsplat_retro_simple_bright.wav-823f63064368e337ed31d9b9330b629f.sample"
 
 [deps]
 
 source_file="res://sounds/collecting/zaplsplat_retro_simple_bright.wav"
-dest_files=[ "res://.import/zaplsplat_retro_simple_bright.wav-823f63064368e337ed31d9b9330b629f.sample" ]
+dest_files=["res://.godot/imported/zaplsplat_retro_simple_bright.wav-823f63064368e337ed31d9b9330b629f.sample"]
 
 [params]
 

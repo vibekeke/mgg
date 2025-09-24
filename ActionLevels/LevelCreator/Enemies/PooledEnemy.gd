@@ -1,26 +1,26 @@
 extends Node2D
 class_name PooledEnemy
 
-export var sprite_path : NodePath
-onready var sprite : AnimatedSprite = get_node(sprite_path)
+@export var sprite_path : NodePath
+@onready var sprite : AnimatedSprite2D = get_node(sprite_path)
 
-export var area2d_path : NodePath
-onready var area2d : Area2D = get_node(area2d_path)
+@export var area2d_path : NodePath
+@onready var area2d : Area2D = get_node(area2d_path)
 
-export var can_take_damage_path : NodePath
-onready var can_take_damage = get_node_or_null(can_take_damage_path)
+@export var can_take_damage_path : NodePath
+@onready var can_take_damage = get_node_or_null(can_take_damage_path)
 
-export var visibility_notifier_path : NodePath
-onready var visibility_notifier : VisibilityNotifier2D = get_node(visibility_notifier_path)
+@export var visibility_notifier_path : NodePath
+@onready var visibility_notifier : VisibleOnScreenNotifier2D = get_node(visibility_notifier_path)
 
-export(DataClasses.SpawnHeight) var spawn_height = DataClasses.SpawnHeight.ANY
-export var enemy_name : String
-export var initial_scroll_speed : float = 500
-export (Array, PackedScene) var droppables
-export (Color) var hurt_color : Color = Color(10,10,10,1)
-export var enemy_difficulty_tier : int
-export var death_explosion : PackedScene
-export (Array, PackedScene) var components
+@export var spawn_height = DataClasses.SpawnHeight.ANY # (DataClasses.SpawnHeight)
+@export var enemy_name : String
+@export var initial_scroll_speed : float = 500
+@export var droppables: Array[PackedScene]
+@export var hurt_color: Color = Color(10,10,10,1)
+@export var enemy_difficulty_tier : int
+@export var death_explosion : PackedScene
+@export var components: Array[PackedScene]
 
 func reset_for_pool():
 	visible = false

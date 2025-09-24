@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zs_UFO.wav-0782108ba2bba7b22e4cdc82c643c686.sample"
+type="AudioStreamWAV"
+uid="uid://desecwmstm2ko"
+path="res://.godot/imported/zs_UFO.wav-0782108ba2bba7b22e4cdc82c643c686.sample"
 
 [deps]
 
 source_file="res://sounds/enemy attacks/zs_UFO.wav"
-dest_files=[ "res://.import/zs_UFO.wav-0782108ba2bba7b22e4cdc82c643c686.sample" ]
+dest_files=["res://.godot/imported/zs_UFO.wav-0782108ba2bba7b22e4cdc82c643c686.sample"]
 
 [params]
 

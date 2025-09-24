@@ -3,7 +3,7 @@
 [ext_resource path="res://ActionLevels/Room/Bedroom/TV.gd" type="Script" id=2]
 [ext_resource path="res://sounds/bedroom/Menu 1 - Super Smash Bros. Melee.mp3" type="AudioStream" id=3]
 [ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=4]
-[ext_resource path="res://imported_assets/bedroom/room_TV-1.webp" type="Texture" id=5]
+[ext_resource path="res://imported_assets/bedroom/room_TV-1.webp" type="Texture2D" id=5]
 [ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=6]
 
 [sub_resource type="AtlasTexture" id=30]
@@ -25,7 +25,7 @@ extents = Vector2( 146.25, 120 )
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 150, 82.5 )
 
-[node name="TVBox" type="AnimatedSprite"]
+[node name="TVBox" type="AnimatedSprite2D"]
 material = ExtResource( 4 )
 position = Vector2( 767, 645 )
 scale = Vector2( 0.4, 0.4 )

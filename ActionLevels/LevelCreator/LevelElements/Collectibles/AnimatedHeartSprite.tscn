@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://imported_assets/hud/health/Heart_V1.png" type="Texture" id=1]
+[ext_resource path="res://imported_assets/hud/health/Heart_V1.png" type="Texture2D" id=1]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -61,13 +61,13 @@ animations = [ {
 } ]
 
 [node name="Control" type="Control"]
-margin_right = 161.0
-margin_bottom = 191.0
+offset_right = 161.0
+offset_bottom = 191.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 11 )
 frame = 7

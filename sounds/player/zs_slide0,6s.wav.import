@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zs_slide0,6s.wav-3739164a4b893a62bc57928e2f076008.sample"
+type="AudioStreamWAV"
+uid="uid://buf1f0rwl681c"
+path="res://.godot/imported/zs_slide0,6s.wav-3739164a4b893a62bc57928e2f076008.sample"
 
 [deps]
 
 source_file="res://sounds/player/zs_slide0,6s.wav"
-dest_files=[ "res://.import/zs_slide0,6s.wav-3739164a4b893a62bc57928e2f076008.sample" ]
+dest_files=["res://.godot/imported/zs_slide0,6s.wav-3739164a4b893a62bc57928e2f076008.sample"]
 
 [params]
 

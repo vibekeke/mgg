@@ -1,7 +1,7 @@
 extends Level
 
-export var special_beach_dialogue : Resource
-export var easter_egg : PackedScene
+@export var special_beach_dialogue : Resource
+@export var easter_egg : PackedScene
 
 var text_speed = 0.7
 #I made the queue a bunch of tuples with the portraits cause it won't change the first portrait otherwise
@@ -29,7 +29,7 @@ var dialogue_queue = [
 func _ready():
 	randomize()
 	Events.emit_signal("player_invincible", true)
-	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
+	MggDialogue.connect("mgg_dialogue_box_finished", Callable(self, "_on_dialogue_box_finished"))
 
 
 func _on_LevelStartDisplay_confirm_level_start():
@@ -42,7 +42,7 @@ func _on_dialogue_box_finished(node_id):
 		start_dialogue_timer()
 
 func start_dialogue_timer():
-	var time = rand_range(4, 8)
+	var time = randf_range(4, 8)
 	$"%DialogueTimer".wait_time = time
 	$"%DialogueTimer".start()
 

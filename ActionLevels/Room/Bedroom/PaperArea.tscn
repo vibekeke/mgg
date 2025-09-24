@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://imported_assets/particles/Sparkles_white_B.png" type="Texture" id=3]
+[ext_resource path="res://imported_assets/particles/Sparkles_white_B.png" type="Texture2D" id=3]
 [ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=5]
 [ext_resource path="res://ActionLevels/Room/Bedroom/PaperArea.gd" type="Script" id=13]
 
@@ -61,7 +61,7 @@ extents = Vector2( 39, 56.5 )
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 107, 93 )
 
-[node name="PaperArea" type="Sprite"]
+[node name="PaperArea" type="Sprite2D"]
 material = ExtResource( 5 )
 centered = false
 offset = Vector2( 0, -350 )
@@ -80,7 +80,7 @@ position = Vector2( -0.5, 4 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 9 )
 
-[node name="Sparkles" type="AnimatedSprite" parent="."]
+[node name="Sparkles" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 0.2, 0.2 )

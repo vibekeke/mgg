@@ -1,10 +1,10 @@
-extends Sprite
+extends Sprite2D
 
-export var enabled : bool = true
+@export var enabled : bool = true
 
 var totalTime = 0.0
-export var frequency : float = 0.5
-export var amplitude : float = 0.5
+@export var frequency : float = 0.5
+@export var amplitude : float = 0.5
 
 func _physics_process(delta):
 	totalTime += delta

@@ -1,4 +1,4 @@
-extends Sprite
+extends Sprite2D
 #
 #var player_in_area: bool = false
 #var dialogue_open : bool = false

@@ -1,15 +1,15 @@
 extends Node
 
-export var hide_delay: float = 2.0 
-export var enabled: bool = true 
-export var always_visible: bool = false  # when true, cursor never hides
+@export var hide_delay: float = 2.0 
+@export var enabled: bool = true 
+@export var always_visible: bool = false  # when true, cursor never hides
 
 var timer: Timer
 var last_mouse_position: Vector2
 var is_cursor_hidden: bool = false
 
 func _ready():
-	pause_mode = Node.PAUSE_MODE_PROCESS
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	setup_timer()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	last_mouse_position = get_viewport().get_mouse_position()
@@ -18,7 +18,7 @@ func setup_timer():
 	timer = Timer.new()
 	timer.wait_time = hide_delay
 	timer.one_shot = true
-	timer.connect("timeout", self, "_on_hide_timer_timeout")
+	timer.connect("timeout", Callable(self, "_on_hide_timer_timeout"))
 	add_child(timer)
 
 func _input(event):

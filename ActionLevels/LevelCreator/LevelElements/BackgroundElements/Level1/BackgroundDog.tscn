@@ -3,7 +3,7 @@
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/DogGolden.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundDog.gd" type="Script" id=2]
 
-[node name="BackgroundDog" type="AnimatedSprite"]
+[node name="BackgroundDog" type="AnimatedSprite2D"]
 modulate = Color( 0, 0, 0, 1 )
 scale = Vector2( 0.55, 0.55 )
 frames = ExtResource( 1 )

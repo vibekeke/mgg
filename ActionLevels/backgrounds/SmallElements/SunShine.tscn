@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://imported_assets/backgrounds/beach/small elements/Sun_shine.png" type="Texture" id=1]
+[ext_resource path="res://imported_assets/backgrounds/beach/small elements/Sun_shine.png" type="Texture2D" id=1]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -32,7 +32,7 @@ animations = [ {
 
 [node name="SunShine" type="Node2D"]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2( 2, 2.99999 )
 scale = Vector2( 0.546875, 0.730469 )
 frames = SubResource( 5 )

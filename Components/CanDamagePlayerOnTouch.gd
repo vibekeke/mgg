@@ -1,20 +1,20 @@
 extends Node
 
-export (NodePath) var enemy
-onready var enemy_node = get_node(enemy)
+@export var enemy: NodePath
+@onready var enemy_node = get_node(enemy)
 
-export (NodePath) var enemy_area
-onready var enemy_area_node = get_node(enemy_area)
+@export var enemy_area: NodePath
+@onready var enemy_area_node = get_node(enemy_area)
 
-export (bool) var death_by_collision_with_player = true
+@export var death_by_collision_with_player: bool = true
 
-export (NodePath) var take_damage
-onready var take_damage_node = get_node_or_null(take_damage)
+@export var take_damage: NodePath
+@onready var take_damage_node = get_node_or_null(take_damage)
 
 var is_disabled := false
 
 func _ready():
-	enemy_area_node.connect("area_entered", self, "_on_area_entered")
+	enemy_area_node.connect("area_entered", Callable(self, "_on_area_entered"))
 
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("player_hurtbox") and !is_disabled:

@@ -2,7 +2,7 @@ extends Node2D
 
 class_name BroBearRotator
 
-onready var area2d = get_node("%Area2D")
+@onready var area2d = get_node("%Area2D")
 
 var rotator_has_fired = false
 

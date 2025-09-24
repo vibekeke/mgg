@@ -1,34 +1,34 @@
 extends Control
 
-export (PackedScene) var root_scene
+@export var root_scene: PackedScene
 
-onready var star_select_start = get_node("%StarSelectStart")
-onready var star_select_quit = get_node("%StarSelectQuit")
-onready var star_select_credits = get_node("%StarSelectCredits")
-onready var star_select_room = get_node("%StarSelectRoom")
-onready var star_select_fullscreen = get_node("%StarSelectFullscreen")
+@onready var star_select_start = get_node("%StarSelectStart")
+@onready var star_select_quit = get_node("%StarSelectQuit")
+@onready var star_select_credits = get_node("%StarSelectCredits")
+@onready var star_select_room = get_node("%StarSelectRoom")
+@onready var star_select_fullscreen = get_node("%StarSelectFullscreen")
 
-onready var title_screen_animation = get_node("%TitleScreenAnimation")
-onready var camera = get_node("%Camera2D")
+@onready var title_screen_animation = get_node("%TitleScreenAnimation")
+@onready var camera = get_node("%Camera2D")
 # onready var tween = get_node("%Tween")  # Commented out for Godot 4 compatibility
-var camera_tween : SceneTreeTween  # New Godot 4 tween
+var camera_tween : Tween  # New Godot 4 tween
 
-onready var start_button : Button = get_node("%StartButton")
-onready var room_button : Button = get_node("%RoomButton")
-onready var credits_button : Button = get_node("%CreditsButton")
-onready var quit_button : Button = get_node("%QuitButton")
-onready var fullscreen_label = get_node("%FullscreenLabel")
+@onready var start_button : Button = get_node("%StartButton")
+@onready var room_button : Button = get_node("%RoomButton")
+@onready var credits_button : Button = get_node("%CreditsButton")
+@onready var quit_button : Button = get_node("%QuitButton")
+@onready var fullscreen_label = get_node("%FullscreenLabel")
 
-onready var credits_menu = get_node("%Credits")
-onready var credits_hide_button = get_node("%CreditsHideButton")
+@onready var credits_menu = get_node("%Credits")
+@onready var credits_hide_button = get_node("%CreditsHideButton")
 
-onready var delete_save_button = get_node("%DeleteSaveButton")
-onready var delete_save_panel = get_node("%DeleteSavePanel")
+@onready var delete_save_button = get_node("%DeleteSaveButton")
+@onready var delete_save_panel = get_node("%DeleteSavePanel")
 
-onready var camera_timer : Timer = Timer.new()
-onready var high_score : int = SaveFileManager.get_high_score()
+@onready var camera_timer : Timer = Timer.new()
+@onready var high_score : int = SaveFileManager.get_high_score()
 
-onready var cheat_code_detection : PoolStringArray = PoolStringArray()
+@onready var cheat_code_detection : PackedStringArray = PackedStringArray()
 var successful_cheat_code : String = "00112323"
 var cheat_code_activated : bool = false
 
@@ -45,12 +45,11 @@ func _ready():
 	add_child(camera_timer)
 	camera_timer.wait_time = 0.5
 	camera_timer.one_shot = true
-	camera_timer.connect("timeout", self, "_start_camera_tween")
+	camera_timer.connect("timeout", Callable(self, "_start_camera_tween"))
 
 	start_camera_sequence()
 	SceneManager.visible = true
-	var directory = Directory.new()
-	var fileExists = directory.file_exists(Events.SAVE_FILE_LOCATION)
+	var fileExists = DirAccess.dir_exists_absolute(Events.SAVE_FILE_LOCATION) or FileAccess.file_exists(Events.SAVE_FILE_LOCATION)
 	print("MainMenu: Events dogs complete = ", Events.dogs_complete)
 	if !Events.dogs_complete:
 		room_button.text = "???"
@@ -184,9 +183,9 @@ func _input(event):
 		cheat_code_detection.append(input_code)
 		
 		if cheat_code_detection.size() > 8:
-			cheat_code_detection.remove(0)
+			cheat_code_detection.remove_at(0)
 		
-		if cheat_code_detection.join("") == successful_cheat_code:
+		if "".join(cheat_code_detection) == successful_cheat_code:
 			activate_cheat_code()
 
 
@@ -197,9 +196,9 @@ func play_sound(sound_key : String, volume : float):
 
 func _on_FullscreenCheckbox_toggled(button_pressed):
 	if button_pressed:
-		OS.window_fullscreen = true
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (true) else Window.MODE_WINDOWED
 	else:
-		OS.window_fullscreen = false
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (false) else Window.MODE_WINDOWED
 
 
 
@@ -221,7 +220,7 @@ func _on_YesDeleteButton_pressed():
 	$"%AreYouSureLabel".text ="\nSave Data Deleted."
 	$"%YesDeleteButton".hide()
 	$"%NoDeleteButton".hide()
-	yield(get_tree().create_timer(2.0), "timeout")
+	await get_tree().create_timer(2.0).timeout
 	room_button.text = "???"
 	room_button.disabled = true
 	delete_save_panel.visible = false
@@ -260,4 +259,3 @@ func _start_camera_tween():
 	# New Godot 4 tween:
 	camera_tween = get_tree().create_tween()
 	camera_tween.tween_property(camera, "position", Vector2(961, 540), 4).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
-

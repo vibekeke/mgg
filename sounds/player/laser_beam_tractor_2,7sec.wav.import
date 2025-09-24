@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/laser_beam_tractor_2,7sec.wav-cf341a3441898dedc63c403f91904641.sample"
+type="AudioStreamWAV"
+uid="uid://ch7h0ym8y42kg"
+path="res://.godot/imported/laser_beam_tractor_2,7sec.wav-cf341a3441898dedc63c403f91904641.sample"
 
 [deps]
 
 source_file="res://sounds/player/laser_beam_tractor_2,7sec.wav"
-dest_files=[ "res://.import/laser_beam_tractor_2,7sec.wav-cf341a3441898dedc63c403f91904641.sample" ]
+dest_files=["res://.godot/imported/laser_beam_tractor_2,7sec.wav-cf341a3441898dedc63c403f91904641.sample"]
 
 [params]
 

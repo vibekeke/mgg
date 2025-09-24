@@ -1,13 +1,13 @@
 extends CanvasLayer
 
-export (float) var scrolling_speed_middleground = 500.0
-export (float) var scrolling_time_middleground = 10.0
+@export var scrolling_speed_middleground: float = 500.0
+@export var scrolling_time_middleground: float = 10.0
 
-export (float) var scrolling_speed_foreground = 500.0
-export (float) var scrolling_time_foreground = 200.0
+@export var scrolling_speed_foreground: float = 500.0
+@export var scrolling_time_foreground: float = 200.0
 
-export (float) var scrolling_speed_ending = 500.0
-export (float) var scrolling_time_ending = 10.0
+@export var scrolling_speed_ending: float = 500.0
+@export var scrolling_time_ending: float = 10.0
 
 var basic_timer = 0.0
 var foreground_stopped = false
@@ -15,7 +15,7 @@ var timer_been_set = false
 var background_moving = false
 
 func _ready():
-	Events.connect("background_moving_enabled", self, "_on_background_moving_enabled")
+	Events.connect("background_moving_enabled", Callable(self, "_on_background_moving_enabled"))
 
 func _physics_process(delta):
 	if background_moving:

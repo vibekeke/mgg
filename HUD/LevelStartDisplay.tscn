@@ -1,25 +1,25 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://HUD/ControlsPanelContainer.tscn" type="PackedScene" id=1]
-[ext_resource path="res://test_fonts/vibekefonts/Jura-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://test_fonts/vibekefonts/Jura-Bold.ttf" type="FontFile" id=2]
 [ext_resource path="res://HUD/readable_panels.tres" type="StyleBox" id=3]
 [ext_resource path="res://HUD/LevelStartDisplay.gd" type="Script" id=4]
 [ext_resource path="res://ActionLevels/backgrounds/Bubbles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD/VerticalControlsPanelContainer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" type="Resource" id=7]
-[ext_resource path="res://imported_assets/backgrounds/balls.png" type="Texture" id=8]
+[ext_resource path="res://imported_assets/backgrounds/balls.png" type="Texture2D" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Controls:rect_position")
+tracks/0/path = NodePath("Controls:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 2021.69, 294.963 ) ]
 }
@@ -30,8 +30,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -40,14 +40,14 @@ tracks/1/keys = {
 resource_name = "display_controls"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Controls:rect_position")
+tracks/0/path = NodePath("Controls:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.9 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2021.69, 294.963 ), Vector2( 1389.69, 294.963 ) ]
 }
@@ -58,13 +58,13 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.7 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.7 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="FontFile" id=12]
 size = 34
 font_data = ExtResource( 2 )
 
@@ -77,8 +77,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -94,8 +94,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -103,14 +103,14 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 814, 718 ) ]
 }
@@ -121,8 +121,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -131,14 +131,14 @@ tracks/1/keys = {
 resource_name = "confirmation_animation"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 0.535888, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 0.535888, 1 ),
 "update": 0,
 "values": [ Vector2( 745, 560 ), Vector2( 745, 510 ) ]
 }
@@ -149,8 +149,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -164,8 +164,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -176,8 +176,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.1 ]
 }
@@ -188,8 +188,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( -1, 0 ) ]
 }
@@ -204,8 +204,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 2.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -216,8 +216,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.1 ]
 }
@@ -228,8 +228,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( -1, 0 ) ]
 }
@@ -240,19 +240,19 @@ level1_event1_dialog = ExtResource( 7 )
 
 [node name="PanelContainer" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true
-margin_left = -1018.0
-margin_top = -4.0
-margin_right = 624.0
-margin_bottom = 305.0
+offset_left = -1018.0
+offset_top = -4.0
+offset_right = 624.0
+offset_bottom = 305.0
 
 [node name="Controls" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 101.69
-margin_right = 522.7
-margin_bottom = 305.963
-custom_styles/panel = ExtResource( 3 )
+offset_left = 101.69
+offset_right = 522.7
+offset_bottom = 305.963
+theme_override_styles/panel = ExtResource( 3 )
 
 [node name="ControlsAnimationPlayer" type="AnimationPlayer" parent="Controls"]
 unique_name_in_owner = true
@@ -267,30 +267,30 @@ anchor_bottom = 1.0
 [node name="TutorialConfirmation" type="PanelContainer" parent="CenterContainer2"]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 814.0
-margin_top = 718.0
-margin_right = 1244.0
-margin_bottom = 818.0
+offset_left = 814.0
+offset_top = 718.0
+offset_right = 1244.0
+offset_bottom = 818.0
 grow_horizontal = 0
 grow_vertical = 0
-custom_styles/panel = ExtResource( 3 )
+theme_override_styles/panel = ExtResource( 3 )
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer2/TutorialConfirmation"]
-margin_right = 430.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 430, 100 )
+offset_right = 430.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 430, 100 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/TutorialConfirmation/CenterContainer"]
-margin_left = 15.0
-margin_top = 30.0
-margin_right = 415.0
-margin_bottom = 70.0
+offset_left = 15.0
+offset_top = 30.0
+offset_right = 415.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_min_size = Vector2( 400, 40 )
-custom_fonts/normal_font = SubResource( 12 )
+custom_minimum_size = Vector2( 400, 40 )
+theme_override_fonts/normal_font = SubResource( 12 )
 bbcode_enabled = true
-bbcode_text = "[center]Press Enter to start![/center]"
+text = "[center]Press Enter to start![/center]"
 meta_underlined = false
 text = "Press Enter to start!"
 scroll_active = false

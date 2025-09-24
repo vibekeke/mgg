@@ -1,15 +1,15 @@
 extends Node2D
 
-onready var timer : Timer = get_node("%Timer")
-onready var animation_player : AnimationPlayer = get_node("%AnimationPlayer")
+@onready var timer : Timer = get_node("%Timer")
+@onready var animation_player : AnimationPlayer = get_node("%AnimationPlayer")
 
-onready var background_layer : CanvasLayer = get_node("%BackgroundLayer")
-onready var visible_elements_layer : CanvasLayer = get_node("%VisibleElementsLayer")
+@onready var background_layer : CanvasLayer = get_node("%BackgroundLayer")
+@onready var visible_elements_layer : CanvasLayer = get_node("%VisibleElementsLayer")
 
-onready var color_rect : ColorRect = get_node("%ColorRect")
+@onready var color_rect : ColorRect = get_node("%ColorRect")
 # onready var color_rect_tween : Tween = get_node("%ColorRectTween")  # Commented out for Godot 4 compatibility
-var color_rect_tween : SceneTreeTween  # New Godot 4 tween
-onready var warning_symbol : Sprite = get_node("%WarningSymbol")
+var color_rect_tween : Tween  # New Godot 4 tween
+@onready var warning_symbol : Sprite2D = get_node("%WarningSymbol")
 var color_rect_tween_modulate_values = [Color(1.0,1.0,1.0,0.8), Color(1.0,1.0,1.0,0.0)]
 
 signal warning_finished
@@ -36,7 +36,7 @@ func tween_background_color():
 	# New Godot 4 tween:
 	color_rect_tween = get_tree().create_tween()
 	color_rect_tween.tween_property(color_rect, "modulate", color_rect_tween_modulate_values[1], 1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-	color_rect_tween.connect("finished", self, "_on_tween_completed")
+	color_rect_tween.connect("finished", Callable(self, "_on_tween_completed"))
 
 func _on_tween_completed():
 	# Old tween signature: func _on_tween_completed(object, key)
@@ -51,11 +51,11 @@ func _on_tween_completed():
 	# New Godot 4 tween:
 	color_rect_tween = get_tree().create_tween()
 	color_rect_tween.tween_property(color_rect, "modulate", color_rect_tween_modulate_values[1], 1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-	color_rect_tween.connect("finished", self, "_on_tween_completed")
+	color_rect_tween.connect("finished", Callable(self, "_on_tween_completed"))
 
 func _on_Timer_timeout():
 	animation_player.play_backwards("boss_approaching")
-	yield(animation_player,"animation_finished")
+	await animation_player.animation_finished
 	# Old tween code commented out for Godot 4 compatibility:
 	# color_rect_tween.stop_all()
 

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/awoo.wav-98f58389ef6a28e133cb87abdf952c51.sample"
+type="AudioStreamWAV"
+uid="uid://7b4ng3b8wm1v"
+path="res://.godot/imported/awoo.wav-98f58389ef6a28e133cb87abdf952c51.sample"
 
 [deps]
 
 source_file="res://sounds/awoo/awoo.wav"
-dest_files=[ "res://.import/awoo.wav-98f58389ef6a28e133cb87abdf952c51.sample" ]
+dest_files=["res://.godot/imported/awoo.wav-98f58389ef6a28e133cb87abdf952c51.sample"]
 
 [params]
 

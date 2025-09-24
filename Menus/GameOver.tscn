@@ -1,21 +1,21 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://Menus/PrettyAssets/Spotlight2.png" type="Texture" id=1]
+[ext_resource path="res://Menus/PrettyAssets/Spotlight2.png" type="Texture2D" id=1]
 [ext_resource path="res://Menus/GameOver.gd" type="Script" id=2]
 [ext_resource path="res://Menus/button_focus_and_selected.tres" type="StyleBox" id=3]
 [ext_resource path="res://Menus/button_normal.tres" type="StyleBox" id=4]
 [ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=5]
-[ext_resource path="res://Menus/menubuttonfont.tres" type="DynamicFont" id=6]
-[ext_resource path="res://Menus/PrettyAssets/GameOverLogo.png" type="Texture" id=7]
-[ext_resource path="res://Menus/PrettyAssets/Spotlight1.png" type="Texture" id=8]
-[ext_resource path="res://Menus/PrettyAssets/Spotlight3.png" type="Texture" id=9]
-[ext_resource path="res://Menus/PrettyAssets/GirlSitDetermined.png" type="Texture" id=10]
-[ext_resource path="res://Menus/PrettyAssets/GirlSitSad.png" type="Texture" id=11]
+[ext_resource path="res://Menus/menubuttonfont.tres" type="FontFile" id=6]
+[ext_resource path="res://Menus/PrettyAssets/GameOverLogo.png" type="Texture2D" id=7]
+[ext_resource path="res://Menus/PrettyAssets/Spotlight1.png" type="Texture2D" id=8]
+[ext_resource path="res://Menus/PrettyAssets/Spotlight3.png" type="Texture2D" id=9]
+[ext_resource path="res://Menus/PrettyAssets/GirlSitDetermined.png" type="Texture2D" id=10]
+[ext_resource path="res://Menus/PrettyAssets/GirlSitSad.png" type="Texture2D" id=11]
 [ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=12]
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="FontFile" id=13]
 
 [sub_resource type="Gradient" id=7]
-colors = PoolColorArray( 0, 0, 0, 1, 0.112305, 0.115433, 0.3125, 1 )
+colors = PackedColorArray( 0, 0, 0, 1, 0.112305, 0.115433, 0.3125, 1 )
 
 [sub_resource type="GradientTexture2D" id=8]
 gradient = SubResource( 7 )
@@ -43,7 +43,7 @@ shader = SubResource( 1 )
 shader_param/amount = 10.0
 
 [sub_resource type="Gradient" id=3]
-colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
+colors = PackedColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
 
 [sub_resource type="GradientTexture2D" id=4]
 gradient = SubResource( 3 )
@@ -58,7 +58,7 @@ animations = [ {
 "speed": 1.5
 } ]
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="FontFile" id=10]
 size = 72
 font_data = ExtResource( 13 )
 
@@ -71,8 +71,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -83,8 +83,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -95,8 +95,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -111,8 +111,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1.6, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 1.6, 2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -123,20 +123,20 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.6, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 1.6, 2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/AnimatedSprite:modulate")
+tracks/2/path = NodePath("CanvasLayer/AnimatedSprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1.2, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 1.2, 2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -147,8 +147,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1, 1.7 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 1, 1.7 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -159,8 +159,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 1.6, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 1.6, 2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -171,8 +171,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.5, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 0.9 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -183,8 +183,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.9 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.9 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "play_game_over_music"
@@ -197,8 +197,8 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="BlackBackground" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = SubResource( 8 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -211,25 +211,25 @@ texture = SubResource( 4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2( 391.5, 505.605 )
 scale = Vector2( 0.990458, 0.990458 )
 frames = SubResource( 9 )
 playing = true
 
-[node name="GameOverLogo" type="Sprite" parent="CanvasLayer/AnimatedSprite"]
+[node name="GameOverLogo" type="Sprite2D" parent="CanvasLayer/AnimatedSprite2D"]
 position = Vector2( 588.56, -295.115 )
 scale = Vector2( 0.537988, 0.537988 )
 texture = ExtResource( 7 )
 
-[node name="GirlSitDetermined" type="Sprite" parent="CanvasLayer"]
+[node name="GirlSitDetermined" type="Sprite2D" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
 position = Vector2( 394.079, 763.169 )
 scale = Vector2( 0.742844, 0.742844 )
 texture = ExtResource( 10 )
 
-[node name="GirlSitSad" type="Sprite" parent="CanvasLayer"]
+[node name="GirlSitSad" type="Sprite2D" parent="CanvasLayer"]
 unique_name_in_owner = true
 position = Vector2( 387.727, 768.54 )
 scale = Vector2( 0.742844, 0.742844 )
@@ -241,75 +241,75 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 710.0
-margin_top = 101.0
-margin_right = 1210.0
-margin_bottom = 978.0
+offset_left = 710.0
+offset_top = 101.0
+offset_right = 1210.0
+offset_bottom = 978.0
 
 [node name="HSeparator2" type="HSeparator" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 500.0
-margin_bottom = 400.0
-custom_constants/separation = 400
+offset_right = 500.0
+offset_bottom = 400.0
+theme_override_constants/separation = 400
 
 [node name="RetryButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 404.0
-margin_right = 500.0
-margin_bottom = 483.0
-focus_neighbour_top = NodePath("../QuitButton")
-custom_colors/font_color_focus = Color( 1, 0.862745, 0.568627, 1 )
-custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
-custom_colors/font_color_hover = Color( 1, 0.862745, 0.568627, 1 )
-custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
-custom_fonts/font = ExtResource( 6 )
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 5 )
-custom_styles/focus = ExtResource( 3 )
-custom_styles/normal = ExtResource( 4 )
+offset_top = 404.0
+offset_right = 500.0
+offset_bottom = 483.0
+focus_neighbor_top = NodePath("../QuitButton")
+theme_override_colors/font_focus_color = Color( 1, 0.862745, 0.568627, 1 )
+theme_override_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
+theme_override_colors/font_hover_color = Color( 1, 0.862745, 0.568627, 1 )
+theme_override_colors/font_pressed_color = Color( 0.164706, 0.12549, 0.819608, 1 )
+theme_override_fonts/font = ExtResource( 6 )
+theme_override_styles/hover = ExtResource( 3 )
+theme_override_styles/pressed = ExtResource( 5 )
+theme_override_styles/focus = ExtResource( 3 )
+theme_override_styles/normal = ExtResource( 4 )
 text = "Try Again!"
 
 [node name="HSeparator3" type="HSeparator" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 487.0
-margin_right = 500.0
-margin_bottom = 492.0
-custom_constants/separation = 5
+offset_top = 487.0
+offset_right = 500.0
+offset_bottom = 492.0
+theme_override_constants/separation = 5
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 496.0
-margin_right = 500.0
-margin_bottom = 575.0
-focus_neighbour_bottom = NodePath("../RetryButton")
-custom_colors/font_color_focus = Color( 1, 0.862745, 0.568627, 1 )
-custom_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
-custom_colors/font_color_hover = Color( 1, 0.847059, 0.513726, 1 )
-custom_colors/font_color_pressed = Color( 0.164706, 0.12549, 0.819608, 1 )
-custom_fonts/font = ExtResource( 6 )
-custom_styles/hover = ExtResource( 3 )
-custom_styles/pressed = ExtResource( 5 )
-custom_styles/focus = ExtResource( 3 )
-custom_styles/normal = ExtResource( 4 )
+offset_top = 496.0
+offset_right = 500.0
+offset_bottom = 575.0
+focus_neighbor_bottom = NodePath("../RetryButton")
+theme_override_colors/font_focus_color = Color( 1, 0.862745, 0.568627, 1 )
+theme_override_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
+theme_override_colors/font_hover_color = Color( 1, 0.847059, 0.513726, 1 )
+theme_override_colors/font_pressed_color = Color( 0.164706, 0.12549, 0.819608, 1 )
+theme_override_fonts/font = ExtResource( 6 )
+theme_override_styles/hover = ExtResource( 3 )
+theme_override_styles/pressed = ExtResource( 5 )
+theme_override_styles/focus = ExtResource( 3 )
+theme_override_styles/normal = ExtResource( 4 )
 text = "Give Up"
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 579.0
-margin_right = 500.0
-margin_bottom = 773.0
-custom_constants/separation = 194
+offset_top = 579.0
+offset_right = 500.0
+offset_bottom = 773.0
+theme_override_constants/separation = 194
 
 [node name="ScoreDisplay" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 777.0
-margin_right = 500.0
-margin_bottom = 877.0
-rect_min_size = Vector2( 500, 100 )
-custom_fonts/normal_font = SubResource( 10 )
+offset_top = 777.0
+offset_right = 500.0
+offset_bottom = 877.0
+custom_minimum_size = Vector2( 500, 100 )
+theme_override_fonts/normal_font = SubResource( 10 )
 bbcode_enabled = true
-bbcode_text = "[color=#a6b5ff]SCORE: [color=#e6f4ff]"
+text = "[color=#a6b5ff]SCORE: [color=#e6f4ff]"
 meta_underlined = false
 text = "SCORE: "
 scroll_active = false
@@ -326,8 +326,8 @@ position = Vector2( 82, 534.6 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 1919.0
-margin_bottom = 1080.0
+offset_right = 1919.0
+offset_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

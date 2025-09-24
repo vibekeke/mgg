@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/BloopyLaser.wav-5b8c7402fecb3b1bf20e90c574dbf327.sample"
+type="AudioStreamWAV"
+uid="uid://blhwijtpajnhu"
+path="res://.godot/imported/BloopyLaser.wav-5b8c7402fecb3b1bf20e90c574dbf327.sample"
 
 [deps]
 
 source_file="res://sounds/enemy attacks/BloopyLaser.wav"
-dest_files=[ "res://.import/BloopyLaser.wav-5b8c7402fecb3b1bf20e90c574dbf327.sample" ]
+dest_files=["res://.godot/imported/BloopyLaser.wav-5b8c7402fecb3b1bf20e90c574dbf327.sample"]
 
 [params]
 

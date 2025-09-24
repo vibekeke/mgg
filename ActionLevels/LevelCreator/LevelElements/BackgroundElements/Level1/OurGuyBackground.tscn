@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://imported_assets/actors/ourguy/Guy.png" type="Texture" id=1]
+[ext_resource path="res://imported_assets/actors/ourguy/Guy.png" type="Texture2D" id=1]
 [ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/OurGuyBackground.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -27,7 +27,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="OurGuyBackground" type="AnimatedSprite"]
+[node name="OurGuyBackground" type="AnimatedSprite2D"]
 modulate = Color( 0, 0, 0, 1 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 5 )
