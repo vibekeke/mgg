@@ -70,6 +70,7 @@ enemy_spawn_frequency = 0.4
 enemy_spawn_variance = 0.1
 
 [node name="Player" parent="." instance=ExtResource("7")]
+z_index = 1
 position = Vector2(310, 826)
 gunshot = ExtResource("8")
 charge_shot = ExtResource("9")

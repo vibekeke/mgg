@@ -5,8 +5,6 @@
 
 [sub_resource type="ShaderMaterial" id="13"]
 shader = ExtResource("1_ud4ny")
-shader_parameter/Direction = Vector2(1, 0)
-shader_parameter/Speed = 0.1
 
 [node name="Bubbles" type="Sprite2D"]
 modulate = Color(1, 1, 1, 0.783133)

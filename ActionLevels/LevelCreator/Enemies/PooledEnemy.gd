@@ -21,20 +21,30 @@ class_name PooledEnemy
 @export var enemy_difficulty_tier : int
 @export var death_explosion : PackedScene
 @export var components: Array[PackedScene]
+@export var initial_health : int = 2
 
 func reset_for_pool():
+	print("POOL DEBUG: ", enemy_name, " reset_for_pool called, setting visible=false")
 	visible = false
 	set_physics_process(false)
+	set_process(false)
 
 	if can_take_damage:
 		can_take_damage.death_called = false
 		can_take_damage.damage_disabled = false
-		can_take_damage.health_value = 2
-	
+		can_take_damage.health_value = initial_health
+		can_take_damage.damageable = false  # Will be set to true when on screen
+
 	if sprite:
 		sprite.visible = true
 		sprite.modulate = Color(1,1,1,1)
-	
+		print("POOL DEBUG: ", enemy_name, " sprite reset - visible=", sprite.visible, " modulate=", sprite.modulate)
+
 	if area2d:
 		area2d.monitoring = false
 		area2d.monitorable = false
+
+	# Disable the visibility notifier when pooled
+	if visibility_notifier:
+		visibility_notifier.set_process_mode(Node.PROCESS_MODE_DISABLED)
+		print("POOL DEBUG: ", enemy_name, " visibility_notifier disabled")

@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
-  uniform vec2 Direction = vec2(1.0, 0.0);
-  uniform float Speed = 0.1;
+  uniform vec2 Direction : hint_range(0.0, 2.0) = vec2(1.0, 0.0);
+  uniform float Speed : hint_range(0.0, 1.0) = 0.1;
   uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
   vec4 add(vec4 base, vec4 blend){
