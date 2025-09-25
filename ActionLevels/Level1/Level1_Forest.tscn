@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://t3qmvm4ipobq"]
+[gd_scene load_steps=49 format=3 uid="uid://t3qmvm4ipobq"]
 
 [ext_resource type="PackedScene" path="res://ActionLevels/backgrounds/LevelForest.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" id="2"]
@@ -7,18 +7,18 @@
 [ext_resource type="Script" uid="uid://oqmtouc3wwn4" path="res://ActionLevels/Level1/Level1_Forest.gd" id="5"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Obstacles/PlatformSpawner.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LongTallPlatform.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://b2mle0p5h2lyo" path="res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event3.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://HUD/FullHUD.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/TallPlatform.tscn" id="12"]
-[ext_resource type="PackedScene" path="res://ActionLevels/backgrounds/VHS.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://bo637hs5gw8j7" path="res://ActionLevels/backgrounds/VHS.tscn" id="13"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn" id="14"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://c5bhee3r1nb8e" path="res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BeeBackground.tscn" id="16"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event4.tscn" id="17"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" id="18"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake.tscn" id="19"]
+[ext_resource type="PackedScene" uid="uid://bobdsw4iawm3m" path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" id="18"]
+[ext_resource type="PackedScene" uid="uid://bpfis0uk1m54x" path="res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake.tscn" id="19"]
 [ext_resource type="PackedScene" uid="uid://c2qd0nc5bu3vf" path="res://Player/Projectiles/RegularGunshot.tscn" id="20"]
 [ext_resource type="PackedScene" path="res://Player/Projectiles/ChargedShot.tscn" id="21"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tscn" id="22"]
@@ -26,11 +26,12 @@
 [ext_resource type="PackedScene" uid="uid://duoyf7tkr1lo6" path="res://ActionLevels/Camera/StageCamera.tscn" id="24"]
 [ext_resource type="PackedScene" path="res://HUD/PauseMenuGameplay.tscn" id="25"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" id="26"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.tscn" id="27"]
+[ext_resource type="PackedScene" uid="uid://sy8aoi44qk5x" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.tscn" id="27"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" id="28"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Props/BossWarningTape.tscn" id="29"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event2.tscn" id="30"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu.tscn" id="31"]
+[ext_resource type="Resource" uid="uid://cgah3gwayvyb4" path="res://ActionLevels/LevelCreator/Dialog/level1_event1_new.dialogue" id="31_drocb"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event5.tscn" id="32"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform2.tscn" id="33"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventBoss.tscn" id="34"]
@@ -44,7 +45,7 @@
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerfly.tscn" id="42"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventEnd.tscn" id="43"]
 [ext_resource type="PackedScene" path="res://Menus/DogCompletion.tscn" id="44"]
-[ext_resource type="Resource" path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" id="45"]
+[ext_resource type="Resource" uid="uid://btyhtv5wd74oa" path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" id="45"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform1.tscn" id="46"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform3.tscn" id="47"]
 
@@ -68,7 +69,6 @@ vhs_filter_path = NodePath("../../LevelBackground/Control/VHS")
 [node name="LevelBackground" parent="." instance=ExtResource("1")]
 unique_name_in_owner = true
 layer = 100
-visible = false
 
 [node name="Control" type="Control" parent="LevelBackground"]
 layout_mode = 3
@@ -80,6 +80,7 @@ grow_vertical = 2
 
 [node name="VHS" parent="LevelBackground/Control" instance=ExtResource("13")]
 layout_mode = 0
+anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 
@@ -102,16 +103,16 @@ scale = Vector2(67.5, 10)
 
 [node name="PlatformSpawner" parent="." instance=ExtResource("6")]
 unique_name_in_owner = true
-platform_list = [ExtResource("7"), ExtResource("12"), ExtResource("46"), ExtResource("33"), ExtResource("47")]
+platform_list = Array[PackedScene]([ExtResource("7"), ExtResource("12"), ExtResource("46"), ExtResource("33"), ExtResource("47")])
 platform_spawn_point_path = NodePath("../PlatformSpawnPoint")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("11")]
 unique_name_in_owner = true
 max_enemies_on_screen = 6
-first_tier_enemy_list = [ExtResource("19"), ExtResource("8")]
-second_tier_enemy_list = [ExtResource("4")]
-third_tier_enemy_list = [ExtResource("22"), ExtResource("23")]
-unique_enemy_list = [ExtResource("40"), ExtResource("42")]
+first_tier_enemy_list = Array[PackedScene]([ExtResource("19"), ExtResource("8")])
+second_tier_enemy_list = Array[PackedScene]([ExtResource("4")])
+third_tier_enemy_list = Array[PackedScene]([ExtResource("22"), ExtResource("23")])
+unique_enemy_list = Array[PackedScene]([ExtResource("40"), ExtResource("42")])
 
 [node name="SpawnPaths" parent="." instance=ExtResource("26")]
 unique_name_in_owner = true
@@ -130,12 +131,13 @@ charge_shot = ExtResource("21")
 
 [node name="LevelEventsManager" parent="." instance=ExtResource("28")]
 unique_name_in_owner = true
+debug_trigger_event_number = -1
 main_level_scene_path = NodePath("..")
 
 [node name="Level1_Event1" parent="LevelEventsManager" instance=ExtResource("27")]
 main_level_scene_path = NodePath("../..")
 enemy_to_spawn = ExtResource("15")
-level1_event1_dialog = ExtResource("45")
+level1_event1_dialog = ExtResource("31_drocb")
 
 [node name="Level1_Event2" parent="LevelEventsManager" instance=ExtResource("30")]
 enemy_to_spawn = ExtResource("8")

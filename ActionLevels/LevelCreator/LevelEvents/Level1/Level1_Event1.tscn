@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://sy8aoi44qk5x"]
 
-[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://hk6tw53plon4" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.gd" id="1"]
 
 [node name="Level1_Event1" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")

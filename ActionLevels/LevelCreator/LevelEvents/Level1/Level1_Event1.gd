@@ -2,7 +2,6 @@ extends LevelEvent
 
 @onready var enemy_spawner = get_node("%EnemySpawner")
 @onready var platform_spawner = get_node("%PlatformSpawner")
-@onready var dialog_layer = get_node("%DialogLayer")
 @export var main_level_scene_path : NodePath
 @onready var main_level = get_node_or_null(main_level_scene_path)
 @export var enemy_to_spawn : PackedScene

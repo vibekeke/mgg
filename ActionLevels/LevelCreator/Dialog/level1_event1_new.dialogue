@@ -9,3 +9,8 @@ Nathan: Here are some choices.
 - End the conversation => END
 Nathan: For more information see the online documentation.
 => END
+
+~ level1_event1
+Angel: Bees? Un-BEE-leivable. [wait=2]
+Angel: Bees! Can you BEE-lieve this? [wait=2]
+Angel: You won't BEE-lieve what's going on in this forest! [wait=2]

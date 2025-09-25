@@ -3,8 +3,8 @@ extends AnimatedSprite2D
 @export var scroll_speed : float = 500.0
 
 func _ready():
+	self.play("default")
 	AudioManager.play_random_pitch("explosion", 0.2, 2)
-	pass
 
 func _process(delta):
 	self.position.x -= delta * scroll_speed

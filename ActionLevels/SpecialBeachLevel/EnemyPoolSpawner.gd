@@ -1,6 +1,6 @@
 extends Node
 
-@export var regular_enemies # (Array, PackedScene)
+@export var regular_enemies: Array[PackedScene]
 @export var level_scene_path : NodePath
 @onready var level_main_scene = get_node(level_scene_path)
 

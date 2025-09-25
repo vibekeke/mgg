@@ -1,12 +1,12 @@
 extends CanvasLayer
 
 signal actioned(next_id)
-@onready var dialogue_main_window = get_node("%DialogueBackground")
-@onready var dialogue_label = get_node("%DialogueLabel")
-@onready var dialogue_container = get_node("%DialogueContainer")
+@onready var dialogue_main_window : PanelContainer = get_node("%DialogueBackground")
+@onready var dialogue_label : DialogueLabel = get_node("%DialogueLabel")
+@onready var dialogue_container : VBoxContainer = get_node("%DialogueContainer")
 @onready var responses_list = get_node("%ResponsesList")
 @onready var portrait = get_node("%Portrait")
-@onready var character_title = get_node("%CharacterTitle")
+@onready var character_title : RichTextLabel = get_node("%CharacterTitle")
 @onready var await_cursor = get_node("%AwaitCursor")
 @onready var star_flicker_animation_player = get_node("%StarFlickerAnimationPlayer")
 @onready var margin_container = get_node("%MarginContainer")
@@ -112,7 +112,7 @@ func set_character_portrait():
 	portrait.display_character(character_portrait)
 
 func set_stylebox_colour():
-	var stylebox = dialogue_main_window.get_stylebox("panel")
+	var stylebox = dialogue_main_window.get_theme_stylebox("panel")
 	stylebox.bg_color = dialogue_box_colour
 	stylebox.border_color = dialogue_border_colour
 

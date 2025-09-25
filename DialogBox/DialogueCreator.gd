@@ -3,7 +3,7 @@ extends Node
 signal dialogue_box_finished
 
 @export var title := ""
-@export var dialogue_resource: Resource
+@export var dialogue_resource: DialogueResource
 var dialogue_begun = false
 var has_connected_signal = false
 var enable_create_dialogue_balloon = true
@@ -17,14 +17,14 @@ var auto_advance_time := 1.5
 @onready var timer = get_node("%Timer")
 
 func _ready():
-	DialogueManager.connect("dialogue_finished", Callable(self, "_on_dialogue_finished"))
+	DialogueManager.connect("dialogue_ended", Callable(self, "_on_dialogue_finished"))
 
 func create_dialogue_balloon():
 	if enable_create_dialogue_balloon:
 		show_dialogue(title)
 	
 func show_dialogue(key: String) -> void:
-	var dialogue = await dialogue_resource.get_next_dialogue_line(key).completed
+	var dialogue = await dialogue_resource.get_next_dialogue_line(key)
 	if self.get_child_count() > 1:
 		self.get_child(1).set_next_dialogue(dialogue)
 	else:

@@ -1,95 +1,10 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3 uid="uid://btyhtv5wd74oa"]
 
-[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://dbs4435dsf3ry" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1"]
 
 [resource]
-script = ExtResource( 1 )
-resource_version = 114
-syntax_version = 2
-raw_text = "~ level1_intro
-
-#do emit_change_character_portrait(\"AngelIntense\")
-Angel: Welcome, brave Magical Girl!
-#do emit_change_character_portrait(\"AngelIntense\")
-Angel: There is a lot of [shake rate=7 level=15]EVIL[/shake] things going on in this forest... so thank goodness you're here!
-#do emit_change_character_portrait(\"AngelNeutral\")
-Angel: Make sure to take a look at the controls before you start. [wait=1.5]
-#do emit_change_character_portrait(\"AngelHappy\")
-Angel: You ready? Let's go [wave]save the day![/wave]
-
-
-~ level1_event1
-%5 Angel: Bees? Un-BEE-leivable. [wait=2]
-% Angel: Bees! Can you BEE-lieve this? [wait=2]
-% Angel: You won't BEE-lieve what's going on in this forest! [wait=2]
-
-% Angel: You're doing great, by the way! [wait=1.5]
-% Angel: I wonder what happened to the creatures here... [wait=2]
-% Angel: It's a great day for defeating enemies! [wait=2]
-% Angel: By the way, have you ever been to IKEA? [wait=2]
-% Angel: Such splendid gold ores! [wait=2]
-% Angel: ...Do you watch anime? [wait=2]
-% Angel: But it looks like you've got this! [wait=2]
-% Angel: At least it's not raining... [wait=1] Can you imagine fighting evil in the rain? [wait=2]
-% Angel: And [shake]SNAKES[/shake] too!? [wait=2]
-% Angel: By the way, you should watch Eva! It's about angels, you know. [wait=2]
-% Angel: ...I like your dress, by the way! [wait=2]
-% Angel: ...Get it? [wait=1.5]BEE-lieve? [wait=2]
-% Angel: So... [wait=2]Do you come here often? [wait=2]
-% Angel: I really envy you, you know. [wait=1]It must be fun to have such long limbs! [wait=2]
-% Angel: Don't talk to strangers! [wait=2]
-% Angel: Did you know your [wave]BEAM[/wave] attack makes you invincible? [wait=2]
-% Angel: But I BEE-lieve in you! [wait=2]
-% Angel: You can do this! [wait=2]
-
-if fun_value < 1 and not first_run
-	% Angel: ...You know, it would be nice if you replied every once in a while. [wait=2]
-	%2 Angel: ...
-	% Angel: ...Hey, do you sometimes randomly disassociate from your life and personality to the point where  you're looking at everything you know and love as if it's not even real? [wait=2]
-
-
-~ level1_event2
-
-~ level1_event_boss
-Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS[/shake]. 
-Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]NIGHT[/shake].
-
-~ level1_event_boss_betrayal
-Big Bird of Darkness: [speed=1.5]OUCH![/speed]
-Big Bird of Darkness: Now you're choosing to pick a fight!?
-Big Bird of Darkness: I'll show you what the [shake rate=7 level=15]DARKNESS[/shake] can do!
- 
-~ level1_event_boss_pacifist_complete
-Big Bird of Darkness: ...
-do emit_change_character_portrait(\"AngelIntenseStatic\")
-Angel: ...
-do emit_change_character_portrait(\"MGPlayerNeutralStatic\")
-You: ...
-do emit_change_character_portrait(\"\")
-Big Bird of Darkness: ...?
-Big Bird of Darkness: [shake rate=5 level=20]???!![/shake]
-Big Bird of Darkness: Do you think this is some kind of [shake rate=7 level=15]GAME!?[/shake]
-Big Bird of Darkness: You're supposed to FIGHT me!
-Big Bird of Darkness: ...
-[center]* The atmosphere became awkward *[/center]
-Big Bird of Darkness: Ugh forget about it. I'm out of here!
-
-
-~ level1_event_end
-do emit_change_character_portrait(\"AngelHappy\")
-Angel: You did it! You defeated the Bird of Darkness and saved the forest!
-do emit_change_character_portrait(\"AngelIntense\")
-Angel: ...But what was that weird thing on top of that bird?
-
-~ level1_event_end_pacifist
-do emit_change_character_portrait(\"AngelIntense\")
-Angel: ...You did it? I guess?
-do emit_change_character_portrait(\"MGPlayerNeutralStatic\")
-You: ...
-do emit_change_character_portrait(\"AngelIntense\")
-Angel: But you didn't really do anything...
-Angel: Anyway. What was that weird thing on top of that bird?"
-errors = [  ]
+script = ExtResource("1")
+using_states = PackedStringArray()
 titles = {
 "level1_event1": "13",
 "level1_event2": "44",
@@ -100,6 +15,7 @@ titles = {
 "level1_event_end_pacifist": "76",
 "level1_intro": "2"
 }
+character_names = PackedStringArray()
 lines = {
 "0": {
 "next_id": "2",
@@ -113,10 +29,10 @@ lines = {
 },
 "13": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "17",
-"replacements": [  ],
-"siblings": [ {
+"replacements": [],
+"siblings": [{
 "id": "13",
 "weight": 5
 }, {
@@ -125,35 +41,35 @@ lines = {
 }, {
 "id": "15",
 "weight": 1
-} ],
+}],
 "text": "Bees? Un-BEE-leivable. [wait=2]",
 "translation_key": "Bees? Un-BEE-leivable. [wait=2]",
 "type": "dialogue"
 },
 "14": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "17",
-"replacements": [  ],
+"replacements": [],
 "text": "Bees! Can you BEE-lieve this? [wait=2]",
 "translation_key": "Bees! Can you BEE-lieve this? [wait=2]",
 "type": "dialogue"
 },
 "15": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "17",
-"replacements": [  ],
+"replacements": [],
 "text": "You won't BEE-lieve what's going on in this forest! [wait=2]",
 "translation_key": "You won't BEE-lieve what's going on in this forest! [wait=2]",
 "type": "dialogue"
 },
 "17": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
-"siblings": [ {
+"replacements": [],
+"siblings": [{
 "id": "17",
 "weight": 1
 }, {
@@ -207,190 +123,190 @@ lines = {
 }, {
 "id": "34",
 "weight": 1
-} ],
+}],
 "text": "You're doing great, by the way! [wait=1.5]",
 "translation_key": "You're doing great, by the way! [wait=1.5]",
 "type": "dialogue"
 },
 "18": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "I wonder what happened to the creatures here... [wait=2]",
 "translation_key": "I wonder what happened to the creatures here... [wait=2]",
 "type": "dialogue"
 },
 "19": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "It's a great day for defeating enemies! [wait=2]",
 "translation_key": "It's a great day for defeating enemies! [wait=2]",
 "type": "dialogue"
 },
 "2": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": "AngelIntense"
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "3",
 "type": "mutation"
 },
 "20": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "By the way, have you ever been to IKEA? [wait=2]",
 "translation_key": "By the way, have you ever been to IKEA? [wait=2]",
 "type": "dialogue"
 },
 "21": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "Such splendid gold ores! [wait=2]",
 "translation_key": "Such splendid gold ores! [wait=2]",
 "type": "dialogue"
 },
 "22": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "...Do you watch anime? [wait=2]",
 "translation_key": "...Do you watch anime? [wait=2]",
 "type": "dialogue"
 },
 "23": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "But it looks like you've got this! [wait=2]",
 "translation_key": "But it looks like you've got this! [wait=2]",
 "type": "dialogue"
 },
 "24": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "At least it's not raining... [wait=1] Can you imagine fighting evil in the rain? [wait=2]",
 "translation_key": "At least it's not raining... [wait=1] Can you imagine fighting evil in the rain? [wait=2]",
 "type": "dialogue"
 },
 "25": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "And [shake]SNAKES[/shake] too!? [wait=2]",
 "translation_key": "And [shake]SNAKES[/shake] too!? [wait=2]",
 "type": "dialogue"
 },
 "26": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "By the way, you should watch Eva! It's about angels, you know. [wait=2]",
 "translation_key": "By the way, you should watch Eva! It's about angels, you know. [wait=2]",
 "type": "dialogue"
 },
 "27": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "...I like your dress, by the way! [wait=2]",
 "translation_key": "...I like your dress, by the way! [wait=2]",
 "type": "dialogue"
 },
 "28": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "...Get it? [wait=1.5]BEE-lieve? [wait=2]",
 "translation_key": "...Get it? [wait=1.5]BEE-lieve? [wait=2]",
 "type": "dialogue"
 },
 "29": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "So... [wait=2]Do you come here often? [wait=2]",
 "translation_key": "So... [wait=2]Do you come here often? [wait=2]",
 "type": "dialogue"
 },
 "3": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "4",
-"replacements": [  ],
+"replacements": [],
 "text": "Welcome, brave Magical Girl!",
 "translation_key": "Welcome, brave Magical Girl!",
 "type": "dialogue"
 },
 "30": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "I really envy you, you know. [wait=1]It must be fun to have such long limbs! [wait=2]",
 "translation_key": "I really envy you, you know. [wait=1]It must be fun to have such long limbs! [wait=2]",
 "type": "dialogue"
 },
 "31": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "Don't talk to strangers! [wait=2]",
 "translation_key": "Don't talk to strangers! [wait=2]",
 "type": "dialogue"
 },
 "32": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "Did you know your [wave]BEAM[/wave] attack makes you invincible? [wait=2]",
 "translation_key": "Did you know your [wave]BEAM[/wave] attack makes you invincible? [wait=2]",
 "type": "dialogue"
 },
 "33": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "But I BEE-lieve in you! [wait=2]",
 "translation_key": "But I BEE-lieve in you! [wait=2]",
 "type": "dialogue"
 },
 "34": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "You can do this! [wait=2]",
 "translation_key": "You can do this! [wait=2]",
 "type": "dialogue"
 },
 "36": {
 "condition": {
-"expression": [ {
+"expression": [{
 "type": "variable",
 "value": "fun_value"
 }, {
@@ -407,7 +323,7 @@ lines = {
 }, {
 "type": "variable",
 "value": "first_run"
-} ]
+}]
 },
 "next_conditional_id": "end!",
 "next_id": "37",
@@ -416,11 +332,11 @@ lines = {
 },
 "37": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "end!",
 "parent_id": "36",
-"replacements": [  ],
-"siblings": [ {
+"replacements": [],
+"siblings": [{
 "id": "37",
 "weight": 1
 }, {
@@ -429,41 +345,41 @@ lines = {
 }, {
 "id": "39",
 "weight": 1
-} ],
+}],
 "text": "...You know, it would be nice if you replied every once in a while. [wait=2]",
 "translation_key": "...You know, it would be nice if you replied every once in a while. [wait=2]",
 "type": "dialogue"
 },
 "38": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "end!",
 "parent_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "...",
 "translation_key": "...",
 "type": "dialogue"
 },
 "39": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "end!",
 "parent_id": "36",
-"replacements": [  ],
+"replacements": [],
 "text": "...Hey, do you sometimes randomly disassociate from your life and personality to the point where  you're looking at everything you know and love as if it's not even real? [wait=2]",
 "translation_key": "...Hey, do you sometimes randomly disassociate from your life and personality to the point where  you're looking at everything you know and love as if it's not even real? [wait=2]",
 "type": "dialogue"
 },
 "4": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": "AngelIntense"
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "5",
 "type": "mutation"
@@ -480,18 +396,18 @@ lines = {
 },
 "45": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "46",
-"replacements": [  ],
+"replacements": [],
 "text": "[speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS[/shake].",
 "translation_key": "[speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS[/shake].",
 "type": "dialogue"
 },
 "46": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "",
-"replacements": [  ],
+"replacements": [],
 "text": "[speed=0.2] I AM THE [shake rate=7 level=15]NIGHT[/shake].",
 "translation_key": "[speed=0.2] I AM THE [shake rate=7 level=15]NIGHT[/shake].",
 "type": "dialogue"
@@ -503,36 +419,36 @@ lines = {
 },
 "49": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "50",
-"replacements": [  ],
+"replacements": [],
 "text": "[speed=1.5]OUCH![/speed]",
 "translation_key": "[speed=1.5]OUCH![/speed]",
 "type": "dialogue"
 },
 "5": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "6",
-"replacements": [  ],
+"replacements": [],
 "text": "There is a lot of [shake rate=7 level=15]EVIL[/shake] things going on in this forest... so thank goodness you're here!",
 "translation_key": "There is a lot of [shake rate=7 level=15]EVIL[/shake] things going on in this forest... so thank goodness you're here!",
 "type": "dialogue"
 },
 "50": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "51",
-"replacements": [  ],
+"replacements": [],
 "text": "Now you're choosing to pick a fight!?",
 "translation_key": "Now you're choosing to pick a fight!?",
 "type": "dialogue"
 },
 "51": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "",
-"replacements": [  ],
+"replacements": [],
 "text": "I'll show you what the [shake rate=7 level=15]DARKNESS[/shake] can do!",
 "translation_key": "I'll show you what the [shake rate=7 level=15]DARKNESS[/shake] can do!",
 "type": "dialogue"
@@ -544,128 +460,128 @@ lines = {
 },
 "54": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "55",
-"replacements": [  ],
+"replacements": [],
 "text": "...",
 "translation_key": "...",
 "type": "dialogue"
 },
 "55": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": "AngelIntenseStatic"
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "56",
 "type": "mutation"
 },
 "56": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "57",
-"replacements": [  ],
+"replacements": [],
 "text": "...",
 "translation_key": "...",
 "type": "dialogue"
 },
 "57": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": "MGPlayerNeutralStatic"
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "58",
 "type": "mutation"
 },
 "58": {
 "character": "You",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "59",
-"replacements": [  ],
+"replacements": [],
 "text": "...",
 "translation_key": "...",
 "type": "dialogue"
 },
 "59": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": ""
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "60",
 "type": "mutation"
 },
 "6": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": "AngelNeutral"
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "7",
 "type": "mutation"
 },
 "60": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "61",
-"replacements": [  ],
+"replacements": [],
 "text": "...?",
 "translation_key": "...?",
 "type": "dialogue"
 },
 "61": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "62",
-"replacements": [  ],
+"replacements": [],
 "text": "[shake rate=5 level=20]???!![/shake]",
 "translation_key": "[shake rate=5 level=20]???!![/shake]",
 "type": "dialogue"
 },
 "62": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "63",
-"replacements": [  ],
+"replacements": [],
 "text": "Do you think this is some kind of [shake rate=7 level=15]GAME!?[/shake]",
 "translation_key": "Do you think this is some kind of [shake rate=7 level=15]GAME!?[/shake]",
 "type": "dialogue"
 },
 "63": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "64",
-"replacements": [  ],
+"replacements": [],
 "text": "You're supposed to FIGHT me!",
 "translation_key": "You're supposed to FIGHT me!",
 "type": "dialogue"
 },
 "64": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "65",
-"replacements": [  ],
+"replacements": [],
 "text": "...",
 "translation_key": "...",
 "type": "dialogue"
@@ -673,16 +589,16 @@ lines = {
 "65": {
 "character": "",
 "next_id": "66",
-"replacements": [  ],
+"replacements": [],
 "text": "[center]* The atmosphere became awkward *[/center]",
 "translation_key": "[center]* The atmosphere became awkward *[/center]",
 "type": "dialogue"
 },
 "66": {
 "character": "Big Bird of Darkness",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "",
-"replacements": [  ],
+"replacements": [],
 "text": "Ugh forget about it. I'm out of here!",
 "translation_key": "Ugh forget about it. I'm out of here!",
 "type": "dialogue"
@@ -694,55 +610,55 @@ lines = {
 },
 "7": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "8",
-"replacements": [  ],
+"replacements": [],
 "text": "Make sure to take a look at the controls before you start. [wait=1.5]",
 "translation_key": "Make sure to take a look at the controls before you start. [wait=1.5]",
 "type": "dialogue"
 },
 "70": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": "AngelHappy"
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "71",
 "type": "mutation"
 },
 "71": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "72",
-"replacements": [  ],
+"replacements": [],
 "text": "You did it! You defeated the Bird of Darkness and saved the forest!",
 "translation_key": "You did it! You defeated the Bird of Darkness and saved the forest!",
 "type": "dialogue"
 },
 "72": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": "AngelIntense"
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "73",
 "type": "mutation"
 },
 "73": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "",
-"replacements": [  ],
+"replacements": [],
 "text": "...But what was that weird thing on top of that bird?",
 "translation_key": "...But what was that weird thing on top of that bird?",
 "type": "dialogue"
@@ -754,103 +670,186 @@ lines = {
 },
 "76": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": "AngelIntense"
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "77",
 "type": "mutation"
 },
 "77": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "78",
-"replacements": [  ],
+"replacements": [],
 "text": "...You did it? I guess?",
 "translation_key": "...You did it? I guess?",
 "type": "dialogue"
 },
 "78": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": "MGPlayerNeutralStatic"
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "79",
 "type": "mutation"
 },
 "79": {
 "character": "You",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "80",
-"replacements": [  ],
+"replacements": [],
 "text": "...",
 "translation_key": "...",
 "type": "dialogue"
 },
 "8": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": "AngelHappy"
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "9",
 "type": "mutation"
 },
 "80": {
 "mutation": {
-"expression": [ {
+"expression": [{
 "function": "emit_change_character_portrait",
 "type": "function",
-"value": [ [ {
+"value": [[{
 "type": "string",
 "value": "AngelIntense"
-} ] ]
-} ]
+}]]
+}]
 },
 "next_id": "81",
 "type": "mutation"
 },
 "81": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "82",
-"replacements": [  ],
+"replacements": [],
 "text": "But you didn't really do anything...",
 "translation_key": "But you didn't really do anything...",
 "type": "dialogue"
 },
 "82": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "",
-"replacements": [  ],
+"replacements": [],
 "text": "Anyway. What was that weird thing on top of that bird?",
 "translation_key": "Anyway. What was that weird thing on top of that bird?",
 "type": "dialogue"
 },
 "9": {
 "character": "Angel",
-"character_replacements": [  ],
+"character_replacements": [],
 "next_id": "",
-"replacements": [  ],
+"replacements": [],
 "text": "You ready? Let's go [wave]save the day![/wave]",
 "translation_key": "You ready? Let's go [wave]save the day![/wave]",
 "type": "dialogue"
 }
 }
+raw_text = "~ level1_intro
+
+#do emit_change_character_portrait(\"AngelIntense\")
+Angel: Welcome, brave Magical Girl!
+#do emit_change_character_portrait(\"AngelIntense\")
+Angel: There is a lot of [shake rate=7 level=15]EVIL[/shake] things going on in this forest... so thank goodness you're here!
+#do emit_change_character_portrait(\"AngelNeutral\")
+Angel: Make sure to take a look at the controls before you start. [wait=1.5]
+#do emit_change_character_portrait(\"AngelHappy\")
+Angel: You ready? Let's go [wave]save the day![/wave]
+
+
+~ level1_event1
+% Angel: Bees? Un-BEE-leivable. [wait=2]
+% Angel: Bees! Can you BEE-lieve this? [wait=2]
+% Angel: You won't BEE-lieve what's going on in this forest! [wait=2]
+
+% Angel: You're doing great, by the way! [wait=1.5]
+% Angel: I wonder what happened to the creatures here... [wait=2]
+% Angel: It's a great day for defeating enemies! [wait=2]
+% Angel: By the way, have you ever been to IKEA? [wait=2]
+% Angel: Such splendid gold ores! [wait=2]
+% Angel: ...Do you watch anime? [wait=2]
+% Angel: But it looks like you've got this! [wait=2]
+% Angel: At least it's not raining... [wait=1] Can you imagine fighting evil in the rain? [wait=2]
+% Angel: And [shake]SNAKES[/shake] too!? [wait=2]
+% Angel: By the way, you should watch Eva! It's about angels, you know. [wait=2]
+% Angel: ...I like your dress, by the way! [wait=2]
+% Angel: ...Get it? [wait=1.5]BEE-lieve? [wait=2]
+% Angel: So... [wait=2]Do you come here often? [wait=2]
+% Angel: I really envy you, you know. [wait=1]It must be fun to have such long limbs! [wait=2]
+% Angel: Don't talk to strangers! [wait=2]
+% Angel: Did you know your [wave]BEAM[/wave] attack makes you invincible? [wait=2]
+% Angel: But I BEE-lieve in you! [wait=2]
+% Angel: You can do this! [wait=2]
+
+if fun_value < 1 and not first_run
+	% Angel: ...You know, it would be nice if you replied every once in a while. [wait=2]
+	%2 Angel: ...
+	% Angel: ...Hey, do you sometimes randomly disassociate from your life and personality to the point where  you're looking at everything you know and love as if it's not even real? [wait=2]
+
+
+~ level1_event2
+
+~ level1_event_boss
+Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS[/shake]. 
+Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]NIGHT[/shake].
+
+~ level1_event_boss_betrayal
+Big Bird of Darkness: [speed=1.5]OUCH![/speed]
+Big Bird of Darkness: Now you're choosing to pick a fight!?
+Big Bird of Darkness: I'll show you what the [shake rate=7 level=15]DARKNESS[/shake] can do!
+ 
+~ level1_event_boss_pacifist_complete
+Big Bird of Darkness: ...
+#do emit_change_character_portrait(\"AngelIntenseStatic\")
+Angel: ...
+#do emit_change_character_portrait(\"MGPlayerNeutralStatic\")
+You: ...
+#do emit_change_character_portrait(\"\")
+Big Bird of Darkness: ...?
+Big Bird of Darkness: [shake rate=5 level=20]???!![/shake]
+Big Bird of Darkness: Do you think this is some kind of [shake rate=7 level=15]GAME!?[/shake]
+Big Bird of Darkness: You're supposed to FIGHT me!
+Big Bird of Darkness: ...
+[center]* The atmosphere became awkward *[/center]
+Big Bird of Darkness: Ugh forget about it. I'm out of here!
+
+
+~ level1_event_end
+#do emit_change_character_portrait(\"AngelHappy\")
+Angel: You did it! You defeated the Bird of Darkness and saved the forest!
+#do emit_change_character_portrait(\"AngelIntense\")
+Angel: ...But what was that weird thing on top of that bird?
+
+~ level1_event_end_pacifist
+#do emit_change_character_portrait(\"AngelIntense\")
+Angel: ...You did it? I guess?
+#do emit_change_character_portrait(\"MGPlayerNeutralStatic\")
+You: ...
+#do emit_change_character_portrait(\"AngelIntense\")
+Angel: But you didn't really do anything...
+Angel: Anyway. What was that weird thing on top of that bird?"

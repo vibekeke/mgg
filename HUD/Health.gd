@@ -6,7 +6,7 @@ var has_set_max_health = false
 
 var max_player_health
 
-var hurt_heart_amount = 0
+var hurt_heart_amount : int = 0
 
 func _ready():
 	Events.connect("player_max_health", Callable(self, "_on_player_max_health"))
@@ -38,7 +38,7 @@ func last_heart_with_dead_state():
 
 func last_heart_with_alive_state():
 	var hboxChildren = self.get_children()
-	hboxChildren.invert()
+	hboxChildren.reverse()
 	for heart in hboxChildren:
 		if heart.get_current_anim() == "default":
 			return heart

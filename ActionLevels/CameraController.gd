@@ -23,7 +23,7 @@ func _process(delta):
 		shake()
 	else:
 		offset = Vector2.ZERO
-		rotation = 0
+		#rotation = 0
 
 func shake():
 	var amount = pow(trauma, trauma_power)
@@ -34,7 +34,7 @@ func shake():
 	var roll = max_roll * amount * noise.get_noise_2d(noise.seed * 3, noise_y)
 
 	offset = Vector2(offset_x, offset_y)
-	rotation = roll
+	#rotation = roll
 
 func _on_player_damaged(damage):
 	add_trauma(0.65)

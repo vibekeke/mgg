@@ -438,7 +438,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["talking_eyes_open"]
+"values": ["just_standing"]
 }
 
 [sub_resource type="Animation" id="122"]
@@ -2066,9 +2066,6 @@ height = 891.428
 position = Vector2(876, 235)
 scale = Vector2(0.35, 0.35)
 script = ExtResource("2")
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="StandingCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(-154.286, 190)
@@ -2078,10 +2075,11 @@ shape = SubResource("3")
 position = Vector2(-191.428, 240)
 sprite_frames = SubResource("494")
 animation = &"On"
+autoplay = "On"
 
 [node name="StaffForward" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("120")
-animation = &"talking_eyes_open"
+animation = &"just_standing"
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StaffForward"]

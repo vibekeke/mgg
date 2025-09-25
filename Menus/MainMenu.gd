@@ -8,7 +8,7 @@ extends Control
 @onready var star_select_room = get_node("%StarSelectRoom")
 @onready var star_select_fullscreen = get_node("%StarSelectFullscreen")
 
-@onready var title_screen_animation = get_node("%TitleScreenAnimation")
+@onready var title_screen_animation : AnimationPlayer = get_node("%TitleScreenAnimation")
 @onready var camera = get_node("%Camera2D")
 # onready var tween = get_node("%Tween")  # Commented out for Godot 4 compatibility
 var camera_tween : Tween  # New Godot 4 tween
@@ -65,8 +65,8 @@ func _ready():
 func _process(delta):
 	if (title_screen_animation.is_playing() or (camera_tween != null and camera_tween.is_valid()) or !camera_timer.is_stopped()) and Input.is_action_just_pressed("ui_accept"):
 		if camera_tween != null and camera_tween.is_valid():
-			camera_tween.set_speed_scale(10.0)  # New Godot 4 speed control
-		title_screen_animation.playback_speed = 10
+			camera_tween.set_speed_scale(10.0)
+		title_screen_animation.speed_scale = 10
 		# Speed up camera timer by reducing wait time significantly
 		if !camera_timer.is_stopped():
 			camera_timer.wait_time = 0.1

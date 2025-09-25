@@ -45,7 +45,7 @@ var eventually_queue_free_timer = Timer.new()
 func _ready():
 	rng.randomize()
 	if enemy_logic != null:
-		enemy_logic_instance = enemy_logic.instance()
+		enemy_logic_instance = enemy_logic.instantiate()
 		if "debug_mode" in enemy_logic_instance:
 			enemy_logic_instance.debug_mode = self.debug_mode
 		self.add_child(enemy_logic_instance)

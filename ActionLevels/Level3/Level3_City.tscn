@@ -1,75 +1,61 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=3 uid="uid://cwooa4xlaebva"]
 
-[ext_resource path="res://ActionLevels/Level3/Level3_City.gd" type="Script" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://HUD/PauseMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://HUD/FullHUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" type="PackedScene" id=6]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ActionLevels/backgrounds/LevelCity.tscn" type="PackedScene" id=8]
-[ext_resource path="res://ActionLevels/backgrounds/VHS.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Player/Projectiles/RegularGunshot.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Player/Projectiles/ChargedShot.tscn" type="PackedScene" id=12]
-[ext_resource path="res://ActionLevels/Level3/SnowEffect/SnowEffect.tscn" type="PackedScene" id=13]
+[ext_resource type="Script" uid="uid://b4c72jaklgvfb" path="res://ActionLevels/Level3/Level3_City.gd" id="1"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://HUD/FullHUD.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/EnemySpawner.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://ActionLevels/backgrounds/LevelCity.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://bo637hs5gw8j7" path="res://ActionLevels/backgrounds/VHS.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://crxpknhydx2w8" path="res://Player/Player.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://c2qd0nc5bu3vf" path="res://Player/Projectiles/RegularGunshot.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://Player/Projectiles/ChargedShot.tscn" id="12"]
 
 [node name="Level3_City" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="Floor" parent="." instance=ExtResource( 2 )]
+[node name="Floor" parent="." instance=ExtResource("2")]
 unique_name_in_owner = true
-position = Vector2( -1099, 1019 )
-scale = Vector2( 126.375, 10 )
+position = Vector2(-1099, 1019)
+scale = Vector2(126.375, 10)
 
-[node name="Backwall" parent="." instance=ExtResource( 2 )]
+[node name="Backwall" parent="." instance=ExtResource("2")]
 visible = false
 rotation = 1.5708
-scale = Vector2( 67.5, 10 )
+scale = Vector2(67.5, 10)
 
-[node name="Frontwall" parent="." instance=ExtResource( 2 )]
+[node name="Frontwall" parent="." instance=ExtResource("2")]
 visible = false
-position = Vector2( 1920, 0 )
+position = Vector2(1920, 0)
 rotation = 1.5708
-scale = Vector2( 67.5, 10 )
-
-[node name="PauseLayer" type="CanvasLayer" parent="."]
-layer = 102
-
-[node name="PauseMenu" parent="PauseLayer" instance=ExtResource( 3 )]
-visible = false
+scale = Vector2(67.5, 10)
 
 [node name="LevelBackground" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
-[node name="VHS" parent="LevelBackground" instance=ExtResource( 9 )]
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="VHS" parent="LevelBackground" instance=ExtResource("9")]
 
-[node name="SpawnPaths" parent="." instance=ExtResource( 6 )]
+[node name="SpawnPaths" parent="." instance=ExtResource("6")]
 unique_name_in_owner = true
 
-[node name="FullHUD" parent="." instance=ExtResource( 4 )]
+[node name="FullHUD" parent="." instance=ExtResource("4")]
+layout_mode = 3
+anchors_preset = 15
 
-[node name="EnemySpawner" parent="." instance=ExtResource( 7 )]
+[node name="EnemySpawner" parent="." instance=ExtResource("7")]
 unique_name_in_owner = true
 
-[node name="LevelEventsManager" parent="." instance=ExtResource( 5 )]
+[node name="LevelEventsManager" parent="." instance=ExtResource("5")]
 unique_name_in_owner = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 
-[node name="LevelCity" parent="." instance=ExtResource( 8 )]
-base_scrolling_speed = 200.0
+[node name="LevelCity" parent="." instance=ExtResource("8")]
 
-[node name="Player" parent="." instance=ExtResource( 10 )]
-position = Vector2( 615, 214 )
-gunshot = ExtResource( 11 )
-charge_shot = ExtResource( 12 )
-
-[node name="SnowEffect" parent="." instance=ExtResource( 13 )]
-layer = -1
-visible = false
+[node name="Player" parent="." instance=ExtResource("10")]
+position = Vector2(615, 214)
+gunshot = ExtResource("11")
+charge_shot = ExtResource("12")

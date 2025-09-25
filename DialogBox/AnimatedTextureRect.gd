@@ -40,7 +40,7 @@ func get_next_frame():
 		if not sprites.get_animation_loop(current_animation):
 			playing = false
 	get_animation_data(current_animation)
-	return sprites.get_frame(current_animation, frame_index)
+	return sprites.get_frame_texture(current_animation, frame_index)
 	
 func play(animation_name: String = current_animation):
 	frame_index = 0
