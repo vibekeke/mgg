@@ -23,20 +23,22 @@ func _process(delta):
 		shake()
 	else:
 		offset = Vector2.ZERO
-		#rotation = 0
+		# rotation = 0 # Disabled to prevent gray screen
 
 func shake():
 	var amount = pow(trauma, trauma_power)
 	noise_y += 1
 
-	var offset_x = max_offset.x * amount * noise.get_noise_2d(noise.seed, noise_y)
-	var offset_y = max_offset.y * amount * noise.get_noise_2d(noise.seed * 2, noise_y)
-	var roll = max_roll * amount * noise.get_noise_2d(noise.seed * 3, noise_y)
+	var offset_x = max_offset.x * amount * noise.get_noise_2d(noise_y, 0)
+	var offset_y = max_offset.y * amount * noise.get_noise_2d(0, noise_y)
+
+	print("CAMERA: Shake amount=", amount, " offset=", Vector2(offset_x, offset_y))
 
 	offset = Vector2(offset_x, offset_y)
-	#rotation = roll
+	# rotation = roll # Disabled to prevent gray screen
 
 func _on_player_damaged(damage):
+	print("CAMERA: Player damaged, adding trauma")
 	add_trauma(0.65)
 
 func add_trauma(amount):

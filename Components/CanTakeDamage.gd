@@ -48,7 +48,6 @@ func call_death():
 		active_death_explosion.connect("animation_finished", Callable(self, "_on_explosion_finished"))
 		get_tree().current_scene.add_child(active_death_explosion)
 		enemy_sprite_node.visible = false
-		active_death_explosion.play("default", false)
 		Events.emit_signal("score_popup_requested", "enemy", death_global_position)
 
 func take_damage(damage_value: int):
@@ -65,9 +64,11 @@ func _on_area_entered(area: Area2D):
 		take_damage(area.damage)
 
 func _on_screen_entered():
+	print("SCREEN DEBUG: ", enemy_node.enemy_name, " entered screen, setting damageable=true")
 	damageable = true
 
 func _on_screen_exited():
+	print("SCREEN DEBUG: ", enemy_node.enemy_name, " exited screen, starting off_screen_timer")
 	off_screen_timer.start()
 
 func _on_explosion_finished():
@@ -78,6 +79,7 @@ func _on_damage_timer():
 	damage_timer.stop()
 	
 func _on_OffscreenTimer_timeout():
+	print("SCREEN DEBUG: ", enemy_node.enemy_name, " offscreen timeout - returning to pool")
 	damageable = false
 	if !death_called:
 		emit_signal("enemy_return_to_pool", enemy_node)

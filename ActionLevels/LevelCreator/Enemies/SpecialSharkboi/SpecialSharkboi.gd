@@ -12,3 +12,7 @@ func _physics_process(delta):
 	var movement = cos(distance_traveled * frequency) * amplitude
 	self.position.y += movement * delta
 	self.position.x -= self.initial_scroll_speed * 1.50 * delta
+
+
+func _on_hidden() -> void:
+	pass # Replace with function body.
