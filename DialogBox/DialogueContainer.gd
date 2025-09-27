@@ -116,20 +116,26 @@ func set_stylebox_colour():
 	stylebox.bg_color = dialogue_box_colour
 	stylebox.border_color = dialogue_border_colour
 
+func _gui_focus_changed(node: Control):
+	print("gui focus changed", node)
+
 func _ready() -> void:
+	get_viewport().gui_focus_changed.connect(_gui_focus_changed)
 	set_stylebox_colour()
 	set_character_portrait()
 	container_placement()
-	dialogue_label.connect("arriving_characer", Callable(self, "_on_arriving_character"))
+	dialogue_label.spoke.connect(_on_arriving_character)
 	MggDialogue.connect("change_character_portrait", Callable(self, "_on_change_character_portrait"))
 	add_dialogue()
 	dialogue_container_animation_player.play("fade_in")
 	auto_advance_timer.wait_time = auto_advance_time
 	auto_advance_timer.connect("timeout", Callable(self, "_on_auto_advance_timer"))
+	dialogue_container.focus_mode = Control.FOCUS_ALL
+	dialogue_container.grab_focus()
 
-func _on_arriving_character(character: String):
-	if character != "":
-		var lower_case_character = character.to_lower()
+func _on_arriving_character(letter: String, letter_index: int, speed: float):
+	if letter != "":
+		var lower_case_character = letter.to_lower()
 		if lower_case_character in "aeiou":
 			AudioManager.playSFX("dialogue", 0.7, -10.0)
 
@@ -192,16 +198,37 @@ func _on_response_gui_input(event, item):
 			destroy_responses()
 			next(dialogue.responses[item.get_index()].next_id)
 
-func _on_DialogueContainer_gui_input(event):
-	if event.is_pressed() and not event.is_echo() and dialogue_container.get_viewport().gui_get_focus_owner() == dialogue_container:
-		if Input.is_action_just_pressed("ui_accept") and not is_advancable:
-			next(dialogue.next_id)
-		elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not is_advancable:
-			next(dialogue.next_id)
-
 func _on_auto_advance_timer():
 	if is_advancable:
 		next(dialogue.next_id)
 
 func play_popup_sound():
 	AudioManager.playSFX("ui_pop_in", 1.2, 0.0)
+
+
+func _on_dialogue_container_gui_input(event: InputEvent) -> void:
+	print("=== GUI INPUT DEBUG ===")
+	print("Event type: ", event.get_class())
+	print("Event pressed: ", event.is_pressed() if event.has_method("is_pressed") else "N/A")
+	print("Event echo: ", event.is_echo() if event.has_method("is_echo") else "N/A")
+	if event is InputEventKey:
+		print("Key code: ", event.keycode)
+		print("Key pressed: ", event.pressed)
+		print("Is Enter: ", event.keycode == KEY_ENTER)
+		
+	print("Focus owner: ", dialogue_container.get_viewport().gui_get_focus_owner())
+	print("Is focus owner dialogue_container: ", dialogue_container.get_viewport().gui_get_focus_owner() == dialogue_container)
+	print("ui_accept action: ", Input.is_action_just_pressed("ui_accept"))
+	print("Raw Enter in Input: ", Input.is_physical_key_pressed(KEY_ENTER))
+	print("is_waiting_for_input: ", is_waiting_for_input)
+	print("is_advancable: ", is_advancable)
+	print("========================")
+	print("event was pressed?", event.is_pressed())
+	print("event is echo?", event.is_echo())
+	print("dialogue container viewpoint owner?", dialogue_container.get_viewport().gui_get_focus_owner())
+	print("ui accept?", Input.is_action_just_pressed("ui_accept"))
+	if event.is_pressed() and not event.is_echo() and dialogue_container.get_viewport().gui_get_focus_owner() == dialogue_container:
+		if Input.is_action_just_pressed("ui_accept") and not is_advancable:
+			next(dialogue.next_id)
+		elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not is_advancable:
+			next(dialogue.next_id)

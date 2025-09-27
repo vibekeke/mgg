@@ -74,7 +74,7 @@ func _initialize_enemy_pools():
 			
 			var can_take_damage_component = enemy.get_node_or_null("CanTakeDamage")
 			if can_take_damage_component:
-				can_take_damage_component.connect("enemy_return_to_pool", Callable(self, "_return_to_enemy_pool"))
+				can_take_damage_component.enemy_return_to_pool.connect(_return_to_enemy_pool)
 			
 			level_main_scene.call_deferred("add_child", enemy)
 			pool.append(enemy)
@@ -92,51 +92,23 @@ func spawn_available_enemy():
 		if pool.size() > 0:
 			var enemy = pool.pop_back()
 			active_enemies.append(enemy)
-			activate_enemy(enemy)
+			# enemy.activate_for_pool()
+			spawn_enemy_to_position(enemy)
 
-func activate_enemy(enemy):
-	print("SPAWNER DEBUG: Activating enemy ", enemy.enemy_name, " at position")
+func spawn_enemy_to_position(enemy):
 	var spawn_pos = spawn_at_valid_height(enemy)
 	enemy.position = spawn_pos
-	enemy.visible = true
-	enemy.set_physics_process(true)
-	enemy.set_process(true)
-	print("SPAWNER DEBUG: ", enemy.enemy_name, " set visible=true, position=", spawn_pos)
-
-	# Re-enable collision detection
-	if enemy.area2d:
-		enemy.area2d.monitoring = true
-		enemy.area2d.monitorable = true
-
-	# Reset sprite visibility in case it was hidden
-	if enemy.sprite:
-		enemy.sprite.visible = true
-		enemy.sprite.modulate = Color(1,1,1,1)
-		print("SPAWNER DEBUG: ", enemy.enemy_name, " sprite visible=", enemy.sprite.visible)
-
-	# Re-enable visibility notifier
-	if enemy.visibility_notifier:
-		enemy.visibility_notifier.set_process_mode(Node.PROCESS_MODE_INHERIT)
-		print("SPAWNER DEBUG: ", enemy.enemy_name, " visibility_notifier re-enabled")
-
-	var can_take_damage = enemy.get_node_or_null("CanTakeDamage")
-	if can_take_damage:
-		can_take_damage.death_called = false
-		can_take_damage.damage_disabled = false
+	enemy.activate_for_pool()
 
 func _return_to_enemy_pool(dead_enemy):
-	print("SPAWNER DEBUG: Returning ", dead_enemy.enemy_name, " to pool")
 	if dead_enemy in active_enemies:
 		active_enemies.erase(dead_enemy)
-		print("SPAWNER DEBUG: Removed from active_enemies, count now: ", active_enemies.size())
 
 	dead_enemy.reset_for_pool()
 
 	if enemy_pools.size() > 0:
 		var first_pool = enemy_pools.values()[0]
 		first_pool.append(dead_enemy)
-		print("SPAWNER DEBUG: Added to pool, pool size now: ", first_pool.size())
-
 
 func _on_SpawnFrequencyTimer_timeout():
 	spawn_available_enemy()

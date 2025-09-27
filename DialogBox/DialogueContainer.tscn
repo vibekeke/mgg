@@ -210,6 +210,7 @@ theme_override_constants/margin_bottom = 25
 [node name="DialogueContainer" type="VBoxContainer" parent="DialogueContainer/DialogueBackground/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 2
 
 [node name="CharacterTitle" type="RichTextLabel" parent="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer"]
 unique_name_in_owner = true
@@ -246,6 +247,10 @@ alignment = 1
 
 [node name="Portrait" parent="DialogueContainer" instance=ExtResource("2")]
 layout_mode = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 30.0001
 offset_top = 18.0001
 offset_right = 781.0
@@ -274,4 +279,4 @@ libraries = {
 unique_name_in_owner = true
 one_shot = true
 
-[connection signal="gui_input" from="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" to="." method="_on_DialogueContainer_gui_input"]
+[connection signal="gui_input" from="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" to="." method="_on_dialogue_container_gui_input"]

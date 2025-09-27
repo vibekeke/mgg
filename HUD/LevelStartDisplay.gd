@@ -11,9 +11,8 @@ extends CanvasLayer
 @onready var ready_to_start_level_timer : Timer = get_node("%ReadyToStartLevelTimer")
 
 @export var ready_to_start_level_delay := 0.5
-@export var before_level_dialogue : Resource
+@export var before_level_dialogue : DialogueResource
 @export var before_level_dialogue_script_name : String
-@export var level1_event1_dialog : Resource
 
 @export var hide_tutorial : bool = false
 var tutorial_text_displayed : bool = false

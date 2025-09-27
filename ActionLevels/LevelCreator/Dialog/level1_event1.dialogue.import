@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dpchi0o1uyc6g"
+path="res://.godot/imported/level1_event1.dialogue-9974b17e03b77b852a12af842e6c2d5e.tres"
+
+[deps]
+
+source_file="res://ActionLevels/LevelCreator/Dialog/level1_event1.dialogue"
+dest_files=["res://.godot/imported/level1_event1.dialogue-9974b17e03b77b852a12af842e6c2d5e.tres"]
+
+[params]
+
+defaults=true

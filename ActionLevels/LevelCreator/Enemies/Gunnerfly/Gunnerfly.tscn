@@ -1,15 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=13 format=3 uid="uid://1vxfo0gpsst6"]
 
-[ext_resource path="res://imported_assets/actors/flybutt/Butterfly.png" type="Texture2D" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=2]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly_logic.tscn" type="PackedScene" id=3]
+[ext_resource type="Texture2D" uid="uid://cfrcv10kyi05c" path="res://imported_assets/actors/flybutt/Butterfly.png" id="1"]
+[ext_resource type="Script" uid="uid://brk5c4xl5vnf" path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" id="2"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly_logic.tscn" id="3"]
 
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PackedVector2Array(  )
-}
+[sub_resource type="Curve2D" id="1"]
 
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id="8"]
 code = "shader_type canvas_item;
 
 uniform vec4 flash_color : source_color = vec4(1.0);
@@ -21,74 +18,79 @@ void fragment() {
 	COLOR = color;
 }"
 
-[sub_resource type="ShaderMaterial" id=9]
+[sub_resource type="ShaderMaterial" id="9"]
 resource_local_to_scene = true
-shader = SubResource( 8 )
-shader_param/flash_color = Color( 1, 1, 1, 1 )
-shader_param/flash_modifier = 0.0
+shader = SubResource("8")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 512, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("1")
+region = Rect2(512, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 1024, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("1")
+region = Rect2(1024, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 1536, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("1")
+region = Rect2(1536, 0, 512, 512)
 
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+[sub_resource type="SpriteFrames" id="7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("10")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 4.0
-} ]
+}]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 187, 185 )
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(374, 370)
 
 [node name="Gunnerfly" type="Node2D"]
-position = Vector2( 928, 429 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2(928, 429)
+script = ExtResource("2")
 spawn_height = 2
 initial_scroll_speed = 600.0
-enemy_logic = ExtResource( 3 )
+enemy_logic = ExtResource("3")
 environment = "Air"
 
 [node name="Path2D" type="Path2D" parent="."]
-curve = SubResource( 1 )
+curve = SubResource("1")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2(0.4, 0.4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Area2D"]
 unique_name_in_owner = true
-material = SubResource( 9 )
-position = Vector2( 12, -29 )
-frames = SubResource( 7 )
+material = SubResource("9")
+position = Vector2(12, -29)
+sprite_frames = SubResource("7")
+autoplay = "default"
 speed_scale = 2.0
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
-position = Vector2( 12, 8 )
-shape = SubResource( 2 )
+position = Vector2(12, 8)
+shape = SubResource("2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Path2D/PathFollow2D/Area2D"]
-position = Vector2( 12.5, 8.75 )
-scale = Vector2( 18.5, 18.625 )
+position = Vector2(12.5, 8.75)
+scale = Vector2(18.5, 18.625)

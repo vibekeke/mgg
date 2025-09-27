@@ -17,8 +17,8 @@ var debug_mode = false
 @onready var rotator = parent_node.get_node("%Rotator")
 @onready var current_phase: int = 0
 @onready var debug_texture = preload("res://icon.png")
-@onready var path2d = parent_node.get_node_or_null("Path2D")
-@onready var path_follow = path2d.get_node_or_null("PathFollow2D")
+@onready var path2d : Path2D = parent_node.get_node_or_null("Path2D")
+@onready var path_follow : PathFollow2D = path2d.get_node_or_null("PathFollow2D")
 
 const ON_SCREEN_TIME : float = 8.0 # seconds
 @onready var on_screen_timer : Timer = Timer.new()
@@ -85,8 +85,8 @@ func _on_fire_rate_timeout():
 		bullet.speed = projectile_speed
 		AudioManager.playSFX("gunshot", 1.0, -1.0)
 		get_tree().current_scene.add_child(bullet)
-		bullet.position = s.global_position
-		bullet.rotation = s.global_rotation
+		bullet.global_position = s.global_position
+		bullet.global_rotation = s.global_rotation
 		await get_tree().create_timer(0.3).timeout
 		AudioManager.playSFX("gun_reload", 1.0, -10.0)
 
@@ -127,7 +127,7 @@ func _physics_process(delta):
 	rotator.rotation_degrees = fmod(new_rotation, 360)
 	if parent_node.global_position.x >= 1000:
 		parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
-	path_follow.set_offset(path_follow.get_offset() + default_path_speed * delta)
+	path_follow.progress = path_follow.progress + default_path_speed * delta
 	if allow_move_forward:
 		parent_node.position.x -= parent_node.initial_scroll_speed * 1.25 * delta
 

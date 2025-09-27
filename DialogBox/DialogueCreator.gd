@@ -17,7 +17,7 @@ var auto_advance_time := 1.5
 @onready var timer = get_node("%Timer")
 
 func _ready():
-	DialogueManager.connect("dialogue_ended", Callable(self, "_on_dialogue_finished"))
+	DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
 
 func create_dialogue_balloon():
 	if enable_create_dialogue_balloon:
@@ -38,9 +38,7 @@ func show_dialogue(key: String) -> void:
 		self.add_child(new_dialogue_bubble)
 	show_dialogue(await self.get_child(1).actioned)
 
-# Signals
-
-func _on_dialogue_finished():
+func _on_dialogue_finished(resource: DialogueResource):
 	enable_create_dialogue_balloon = false
 	if self.get_child_count() > 1 and is_instance_valid(self.get_child(1)):
 			self.get_child(1).queue_free()

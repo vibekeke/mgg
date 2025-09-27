@@ -1,0 +1,45 @@
+[gd_scene load_steps=12 format=3 uid="uid://bux4l47sa0cqx"]
+
+[ext_resource type="Script" uid="uid://bg127w3cg7087" path="res://TestShit/test_scene.gd" id="1_23gxq"]
+[ext_resource type="PackedScene" uid="uid://k0r8tn26r3ys" path="res://ActionLevels/LevelCreator/Enemies/SpecialSharkboi/SpecialSharkboi.tscn" id="1_dgntn"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/EnemyPoolSpawner.tscn" id="2_jfwco"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" id="3_jfwco"]
+[ext_resource type="PackedScene" uid="uid://bo637hs5gw8j7" path="res://ActionLevels/backgrounds/VHS.tscn" id="5_srx5h"]
+[ext_resource type="PackedScene" path="res://HUD/LevelStartDisplay.tscn" id="6_cudxv"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/LevelBoundaries.tscn" id="7_vq6l3"]
+[ext_resource type="PackedScene" uid="uid://crxpknhydx2w8" path="res://Player/Player.tscn" id="8_vt24n"]
+[ext_resource type="PackedScene" uid="uid://c2qd0nc5bu3vf" path="res://Player/Projectiles/RegularGunshot.tscn" id="9_eves8"]
+[ext_resource type="PackedScene" path="res://Player/Projectiles/ChargedShot.tscn" id="10_yerna"]
+[ext_resource type="PackedScene" uid="uid://duoyf7tkr1lo6" path="res://ActionLevels/Camera/StageCamera.tscn" id="11_vt24n"]
+
+[node name="TestScene" type="Node2D"]
+script = ExtResource("1_23gxq")
+level_name = "TestLevel"
+spawn_path = NodePath("SpawnPaths")
+enemy_pooler_path = NodePath("EnemyPoolSpawner")
+mute_audio = true
+screen_filter_path = NodePath("VHS")
+level_start_display_path = NodePath("LevelStartDisplay")
+
+[node name="EnemyPoolSpawner" parent="." instance=ExtResource("2_jfwco")]
+regular_enemies = Array[PackedScene]([ExtResource("1_dgntn")])
+level_scene_path = NodePath("..")
+spawn_points_path = NodePath("../SpawnPaths")
+max_active_enemes = 1
+enemy_spawn_frequency = 1.0
+
+[node name="SpawnPaths" parent="." instance=ExtResource("3_jfwco")]
+position = Vector2(-532.053, -1.42097)
+
+[node name="VHS" parent="." instance=ExtResource("5_srx5h")]
+
+[node name="LevelStartDisplay" parent="." instance=ExtResource("6_cudxv")]
+
+[node name="LevelBoundaries" parent="." instance=ExtResource("7_vq6l3")]
+
+[node name="Player" parent="." instance=ExtResource("8_vt24n")]
+position = Vector2(184, 840)
+gunshot = ExtResource("9_eves8")
+charge_shot = ExtResource("10_yerna")
+
+[node name="StageCamera" parent="." instance=ExtResource("11_vt24n")]

@@ -210,7 +210,7 @@ skip={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://ActionLevels/LevelCreator/Dialog/level1_event1_new.dialogue")
+locale/translations_pot_files=PackedStringArray("res://ActionLevels/LevelCreator/Dialog/level1_event1_new.dialogue", "res://ActionLevels/LevelCreator/Dialog/level1_event1.dialogue", "res://ActionLevels/LevelCreator/Dialog/ascension_dialogue.dialogue", "res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.dialogue")
 
 [physics]
 

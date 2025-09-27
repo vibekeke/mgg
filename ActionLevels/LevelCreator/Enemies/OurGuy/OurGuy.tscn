@@ -1,74 +1,80 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=13 format=3 uid="uid://b8sqq2iwwrrl7"]
 
-[ext_resource path="res://imported_assets/actors/ourguy/Guy.png" type="Texture2D" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=2]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy_logic.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=5]
+[ext_resource type="Texture2D" uid="uid://ccyhretw30jy5" path="res://imported_assets/actors/ourguy/Guy.png" id="1"]
+[ext_resource type="Script" uid="uid://brk5c4xl5vnf" path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" id="2"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy_logic.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b4tm6u01hhy0v" path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bobdsw4iawm3m" path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" id="5"]
 
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PackedVector2Array(  )
-}
+[sub_resource type="Curve2D" id="1"]
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 512, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(512, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 1024, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(1024, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 1536, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("1")
+region = Rect2(1536, 0, 512, 512)
 
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+[sub_resource type="SpriteFrames" id="6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 4.0
-} ]
+}]
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 138.75, 248.75 )
+[sub_resource type="RectangleShape2D" id="7"]
+size = Vector2(277.5, 497.5)
 
 [node name="OurGuy" type="Node2D"]
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+script = ExtResource("2")
 spawn_height = 7
-custom_grounded_spawn_point = Vector2( 2005, 912 )
+custom_grounded_spawn_point = Vector2(2005, 912)
 initial_scroll_speed = 600.0
 health_value = 4
-enemy_logic = ExtResource( 3 )
-droppables = [ ExtResource( 5 ), ExtResource( 4 ) ]
+enemy_logic = ExtResource("3")
+droppables = Array[PackedScene]([ExtResource("5"), ExtResource("4")])
 enemy_difficulty_tier = 1
 environment = "Ground"
 
 [node name="Path2D" type="Path2D" parent="."]
-curve = SubResource( 1 )
+curve = SubResource("1")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2(0.4, 0.4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Area2D"]
-frames = SubResource( 6 )
+sprite_frames = SubResource("6")
+autoplay = "default"
 speed_scale = 6.0
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
-position = Vector2( -6.25, -1.24997 )
-shape = SubResource( 7 )
+position = Vector2(-6.25, -1.24997)
+shape = SubResource("7")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Path2D/PathFollow2D/Area2D"]
-position = Vector2( -6.25, -2.50002 )
-scale = Vector2( 13.125, 23.75 )
+position = Vector2(-6.25, -2.50002)
+scale = Vector2(13.125, 23.75)

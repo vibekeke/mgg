@@ -38,4 +38,3 @@ func _on_confirm_level_start():
 	Events.emit_signal("fall_down_ui")
 	self.emit_signal("level_start")
 	enemy_pool.start_spawner()
-

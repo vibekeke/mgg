@@ -1,9 +1,9 @@
-[gd_scene load_steps=49 format=3 uid="uid://t3qmvm4ipobq"]
+[gd_scene load_steps=50 format=3 uid="uid://t3qmvm4ipobq"]
 
 [ext_resource type="PackedScene" uid="uid://dokhcc6k2ue41" path="res://ActionLevels/backgrounds/LevelForest.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/Floor.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://crxpknhydx2w8" path="res://Player/Player.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://1vxfo0gpsst6" path="res://ActionLevels/LevelCreator/Enemies/Gunnerfly/Gunnerfly.tscn" id="4"]
 [ext_resource type="Script" uid="uid://oqmtouc3wwn4" path="res://ActionLevels/Level1/Level1_Forest.gd" id="5"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Obstacles/PlatformSpawner.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://cfdslhuertuv8" path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LongTallPlatform.tscn" id="7"]
@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bobdsw4iawm3m" path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" id="18"]
 [ext_resource type="PackedScene" uid="uid://bpfis0uk1m54x" path="res://ActionLevels/LevelCreator/Enemies/SneakySnake/SneakySnake.tscn" id="19"]
 [ext_resource type="PackedScene" uid="uid://c2qd0nc5bu3vf" path="res://Player/Projectiles/RegularGunshot.tscn" id="20"]
-[ext_resource type="PackedScene" path="res://Player/Projectiles/ChargedShot.tscn" id="21"]
+[ext_resource type="PackedScene" uid="uid://dl6wkmmyat1el" path="res://Player/Projectiles/ChargedShot.tscn" id="21"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tscn" id="22"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn" id="23"]
 [ext_resource type="PackedScene" uid="uid://duoyf7tkr1lo6" path="res://ActionLevels/Camera/StageCamera.tscn" id="24"]
@@ -42,12 +42,13 @@
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundBear.tscn" id="39"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/StaticBroBear/StaticBroBear.tscn" id="40"]
 [ext_resource type="PackedScene" path="res://HUD/LevelStartDisplay.tscn" id="41"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerfly.tscn" id="42"]
+[ext_resource type="PackedScene" uid="uid://bpy3rcqlsbh4l" path="res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerfly.tscn" id="42"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventEnd.tscn" id="43"]
 [ext_resource type="PackedScene" path="res://Menus/DogCompletion.tscn" id="44"]
 [ext_resource type="Resource" uid="uid://btyhtv5wd74oa" path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" id="45"]
 [ext_resource type="PackedScene" uid="uid://baonserxj55c6" path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform1.tscn" id="46"]
 [ext_resource type="PackedScene" uid="uid://d30vvf2xo4xt4" path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform3.tscn" id="47"]
+[ext_resource type="Resource" uid="uid://bn1wxq22mgo6c" path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.dialogue" id="47_th3vr"]
 
 [node name="Level1_Forest" type="Node2D"]
 script = ExtResource("5")
@@ -181,7 +182,7 @@ autostart = true
 
 [node name="LevelStartDisplay" parent="." instance=ExtResource("41")]
 unique_name_in_owner = true
-before_level_dialogue = ExtResource("45")
+before_level_dialogue = ExtResource("47_th3vr")
 before_level_dialogue_script_name = "level1_intro"
 
 [node name="PlatformSpawnPoint" type="Marker2D" parent="."]

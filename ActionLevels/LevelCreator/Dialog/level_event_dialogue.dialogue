@@ -1,0 +1,87 @@
+~ level1_intro
+
+#do emit_change_character_portrait("AngelIntense")
+Angel: Welcome, brave Magical Girl!
+#do emit_change_character_portrait("AngelIntense")
+Angel: There is a lot of [shake rate=7 level=15]EVIL[/shake] things going on in this forest... so thank goodness you're here!
+#do emit_change_character_portrait("AngelNeutral")
+Angel: Make sure to take a look at the controls before you start. [wait=1.5]
+#do emit_change_character_portrait("AngelHappy")
+Angel: You ready? Let's go [wave]save the day![/wave]
+=> END
+
+~ level1_event1
+% Angel: Bees? Un-BEE-leivable. [wait=2]
+% Angel: Bees! Can you BEE-lieve this? [wait=2]
+% Angel: You won't BEE-lieve what's going on in this forest! [wait=2]
+
+% Angel: You're doing great, by the way! [wait=1.5]
+% Angel: I wonder what happened to the creatures here... [wait=2]
+% Angel: It's a great day for defeating enemies! [wait=2]
+% Angel: By the way, have you ever been to IKEA? [wait=2]
+% Angel: Such splendid gold ores! [wait=2]
+% Angel: ...Do you watch anime? [wait=2]
+% Angel: But it looks like you've got this! [wait=2]
+% Angel: At least it's not raining... [wait=1] Can you imagine fighting evil in the rain? [wait=2]
+% Angel: And [shake]SNAKES[/shake] too!? [wait=2]
+% Angel: By the way, you should watch Eva! It's about angels, you know. [wait=2]
+% Angel: ...I like your dress, by the way! [wait=2]
+% Angel: ...Get it? [wait=1.5]BEE-lieve? [wait=2]
+% Angel: So... [wait=2]Do you come here often? [wait=2]
+% Angel: I really envy you, you know. [wait=1]It must be fun to have such long limbs! [wait=2]
+% Angel: Don't talk to strangers! [wait=2]
+% Angel: Did you know your [wave]BEAM[/wave] attack makes you invincible? [wait=2]
+% Angel: But I BEE-lieve in you! [wait=2]
+% Angel: You can do this! [wait=2]
+
+if fun_value < 1 and not first_run
+	% Angel: ...You know, it would be nice if you replied every once in a while. [wait=2]
+	%2 Angel: ...
+	% Angel: ...Hey, do you sometimes randomly disassociate from your life and personality to the point where  you're looking at everything you know and love as if it's not even real? [wait=2]
+=> END
+
+~ level1_event_boss
+
+Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]DARKNESS[/shake].
+Big Bird of Darkness: [speed=0.2] I AM THE [shake rate=7 level=15]NIGHT[/shake].
+=> END
+
+~ level1_event_boss_betrayal
+Big Bird of Darkness: [speed=1.5]OUCH![/speed]
+Big Bird of Darkness: Now you're choosing to pick a fight!?
+Big Bird of Darkness: I'll show you what the [shake rate=7 level=15]DARKNESS[/shake] can do!
+=> END
+
+~ level1_event_boss_pacifist_complete
+Big Bird of Darkness: ...
+#do emit_change_character_portrait("AngelIntenseStatic")
+Angel: ...
+#do emit_change_character_portrait("MGPlayerNeutralStatic")
+You: ...
+#do emit_change_character_portrait("")
+Big Bird of Darkness: ...?
+Big Bird of Darkness: [shake rate=5 level=20]???!![/shake]
+Big Bird of Darkness: Do you think this is some kind of [shake rate=7 level=15]GAME!?[/shake]
+Big Bird of Darkness: You're supposed to FIGHT me!
+Big Bird of Darkness: ...
+[center]* The atmosphere became awkward *[/center]
+Big Bird of Darkness: Ugh forget about it. I'm out of here!
+=> END
+
+
+~ level1_event_end
+#do emit_change_character_portrait("AngelHappy")
+Angel: You did it! You defeated the Bird of Darkness and saved the forest!
+#do emit_change_character_portrait("AngelIntense")
+Angel: ...But what was that weird thing on top of that bird?
+=> END
+
+~ level1_event_end_pacifist
+#do emit_change_character_portrait("AngelIntense")
+Angel: ...You did it? I guess?
+#do emit_change_character_portrait("MGPlayerNeutralStatic")
+You: ...
+#do emit_change_character_portrait("AngelIntense")
+Angel: But you didn't really do anything...
+Angel: Anyway. What was that weird thing on top of that bird?
+=> END

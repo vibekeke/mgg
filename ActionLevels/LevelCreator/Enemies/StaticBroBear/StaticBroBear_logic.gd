@@ -117,7 +117,7 @@ func _physics_process(delta):
 		var new_rotation = rotator.rotation_degrees - rotate_speed * delta
 		rotator.rotation_degrees = fmod(new_rotation, 360)
 		if !allow_move_forward:
-			path_follow.set_offset(path_follow.get_offset() + default_path_speed * delta)
+			path_follow.progress = path_follow.progress + default_path_speed * delta
 	if allow_move_forward:
 		parent_node.global_position.x -= 500.0 * 1.5 * delta
 	

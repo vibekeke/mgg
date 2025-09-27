@@ -35,7 +35,8 @@ func _ready():
 	flash_collision_shape_timer.connect("timeout", Callable(self, "_on_flash_collision_shape_timeout"))
 	flash_collision_shape_timer.set_wait_time(0.35)
 	self.add_child(flash_collision_shape_timer)
-	self.playing = true
+	self.play("default")
+	#self.playing = true
 	self.frame = 0
 	Events.connect("player_global_position", Callable(self, "_on_player_global_position"))
 	shoot_duration_timer.start()

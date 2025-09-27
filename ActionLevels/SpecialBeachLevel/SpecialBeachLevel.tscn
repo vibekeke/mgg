@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/LevelBoundaries.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://HUD/PauseMenuGameplay.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://ActionLevels/backgrounds/LevelBeach.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://domnsge56b0qs" path="res://ActionLevels/backgrounds/LevelBeach.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/EnemyPoolSpawner.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/SpecialSharkboi/SpecialSharkboi.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://k0r8tn26r3ys" path="res://ActionLevels/LevelCreator/Enemies/SpecialSharkboi/SpecialSharkboi.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://crxpknhydx2w8" path="res://Player/Player.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://c2qd0nc5bu3vf" path="res://Player/Projectiles/RegularGunshot.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://Player/Projectiles/ChargedShot.tscn" id="9"]
@@ -55,6 +55,7 @@ visible = false
 layer = 102
 
 [node name="LevelBeach" parent="." instance=ExtResource("3")]
+z_index = -1
 
 [node name="VHS" parent="LevelBeach" instance=ExtResource("12")]
 

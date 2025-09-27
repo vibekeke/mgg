@@ -4,7 +4,7 @@ extends Node
 @onready var enemy_node = get_node(enemy)
 
 @export var enemy_area: NodePath
-@onready var enemy_area_node = get_node(enemy_area)
+@onready var enemy_area_node : Area2D = get_node(enemy_area)
 
 @export var enemy_sprite: NodePath
 @onready var enemy_sprite_node = get_node(enemy_sprite)
@@ -30,22 +30,23 @@ var death_called := false
 var damage_disabled := false
 
 func _ready():
-	enemy_area_node.connect("area_entered", Callable(self, "_on_area_entered"))
-	damage_timer.connect("timeout", Callable(self, "_on_damage_timer"))
-	visibility_notifier.connect("screen_exited", Callable(self, "_on_screen_exited"))
-	visibility_notifier.connect("screen_entered", Callable(self, "_on_screen_entered"))
+	enemy_area_node.area_entered.connect(_on_area_entered)
+	damage_timer.timeout.connect(_on_damage_timer)
+	visibility_notifier.screen_exited.connect(_on_screen_exited)
+	visibility_notifier.screen_entered.connect(_on_screen_entered)
 
 func call_death():
 	if !death_called:
 		death_called = true
 		var death_global_position = enemy_area_node.global_position
-		Events.emit_signal("regular_enemy_death")
+		Events.regular_enemy_death.emit()
 		emit_signal("enemy_dead", self.get_instance_id(), death_global_position)
+		
 		var active_death_explosion = death_explosion.instantiate()
 		active_death_explosion.scale = enemy_node.scale
 		active_death_explosion.global_position = death_global_position
 		active_death_explosion.add_to_group("death_explosion")
-		active_death_explosion.connect("animation_finished", Callable(self, "_on_explosion_finished"))
+		active_death_explosion.animation_finished.connect(_on_explosion_finished)
 		get_tree().current_scene.add_child(active_death_explosion)
 		enemy_sprite_node.visible = false
 		Events.emit_signal("score_popup_requested", "enemy", death_global_position)
@@ -72,6 +73,7 @@ func _on_screen_exited():
 	off_screen_timer.start()
 
 func _on_explosion_finished():
+	print("returning to enemy pool from death")
 	emit_signal("enemy_return_to_pool", enemy_node)
 
 func _on_damage_timer():
@@ -79,7 +81,8 @@ func _on_damage_timer():
 	damage_timer.stop()
 	
 func _on_OffscreenTimer_timeout():
-	print("SCREEN DEBUG: ", enemy_node.enemy_name, " offscreen timeout - returning to pool")
+	print("returning to enemy pool via off screen")
+	print("my position was ", enemy_node.global_position)
 	damageable = false
 	if !death_called:
 		emit_signal("enemy_return_to_pool", enemy_node)
