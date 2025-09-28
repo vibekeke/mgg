@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://vv8kgsfo8scg" path="res://Menus/MainMenu.gd" id="1"]
 [ext_resource type="FontFile" path="res://test_fonts/vibekefonts/main_menu_font.tres" id="2"]
 [ext_resource type="StyleBox" path="res://Menus/button_normal.tres" id="3"]
-[ext_resource type="PackedScene" path="res://ActionLevels/backgrounds/LevelCityMenuBackground.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://twmifc04vrp3" path="res://ActionLevels/backgrounds/LevelCityMenuBackground.tscn" id="4"]
 [ext_resource type="StyleBox" path="res://Menus/button_focus_and_selected.tres" id="5"]
 [ext_resource type="StyleBox" path="res://Menus/button_pressed.tres" id="6"]
 [ext_resource type="Texture2D" uid="uid://cowvfuwupyva6" path="res://Menus/PrettyAssets/Logo-downscaled.png" id="7"]

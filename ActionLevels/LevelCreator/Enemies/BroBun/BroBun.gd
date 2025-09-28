@@ -33,6 +33,7 @@ func _on_fire_rate_timeout():
 func launch_bullet(bullet: Object):
 	if player_position != null:
 		bullet.player_position = player_position
+		#bullet.detach_from_parent = true
 		bullet.shoot_towards = true
 		AudioManager.playSFX("LaserBlipSharp", 1.0, -14.0)
 	else:

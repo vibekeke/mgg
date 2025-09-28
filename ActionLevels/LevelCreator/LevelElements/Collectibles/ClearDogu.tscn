@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://b4husciv0vxis"]
 
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/DogGolden.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/color_gradient_outline.tres" type="Material" id=2]
+[ext_resource type="SpriteFrames" uid="uid://bpyy8tmwhehpt" path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/DogGolden.tres" id="1"]
+[ext_resource type="Material" path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/color_gradient_outline.tres" id="2"]
 
 [node name="ClearDogu" type="AnimatedSprite2D"]
-modulate = Color( 0, 0, 0, 0.52549 )
-material = ExtResource( 2 )
-scale = Vector2( 0.75, 0.75 )
-frames = ExtResource( 1 )
-playing = true
+modulate = Color(0, 0, 0, 0.52549)
+material = ExtResource("2")
+scale = Vector2(0.75, 0.75)
+sprite_frames = ExtResource("1")
+autoplay = "default"

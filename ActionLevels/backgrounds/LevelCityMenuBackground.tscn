@@ -1,24 +1,36 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=21 format=3 uid="uid://twmifc04vrp3"]
 
-[ext_resource path="res://imported_assets/backgrounds/city/BG_CityDark_AnimatedSky-2.webp" type="Texture2D" id=1]
-[ext_resource path="res://imported_assets/backgrounds/city/BG_CityDark_AnimatedSky-3.webp" type="Texture2D" id=2]
-[ext_resource path="res://imported_assets/backgrounds/city/BG_CityDark_AnimatedSky-4.webp" type="Texture2D" id=3]
-[ext_resource path="res://imported_assets/backgrounds/city/BG_City_Clouds.webp" type="Texture2D" id=4]
-[ext_resource path="res://imported_assets/backgrounds/city/BG_CityDark_Buildings2.webp" type="Texture2D" id=6]
-[ext_resource path="res://imported_assets/backgrounds/city/BG_CityDark_Buildings3.webp" type="Texture2D" id=7]
-[ext_resource path="res://imported_assets/backgrounds/city/BG_CityDark_Buildings1.webp" type="Texture2D" id=8]
-[ext_resource path="res://ActionLevels/backgrounds/LevelCity.gd" type="Script" id=9]
-[ext_resource path="res://imported_assets/backgrounds/balls.png" type="Texture2D" id=10]
+[ext_resource type="Texture2D" uid="uid://bfvvem5ihjjak" path="res://imported_assets/backgrounds/city/BG_CityDark_AnimatedSky-2.webp" id="1"]
+[ext_resource type="Texture2D" uid="uid://5mtme2427mbl" path="res://imported_assets/backgrounds/city/BG_CityDark_AnimatedSky-3.webp" id="2"]
+[ext_resource type="Texture2D" uid="uid://kkum1cq808lo" path="res://imported_assets/backgrounds/city/BG_CityDark_AnimatedSky-4.webp" id="3"]
+[ext_resource type="Texture2D" uid="uid://h4e4n4dc5fxl" path="res://imported_assets/backgrounds/city/BG_City_Clouds.webp" id="4"]
+[ext_resource type="Texture2D" uid="uid://cux4bayd5cm8d" path="res://imported_assets/backgrounds/city/BG_CityDark_Buildings2.webp" id="6"]
+[ext_resource type="Texture2D" uid="uid://wkywyqg2og1b" path="res://imported_assets/backgrounds/city/BG_CityDark_Buildings3.webp" id="7"]
+[ext_resource type="Texture2D" uid="uid://cj6wdqxytpmbs" path="res://imported_assets/backgrounds/city/BG_CityDark_Buildings1.webp" id="8"]
+[ext_resource type="Script" uid="uid://cmu4fffu8n7y3" path="res://ActionLevels/backgrounds/LevelCity.gd" id="9"]
+[ext_resource type="Texture2D" uid="uid://gedg2c0eex5g" path="res://imported_assets/backgrounds/balls.png" id="10"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 4.0
-} ]
+}]
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id="6"]
 code = "shader_type canvas_item;
 
 uniform vec2 Direction = vec2(1.0, 0.0);
@@ -29,12 +41,12 @@ void fragment()
 	COLOR = texture(TEXTURE, UV + (Direction * TIME * Speed));
 }"
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
-shader_param/Direction = Vector2( 1, 0 )
-shader_param/Speed = 0.01
+[sub_resource type="ShaderMaterial" id="7"]
+shader = SubResource("6")
+shader_parameter/Direction = Vector2(1, 0)
+shader_parameter/Speed = 0.01
 
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id="8"]
 code = "shader_type canvas_item;
 
 uniform vec2 Direction = vec2(1.0, 0.0);
@@ -45,12 +57,12 @@ void fragment()
 	COLOR = texture(TEXTURE, UV + (Direction * TIME * Speed));
 }"
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 8 )
-shader_param/Direction = Vector2( 1, 0 )
-shader_param/Speed = 0.005
+[sub_resource type="ShaderMaterial" id="9"]
+shader = SubResource("8")
+shader_parameter/Direction = Vector2(1, 0)
+shader_parameter/Speed = 0.005
 
-[sub_resource type="Shader" id=10]
+[sub_resource type="Shader" id="10"]
 code = "shader_type canvas_item;
 
 uniform vec2 Direction = vec2(1.0, 0.0);
@@ -61,12 +73,12 @@ void fragment()
 	COLOR = texture(TEXTURE, UV + (Direction * TIME * Speed));
 }"
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 10 )
-shader_param/Direction = Vector2( 1, 0 )
-shader_param/Speed = 0.015
+[sub_resource type="ShaderMaterial" id="11"]
+shader = SubResource("10")
+shader_parameter/Direction = Vector2(1, 0)
+shader_parameter/Speed = 0.015
 
-[sub_resource type="Shader" id=12]
+[sub_resource type="Shader" id="12"]
 code = "shader_type canvas_item;
 
 uniform vec2 Direction = vec2(1.0, 0.0);
@@ -79,15 +91,15 @@ void fragment() {
     COLOR = vec4(curved, src.a);
 }"
 
-[sub_resource type="ShaderMaterial" id=13]
-shader = SubResource( 12 )
-shader_param/Direction = Vector2( 1, 0 )
-shader_param/Speed = 0.025
-shader_param/Gamma = 1.353
+[sub_resource type="ShaderMaterial" id="13"]
+shader = SubResource("12")
+shader_parameter/Direction = Vector2(1, 0)
+shader_parameter/Speed = 0.025
+shader_parameter/Gamma = 1.353
 
-[sub_resource type="Shader" id=14]
+[sub_resource type="Shader" id="14"]
 code = "shader_type canvas_item;
-
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform vec2 Direction = vec2(1.0, 0.0);
 uniform float Speed = 0.1;
 
@@ -98,50 +110,49 @@ vec4 add(vec4 base, vec4 blend){
 
 void fragment()
 {
-	vec4 bg_color = texture( SCREEN_TEXTURE, SCREEN_UV );
+	vec4 bg_color = texture(SCREEN_TEXTURE, SCREEN_UV );
 	COLOR = texture(TEXTURE, UV + (Direction * TIME * Speed));
 	COLOR.rgb = add(bg_color, COLOR).rgb;
 }"
 
-[sub_resource type="ShaderMaterial" id=15]
-shader = SubResource( 14 )
-shader_param/Direction = Vector2( 1, 0 )
-shader_param/Speed = 0.05
+[sub_resource type="ShaderMaterial" id="15"]
+shader = SubResource("14")
+shader_parameter/Direction = Vector2(1, 0)
+shader_parameter/Speed = 0.05
 
 [node name="LevelCityBackground" type="CanvasLayer"]
-script = ExtResource( 9 )
+script = ExtResource("9")
 
 [node name="SkyBackgroundLayer" type="CanvasLayer" parent="."]
 layer = -100
 
 [node name="SkyBackground" type="AnimatedSprite2D" parent="SkyBackgroundLayer"]
-frames = SubResource( 1 )
-playing = true
+sprite_frames = SubResource("1")
 centered = false
 
 [node name="Clouds" type="Sprite2D" parent="."]
-material = SubResource( 7 )
-position = Vector2( 2878, 540 )
-texture = ExtResource( 4 )
+material = SubResource("7")
+position = Vector2(2878, 540)
+texture = ExtResource("4")
 
 [node name="FurthestBuildings" type="Sprite2D" parent="."]
-material = SubResource( 9 )
-texture = ExtResource( 7 )
+material = SubResource("9")
+texture = ExtResource("7")
 centered = false
 
 [node name="MiddleBuildings" type="Sprite2D" parent="."]
-material = SubResource( 11 )
-position = Vector2( 0, -3 )
-texture = ExtResource( 6 )
+material = SubResource("11")
+position = Vector2(0, -3)
+texture = ExtResource("6")
 centered = false
 
 [node name="ClosestBuildings" type="Sprite2D" parent="."]
-material = SubResource( 13 )
-texture = ExtResource( 8 )
+material = SubResource("13")
+texture = ExtResource("8")
 centered = false
 
 [node name="Bubbles" type="Sprite2D" parent="."]
-material = SubResource( 15 )
-position = Vector2( 0, 255 )
-texture = ExtResource( 10 )
+material = SubResource("15")
+position = Vector2(0, 255)
+texture = ExtResource("10")
 centered = false

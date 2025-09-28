@@ -14,6 +14,8 @@ var enable_create_dialogue_balloon = true
 var is_advancable := false
 var auto_advance_time := 1.5
 
+var dialogue_bubble = preload("res://DialogBox/DialogueContainer.tscn")
+
 @onready var timer = get_node("%Timer")
 
 func _ready():
@@ -28,7 +30,7 @@ func show_dialogue(key: String) -> void:
 	if self.get_child_count() > 1:
 		self.get_child(1).set_next_dialogue(dialogue)
 	else:
-		var new_dialogue_bubble = load("res://DialogBox/DialogueContainer.tscn").instantiate()
+		var new_dialogue_bubble = dialogue_bubble.instantiate()
 		new_dialogue_bubble.placement = placement
 		new_dialogue_bubble.character_portrait = character_portrait
 		new_dialogue_bubble.dialogue_box_colour = dialogue_box_colour

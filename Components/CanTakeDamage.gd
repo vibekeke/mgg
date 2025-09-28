@@ -41,7 +41,7 @@ func call_death():
 		var death_global_position = enemy_area_node.global_position
 		Events.regular_enemy_death.emit()
 		emit_signal("enemy_dead", self.get_instance_id(), death_global_position)
-		
+
 		var active_death_explosion = death_explosion.instantiate()
 		active_death_explosion.scale = enemy_node.scale
 		active_death_explosion.global_position = death_global_position
@@ -65,24 +65,19 @@ func _on_area_entered(area: Area2D):
 		take_damage(area.damage)
 
 func _on_screen_entered():
-	print("SCREEN DEBUG: ", enemy_node.enemy_name, " entered screen, setting damageable=true")
 	damageable = true
 
 func _on_screen_exited():
-	print("SCREEN DEBUG: ", enemy_node.enemy_name, " exited screen, starting off_screen_timer")
 	off_screen_timer.start()
 
 func _on_explosion_finished():
 	print("returning to enemy pool from death")
-	emit_signal("enemy_return_to_pool", enemy_node)
+	#emit_signal("enemy_return_to_pool", enemy_node)
 
 func _on_damage_timer():
 	enemy_sprite_node.modulate = Color(1,1,1,1)
 	damage_timer.stop()
 	
 func _on_OffscreenTimer_timeout():
-	print("returning to enemy pool via off screen")
-	print("my position was ", enemy_node.global_position)
 	damageable = false
-	if !death_called:
-		emit_signal("enemy_return_to_pool", enemy_node)
+	emit_signal("enemy_return_to_pool", enemy_node)

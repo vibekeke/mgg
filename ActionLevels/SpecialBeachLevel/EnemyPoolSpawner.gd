@@ -69,7 +69,7 @@ func _initialize_enemy_pools():
 		var pool = []
 		for i in range(enemy_pool_size):
 			var enemy = enemy_scene.instantiate()
-			enemy.visible = false
+			#enemy.visible = false
 			enemy.set_physics_process(false)
 			
 			var can_take_damage_component = enemy.get_node_or_null("CanTakeDamage")
@@ -92,7 +92,7 @@ func spawn_available_enemy():
 		if pool.size() > 0:
 			var enemy = pool.pop_back()
 			active_enemies.append(enemy)
-			# enemy.activate_for_pool()
+			enemy.activate_for_pool()
 			spawn_enemy_to_position(enemy)
 
 func spawn_enemy_to_position(enemy):

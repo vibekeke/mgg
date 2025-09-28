@@ -4,6 +4,7 @@ extends Control
 
 func _ready():
 	sprite.set_animation("default")
+	sprite.play("default")
 
 func call_anim(anim):
 	sprite.play(anim)

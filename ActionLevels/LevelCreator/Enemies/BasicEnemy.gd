@@ -107,10 +107,10 @@ func call_death(count_as_regular_death: bool):
 		var death_global_position = area2d.global_position
 		active_death_explosion_node.global_position = death_global_position
 		active_death_explosion_node.scale = area2d.scale
-		active_death_explosion_node.connect("animation_finished", Callable(self, "_on_explosion_finished"))
-		self.get_parent().add_child(active_death_explosion_node)
+		active_death_explosion_node.animation_finished.connect(_on_explosion_finished)
+		get_tree().current_scene.add_child(active_death_explosion_node)
+		# self.get_parent().add_child(active_death_explosion_node)
 		sprite.visible = false
-		active_death_explosion_node.play("default", false)
 		spawn_possible_collectible(death_global_position)
 		Events.emit_signal("score_popup_requested", "enemy", death_global_position)
 

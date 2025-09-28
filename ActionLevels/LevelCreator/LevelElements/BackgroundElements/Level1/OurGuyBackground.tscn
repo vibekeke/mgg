@@ -1,38 +1,50 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://c54aq6frsln8q"]
 
-[ext_resource path="res://imported_assets/actors/ourguy/Guy.png" type="Texture2D" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/OurGuyBackground.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://ccyhretw30jy5" path="res://imported_assets/actors/ourguy/Guy.png" id="1"]
+[ext_resource type="Script" uid="uid://5wddolq88xrv" path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/OurGuyBackground.gd" id="2"]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 512, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(512, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 1024, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(1024, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 1536, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(1536, 0, 512, 512)
 
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+[sub_resource type="SpriteFrames" id="5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
 [node name="OurGuyBackground" type="AnimatedSprite2D"]
-modulate = Color( 0, 0, 0, 1 )
-scale = Vector2( 0.4, 0.4 )
-frames = SubResource( 5 )
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("5")
+autoplay = "default"
 frame = 3
 speed_scale = 6.0
-playing = true
 flip_h = true
-script = ExtResource( 2 )
+script = ExtResource("2")

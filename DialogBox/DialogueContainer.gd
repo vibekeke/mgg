@@ -60,17 +60,21 @@ func add_dialogue():
 	else:
 		character_title.text = dialogue.character
 
-		dialogue_label.size.x = dialogue_label.get_parent().size.x
+		#dialogue_label.size.x = dialogue_label.get_parent().size.x
+		dialogue_label.set_deferred("size:x", dialogue_label.get_parent().size.x)
 	dialogue_label.dialogue_line = dialogue
 
 	dialogue_label.type_out()
-	await dialogue_label.finished
+	await dialogue_label.finished_typing
 	if is_advancable:
 		auto_advance_timer.start()
 		await_cursor.visible = false
 	else:
 		await_cursor.visible = true
 		star_flicker_animation_player.play("flicker")
+		dialogue_container.focus_mode = Control.FOCUS_ALL
+		dialogue_container.grab_focus()
+
 	if dialogue.responses.size() > 0:
 		# show responses if they exist
 		is_processing_response = true
@@ -116,22 +120,18 @@ func set_stylebox_colour():
 	stylebox.bg_color = dialogue_box_colour
 	stylebox.border_color = dialogue_border_colour
 
-func _gui_focus_changed(node: Control):
-	print("gui focus changed", node)
-
 func _ready() -> void:
-	get_viewport().gui_focus_changed.connect(_gui_focus_changed)
 	set_stylebox_colour()
 	set_character_portrait()
 	container_placement()
 	dialogue_label.spoke.connect(_on_arriving_character)
-	MggDialogue.connect("change_character_portrait", Callable(self, "_on_change_character_portrait"))
+	MggDialogue.change_character_portrait.connect(_on_change_character_portrait)
 	add_dialogue()
 	dialogue_container_animation_player.play("fade_in")
 	auto_advance_timer.wait_time = auto_advance_time
-	auto_advance_timer.connect("timeout", Callable(self, "_on_auto_advance_timer"))
-	dialogue_container.focus_mode = Control.FOCUS_ALL
-	dialogue_container.grab_focus()
+	auto_advance_timer.timeout.connect(_on_auto_advance_timer)
+	#dialogue_container.focus_mode = Control.FOCUS_ALL
+	#dialogue_container.grab_focus()
 
 func _on_arriving_character(letter: String, letter_index: int, speed: float):
 	if letter != "":

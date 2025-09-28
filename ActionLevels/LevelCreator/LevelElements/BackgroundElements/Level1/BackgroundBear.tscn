@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://cshk3qg40y5dm"]
 
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundSpaceAnimal.gd" type="Script" id=2]
+[ext_resource type="SpriteFrames" uid="uid://bpjcglkhw28to" path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tres" id="1"]
+[ext_resource type="Script" uid="uid://xp2i4tpbwlo2" path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundSpaceAnimal.gd" id="2"]
 
 [node name="BackgroundBear" type="AnimatedSprite2D"]
-modulate = Color( 0, 0, 0, 1 )
-scale = Vector2( 0.4, 0.4 )
-frames = ExtResource( 1 )
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.4, 0.4)
+sprite_frames = ExtResource("1")
+autoplay = "default"
 frame = 2
 speed_scale = 2.0
-playing = true
 flip_h = true
-script = ExtResource( 2 )
+script = ExtResource("2")

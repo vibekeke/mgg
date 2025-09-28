@@ -1,14 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://dcx3nr8novfa3"]
+[gd_scene load_steps=20 format=3 uid="uid://dcx3nr8novfa3"]
 
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/LevelBoundaries.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://HUD/PauseMenuGameplay.tscn" id="2"]
+[ext_resource type="Resource" uid="uid://iwcql4qvfbuy" path="res://ActionLevels/LevelCreator/Dialog/ascension_dialogue.dialogue" id="2_ckhep"]
 [ext_resource type="PackedScene" uid="uid://domnsge56b0qs" path="res://ActionLevels/backgrounds/LevelBeach.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/EnemyPoolSpawner.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://27xpr5tc5bsa" path="res://ActionLevels/LevelCreator/EnemyPoolSpawner.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://k0r8tn26r3ys" path="res://ActionLevels/LevelCreator/Enemies/SpecialSharkboi/SpecialSharkboi.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://crxpknhydx2w8" path="res://Player/Player.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://c2qd0nc5bu3vf" path="res://Player/Projectiles/RegularGunshot.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://Player/Projectiles/ChargedShot.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://dl6wkmmyat1el" path="res://Player/Projectiles/ChargedShot.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://HUD/FullHUD.tscn" id="10"]
 [ext_resource type="Script" uid="uid://d1o2nuatc1vba" path="res://ActionLevels/SpecialBeachLevel/SpecialBeachLevel.gd" id="11"]
 [ext_resource type="PackedScene" uid="uid://bo637hs5gw8j7" path="res://ActionLevels/backgrounds/VHS.tscn" id="12"]
@@ -21,6 +22,7 @@
 
 [node name="SpecialBeachLevel" type="Node2D"]
 script = ExtResource("11")
+special_beach_dialogue = ExtResource("2_ckhep")
 easter_egg = ExtResource("17")
 level_name = "SpecialBeachLevel"
 spawn_path = NodePath("SpawnPaths")

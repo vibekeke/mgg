@@ -20,7 +20,7 @@ func go_towards_point(delta):
 			if !set_angle:
 				angle_to_player = self.global_position.angle_to_point(player_position)
 				set_angle = true
-			self.global_position += Vector2(-(speed * delta * cos(angle_to_player)), -(speed * delta * sin(angle_to_player)))
+			self.global_position += Vector2(speed * delta * cos(angle_to_player), speed * delta * sin(angle_to_player))
 
 
 func _ready():

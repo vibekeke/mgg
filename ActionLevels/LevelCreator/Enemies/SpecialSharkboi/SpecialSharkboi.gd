@@ -12,6 +12,3 @@ func _physics_process(delta):
 	var movement = cos(distance_traveled * frequency) * amplitude
 	self.position.y += movement * delta
 	self.position.x -= self.initial_scroll_speed * 1.50 * delta
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print("I left the screen apparently")

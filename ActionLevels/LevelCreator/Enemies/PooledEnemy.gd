@@ -27,18 +27,11 @@ func activate_for_pool():
 	visible = true
 	set_physics_process(true)
 	set_process(true)
+	visibility_notifier.visible = true
 
 	if area2d:
 		area2d.monitoring = true
 		area2d.monitorable = true
-
-	# if sprite:
-	# 	sprite.visible = true
-	# 	sprite.modulate = Color(1,1,1,1)
-
-	# if can_take_damage:
-	# 	can_take_damage.death_called = false
-	# 	can_take_damage.damage_disabled = false
 
 func reset_for_pool():
 	visible = false

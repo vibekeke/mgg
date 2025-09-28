@@ -9,9 +9,12 @@ var max_player_health
 var hurt_heart_amount : int = 0
 
 func _ready():
-	Events.connect("player_max_health", Callable(self, "_on_player_max_health"))
-	Events.connect("player_damaged", Callable(self, "_on_player_damaged"))
-	Events.connect("collected_heart", Callable(self, "_on_collected_heart"))
+	Events.player_max_health.connect(_on_player_max_health)
+	Events.player_damaged.connect(_on_player_damaged)
+	Events.collected_heart.connect(_on_collected_heart)
+	#Events.connect("player_max_health", Callable(self, "_on_player_max_health"))
+	#Events.connect("player_damaged", Callable(self, "_on_player_damaged"))
+	#Events.connect("collected_heart", Callable(self, "_on_collected_heart"))
 
 
 func _on_collected_heart():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://k0r8tn26r3ys"]
+[gd_scene load_steps=18 format=3 uid="uid://k0r8tn26r3ys"]
 
 [ext_resource type="PackedScene" uid="uid://dj6j7y2ueuy1l" path="res://ActionLevels/LevelCreator/Enemies/SpecialSharkboi/SharkboiAnimatedSprite.tscn" id="1"]
 [ext_resource type="Script" uid="uid://wcpnk8gwhpx6" path="res://ActionLevels/LevelCreator/Enemies/SpecialSharkboi/SpecialSharkboi.gd" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://Components/CanTakeDamage.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://g30j0377qabk" path="res://imported_assets/actors/sharkboi/Shark_Bloons.png" id="4_f7uup"]
 [ext_resource type="PackedScene" path="res://Components/CanDamagePlayerOnTouch.tscn" id="5"]
+[ext_resource type="Script" uid="uid://cqxxgc5go5bne" path="res://ActionLevels/LevelCreator/Enemies/SpecialSharkboi/pooled_enemy_on_screen_notifier.gd" id="7_3leuj"]
 
 [sub_resource type="AtlasTexture" id="9"]
 atlas = ExtResource("4_f7uup")
@@ -112,4 +113,5 @@ enemy = NodePath("..")
 enemy_area = NodePath("../Area2D")
 take_damage = NodePath("../CanTakeDamage")
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="PooledEnemyOnScreenNotifier" type="Node" parent="."]
+script = ExtResource("7_3leuj")

@@ -80,4 +80,3 @@ func _get_next_dialogue():
 func show_easter_egg():
 	var new_instance = easter_egg.instance()
 	get_tree().current_scene.add_child(new_instance)
-
