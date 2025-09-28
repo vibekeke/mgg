@@ -1,0 +1,14 @@
+~ bedroom_penguin
+
+It's a penguin![wait=0.5]\nYup.[wait=0.5] \nJust a penguin.
+=> END
+
+~ bedroom_penguin_2
+
+It's still just a penguin.
+=> END
+
+~ bedroom_penguin_3
+
+Seriously[wait=0.2].[wait=0.2].[wait=0.2].[wait=1.5] it really is just a penguin.
+=> END

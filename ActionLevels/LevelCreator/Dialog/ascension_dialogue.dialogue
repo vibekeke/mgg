@@ -70,21 +70,25 @@ Angel: [speed=0.6]I hope you have a good day! [wait=2]
 ~ dotdotdot
 #do emit_change_character_portrait("AngelNeutral")
 Angel: [speed=0.6]... [wait=2]
+=> END
 
 ~ for_real
 Angel: [speed=0.6]For real, I don't think there's gonna be any more interesting dialogue after this. [wait=1.5]
 #do emit_change_character_portrait("AngelHappy")
 Angel: [speed=0.6]Feel free to leave. [wait=2]
+=> END
 
 ~ for_real2
 Angel: [speed=0.6]It's not a bit. [wait=1]There's no secret easter egg to be found by staying here longer. [wait=1.5]
 Angel: [speed=0.6]I promise! [wait=2]
+=> END
 
 ~ ok_fine
 Angel: [speed=0.6]Ok, fine! [wait=1]
 #do emit_change_character_portrait("AngelIntense")
 Angel: [speed=0.6]Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1.5]
 #do show_easter_egg()
+=> END
 
 ~ for_real3
 Angel: [speed=0.6]That was seriously the last thing. We can't keep extending it forever. [wait=1]
@@ -94,3 +98,4 @@ Angel: [speed=0.6]...So, goodbye![wait=1]
 Angel: And for the final time...[wait=1]
 #do emit_change_character_portrait("AngelHappy")
 Angel: [speed=0.6][wave]Thanks for playing~![/wave][wait=5]
+=> END

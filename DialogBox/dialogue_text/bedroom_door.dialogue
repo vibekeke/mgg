@@ -1,0 +1,8 @@
+~ bedroom_door
+do emit_change_character_portrait("AngelSad")
+Angel: Leaving your room!?
+do emit_change_character_portrait("AngelIntense")
+Angel: Are you insane!?
+do emit_change_character_portrait("Player")
+You: ...
+=> END

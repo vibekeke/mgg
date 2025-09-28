@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var overworld_reactions = get_node("%OverworldPlayerReactions")
 
 var speed = 200
-var velocity = Vector2.ZERO
+#var velocity = Vector2.ZERO
 var is_controlled = false
 
 func _ready():

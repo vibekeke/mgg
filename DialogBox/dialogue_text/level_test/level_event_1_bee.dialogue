@@ -1,0 +1,24 @@
+~ level_event_1_bee
+I'm just a bee.
+I don't know what else I can bee.
+Are you a bee?
+- Buzz off... => negative_response
+- I can bee. => positive_response
+=> END
+
+~ positive_response
+Hmm...you don't look like a bee.
+But bees never lie. So you must be a bee!
+Okay, I'll help you out!
+do emit_dialogue_finished_with_status(true)
+=> END
+
+~ negative_response
+B-Buzz...?
+O-Off...?
+BUZZ OFF?!
+[speed=3]I'm more than just a bee!
+[speed=3]I'll show you!
+BOYS! GET HER!!!
+do emit_dialogue_finished_with_status(false)
+=> END
