@@ -210,7 +210,7 @@ skip={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://ActionLevels/LevelCreator/Dialog/level1_event1_new.dialogue", "res://ActionLevels/LevelCreator/Dialog/level1_event1.dialogue", "res://ActionLevels/LevelCreator/Dialog/ascension_dialogue.dialogue", "res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://ActionLevels/LevelCreator/Dialog/level1_event1_new.dialogue", "res://ActionLevels/LevelCreator/Dialog/level1_event1.dialogue", "res://ActionLevels/LevelCreator/Dialog/ascension_dialogue.dialogue", "res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.dialogue", "res://DialogBox/dialogue_text/bedroom_pillows.dialogue", "res://DialogBox/dialogue_text/bedroom_use_bed.dialogue", "res://DialogBox/dialogue_text/goherebutton.dialogue", "res://DialogBox/dialogue_text/bedroom_piano.dialogue", "res://DialogBox/dialogue_text/bedroom_door.dialogue", "res://DialogBox/dialogue_text/bedroom_penguin.dialogue", "res://DialogBox/dialogue_text/bedroom_plant.dialogue", "res://DialogBox/dialogue_text/level_test/level_event_1_bee.dialogue")
 
 [physics]
 

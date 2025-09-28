@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://deu7jyhm3ps6f"
+path="res://.godot/imported/bedroom_penguin.dialogue-dd8539201c54bb230e49a797712e2964.tres"
+
+[deps]
+
+source_file="res://DialogBox/dialogue_text/bedroom_penguin.dialogue"
+dest_files=["res://.godot/imported/bedroom_penguin.dialogue-dd8539201c54bb230e49a797712e2964.tres"]
+
+[params]
+
+defaults=true

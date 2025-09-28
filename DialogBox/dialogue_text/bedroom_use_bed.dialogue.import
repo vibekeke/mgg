@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cy5bnm0m8krqr"
+path="res://.godot/imported/bedroom_use_bed.dialogue-b4d80ae000632a13f44a4b9d9bd9f490.tres"
+
+[deps]
+
+source_file="res://DialogBox/dialogue_text/bedroom_use_bed.dialogue"
+dest_files=["res://.godot/imported/bedroom_use_bed.dialogue-b4d80ae000632a13f44a4b9d9bd9f490.tres"]
+
+[params]
+
+defaults=true

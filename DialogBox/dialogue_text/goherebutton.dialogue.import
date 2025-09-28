@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://guaumlu8nc6k"
+path="res://.godot/imported/goherebutton.dialogue-8edeca7c07ee3eeae493722885ea2375.tres"
+
+[deps]
+
+source_file="res://DialogBox/dialogue_text/goherebutton.dialogue"
+dest_files=["res://.godot/imported/goherebutton.dialogue-8edeca7c07ee3eeae493722885ea2375.tres"]
+
+[params]
+
+defaults=true

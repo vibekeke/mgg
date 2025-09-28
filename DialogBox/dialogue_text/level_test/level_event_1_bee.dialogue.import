@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://blj2dym5uxd4k"
+path="res://.godot/imported/level_event_1_bee.dialogue-e7fc4ad3af0ade88be1a22f3a3f709b5.tres"
+
+[deps]
+
+source_file="res://DialogBox/dialogue_text/level_test/level_event_1_bee.dialogue"
+dest_files=["res://.godot/imported/level_event_1_bee.dialogue-e7fc4ad3af0ade88be1a22f3a3f709b5.tres"]
+
+[params]
+
+defaults=true

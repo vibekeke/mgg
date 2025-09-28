@@ -53,7 +53,7 @@ func _physics_process(delta):
 	get_input()
 
 	set_velocity(velocity)
-	set_up_direction(Vector2.ZERO)
+	#set_up_direction(Vector2.ZERO)
 	set_floor_stop_on_slope_enabled(false)
 	move_and_slide()
 	velocity = velocity

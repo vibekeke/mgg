@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dfiy2hsvtjaoi"
+path="res://.godot/imported/bedroom_piano.dialogue-5ead6f9e7dea6e54b0e3f80f794b3724.tres"
+
+[deps]
+
+source_file="res://DialogBox/dialogue_text/bedroom_piano.dialogue"
+dest_files=["res://.godot/imported/bedroom_piano.dialogue-5ead6f9e7dea6e54b0e3f80f794b3724.tres"]
+
+[params]
+
+defaults=true
