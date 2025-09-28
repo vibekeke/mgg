@@ -109,7 +109,7 @@ func initialize():
 	SaveFileManager.initialize()
 
 	# Now load persistent variables
-	#first_time_playing = SaveFileManager.get_first_time_playing()
+	first_time_playing = SaveFileManager.get_first_time_playing()
 	dogs_complete = SaveFileManager.get_all_dogs_collected()
 	is_initialized = true
 

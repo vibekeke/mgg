@@ -32,7 +32,7 @@ func _ready():
 	Events.connect("level_event_complete", Callable(self, "_on_level_event_complete"))
 	event_number = 2
 	event_name = "Level1_Event2"
-	
+
 	_preload_all_objects()
 
 func _preload_all_objects():
@@ -77,9 +77,10 @@ func _spawn_preloaded_background_enemy():
 			bg_enemy.scroll_speed = enemy_speed
 		bg_enemy.visible = true
 		bg_enemy.set_process(true)
-		enemy_spawner.level_background.get_node_or_null('BackForestBackground').add_child(bg_enemy)
+		enemy_spawner.level_background.get_node_or_null('StaticBackForestBackground').add_child(bg_enemy)
 	else:
 		print_debug("Level1_Event2: No more preloaded background enemies available!")
+
 
 func _spawn_preloaded_enemy():
 	if preloaded_enemies.size() > 0:
@@ -102,22 +103,22 @@ func _on_level_event_complete(level_event_name, level_event_number):
 		start_event_timer.set_one_shot(true)
 		
 		wait_after_stopping_spawner_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
-		wait_after_stopping_spawner_timer.connect("timeout", Callable(self, "_on_wait_after_stopping_spawner_timer"))
+		wait_after_stopping_spawner_timer.timeout.connect(_on_wait_after_stopping_spawner_timer)
 		wait_after_stopping_spawner_timer.set_wait_time(1.5)
 		wait_after_stopping_spawner_timer.set_one_shot(false)
 
 		spawn_enemies_timer.set_name(event_name + "_spawn_enemies_timer")
-		spawn_enemies_timer.connect("timeout", Callable(self, "_on_spawn_enemies_timer"))
+		spawn_enemies_timer.timeout.connect(_on_spawn_enemies_timer)
 		spawn_enemies_timer.set_one_shot(false)
 		spawn_enemies_timer.set_wait_time(0.1)
-		
+
 		spawn_background_enemies_timer.set_name(event_name + "_spawn_background_enemies_timer")
-		spawn_background_enemies_timer.connect("timeout", Callable(self, "_on_spawn_background_enemies_timer"))
+		spawn_background_enemies_timer.timeout.connect(_on_spawn_background_enemies_timer)
 		spawn_background_enemies_timer.set_one_shot(false)
 		spawn_background_enemies_timer.set_wait_time(0.1)
 
 		spawn_platforms_timer.set_name(event_name + "_spawn_platforms_timer")
-		spawn_platforms_timer.connect("timeout", Callable(self, "_on_spawn_platforms_timer"))
+		spawn_platforms_timer.timeout.connect(_on_spawn_platforms_timer)
 		spawn_platforms_timer.set_one_shot(false)
 		spawn_platforms_timer.set_wait_time(3.0)
 		
@@ -157,6 +158,7 @@ func _on_spawn_background_enemies_timer() -> void:
 	num_background_enemies_spawned += 1
 	if num_background_enemies_spawned >= 20:
 		spawn_background_enemies_timer.stop()
+
 
 func _on_spawn_enemies_timer() -> void:
 	_spawn_preloaded_enemy()

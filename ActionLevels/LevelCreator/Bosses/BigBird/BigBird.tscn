@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://dh773lug6lh4v"]
 
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdSprite.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bavbx5vdves2s" path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBirdSprite.tscn" id="1"]
 [ext_resource type="Script" uid="uid://brk5c4xl5vnf" path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" id="2"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird_logic.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dk6j0abvo73ih" path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird_logic.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://dsn7dxwa4ame8" path="res://imported_assets/actors/bigbird/BigBird_V1.png" id="4_yhckh"]
 
 [sub_resource type="Curve2D" id="1"]
@@ -108,7 +108,6 @@ scale = Vector2(0.7, 0.7)
 
 [node name="AnimatedSprite2D" parent="Path2D/PathFollow2D/Area2D" instance=ExtResource("1")]
 sprite_frames = SubResource("7")
-autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
 position = Vector2(12, 8)

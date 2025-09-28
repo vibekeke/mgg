@@ -7,6 +7,7 @@ var player_position = null
 @onready var shoot_duration_timer = Timer.new()
 @onready var flash_collision_shape_timer = Timer.new()
 
+# what in gods name
 @onready var collision_shape_extents = {
 	0: Vector2.ZERO,
 	1: Vector2.ZERO,

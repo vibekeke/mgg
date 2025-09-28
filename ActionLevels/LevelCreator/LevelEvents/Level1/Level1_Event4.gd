@@ -73,9 +73,9 @@ func trigger() -> void:
 	event_start()
 
 func event_start() -> void:
-	enemy_spawner.spawn_to_background_element(ourguybackground, 'BackForestBackground', first_background_enemy_spawn_place, background_element_speed)	
-	enemy_spawner.spawn_to_background_element(dogbackground, 'BackForestBackground', background_dog_spawn_place, background_element_speed)
-	enemy_spawner.spawn_to_background_element(ourguybackground, 'BackForestBackground', second_background_enemy_spawn_place, background_element_speed)
+	enemy_spawner.spawn_to_background_element(ourguybackground, 'StaticBackForestBackground', first_background_enemy_spawn_place, background_element_speed)
+	enemy_spawner.spawn_to_background_element(dogbackground, 'StaticBackForestBackground', background_dog_spawn_place, background_element_speed)
+	enemy_spawner.spawn_to_background_element(ourguybackground, 'StaticBackForestBackground', second_background_enemy_spawn_place, background_element_speed)
 
 
 func end_event() -> void:

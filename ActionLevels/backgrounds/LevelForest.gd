@@ -12,7 +12,7 @@ extends Node2D
 var basic_timer = 0.0
 var foreground_stopped = false
 var timer_been_set = false
-var background_moving = false
+@export var background_moving = false
 
 func _ready():
 	Events.connect("background_moving_enabled", Callable(self, "_on_background_moving_enabled"))

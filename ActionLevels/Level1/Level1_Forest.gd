@@ -75,7 +75,7 @@ func _on_confirm_level_start():
 
 func _on_all_dogs_collected():
 	if not Events.dogs_complete:
-		var new_instance = dog_completion_popup.instance()
+		var new_instance = dog_completion_popup.instantiate()
 		get_tree().current_scene.add_child(new_instance)
 	Events.dogs_complete = true
 	

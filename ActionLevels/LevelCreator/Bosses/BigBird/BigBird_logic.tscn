@@ -1,16 +1,53 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://dk6j0abvo73ih"]
 
-[ext_resource path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird_logic.gd" type="Script" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/EnemyAssets/BulletDebugCanvas.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.tres" type="Resource" id=3]
+[ext_resource type="Script" uid="uid://cvq524ct4ywpw" path="res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird_logic.gd" id="1"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/EnemyAssets/BulletDebugCanvas.tscn" id="2"]
+[ext_resource type="Resource" uid="uid://bn1wxq22mgo6c" path="res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.dialogue" id="2_uujr5"]
 
 [node name="EnemyLogic" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 spawn_point_count = 2
 fire_rate_timer_wait_time = 0.6
-level1_event_betrayal_dialog = ExtResource( 3 )
+level1_event_betrayal_dialog = ExtResource("2_uujr5")
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 2 )]
+[node name="CanvasLayer" parent="." instance=ExtResource("2")]
+
+[node name="DebugSliders" parent="CanvasLayer" index="0"]
+layout_mode = 3
+anchors_preset = 1
+
+[node name="VBoxContainer" parent="CanvasLayer/DebugSliders" index="0"]
+layout_mode = 0
+
+[node name="RotationSpeedTitle" parent="CanvasLayer/DebugSliders/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="RotationSpeedSlider" parent="CanvasLayer/DebugSliders/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="SpawnCountTitle" parent="CanvasLayer/DebugSliders/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="SpawnCountSlider" parent="CanvasLayer/DebugSliders/VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="FireRateTitle" parent="CanvasLayer/DebugSliders/VBoxContainer" index="4"]
+layout_mode = 2
+
+[node name="FireRateSlider" parent="CanvasLayer/DebugSliders/VBoxContainer" index="5"]
+layout_mode = 2
+
+[node name="RadiusTitle" parent="CanvasLayer/DebugSliders/VBoxContainer" index="6"]
+layout_mode = 2
+
+[node name="RadiusSlider" parent="CanvasLayer/DebugSliders/VBoxContainer" index="7"]
+layout_mode = 2
+
+[node name="ProjectileSpeedTitle" parent="CanvasLayer/DebugSliders/VBoxContainer" index="8"]
+layout_mode = 2
+
+[node name="ProjectileSpeedSlider" parent="CanvasLayer/DebugSliders/VBoxContainer" index="9"]
+layout_mode = 2
 
 [connection signal="value_changed" from="CanvasLayer/DebugSliders/VBoxContainer/RotationSpeedSlider" to="." method="_on_RotationSpeedSlider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/DebugSliders/VBoxContainer/SpawnCountSlider" to="." method="_on_SpawnCountSlider_value_changed"]

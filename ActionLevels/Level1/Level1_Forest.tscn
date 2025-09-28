@@ -170,10 +170,10 @@ boss_warning_tape_path = NodePath("../../BossWarningTape")
 spawn_paths_path = NodePath("../../SpawnPaths")
 star_collectible = ExtResource("18")
 spawn_collectible_to_node_path = NodePath("../..")
-level1_event1_dialog = ExtResource("45")
+level1_event1_dialog = ExtResource("47_th3vr")
 
 [node name="Level1_EventEnd" parent="LevelEventsManager" instance=ExtResource("43")]
-level1_event_end_dialog = ExtResource("45")
+level1_event_end_dialog = ExtResource("47_th3vr")
 
 [node name="StartLevelTimer" type="Timer" parent="."]
 wait_time = 2.0

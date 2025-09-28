@@ -30,7 +30,7 @@ func _on_pacifist_successful():
 func _on_dialogue_box_finished(node_id):
 	if self.get_instance_id() == node_id and !you_win_shown:
 		you_win_shown = true
-		var new_instance = win_popup.instance()
+		var new_instance = win_popup.instantiate()
 		add_child(new_instance)
 
 	#if self.get_instance_id() == node_id:
