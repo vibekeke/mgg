@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://da2r7at5of3bm"]
+
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/LevelBoundaries.tscn" id="1_0uilb"]
+[ext_resource type="PackedScene" uid="uid://crxpknhydx2w8" path="res://Player/Player.tscn" id="2_ym8ll"]
+[ext_resource type="PackedScene" uid="uid://c2qd0nc5bu3vf" path="res://Player/Projectiles/RegularGunshot.tscn" id="3_hcb8t"]
+[ext_resource type="PackedScene" uid="uid://dl6wkmmyat1el" path="res://Player/Projectiles/ChargedShot.tscn" id="4_hx41f"]
+[ext_resource type="PackedScene" uid="uid://k0r8tn26r3ys" path="res://ActionLevels/LevelCreator/Enemies/SpecialSharkboi/SpecialSharkboi.tscn" id="5_hcb8t"]
+
+[node name="TestEnemies" type="Node2D"]
+
+[node name="LevelBoundaries" parent="." instance=ExtResource("1_0uilb")]
+
+[node name="Player" parent="." instance=ExtResource("2_ym8ll")]
+position = Vector2(229, 820)
+gunshot = ExtResource("3_hcb8t")
+charge_shot = ExtResource("4_hx41f")
+is_standing = false
+
+[node name="SpecialSharkboi" parent="." instance=ExtResource("5_hcb8t")]
+position = Vector2(1604, 716)
