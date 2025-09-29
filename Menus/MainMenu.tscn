@@ -627,6 +627,7 @@ frequency = 2.0
 amplitude = 0.1
 
 [node name="WinnerCrown" parent="CharacterLayer" instance=ExtResource( 9 )]
+unique_name_in_owner = true
 visible = false
 position = Vector2( 1390, 90.9999 )
 scale = Vector2( 0.55888, 0.55888 )
