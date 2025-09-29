@@ -1,11 +1,11 @@
 extends Node2D
 
-export (int) var scroll_speed
+@export var scroll_speed: int
 
-onready var area2d = $Area2D
+@onready var area2d = $Area2D
 
 func _ready():
-	area2d.connect("body_entered", self, "_on_call_body_entered")
+	area2d.connect("body_entered", Callable(self, "_on_call_body_entered"))
 
 func _increment_stars():
 	Events.emit_signal("collected_star")

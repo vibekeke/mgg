@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://HUD/StarSelect.gd" type="Script" id=1]
-[ext_resource path="res://imported_assets/hud/collectibles/Collected_Stars.png" type="Texture" id=2]
+[ext_resource path="res://imported_assets/hud/collectibles/Collected_Stars.png" type="Texture2D" id=2]
 [ext_resource path="res://Menus/overlay_hueshift.gdshader" type="Shader" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -10,7 +10,7 @@ shader_param/OverlayColor = Color( 1, 0.964706, 0.913725, 1 )
 shader_param/Overlay = 0.728
 shader_param/HueShift = 0.568
 
-[node name="StarSelect" type="Sprite"]
+[node name="StarSelect" type="Sprite2D"]
 material = SubResource( 1 )
 position = Vector2( 165, 90 )
 scale = Vector2( 0.2, 0.2 )

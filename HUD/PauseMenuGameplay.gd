@@ -1,23 +1,23 @@
 extends CanvasLayer
 
-var is_paused = false setget set_is_paused
+var is_paused = false: set = set_is_paused
 
-export var vhs_filter_path : NodePath
+@export var vhs_filter_path : NodePath
 
-onready var resume_button = get_node("%ResumeBtn")
-onready var retry_button = get_node("%RetryBtn")
-onready var title_button = get_node("%TitleBtn")
+@onready var resume_button = get_node("%ResumeBtn")
+@onready var retry_button = get_node("%RetryBtn")
+@onready var title_button = get_node("%TitleBtn")
 
-onready var spinny_star_resume = get_node("%SpinnyStarResume")
-onready var spinny_star_retry = get_node("%SpinnyStarRetry")
-onready var spinny_star_title = get_node("%SpinnyStarTitle")
+@onready var spinny_star_resume = get_node("%SpinnyStarResume")
+@onready var spinny_star_retry = get_node("%SpinnyStarRetry")
+@onready var spinny_star_title = get_node("%SpinnyStarTitle")
 
-onready var vhs_filter = get_node_or_null(vhs_filter_path)
+@onready var vhs_filter = get_node_or_null(vhs_filter_path)
 
 var pausing_allowed : bool = true
 
 func _ready():
-	Events.connect("pausing_allowed", self, "_on_pausing_allowed")
+	Events.connect("pausing_allowed", Callable(self, "_on_pausing_allowed"))
 	if vhs_filter == null:
 		print("Could not find a node named VHS filter in this scene!")
 	var parent_node = self.get_parent()
@@ -53,7 +53,7 @@ func _on_ResumeBtn_pressed():
 
 func _on_QuitBtn_pressed():
 	Events.emit_signal("player_invincible", true)
-	yield(get_tree().create_timer(0.4, true), "timeout")
+	await get_tree().create_timer(0.4, true).timeout
 	if StatsTracker.current_level_stats:
 		StatsTracker.current_level_stats.last_run_completed = false
 	self.is_paused = false
@@ -62,7 +62,7 @@ func _on_QuitBtn_pressed():
 func _on_BackBtn_pressed():
 	Events.emit_signal("player_invincible", true)
 	AudioManager.playSFX("ui_confirm", 1.0, 5.0)
-	yield(get_tree().create_timer(0.4, true), "timeout")
+	await get_tree().create_timer(0.4, true).timeout
 	self.is_paused = false
 	
 	var parent_node = self.get_parent()

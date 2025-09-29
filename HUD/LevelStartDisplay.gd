@@ -1,21 +1,20 @@
 extends CanvasLayer
 
-onready var how_to_panel : PanelContainer = get_node("%PanelContainer")
-onready var controls_panel : PanelContainer = get_node("%Controls")
-onready var tutorial_confirmation_panel : PanelContainer = get_node("%TutorialConfirmation")
-onready var bubbles : Sprite = get_node("%Bubbles")
+@onready var how_to_panel : PanelContainer = get_node("%PanelContainer")
+@onready var controls_panel : PanelContainer = get_node("%Controls")
+@onready var tutorial_confirmation_panel : PanelContainer = get_node("%TutorialConfirmation")
+@onready var bubbles : Sprite2D = get_node("%Bubbles")
 
-onready var controls_animation_player : AnimationPlayer = get_node("%ControlsAnimationPlayer")
-onready var confirmation_animation_player : AnimationPlayer = get_node("%ConfirmationAnimationPlayer")
-onready var text_animation_player : AnimationPlayer = get_node("%TextAnimationPlayer")
-onready var ready_to_start_level_timer : Timer = get_node("%ReadyToStartLevelTimer")
+@onready var controls_animation_player : AnimationPlayer = get_node("%ControlsAnimationPlayer")
+@onready var confirmation_animation_player : AnimationPlayer = get_node("%ConfirmationAnimationPlayer")
+@onready var text_animation_player : AnimationPlayer = get_node("%TextAnimationPlayer")
+@onready var ready_to_start_level_timer : Timer = get_node("%ReadyToStartLevelTimer")
 
-export var ready_to_start_level_delay := 0.5
-export var before_level_dialogue : Resource
-export var before_level_dialogue_script_name : String
-export var level1_event1_dialog : Resource
+@export var ready_to_start_level_delay := 0.5
+@export var before_level_dialogue : DialogueResource
+@export var before_level_dialogue_script_name : String
 
-export var hide_tutorial : bool = false
+@export var hide_tutorial : bool = false
 var tutorial_text_displayed : bool = false
 var level_start_confirmed : bool = false
 
@@ -23,7 +22,7 @@ signal confirm_level_start
 
 func _ready():
 	start_level_display()
-	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
+	MggDialogue.connect("mgg_dialogue_box_finished", Callable(self, "_on_dialogue_box_finished"))
 	if hide_tutorial:
 		how_to_panel.hide()
 

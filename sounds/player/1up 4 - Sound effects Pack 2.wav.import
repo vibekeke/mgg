@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/1up 4 - Sound effects Pack 2.wav-1c7b8b7c841102f111a436c35b2d9829.sample"
+type="AudioStreamWAV"
+uid="uid://xnoqsrtjrke4"
+path="res://.godot/imported/1up 4 - Sound effects Pack 2.wav-1c7b8b7c841102f111a436c35b2d9829.sample"
 
 [deps]
 
 source_file="res://sounds/player/1up 4 - Sound effects Pack 2.wav"
-dest_files=[ "res://.import/1up 4 - Sound effects Pack 2.wav-1c7b8b7c841102f111a436c35b2d9829.sample" ]
+dest_files=["res://.godot/imported/1up 4 - Sound effects Pack 2.wav-1c7b8b7c841102f111a436c35b2d9829.sample"]
 
 [params]
 

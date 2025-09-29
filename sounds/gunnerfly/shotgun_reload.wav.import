@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/shotgun_reload.wav-427bbeb79a944b96d31d661aba7f690a.sample"
+type="AudioStreamWAV"
+uid="uid://cals2jsmujx8m"
+path="res://.godot/imported/shotgun_reload.wav-427bbeb79a944b96d31d661aba7f690a.sample"
 
 [deps]
 
 source_file="res://sounds/gunnerfly/shotgun_reload.wav"
-dest_files=[ "res://.import/shotgun_reload.wav-427bbeb79a944b96d31d661aba7f690a.sample" ]
+dest_files=["res://.godot/imported/shotgun_reload.wav-427bbeb79a944b96d31d661aba7f690a.sample"]
 
 [params]
 

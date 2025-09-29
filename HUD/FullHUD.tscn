@@ -10,50 +10,50 @@
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Health:rect_position")
+tracks/0/path = NodePath("Health:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, -200 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("DogCollection:rect_position")
+tracks/1/path = NodePath("DogCollection:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1361, -249 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CrystalContainer:rect_position")
+tracks/2/path = NodePath("CrystalContainer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 392, -203 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ScoreTracker:rect_position")
+tracks/3/path = NodePath("ScoreTracker:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 782, -115 ) ]
 }
@@ -61,50 +61,50 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=1]
 resource_name = "fall_down"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Health:rect_position")
+tracks/0/path = NodePath("Health:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -200 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("DogCollection:rect_position")
+tracks/1/path = NodePath("DogCollection:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1361, -249 ), Vector2( 1361, 49 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CrystalContainer:rect_position")
+tracks/2/path = NodePath("CrystalContainer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 392, -203 ), Vector2( 392, 3 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ScoreTracker:rect_position")
+tracks/3/path = NodePath("ScoreTracker:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 782, -115 ), Vector2( 782, 75 ) ]
 }
@@ -119,22 +119,22 @@ script = ExtResource( 4 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
-margin_top = -200.0
-margin_bottom = -44.0
+offset_top = -200.0
+offset_bottom = -44.0
 
 [node name="DogCollection" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
-margin_left = 1361.0
-margin_top = -249.0
-margin_right = 1908.0
-margin_bottom = -76.0
+offset_left = 1361.0
+offset_top = -249.0
+offset_right = 1908.0
+offset_bottom = -76.0
 
 [node name="CrystalContainer" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
-margin_left = 392.0
-margin_top = -203.0
-margin_right = 625.0
-margin_bottom = -2.0
+offset_left = 392.0
+offset_top = -203.0
+offset_right = 625.0
+offset_bottom = -2.0
 __meta__ = {
 "_edit_group_": true
 }
@@ -142,7 +142,7 @@ __meta__ = {
 [node name="ChargeCrystal" parent="CrystalContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_bottom = 201.0
+offset_bottom = 201.0
 __meta__ = {
 "_edit_group_": true
 }
@@ -156,8 +156,8 @@ anims/go_up = SubResource( 2 )
 
 [node name="ScoreTracker" parent="." instance=ExtResource( 5 )]
 unique_name_in_owner = true
-margin_left = 782.0
-margin_top = -115.0
-margin_right = 56951.0
-margin_bottom = 31317.0
+offset_left = 782.0
+offset_top = -115.0
+offset_right = 56951.0
+offset_bottom = 31317.0
 score_popup = ExtResource( 6 )

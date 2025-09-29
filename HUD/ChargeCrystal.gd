@@ -1,36 +1,36 @@
 extends Control
 
-onready var positive_action_count = 0
-onready var current_frame = 0
+@onready var positive_action_count = 0
+@onready var current_frame = 0
 var POSITIVE_ACTION_COUNT = 15
 
 func _ready():
-	Events.connect("collected_star", self, "_on_positive_charge")
-	Events.connect("regular_enemy_death", self, "_on_positive_charge")
-	Events.connect("fired_charge_shot", self, "_on_fired_charge_shot")
-	$AnimatedSprite.animation = "default"
-	$AnimatedSprite.frame = 0
-	$AnimatedSprite.stop()
+	Events.connect("collected_star", Callable(self, "_on_positive_charge"))
+	Events.connect("regular_enemy_death", Callable(self, "_on_positive_charge"))
+	Events.connect("fired_charge_shot", Callable(self, "_on_fired_charge_shot"))
+	$AnimatedSprite2D.animation = "default"
+	$AnimatedSprite2D.frame = 0
+	$AnimatedSprite2D.stop()
 
 func play_fully_charged():
-	$AnimatedSprite.speed_scale = 1.5
+	$AnimatedSprite2D.speed_scale = 1.5
 	#$AudioStreamPlayer.play(0.0)
 	AudioManager.playSFX("charge_complete")
-	$AnimatedSprite.play("complete")
+	$AnimatedSprite2D.play("complete")
 	Events.emit_signal("has_charge_shot")
 
 func play_frame_until():
-	$AnimatedSprite.play("default")
+	$AnimatedSprite2D.play("default")
 
 func _on_fired_charge_shot():
 	positive_action_count = 0
 	current_frame = 0
-	$AnimatedSprite.animation = "default"
-	$AnimatedSprite.frame = 0
-	$AnimatedSprite.stop()
+	$AnimatedSprite2D.animation = "default"
+	$AnimatedSprite2D.frame = 0
+	$AnimatedSprite2D.stop()
 
 func _on_positive_charge():
-	if $AnimatedSprite.animation == "default":
+	if $AnimatedSprite2D.animation == "default":
 		positive_action_count += 1
 		if fmod(positive_action_count, 3) == 0:
 			play_frame_until()
@@ -42,13 +42,13 @@ func _process(delta):
 		play_fully_charged()
 
 func _on_AnimatedSprite_frame_changed():
-	if $AnimatedSprite.animation == "default" and $AnimatedSprite.frame < 5:
-		$AnimatedSprite.stop()
-	if $AnimatedSprite.animation == "default" and $AnimatedSprite.frame == 5:
-		$AnimatedSprite.play("default")
+	if $AnimatedSprite2D.animation == "default" and $AnimatedSprite2D.frame < 5:
+		$AnimatedSprite2D.stop()
+	if $AnimatedSprite2D.animation == "default" and $AnimatedSprite2D.frame == 5:
+		$AnimatedSprite2D.play("default")
 
 
 func _on_AnimatedSprite_animation_finished():
-	if $AnimatedSprite.animation == "default" or positive_action_count >= 15:
+	if $AnimatedSprite2D.animation == "default" or positive_action_count >= 15:
 		positive_action_count = 0
 		play_fully_charged()

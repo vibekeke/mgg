@@ -6,3 +6,4 @@ sounds/speaking/*
 mggsave.save
 *.sh
 .import/*
+.godot/*

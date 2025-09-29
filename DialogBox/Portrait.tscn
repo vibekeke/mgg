@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://DialogBox/CharacterPortraits/PlayerMG.tscn" type="PackedScene" id=1]
-[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_BG.png" type="Texture" id=2]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_BG.png" type="Texture2D" id=2]
 [ext_resource path="res://DialogBox/Portrait.gd" type="Script" id=3]
-[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MC_neutral.png" type="Texture" id=4]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MC_neutral.png" type="Texture2D" id=4]
 [ext_resource path="res://DialogBox/CharacterPortraits/AngelIntense.tscn" type="PackedScene" id=5]
 [ext_resource path="res://DialogBox/CharacterPortraits/AngelScared.tscn" type="PackedScene" id=6]
 [ext_resource path="res://DialogBox/CharacterPortraits/AngelDetermined.tscn" type="PackedScene" id=7]
@@ -11,12 +11,12 @@
 [ext_resource path="res://DialogBox/CharacterPortraits/AngelHappy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://DialogBox/CharacterPortraits/AngelNeutral.tscn" type="PackedScene" id=10]
 [ext_resource path="res://DialogBox/CharacterPortraits/PlayerNormal.tscn" type="PackedScene" id=11]
-[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_happy-mouthflap.png" type="Texture" id=12]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_happy-mouthflap.png" type="Texture2D" id=12]
 [ext_resource path="res://DialogBox/CharacterPortraits/AngelIntenseStatic.tscn" type="PackedScene" id=13]
-[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_neutral-moutflap.png" type="Texture" id=14]
-[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_sad-mouthflap.png" type="Texture" id=15]
-[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_intense-mouthflap.png" type="Texture" id=17]
-[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_mouthflap.png" type="Texture" id=18]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_neutral-moutflap.png" type="Texture2D" id=14]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_sad-mouthflap.png" type="Texture2D" id=15]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_ANGEL_intense-mouthflap.png" type="Texture2D" id=17]
+[ext_resource path="res://imported_assets/dialog/portraits/Portrait_MG_mouthflap.png" type="Texture2D" id=18]
 [ext_resource path="res://DialogBox/CharacterPortraits/PlayerMGNeutralStatic.tscn" type="PackedScene" id=19]
 
 [sub_resource type="AtlasTexture" id=3]
@@ -30,9 +30,9 @@ anchor_left = 0.65
 anchor_top = 0.6
 anchor_right = 0.65
 anchor_bottom = 0.6
-margin_right = 751.0
-margin_bottom = 728.0
-rect_scale = Vector2( 0.4, 0.4 )
+offset_right = 751.0
+offset_bottom = 728.0
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 5
@@ -40,66 +40,66 @@ script = ExtResource( 3 )
 
 [node name="PlayerMG" parent="." instance=ExtResource( 1 )]
 visible = false
-margin_left = -378.0
-margin_right = 373.0
+offset_left = -378.0
+offset_right = 373.0
 texture = SubResource( 3 )
 portrait_name = 0
 frame_index = 1
 
 [node name="PlayerNormal" parent="." instance=ExtResource( 11 )]
 visible = false
-margin_left = -395.5
-margin_right = 355.5
+offset_left = -395.5
+offset_right = 355.5
 texture = ExtResource( 4 )
 portrait_name = 0
 frame_index = 1
 
 [node name="AngelDetermined" parent="." instance=ExtResource( 7 )]
 visible = false
-margin_top = -374.0
-margin_bottom = 354.0
+offset_top = -374.0
+offset_bottom = 354.0
 portrait_name = 0
 
 [node name="AngelHappy" parent="." instance=ExtResource( 9 )]
 visible = false
-margin_left = -390.5
-margin_top = -371.5
-margin_right = 360.5
-margin_bottom = 356.5
+offset_left = -390.5
+offset_top = -371.5
+offset_right = 360.5
+offset_bottom = 356.5
 texture = ExtResource( 12 )
 frame_index = 1
 
 [node name="AngelIntense" parent="." instance=ExtResource( 5 )]
 visible = false
-margin_left = -390.5
-margin_top = -374.0
-margin_right = 360.5
-margin_bottom = 354.0
+offset_left = -390.5
+offset_top = -374.0
+offset_right = 360.5
+offset_bottom = 354.0
 texture = ExtResource( 17 )
 frame_index = 1
 
 [node name="AngelNeutral" parent="." instance=ExtResource( 10 )]
 visible = false
-margin_left = -390.5
-margin_top = -374.0
-margin_right = 360.5
-margin_bottom = 354.0
+offset_left = -390.5
+offset_top = -374.0
+offset_right = 360.5
+offset_bottom = 354.0
 texture = ExtResource( 14 )
 frame_index = 1
 
 [node name="AngelScared" parent="." instance=ExtResource( 6 )]
 visible = false
-margin_left = -390.5
-margin_top = -374.0
-margin_right = 360.5
-margin_bottom = 354.0
+offset_left = -390.5
+offset_top = -374.0
+offset_right = 360.5
+offset_bottom = 354.0
 
 [node name="AngelSad" parent="." instance=ExtResource( 8 )]
 visible = false
-margin_left = -385.5
-margin_top = -371.5
-margin_right = 365.5
-margin_bottom = 356.5
+offset_left = -385.5
+offset_top = -371.5
+offset_right = 365.5
+offset_bottom = 356.5
 texture = ExtResource( 15 )
 frame_index = 1
 

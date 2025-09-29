@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="FontFile" id=1]
 [ext_resource path="res://HUD/readable_panels.tres" type="StyleBox" id=2]
 [ext_resource path="res://Menus/AllDogsCompletion.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 54
 outline_size = 4
 outline_color = Color( 0.262745, 0.435294, 1, 1 )
@@ -13,14 +13,14 @@ font_data = ExtResource( 1 )
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CenterContainer:rect_position")
+tracks/0/path = NodePath("CenterContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 400 ) ]
 }
@@ -31,8 +31,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -41,14 +41,14 @@ tracks/1/keys = {
 resource_name = "hide_message"
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("CenterContainer:rect_position")
+tracks/0/path = NodePath("CenterContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.14, 0.24 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.14, 0.24 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 400 ), Vector2( 0, 380 ), Vector2( 0, 360 ) ]
 }
@@ -59,8 +59,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.12 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -69,14 +69,14 @@ tracks/1/keys = {
 resource_name = "hide_message"
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("CenterContainer:rect_position")
+tracks/0/path = NodePath("CenterContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.14, 0.24 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.14, 0.24 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 360 ), Vector2( 0, 380 ), Vector2( 0, 400 ) ]
 }
@@ -87,8 +87,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.13 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.13 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -104,38 +104,38 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_top = 400.0
-margin_right = 600.0
-margin_bottom = 700.0
+offset_top = 400.0
+offset_right = 600.0
+offset_bottom = 700.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer"]
-margin_left = 300.0
-margin_top = 150.0
-margin_right = 300.0
-margin_bottom = 150.0
+offset_left = 300.0
+offset_top = 150.0
+offset_right = 300.0
+offset_bottom = 150.0
 
 [node name="Panel" type="Panel" parent="CenterContainer"]
-margin_right = 600.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 600, 300 )
-custom_styles/panel = ExtResource( 2 )
+offset_right = 600.0
+offset_bottom = 300.0
+custom_minimum_size = Vector2( 600, 300 )
+theme_override_styles/panel = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Panel/MarginContainer"]
-margin_right = 600.0
-margin_bottom = 300.0
+offset_right = 600.0
+offset_bottom = 300.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/Panel/MarginContainer/CenterContainer"]
-margin_top = 50.0
-margin_right = 600.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 600, 200 )
-custom_fonts/normal_font = SubResource( 1 )
+offset_top = 50.0
+offset_right = 600.0
+offset_bottom = 250.0
+custom_minimum_size = Vector2( 600, 200 )
+theme_override_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center]For saving all of the dogs you've unlocked the secret room![/center]"
+text = "[center]For saving all of the dogs you've unlocked the secret room![/center]"
 meta_underlined = false
 text = "For saving all of the dogs you've unlocked the secret room!"
 scroll_active = false

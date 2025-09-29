@@ -1,0 +1,101 @@
+~ you_did_it
+Angel: [speed=0.8]You did it! [wait=1]You completed all the special challenges this game has to offer. [wait=1]
+#do emit_change_character_portrait("AngelHappy")
+Angel: [speed=0.8]I hereby declare you a \n[wave]R E A L  G A M E R [/wave]! [wait=2]
+
+~ true_completionist
+Angel: [speed=0.8]A true completionist! [wait=1]You finished everything. [wait=1]
+#do emit_change_character_portrait("AngelHappy")
+Angel: [speed=0.8]Congratulations! [wait=2]
+
+~ proud
+Angel: [speed=0.8]I am seriously proud of you![wait=1] You played the game so well! [wait=2]
+
+~ wow
+Angel: [speed=0.8]Wow. You really are the best! [wait=2]
+
+~ good_job
+Angel: [speed=0.8]Good job![wait=2]
+
+~ dotdot
+
+#do emit_change_character_portrait("AngelNeutral")
+Angel: [speed=0.8]...[wait=2]
+
+~ this_is_it
+Angel: [speed=0.6]So... this is it. [wait=1]This is all our little world has to offer. [wait=1]For now. [wait=1.5]
+#do emit_change_character_portrait("AngelIntense")
+Angel: [speed=0.6]I wonder.. was it difficult? Or, more importantly, was it fun? [wait=1]
+Angel: [speed=0.6]I wonder what you expected would happen in the end. [wait=2]
+
+~ doesnt_matter
+Angel: [speed=0.6]But I guess it doesn't matter. We are both here, [wait=0.5]right now.
+#do emit_change_character_portrait("AngelHappy")
+Angel: [speed=0.6]Just enjoy the moment for however long you'd like. [wait=1.5]
+
+~ video_games
+Angel: [speed=0.6]Video games are hard to make, y'know? [wait=1]A lot harder than people think, [wait=1]even with modern tools. [wait=1.5]
+Angel: [speed=0.6]We had so many ideas... So many visions for this game. [wait=1]
+Angel: [speed=0.6]This is what it turned into. [wait=1]A mere fraction of what we imagined. [wait=1.5]
+#do emit_change_character_portrait("AngelHappy")
+Angel: [speed=0.6]Yet the satisfaction of watching it come to life makes it all worth it! [wait=2.5]
+
+~ greatest_honor
+Angel: [speed=0.6]And when players explore every nook and cranny of a game.. [wait=1]
+Angel: [speed=0.6]..that's the greatest honor for a game developer! [wait=1.5]
+Angel: [speed=0.6]So, from the bottom of my heart... [wait=1]
+Angel: [speed=0.6]My angel-heart.. [wait=1]
+#do emit_change_character_portrait("AngelHappy")
+Angel: [speed=0.6]Thank you so much for playing! [wait=2]
+
+~ thanks
+
+#do emit_change_character_portrait("AngelHappy")
+Angel: [speed=0.6]Thank you so much! [wait=2]
+
+~ thanksss
+Angel: [speed=0.6]...
+#do emit_change_character_portrait("AngelHappy")
+Angel: [speed=0.6]Thanks again! [wait=2]
+
+~ are_you_still_here
+Angel: [speed=0.6]Are you still here? [wait=1]Hmm...
+#do emit_change_character_portrait("AngelScared")
+Angel: [speed=0.6]I can't really think of much else to say. [wait=1.5]
+#do emit_change_character_portrait("AngelIntense")
+Angel: [speed=0.6]I guess I can just wish you a good day? [wait=1]
+#do emit_change_character_portrait("AngelHappy")
+Angel: [speed=0.6]I hope you have a good day! [wait=2]
+
+~ dotdotdot
+#do emit_change_character_portrait("AngelNeutral")
+Angel: [speed=0.6]... [wait=2]
+=> END
+
+~ for_real
+Angel: [speed=0.6]For real, I don't think there's gonna be any more interesting dialogue after this. [wait=1.5]
+#do emit_change_character_portrait("AngelHappy")
+Angel: [speed=0.6]Feel free to leave. [wait=2]
+=> END
+
+~ for_real2
+Angel: [speed=0.6]It's not a bit. [wait=1]There's no secret easter egg to be found by staying here longer. [wait=1.5]
+Angel: [speed=0.6]I promise! [wait=2]
+=> END
+
+~ ok_fine
+Angel: [speed=0.6]Ok, fine! [wait=1]
+#do emit_change_character_portrait("AngelIntense")
+Angel: [speed=0.6]Here, have an easter egg! [wait=2]But don't tell anyone, ok? [wait=1.5]
+#do show_easter_egg()
+=> END
+
+~ for_real3
+Angel: [speed=0.6]That was seriously the last thing. We can't keep extending it forever. [wait=1]
+#do emit_change_character_portrait("AngelNeutral")
+Angel: [speed=0.6]It's only a demo after all! [wait=1.5]
+Angel: [speed=0.6]...So, goodbye![wait=1]
+Angel: And for the final time...[wait=1]
+#do emit_change_character_portrait("AngelHappy")
+Angel: [speed=0.6][wave]Thanks for playing~![/wave][wait=5]
+=> END

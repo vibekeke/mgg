@@ -11,10 +11,10 @@ const DEFAULT_STAR_SCORE : int = 30
 const DEFAULT_DOG_SCORE : int = 100
 
 func _ready():
-	Events.connect("regular_enemy_death", self, "_on_regular_enemy_death")
-	Events.connect("collected_dog", self, "_on_collected_dog")
-	Events.connect("collected_star", self, "_on_collected_star")
-	Events.connect("player_damaged", self, "_on_player_damaged")
+	Events.connect("regular_enemy_death", Callable(self, "_on_regular_enemy_death"))
+	Events.connect("collected_dog", Callable(self, "_on_collected_dog"))
+	Events.connect("collected_star", Callable(self, "_on_collected_star"))
+	Events.connect("player_damaged", Callable(self, "_on_player_damaged"))
 
 func reset_level_score():
 	collected_dogs = 0
@@ -44,12 +44,12 @@ func _on_player_damaged(damage_taken):
 func calculate_rank() -> String:
 	return _calculate_rank(hits_taken, internal_score)
 
-func _calculate_rank(hits_taken: int, score: int) -> String:
+func _calculate_rank(hits_count: int, score: int) -> String:
 	var score_component : float = min(score / 900.0, 1.0) * 100.0
 	
 	var damage_penalty : float = 0.0
-	if hits_taken > 0:
-		damage_penalty = min(hits_taken * 12.0 + pow(hits_taken, 1.8), 70.0)
+	if hits_count > 0:
+		damage_penalty = min(hits_count * 12.0 + pow(hits_count, 1.8), 70.0)
 
 	var damage_component = max(0.0, 100.0 - damage_penalty)
 	var final_rating = (damage_component * 0.55) + (score_component * 0.45)

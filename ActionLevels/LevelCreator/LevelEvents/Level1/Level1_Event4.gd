@@ -1,16 +1,16 @@
 extends LevelEvent
 
-export var debug_mode : bool = false
+@export var debug_mode : bool = false
 
-onready var enemy_spawner = get_node("%EnemySpawner")
-onready var platform_spawner = get_node("%PlatformSpawner")
-export var time_until_event_start : float = 1.0
-export var ourguy : PackedScene
-export var ourguybackground : PackedScene
-export var dogbackground : PackedScene
-export var platform_to_spawn_one : PackedScene
-export var platform_to_spawn_two : PackedScene
-export var dog : PackedScene
+@onready var enemy_spawner = get_node("%EnemySpawner")
+@onready var platform_spawner = get_node("%PlatformSpawner")
+@export var time_until_event_start : float = 1.0
+@export var ourguy : PackedScene
+@export var ourguybackground : PackedScene
+@export var dogbackground : PackedScene
+@export var platform_to_spawn_one : PackedScene
+@export var platform_to_spawn_two : PackedScene
+@export var dog : PackedScene
 
 var first_background_enemy_spawn_place = Vector2(-250, 861)
 var background_dog_spawn_place = Vector2(-400, 861)
@@ -24,14 +24,14 @@ var background_element_speed = 100
 
 var num_background_elements_offscreen = 0
 
-onready var start_event_timer = Timer.new()
-onready var wait_for_spawn_restart_timer = Timer.new()
+@onready var start_event_timer = Timer.new()
+@onready var wait_for_spawn_restart_timer = Timer.new()
 
 # makes our guy run in the background for some time then spawns the enemy
 
 func _ready():
-	Events.connect("level_event_complete", self, "_on_level_event_complete")
-	Events.connect("background_element_offscreen", self, "_on_background_element_offscreen")
+	Events.connect("level_event_complete", Callable(self, "_on_level_event_complete"))
+	Events.connect("background_element_offscreen", Callable(self, "_on_background_element_offscreen"))
 	event_number = 4
 	event_name = "Level1_Event4"
 	if debug_mode:
@@ -54,7 +54,7 @@ func spawn_our_guy():
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 3:
 		start_event_timer.set_name(event_name + "_start_timer")
-		start_event_timer.connect("timeout", self, "trigger")
+		start_event_timer.connect("timeout", Callable(self, "trigger"))
 		if debug_mode:
 			time_until_event_start = 0.1 
 		start_event_timer.set_wait_time(time_until_event_start)
@@ -63,7 +63,7 @@ func _on_level_event_complete(level_event_name, level_event_number) -> void:
 		start_event_timer.start()
 
 		wait_for_spawn_restart_timer.set_name(event_name + "_wait_for_spawn_restart_timer")
-		wait_for_spawn_restart_timer.connect("timeout", self, "end_event")
+		wait_for_spawn_restart_timer.connect("timeout", Callable(self, "end_event"))
 		wait_for_spawn_restart_timer.set_wait_time(2.0)
 		wait_for_spawn_restart_timer.set_one_shot(true)
 		self.add_child(wait_for_spawn_restart_timer)
@@ -73,9 +73,9 @@ func trigger() -> void:
 	event_start()
 
 func event_start() -> void:
-	enemy_spawner.spawn_to_background_element(ourguybackground, 'BackForestBackground', first_background_enemy_spawn_place, background_element_speed)	
-	enemy_spawner.spawn_to_background_element(dogbackground, 'BackForestBackground', background_dog_spawn_place, background_element_speed)
-	enemy_spawner.spawn_to_background_element(ourguybackground, 'BackForestBackground', second_background_enemy_spawn_place, background_element_speed)
+	enemy_spawner.spawn_to_background_element(ourguybackground, 'StaticBackForestBackground', first_background_enemy_spawn_place, background_element_speed)
+	enemy_spawner.spawn_to_background_element(dogbackground, 'StaticBackForestBackground', background_dog_spawn_place, background_element_speed)
+	enemy_spawner.spawn_to_background_element(ourguybackground, 'StaticBackForestBackground', second_background_enemy_spawn_place, background_element_speed)
 
 
 func end_event() -> void:

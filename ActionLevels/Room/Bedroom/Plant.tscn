@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://imported_assets/bedroom/room_plant-1.webp" type="Texture" id=1]
+[ext_resource path="res://imported_assets/bedroom/room_plant-1.webp" type="Texture2D" id=1]
 [ext_resource path="res://CustomShaders/night_item_shader.tres" type="Material" id=2]
 [ext_resource path="res://Components/LightAlteringComponent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://DialogBox/dialogue_text/bedroom_plant.tres" type="Resource" id=5]
@@ -17,7 +17,7 @@ extents = Vector2( 106.25, 17.5 )
 
 [node name="Plant" type="Node2D"]
 
-[node name="Plant" type="Sprite" parent="."]
+[node name="Plant" type="Sprite2D" parent="."]
 material = ExtResource( 2 )
 position = Vector2( 2, -89 )
 scale = Vector2( 0.4, 0.4 )

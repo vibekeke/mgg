@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/kbd-3-no-distance.mp3-7abdd4d868f0efa354b3501028bf6ba1.mp3str"
+uid="uid://c56mvjo66hyym"
+path="res://.godot/imported/kbd-3-no-distance.mp3-7abdd4d868f0efa354b3501028bf6ba1.mp3str"
 
 [deps]
 
 source_file="res://sounds/computer/kbd-3-no-distance.mp3"
-dest_files=[ "res://.import/kbd-3-no-distance.mp3-7abdd4d868f0efa354b3501028bf6ba1.mp3str" ]
+dest_files=["res://.godot/imported/kbd-3-no-distance.mp3-7abdd4d868f0efa354b3501028bf6ba1.mp3str"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

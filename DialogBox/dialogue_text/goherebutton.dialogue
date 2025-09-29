@@ -1,0 +1,16 @@
+~ go_here_button_forest
+do emit_change_character_portrait("AngelNeutral")
+Angel: Ooh a forest! Should we check this place out?
+- Yeah => positive_response
+- Nah => negative_response
+=> END
+
+~ positive_response
+do emit_change_character_portrait("AngelHappy")
+Angel: Woo! Let's gooooo!
+=> END
+
+~ negative_response
+do emit_change_character_portrait("AngelSad")
+Angel: Aww...okay, maybe another time...
+=> END

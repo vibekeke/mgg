@@ -1,11 +1,11 @@
 extends Node
 
-export var title := ""
-export var dialogue : Resource
-export(NodePath) var interactable_area
-export var stop_player := true
-export var trigger_from_node := false
-export (DataClasses.CharacterPortrait) var initial_character_portrait = DataClasses.CharacterPortrait.None
+@export var title := ""
+@export var dialogue : Resource
+@export var interactable_area: NodePath
+@export var stop_player := true
+@export var trigger_from_node := false
+@export var initial_character_portrait = DataClasses.CharacterPortrait.None # (DataClasses.CharacterPortrait)
 
 signal created_dialogue_over
 
@@ -13,11 +13,11 @@ var player_in_area : bool = false
 var dialogue_open : bool = false
 
 func _ready():
-	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
+	MggDialogue.connect("mgg_dialogue_box_finished", Callable(self, "_on_dialogue_box_finished"))
 	var _interactable_area_node = get_node_or_null(interactable_area)
 	if _interactable_area_node != null:
-		_interactable_area_node.connect("body_entered", self, "_on_body_entered")
-		_interactable_area_node.connect("body_exited", self, "_on_body_exited")
+		_interactable_area_node.connect("body_entered", Callable(self, "_on_body_entered"))
+		_interactable_area_node.connect("body_exited", Callable(self, "_on_body_exited"))
 
 func _on_body_entered(body):
 	if body.name == "OverworldPlayer":

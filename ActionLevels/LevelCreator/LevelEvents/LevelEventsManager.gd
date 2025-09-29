@@ -3,18 +3,18 @@ extends Node
 var completed_events_map = {}
 var currently_running_event = -1
 var level_started = false
-onready var total_events = self.get_children().size()
-export var debug_trigger_event_number := 6
-export var main_level_scene_path : NodePath
-onready var main_level = get_node_or_null(main_level_scene_path)
+@onready var total_events = self.get_children().size()
+@export var debug_trigger_event_number := 6
+@export var main_level_scene_path : NodePath
+@onready var main_level = get_node_or_null(main_level_scene_path)
 
 func _ready():
-	Events.connect("level_event_lock", self, "_on_currently_running_event")
-	Events.connect("level_event_complete", self, "_on_level_event_complete")
+	Events.connect("level_event_lock", Callable(self, "_on_currently_running_event"))
+	Events.connect("level_event_complete", Callable(self, "_on_level_event_complete"))
 	
 	# Connect to level start signal
 	if main_level != null:
-		main_level.connect('level_start', self, "_on_level_start")
+		main_level.connect('level_start', Callable(self, "_on_level_start"))
 	else:
 		print("No main level detected, events will not run")
 	

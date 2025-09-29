@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/bird_appear.mp3-c96d5960dcf44d35493d43f164c83970.mp3str"
+uid="uid://cy0khpp2em31w"
+path="res://.godot/imported/bird_appear.mp3-c96d5960dcf44d35493d43f164c83970.mp3str"
 
 [deps]
 
 source_file="res://sounds/boss/bird_appear.mp3"
-dest_files=[ "res://.import/bird_appear.mp3-c96d5960dcf44d35493d43f164c83970.mp3str" ]
+dest_files=["res://.godot/imported/bird_appear.mp3-c96d5960dcf44d35493d43f164c83970.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

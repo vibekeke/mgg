@@ -2,38 +2,38 @@ extends Node2D
 
 signal enemy_shot_by_player
 
-onready var death_explosion = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/AnimatedEnemyExplosion.tscn")
+@onready var death_explosion = preload("res://ActionLevels/LevelCreator/Enemies/EnemyAssets/AnimatedEnemyExplosion.tscn")
 
-export(DataClasses.SpawnHeight) var spawn_height = DataClasses.SpawnHeight.ANY
-export (Vector2) var custom_grounded_spawn_point
+@export var spawn_height = DataClasses.SpawnHeight.ANY # (DataClasses.SpawnHeight)
+@export var custom_grounded_spawn_point: Vector2
 
-export (float) var initial_scroll_speed
-export (int) var health_value = 1
-export (PackedScene) var enemy_logic
-export (bool) var is_boss = false
-export (bool) var debug_mode = false
-export (bool) var can_wrap_around = false
-export (bool) var is_unique_while_alive = false
-export (bool) var has_non_queue_free_rotator = false # hack to ensure rotator and children arent killed during queue free
-export (Array, PackedScene) var droppables
-export (int) var enemy_difficulty_tier
-export (Color) var hurt_colour = Color(10,10,10,1)
-export (String, "Air", "Ground") var environment
+@export var initial_scroll_speed: float
+@export var health_value: int = 1
+@export var enemy_logic: PackedScene
+@export var is_boss: bool = false
+@export var debug_mode: bool = false
+@export var can_wrap_around: bool = false
+@export var is_unique_while_alive: bool = false
+@export var has_non_queue_free_rotator: bool = false
+@export var droppables: Array[PackedScene]
+@export var enemy_difficulty_tier: int
+@export var hurt_colour: Color = Color(10,10,10,1)
+@export_enum("String", "Air", "Ground") var environment: String
 
-onready var enemy_follower = $Path2D/PathFollow2D
-onready var area2d = $Path2D/PathFollow2D/Area2D
-onready var sprite = $Path2D/PathFollow2D/Area2D/AnimatedSprite
-onready var collision_shape = $Path2D/PathFollow2D/Area2D/CollisionShape2D
-onready var visibility_notifier = $Path2D/PathFollow2D/Area2D/VisibilityNotifier2D
+@onready var enemy_follower = $Path2D/PathFollow2D
+@onready var area2d = $Path2D/PathFollow2D/Area2D
+@onready var sprite = $Path2D/PathFollow2D/Area2D/AnimatedSprite2D
+@onready var collision_shape = $Path2D/PathFollow2D/Area2D/CollisionShape2D
+@onready var visibility_notifier = $Path2D/PathFollow2D/Area2D/VisibleOnScreenNotifier2D
 
-onready var rng = RandomNumberGenerator.new()
-onready var initial_position = self.global_position
+@onready var rng = RandomNumberGenerator.new()
+@onready var initial_position = self.global_position
 
 var player_local_position = Vector2(0,0)
 var player_global_position = Vector2(0,0)
 var hit_times = 0
 var is_move_disabled = false
-export (bool) var death_by_collision_with_player = true
+@export var death_by_collision_with_player: bool = true
 
 var enemy_logic_instance = null
 var has_invulnerability = false
@@ -45,18 +45,18 @@ var eventually_queue_free_timer = Timer.new()
 func _ready():
 	rng.randomize()
 	if enemy_logic != null:
-		enemy_logic_instance = enemy_logic.instance()
+		enemy_logic_instance = enemy_logic.instantiate()
 		if "debug_mode" in enemy_logic_instance:
 			enemy_logic_instance.debug_mode = self.debug_mode
 		self.add_child(enemy_logic_instance)
 	else:
 		print("No logic found for enemy.")
-	area2d.connect("area_entered", self, "_on_call_area_entered")
-	area2d.connect("body_entered", self, "_on_call_body_entered")
-	Events.connect("player_local_position", self, "_on_player_local_position")
-	Events.connect("player_global_position", self, "_on_player_global_position")
-	Events.connect("disable_enemy_action", self, "_on_disable_enemy_action")
-	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
+	area2d.connect("area_entered", Callable(self, "_on_call_area_entered"))
+	area2d.connect("body_entered", Callable(self, "_on_call_body_entered"))
+	Events.connect("player_local_position", Callable(self, "_on_player_local_position"))
+	Events.connect("player_global_position", Callable(self, "_on_player_global_position"))
+	Events.connect("disable_enemy_action", Callable(self, "_on_disable_enemy_action"))
+	visibility_notifier.connect("screen_exited", Callable(self, "_on_screen_exited"))
 	if is_unique_while_alive:
 		self.add_to_group("unique_while_alive")
 	enemy_spawn_point()
@@ -65,7 +65,7 @@ func _ready():
 
 func _eventually_queue_free_setup():
 	eventually_queue_free_timer.set_name("eventually_queue_free_timer")
-	eventually_queue_free_timer.connect("timeout", self, "_on_eventually_queue_free_timer")
+	eventually_queue_free_timer.connect("timeout", Callable(self, "_on_eventually_queue_free_timer"))
 	eventually_queue_free_timer.set_wait_time(5.0)
 	self.add_child(eventually_queue_free_timer)
 
@@ -74,7 +74,7 @@ func _on_eventually_queue_free_timer():
 
 func _damage_timer_setup():
 	damage_timer.set_name("damage_timer")
-	damage_timer.connect("timeout", self, "_on_damage_timer")
+	damage_timer.connect("timeout", Callable(self, "_on_damage_timer"))
 	damage_timer.set_wait_time(0.2)
 	self.add_child(damage_timer)
 
@@ -84,7 +84,7 @@ func _on_damage_timer():
 
 func spawn_possible_collectible(death_position: Vector2):
 	if rng.randi_range(0, 10) < 3 and droppables.size() > 0:
-		var _collectible_to_spawn = droppables[randi() % droppables.size()].instance()
+		var _collectible_to_spawn = droppables[randi() % droppables.size()].instantiate()
 		_collectible_to_spawn.scroll_speed = 250
 		_collectible_to_spawn.position = death_position
 		get_tree().current_scene.add_child(_collectible_to_spawn)
@@ -96,21 +96,21 @@ func call_death(count_as_regular_death: bool):
 		Events.emit_signal("regular_enemy_death")
 	if is_boss:
 		# Emit boss-specific death signal if it's BigBird
-		if enemy_logic_instance != null and enemy_logic_instance.has_method("get_class") and enemy_logic_instance.get_class() == "BigBird":
+		if enemy_logic_instance != null and enemy_logic_instance.has_method("get_enemy_class") and enemy_logic_instance.get_enemy_class() == "BigBird":
 			Events.emit_signal("big_bird_boss_defeated", area2d.global_position)
 		Events.emit_signal("level_complete")
 	if is_instance_valid(collision_shape):
 		collision_shape.disabled = true
 	if is_instance_valid(area2d):
-		active_death_explosion_node = death_explosion.instance()
+		active_death_explosion_node = death_explosion.instantiate()
 		active_death_explosion_node.add_to_group("death_explosion")
 		var death_global_position = area2d.global_position
 		active_death_explosion_node.global_position = death_global_position
 		active_death_explosion_node.scale = area2d.scale
-		active_death_explosion_node.connect("animation_finished", self, "_on_explosion_finished")
-		self.get_parent().add_child(active_death_explosion_node)
+		active_death_explosion_node.animation_finished.connect(_on_explosion_finished)
+		get_tree().current_scene.add_child(active_death_explosion_node)
+		# self.get_parent().add_child(active_death_explosion_node)
 		sprite.visible = false
-		active_death_explosion_node.play("default", false)
 		spawn_possible_collectible(death_global_position)
 		Events.emit_signal("score_popup_requested", "enemy", death_global_position)
 

@@ -1,10 +1,10 @@
-extends Sprite
+extends Sprite2D
 
-onready var sparkles = get_node("%Sparkles")
-onready var tween = get_node("%Tween")
+@onready var sparkles = get_node("%Sparkles")
+var sparkle_tween : Tween
 
-export var dialogue_resource: Resource
-export var dialogue_title := "bedroom_piano"
+@export var dialogue_resource: Resource
+@export var dialogue_title := "bedroom_piano"
 
 signal open_challenge_menu
 
@@ -29,10 +29,10 @@ func _process(delta):
 		emit_signal("open_challenge_menu")
 
 func _tween_sparkles(target_alpha: float):
-	tween.stop_all()
-	tween.interpolate_property(
-		sparkles, "modulate:a", sparkles.modulate.a, target_alpha, 0.5, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	tween.start()
+	if sparkle_tween != null and sparkle_tween.is_valid():
+		sparkle_tween.kill()
+	sparkle_tween = get_tree().create_tween()
+	sparkle_tween.tween_property(sparkles, "modulate:a", target_alpha, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 
 func _on_SparkleZone_body_entered(body):

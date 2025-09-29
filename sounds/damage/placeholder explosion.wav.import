@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/placeholder explosion.wav-a6d467dde0a72a84671fdd7df574d38a.sample"
+type="AudioStreamWAV"
+uid="uid://dpcja81dyia4r"
+path="res://.godot/imported/placeholder explosion.wav-a6d467dde0a72a84671fdd7df574d38a.sample"
 
 [deps]
 
 source_file="res://sounds/damage/placeholder explosion.wav"
-dest_files=[ "res://.import/placeholder explosion.wav-a6d467dde0a72a84671fdd7df574d38a.sample" ]
+dest_files=["res://.godot/imported/placeholder explosion.wav-a6d467dde0a72a84671fdd7df574d38a.sample"]
 
 [params]
 

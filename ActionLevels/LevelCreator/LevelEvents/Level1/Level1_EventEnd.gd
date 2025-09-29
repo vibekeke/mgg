@@ -1,25 +1,25 @@
 extends LevelEvent
 
-export var level1_event_end_dialog : Resource
-onready var enemy_spawner = get_node("%EnemySpawner")
-onready var platform_spawner = get_node("%PlatformSpawner")
-onready var dialog_layer = get_node("%DialogLayer")
-onready var collected_dogs = []
+@export var level1_event_end_dialog : Resource
+@onready var enemy_spawner = get_node("%EnemySpawner")
+@onready var platform_spawner = get_node("%PlatformSpawner")
+@onready var dialog_layer = get_node("%DialogLayer")
+@onready var collected_dogs = []
 var start_event_timer = Timer.new()
-export var debug_mode : bool = false
+@export var debug_mode : bool = false
 
-onready var win_popup = preload("res://Menus/YouWinPopup.tscn")
-onready var completed_pacifist : bool = false;
-onready var you_win_shown : bool = false
+@onready var win_popup = preload("res://Menus/YouWinPopup.tscn")
+@onready var completed_pacifist : bool = false;
+@onready var you_win_shown : bool = false
 
 func _ready():
-	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
+	MggDialogue.connect("mgg_dialogue_box_finished", Callable(self, "_on_dialogue_box_finished"))
 	self.add_child(start_event_timer)
 	event_number = 99
 	event_name = 'Level1_EventEnd'
-	Events.connect("collected_dog", self, "_on_collected_dog")
-	Events.connect("level_event_complete", self, "_on_level_event_complete")
-	Events.connect("pacifist_successful", self, "_on_pacifist_successful")
+	Events.connect("collected_dog", Callable(self, "_on_collected_dog"))
+	Events.connect("level_event_complete", Callable(self, "_on_level_event_complete"))
+	Events.connect("pacifist_successful", Callable(self, "_on_pacifist_successful"))
 	if debug_mode:
 		print("event start debug")
 		event_start()
@@ -30,7 +30,7 @@ func _on_pacifist_successful():
 func _on_dialogue_box_finished(node_id):
 	if self.get_instance_id() == node_id and !you_win_shown:
 		you_win_shown = true
-		var new_instance = win_popup.instance()
+		var new_instance = win_popup.instantiate()
 		add_child(new_instance)
 
 	#if self.get_instance_id() == node_id:
@@ -47,7 +47,7 @@ func _on_wait_after_stopping_spawner_timer():
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 6:
 		start_event_timer.set_name(event_name + "_start_timer")
-		start_event_timer.connect("timeout", self, "trigger")
+		start_event_timer.connect("timeout", Callable(self, "trigger"))
 		start_event_timer.set_wait_time(1.0)
 		start_event_timer.set_one_shot(true)
 		start_event_timer.start()
@@ -86,7 +86,7 @@ func event_start() -> void:
 	Events.emit_signal("disable_player_action", true)
 	Events.emit_signal("player_standing", true)
 	Events.emit_signal("background_moving_enabled", false)
-	yield(get_tree().create_timer(2.0), "timeout")
+	await get_tree().create_timer(2.0).timeout
 	if StatsTracker.current_level_stats:
 		StatsTracker.current_level_stats.last_run_completed = true
 		StatsTracker.calculate_level1_challenges()

@@ -2,13 +2,13 @@ extends CanvasLayer
 
 signal skip_cutscene
 
-onready var is_cutscene_skippable : bool = SaveFileManager.get_beaten_first_level_before()
-onready var skip_hint = get_node("%SkipLabel")
-export(float) var hide_hint_after := 2.5
-export(float) var hold_seconds := 1.5
-export(float) var shake_strength := 7.0
-export(float) var shake_interval := 0.1    # seconds between new random targets
-export(float) var shake_lerp_speed := 10.0 # how quickly to approach target
+@onready var is_cutscene_skippable : bool = SaveFileManager.get_beaten_first_level_before()
+@onready var skip_hint = get_node("%SkipLabel")
+@export var hide_hint_after := 2.5
+@export var hold_seconds := 1.5
+@export var shake_strength := 7.0
+@export var shake_interval := 0.1    # seconds between new random targets
+@export var shake_lerp_speed := 10.0 # how quickly to approach target
 
 var show_hint = false
 var hint_target_alpha = 0.0
@@ -27,7 +27,7 @@ func _ready():
 	skip_hint.set_modulate(Color(1,1,1,0))
 	show_hint = is_cutscene_skippable
 	hide_timer = hide_hint_after
-	base_pos = skip_hint.rect_position
+	base_pos = skip_hint.position
 
 func _process(delta):
 	if skipped:
@@ -53,7 +53,7 @@ func _process(delta):
 		shake_time = 0.0
 		current_offset = Vector2.ZERO
 		target_offset = Vector2.ZERO
-		skip_hint.rect_position = base_pos
+		skip_hint.position = base_pos
 	
 	#Modulate with lerp
 	if show_hint:
@@ -77,15 +77,15 @@ func _apply_shake(delta):
 	if shake_time >= shake_interval:
 		# pick a new random target
 		target_offset = Vector2(
-			rand_range(-shake_strength, shake_strength),
-			rand_range(-shake_strength, shake_strength) * 0.5
+			randf_range(-shake_strength, shake_strength),
+			randf_range(-shake_strength, shake_strength) * 0.5
 		)
 		shake_time = 0.0
 	# move smoothly toward target
-	current_offset = current_offset.linear_interpolate(target_offset, shake_lerp_speed * delta)
-	skip_hint.rect_position = base_pos + current_offset
+	current_offset = current_offset.lerp(target_offset, shake_lerp_speed * delta)
+	skip_hint.position = base_pos + current_offset
 	
 func _on_skip_confirmed():
-	skip_hint.rect_position = base_pos
+	skip_hint.position = base_pos
 	skip_hint.visible = false
 	emit_signal("skip_cutscene")

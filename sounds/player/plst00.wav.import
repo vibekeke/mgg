@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/plst00.wav-329d161a683d048c27b9cf0852733fa2.sample"
+type="AudioStreamWAV"
+uid="uid://gp83cru2exen"
+path="res://.godot/imported/plst00.wav-329d161a683d048c27b9cf0852733fa2.sample"
 
 [deps]
 
 source_file="res://sounds/player/plst00.wav"
-dest_files=[ "res://.import/plst00.wav-329d161a683d048c27b9cf0852733fa2.sample" ]
+dest_files=["res://.godot/imported/plst00.wav-329d161a683d048c27b9cf0852733fa2.sample"]
 
 [params]
 

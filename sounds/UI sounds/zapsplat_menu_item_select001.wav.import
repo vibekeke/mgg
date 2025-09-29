@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zapsplat_menu_item_select001.wav-4451620c8e7bafcbccb6ce82792ef1e9.sample"
+type="AudioStreamWAV"
+uid="uid://wa7tj0rc4l2b"
+path="res://.godot/imported/zapsplat_menu_item_select001.wav-4451620c8e7bafcbccb6ce82792ef1e9.sample"
 
 [deps]
 
 source_file="res://sounds/UI sounds/zapsplat_menu_item_select001.wav"
-dest_files=[ "res://.import/zapsplat_menu_item_select001.wav-4451620c8e7bafcbccb6ce82792ef1e9.sample" ]
+dest_files=["res://.godot/imported/zapsplat_menu_item_select001.wav-4451620c8e7bafcbccb6ce82792ef1e9.sample"]
 
 [params]
 

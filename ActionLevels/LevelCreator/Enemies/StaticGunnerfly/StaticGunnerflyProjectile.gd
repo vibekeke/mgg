@@ -1,9 +1,9 @@
 extends Node2D
 
-export (float) var speed = 200
+@export var speed: float = 200
 
-onready var area2d : Area2D = get_node("%Area2D")
-onready var visual_body : AnimatedSprite = get_node("%Bang")
+@onready var area2d : Area2D = get_node("%Area2D")
+@onready var visual_body : AnimatedSprite2D = get_node("%Bang")
 
 func off_leftside_screen():
 	return self.global_position.x < 0 || self.global_position.y < 0
@@ -19,7 +19,7 @@ func force_queue_free():
 
 func _ready():
 	if area2d != null:
-		area2d.connect("area_entered", self, "_on_call_area_entered")
+		area2d.connect("area_entered", Callable(self, "_on_call_area_entered"))
 
 func _on_call_area_entered(area):
 	if area.is_in_group("player_hurtbox"):

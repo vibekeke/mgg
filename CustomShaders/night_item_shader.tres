@@ -1,9 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://hqg61snxbata"]
 
-[sub_resource type="Shader" id=36]
+[sub_resource type="Shader" id="36"]
 code = "shader_type canvas_item;
 
-uniform vec4 night_color : hint_color = vec4(0.2, 0.2, 0.4, 0.6);
+uniform vec4 night_color : source_color = vec4(0.2, 0.2, 0.4, 0.6);
 uniform bool apply_effect = false;
 
 void fragment() {
@@ -20,6 +20,6 @@ void fragment() {
 
 [resource]
 resource_local_to_scene = true
-shader = SubResource( 36 )
-shader_param/night_color = Color( 0.2, 0.2, 0.4, 0.6 )
-shader_param/apply_effect = false
+shader = SubResource("36")
+shader_parameter/night_color = Color(0.2, 0.2, 0.4, 0.6)
+shader_parameter/apply_effect = false

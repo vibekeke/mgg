@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/vgmenuhover.wav-aafab43b49a941432e2173460b364eed.sample"
+type="AudioStreamWAV"
+uid="uid://dgrntcandsggt"
+path="res://.godot/imported/vgmenuhover.wav-aafab43b49a941432e2173460b364eed.sample"
 
 [deps]
 
 source_file="res://sounds/UI sounds/vgmenuhover.wav"
-dest_files=[ "res://.import/vgmenuhover.wav-aafab43b49a941432e2173460b364eed.sample" ]
+dest_files=["res://.godot/imported/vgmenuhover.wav-aafab43b49a941432e2173460b364eed.sample"]
 
 [params]
 

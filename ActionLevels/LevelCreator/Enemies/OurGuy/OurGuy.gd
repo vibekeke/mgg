@@ -1,17 +1,17 @@
 extends Node
 
 class_name OurGuy
-onready var parent_node = self.get_parent()
-export var custom_grounded_spawn_point = Vector2(2005, 912)
-export var speed_up_value = 300
+@onready var parent_node = self.get_parent()
+@export var custom_grounded_spawn_point = Vector2(2005, 912)
+@export var speed_up_value = 300
 var player_position
 var current_health_value 
 
 var has_cried : bool = false
 
 func _ready():
-	Events.connect("player_global_position", self, "_on_player_global_position")
-	Events.connect("enemy_taken_damage", self, "_on_taken_damage")
+	Events.connect("player_global_position", Callable(self, "_on_player_global_position"))
+	Events.connect("enemy_taken_damage", Callable(self, "_on_taken_damage"))
 	current_health_value = parent_node.health_value
 
 func _on_player_global_position(player_global_position):
@@ -33,5 +33,5 @@ func _on_taken_damage(enemy, health_value):
 func _physics_process(delta):
 	parent_node.position.x -= parent_node.initial_scroll_speed * delta
 
-func get_class():
+func get_enemy_class():
 	return self.name

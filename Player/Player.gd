@@ -1,35 +1,35 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-onready var hurt_area = $HurtArea
-onready var slide_hurt_area = $SlideHurtArea
-onready var standing_collision = $StandingCollisionShape
-onready var sliding_collision = $SlidingCollisionShape
-onready var visibility_notifier = $VisibilityNotifier2D
+@onready var hurt_area = $HurtArea
+@onready var slide_hurt_area = $SlideHurtArea
+@onready var standing_collision = $StandingCollisionShape
+@onready var sliding_collision = $SlidingCollisionShape
+@onready var visibility_notifier = $VisibleOnScreenNotifier2D
 
-onready var staff_forward = $StaffForward
-onready var _forward_animation_player = $StaffForward/AnimationPlayer
-onready var _forward_animation_tree = $StaffForward/AnimationTree
-onready var _forward_anim_state = _forward_animation_tree.get("parameters/playback")
+@onready var staff_forward = $StaffForward
+@onready var _forward_animation_player = $StaffForward/AnimationPlayer
+@onready var _forward_animation_tree = $StaffForward/AnimationTree
+@onready var _forward_anim_state = _forward_animation_tree.get("parameters/playback")
 
-onready var staff_up = $StaffUp
-onready var _up_animation_player = $StaffUp/AnimationPlayer
-onready var _up_animation_tree = $StaffUp/AnimationTree
-onready var _up_anim_state = _up_animation_tree.get("parameters/playback")
+@onready var staff_up = $StaffUp
+@onready var _up_animation_player = $StaffUp/AnimationPlayer
+@onready var _up_animation_tree = $StaffUp/AnimationTree
+@onready var _up_anim_state = _up_animation_tree.get("parameters/playback")
 
-onready var staff_down = $StaffDown
-onready var _down_animation_player = $StaffDown/AnimationPlayer
-onready var _down_animation_tree = $StaffDown/AnimationTree
-onready var _down_anim_state = _down_animation_tree.get("parameters/playback")
+@onready var staff_down = $StaffDown
+@onready var _down_animation_player = $StaffDown/AnimationPlayer
+@onready var _down_animation_tree = $StaffDown/AnimationTree
+@onready var _down_anim_state = _down_animation_tree.get("parameters/playback")
 
-onready var sparkles = $ColorSparkles
+@onready var sparkles = $ColorSparkles
 
-onready var _floor = get_node_or_null("%Floor")
+@onready var _floor = get_node_or_null("%Floor")
 
 const UP_DIRECTION := Vector2.UP
 const DOWN_DIRECTION := Vector2.DOWN
 
 ## health
-export var max_health := 3
+@export var max_health := 3
 var current_health : int = max_health
 var invul_timer : Timer = Timer.new()
 
@@ -38,7 +38,7 @@ var respawn_timer : Timer = Timer.new()
 var start_respawning_player : bool = false
 
 ## shooting
-export var fire_rate_secs := 0.15
+@export var fire_rate_secs := 0.15
 var fire_rate_timer : Timer = Timer.new()
 enum SHOOT_ANGLE { FORWARD_B, UPWARD_B, DOWNWARD_B }
 var angle_map = { SHOOT_ANGLE.FORWARD_B: 0 , SHOOT_ANGLE.UPWARD_B: -30, SHOOT_ANGLE.DOWNWARD_B: -330 }
@@ -46,25 +46,25 @@ var current_shooting_angle = SHOOT_ANGLE.FORWARD_B
 
 
 ## jumps and movement
-export var horizontal_movement_speed := 600.0
-export var max_jump_height : float = 500.0
-export var min_jump_height : float = 200.0
-export var jump_time_to_peak : float = 0.6
-export var jump_time_to_descent : float = 0.4
-export var float_time_to_descent : float = 4.0
-export var fast_fall_time_to_descent : float = 0.3
+@export var horizontal_movement_speed := 600.0
+@export var max_jump_height : float = 500.0
+@export var min_jump_height : float = 200.0
+@export var jump_time_to_peak : float = 0.6
+@export var jump_time_to_descent : float = 0.4
+@export var float_time_to_descent : float = 4.0
+@export var fast_fall_time_to_descent : float = 0.3
 
-onready var jump_velocity : float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1.0
-onready var double_jump_velocity : float = ((2.0 * max_jump_height + 5) / jump_time_to_peak) * -1.0
-onready var min_jump_velocity : float = ((2.0 * min_jump_height) / jump_time_to_peak) * -1.0
-onready var jump_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
-onready var fall_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
-onready var float_gravity : float = ((-2.0 * max_jump_height) / (float_time_to_descent * float_time_to_descent)) * -1.0
-onready var fast_fall_gravity : float = ((-2.0 * max_jump_height) / (fast_fall_time_to_descent * fast_fall_time_to_descent)) * -1.0
+@onready var jump_velocity : float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1.0
+@onready var double_jump_velocity : float = ((2.0 * max_jump_height + 5) / jump_time_to_peak) * -1.0
+@onready var min_jump_velocity : float = ((2.0 * min_jump_height) / jump_time_to_peak) * -1.0
+@onready var jump_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
+@onready var fall_gravity : float = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+@onready var float_gravity : float = ((-2.0 * max_jump_height) / (float_time_to_descent * float_time_to_descent)) * -1.0
+@onready var fast_fall_gravity : float = ((-2.0 * max_jump_height) / (fast_fall_time_to_descent * fast_fall_time_to_descent)) * -1.0
 var float_halt : bool = false
 var has_floated : bool = false
 
-export (bool) var debug_mode = false
+@export var debug_mode: bool = false
 
 # game over
 var is_dead : bool = false
@@ -74,32 +74,31 @@ var slide_duration_timer = Timer.new()
 var slide_again_timer = Timer.new()
 var is_sliding = false
 
-export var flash_charge_timer = 0.2
+@export var flash_charge_timer = 0.2
 var flash_charge_shoot_timer = Timer.new()
 var original_color : Color = Color(1.0, 1.0, 1.0, 1.0)
 var flash_color : Color = Color(0.5, 1.0, 0.98, 1.0)
 
 # speed of the slide
-export var slide_value = 1200.0
+@export var slide_value = 1200.0
 # how long the slide lasts for, in seconds
-export var slide_duration = 0.4
+@export var slide_duration = 0.4
 # how long to wait until you can slide again, in seconds
 var slide_again_duration = 0.3
 
 
-var velocity := Vector2.ZERO
 var can_double_jump = false
 var has_double_jumped = false
 
 var in_battle_dialogue := false
 var inputs_disabled := false
 
-export (PackedScene) var gunshot
-export (PackedScene) var charge_shot
+@export var gunshot: PackedScene
+@export var charge_shot: PackedScene
 
-onready var has_charge_shot = false
+@onready var has_charge_shot = false
 
-export var is_standing : bool = true
+@export var is_standing : bool = true
 var is_invincible = false
 
 var sprite_anim_to_player_name = {
@@ -122,14 +121,14 @@ func input_strength_handler(strength_status: float) -> float:
 	return strength_status
 
 func _ready():
-	Events.connect("collided_with_player", self, "_on_collided_with_player")
-	Events.connect("disable_player_action", self, "_on_disable_player_action")
-	Events.connect("collected_heart", self, "_on_collected_heart")
-	Events.connect("has_charge_shot", self, "_on_has_charge_shot")
-	Events.connect("in_battle_dialogue", self, "_on_in_battle_dialogue")
-	Events.connect("player_standing", self, "_on_player_standing")
-	Events.connect("player_invincible", self, "_on_player_invincible")
-	visibility_notifier.connect("screen_exited", self, "_on_screen_exited")
+	Events.connect("collided_with_player", Callable(self, "_on_collided_with_player"))
+	Events.connect("disable_player_action", Callable(self, "_on_disable_player_action"))
+	Events.connect("collected_heart", Callable(self, "_on_collected_heart"))
+	Events.connect("has_charge_shot", Callable(self, "_on_has_charge_shot"))
+	Events.connect("in_battle_dialogue", Callable(self, "_on_in_battle_dialogue"))
+	Events.connect("player_standing", Callable(self, "_on_player_standing"))
+	Events.connect("player_invincible", Callable(self, "_on_player_invincible"))
+	visibility_notifier.connect("screen_exited", Callable(self, "_on_screen_exited"))
 	_forward_animation_tree.active = true
 	_up_animation_tree.active = true
 	_down_animation_tree.active = true
@@ -145,7 +144,7 @@ func _ready():
 	sparkles.hide()
 	
 	# Wait one frame for physics to initialize
-	yield(get_tree(), "idle_frame")
+	await get_tree().process_frame
 	
 	if is_on_floor() and is_standing:
 		travel_to_animation("JustStanding")
@@ -167,32 +166,32 @@ func _on_has_charge_shot():
 
 func _fire_rate_timer_setup():
 	fire_rate_timer.set_name("fire_rate_timer")
-	fire_rate_timer.connect("timeout", self, "_on_fire_rate_timeout")
+	fire_rate_timer.connect("timeout", Callable(self, "_on_fire_rate_timeout"))
 	fire_rate_timer.set_wait_time(fire_rate_secs)
 	self.add_child(fire_rate_timer)
 
 
 func _slide_duration_timer_setup():
 	slide_duration_timer.set_name("slide_duration_timer")
-	slide_duration_timer.connect("timeout", self, "_on_slide_duration_timeout")
+	slide_duration_timer.connect("timeout", Callable(self, "_on_slide_duration_timeout"))
 	slide_duration_timer.set_wait_time(slide_duration)
 	self.add_child(slide_duration_timer)
 
 func _slide_again_timer_setup():
 	slide_again_timer.set_name("slide_again_timer")
-	slide_again_timer.connect("timeout", self, "_on_slide_again_timeout")
+	slide_again_timer.connect("timeout", Callable(self, "_on_slide_again_timeout"))
 	slide_again_timer.set_wait_time(slide_again_duration)
 	self.add_child(slide_again_timer)
 
 func _invul_timer_setup():
 	invul_timer.set_name("invul_timer")
-	invul_timer.connect("timeout", self, "_on_invul_timeout")
+	invul_timer.connect("timeout", Callable(self, "_on_invul_timeout"))
 	invul_timer.set_wait_time(1.0)
 	self.add_child(invul_timer)
 
 func _flash_charge_shoot_setup():
 	flash_charge_shoot_timer.set_name("flash_charge_shoot_timer")
-	flash_charge_shoot_timer.connect("timeout", self, "_on_flash_charge_shoot_timeout")
+	flash_charge_shoot_timer.connect("timeout", Callable(self, "_on_flash_charge_shoot_timeout"))
 	flash_charge_shoot_timer.set_wait_time(flash_charge_timer)
 	flash_charge_shoot_timer.set_one_shot(false)
 	self.add_child(flash_charge_shoot_timer)
@@ -242,19 +241,19 @@ func handle_collision_shapes():
 func get_float_gravity_value() -> float:
 	return float_gravity
 
-func get_gravity() -> float:
-	var gravity
+func get_player_gravity() -> Vector2:
+	var gravity_value
 	if velocity.y < 0.0:
-		gravity = jump_gravity
+		gravity_value = jump_gravity
 		travel_to_animation("RisingLoop")
 	else:
 		if input_handler(Input.is_action_pressed("float")) and !is_on_floor() and !has_floated:
 			sparkles.show()
-			gravity = float_gravity
+			gravity_value = float_gravity
 		elif input_handler(Input.is_action_pressed("move_down")):
-			gravity = fast_fall_gravity
+			gravity_value = fast_fall_gravity
 		else:
-			gravity = fall_gravity
+			gravity_value = fall_gravity
 		if !is_on_floor():
 			travel_to_animation("FallingLoop")
 	# velocity is negative so character is rising
@@ -263,8 +262,8 @@ func get_gravity() -> float:
 	if velocity.y < 0 and velocity.y > jump_velocity * 0.5:
 		travel_to_animation("AboutToFall")
 	if start_respawning_player:
-		gravity = gravity * -1.0
-	return gravity
+		gravity_value = gravity_value * -1.0
+	return Vector2(0, gravity_value)
 
 func jump_logic():
 	if input_handler(Input.is_action_just_pressed("jump")) and !is_on_floor() and can_double_jump:
@@ -284,7 +283,7 @@ func jump_logic():
 
 
 func shoot(angle):
-	var _gunshot = gunshot.instance()
+	var _gunshot = gunshot.instantiate()
 	_gunshot.add_to_group("player_bullet")
 	_gunshot.set_bullet_type(angle)
 	self.get_parent().add_child(_gunshot)
@@ -301,7 +300,7 @@ func charge_shot_present():
 	return get_tree().get_nodes_in_group("player_charge_shot").size() > 0
 
 func fire_charge_shot():
-	var _charge_shot = charge_shot.instance()
+	var _charge_shot = charge_shot.instantiate()
 	get_tree().get_root().add_child(_charge_shot)
 	_charge_shot.position = self.position + Vector2(1200,2)
 	Events.emit_signal("fired_charge_shot")
@@ -395,7 +394,7 @@ func _physics_process(delta):
 			flash_charge_shoot_timer.stop()
 			self.modulate = original_color
 
-	velocity.y += get_gravity() * delta
+	velocity += get_player_gravity() * delta
 	velocity.x = _horizontal_direction * horizontal_movement_speed
 	if is_sliding:
 		velocity.x = 1 * slide_value
@@ -431,11 +430,17 @@ func _physics_process(delta):
 	if start_respawning_player:
 		if _floor != null:
 			_floor.turn_off_collision()
-		velocity = move_and_slide(velocity, DOWN_DIRECTION)
+		set_velocity(velocity)
+		set_up_direction(DOWN_DIRECTION)
+		move_and_slide()
+		velocity = velocity
 	else:
 		if _floor != null:
 			_floor.turn_on_collision()
-		velocity = move_and_slide(velocity, UP_DIRECTION)
+		set_velocity(velocity)
+		set_up_direction(UP_DIRECTION)
+		move_and_slide()
+		velocity = velocity
 
 func initiate_slide():
 	# player has committed to slide for X number of frames

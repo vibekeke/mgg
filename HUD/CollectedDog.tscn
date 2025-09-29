@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://imported_assets/hud/collectibles/309991767_424960626238054_1324327136102613035_n.png" type="Texture" id=1]
+[ext_resource path="res://imported_assets/hud/collectibles/309991767_424960626238054_1324327136102613035_n.png" type="Texture2D" id=1]
 [ext_resource path="res://HUD/CollectedDog.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=6]
@@ -47,11 +47,11 @@ animations = [ {
 } ]
 
 [node name="CollectedDog" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource( 2 )
 
-[node name="CollectedDogSprite" type="AnimatedSprite" parent="."]
+[node name="CollectedDogSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2( 0.734375, 0.734375 )
 frames = SubResource( 5 )
 animation = "russel"

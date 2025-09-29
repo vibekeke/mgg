@@ -1,17 +1,17 @@
 extends CanvasLayer
 
 signal actioned(next_id)
-onready var dialogue_main_window = get_node("%DialogueBackground")
-onready var dialogue_label = get_node("%DialogueLabel")
-onready var dialogue_container = get_node("%DialogueContainer")
-onready var responses_list = get_node("%ResponsesList")
-onready var portrait = get_node("%Portrait")
-onready var character_title = get_node("%CharacterTitle")
-onready var await_cursor = get_node("%AwaitCursor")
-onready var star_flicker_animation_player = get_node("%StarFlickerAnimationPlayer")
-onready var margin_container = get_node("%MarginContainer")
-onready var dialogue_container_animation_player = get_node("%DialogueContainerAnimationPlayer")
-onready var auto_advance_timer = get_node("%AutoAdvanceTimer")
+@onready var dialogue_main_window : PanelContainer = get_node("%DialogueBackground")
+@onready var dialogue_label : DialogueLabel = get_node("%DialogueLabel")
+@onready var dialogue_container : VBoxContainer = get_node("%DialogueContainer")
+@onready var responses_list = get_node("%ResponsesList")
+@onready var portrait = get_node("%Portrait")
+@onready var character_title : RichTextLabel = get_node("%CharacterTitle")
+@onready var await_cursor = get_node("%AwaitCursor")
+@onready var star_flicker_animation_player = get_node("%StarFlickerAnimationPlayer")
+@onready var margin_container = get_node("%MarginContainer")
+@onready var dialogue_container_animation_player = get_node("%DialogueContainerAnimationPlayer")
+@onready var auto_advance_timer = get_node("%AutoAdvanceTimer")
 
 var placement_dictionary = {
 	DataClasses.Placement.LOWER: {'dialogue_main_window': {'top': 0.7, 'bottom': 0.95}, 'portrait': {'top': 0.6, 'bottom': 0.6}, 'cursor': {'position': Vector2(1388.0, 1008.0)}},
@@ -49,37 +49,41 @@ func add_dialogue():
 
 	self.dialogue = dialogue
 	if character_portrait == DataClasses.CharacterPortrait.None:
-		margin_container.add_constant_override("margin_right", 10)
+		margin_container.add_theme_constant_override("offset_right", 10)
 		portrait.hide()
 	else:
 		portrait.show()
-		margin_container.add_constant_override("margin_right", 160)
+		margin_container.add_theme_constant_override("offset_right", 160)
 
 	if dialogue.character == "":
 		character_title.hide()
 	else:
-		character_title.bbcode_text = dialogue.character
+		character_title.text = dialogue.character
 
-		dialogue_label.rect_size.x = dialogue_label.get_parent().rect_size.x
+		#dialogue_label.size.x = dialogue_label.get_parent().size.x
+		dialogue_label.set_deferred("size:x", dialogue_label.get_parent().size.x)
 	dialogue_label.dialogue_line = dialogue
 
 	dialogue_label.type_out()
-	yield(dialogue_label, "finished")
+	await dialogue_label.finished_typing
 	if is_advancable:
 		auto_advance_timer.start()
 		await_cursor.visible = false
 	else:
 		await_cursor.visible = true
 		star_flicker_animation_player.play("flicker")
+		dialogue_container.focus_mode = Control.FOCUS_ALL
+		dialogue_container.grab_focus()
+
 	if dialogue.responses.size() > 0:
 		# show responses if they exist
 		is_processing_response = true
 		for response in dialogue.responses:
-			var response_item = preload("res://DialogBox/ResponseTemplate.tscn").instance()
+			var response_item = preload("res://DialogBox/ResponseTemplate.tscn").instantiate()
 			response_item.name = "Response" + str(responses_list.get_child_count())
 			if not response.is_allowed:
 				response_item.name += "Disallowed"
-			response_item.connect("gui_input", self, "_on_response_gui_input", [response_item])
+			response_item.connect("gui_input", Callable(self, "_on_response_gui_input").bind(response_item))
 			response_item.show()
 			responses_list.add_child(response_item)
 			response_item.set_text(response.text)
@@ -88,7 +92,7 @@ func add_dialogue():
 		configure_focus()
 	elif dialogue.time != null:
 		var time = dialogue.dialogue.length() * 0.02 if dialogue.time == "auto" else dialogue.time.to_float()
-		yield(get_tree().create_timer(time), "timeout")
+		await get_tree().create_timer(time).timeout
 		next(dialogue.next_id)
 	else:
 		is_waiting_for_input = true
@@ -112,7 +116,7 @@ func set_character_portrait():
 	portrait.display_character(character_portrait)
 
 func set_stylebox_colour():
-	var stylebox = dialogue_main_window.get_stylebox("panel")
+	var stylebox = dialogue_main_window.get_theme_stylebox("panel")
 	stylebox.bg_color = dialogue_box_colour
 	stylebox.border_color = dialogue_border_colour
 
@@ -120,16 +124,18 @@ func _ready() -> void:
 	set_stylebox_colour()
 	set_character_portrait()
 	container_placement()
-	dialogue_label.connect("arriving_characer", self, "_on_arriving_character")
-	MggDialogue.connect("change_character_portrait", self, "_on_change_character_portrait")
+	dialogue_label.spoke.connect(_on_arriving_character)
+	MggDialogue.change_character_portrait.connect(_on_change_character_portrait)
 	add_dialogue()
 	dialogue_container_animation_player.play("fade_in")
 	auto_advance_timer.wait_time = auto_advance_time
-	auto_advance_timer.connect("timeout", self, "_on_auto_advance_timer")
+	auto_advance_timer.timeout.connect(_on_auto_advance_timer)
+	#dialogue_container.focus_mode = Control.FOCUS_ALL
+	#dialogue_container.grab_focus()
 
-func _on_arriving_character(character: String):
-	if character != "":
-		var lower_case_character = character.to_lower()
+func _on_arriving_character(letter: String, letter_index: int, speed: float):
+	if letter != "":
+		var lower_case_character = letter.to_lower()
 		if lower_case_character in "aeiou":
 			AudioManager.playSFX("dialogue", 0.7, -10.0)
 
@@ -138,11 +144,11 @@ func _on_change_character_portrait(new_portrait: int):
 	set_character_portrait()
 	# Update portrait visibility dynamically
 	if character_portrait == DataClasses.CharacterPortrait.None:
-		margin_container.add_constant_override("margin_right", 10)
+		margin_container.add_theme_constant_override("offset_right", 10)
 		portrait.hide()
 	else:
 		portrait.show()
-		margin_container.add_constant_override("margin_right", 160)
+		margin_container.add_theme_constant_override("offset_right", 160)
 
 func next(next_id: String) -> void:
 	if inputs_are_disabled:
@@ -156,21 +162,21 @@ func configure_focus() -> void:
 		var item: Control = items[i]
 
 		item.focus_mode = Control.FOCUS_ALL
-		item.focus_neighbour_top = item.get_path()
-		item.focus_neighbour_bottom = item.get_path()
+		item.focus_neighbor_top = item.get_path()
+		item.focus_neighbor_bottom = item.get_path()
 
 		if i == 0:
-			item.focus_neighbour_left = item.get_path()
+			item.focus_neighbor_left = item.get_path()
 			item.focus_previous = item.get_path()
 		else:
-			item.focus_neighbour_left = items[i - 1].get_path()
+			item.focus_neighbor_left = items[i - 1].get_path()
 			item.focus_previous = items[i - 1].get_path()
 		
 		if i == items.size() - 1:
-			item.focus_neighbour_right = item.get_path()
+			item.focus_neighbor_right = item.get_path()
 			item.focus_next = item.get_path()
 		else:
-			item.focus_neighbour_right = items[i + 1].get_path()
+			item.focus_neighbor_right = items[i + 1].get_path()
 			item.focus_next = items[i + 1].get_path()
 	
 	
@@ -192,16 +198,37 @@ func _on_response_gui_input(event, item):
 			destroy_responses()
 			next(dialogue.responses[item.get_index()].next_id)
 
-func _on_DialogueContainer_gui_input(event):
-	if event.is_pressed() and not event.is_echo() and dialogue_container.get_focus_owner() == dialogue_container:
-		if Input.is_action_just_pressed("ui_accept") and not is_advancable:
-			next(dialogue.next_id)
-		elif event is InputEventMouseButton and event.button_index == BUTTON_LEFT and not is_advancable:
-			next(dialogue.next_id)
-
 func _on_auto_advance_timer():
 	if is_advancable:
 		next(dialogue.next_id)
 
 func play_popup_sound():
 	AudioManager.playSFX("ui_pop_in", 1.2, 0.0)
+
+
+func _on_dialogue_container_gui_input(event: InputEvent) -> void:
+	print("=== GUI INPUT DEBUG ===")
+	print("Event type: ", event.get_class())
+	print("Event pressed: ", event.is_pressed() if event.has_method("is_pressed") else "N/A")
+	print("Event echo: ", event.is_echo() if event.has_method("is_echo") else "N/A")
+	if event is InputEventKey:
+		print("Key code: ", event.keycode)
+		print("Key pressed: ", event.pressed)
+		print("Is Enter: ", event.keycode == KEY_ENTER)
+		
+	print("Focus owner: ", dialogue_container.get_viewport().gui_get_focus_owner())
+	print("Is focus owner dialogue_container: ", dialogue_container.get_viewport().gui_get_focus_owner() == dialogue_container)
+	print("ui_accept action: ", Input.is_action_just_pressed("ui_accept"))
+	print("Raw Enter in Input: ", Input.is_physical_key_pressed(KEY_ENTER))
+	print("is_waiting_for_input: ", is_waiting_for_input)
+	print("is_advancable: ", is_advancable)
+	print("========================")
+	print("event was pressed?", event.is_pressed())
+	print("event is echo?", event.is_echo())
+	print("dialogue container viewpoint owner?", dialogue_container.get_viewport().gui_get_focus_owner())
+	print("ui accept?", Input.is_action_just_pressed("ui_accept"))
+	if event.is_pressed() and not event.is_echo() and dialogue_container.get_viewport().gui_get_focus_owner() == dialogue_container:
+		if Input.is_action_just_pressed("ui_accept") and not is_advancable:
+			next(dialogue.next_id)
+		elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not is_advancable:
+			next(dialogue.next_id)

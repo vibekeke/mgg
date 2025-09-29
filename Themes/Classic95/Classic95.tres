@@ -5,55 +5,55 @@
 [ext_resource path="res://Themes/Classic95/Styles/Panel/InlinePanel.tres" type="StyleBox" id=3]
 [ext_resource path="res://Themes/Classic95/Styles/Panel/TabFb.tres" type="StyleBox" id=4]
 [ext_resource path="res://Themes/Classic95/Styles/Panel/TabBg.tres" type="StyleBox" id=5]
-[ext_resource path="res://Themes/Classic95/Styles/Window/CloseBtnH-large-2.png" type="Texture" id=6]
+[ext_resource path="res://Themes/Classic95/Styles/Window/CloseBtnH-large-2.png" type="Texture2D" id=6]
 [ext_resource path="res://Themes/Classic95/Styles/Window/Window.tres" type="StyleBox" id=7]
-[ext_resource path="res://Themes/Classic95/Styles/Window/CloseBtn-large-2.png" type="Texture" id=8]
+[ext_resource path="res://Themes/Classic95/Styles/Window/CloseBtn-large-2.png" type="Texture2D" id=8]
 [ext_resource path="res://Themes/Classic95/Styles/Button/Button.tres" type="StyleBox" id=9]
 [ext_resource path="res://Themes/Classic95/Styles/Button/Focused.tres" type="StyleBox" id=10]
 [ext_resource path="res://Themes/Classic95/Styles/Button/Pressed.tres" type="StyleBox" id=11]
 [ext_resource path="res://Themes/Classic95/Styles/Button/Disabled.tres" type="StyleBox" id=12]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/Checked.png" type="Texture" id=13]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/Unchecked.png" type="Texture" id=14]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/RadioFalse.png" type="Texture" id=15]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/RadioTrue.png" type="Texture" id=16]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/DisabledChecked.png" type="Texture" id=17]
-[ext_resource path="res://Themes/Classic95/Styles/General/DownArrow.png" type="Texture" id=18]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/DisabledRadioTrue.png" type="Texture" id=19]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/DisabledRadioFalse.png" type="Texture" id=20]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/DisabledUnchecked.png" type="Texture" id=21]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/SlideOn.png" type="Texture" id=22]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/SlideOffDisabled.png" type="Texture" id=23]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/SlideOnDisabled.png" type="Texture" id=24]
-[ext_resource path="res://Themes/Classic95/Styles/CheckBox/SlideOff.png" type="Texture" id=25]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/Checked.png" type="Texture2D" id=13]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/Unchecked.png" type="Texture2D" id=14]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/RadioFalse.png" type="Texture2D" id=15]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/RadioTrue.png" type="Texture2D" id=16]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/DisabledChecked.png" type="Texture2D" id=17]
+[ext_resource path="res://Themes/Classic95/Styles/General/DownArrow.png" type="Texture2D" id=18]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/DisabledRadioTrue.png" type="Texture2D" id=19]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/DisabledRadioFalse.png" type="Texture2D" id=20]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/DisabledUnchecked.png" type="Texture2D" id=21]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/SlideOn.png" type="Texture2D" id=22]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/SlideOffDisabled.png" type="Texture2D" id=23]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/SlideOnDisabled.png" type="Texture2D" id=24]
+[ext_resource path="res://Themes/Classic95/Styles/CheckBox/SlideOff.png" type="Texture2D" id=25]
 [ext_resource path="res://Themes/Classic95/Styles/General/Box.tres" type="StyleBox" id=26]
-[ext_resource path="res://test_fonts/pixel_unicode/Pixel-UniCode.ttf" type="DynamicFontData" id=27]
+[ext_resource path="res://test_fonts/pixel_unicode/Pixel-UniCode.ttf" type="FontFile" id=27]
 [ext_resource path="res://Themes/Classic95/Styles/General/Focused.tres" type="StyleBox" id=28]
 [ext_resource path="res://Themes/Classic95/Styles/Button/DropDown.tres" type="StyleBox" id=29]
 [ext_resource path="res://Themes/Classic95/Styles/Button/DropDownPressed.tres" type="StyleBox" id=30]
 [ext_resource path="res://Themes/Classic95/Styles/Button/DropDownDisabled.tres" type="StyleBox" id=31]
 [ext_resource path="res://Themes/Classic95/Styles/Window/ToolWindow.tres" type="StyleBox" id=32]
 [ext_resource path="res://Themes/Classic95/Styles/Menu/HSeparator.tres" type="StyleBox" id=33]
-[ext_resource path="res://Themes/Classic95/Styles/General/RightArrow.png" type="Texture" id=34]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/Left.png" type="Texture" id=35]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/LeftPressed.png" type="Texture" id=36]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/Right.png" type="Texture" id=37]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/RightPressed.png" type="Texture" id=38]
+[ext_resource path="res://Themes/Classic95/Styles/General/RightArrow.png" type="Texture2D" id=34]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/Left.png" type="Texture2D" id=35]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/LeftPressed.png" type="Texture2D" id=36]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/Right.png" type="Texture2D" id=37]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/RightPressed.png" type="Texture2D" id=38]
 [ext_resource path="res://Themes/Classic95/Styles/Bars/Scroller.tres" type="StyleBox" id=39]
 [ext_resource path="res://Themes/Classic95/Styles/Bars/HGrabber.tres" type="StyleBox" id=40]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/UpPressed.png" type="Texture" id=41]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/DownPressed.png" type="Texture" id=42]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/Up.png" type="Texture" id=43]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/Down.png" type="Texture" id=44]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/UpPressed.png" type="Texture2D" id=41]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/DownPressed.png" type="Texture2D" id=42]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/Up.png" type="Texture2D" id=43]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/Down.png" type="Texture2D" id=44]
 [ext_resource path="res://Themes/Classic95/Styles/Bars/VGrabber.tres" type="StyleBox" id=45]
 [ext_resource path="res://Themes/Classic95/Styles/Menu/VSeparator.tres" type="StyleBox" id=46]
-[ext_resource path="res://Themes/Classic95/Styles/General/Box.png" type="Texture" id=47]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/ScrollBtns.png" type="Texture" id=48]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/HGrabberD.png" type="Texture" id=49]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/HGrabber.png" type="Texture" id=50]
-[ext_resource path="res://Themes/Classic95/Styles/General/Box2.png" type="Texture" id=51]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/VGrabber.png" type="Texture" id=52]
-[ext_resource path="res://Themes/Classic95/Styles/Bars/VGrabberD.png" type="Texture" id=53]
-[ext_resource path="res://Themes/Classic95/Styles/Panel/Panel.png" type="Texture" id=54]
+[ext_resource path="res://Themes/Classic95/Styles/General/Box.png" type="Texture2D" id=47]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/ScrollBtns.png" type="Texture2D" id=48]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/HGrabberD.png" type="Texture2D" id=49]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/HGrabber.png" type="Texture2D" id=50]
+[ext_resource path="res://Themes/Classic95/Styles/General/Box2.png" type="Texture2D" id=51]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/VGrabber.png" type="Texture2D" id=52]
+[ext_resource path="res://Themes/Classic95/Styles/Bars/VGrabberD.png" type="Texture2D" id=53]
+[ext_resource path="res://Themes/Classic95/Styles/Panel/Panel.png" type="Texture2D" id=54]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -149,7 +149,7 @@ expand_margin_bottom = 2.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="FontFile" id=13]
 size = 32
 font_data = ExtResource( 27 )
 
@@ -228,7 +228,7 @@ OptionButton/styles/hover = ExtResource( 29 )
 OptionButton/styles/normal = ExtResource( 29 )
 OptionButton/styles/pressed = ExtResource( 30 )
 Panel/styles/panel = ExtResource( 3 )
-PopupDialog/styles/panel = ExtResource( 32 )
+Popup/styles/panel = ExtResource( 32 )
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 0.596078 )
 PopupMenu/colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -318,8 +318,8 @@ VSlider/icons/grabber_highlight = ExtResource( 52 )
 VSlider/styles/grabber_area = SubResource( 10 )
 VSlider/styles/grabber_area_highlight = SubResource( 10 )
 VSlider/styles/slider = SubResource( 9 )
-WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
-WindowDialog/fonts/title_font = SubResource( 13 )
-WindowDialog/icons/close = ExtResource( 8 )
-WindowDialog/icons/close_highlight = ExtResource( 6 )
-WindowDialog/styles/panel = ExtResource( 7 )
+Window/colors/title_color = Color( 1, 1, 1, 1 )
+Window/fonts/title_font = SubResource( 13 )
+Window/icons/close = ExtResource( 8 )
+Window/icons/close_highlight = ExtResource( 6 )
+Window/styles/panel = ExtResource( 7 )

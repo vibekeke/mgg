@@ -1,394 +1,461 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=60 format=3 uid="uid://cxs7u3cadtw3v"]
 
-[ext_resource path="res://Menus/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://test_fonts/vibekefonts/main_menu_font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Menus/button_normal.tres" type="StyleBox" id=3]
-[ext_resource path="res://ActionLevels/backgrounds/LevelCityMenuBackground.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Menus/button_focus_and_selected.tres" type="StyleBox" id=5]
-[ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=6]
-[ext_resource path="res://Menus/PrettyAssets/Logo-downscaled.png" type="Texture" id=7]
-[ext_resource path="res://Menus/AllDogsCompletion.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Menus/PrettyAssets/Crown.tscn" type="PackedScene" id=9]
-[ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=10]
-[ext_resource path="res://imported_assets/Coverart-MG.png" type="Texture" id=11]
-[ext_resource path="res://imported_assets/Coverart-Angel.png" type="Texture" id=12]
-[ext_resource path="res://test_fonts/neon_80s/Neon.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Menus/CoverArtMC.gd" type="Script" id=14]
-[ext_resource path="res://Menus/CoverArtSidekick.gd" type="Script" id=15]
-[ext_resource path="res://test_fonts/gradienttexture.tres" type="Texture" id=16]
-[ext_resource path="res://Menus/Logo.gd" type="Script" id=17]
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="DynamicFontData" id=18]
-[ext_resource path="res://imported_assets/checkmark.png" type="Texture" id=19]
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="DynamicFontData" id=20]
-[ext_resource path="res://test_fonts/vibekefonts/NotoSansMono-Bold.ttf" type="DynamicFontData" id=21]
+[ext_resource type="Script" uid="uid://vv8kgsfo8scg" path="res://Menus/MainMenu.gd" id="1"]
+[ext_resource type="FontFile" path="res://test_fonts/vibekefonts/main_menu_font.tres" id="2"]
+[ext_resource type="StyleBox" path="res://Menus/button_normal.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://twmifc04vrp3" path="res://ActionLevels/backgrounds/LevelCityMenuBackground.tscn" id="4"]
+[ext_resource type="StyleBox" path="res://Menus/button_focus_and_selected.tres" id="5"]
+[ext_resource type="StyleBox" path="res://Menus/button_pressed.tres" id="6"]
+[ext_resource type="Texture2D" uid="uid://cowvfuwupyva6" path="res://Menus/PrettyAssets/Logo-downscaled.png" id="7"]
+[ext_resource type="PackedScene" path="res://Menus/AllDogsCompletion.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://Menus/PrettyAssets/Crown.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://HUD/SpinnyStar.tscn" id="10"]
+[ext_resource type="Texture2D" uid="uid://763ctaijrfj2" path="res://imported_assets/Coverart-MG.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://cm8h8e5bxasx5" path="res://imported_assets/Coverart-Angel.png" id="12"]
+[ext_resource type="FontFile" uid="uid://c40p0hmrvypsi" path="res://test_fonts/neon_80s/Neon.ttf" id="13"]
+[ext_resource type="Script" uid="uid://psm211n1d3xd" path="res://Menus/CoverArtMC.gd" id="14"]
+[ext_resource type="Script" uid="uid://b6apdd1t85veh" path="res://Menus/CoverArtSidekick.gd" id="15"]
+[ext_resource type="Texture2D" uid="uid://cmx7fgwuu205v" path="res://test_fonts/gradienttexture.tres" id="16"]
+[ext_resource type="Script" uid="uid://bn81coamkidc4" path="res://Menus/Logo.gd" id="17"]
+[ext_resource type="FontFile" uid="uid://oi70q57mkhpb" path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" id="18"]
+[ext_resource type="Texture2D" uid="uid://b7pjgiofyasbo" path="res://imported_assets/checkmark.png" id="19"]
+[ext_resource type="FontFile" uid="uid://b4teaf0e1mg0r" path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" id="20"]
+[ext_resource type="FontFile" uid="uid://b2y4n6icloybd" path="res://test_fonts/vibekefonts/NotoSansMono-Bold.ttf" id="21"]
+[ext_resource type="Texture2D" uid="uid://cal4n32tadhsr" path="res://Menus/PrettyAssets/CrownSparkle-1 2.png" id="21_yiedr"]
+[ext_resource type="Texture2D" uid="uid://c17eumeyupvfk" path="res://Menus/PrettyAssets/CrownSparkle-2.png" id="22_xl8m0"]
+[ext_resource type="Texture2D" uid="uid://cbwrc2j176e7j" path="res://Menus/PrettyAssets/CrownSparkle-3 2.png" id="23_hag5m"]
+[ext_resource type="Texture2D" uid="uid://b6dh4puu1dytl" path="res://Menus/PrettyAssets/CrownSparkle-4 2.png" id="24_tosps"]
+[ext_resource type="Texture2D" uid="uid://cdy4pviwkouxp" path="res://Menus/PrettyAssets/CrownSparkle-5 2.png" id="25_rco7e"]
+[ext_resource type="Texture2D" uid="uid://pbtxs2jg3p8k" path="res://Menus/PrettyAssets/CrownSparkle-6 2.png" id="26_pps0x"]
+[ext_resource type="Texture2D" uid="uid://huppm27jpmmy" path="res://Menus/PrettyAssets/CrownSparkle-7 2.png" id="27_61jys"]
+[ext_resource type="Texture2D" uid="uid://c0mpi370pwm4d" path="res://Menus/PrettyAssets/CrownSparkle-8 2.png" id="28_m48jt"]
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0, 0, 0, 0.647059 )
+[sub_resource type="StyleBoxFlat" id="6"]
+bg_color = Color(0, 0, 0, 0.647059)
 
-[sub_resource type="DynamicFont" id=5]
-size = 64
-outline_size = 4
-outline_color = Color( 0.0901961, 0.376471, 0.741176, 1 )
-font_data = ExtResource( 13 )
+[sub_resource type="FontFile" id="5"]
+fallbacks = Array[Font]([ExtResource("13")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="DynamicFont" id=29]
-size = 38
-outline_size = 3
-outline_color = Color( 0.0470588, 0.0509804, 0.25098, 1 )
-extra_spacing_space = 10
-font_data = ExtResource( 21 )
+[sub_resource type="FontFile" id="29"]
+fallbacks = Array[Font]([ExtResource("21")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="DynamicFont" id=19]
-size = 48
-outline_size = 5
-outline_color = Color( 0.0470588, 0.0509804, 0.25098, 1 )
-font_data = ExtResource( 18 )
+[sub_resource type="FontFile" id="19"]
+fallbacks = Array[Font]([ExtResource("18")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="ImageTexture" id=8]
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.0901961, 0.168627, 0.4, 1 )
+[sub_resource type="StyleBoxFlat" id="9"]
+bg_color = Color(0.192157, 0.313726, 0.682353, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color( 0.0470588, 0.0509804, 0.25098, 1 )
+border_color = Color(0.0470588, 0.0509804, 0.25098, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
-shadow_color = Color( 0, 0, 0, 0.388235 )
+shadow_color = Color(0, 0, 0, 0.388235)
 shadow_size = 1
-shadow_offset = Vector2( 8, 8 )
+shadow_offset = Vector2(8, 8)
 
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.192157, 0.313726, 0.682353, 1 )
+[sub_resource type="StyleBoxFlat" id="10"]
+bg_color = Color(0.0901961, 0.168627, 0.4, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color( 0.0470588, 0.0509804, 0.25098, 1 )
+border_color = Color(0.0470588, 0.0509804, 0.25098, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
-shadow_color = Color( 0, 0, 0, 0.388235 )
+shadow_color = Color(0, 0, 0, 0.388235)
 shadow_size = 1
-shadow_offset = Vector2( 8, 8 )
+shadow_offset = Vector2(8, 8)
 
-[sub_resource type="StyleBoxFlat" id=28]
-bg_color = Color( 0.192157, 0.313726, 0.682353, 1 )
+[sub_resource type="StyleBoxFlat" id="28"]
+bg_color = Color(0.192157, 0.313726, 0.682353, 1)
 draw_center = false
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color( 0.0470588, 0.0509804, 0.25098, 1 )
+border_color = Color(0.0470588, 0.0509804, 0.25098, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
-shadow_color = Color( 0, 0, 0, 0.388235 )
+shadow_color = Color(0, 0, 0, 0.388235)
 shadow_size = 1
-shadow_offset = Vector2( 8, 8 )
+shadow_offset = Vector2(8, 8)
 
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.0470588, 0.054902, 0.215686, 1 )
+[sub_resource type="ImageTexture" id="8"]
+
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_yiedr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_xl8m0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_hag5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_tosps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rco7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_pps0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_61jys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_m48jt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="11"]
+bg_color = Color(0.0470588, 0.054902, 0.215686, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="DynamicFont" id=12]
-size = 36
-extra_spacing_bottom = 3
-extra_spacing_char = 2
-font_data = ExtResource( 20 )
+[sub_resource type="FontFile" id="14"]
+fallbacks = Array[Font]([ExtResource("20")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="DynamicFont" id=13]
-size = 50
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_bottom = 10
-extra_spacing_char = 12
-font_data = ExtResource( 18 )
+[sub_resource type="FontFile" id="13"]
+fallbacks = Array[Font]([ExtResource("18")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="DynamicFont" id=14]
-size = 36
-extra_spacing_bottom = 3
-font_data = ExtResource( 20 )
+[sub_resource type="FontFile" id="12"]
+fallbacks = Array[Font]([ExtResource("20")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="DynamicFont" id=15]
-size = 50
-font_data = ExtResource( 20 )
+[sub_resource type="FontFile" id="15"]
+fallbacks = Array[Font]([ExtResource("20")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id=26]
-bg_color = Color( 0.905882, 0.937255, 1, 1 )
+[sub_resource type="StyleBoxFlat" id="18"]
+bg_color = Color(0.32549, 0.6, 0.956863, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=27]
-bg_color = Color( 0.196078, 0.352941, 0.729412, 1 )
-border_color = Color( 0.8, 0.8, 0.8, 0 )
+[sub_resource type="StyleBoxFlat" id="27"]
+bg_color = Color(0.196078, 0.352941, 0.729412, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=18]
-bg_color = Color( 0.32549, 0.6, 0.956863, 1 )
+[sub_resource type="StyleBoxFlat" id="26"]
+bg_color = Color(0.905882, 0.937255, 1, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="DynamicFont" id=20]
-size = 48
-outline_size = 5
-outline_color = Color( 0.0470588, 0.0509804, 0.25098, 1 )
-font_data = ExtResource( 18 )
+[sub_resource type="FontFile" id="20"]
+fallbacks = Array[Font]([ExtResource("18")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id=21]
-bg_color = Color( 0.643137, 0.121569, 0.235294, 1 )
+[sub_resource type="StyleBoxFlat" id="21"]
+bg_color = Color(0.643137, 0.121569, 0.235294, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="DynamicFont" id=22]
-size = 48
-outline_size = 4
-outline_color = Color( 0.192383, 0, 0, 1 )
-font_data = ExtResource( 18 )
+[sub_resource type="FontFile" id="22"]
+fallbacks = Array[Font]([ExtResource("18")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id=23]
-bg_color = Color( 0.215686, 0, 0.0941176, 1 )
+[sub_resource type="StyleBoxFlat" id="25"]
+bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=24]
-bg_color = Color( 0.247059, 0.0941176, 0.156863, 1 )
-border_color = Color( 0.8, 0.8, 0.8, 0 )
+[sub_resource type="StyleBoxFlat" id="24"]
+bg_color = Color(0.247059, 0.0941176, 0.156863, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=25]
-bg_color = Color( 0, 0, 0, 1 )
+[sub_resource type="StyleBoxFlat" id="23"]
+bg_color = Color(0.215686, 0, 0.0941176, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=16]
-bg_color = Color( 0.121569, 0.843137, 0.635294, 1 )
+[sub_resource type="StyleBoxFlat" id="17"]
+bg_color = Color(0.196078, 0.352941, 0.729412, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=17]
-bg_color = Color( 0.196078, 0.352941, 0.729412, 1 )
-border_color = Color( 0.8, 0.8, 0.8, 0 )
+[sub_resource type="StyleBoxFlat" id="16"]
+bg_color = Color(0.121569, 0.843137, 0.635294, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id="7"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("CharacterLayer/CoverArtMC:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( -572, 568 ) ]
+"values": [Vector2(-572, 568)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("CharacterLayer/CoverArtMC:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ) ]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("CharacterLayer/CoverArtSidekick:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 2567, 829 ) ]
+"values": [Vector2(2567, 829)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("CharacterLayer/CoverArtSidekick:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ) ]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("FlashLayer:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ false ]
+"values": [false]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("MenuLayer:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ false ]
+"values": [false]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "characters_appear"
 length = 2.5
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("CharacterLayer/CoverArtMC:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ Vector2( -572, 568 ), Vector2( -572, 568 ), Vector2( 1273, 568 ) ]
+"values": [Vector2(-572, 568), Vector2(-572, 568), Vector2(1273, 568)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("CharacterLayer/CoverArtSidekick:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.5, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ Vector2( 2567, 829 ), Vector2( 2567, 829 ), Vector2( 1207, 829 ) ]
+"values": [Vector2(2567, 829), Vector2(2567, 829), Vector2(1207, 829)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("CharacterLayer/CoverArtMC:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("CharacterLayer/CoverArtSidekick:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.5, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("FlashLayer:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1.5, 2.4, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 1.5, 2.4, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ false, false, true, false ]
+"values": [false, false, true, false]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("MenuLayer:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1.5, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ false, false, true ]
+"values": [false, false, true]
 }
 tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 2.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [ "twinkle", -6.0 ],
-"method": "play_sound"
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["twinkle", -6.0],
+"method": &"play_sound"
 }, {
-"args": [ "magic_sound", -2.0 ],
-"method": "play_sound"
-} ]
+"args": ["magic_sound", -2.0],
+"method": &"play_sound"
+}]
 }
 
-[sub_resource type="Gradient" id=3]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6mbos"]
+_data = {
+&"RESET": SubResource("7"),
+&"characters_appear": SubResource("2")
+}
 
-[sub_resource type="GradientTexture2D" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="Gradient" id="3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="4"]
+gradient = SubResource("3")
 width = 1920
 height = 1080
 
 [node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = -3.0
-margin_right = 16.0
-margin_bottom = -3.0
-script = ExtResource( 1 )
+offset_left = 16.0
+offset_top = -3.0
+offset_right = 16.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
-position = Vector2( 961, -540 )
-current = true
+position = Vector2(961, -540)
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
@@ -397,277 +464,258 @@ layer = 2
 visible = false
 
 [node name="TextureRect" type="TextureRect" parent="MenuLayer"]
-margin_left = -8.0
-margin_top = 602.0
-margin_right = 654.0
-margin_bottom = 975.0
-rect_pivot_offset = Vector2( 71, 24 )
-texture = ExtResource( 16 )
-expand = true
+offset_left = -8.0
+offset_top = 602.0
+offset_right = 654.0
+offset_bottom = 975.0
+pivot_offset = Vector2(71, 24)
+texture = ExtResource("16")
+expand_mode = 1
 
 [node name="Panel" type="Panel" parent="MenuLayer"]
 visible = false
-margin_left = -58.0
-margin_top = -116.0
-margin_right = 505.0
-margin_bottom = 1196.0
-custom_styles/panel = SubResource( 6 )
+offset_left = -58.0
+offset_top = -116.0
+offset_right = 505.0
+offset_bottom = 1196.0
+theme_override_styles/panel = SubResource("6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer"]
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -766.0
-margin_top = 76.0
-margin_right = -297.0
-margin_bottom = 421.0
-custom_constants/separation = 7
+offset_left = -766.0
+offset_top = 76.0
+offset_right = -297.0
+offset_bottom = 421.0
+theme_override_constants/separation = 7
 alignment = 1
 
-[node name="StarSelectStart" parent="MenuLayer/VBoxContainer" instance=ExtResource( 10 )]
+[node name="StarSelectStart" parent="MenuLayer/VBoxContainer" instance=ExtResource("10")]
 unique_name_in_owner = true
-position = Vector2( -61.5449, 42.2751 )
+position = Vector2(-61.5449, 42.2751)
 
-[node name="StarSelectRoom" parent="MenuLayer/VBoxContainer" instance=ExtResource( 10 )]
+[node name="StarSelectRoom" parent="MenuLayer/VBoxContainer" instance=ExtResource("10")]
 unique_name_in_owner = true
 visible = false
-position = Vector2( -61.5449, 135.275 )
+position = Vector2(-61.5449, 135.275)
 
-[node name="StarSelectCredits" parent="MenuLayer/VBoxContainer" instance=ExtResource( 10 )]
+[node name="StarSelectCredits" parent="MenuLayer/VBoxContainer" instance=ExtResource("10")]
 unique_name_in_owner = true
 visible = false
-position = Vector2( -61.5449, 219.275 )
+position = Vector2(-61.5449, 219.275)
 
-[node name="StarSelectQuit" parent="MenuLayer/VBoxContainer" instance=ExtResource( 10 )]
+[node name="StarSelectQuit" parent="MenuLayer/VBoxContainer" instance=ExtResource("10")]
 unique_name_in_owner = true
 visible = false
-position = Vector2( -61.5449, 304.275 )
+position = Vector2(-61.5449, 304.275)
 
 [node name="StartButton" type="Button" parent="MenuLayer/VBoxContainer"]
 unique_name_in_owner = true
-margin_right = 469.0
-margin_bottom = 81.0
-focus_neighbour_top = NodePath("../QuitButton")
-focus_neighbour_right = NodePath("../../FullscreenCheckbox")
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 0.509804, 0.721569, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0.129412, 0.196078, 0.501961, 1 )
-custom_fonts/font = ExtResource( 2 )
-custom_styles/hover = ExtResource( 5 )
-custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = ExtResource( 3 )
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_right = NodePath("../../FullscreenCheckbox")
+theme_override_colors/font_color = Color(0.509804, 0.721569, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.129412, 0.196078, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_styles/normal = ExtResource("3")
+theme_override_styles/pressed = ExtResource("6")
+theme_override_styles/hover = ExtResource("5")
+theme_override_styles/focus = ExtResource("5")
 text = "Start"
-align = 0
 
 [node name="RoomButton" type="Button" parent="MenuLayer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 88.0
-margin_right = 469.0
-margin_bottom = 169.0
-focus_neighbour_top = NodePath("../StartButton")
-focus_neighbour_right = NodePath("../../FullscreenCheckbox")
-focus_neighbour_bottom = NodePath("../CreditsButton")
-custom_colors/font_color_disabled = Color( 0.262745, 0.317647, 0.572549, 1 )
-custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 0.509804, 0.721569, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0.129412, 0.196078, 0.501961, 1 )
-custom_fonts/font = ExtResource( 2 )
-custom_styles/hover = ExtResource( 5 )
-custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/disabled = ExtResource( 3 )
-custom_styles/normal = ExtResource( 3 )
+layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_right = NodePath("../../FullscreenCheckbox")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+theme_override_colors/font_color = Color(0.509804, 0.721569, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.129412, 0.196078, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.262745, 0.317647, 0.572549, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_styles/normal = ExtResource("3")
+theme_override_styles/pressed = ExtResource("6")
+theme_override_styles/hover = ExtResource("5")
+theme_override_styles/disabled = ExtResource("3")
+theme_override_styles/focus = ExtResource("5")
 text = "Bedroom"
-align = 0
 
 [node name="CreditsButton" type="Button" parent="MenuLayer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 176.0
-margin_right = 469.0
-margin_bottom = 257.0
-focus_neighbour_top = NodePath("../RoomButton")
-focus_neighbour_right = NodePath("../../FullscreenCheckbox")
-focus_neighbour_bottom = NodePath("../QuitButton")
-custom_colors/font_color_disabled = Color( 0.113725, 0.192157, 0.439216, 1 )
-custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 0.509804, 0.721569, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0.129412, 0.196078, 0.501961, 1 )
-custom_fonts/font = ExtResource( 2 )
-custom_styles/hover = ExtResource( 5 )
-custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/disabled = ExtResource( 3 )
-custom_styles/normal = ExtResource( 3 )
+layout_mode = 2
+focus_neighbor_top = NodePath("../RoomButton")
+focus_neighbor_right = NodePath("../../FullscreenCheckbox")
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_colors/font_color = Color(0.509804, 0.721569, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.129412, 0.196078, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.113725, 0.192157, 0.439216, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_styles/normal = ExtResource("3")
+theme_override_styles/pressed = ExtResource("6")
+theme_override_styles/hover = ExtResource("5")
+theme_override_styles/disabled = ExtResource("3")
+theme_override_styles/focus = ExtResource("5")
 text = "Credits"
-align = 0
 
 [node name="QuitButton" type="Button" parent="MenuLayer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 264.0
-margin_right = 469.0
-margin_bottom = 345.0
-focus_neighbour_top = NodePath("../CreditsButton")
-focus_neighbour_right = NodePath("../../FullscreenCheckbox")
-focus_neighbour_bottom = NodePath("../StartButton")
-custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 0.509804, 0.721569, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 0.129412, 0.196078, 0.501961, 1 )
-custom_fonts/font = ExtResource( 2 )
-custom_styles/hover = ExtResource( 5 )
-custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = ExtResource( 3 )
+layout_mode = 2
+focus_neighbor_top = NodePath("../CreditsButton")
+focus_neighbor_right = NodePath("../../FullscreenCheckbox")
+focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_colors/font_color = Color(0.509804, 0.721569, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.129412, 0.196078, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_styles/normal = ExtResource("3")
+theme_override_styles/pressed = ExtResource("6")
+theme_override_styles/hover = ExtResource("5")
+theme_override_styles/focus = ExtResource("5")
 text = "Quit"
-align = 0
 
-[node name="Logo-downscaled" type="Sprite" parent="MenuLayer"]
-position = Vector2( 683, 340 )
-scale = Vector2( 0.731799, 0.731799 )
-texture = ExtResource( 7 )
-script = ExtResource( 17 )
+[node name="Logo-downscaled" type="Sprite2D" parent="MenuLayer"]
+position = Vector2(683, 340)
+scale = Vector2(0.731799, 0.731799)
+texture = ExtResource("7")
+script = ExtResource("17")
 
 [node name="GameTitle" type="RichTextLabel" parent="MenuLayer"]
 visible = false
-margin_left = 229.0
-margin_top = 277.0
-margin_right = 910.0
-margin_bottom = 348.0
-custom_colors/default_color = Color( 0.788235, 0.427451, 0.992157, 1 )
-custom_fonts/normal_font = SubResource( 5 )
+offset_left = 229.0
+offset_top = 277.0
+offset_right = 910.0
+offset_bottom = 348.0
+theme_override_colors/default_color = Color(0.788235, 0.427451, 0.992157, 1)
+theme_override_fonts/normal_font = SubResource("5")
 bbcode_enabled = true
-bbcode_text = "MAGICAL GIRL GAME"
-meta_underlined = false
 text = "MAGICAL GIRL GAME"
 scroll_active = false
+meta_underlined = false
 deselect_on_focus_loss_enabled = false
 
-[node name="AllDogsCompletion" parent="MenuLayer" instance=ExtResource( 8 )]
+[node name="AllDogsCompletion" parent="MenuLayer" instance=ExtResource("8")]
 unique_name_in_owner = true
 visible = false
+layout_mode = 3
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VersionLabel" type="Label" parent="MenuLayer"]
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 27.0
-margin_top = -67.0
-margin_right = 278.0
-margin_bottom = -12.0
-custom_colors/font_color = Color( 0.792157, 0.92549, 1, 1 )
-custom_fonts/font = SubResource( 29 )
+offset_left = 27.0
+offset_top = -67.0
+offset_right = 278.0
+offset_bottom = -12.0
+theme_override_colors/font_color = Color(0.792157, 0.92549, 1, 1)
+theme_override_fonts/font = SubResource("29")
 text = "v1.0.0-alpha"
 
 [node name="FullscreenLabel" type="Label" parent="MenuLayer"]
 unique_name_in_owner = true
-margin_left = 1506.32
-margin_top = 999.935
-margin_right = 1813.32
-margin_bottom = 1092.94
-custom_fonts/font = SubResource( 19 )
+offset_left = 1506.32
+offset_top = 999.935
+offset_right = 1813.32
+offset_bottom = 1092.94
+theme_override_fonts/font = SubResource("19")
 text = "FULLSCREEN"
-align = 2
+horizontal_alignment = 2
 
 [node name="FullscreenCheckbox" type="CheckBox" parent="MenuLayer"]
-margin_left = 1832.0
-margin_top = 997.0
-margin_right = 1942.0
-margin_bottom = 1107.0
-rect_scale = Vector2( 0.6, 0.6 )
-focus_neighbour_left = NodePath("../VBoxContainer/StartButton")
-focus_neighbour_top = NodePath("../VBoxContainer/StartButton")
-focus_neighbour_right = NodePath("../VBoxContainer/StartButton")
-focus_neighbour_bottom = NodePath("../VBoxContainer/StartButton")
-custom_icons/checked = ExtResource( 19 )
-custom_icons/unchecked = SubResource( 8 )
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 28 )
-custom_styles/hover_pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 9 )
-pressed = true
+offset_left = 1832.0
+offset_top = 997.0
+offset_right = 1942.0
+offset_bottom = 1107.0
+scale = Vector2(0.6, 0.6)
+focus_neighbor_left = NodePath("../VBoxContainer/StartButton")
+focus_neighbor_top = NodePath("../VBoxContainer/StartButton")
+focus_neighbor_right = NodePath("../VBoxContainer/StartButton")
+focus_neighbor_bottom = NodePath("../VBoxContainer/StartButton")
+theme_override_styles/normal = SubResource("9")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/hover = SubResource("10")
+theme_override_styles/hover_pressed = SubResource("10")
+theme_override_styles/focus = SubResource("28")
+theme_override_icons/checked = ExtResource("19")
+theme_override_icons/unchecked = SubResource("8")
 
-[node name="StarSelectFullscreen" parent="MenuLayer/FullscreenCheckbox" instance=ExtResource( 10 )]
+[node name="StarSelectFullscreen" parent="MenuLayer/FullscreenCheckbox" instance=ExtResource("10")]
 unique_name_in_owner = true
 visible = false
-position = Vector2( -605.004, 53.3328 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2(-605.004, 53.3328)
+scale = Vector2(0.5, 0.5)
 
-[node name="LevelCityBackground" parent="." instance=ExtResource( 4 )]
-follow_viewport_enable = true
-
-[node name="Tween" type="Tween" parent="."]
-unique_name_in_owner = true
-playback_speed = 1.5
-playback/speed = 1.5
+[node name="LevelCityBackground" parent="." instance=ExtResource("4")]
+follow_viewport_enabled = true
 
 [node name="CharacterLayer" type="CanvasLayer" parent="."]
 layer = 3
 
-[node name="CoverArtMC" type="Sprite" parent="CharacterLayer"]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -572, 568 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 11 )
-script = ExtResource( 14 )
+[node name="CoverArtMC" type="Sprite2D" parent="CharacterLayer"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-572, 568)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11")
+script = ExtResource("14")
 amplitude = 1.0
 
-[node name="CoverArtSidekick" type="Sprite" parent="CharacterLayer"]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 2567, 829 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 12 )
-script = ExtResource( 15 )
+[node name="CoverArtSidekick" type="Sprite2D" parent="CharacterLayer"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2567, 829)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12")
+script = ExtResource("15")
 frequency = 2.0
 amplitude = 0.1
 
-[node name="WinnerCrown" parent="CharacterLayer" instance=ExtResource( 9 )]
+[node name="WinnerCrown" parent="CharacterLayer" instance=ExtResource("9")]
 visible = false
-position = Vector2( 1390, 90.9999 )
-scale = Vector2( 0.55888, 0.55888 )
+position = Vector2(1390, 90.9999)
+scale = Vector2(0.55888, 0.55888)
+sprite_frames = SubResource("1")
 
 [node name="Credits" type="ColorRect" parent="CharacterLayer"]
 unique_name_in_owner = true
 visible = false
-modulate = Color( 1, 1, 1, 0.901961 )
-margin_left = -8.0
-margin_top = -3.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-color = Color( 0, 0.0196078, 0.0352941, 0.588235 )
+modulate = Color(1, 1, 1, 0.901961)
+offset_left = -8.0
+offset_top = -3.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0.0196078, 0.0352941, 0.588235)
 
 [node name="CreditsPanel" type="Panel" parent="CharacterLayer/Credits"]
-modulate = Color( 1, 1, 1, 0.952941 )
-margin_left = 600.0
-margin_top = 187.0
-margin_right = 1347.0
-margin_bottom = 910.0
-custom_styles/panel = SubResource( 11 )
+modulate = Color(1, 1, 1, 0.952941)
+layout_mode = 0
+offset_left = 600.0
+offset_top = 187.0
+offset_right = 1347.0
+offset_bottom = 910.0
+theme_override_styles/panel = SubResource("11")
 
 [node name="CreditsText" type="RichTextLabel" parent="CharacterLayer/Credits/CreditsPanel"]
 unique_name_in_owner = true
-margin_right = 747.0
-margin_bottom = 683.0
-custom_colors/default_color = Color( 0.788235, 0.85098, 0.996078, 1 )
-custom_fonts/mono_font = SubResource( 12 )
-custom_fonts/bold_font = SubResource( 13 )
-custom_fonts/normal_font = SubResource( 14 )
+layout_mode = 0
+offset_right = 747.0
+offset_bottom = 683.0
+theme_override_colors/default_color = Color(0.788235, 0.85098, 0.996078, 1)
+theme_override_fonts/normal_font = SubResource("14")
+theme_override_fonts/bold_font = SubResource("13")
+theme_override_fonts/mono_font = SubResource("12")
 bbcode_enabled = true
-bbcode_text = "
-
-[center][wave][b][rainbow  sat=0.5]CREDITS[/rainbow][/b][/wave]
-[code]This game was created by
-Tyler & Vibeke
-
-Music by Trygvert
-
-Sound effects from 
-ZapSplat.com"
 text = "
 
 CREDITS
@@ -681,125 +729,125 @@ ZapSplat.com"
 
 [node name="CreditsHideButton" type="Button" parent="CharacterLayer/Credits/CreditsPanel"]
 unique_name_in_owner = true
-margin_left = 239.0
-margin_top = 561.0
-margin_right = 500.0
-margin_bottom = 637.0
+layout_mode = 0
+offset_left = 239.0
+offset_top = 561.0
+offset_right = 500.0
+offset_bottom = 637.0
 focus_mode = 1
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 15 )
-custom_styles/hover = SubResource( 26 )
-custom_styles/pressed = SubResource( 27 )
-custom_styles/focus = SubResource( 18 )
-custom_styles/normal = SubResource( 18 )
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("15")
+theme_override_styles/normal = SubResource("18")
+theme_override_styles/pressed = SubResource("27")
+theme_override_styles/hover = SubResource("26")
+theme_override_styles/focus = SubResource("18")
 text = "COOL!    "
 
-[node name="StarSelectHideCredits" parent="CharacterLayer/Credits/CreditsPanel" instance=ExtResource( 10 )]
+[node name="StarSelectHideCredits" parent="CharacterLayer/Credits/CreditsPanel" instance=ExtResource("10")]
 unique_name_in_owner = true
-position = Vector2( 457, 598 )
+position = Vector2(457, 598)
 
 [node name="DeleteSaveButton" type="Button" parent="CharacterLayer/Credits"]
 unique_name_in_owner = true
-margin_left = 1417.0
-margin_top = 24.0
-margin_right = 1896.0
-margin_bottom = 105.0
+layout_mode = 0
+offset_left = 1417.0
+offset_top = 24.0
+offset_right = 1896.0
+offset_bottom = 105.0
 focus_mode = 0
-custom_colors/font_color_disabled = Color( 0.113725, 0.192157, 0.439216, 1 )
-custom_colors/font_color_focus = Color( 1, 0.87451, 0.439216, 1 )
-custom_colors/font_color = Color( 1, 0.427451, 0.427451, 1 )
-custom_colors/font_color_hover = Color( 1, 0.87451, 0.439216, 1 )
-custom_colors/font_color_pressed = Color( 0.129412, 0.196078, 0.501961, 1 )
-custom_fonts/font = SubResource( 20 )
-custom_styles/hover = ExtResource( 5 )
-custom_styles/pressed = ExtResource( 6 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/disabled = ExtResource( 3 )
-custom_styles/normal = ExtResource( 3 )
-enabled_focus_mode = 0
+theme_override_colors/font_color = Color(1, 0.427451, 0.427451, 1)
+theme_override_colors/font_focus_color = Color(1, 0.87451, 0.439216, 1)
+theme_override_colors/font_pressed_color = Color(0.129412, 0.196078, 0.501961, 1)
+theme_override_colors/font_hover_color = Color(1, 0.87451, 0.439216, 1)
+theme_override_colors/font_disabled_color = Color(0.113725, 0.192157, 0.439216, 1)
+theme_override_fonts/font = SubResource("20")
+theme_override_styles/normal = ExtResource("3")
+theme_override_styles/pressed = ExtResource("6")
+theme_override_styles/hover = ExtResource("5")
+theme_override_styles/disabled = ExtResource("3")
+theme_override_styles/focus = ExtResource("5")
 text = "DELETE SAVE DATA?"
-align = 0
 
 [node name="DeleteSavePanel" type="Panel" parent="CharacterLayer/Credits"]
 unique_name_in_owner = true
 visible = false
-margin_left = 513.0
-margin_top = 258.0
-margin_right = 1411.0
-margin_bottom = 860.0
-custom_styles/panel = SubResource( 21 )
+layout_mode = 0
+offset_left = 513.0
+offset_top = 258.0
+offset_right = 1411.0
+offset_bottom = 860.0
+theme_override_styles/panel = SubResource("21")
 
 [node name="ExtraColorDontAskWhy" type="Panel" parent="CharacterLayer/Credits/DeleteSavePanel"]
-margin_right = 898.0
-margin_bottom = 602.0
-custom_styles/panel = SubResource( 21 )
+layout_mode = 0
+offset_right = 898.0
+offset_bottom = 602.0
+theme_override_styles/panel = SubResource("21")
 
 [node name="AreYouSureLabel" type="Label" parent="CharacterLayer/Credits/DeleteSavePanel"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -385.0
-margin_top = 163.0
-margin_right = 382.0
-margin_bottom = 284.0
-custom_fonts/font = SubResource( 22 )
+offset_left = -385.0
+offset_top = 163.0
+offset_right = 382.0
+offset_bottom = 284.0
+theme_override_fonts/font = SubResource("22")
 text = "Are you want to delete your save? 
 This action cannot be undone."
-align = 1
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CharacterLayer/Credits/DeleteSavePanel/AreYouSureLabel"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -259.0
-margin_top = 102.0
-margin_right = 231.0
-margin_bottom = 172.0
-custom_constants/separation = 20
+offset_left = -259.0
+offset_top = 102.0
+offset_right = 231.0
+offset_bottom = 172.0
+theme_override_constants/separation = 20
 
 [node name="YesDeleteButton" type="Button" parent="CharacterLayer/Credits/DeleteSavePanel/AreYouSureLabel/HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 339.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 0, 70 )
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
 focus_mode = 0
-custom_colors/font_color_hover_pressed = Color( 1, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-custom_fonts/font = SubResource( 15 )
-custom_styles/hover = SubResource( 23 )
-custom_styles/pressed = SubResource( 24 )
-custom_styles/focus = SubResource( 25 )
-custom_styles/normal = SubResource( 25 )
-enabled_focus_mode = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = SubResource("15")
+theme_override_styles/normal = SubResource("25")
+theme_override_styles/pressed = SubResource("24")
+theme_override_styles/hover = SubResource("23")
+theme_override_styles/focus = SubResource("25")
 text = "  YES DELETE  "
 
 [node name="NoDeleteButton" type="Button" parent="CharacterLayer/Credits/DeleteSavePanel/AreYouSureLabel/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 359.0
-margin_right = 502.0
-margin_bottom = 70.0
+layout_mode = 2
 focus_mode = 0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 15 )
-custom_styles/hover = SubResource( 16 )
-custom_styles/pressed = SubResource( 17 )
-custom_styles/focus = SubResource( 18 )
-custom_styles/normal = SubResource( 18 )
-enabled_focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("15")
+theme_override_styles/normal = SubResource("18")
+theme_override_styles/pressed = SubResource("17")
+theme_override_styles/hover = SubResource("16")
+theme_override_styles/focus = SubResource("18")
 text = "  NO!!  "
 
 [node name="TitleScreenAnimation" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-anims/RESET = SubResource( 7 )
-anims/characters_appear = SubResource( 2 )
+libraries = {
+&"": SubResource("AnimationLibrary_6mbos")
+}
 
 [node name="FlashLayer" type="CanvasLayer" parent="."]
 layer = 2
 visible = false
 
-[node name="FlashWhite" type="Sprite" parent="FlashLayer"]
-texture = SubResource( 4 )
+[node name="FlashWhite" type="Sprite2D" parent="FlashLayer"]
+texture = SubResource("4")
 centered = false
 
 [connection signal="focus_entered" from="MenuLayer/VBoxContainer/StartButton" to="." method="_on_StartButton_focus_entered"]
@@ -822,7 +870,6 @@ centered = false
 [connection signal="focus_exited" from="MenuLayer/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_focus_exited"]
 [connection signal="mouse_entered" from="MenuLayer/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_mouse_entered"]
 [connection signal="toggled" from="MenuLayer/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_toggled"]
-[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="pressed" from="CharacterLayer/Credits/CreditsPanel/CreditsHideButton" to="." method="_on_CreditsHideButton_pressed"]
 [connection signal="pressed" from="CharacterLayer/Credits/DeleteSaveButton" to="." method="_on_DeleteSaveButton_pressed"]
 [connection signal="focus_entered" from="CharacterLayer/Credits/DeleteSavePanel/AreYouSureLabel/HBoxContainer/YesDeleteButton" to="." method="_on_YesDeleteButton_focus_entered"]

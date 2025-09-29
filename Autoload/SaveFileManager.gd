@@ -18,9 +18,9 @@ func initialize():
 	print("SaveFileManager: Initialized")
 
 func load_save_file():
-	var file = File.new()
-	if file.file_exists(SAVE_FILE_PATH):
-		if file.open(SAVE_FILE_PATH, File.READ) == OK:
+	if FileAccess.file_exists(SAVE_FILE_PATH):
+		var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
+		if file != null:
 			var data = file.get_var(false) # false = no objects, secure
 			file.close()
 
@@ -47,9 +47,9 @@ func load_save_file():
 		create_new_save_file()
 
 func try_load_backup() -> bool:
-	var file = File.new()
-	if file.file_exists(BACKUP_SAVE_PATH):
-		if file.open(BACKUP_SAVE_PATH, File.READ) == OK:
+	if FileAccess.file_exists(BACKUP_SAVE_PATH):
+		var file = FileAccess.open(BACKUP_SAVE_PATH, FileAccess.READ)
+		if file != null:
 			var data = file.get_var(false) # false = no objects, secure
 			file.close()
 
@@ -83,8 +83,8 @@ func create_new_save_file():
 
 func save_to_disk():
 	# Atomic save: write to temp file first, then move to main location
-	var file = File.new()
-	if file.open(TEMP_SAVE_PATH, File.WRITE) != OK:
+	var file = FileAccess.open(TEMP_SAVE_PATH, FileAccess.WRITE)
+	if file == null:
 		print("Failed to open temp file for writing")
 		return
 
@@ -92,13 +92,13 @@ func save_to_disk():
 	file.close()
 
 	# Create backup from current save file before overwriting
-	var dir = Directory.new()
-	if dir.file_exists(SAVE_FILE_PATH):
+	var dir = DirAccess.open("user://")
+	if dir != null and dir.file_exists(SAVE_FILE_PATH):
 		if dir.copy(SAVE_FILE_PATH, BACKUP_SAVE_PATH) != OK:
 			print("Warning: Failed to create backup")
 
 	# Move temp file to main location
-	if dir.rename(TEMP_SAVE_PATH, SAVE_FILE_PATH) != OK:
+	if dir == null or dir.rename(TEMP_SAVE_PATH, SAVE_FILE_PATH) != OK:
 		print("Failed to move temp file to main save location")
 		return
 
@@ -176,7 +176,10 @@ func sync_to_stats_tracker():
 	StatsTracker.high_score_run_completed = current_save_file.high_score_run_completed
 
 func delete_all_save_files():
-	var dir = Directory.new()
+	var dir = DirAccess.open("user://")
+	if dir == null:
+		print("Failed to access user directory")
+		return
 
 	# Delete main save file
 	if dir.file_exists(SAVE_FILE_PATH):

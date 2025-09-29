@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zapsplat_collect_bright_simple_mild.wav-e5639b3bafaf97356997090f8f038061.sample"
+type="AudioStreamWAV"
+uid="uid://b4xmuur30hb35"
+path="res://.godot/imported/zapsplat_collect_bright_simple_mild.wav-e5639b3bafaf97356997090f8f038061.sample"
 
 [deps]
 
 source_file="res://sounds/collecting/zapsplat_collect_bright_simple_mild.wav"
-dest_files=[ "res://.import/zapsplat_collect_bright_simple_mild.wav-e5639b3bafaf97356997090f8f038061.sample" ]
+dest_files=["res://.godot/imported/zapsplat_collect_bright_simple_mild.wav-e5639b3bafaf97356997090f8f038061.sample"]
 
 [params]
 

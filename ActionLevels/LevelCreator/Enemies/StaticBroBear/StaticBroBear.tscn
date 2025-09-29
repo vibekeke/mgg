@@ -1,59 +1,56 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://bnv8dxb8rwmyq"]
 
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tres" type="SpriteFrames" id=2]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticBroBear/StaticBroBear_logic.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/StaticBroBear/Rotator.gd" type="Script" id=6]
+[ext_resource type="Script" uid="uid://brk5c4xl5vnf" path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" id="1"]
+[ext_resource type="SpriteFrames" uid="uid://bpjcglkhw28to" path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://bobdsw4iawm3m" path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b4tm6u01hhy0v" path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/StaticBroBear/StaticBroBear_logic.tscn" id="5"]
+[ext_resource type="Script" uid="uid://cgab8yvog4fpd" path="res://ActionLevels/LevelCreator/Enemies/StaticBroBear/Rotator.gd" id="6"]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id="1"]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -10, 98, 0, 0, 0, 0, -61, 135, 0, 0, 0, 0, -169, 141, 0, 0, 0, 0, -297, 141, 0, 0, 0, 0, -435, 89, 0, 0, 0, 0, -524, -14, 0, 0, 0, 0, -432, 84, 0, 0, 0, 0, -296, 134, 0, 0, 0, 0, -170, 135, 0, 0, 0, 0, -63, 129, 0, 0, 0, 0, -13, 94, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0 )
+"points": PackedVector2Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -10, 98, 0, 0, 0, 0, -61, 135, 0, 0, 0, 0, -169, 141, 0, 0, 0, 0, -297, 141, 0, 0, 0, 0, -435, 89, 0, 0, 0, 0, -524, -14, 0, 0, 0, 0, -432, 84, 0, 0, 0, 0, -296, 134, 0, 0, 0, 0, -170, 135, 0, 0, 0, 0, -63, 129, 0, 0, 0, 0, -13, 94, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 1, 0)
 }
+point_count = 14
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 141.25, 158.75 )
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(282.5, 317.5)
 
 [node name="StaticBroBear" type="Node2D"]
-position = Vector2( 1843, 92 )
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2(1843, 92)
+script = ExtResource("1")
 spawn_height = 0
 health_value = 5
-enemy_logic = ExtResource( 5 )
+enemy_logic = ExtResource("5")
 is_unique_while_alive = true
 has_non_queue_free_rotator = true
-droppables = [ ExtResource( 4 ), ExtResource( 3 ) ]
+droppables = Array[PackedScene]([ExtResource("4"), ExtResource("3")])
 environment = "Air"
 
 [node name="Path2D" type="Path2D" parent="."]
-curve = SubResource( 1 )
+curve = SubResource("1")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 1, 0 )
-rotate = false
+position = Vector2(1, 0)
+rotates = false
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
 unique_name_in_owner = true
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2(0.4, 0.4)
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D/Area2D"]
-position = Vector2( -6.25, -16.25 )
-scale = Vector2( 14.125, 20.875 )
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Path2D/PathFollow2D/Area2D"]
+position = Vector2(-6.25, -16.25)
+scale = Vector2(14.125, 20.875)
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
-frames = ExtResource( 2 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Area2D"]
+sprite_frames = ExtResource("2")
+autoplay = "default"
 speed_scale = 2.0
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
-position = Vector2( -6.25, -6.25 )
-scale = Vector2( 1, 1 )
-shape = SubResource( 2 )
+position = Vector2(-6.25, -6.25)
+shape = SubResource("2")
 
 [node name="Rotator" type="Node2D" parent="."]
 unique_name_in_owner = true
-script = ExtResource( 6 )
+script = ExtResource("6")

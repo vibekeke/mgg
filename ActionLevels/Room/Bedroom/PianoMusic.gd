@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-export (Array, AudioStream) var audio_stream = []
+@export var audio_stream = [] # (Array, AudioStream)
 
 var current_audio_index = 0
 

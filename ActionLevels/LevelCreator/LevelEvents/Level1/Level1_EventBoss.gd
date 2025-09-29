@@ -1,53 +1,53 @@
 extends LevelEvent
 
-onready var enemy_spawner = get_node("%EnemySpawner")
-onready var platform_spawner = get_node("%PlatformSpawner")
-onready var level_events_manager = get_node("%LevelEventsManager")
-export var boss_warning_tape_path : NodePath
-onready var boss_warning_tape = get_node(boss_warning_tape_path)
-export var spawn_paths_path : NodePath
-onready var spawn_paths : Path2D = get_node(spawn_paths_path)
-onready var star_spawn_position = spawn_paths.get_spawn_points()[2]
-export var star_collectible : PackedScene
+@onready var enemy_spawner = get_node("%EnemySpawner")
+@onready var platform_spawner = get_node("%PlatformSpawner")
+@onready var level_events_manager = get_node("%LevelEventsManager")
+@export var boss_warning_tape_path : NodePath
+@onready var boss_warning_tape = get_node(boss_warning_tape_path)
+@export var spawn_paths_path : NodePath
+@onready var spawn_paths : Path2D = get_node(spawn_paths_path)
+@onready var star_spawn_position = spawn_paths.get_spawn_points()[2]
+@export var star_collectible : PackedScene
 
-export var spawn_collectible_to_node_path : NodePath
-onready var spawn_collectible_to_node = get_node(spawn_collectible_to_node_path)
+@export var spawn_collectible_to_node_path : NodePath
+@onready var spawn_collectible_to_node = get_node(spawn_collectible_to_node_path)
 
 # timers
-onready var start_event_timer = Timer.new()
-onready var end_event_timer = Timer.new()
-onready var wait_after_stopping_spawner_timer = Timer.new()
-onready var boss_background_swoop_timer = Timer.new()
-onready var collectible_spawn_timer = get_node("%CollectibleTimer")
+@onready var start_event_timer = Timer.new()
+@onready var end_event_timer = Timer.new()
+@onready var wait_after_stopping_spawner_timer = Timer.new()
+@onready var boss_background_swoop_timer = Timer.new()
+@onready var collectible_spawn_timer = get_node("%CollectibleTimer")
 
-onready var boss_background_to_spawn : Object = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn").instance()
-onready var boss : PackedScene = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
+@onready var boss_background_to_spawn : Object = preload("res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn").instantiate()
+@onready var boss : PackedScene = preload("res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn")
 var background_boss_spawn_place = Vector2(-500, 700)
 var background_boss_speed = 2000
 var boss_instance = null
-export var time_until_event_start = 3.0
-export var debug_mode : bool = false
-export var level1_event1_dialog : Resource
-export var level1_event_pacificist_boss_dialogue : Resource
+@export var time_until_event_start = 3.0
+@export var debug_mode : bool = false
+@export var level1_event1_dialog : Resource
+@export var level1_event_pacificist_boss_dialogue : Resource
 
-onready var number_of_stars_spawned : int = 0
+@onready var number_of_stars_spawned : int = 0
 const MAX_NUM_STARS : int = 10
 
 func star_spawn():
-	var star_instance = star_collectible.instance()
+	var star_instance = star_collectible.instantiate()
 	star_instance.scroll_speed = 250
 	star_instance.global_position = star_spawn_position
 	spawn_collectible_to_node.call_deferred("add_child", star_instance)
 
 func _ready():
-	boss_instance = boss.instance()
-	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
-	Events.connect("level_event_complete", self, "_on_level_event_complete")
-	Events.connect("background_element_offscreen", self, "_on_background_element_offscreen")
-	Events.connect("big_bird_boss_defeated", self, "_on_big_bird_boss_defeated")
-	Events.connect("pacifist_successful", self, "_on_pacifist_successful")
+	boss_instance = boss.instantiate()
+	MggDialogue.connect("mgg_dialogue_box_finished", Callable(self, "_on_dialogue_box_finished"))
+	Events.connect("level_event_complete", Callable(self, "_on_level_event_complete"))
+	Events.connect("background_element_offscreen", Callable(self, "_on_background_element_offscreen"))
+	Events.connect("big_bird_boss_defeated", Callable(self, "_on_big_bird_boss_defeated"))
+	Events.connect("pacifist_successful", Callable(self, "_on_pacifist_successful"))
 	event_number = 6 # last level event
-	boss_warning_tape.connect("warning_finished", self, "_on_warning_finished")
+	boss_warning_tape.connect("warning_finished", Callable(self, "_on_warning_finished"))
 	event_name = "Level1_EventBoss"
 	
 	# Only use internal debug mode if LevelEventsManager isn't handling debug
@@ -58,7 +58,7 @@ func _ready():
 
 func _on_dialogue_box_finished(node_id):
 	if self.get_instance_id() == node_id:
-		yield(get_tree().create_timer(2.0), "timeout")
+		await get_tree().create_timer(2.0).timeout
 		AudioManager.play_music("level1_boss")
 		spawn_boss()
 		collectible_spawn_timer.start()
@@ -68,19 +68,19 @@ func _on_dialogue_box_finished(node_id):
 func _on_level_event_complete(level_event_name, level_event_number) -> void:
 	if level_event_number == 5:
 		start_event_timer.set_name(event_name + "_start_timer")
-		start_event_timer.connect("timeout", self, "trigger")
+		start_event_timer.connect("timeout", Callable(self, "trigger"))
 		if debug_mode:
 			time_until_event_start = 0.1
 		start_event_timer.set_wait_time(time_until_event_start)
 		start_event_timer.set_one_shot(true)
 
 		end_event_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
-		end_event_timer.connect("timeout", self, "end_event")
+		end_event_timer.connect("timeout", Callable(self, "end_event"))
 		end_event_timer.set_wait_time(3.0)
 		end_event_timer.set_one_shot(true)
 
 		wait_after_stopping_spawner_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
-		wait_after_stopping_spawner_timer.connect("timeout", self, "_on_wait_after_stopping_spawner_timer")
+		wait_after_stopping_spawner_timer.connect("timeout", Callable(self, "_on_wait_after_stopping_spawner_timer"))
 		wait_after_stopping_spawner_timer.set_wait_time(1.0)
 		wait_after_stopping_spawner_timer.set_one_shot(true)
 
@@ -126,12 +126,12 @@ func trigger() -> void:
 
 func setup_timers():
 	end_event_timer.set_name(event_name + "_end_event_timer")
-	end_event_timer.connect("timeout", self, "end_event")
+	end_event_timer.connect("timeout", Callable(self, "end_event"))
 	end_event_timer.set_wait_time(3.0)
 	end_event_timer.set_one_shot(true)
 
 	wait_after_stopping_spawner_timer.set_name(event_name + "_wait_after_stopping_spawner_timer")
-	wait_after_stopping_spawner_timer.connect("timeout", self, "_on_wait_after_stopping_spawner_timer")
+	wait_after_stopping_spawner_timer.connect("timeout", Callable(self, "_on_wait_after_stopping_spawner_timer"))
 	wait_after_stopping_spawner_timer.set_wait_time(1.0)
 	wait_after_stopping_spawner_timer.set_one_shot(true)
 
@@ -149,7 +149,7 @@ func _on_background_element_offscreen(element_name):
 			boss_warning_tape.visible = true
 			boss_warning_tape.start_animation()
 			# Disconnect to prevent multiple triggers
-			Events.disconnect("background_element_offscreen", self, "_on_background_element_offscreen")
+			Events.disconnect("background_element_offscreen", Callable(self, "_on_background_element_offscreen"))
 
 func spawn_boss():
 	enemy_spawner.kill_non_boss_enemies()
@@ -162,7 +162,7 @@ func event_start() -> void:
 	if boss_background_to_spawn != null:
 		boss_background_to_spawn.scale.x = 0.65
 		boss_background_to_spawn.scale.y = 0.65
-		enemy_spawner.spawn_instanced_background_element(boss_background_to_spawn, 'BackForestBackground', background_boss_spawn_place, background_boss_speed)
+		enemy_spawner.spawn_instanced_background_element(boss_background_to_spawn, 'StaticBackForestBackground', background_boss_spawn_place, background_boss_speed)
 		AudioManager.playSFX("BirdDescend", 1.0, -2)
 
 func _on_big_bird_boss_defeated(death_position):

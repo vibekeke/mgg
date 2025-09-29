@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/emily_cafe.mp3-c75421083c7a0de02f3ddc4878a60a4a.mp3str"
+uid="uid://cfq22lfnmjh77"
+path="res://.godot/imported/emily_cafe.mp3-c75421083c7a0de02f3ddc4878a60a4a.mp3str"
 
 [deps]
 
 source_file="res://sounds/music/emily_cafe.mp3"
-dest_files=[ "res://.import/emily_cafe.mp3-c75421083c7a0de02f3ddc4878a60a4a.mp3str" ]
+dest_files=["res://.godot/imported/emily_cafe.mp3-c75421083c7a0de02f3ddc4878a60a4a.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Autoload/SceneManager.gd" type="Script" id=1]
 [ext_resource path="res://HUD/SpinningStarItem.tscn" type="PackedScene" id=2]
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="FontFile" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 32
 font_data = ExtResource( 3 )
 
@@ -21,13 +21,13 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="LoadingText" type="RichTextLabel" parent="ColorRect"]
 unique_name_in_owner = true
-margin_left = 1723.0
-margin_top = 789.0
-margin_right = 1866.0
-margin_bottom = 838.0
-custom_fonts/normal_font = SubResource( 1 )
+offset_left = 1723.0
+offset_top = 789.0
+offset_right = 1866.0
+offset_bottom = 838.0
+theme_override_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "Loading..."
+text = "Loading..."
 meta_underlined = false
 text = "Loading..."
 scroll_active = false
@@ -35,6 +35,3 @@ scroll_active = false
 [node name="SpinningStar" parent="ColorRect" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 position = Vector2( 1784, 957 )
-
-[node name="Tween" type="Tween" parent="."]
-unique_name_in_owner = true

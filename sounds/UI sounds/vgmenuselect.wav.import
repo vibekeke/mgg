@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/vgmenuselect.wav-569326e39405cd6b5ce5efab75422648.sample"
+type="AudioStreamWAV"
+uid="uid://cme4gjeo6rti"
+path="res://.godot/imported/vgmenuselect.wav-569326e39405cd6b5ce5efab75422648.sample"
 
 [deps]
 
 source_file="res://sounds/UI sounds/vgmenuselect.wav"
-dest_files=[ "res://.import/vgmenuselect.wav-569326e39405cd6b5ce5efab75422648.sample" ]
+dest_files=["res://.godot/imported/vgmenuselect.wav-569326e39405cd6b5ce5efab75422648.sample"]
 
 [params]
 

@@ -5,11 +5,11 @@
 [ext_resource path="res://Cutscenes/Intro.gd" type="Script" id=3]
 [ext_resource path="res://sounds/cutscenes/crt-turn-on.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Cutscenes/Dialog/intro.tres" type="Resource" id=5]
-[ext_resource path="res://Cutscenes/alien1.PNG" type="Texture" id=6]
-[ext_resource path="res://Cutscenes/alien2.PNG" type="Texture" id=7]
-[ext_resource path="res://test_fonts/vt323/VT323-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Cutscenes/alien1.PNG" type="Texture2D" id=6]
+[ext_resource path="res://Cutscenes/alien2.PNG" type="Texture2D" id=7]
+[ext_resource path="res://test_fonts/vt323/VT323-Regular.ttf" type="FontFile" id=8]
 [ext_resource path="res://Menus/SkipCutscene.gd" type="Script" id=9]
-[ext_resource path="res://ActionLevels/Camera/StageCamera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ActionLevels/Camera3D/StageCamera.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Cutscenes/ShakeyCam.gd" type="Script" id=11]
 
 [sub_resource type="Shader" id=1]
@@ -267,7 +267,7 @@ shader_param/clip_warp = false
 shader_param/vignette_intensity = 0.4
 shader_param/vignette_opacity = 0.5
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="FontFile" id=3]
 size = 48
 font_data = ExtResource( 8 )
 
@@ -292,10 +292,10 @@ position = Vector2( 678, 487 )
 texture = ExtResource( 6 )
 
 [node name="Background" type="ColorRect" parent="."]
-margin_left = -100.0
-margin_top = -100.0
-margin_right = 2020.0
-margin_bottom = 1180.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 2020.0
+offset_bottom = 1180.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -318,12 +318,12 @@ script = ExtResource( 9 )
 [node name="SkipLabel" type="Label" parent="SkipCutscene"]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 163.0
-margin_top = 925.0
-margin_right = 443.0
-margin_bottom = 974.0
-custom_colors/font_color = Color( 0.537255, 0.537255, 0.537255, 1 )
-custom_fonts/font = SubResource( 3 )
+offset_left = 163.0
+offset_top = 925.0
+offset_right = 443.0
+offset_bottom = 974.0
+theme_override_colors/font_color = Color( 0.537255, 0.537255, 0.537255, 1 )
+theme_override_fonts/font = SubResource( 3 )
 text = "hold X to skip"
 
 [connection signal="finished" from="TVTurnOn" to="." method="_on_TVTurnOn_finished"]

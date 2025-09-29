@@ -5,18 +5,18 @@
 [ext_resource path="res://Themes/Classic311/Styles/Button/FocusedOutline.tres" type="StyleBox" id=3]
 [ext_resource path="res://Themes/Classic311/Styles/Button/Pressed.tres" type="StyleBox" id=4]
 [ext_resource path="res://Themes/Classic311/Styles/Button/Disabled.tres" type="StyleBox" id=5]
-[ext_resource path="res://Themes/Classic311/Styles/CheckBox/RadioTrue.png" type="Texture" id=6]
-[ext_resource path="res://Themes/Classic311/Styles/CheckBox/True.png" type="Texture" id=7]
-[ext_resource path="res://Themes/Classic311/Styles/CheckBox/RadioFalse.png" type="Texture" id=8]
-[ext_resource path="res://Themes/Classic311/Styles/CheckBox/False.png" type="Texture" id=9]
+[ext_resource path="res://Themes/Classic311/Styles/CheckBox/RadioTrue.png" type="Texture2D" id=6]
+[ext_resource path="res://Themes/Classic311/Styles/CheckBox/True.png" type="Texture2D" id=7]
+[ext_resource path="res://Themes/Classic311/Styles/CheckBox/RadioFalse.png" type="Texture2D" id=8]
+[ext_resource path="res://Themes/Classic311/Styles/CheckBox/False.png" type="Texture2D" id=9]
 [ext_resource path="res://Themes/Classic311/Styles/LineEdit/Normal.tres" type="StyleBox" id=10]
 [ext_resource path="res://Themes/Classic311/Styles/Scroll/Grabber.tres" type="StyleBox" id=11]
 [ext_resource path="res://Themes/Classic311/Styles/Scroll/GrabberHighlight.tres" type="StyleBox" id=12]
 [ext_resource path="res://Themes/Classic311/Styles/Scroll/VGrabberHighlight.tres" type="StyleBox" id=13]
 [ext_resource path="res://Themes/Classic311/Styles/Scroll/VGrabber.tres" type="StyleBox" id=14]
 [ext_resource path="res://Themes/Classic311/Styles/Window/Panel.tres" type="StyleBox" id=15]
-[ext_resource path="res://Themes/Classic311/Styles/Window/close_highlight.png" type="Texture" id=16]
-[ext_resource path="res://Themes/Classic311/Styles/Window/close.png" type="Texture" id=17]
+[ext_resource path="res://Themes/Classic311/Styles/Window/close_highlight.png" type="Texture2D" id=16]
+[ext_resource path="res://Themes/Classic311/Styles/Window/close.png" type="Texture2D" id=17]
 [ext_resource path="res://Themes/Classic311/Styles/ProgressBar/Foreground.tres" type="StyleBox" id=18]
 [ext_resource path="res://Themes/Classic311/Styles/General/DisableMask.tres" type="StyleBox" id=19]
 [ext_resource path="res://Themes/Classic311/Styles/Panel/Panel.tres" type="StyleBox" id=20]
@@ -25,22 +25,22 @@
 [ext_resource path="res://Themes/Classic311/Styles/Panel/TabDisabled.tres" type="StyleBox" id=23]
 [ext_resource path="res://Themes/Classic311/Styles/Panel/InlinePanel.tres" type="StyleBox" id=24]
 [ext_resource path="res://Themes/Classic311/Styles/Scroll/OutlineSlider.tres" type="StyleBox" id=25]
-[ext_resource path="res://Themes/Classic311/Styles/Scroll/SliderGrabHDis.png" type="Texture" id=26]
-[ext_resource path="res://Themes/Classic311/Styles/Scroll/SliderGrabH.png" type="Texture" id=27]
-[ext_resource path="res://Themes/Classic311/Styles/Scroll/SliderGrabVDis.png" type="Texture" id=28]
-[ext_resource path="res://Themes/Classic311/Styles/Scroll/SliderGrabV.png" type="Texture" id=29]
+[ext_resource path="res://Themes/Classic311/Styles/Scroll/SliderGrabHDis.png" type="Texture2D" id=26]
+[ext_resource path="res://Themes/Classic311/Styles/Scroll/SliderGrabH.png" type="Texture2D" id=27]
+[ext_resource path="res://Themes/Classic311/Styles/Scroll/SliderGrabVDis.png" type="Texture2D" id=28]
+[ext_resource path="res://Themes/Classic311/Styles/Scroll/SliderGrabV.png" type="Texture2D" id=29]
 [ext_resource path="res://Themes/Classic311/Styles/Tree/Outline.tres" type="StyleBox" id=30]
-[ext_resource path="res://Themes/Classic311/Styles/Tree/Arrow.png" type="Texture" id=31]
-[ext_resource path="res://Themes/Classic311/Styles/Tree/ArrowCollapsed.png" type="Texture" id=32]
-[ext_resource path="res://Themes/Classic311/Styles/Tree/True.png" type="Texture" id=33]
-[ext_resource path="res://Themes/Classic311/Styles/Tree/UpDown.png" type="Texture" id=34]
-[ext_resource path="res://Themes/Classic311/Styles/Tree/False.png" type="Texture" id=35]
-[ext_resource path="res://Themes/Classic311/Styles/Button/Arrow.png" type="Texture" id=36]
-[ext_resource path="res://Themes/Classic311/Styles/Button/On.png" type="Texture" id=37]
-[ext_resource path="res://Themes/Classic311/Styles/Button/Off.png" type="Texture" id=38]
-[ext_resource path="res://Themes/Classic311/Styles/Button/OffDis.png" type="Texture" id=39]
-[ext_resource path="res://Themes/Classic311/Styles/Button/OnDis.png" type="Texture" id=40]
-[ext_resource path="res://Themes/Classic311/Styles/Panel/Panel.png" type="Texture" id=41]
+[ext_resource path="res://Themes/Classic311/Styles/Tree/Arrow.png" type="Texture2D" id=31]
+[ext_resource path="res://Themes/Classic311/Styles/Tree/ArrowCollapsed.png" type="Texture2D" id=32]
+[ext_resource path="res://Themes/Classic311/Styles/Tree/True.png" type="Texture2D" id=33]
+[ext_resource path="res://Themes/Classic311/Styles/Tree/UpDown.png" type="Texture2D" id=34]
+[ext_resource path="res://Themes/Classic311/Styles/Tree/False.png" type="Texture2D" id=35]
+[ext_resource path="res://Themes/Classic311/Styles/Button/Arrow.png" type="Texture2D" id=36]
+[ext_resource path="res://Themes/Classic311/Styles/Button/On.png" type="Texture2D" id=37]
+[ext_resource path="res://Themes/Classic311/Styles/Button/Off.png" type="Texture2D" id=38]
+[ext_resource path="res://Themes/Classic311/Styles/Button/OffDis.png" type="Texture2D" id=39]
+[ext_resource path="res://Themes/Classic311/Styles/Button/OnDis.png" type="Texture2D" id=40]
+[ext_resource path="res://Themes/Classic311/Styles/Panel/Panel.png" type="Texture2D" id=41]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -247,7 +247,7 @@ OptionButton/styles/hover = ExtResource( 1 )
 OptionButton/styles/normal = ExtResource( 1 )
 OptionButton/styles/pressed = ExtResource( 4 )
 Panel/styles/panel = ExtResource( 24 )
-PopupDialog/styles/panel = SubResource( 21 )
+Popup/styles/panel = SubResource( 21 )
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_accel = Color( 0.498039, 0.498039, 0.498039, 1 )
 PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
@@ -379,12 +379,12 @@ VSlider/icons/tick = null
 VSlider/styles/grabber_area = SubResource( 19 )
 VSlider/styles/grabber_area_highlight = SubResource( 20 )
 VSlider/styles/slider = ExtResource( 25 )
-WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
-WindowDialog/constants/close_h_ofs = 23
-WindowDialog/constants/close_v_ofs = 21
-WindowDialog/constants/scaleborder_size = 4
-WindowDialog/constants/title_height = 20
-WindowDialog/fonts/title_font = null
-WindowDialog/icons/close = ExtResource( 17 )
-WindowDialog/icons/close_highlight = ExtResource( 16 )
-WindowDialog/styles/panel = ExtResource( 15 )
+Window/colors/title_color = Color( 1, 1, 1, 1 )
+Window/constants/close_h_ofs = 23
+Window/constants/close_v_ofs = 21
+Window/constants/scaleborder_size = 4
+Window/constants/title_height = 20
+Window/fonts/title_font = null
+Window/icons/close = ExtResource( 17 )
+Window/icons/close_highlight = ExtResource( 16 )
+Window/styles/panel = ExtResource( 15 )

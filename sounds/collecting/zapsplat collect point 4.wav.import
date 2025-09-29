@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zapsplat collect point 4.wav-284df625197760de11e8d78f9f356b6b.sample"
+type="AudioStreamWAV"
+uid="uid://i56wg0ro13ed"
+path="res://.godot/imported/zapsplat collect point 4.wav-284df625197760de11e8d78f9f356b6b.sample"
 
 [deps]
 
 source_file="res://sounds/collecting/zapsplat collect point 4.wav"
-dest_files=[ "res://.import/zapsplat collect point 4.wav-284df625197760de11e8d78f9f356b6b.sample" ]
+dest_files=["res://.godot/imported/zapsplat collect point 4.wav-284df625197760de11e8d78f9f356b6b.sample"]
 
 [params]
 

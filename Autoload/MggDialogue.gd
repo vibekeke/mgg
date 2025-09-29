@@ -6,6 +6,8 @@ signal change_character_portrait(portrait_name)
 var node_id_in_use = -1
 var current_dialogue_creator_node
 
+var dialogue_creator_preload = preload("res://DialogBox/DialogueCreator.tscn")
+
 func create_dialogue_balloon(
 	title: String, 
 	dialogue_resource: Resource,
@@ -17,7 +19,7 @@ func create_dialogue_balloon(
 	is_advancable := false,
 	auto_advance_time := 1.5
 	):
-	var dialogue_creator = load("res://DialogBox/DialogueCreator.tscn").instance()
+	var dialogue_creator = dialogue_creator_preload.instantiate()
 	dialogue_creator.title = title
 	dialogue_creator.dialogue_resource = dialogue_resource
 	dialogue_creator.placement = placement
@@ -26,20 +28,18 @@ func create_dialogue_balloon(
 	dialogue_creator.dialogue_border_colour = dialogue_border_colour
 	dialogue_creator.is_advancable = is_advancable
 	dialogue_creator.auto_advance_time = auto_advance_time
-	dialogue_creator.connect("dialogue_box_finished", self, "_on_dialogue_box_finished")
+	dialogue_creator.connect("dialogue_box_finished", Callable(self, "_on_dialogue_box_finished"))
 	node_id_in_use = node_id
-	#get_tree().current_scene.add_child(dialogue_creator)
 	get_tree().current_scene.call_deferred("add_child", dialogue_creator)
 	dialogue_creator.create_dialogue_balloon()
 	current_dialogue_creator_node = dialogue_creator
 
 func _on_dialogue_box_finished():
 	current_dialogue_creator_node.queue_free()
-	yield(current_dialogue_creator_node, "tree_exited")
+	await current_dialogue_creator_node.tree_exited
 	emit_signal("mgg_dialogue_box_finished", node_id_in_use)
 
 func go_to_scene(scene_name: String):
-	print("going to scene ", scene_name)
 	Events.transition_to_new_scene(scene_name)
 
 func emit_dialogue_finished_with_status(success_status: bool):

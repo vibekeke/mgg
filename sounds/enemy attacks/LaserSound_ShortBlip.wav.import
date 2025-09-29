@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/LaserSound_ShortBlip.wav-49c3d19206b2168536d9a4cb71100fce.sample"
+type="AudioStreamWAV"
+uid="uid://6soyo2hhay13"
+path="res://.godot/imported/LaserSound_ShortBlip.wav-49c3d19206b2168536d9a4cb71100fce.sample"
 
 [deps]
 
 source_file="res://sounds/enemy attacks/LaserSound_ShortBlip.wav"
-dest_files=[ "res://.import/LaserSound_ShortBlip.wav-49c3d19206b2168536d9a4cb71100fce.sample" ]
+dest_files=["res://.godot/imported/LaserSound_ShortBlip.wav-49c3d19206b2168536d9a4cb71100fce.sample"]
 
 [params]
 

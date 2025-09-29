@@ -6,7 +6,7 @@
 [sub_resource type="Shader" id=36]
 code = "shader_type canvas_item;
 
-uniform vec4 night_color : hint_color = vec4(0.2, 0.2, 0.4, 0.6);
+uniform vec4 night_color : source_color = vec4(0.2, 0.2, 0.4, 0.6);
 uniform bool apply_effect = false;
 
 void fragment() {

@@ -1,17 +1,17 @@
 extends Node
 
-export (int) var max_platforms_on_screen = 3
-export (float) var seconds_platform_spawn_frequency = 2.0
-export (Vector2) var default_platform_spawn_position = Vector2(2000, 410)
-export (Array, PackedScene) var platform_list
-export (int) var default_scroll_speed = 500
-export (NodePath) var platform_spawn_point_path
+@export var max_platforms_on_screen: int = 3
+@export var seconds_platform_spawn_frequency: float = 2.0
+@export var default_platform_spawn_position: Vector2 = Vector2(2000, 410)
+@export var platform_list: Array[PackedScene]
+@export var default_scroll_speed: int = 500
+@export var platform_spawn_point_path: NodePath
 var platform_spawn_point = null
 
-onready var platform_spawn_timer : Timer = Timer.new()
-onready var platforms_spawned : int = 0
-onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
-onready var cached_parent_node = null
+@onready var platform_spawn_timer : Timer = Timer.new()
+@onready var platforms_spawned : int = 0
+@onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+@onready var cached_parent_node = null
 
 var platform_to_spawn = null
 var platform_pool : Array = []
@@ -25,14 +25,14 @@ func _ready():
 	cached_parent_node = self.get_parent()
 	
 	platform_spawn_timer.set_name("platform_spawn_timer")
-	platform_spawn_timer.connect("timeout", self, "_spawn_platform")
+	platform_spawn_timer.connect("timeout", Callable(self, "_spawn_platform"))
 	platform_spawn_timer.set_wait_time(seconds_platform_spawn_frequency + rng.randf_range(0.1, 1.0))
 	self.add_child(platform_spawn_timer)
 	platform_spawn_timer.start()
 	
-	Events.connect("platform_despawned", self, "_on_platform_despawned")
-	Events.connect("platform_return_to_pool", self, "_on_platform_return_to_pool")
-	Events.connect("enemy_spawner_enabled", self, "_on_enemy_spawner_enabled")
+	Events.connect("platform_despawned", Callable(self, "_on_platform_despawned"))
+	Events.connect("platform_return_to_pool", Callable(self, "_on_platform_return_to_pool"))
+	Events.connect("enemy_spawner_enabled", Callable(self, "_on_enemy_spawner_enabled"))
 	
 	_preload_platform_pool()
 
@@ -40,7 +40,7 @@ func _preload_platform_pool():
 	if platform_list.size() > 0:
 		for i in range(pool_size):
 			var platform_scene = platform_list[rng.randi() % platform_list.size()]
-			var platform_instance = platform_scene.instance()
+			var platform_instance = platform_scene.instantiate()
 			platform_instance.add_to_group("spawned_platform")
 			if platform_instance.scroll_speed == 0:
 				platform_instance.scroll_speed = default_scroll_speed
@@ -129,7 +129,7 @@ func clear_platform_pool():
 	platform_pool.clear()
 
 func _direct_spawn_obstacle_at_position(obstacle: PackedScene, position: Vector2, scroll_speed):
-	var _obstacle_to_spawn = obstacle.instance()
+	var _obstacle_to_spawn = obstacle.instantiate()
 	if scroll_speed != null:
 		_obstacle_to_spawn.scroll_speed = scroll_speed
 	else:

@@ -1,276 +1,275 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=15 format=3 uid="uid://dmph4bi1w84tw"]
 
-[ext_resource path="res://addons/dialogue_manager/dialogue_label.tscn" type="PackedScene" id=1]
-[ext_resource path="res://DialogBox/Portrait.tscn" type="PackedScene" id=2]
-[ext_resource path="res://test_fonts/Comforta/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://imported_assets/hud/collectibles/Collected_Stars.png" type="Texture" id=4]
-[ext_resource path="res://DialogBox/DialogueContainer.gd" type="Script" id=5]
-[ext_resource path="res://test_fonts/Comforta/Comfortaa-SemiBold.ttf" type="DynamicFontData" id=6]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://DialogBox/Portrait.tscn" id="2"]
+[ext_resource type="FontFile" uid="uid://7uf3kn80vqq0" path="res://test_fonts/Comforta/Comfortaa-Bold.ttf" id="3"]
+[ext_resource type="Texture2D" uid="uid://7e4sgqb8yywk" path="res://imported_assets/hud/collectibles/Collected_Stars.png" id="4"]
+[ext_resource type="Script" uid="uid://46vvhqy7ko5q" path="res://DialogBox/DialogueContainer.gd" id="5"]
+[ext_resource type="FontFile" uid="uid://d0m2hopscddul" path="res://test_fonts/Comforta/Comfortaa-SemiBold.ttf" id="6"]
 
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.12549, 0.619608, 1, 1 )
+[sub_resource type="StyleBoxFlat" id="10"]
+bg_color = Color(0.12549, 0.619608, 1, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 6
-border_color = Color( 0.0431373, 0, 0.223529, 1 )
+border_color = Color(0.0431373, 0, 0.223529, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=17]
-bg_color = Color( 0.12549, 0.619608, 1, 0 )
+[sub_resource type="StyleBoxFlat" id="17"]
+bg_color = Color(0.12549, 0.619608, 1, 0)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color( 0.027451, 0.0196078, 0.156863, 0.572549 )
+border_color = Color(0.027451, 0.0196078, 0.156863, 0.572549)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 anti_aliasing = false
 
-[sub_resource type="DynamicFont" id=12]
-size = 36
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=11]
-size = 42
-use_filter = true
-font_data = ExtResource( 6 )
-
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id="15"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("../DialogueContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../DialogueContainer:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("../DialogueContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 0, 40 ) ]
+"values": [Vector2(0, 40)]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id="16"]
 resource_name = "fade_in"
 step = 0.05
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("../DialogueContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../DialogueContainer:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("../DialogueContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25, 0.35 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ Vector2( 0, 40 ), Vector2( 0, -15 ), Vector2( 0, 0 ) ]
+"values": [Vector2(0, 40), Vector2(0, -15), Vector2(0, 0)]
 }
 tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("..")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.05 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_popup_sound"
-} ]
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_popup_sound"
+}]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bv2h"]
+_data = {
+&"RESET": SubResource("15"),
+&"fade_in": SubResource("16")
+}
+
+[sub_resource type="Animation" id="13"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("DialogueContainer/AwaitCursor:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id="14"]
 resource_name = "flicker"
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("DialogueContainer/AwaitCursor:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ true, false, true ]
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8edb5"]
+_data = {
+&"RESET": SubResource("13"),
+&"flicker": SubResource("14")
 }
 
 [node name="DialogueContainerCanvasLayer" type="CanvasLayer"]
 layer = 100
-script = ExtResource( 5 )
+script = ExtResource("5")
 
 [node name="DialogueContainer" type="Control" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 40.0
-margin_right = 1920.0
-margin_bottom = 1120.0
-mouse_filter = 1
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_top = 40.0
+offset_right = 1920.0
+offset_bottom = 1120.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-__meta__ = {
-"_edit_lock_": true
-}
+mouse_filter = 1
 
 [node name="DialogueBackground" type="PanelContainer" parent="DialogueContainer"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.25
 anchor_top = 0.7
 anchor_right = 0.75
 anchor_bottom = 0.95
-margin_right = 25.0
+offset_right = 25.0
 mouse_filter = 1
-custom_styles/panel = SubResource( 10 )
-__meta__ = {
-"_edit_group_": true
-}
+theme_override_styles/panel = SubResource("10")
 
 [node name="MarginContainer2" type="MarginContainer" parent="DialogueContainer/DialogueBackground"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 981.0
-margin_bottom = 264.0
-mouse_filter = 1
-custom_constants/margin_right = 9
-custom_constants/margin_top = 9
-custom_constants/margin_left = 9
-custom_constants/margin_bottom = 9
+layout_mode = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 9
 
 [node name="PanelContainer" type="PanelContainer" parent="DialogueContainer/DialogueBackground/MarginContainer2"]
-margin_left = 9.0
-margin_top = 9.0
-margin_right = 968.0
-margin_bottom = 251.0
+layout_mode = 2
 mouse_filter = 1
-custom_styles/panel = SubResource( 17 )
+theme_override_styles/panel = SubResource("17")
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogueContainer/DialogueBackground"]
 unique_name_in_owner = true
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 981.0
-margin_bottom = 264.0
-mouse_filter = 1
-custom_constants/margin_right = 164
-custom_constants/margin_top = 25
-custom_constants/margin_left = 25
-custom_constants/margin_bottom = 25
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 164
+theme_override_constants/margin_bottom = 25
 
 [node name="DialogueContainer" type="VBoxContainer" parent="DialogueContainer/DialogueBackground/MarginContainer"]
 unique_name_in_owner = true
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 813.0
-margin_bottom = 235.0
+layout_mode = 2
 
 [node name="CharacterTitle" type="RichTextLabel" parent="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer"]
 unique_name_in_owner = true
-margin_right = 788.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-mouse_filter = 1
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 size_flags_horizontal = 3
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-custom_fonts/normal_font = SubResource( 12 )
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/mono_font_size = 36
 bbcode_enabled = true
-bbcode_text = "Character"
 text = "Character"
 
-[node name="DialogueLabel" parent="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" instance=ExtResource( 1 )]
+[node name="DialogueLabel" parent="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" instance=ExtResource("1")]
 unique_name_in_owner = true
-margin_top = 54.0
-margin_right = 788.0
-margin_bottom = 210.0
-mouse_filter = 1
+layout_mode = 2
 size_flags_vertical = 3
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.329412 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 2
-custom_fonts/normal_font = SubResource( 11 )
-bbcode_text = "Some dialogu ee ee eee e eeee e e e ee ee"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.329412)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("6")
+theme_override_font_sizes/normal_font_size = 42
+theme_override_font_sizes/bold_font_size = 42
+theme_override_font_sizes/bold_italics_font_size = 42
+theme_override_font_sizes/italics_font_size = 42
+theme_override_font_sizes/mono_font_size = 42
 text = "Some dialogu ee ee eee e eeee e e e ee ee"
 
 [node name="ResponsesList" type="HBoxContainer" parent="DialogueContainer"]
 unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.2
 anchor_top = 0.39
 anchor_right = 0.8
 anchor_bottom = 0.5
-custom_constants/separation = 20
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Portrait" parent="DialogueContainer" instance=ExtResource( 2 )]
-margin_left = 30.0001
-margin_top = 18.0001
-margin_right = 781.0
-margin_bottom = 746.0
+[node name="Portrait" parent="DialogueContainer" instance=ExtResource("2")]
+layout_mode = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1278.0
+offset_top = 666.0
+offset_right = 2028.9999
+offset_bottom = 1393.9999
+expand_mode = 1
 
-[node name="AwaitCursor" type="Sprite" parent="DialogueContainer"]
+[node name="AwaitCursor" type="Sprite2D" parent="DialogueContainer"]
 unique_name_in_owner = true
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 4 )
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4")
 
 [node name="DialogueContainerAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 root_node = NodePath("../StarFlickerAnimationPlayer")
-anims/RESET = SubResource( 15 )
-anims/fade_in = SubResource( 16 )
+libraries = {
+&"": SubResource("AnimationLibrary_1bv2h")
+}
 
 [node name="StarFlickerAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-anims/RESET = SubResource( 13 )
-anims/flicker = SubResource( 14 )
+libraries = {
+&"": SubResource("AnimationLibrary_8edb5")
+}
 
 [node name="AutoAdvanceTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
 
-[connection signal="gui_input" from="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" to="." method="_on_DialogueContainer_gui_input"]
+[connection signal="gui_input" from="DialogueContainer/DialogueBackground/MarginContainer/DialogueContainer" to="." method="_on_dialogue_container_gui_input"]

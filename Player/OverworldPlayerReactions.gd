@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var animation_player = get_node("%AnimationPlayer")
-onready var question_mark = get_node("%QuestionMark")
+@onready var animation_player = get_node("%AnimationPlayer")
+@onready var question_mark = get_node("%QuestionMark")
 var playing_backwards = false
 
 func _ready():

@@ -86,10 +86,21 @@ var is_initialized : bool = false
 
 func _ready():
 	randomize()
-	OS.min_window_size = Vector2(1280, 720)
-	OS.max_window_size = Vector2(1920, 1080)
-	OS.center_window()
+	get_window().min_size = Vector2(1280, 720)
+	get_window().max_size = Vector2(1920, 1080)
+	center_window()
 	initialize()
+
+func center_window():
+	var window = get_window()
+	# And get the current screen the window's in
+	var screen = window.current_screen
+	# Get the usable rect for that screen
+	var screen_rect = DisplayServer.screen_get_usable_rect(screen)
+	# Get the window's size
+	var window_size = window.get_size_with_decorations()
+	# Set its position to the middle
+	window.position = screen_rect.position + (screen_rect.size / 2 - window_size / 2)
 
 func initialize():
 	if is_initialized:
@@ -118,7 +129,7 @@ func go_to_game_over():
 	self.emit_signal("transition_to_scene", "GameOver", true)
 
 
-onready var enemyPaths = {
+@onready var enemyPaths = {
 	'Misbeehave': 'res://ActionLevels/LevelCreator/Enemies/Misbeehave/Misbeehave.tscn',
 	'BroBun': 'res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn',
 	'BroBear': 'res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn',
@@ -130,20 +141,20 @@ onready var enemyPaths = {
 	'BigBird': 'res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn'
 }
 
-onready var level_collectibles = {
+@onready var level_collectibles = {
 	'Star': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Star.tscn',
 	'CollectibleHeart': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/CollectibleHeart.tscn',
 	'Dogu': 'res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu.tscn'
 }
 
-onready var level_background_elements = {
+@onready var level_background_elements = {
 	1 : {
 		'BeeBackground': 'res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BeeBackground.tscn',
 		'BigBackground': 'res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BigBackground.tscn'
 	}
 }
 
-onready var level_platforms = {
+@onready var level_platforms = {
 	1 : {
 		'LongTallPlatform': 'res://ActionLevels/LevelCreator/Obstacles/Forest/LongTallPlatform.tscn',
 		'TallPlatform': 'res://ActionLevels/LevelCreator/Obstacles/Forest/TallPlatform.tscn',
@@ -153,41 +164,16 @@ onready var level_platforms = {
 	}
 }
 
-onready var bossPaths = {
+@onready var bossPaths = {
 	'BigBird': 'res://ActionLevels/LevelCreator/Bosses/BigBird/BigBird.tscn'
 }
 
-onready var action_level_list = {
+@onready var action_level_list = {
 	"Level1": "res://ActionLevels/Level1/Level1_Forest.tscn",
 	"Level2": "res://ActionLevels/Level2/Level2_Beach.tscn",
 	"Level3": "res://ActionLevels/Level3/Level3_City.tscn",
 	"GameOver": "res://Menus/GameOver.tscn"
 }
-
-func load_game():
-	var loaded_save_game = File.new()
-	if not loaded_save_game.file_exists(SAVE_FILE_LOCATION):
-		print_debug("No save file found.")
-		return
-	loaded_save_game.open(SAVE_FILE_LOCATION, File.READ)
-	while loaded_save_game.get_position() < loaded_save_game.get_len():
-		var node_data = parse_json(loaded_save_game.get_line())
-		var last_completed_level : int = node_data['LastCompletedLevel']
-		var dog_info : Dictionary = node_data['collected_dogs_for_level']
-		for x in range(0, last_completed_level):
-			COMPLETED_LEVELS.append(x + 1)
-		COLLECTED_DOGS = node_data['collected_dogs_for_level']
-
-func save_game(level_name : int, dog_info : Dictionary):
-	var save_dict = {
-		'LastCompletedLevel': level_name,
-		'collected_dogs_for_level': dog_info
-	}
-
-	var save_file = File.new()
-	save_file.open(SAVE_FILE_LOCATION,  File.WRITE)
-	save_file.store_line(to_json(save_dict))
-	save_file.close()
 
 func update_dogs(dog_type: String):
 	if not COLLECTED_DOGS.has(dog_type):
@@ -217,7 +203,7 @@ func get_level_collectible(collectible: String):
 
 func set_vhs_shader(shader_params : Dictionary, vhs_filter: ColorRect):
 	for param in shader_params:
-		vhs_filter.material.set_shader_param(param, shader_params[param])
+		vhs_filter.material.set_shader_parameter(param, shader_params[param])
 
 var vhs_filter_state_paused = {
 	'overlay': true,

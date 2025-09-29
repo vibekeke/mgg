@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zapsplat_reversed_jump5.wav-ac73136ac1564b016b690f7d3acfee0d.sample"
+type="AudioStreamWAV"
+uid="uid://1p71r6761ln5"
+path="res://.godot/imported/zapsplat_reversed_jump5.wav-ac73136ac1564b016b690f7d3acfee0d.sample"
 
 [deps]
 
 source_file="res://sounds/player/zapsplat_reversed_jump5.wav"
-dest_files=[ "res://.import/zapsplat_reversed_jump5.wav-ac73136ac1564b016b690f7d3acfee0d.sample" ]
+dest_files=["res://.godot/imported/zapsplat_reversed_jump5.wav-ac73136ac1564b016b690f7d3acfee0d.sample"]
 
 [params]
 

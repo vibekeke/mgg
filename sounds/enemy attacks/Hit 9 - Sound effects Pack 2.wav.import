@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Hit 9 - Sound effects Pack 2.wav-65218fd0615b3d497aa3df10a0f6ea71.sample"
+type="AudioStreamWAV"
+uid="uid://dgemwhmm1ovu5"
+path="res://.godot/imported/Hit 9 - Sound effects Pack 2.wav-65218fd0615b3d497aa3df10a0f6ea71.sample"
 
 [deps]
 
 source_file="res://sounds/enemy attacks/Hit 9 - Sound effects Pack 2.wav"
-dest_files=[ "res://.import/Hit 9 - Sound effects Pack 2.wav-65218fd0615b3d497aa3df10a0f6ea71.sample" ]
+dest_files=["res://.godot/imported/Hit 9 - Sound effects Pack 2.wav-65218fd0615b3d497aa3df10a0f6ea71.sample"]
 
 [params]
 

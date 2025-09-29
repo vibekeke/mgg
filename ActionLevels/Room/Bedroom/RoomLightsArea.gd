@@ -1,15 +1,15 @@
 extends Area2D
 
-onready var room_light = get_node("%RoomLight")
-onready var light_switch_audio = get_node("%LightSwitchAudio")
-onready var overworld_player = get_node("%OverworldPlayer")
+@onready var room_light = get_node("%RoomLight")
+@onready var light_switch_audio = get_node("%LightSwitchAudio")
+@onready var overworld_player = get_node("%OverworldPlayer")
 
 var lights_on : bool = false
 var player_in_area : bool = false
 
 func _ready():
-	self.connect("body_entered", self, "_on_room_light_area_entered")
-	self.connect("body_exited", self, "_on_room_light_area_exited")
+	self.connect("body_entered", Callable(self, "_on_room_light_area_entered"))
+	self.connect("body_exited", Callable(self, "_on_room_light_area_exited"))
 
 func _on_room_light_area_entered(body):
 	if body.name == "OverworldPlayer":

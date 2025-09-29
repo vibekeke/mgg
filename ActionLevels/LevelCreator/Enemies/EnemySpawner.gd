@@ -1,31 +1,32 @@
 extends Node2D
 
-export (int) var max_enemies_on_screen = 5
-export (float) var seconds_enemy_spawn_frequency = 1.0
-export (float) var seconds_spawn_unique_while_alive_frequency = 2.0
-onready var current_enemy_list : Array = []
-export (Array, PackedScene) var first_tier_enemy_list
-export (Array, PackedScene) var second_tier_enemy_list
-export (Array, PackedScene) var third_tier_enemy_list
-export (Array, PackedScene) var unique_enemy_list
-export (int) var default_scroll_speed = 500
+@export var max_enemies_on_screen: int = 5
+@export var seconds_enemy_spawn_frequency: float = 1.0
+@export var seconds_spawn_unique_while_alive_frequency: float = 2.0
+@onready var current_enemy_list : Array = []
+@export var first_tier_enemy_list: Array[PackedScene]
+@export var second_tier_enemy_list: Array[PackedScene]
+@export var third_tier_enemy_list: Array[PackedScene]
+@export var unique_enemy_list: Array[PackedScene]
 
-onready var spawn_timer : Timer = Timer.new()
-onready var spawn_unique_while_alive_timer : Timer = Timer.new()
-onready var enemies_spawned : int = 0
-onready var current_difficulty_tier : int = 1
-onready var cached_tier_1_enemies : Array = []
-onready var cached_tier_2_enemies : Array = []
-onready var cached_tier_3_enemies : Array = []
-onready var cached_arrays_built : bool = false
-onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
-onready var spawn_paths = get_node("%SpawnPaths")
-onready var level_background = get_node_or_null("%LevelBackground")
-onready var level_events_manager = get_node("%LevelEventsManager")
-onready var cached_parent_node = null
-onready var cached_high_med_points : Array = []
-onready var cached_med_low_points : Array = []
-onready var cached_high_low_points : Array = []
+@export var default_scroll_speed: int = 500
+
+@onready var spawn_timer : Timer = Timer.new()
+@onready var spawn_unique_while_alive_timer : Timer = Timer.new()
+@onready var enemies_spawned : int = 0
+@onready var current_difficulty_tier : int = 1
+@onready var cached_tier_1_enemies : Array = []
+@onready var cached_tier_2_enemies : Array = []
+@onready var cached_tier_3_enemies : Array = []
+@onready var cached_arrays_built : bool = false
+@onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+@onready var spawn_paths = get_node("%SpawnPaths")
+@onready var level_background = get_node_or_null("%LevelBackground")
+@onready var level_events_manager = get_node("%LevelEventsManager")
+@onready var cached_parent_node = null
+@onready var cached_high_med_points : Array = []
+@onready var cached_med_low_points : Array = []
+@onready var cached_high_low_points : Array = []
 
 var enemy_to_spawn = null
 var unique_enemy_to_spawn = null
@@ -35,19 +36,19 @@ func _ready():
 	rng.randomize()
 	build_cached_arrays()
 	cached_parent_node = self.get_parent()
-	Events.connect("regular_enemy_death", self, "_on_regular_enemy_death")
-	Events.connect("enemy_despawned", self, "_on_regular_enemy_death")
+	Events.connect("regular_enemy_death", Callable(self, "_on_regular_enemy_death"))
+	Events.connect("enemy_despawned", Callable(self, "_on_regular_enemy_death"))
 	if spawn_paths != null:
 		_on_level_spawn_points(spawn_paths.get_spawn_points())
 	spawn_timer.set_name("spawn_timer")
-	spawn_timer.connect("timeout", self, "_spawn_enemy")
+	spawn_timer.connect("timeout", Callable(self, "_spawn_enemy"))
 	spawn_timer.set_wait_time(seconds_enemy_spawn_frequency + rng.randf_range(0.1, 0.6))
 	self.add_child(spawn_timer)
 	spawn_timer.start()
 
 	
 	spawn_unique_while_alive_timer.set_name("spawn_unique_while_alive_timer")
-	spawn_unique_while_alive_timer.connect("timeout", self, "_spawn_unique_while_alive_enemy")
+	spawn_unique_while_alive_timer.connect("timeout", Callable(self, "_spawn_unique_while_alive_enemy"))
 	spawn_unique_while_alive_timer.set_wait_time(seconds_spawn_unique_while_alive_frequency + rng.randf_range(1.0, 3.5))
 	self.add_child(spawn_unique_while_alive_timer)
 	spawn_unique_while_alive_timer.start()
@@ -113,7 +114,7 @@ func _spawn_unique_while_alive_enemy():
 	if current_difficulty_tier > 1 && unique_enemy_list.size() > 0 && check_for_unique_enemies() <= 0:
 		if cached_parent_node != null:
 			unique_enemy_to_spawn = unique_enemy_list[rng.randi() % unique_enemy_list.size()]
-			var _unique_enemy_to_spawn = unique_enemy_to_spawn.instance()
+			var _unique_enemy_to_spawn = unique_enemy_to_spawn.instantiate()
 			_unique_enemy_to_spawn.add_to_group("non_boss_enemy")
 			_unique_enemy_to_spawn.add_to_group("unique_while_alive")
 			if _unique_enemy_to_spawn.initial_scroll_speed == 0:
@@ -161,7 +162,7 @@ func spawn_at_valid_height(_enemy_to_spawn) -> Vector2:
 
 func spawn_enemy_to_scene():
 	if cached_parent_node != null:
-		var _enemy_to_spawn = enemy_to_spawn.instance()
+		var _enemy_to_spawn = enemy_to_spawn.instantiate()
 		_enemy_to_spawn.add_to_group("non_boss_enemy")
 		if _enemy_to_spawn.initial_scroll_speed == 0:
 			_enemy_to_spawn.initial_scroll_speed = default_scroll_speed
@@ -174,7 +175,7 @@ func spawn_enemy_to_scene():
 
 
 func _direct_spawn_dog(dog: PackedScene, dogType: String, position: Vector2, speed, disabled_float):
-	var _dog = dog.instance()
+	var _dog = dog.instantiate()
 	if speed != null:
 		_dog.scroll_speed = speed
 	else:
@@ -198,7 +199,7 @@ func spawn_instanced_background_element(element,  background_element_name: Strin
 func spawn_to_background_element(element: PackedScene, background_element_name: String, position: Vector2, scroll_speed):
 	var parent_node = self.get_parent()
 	if parent_node != null:
-		var _element_to_spawn = element.instance()
+		var _element_to_spawn = element.instantiate()
 		_element_to_spawn.position = position
 		if "initial_speed" in _element_to_spawn:
 			_element_to_spawn.initial_speed = scroll_speed
@@ -207,7 +208,7 @@ func spawn_to_background_element(element: PackedScene, background_element_name: 
 		level_background.get_node_or_null(background_element_name).add_child(_element_to_spawn)
 
 func _direct_spawn_at_position(enemy: PackedScene, position: Vector2, speed):
-	var _direct_enemy_to_spawn = enemy.instance()
+	var _direct_enemy_to_spawn = enemy.instantiate()
 	if !_direct_enemy_to_spawn.is_in_group("non_boss_enemy"):
 		_direct_enemy_to_spawn.add_to_group("non_boss_enemy")
 	if speed != null:
@@ -228,7 +229,7 @@ func _direct_instanced_boss_at_position(boss: PackedScene, position: Vector2, sp
 	if parent_node != null && boss != null:
 		boss.add_to_group("boss_enemy")
 		boss.global_position = position
-		parent_node.add_child(boss)
+		parent_node.add_child(boss.instantiate())
 		Events.emit_signal("boss_spawned")
 
 func _direct_spawn_boss_at_position(boss_instance, position: Vector2, speed):

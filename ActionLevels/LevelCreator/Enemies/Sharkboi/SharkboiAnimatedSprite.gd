@@ -1,7 +1,8 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 
-func _process(delta):
-	if self.frame == 0:
-		self.play("default", false)
-	if self.frame == 7:
-		self.play("default", true)
+#func _process(delta):
+	#print("hæ", self.frame)
+	#if self.frame == 0:
+		#self.play("default", false)
+	#if self.frame == 7:
+		#self.play("default", true)

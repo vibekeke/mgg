@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Laser-weapon 8 - Sound effects Pack 2.wav-21555d1a5d6e05c3409a15b918e39728.sample"
+type="AudioStreamWAV"
+uid="uid://lowxtgjid67t"
+path="res://.godot/imported/Laser-weapon 8 - Sound effects Pack 2.wav-21555d1a5d6e05c3409a15b918e39728.sample"
 
 [deps]
 
 source_file="res://sounds/damage/Laser-weapon 8 - Sound effects Pack 2.wav"
-dest_files=[ "res://.import/Laser-weapon 8 - Sound effects Pack 2.wav-21555d1a5d6e05c3409a15b918e39728.sample" ]
+dest_files=["res://.godot/imported/Laser-weapon 8 - Sound effects Pack 2.wav-21555d1a5d6e05c3409a15b918e39728.sample"]
 
 [params]
 

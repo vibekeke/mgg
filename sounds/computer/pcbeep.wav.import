@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/pcbeep.wav-edcd44066318119fc4c1660ee9388dce.sample"
+type="AudioStreamWAV"
+uid="uid://esocgsclm42i"
+path="res://.godot/imported/pcbeep.wav-edcd44066318119fc4c1660ee9388dce.sample"
 
 [deps]
 
 source_file="res://sounds/computer/pcbeep.wav"
-dest_files=[ "res://.import/pcbeep.wav-edcd44066318119fc4c1660ee9388dce.sample" ]
+dest_files=["res://.godot/imported/pcbeep.wav-edcd44066318119fc4c1660ee9388dce.sample"]
 
 [params]
 

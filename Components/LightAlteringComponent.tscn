@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bu02lkue6g21c"]
 
-[ext_resource path="res://Player/LightAltering.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://bd36telp3uusy" path="res://Player/LightAltering.gd" id="1"]
 
 [node name="LightAlteringComponent" type="Node"]
-script = ExtResource( 1 )
-light_affected_item = NodePath("../AnimatedSprite")
+script = ExtResource("1")
+light_affected_item = NodePath("../AnimatedSprite2D")

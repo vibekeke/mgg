@@ -1,11 +1,11 @@
 extends Node2D
 # should just hurt the player and not much else, not special or deflectable
 
-export (float) var speed = 100
+@export var speed: float = 100
 
-onready var area2d = $LilBird/Area2D
-onready var visual_body = $LilBird2
-onready var animation_player = get_node("%AnimationPlayer")
+@onready var area2d = $LilBird/Area2D
+@onready var visual_body = $LilBird2
+@onready var animation_player = get_node("%AnimationPlayer")
 
 var is_invalid : bool = false
 
@@ -19,10 +19,10 @@ func _process(delta):
 		self.queue_free()
 
 func _ready():
-	Events.connect("pacifist_successful", self, "_on_pacifist_successful")
-	Events.connect("level_event_complete", self, "_on_level_event_complete")
+	Events.connect("pacifist_successful", Callable(self, "_on_pacifist_successful"))
+	Events.connect("level_event_complete", Callable(self, "_on_level_event_complete"))
 	if area2d != null:
-		area2d.connect("area_entered", self, "_on_call_area_entered")
+		area2d.connect("area_entered", Callable(self, "_on_call_area_entered"))
 
 func _on_pacifist_successful():
 	animation_player.play("fade_out")

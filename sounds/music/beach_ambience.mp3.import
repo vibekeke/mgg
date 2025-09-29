@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/beach_ambience.mp3-e8337b93a628171d7eb2aaac335c3451.mp3str"
+uid="uid://b72rcsr618krj"
+path="res://.godot/imported/beach_ambience.mp3-e8337b93a628171d7eb2aaac335c3451.mp3str"
 
 [deps]
 
 source_file="res://sounds/music/beach_ambience.mp3"
-dest_files=[ "res://.import/beach_ambience.mp3-e8337b93a628171d7eb2aaac335c3451.mp3str" ]
+dest_files=["res://.godot/imported/beach_ambience.mp3-e8337b93a628171d7eb2aaac335c3451.mp3str"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

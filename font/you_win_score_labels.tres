@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://di3shlyq8l32"]
+
+[ext_resource type="FontFile" uid="uid://b4teaf0e1mg0r" path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" id="1_iwthb"]
+
+[resource]
+base_font = ExtResource("1_iwthb")
+spacing_glyph = 6

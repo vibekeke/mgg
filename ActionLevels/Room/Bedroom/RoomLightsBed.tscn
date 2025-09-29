@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://imported_assets/bedroom/room_lights_bed.webp" type="Texture" id=1]
+[ext_resource path="res://imported_assets/bedroom/room_lights_bed.webp" type="Texture2D" id=1]
 
-[node name="RoomLightsBed" type="Sprite"]
+[node name="RoomLightsBed" type="Sprite2D"]
 position = Vector2( 1221, 254 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )

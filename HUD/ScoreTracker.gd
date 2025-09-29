@@ -1,23 +1,23 @@
 extends MarginContainer
 
-onready var score_total : RichTextLabel = get_node("%ScoreTotal")
-export var score_popup : PackedScene
+@onready var score_total : RichTextLabel = get_node("%ScoreTotal")
+@export var score_popup : PackedScene
 
 func _ready():
-	ScoreManager.connect("score_updated", self, "_on_score_updated")
-	Events.connect("score_popup_requested", self, "spawn_score_popup")
+	ScoreManager.connect("score_updated", Callable(self, "_on_score_updated"))
+	Events.connect("score_popup_requested", Callable(self, "spawn_score_popup"))
 
 func _on_score_updated(new_score: int):
 	if new_score > 9999999:
-		score_total.bbcode_text = "∞!!!"
+		score_total.text = "∞!!!"
 	else:
-		score_total.bbcode_text = str(new_score)
+		score_total.text = str(new_score)
 
 func spawn_score_popup(type, position):
-	var popup = score_popup.instance()
+	var popup = score_popup.instantiate()
 	
 	var offset = Vector2(0, -40)
-	var random_offset = Vector2(rand_range(-15.0, 15.0), rand_range(-15.0, 15.0))
+	var random_offset = Vector2(randf_range(-15.0, 15.0), randf_range(-15.0, 15.0))
 	var amount = 0
 	
 	match type:

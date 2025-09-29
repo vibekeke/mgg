@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/WHYAREYOURUNNING.wav-c7ea3dd211d5a11b41e8abb6808bf89b.sample"
+type="AudioStreamWAV"
+uid="uid://biqo38ljngxi2"
+path="res://.godot/imported/WHYAREYOURUNNING.wav-c7ea3dd211d5a11b41e8abb6808bf89b.sample"
 
 [deps]
 
 source_file="res://sounds/enemy attacks/WHYAREYOURUNNING.wav"
-dest_files=[ "res://.import/WHYAREYOURUNNING.wav-c7ea3dd211d5a11b41e8abb6808bf89b.sample" ]
+dest_files=["res://.godot/imported/WHYAREYOURUNNING.wav-c7ea3dd211d5a11b41e8abb6808bf89b.sample"]
 
 [params]
 

@@ -1,7 +1,7 @@
 class_name GenericPlatform
 extends Node2D
 
-export (int) var scroll_speed
+@export var scroll_speed: int
 
 func _process(delta):
 	self.position.x -= scroll_speed * delta

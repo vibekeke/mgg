@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/zapsplat_positive_twinkle.wav-c675064126f06806d5ae2d2218606f65.sample"
+type="AudioStreamWAV"
+uid="uid://d61bmsbtorsr"
+path="res://.godot/imported/zapsplat_positive_twinkle.wav-c675064126f06806d5ae2d2218606f65.sample"
 
 [deps]
 
 source_file="res://sounds/UI sounds/zapsplat_positive_twinkle.wav"
-dest_files=[ "res://.import/zapsplat_positive_twinkle.wav-c675064126f06806d5ae2d2218606f65.sample" ]
+dest_files=["res://.godot/imported/zapsplat_positive_twinkle.wav-c675064126f06806d5ae2d2218606f65.sample"]
 
 [params]
 

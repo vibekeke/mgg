@@ -4,11 +4,11 @@ extends CanvasLayer
 var is_visible = false
 var ascend_unlocked = false
 
-onready var line_no_float = get_node("%NoFloatLine")
-onready var line_no_damage = get_node("%NoDamageLine")
-onready var line_pacifist = get_node("%PacifistLine")
-onready var line_high_score = get_node("%HighScoreLine")
-onready var ascend_button = get_node("%AscendButton")
+@onready var line_no_float = get_node("%NoFloatLine")
+@onready var line_no_damage = get_node("%NoDamageLine")
+@onready var line_pacifist = get_node("%PacifistLine")
+@onready var line_high_score = get_node("%HighScoreLine")
+@onready var ascend_button = get_node("%AscendButton")
 
 var level_challenges = {
 	'Level1': {'no_float': false, 'no_damage': false, 'pacifist': false, 'high_score': false}

@@ -1,25 +1,24 @@
 extends LevelEvent
 
-onready var enemy_spawner = get_node("%EnemySpawner")
-onready var platform_spawner = get_node("%PlatformSpawner")
-onready var dialog_layer = get_node("%DialogLayer")
-export var main_level_scene_path : NodePath
-onready var main_level = get_node_or_null(main_level_scene_path)
-export var enemy_to_spawn : PackedScene
-export var level1_event1_dialog : Resource
+@onready var enemy_spawner = get_node("%EnemySpawner")
+@onready var platform_spawner = get_node("%PlatformSpawner")
+@export var main_level_scene_path : NodePath
+@onready var main_level = get_node_or_null(main_level_scene_path)
+@export var enemy_to_spawn : PackedScene
+@export var level1_event1_dialog : Resource
 var START_EVENT_WAIT_TIME = 5.0
 # onready var new_dialog = Dialogic.start('Level1Event1', '', "res://addons/dialogic/Nodes/DialogNode.tscn", false)
 var start_event_timer = Timer.new()
 var wait_after_stopping_spawner_timer = Timer.new()
 
 func _ready():
-	MggDialogue.connect("mgg_dialogue_box_finished", self, "_on_dialogue_box_finished")
+	MggDialogue.connect("mgg_dialogue_box_finished", Callable(self, "_on_dialogue_box_finished"))
 	start_event_timer.set_name("Level1_Event1_start_timer")
-	start_event_timer.connect("timeout", self, "trigger")
+	start_event_timer.connect("timeout", Callable(self, "trigger"))
 	start_event_timer.set_wait_time(START_EVENT_WAIT_TIME)
 	start_event_timer.one_shot = true
 	wait_after_stopping_spawner_timer.set_name("Level1_Event1_wait_after_stopping_spawner_timer")
-	wait_after_stopping_spawner_timer.connect("timeout", self, "_on_wait_after_stopping_spawner_timer")
+	wait_after_stopping_spawner_timer.connect("timeout", Callable(self, "_on_wait_after_stopping_spawner_timer"))
 	wait_after_stopping_spawner_timer.set_wait_time(1.5)
 	self.add_child(start_event_timer)
 	self.add_child(wait_after_stopping_spawner_timer)
@@ -67,7 +66,7 @@ func display_dialogue():
 func _on_dialogue_box_finished(node_id):
 	print("dialogue finished, node_id: ", node_id, ", self.get_instance_id(): ", self.get_instance_id())
 	if self.get_instance_id() == node_id:
-		yield(get_tree().create_timer(2.0), "timeout")
+		await get_tree().create_timer(2.0).timeout
 		end_event()
 
 func end_event() -> void:

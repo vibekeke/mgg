@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/warning-sound.wav-4013f1a993a243e07d15c6d28a9cdd76.sample"
+type="AudioStreamWAV"
+uid="uid://cmxbc0tncn56o"
+path="res://.godot/imported/warning-sound.wav-4013f1a993a243e07d15c6d28a9cdd76.sample"
 
 [deps]
 
 source_file="res://sounds/level/warning-sound.wav"
-dest_files=[ "res://.import/warning-sound.wav-4013f1a993a243e07d15c6d28a9cdd76.sample" ]
+dest_files=["res://.godot/imported/warning-sound.wav-4013f1a993a243e07d15c6d28a9cdd76.sample"]
 
 [params]
 

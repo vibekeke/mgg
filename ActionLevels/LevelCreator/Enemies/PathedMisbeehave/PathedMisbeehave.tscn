@@ -1,85 +1,95 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=13 format=3 uid="uid://c5bhee3r1nb8e"]
 
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" type="Script" id=1]
-[ext_resource path="res://imported_assets/actors/unbeelievable/Bee_Angry.png" type="Texture" id=2]
-[ext_resource path="res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave_logic.tscn" type="PackedScene" id=3]
+[ext_resource type="Script" uid="uid://brk5c4xl5vnf" path="res://ActionLevels/LevelCreator/Enemies/BasicEnemy.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bdlgow1nvlm4h" path="res://imported_assets/actors/unbeelievable/Bee_Angry.png" id="2"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Enemies/PathedMisbeehave/PathedMisbeehave_logic.tscn" id="3"]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id="1"]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -85, 61, 0, 0, 0, 0, -181, -16, 0, 0, 0, 0, -281, 58, 0, 0, 0, 0, -371, -12, 0, 0, 0, 0, -470, 58, 0, 0, 0, 0, -565, -13, 0, 0, 0, 0, -654, 57, 0, 0, 0, 0, -731, -11, 0, 0, 0, 0, -812, 56, 0, 0, 0, 0, -888, -13, 0, 0, 0, 0, -974, 55, 0, 0, 0, 0, -1052, -14, 0, 0, 0, 0, -1138, 55, 0, 0, 0, 0, -1230, -12, 0, 0, 0, 0, -1319, 56 )
+"points": PackedVector2Array(0, 0, 0, 0, -85, 61, 0, 0, 0, 0, -181, -16, 0, 0, 0, 0, -281, 58, 0, 0, 0, 0, -371, -12, 0, 0, 0, 0, -470, 58, 0, 0, 0, 0, -565, -13, 0, 0, 0, 0, -654, 57, 0, 0, 0, 0, -731, -11, 0, 0, 0, 0, -812, 56, 0, 0, 0, 0, -888, -13, 0, 0, 0, 0, -974, 55, 0, 0, 0, 0, -1052, -14, 0, 0, 0, 0, -1138, 55, 0, 0, 0, 0, -1230, -12, 0, 0, 0, 0, -1319, 56)
 }
+point_count = 15
 
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 512, 0, 512, 512 )
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("2")
+region = Rect2(512, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 512, 512, 512 )
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("2")
+region = Rect2(0, 512, 512, 512)
 
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 512, 512, 512, 512 )
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("2")
+region = Rect2(512, 512, 512, 512)
 
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 1024, 512, 512 )
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("2")
+region = Rect2(0, 1024, 512, 512)
 
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 512, 1024, 512, 512 )
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource("2")
+region = Rect2(512, 1024, 512, 512)
 
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+[sub_resource type="SpriteFrames" id="8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("10")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}, {
+"duration": 1.0,
+"texture": SubResource("15")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 6.0
-} ]
+}]
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 182.5, 110 )
+[sub_resource type="RectangleShape2D" id="9"]
+size = Vector2(365, 220)
 
 [node name="PathedMisbeehave" type="Node2D"]
-position = Vector2( 1678, 447 )
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
-enemy_logic = ExtResource( 3 )
+position = Vector2(1678, 447)
+script = ExtResource("1")
+enemy_logic = ExtResource("3")
 environment = "Air"
 
 [node name="Path2D" type="Path2D" parent="."]
-curve = SubResource( 1 )
+curve = SubResource("1")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( -85, 61 )
-rotate = false
+position = Vector2(-85, 61)
+rotates = false
 loop = false
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2(0.4, 0.4)
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
-frames = SubResource( 8 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Area2D"]
+sprite_frames = SubResource("8")
+autoplay = "default"
 speed_scale = 2.0
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
-position = Vector2( -10, 75 )
-scale = Vector2( 0.999999, 0.999999 )
-shape = SubResource( 9 )
+position = Vector2(-10, 75)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("9")
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Path2D/PathFollow2D/Area2D"]
-position = Vector2( -10, 74.9999 )
-scale = Vector2( 18.25, 11 )
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Path2D/PathFollow2D/Area2D"]
+position = Vector2(-10, 74.9999)
+scale = Vector2(18.25, 11)

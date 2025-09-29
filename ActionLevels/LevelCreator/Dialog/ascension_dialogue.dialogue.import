@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://iwcql4qvfbuy"
+path="res://.godot/imported/ascension_dialogue.dialogue-620434b6cffa83a57d41ad0d0633648b.tres"
+
+[deps]
+
+source_file="res://ActionLevels/LevelCreator/Dialog/ascension_dialogue.dialogue"
+dest_files=["res://.godot/imported/ascension_dialogue.dialogue-620434b6cffa83a57d41ad0d0633648b.tres"]
+
+[params]
+
+defaults=true

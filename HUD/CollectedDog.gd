@@ -1,6 +1,6 @@
 extends Control
 
-onready var collected_dog = $CollectedDogSprite
+@onready var collected_dog = $CollectedDogSprite
 
 func _ready():
 	collected_dog.set_animation("empty")

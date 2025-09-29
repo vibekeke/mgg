@@ -1,18 +1,18 @@
 extends Node
 
-export (NodePath) var enemy
-onready var enemy_node = get_node(enemy)
+@export var enemy: NodePath
+@onready var enemy_node = get_node(enemy)
 var initial_position_set := false
 var move_direction := Vector2.ZERO
-export var speed := 700
-export var disabled := false
+@export var speed := 700
+@export var disabled := false
 
 func _ready():
-	Events.connect("player_global_position", self, "_on_player_global_position")
+	Events.connect("player_global_position", Callable(self, "_on_player_global_position"))
 
 func _on_player_global_position(player_global_position):
 	if not initial_position_set:
-		Events.disconnect("player_global_position", self, "_on_player_global_position")
+		Events.disconnect("player_global_position", Callable(self, "_on_player_global_position"))
 		initial_position_set = true
 		move_direction = (player_global_position - enemy_node.global_position).normalized()
 		
