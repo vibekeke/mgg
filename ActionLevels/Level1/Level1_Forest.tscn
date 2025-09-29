@@ -24,24 +24,24 @@
 [ext_resource type="PackedScene" uid="uid://cf8dsob44ces" path="res://ActionLevels/LevelCreator/Enemies/BroBear/BroBear.tscn" id="22"]
 [ext_resource type="PackedScene" uid="uid://72d03w3urqw8" path="res://ActionLevels/LevelCreator/Enemies/BroBun/BroBun.tscn" id="23"]
 [ext_resource type="PackedScene" uid="uid://duoyf7tkr1lo6" path="res://ActionLevels/Camera/StageCamera.tscn" id="24"]
-[ext_resource type="PackedScene" path="res://HUD/PauseMenuGameplay.tscn" id="25"]
+[ext_resource type="PackedScene" uid="uid://c55gm6cp4ypa4" path="res://HUD/PauseMenuGameplay.tscn" id="25"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/SpawnPaths.tscn" id="26"]
 [ext_resource type="PackedScene" uid="uid://sy8aoi44qk5x" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event1.tscn" id="27"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/LevelEventsManager.tscn" id="28"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Props/BossWarningTape.tscn" id="29"]
+[ext_resource type="PackedScene" uid="uid://clglf2ioi1pqd" path="res://ActionLevels/LevelCreator/Props/BossWarningTape.tscn" id="29"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event2.tscn" id="30"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/Collectibles/Dogu.tscn" id="31"]
 [ext_resource type="Resource" uid="uid://cgah3gwayvyb4" path="res://ActionLevels/LevelCreator/Dialog/level1_event1_new.dialogue" id="31_drocb"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_Event5.tscn" id="32"]
 [ext_resource type="PackedScene" uid="uid://diuw2ocplws85" path="res://ActionLevels/LevelCreator/Obstacles/Forest/NewPlatforms/LowPlatform2.tscn" id="33"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventBoss.tscn" id="34"]
-[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundDog.tscn" id="35"]
+[ext_resource type="PackedScene" uid="uid://dmskhcd8rsaqi" path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundDog.tscn" id="35"]
 [ext_resource type="PackedScene" uid="uid://b8sqq2iwwrrl7" path="res://ActionLevels/LevelCreator/Enemies/OurGuy/OurGuy.tscn" id="36"]
 [ext_resource type="PackedScene" uid="uid://c54aq6frsln8q" path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/OurGuyBackground.tscn" id="37"]
 [ext_resource type="PackedScene" uid="uid://cg12hg0nmyytx" path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundBun.tscn" id="38"]
 [ext_resource type="PackedScene" uid="uid://cshk3qg40y5dm" path="res://ActionLevels/LevelCreator/LevelElements/BackgroundElements/Level1/BackgroundBear.tscn" id="39"]
 [ext_resource type="PackedScene" uid="uid://bnv8dxb8rwmyq" path="res://ActionLevels/LevelCreator/Enemies/StaticBroBear/StaticBroBear.tscn" id="40"]
-[ext_resource type="PackedScene" path="res://HUD/LevelStartDisplay.tscn" id="41"]
+[ext_resource type="PackedScene" uid="uid://demqw5d3qddh" path="res://HUD/LevelStartDisplay.tscn" id="41"]
 [ext_resource type="PackedScene" uid="uid://bpy3rcqlsbh4l" path="res://ActionLevels/LevelCreator/Enemies/StaticGunnerfly/StaticGunnerfly.tscn" id="42"]
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelEvents/Level1/Level1_EventEnd.tscn" id="43"]
 [ext_resource type="PackedScene" path="res://Menus/DogCompletion.tscn" id="44"]
@@ -56,33 +56,26 @@ boss_background = ExtResource("14")
 level1_event1_dialog = ExtResource("45")
 dog_completion_popup = ExtResource("44")
 
-[node name="DialogLayer" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-layer = 101
+[node name="ShaderLayer" type="CanvasLayer" parent="."]
+
+[node name="VHS" parent="ShaderLayer" instance=ExtResource("13")]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
 
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 layer = 102
 
 [node name="PauseMenu" parent="PauseLayer" instance=ExtResource("25")]
 visible = false
-vhs_filter_path = NodePath("../../LevelBackground/Control/VHS")
+vhs_filter_path = NodePath("../../ShaderLayer/VHS")
 
 [node name="LevelBackground" parent="." instance=ExtResource("1")]
 unique_name_in_owner = true
-
-[node name="Control" type="Control" parent="LevelBackground"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VHS" parent="LevelBackground/Control" instance=ExtResource("13")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 
 [node name="Floor" parent="." instance=ExtResource("2")]
 unique_name_in_owner = true

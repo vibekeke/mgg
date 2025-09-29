@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://elx01py65bso"]
+
+[ext_resource type="FontFile" uid="uid://ct74pq4amjkmo" path="res://test_fonts/vibekefonts/Jura-SemiBold.ttf" id="1_lwyoa"]
+
+[resource]
+default_font = ExtResource("1_lwyoa")
+default_font_size = 42

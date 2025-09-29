@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://dcx3nr8novfa3"]
 
 [ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/LevelElements/LevelBoundaries.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://HUD/PauseMenuGameplay.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://c55gm6cp4ypa4" path="res://HUD/PauseMenuGameplay.tscn" id="2"]
 [ext_resource type="Resource" uid="uid://iwcql4qvfbuy" path="res://ActionLevels/LevelCreator/Dialog/ascension_dialogue.dialogue" id="2_ckhep"]
 [ext_resource type="PackedScene" uid="uid://domnsge56b0qs" path="res://ActionLevels/backgrounds/LevelBeach.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://27xpr5tc5bsa" path="res://ActionLevels/LevelCreator/EnemyPoolSpawner.tscn" id="4"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" path="res://HUD/FullHUD.tscn" id="10"]
 [ext_resource type="Script" uid="uid://d1o2nuatc1vba" path="res://ActionLevels/SpecialBeachLevel/SpecialBeachLevel.gd" id="11"]
 [ext_resource type="PackedScene" uid="uid://bo637hs5gw8j7" path="res://ActionLevels/backgrounds/VHS.tscn" id="12"]
-[ext_resource type="PackedScene" path="res://HUD/LevelStartDisplay.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://demqw5d3qddh" path="res://HUD/LevelStartDisplay.tscn" id="13"]
 [ext_resource type="AudioStream" uid="uid://b72rcsr618krj" path="res://sounds/music/beach_ambience.mp3" id="15"]
 [ext_resource type="PackedScene" path="res://Menus/Egg.tscn" id="17"]
 [ext_resource type="AudioStream" uid="uid://dh3hg5kumuqgj" path="res://sounds/music/Emili zen.mp3" id="18"]

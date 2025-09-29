@@ -3,7 +3,6 @@ extends LevelEvent
 @export var level1_event_end_dialog : Resource
 @onready var enemy_spawner = get_node("%EnemySpawner")
 @onready var platform_spawner = get_node("%PlatformSpawner")
-@onready var dialog_layer = get_node("%DialogLayer")
 @onready var collected_dogs = []
 var start_event_timer = Timer.new()
 @export var debug_mode : bool = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cxs7u3cadtw3v"]
+[gd_scene load_steps=59 format=3 uid="uid://cxs7u3cadtw3v"]
 
 [ext_resource type="Script" uid="uid://vv8kgsfo8scg" path="res://Menus/MainMenu.gd" id="1"]
 [ext_resource type="FontFile" path="res://test_fonts/vibekefonts/main_menu_font.tres" id="2"]
@@ -8,8 +8,8 @@
 [ext_resource type="StyleBox" path="res://Menus/button_pressed.tres" id="6"]
 [ext_resource type="Texture2D" uid="uid://cowvfuwupyva6" path="res://Menus/PrettyAssets/Logo-downscaled.png" id="7"]
 [ext_resource type="PackedScene" path="res://Menus/AllDogsCompletion.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://Menus/PrettyAssets/Crown.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://HUD/SpinnyStar.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://dfaujrfvimqlx" path="res://Menus/PrettyAssets/Crown.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://dlwfvj087xuow" path="res://HUD/SpinnyStar.tscn" id="10"]
 [ext_resource type="Texture2D" uid="uid://763ctaijrfj2" path="res://imported_assets/Coverart-MG.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://cm8h8e5bxasx5" path="res://imported_assets/Coverart-Angel.png" id="12"]
 [ext_resource type="FontFile" uid="uid://c40p0hmrvypsi" path="res://test_fonts/neon_80s/Neon.ttf" id="13"]
@@ -43,14 +43,6 @@ cache/0/16/0/scale = 1.0
 
 [sub_resource type="FontFile" id="29"]
 fallbacks = Array[Font]([ExtResource("21")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
-[sub_resource type="FontFile" id="19"]
-fallbacks = Array[Font]([ExtResource("18")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -522,7 +514,10 @@ theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.129412, 0.196078, 0.501961, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.047058824, 0.050980393, 0.2509804, 1)
+theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 66
 theme_override_styles/normal = ExtResource("3")
 theme_override_styles/pressed = ExtResource("6")
 theme_override_styles/hover = ExtResource("5")
@@ -540,7 +535,10 @@ theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.129412, 0.196078, 0.501961, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0.262745, 0.317647, 0.572549, 1)
+theme_override_colors/font_outline_color = Color(0.047058824, 0.050980393, 0.2509804, 1)
+theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 66
 theme_override_styles/normal = ExtResource("3")
 theme_override_styles/pressed = ExtResource("6")
 theme_override_styles/hover = ExtResource("5")
@@ -559,7 +557,10 @@ theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.129412, 0.196078, 0.501961, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0.113725, 0.192157, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0.047058824, 0.050980393, 0.2509804, 1)
+theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 66
 theme_override_styles/normal = ExtResource("3")
 theme_override_styles/pressed = ExtResource("6")
 theme_override_styles/hover = ExtResource("5")
@@ -577,7 +578,10 @@ theme_override_colors/font_color = Color(0.509804, 0.721569, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.129412, 0.196078, 0.501961, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.047058824, 0.050980393, 0.2509804, 1)
+theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 66
 theme_override_styles/normal = ExtResource("3")
 theme_override_styles/pressed = ExtResource("6")
 theme_override_styles/hover = ExtResource("5")
@@ -622,7 +626,7 @@ offset_right = 278.0
 offset_bottom = -12.0
 theme_override_colors/font_color = Color(0.792157, 0.92549, 1, 1)
 theme_override_fonts/font = SubResource("29")
-text = "v1.0.0-alpha"
+text = "v2.0.0-alpha"
 
 [node name="FullscreenLabel" type="Label" parent="MenuLayer"]
 unique_name_in_owner = true
@@ -630,7 +634,10 @@ offset_left = 1506.32
 offset_top = 999.935
 offset_right = 1813.32
 offset_bottom = 1092.94
-theme_override_fonts/font = SubResource("19")
+theme_override_colors/font_outline_color = Color(0.047058824, 0.050980393, 0.2509804, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("18")
+theme_override_font_sizes/font_size = 48
 text = "FULLSCREEN"
 horizontal_alignment = 2
 

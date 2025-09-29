@@ -1,18 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://dlwfvj087xuow"]
 
-[ext_resource path="res://HUD/StarSelect.gd" type="Script" id=1]
-[ext_resource path="res://imported_assets/hud/collectibles/Collected_Stars.png" type="Texture2D" id=2]
-[ext_resource path="res://Menus/overlay_hueshift.gdshader" type="Shader" id=3]
+[ext_resource type="Script" uid="uid://m7iavefxtdpt" path="res://HUD/StarSelect.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://7e4sgqb8yywk" path="res://imported_assets/hud/collectibles/Collected_Stars.png" id="2"]
+[ext_resource type="Shader" uid="uid://b5t73th0q5gsu" path="res://Menus/overlay_hueshift.gdshader" id="3"]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 3 )
-shader_param/OverlayColor = Color( 1, 0.964706, 0.913725, 1 )
-shader_param/Overlay = 0.728
-shader_param/HueShift = 0.568
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("3")
+shader_parameter/OverlayColor = Color(1, 0.964706, 0.913725, 1)
+shader_parameter/Overlay = 0.728
+shader_parameter/HueShift = 0.568
 
 [node name="StarSelect" type="Sprite2D"]
-material = SubResource( 1 )
-position = Vector2( 165, 90 )
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 2 )
-script = ExtResource( 1 )
+material = SubResource("1")
+position = Vector2(165, 90)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2")
+script = ExtResource("1")

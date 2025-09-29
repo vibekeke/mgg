@@ -1,186 +1,187 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://clglf2ioi1pqd"]
 
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" type="FontFile" id=1]
-[ext_resource path="res://ActionLevels/LevelCreator/Props/WarningSymbol.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ActionLevels/LevelCreator/Props/BossWarningTape.gd" type="Script" id=5]
+[ext_resource type="FontFile" uid="uid://oi70q57mkhpb" path="res://test_fonts/vibekefonts/Fredoka-SemiBold.ttf" id="1"]
+[ext_resource type="PackedScene" path="res://ActionLevels/LevelCreator/Props/WarningSymbol.tscn" id="2"]
+[ext_resource type="Script" uid="uid://bb6fb8b43tvhi" path="res://ActionLevels/LevelCreator/Props/BossWarningTape.gd" id="5"]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("VisibleElementsLayer/WarningSymbol:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 960, 622 ) ]
+"values": [Vector2(960, 622)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("VisibleElementsLayer/WarningSymbol:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("VisibleElementsLayer/BossApproachingTitle:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 560, 285 ) ]
+"values": [Vector2(560, 285)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("VisibleElementsLayer/BossApproachingTitle:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("VisibleElementsLayer/WarningSymbol:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 0.8, 0.8 ) ]
+"values": [Vector2(0.8, 0.8)]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("VisibleElementsLayer/BossApproachingTitle:visible_characters")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 4 ]
+"values": [4]
 }
 tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("VisibleElementsLayer/WarningSymbol:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ -15.0 ]
+"values": [-15.0]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 resource_name = "boss_approaching"
 length = 2.5
 step = 0.01
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("VisibleElementsLayer/BossApproachingTitle:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.88, 1.51 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.88, 1.51),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ Vector2( 560, 285 ), Vector2( 560, 285 ), Vector2( 660, 285 ) ]
+"values": [Vector2(560, 285), Vector2(560, 285), Vector2(660, 285)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("VisibleElementsLayer/BossApproachingTitle:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 1.02, 1.68 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 1.02, 1.68),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("VisibleElementsLayer/BossApproachingTitle:visible_characters")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 1.02, 1.68 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 1.02, 1.68),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ 4, 6, 17 ]
+"values": [4, 6, 17]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("VisibleElementsLayer/WarningSymbol:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0.88, 1.46 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0.88, 1.46),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("VisibleElementsLayer/WarningSymbol:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0.89, 1.21 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0.89, 1.21),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+"values": [Vector2(0.8, 0.8), Vector2(1, 1)]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("VisibleElementsLayer/WarningSymbol:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0.9, 1.22 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0.9, 1.22),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ -15.0, 0.0 ]
+"values": [-15.0, 0.0]
 }
 
-[sub_resource type="FontFile" id=1]
-size = 74
-outline_size = 4
-outline_color = Color( 0.262745, 0.435294, 1, 1 )
-font_data = ExtResource( 1 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3p83v"]
+_data = {
+&"RESET": SubResource("2"),
+&"boss_approaching": SubResource("3")
+}
 
 [node name="BossWarningTapeNew" type="Node2D"]
-script = ExtResource( 5 )
+script = ExtResource("5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-anims/RESET = SubResource( 2 )
-anims/boss_approaching = SubResource( 3 )
+libraries = {
+&"": SubResource("AnimationLibrary_3p83v")
+}
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -190,41 +191,39 @@ visible = false
 [node name="ColorRect" type="ColorRect" parent="BackgroundLayer"]
 unique_name_in_owner = true
 visible = false
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.101961, 0.0941176, 0.215686, 1 )
-
-[node name="ColorRectTween" type="Tween" parent="BackgroundLayer"]
-unique_name_in_owner = true
-repeat = true
-playback/repeat = true
+color = Color(0.101961, 0.0941176, 0.215686, 1)
 
 [node name="VisibleElementsLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 layer = 10
 visible = false
 
-[node name="WarningSymbol" parent="VisibleElementsLayer" instance=ExtResource( 2 )]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 960, 622 )
-rotation = -0.261799
-scale = Vector2( 0.8, 0.8 )
+[node name="WarningSymbol" parent="VisibleElementsLayer" instance=ExtResource("2")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(960, 622)
+rotation = -0.2617994
+scale = Vector2(0.8, 0.8)
 
 [node name="BossApproachingTitle" type="RichTextLabel" parent="VisibleElementsLayer"]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(650, 100)
 offset_left = 560.0
 offset_top = 285.0
-offset_right = 1210.0
+offset_right = 1210.0002
 offset_bottom = 385.0
-custom_minimum_size = Vector2( 650, 100 )
-theme_override_fonts/normal_font = SubResource( 1 )
+theme_override_colors/font_outline_color = Color(0.2627451, 0.43529412, 1, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("1")
+theme_override_font_sizes/normal_font_size = 74
 bbcode_enabled = true
 text = "Boss Approaching!"
-visible_characters = 4
-percent_visible = 0.235294
-meta_underlined = false
-text = "Boss Approaching!"
 scroll_active = false
+meta_underlined = false
+visible_characters = 4
+visible_ratio = 0.23529412
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true

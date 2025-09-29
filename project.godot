@@ -42,7 +42,7 @@ window/size/viewport_height=1080
 window/size/mode=3
 window/size/window_width_override=1920
 window/size/window_height_override=1080
-window/stretch/mode="2d"
+window/stretch/mode="viewport"
 window/vsync/vsync_mode=false
 mouse_cursor/custom_image="res://imported_assets/cursor_none.png"
 mouse_cursor/tooltip_position_offset=Vector2(20, 20)
@@ -210,7 +210,7 @@ skip={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://ActionLevels/LevelCreator/Dialog/level1_event1_new.dialogue", "res://ActionLevels/LevelCreator/Dialog/level1_event1.dialogue", "res://ActionLevels/LevelCreator/Dialog/ascension_dialogue.dialogue", "res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.dialogue", "res://DialogBox/dialogue_text/bedroom_pillows.dialogue", "res://DialogBox/dialogue_text/bedroom_use_bed.dialogue", "res://DialogBox/dialogue_text/goherebutton.dialogue", "res://DialogBox/dialogue_text/bedroom_piano.dialogue", "res://DialogBox/dialogue_text/bedroom_door.dialogue", "res://DialogBox/dialogue_text/bedroom_penguin.dialogue", "res://DialogBox/dialogue_text/bedroom_plant.dialogue", "res://DialogBox/dialogue_text/level_test/level_event_1_bee.dialogue")
+locale/translations_pot_files=PackedStringArray("res://ActionLevels/LevelCreator/Dialog/level1_event1_new.dialogue", "res://ActionLevels/LevelCreator/Dialog/level1_event1.dialogue", "res://ActionLevels/LevelCreator/Dialog/ascension_dialogue.dialogue", "res://ActionLevels/LevelCreator/Dialog/level_event_dialogue.dialogue", "res://DialogBox/dialogue_text/bedroom_pillows.dialogue", "res://DialogBox/dialogue_text/bedroom_use_bed.dialogue", "res://DialogBox/dialogue_text/goherebutton.dialogue", "res://DialogBox/dialogue_text/bedroom_piano.dialogue", "res://DialogBox/dialogue_text/bedroom_door.dialogue", "res://DialogBox/dialogue_text/bedroom_penguin.dialogue", "res://DialogBox/dialogue_text/bedroom_plant.dialogue", "res://DialogBox/dialogue_text/level_test/level_event_1_bee.dialogue", "res://Cutscenes/Dialog/intro.dialogue")
 
 [physics]
 

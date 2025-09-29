@@ -1,30 +1,30 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=24 format=3 uid="uid://enge4mcowcec"]
 
-[ext_resource path="res://Menus/PrettyAssets/Spotlight2.png" type="Texture2D" id=1]
-[ext_resource path="res://Menus/GameOver.gd" type="Script" id=2]
-[ext_resource path="res://Menus/button_focus_and_selected.tres" type="StyleBox" id=3]
-[ext_resource path="res://Menus/button_normal.tres" type="StyleBox" id=4]
-[ext_resource path="res://Menus/button_pressed.tres" type="StyleBox" id=5]
-[ext_resource path="res://Menus/menubuttonfont.tres" type="FontFile" id=6]
-[ext_resource path="res://Menus/PrettyAssets/GameOverLogo.png" type="Texture2D" id=7]
-[ext_resource path="res://Menus/PrettyAssets/Spotlight1.png" type="Texture2D" id=8]
-[ext_resource path="res://Menus/PrettyAssets/Spotlight3.png" type="Texture2D" id=9]
-[ext_resource path="res://Menus/PrettyAssets/GirlSitDetermined.png" type="Texture2D" id=10]
-[ext_resource path="res://Menus/PrettyAssets/GirlSitSad.png" type="Texture2D" id=11]
-[ext_resource path="res://HUD/SpinnyStar.tscn" type="PackedScene" id=12]
-[ext_resource path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" type="FontFile" id=13]
+[ext_resource type="Texture2D" uid="uid://dpg3usilj1yv2" path="res://Menus/PrettyAssets/Spotlight2.png" id="1"]
+[ext_resource type="Script" uid="uid://mn1encqdhrgh" path="res://Menus/GameOver.gd" id="2"]
+[ext_resource type="StyleBox" path="res://Menus/button_focus_and_selected.tres" id="3"]
+[ext_resource type="StyleBox" path="res://Menus/button_normal.tres" id="4"]
+[ext_resource type="StyleBox" path="res://Menus/button_pressed.tres" id="5"]
+[ext_resource type="FontFile" uid="uid://cut8a00rpoqag" path="res://Menus/menubuttonfont.tres" id="6"]
+[ext_resource type="Texture2D" uid="uid://u8bvnwjm26dx" path="res://Menus/PrettyAssets/GameOverLogo.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://cqr32u8v3yy4y" path="res://Menus/PrettyAssets/Spotlight1.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://mh4pwwyb5hab" path="res://Menus/PrettyAssets/Spotlight3.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://bxsx7g3mt6wvo" path="res://Menus/PrettyAssets/GirlSitDetermined.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://n02pskpn27u4" path="res://Menus/PrettyAssets/GirlSitSad.png" id="11"]
+[ext_resource type="PackedScene" path="res://HUD/SpinnyStar.tscn" id="12"]
+[ext_resource type="FontFile" uid="uid://b4teaf0e1mg0r" path="res://test_fonts/vibekefonts/Fredoka-Medium.ttf" id="13"]
 
-[sub_resource type="Gradient" id=7]
-colors = PackedColorArray( 0, 0, 0, 1, 0.112305, 0.115433, 0.3125, 1 )
+[sub_resource type="Gradient" id="7"]
+colors = PackedColorArray(0, 0, 0, 1, 0.112305, 0.115433, 0.3125, 1)
 
-[sub_resource type="GradientTexture2D" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture2D" id="8"]
+gradient = SubResource("7")
 width = 1920
 height = 1080
-fill_from = Vector2( 0.516667, 0 )
-fill_to = Vector2( 0.5125, 0.956938 )
+fill_from = Vector2(0.516667, 0)
+fill_to = Vector2(0.5125, 0.956938)
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id="1"]
 code = "shader_type canvas_item;
 uniform float amount = 40.0;
 
@@ -38,303 +38,307 @@ void fragment()
 	
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/amount = 10.0
+[sub_resource type="ShaderMaterial" id="2"]
+shader = SubResource("1")
+shader_parameter/amount = 10.0
 
-[sub_resource type="Gradient" id=3]
-colors = PackedColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
+[sub_resource type="Gradient" id="3"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture2D" id="4"]
+gradient = SubResource("3")
 width = 1920
 height = 1080
 
-[sub_resource type="SpriteFrames" id=9]
-animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 1 ), ExtResource( 9 ) ],
+[sub_resource type="SpriteFrames" id="9"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 1.5
-} ]
+}]
 
-[sub_resource type="FontFile" id=10]
-size = 72
-font_data = ExtResource( 13 )
-
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id="5"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("CanvasLayer/CenterContainer/VBoxContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("TextureRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("CanvasLayer/CenterContainer/VBoxContainer/ScoreDisplay:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 resource_name = "fade_in"
 length = 2.0
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("CanvasLayer/CenterContainer/VBoxContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 1.6, 2 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(1.6, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("TextureRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 1.6, 2 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(1.6, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("CanvasLayer/AnimatedSprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 1.2, 2 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(1.2, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("CanvasLayer/GirlSitSad:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 1, 1.7 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(1, 1.7),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("CanvasLayer/CenterContainer/VBoxContainer/ScoreDisplay:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 1.6, 2 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(1.6, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("ColorRect:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.5, 0.9 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0.9 ),
-"transitions": PackedFloat32Array( 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_game_over_music"
-} ]
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_game_over_music"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d3lvf"]
+_data = {
+&"RESET": SubResource("5"),
+&"fade_in": SubResource("6")
 }
 
 [node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="BlackBackground" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = SubResource( 8 )
+texture = SubResource("8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
-material = SubResource( 2 )
+modulate = Color(1, 1, 1, 0)
+material = SubResource("2")
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = SubResource( 4 )
+texture = SubResource("4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
-position = Vector2( 391.5, 505.605 )
-scale = Vector2( 0.990458, 0.990458 )
-frames = SubResource( 9 )
-playing = true
+position = Vector2(391.5, 505.605)
+scale = Vector2(0.990458, 0.990458)
+sprite_frames = SubResource("9")
 
 [node name="GameOverLogo" type="Sprite2D" parent="CanvasLayer/AnimatedSprite2D"]
-position = Vector2( 588.56, -295.115 )
-scale = Vector2( 0.537988, 0.537988 )
-texture = ExtResource( 7 )
+position = Vector2(588.56, -295.115)
+scale = Vector2(0.537988, 0.537988)
+texture = ExtResource("7")
 
 [node name="GirlSitDetermined" type="Sprite2D" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
-position = Vector2( 394.079, 763.169 )
-scale = Vector2( 0.742844, 0.742844 )
-texture = ExtResource( 10 )
+position = Vector2(394.079, 763.169)
+scale = Vector2(0.742844, 0.742844)
+texture = ExtResource("10")
 
 [node name="GirlSitSad" type="Sprite2D" parent="CanvasLayer"]
 unique_name_in_owner = true
-position = Vector2( 387.727, 768.54 )
-scale = Vector2( 0.742844, 0.742844 )
-texture = ExtResource( 11 )
+position = Vector2(387.727, 768.54)
+scale = Vector2(0.742844, 0.742844)
+texture = ExtResource("11")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
-modulate = Color( 1, 1, 1, 0 )
-offset_left = 710.0
-offset_top = 101.0
-offset_right = 1210.0
-offset_bottom = 978.0
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 
 [node name="HSeparator2" type="HSeparator" parent="CanvasLayer/CenterContainer/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-offset_right = 500.0
-offset_bottom = 400.0
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 theme_override_constants/separation = 400
 
 [node name="RetryButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
-offset_top = 404.0
-offset_right = 500.0
-offset_bottom = 483.0
+layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
-theme_override_colors/font_focus_color = Color( 1, 0.862745, 0.568627, 1 )
-theme_override_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
-theme_override_colors/font_hover_color = Color( 1, 0.862745, 0.568627, 1 )
-theme_override_colors/font_pressed_color = Color( 0.164706, 0.12549, 0.819608, 1 )
-theme_override_fonts/font = ExtResource( 6 )
-theme_override_styles/hover = ExtResource( 3 )
-theme_override_styles/pressed = ExtResource( 5 )
-theme_override_styles/focus = ExtResource( 3 )
-theme_override_styles/normal = ExtResource( 4 )
+theme_override_colors/font_color = Color(0.878431, 0.658824, 0.968627, 1)
+theme_override_colors/font_focus_color = Color(1, 0.862745, 0.568627, 1)
+theme_override_colors/font_pressed_color = Color(0.164706, 0.12549, 0.819608, 1)
+theme_override_colors/font_hover_color = Color(1, 0.862745, 0.568627, 1)
+theme_override_fonts/font = ExtResource("6")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("4")
+theme_override_styles/pressed = ExtResource("5")
+theme_override_styles/hover = ExtResource("3")
+theme_override_styles/focus = ExtResource("3")
 text = "Try Again!"
 
 [node name="HSeparator3" type="HSeparator" parent="CanvasLayer/CenterContainer/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-offset_top = 487.0
-offset_right = 500.0
-offset_bottom = 492.0
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 theme_override_constants/separation = 5
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
-offset_top = 496.0
-offset_right = 500.0
-offset_bottom = 575.0
+layout_mode = 2
 focus_neighbor_bottom = NodePath("../RetryButton")
-theme_override_colors/font_focus_color = Color( 1, 0.862745, 0.568627, 1 )
-theme_override_colors/font_color = Color( 0.878431, 0.658824, 0.968627, 1 )
-theme_override_colors/font_hover_color = Color( 1, 0.847059, 0.513726, 1 )
-theme_override_colors/font_pressed_color = Color( 0.164706, 0.12549, 0.819608, 1 )
-theme_override_fonts/font = ExtResource( 6 )
-theme_override_styles/hover = ExtResource( 3 )
-theme_override_styles/pressed = ExtResource( 5 )
-theme_override_styles/focus = ExtResource( 3 )
-theme_override_styles/normal = ExtResource( 4 )
+theme_override_colors/font_color = Color(0.878431, 0.658824, 0.968627, 1)
+theme_override_colors/font_focus_color = Color(1, 0.862745, 0.568627, 1)
+theme_override_colors/font_pressed_color = Color(0.164706, 0.12549, 0.819608, 1)
+theme_override_colors/font_hover_color = Color(1, 0.847059, 0.513726, 1)
+theme_override_fonts/font = ExtResource("6")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("4")
+theme_override_styles/pressed = ExtResource("5")
+theme_override_styles/hover = ExtResource("3")
+theme_override_styles/focus = ExtResource("3")
 text = "Give Up"
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/CenterContainer/VBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-offset_top = 579.0
-offset_right = 500.0
-offset_bottom = 773.0
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 theme_override_constants/separation = 194
 
 [node name="ScoreDisplay" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
-modulate = Color( 1, 1, 1, 0 )
-offset_top = 777.0
-offset_right = 500.0
-offset_bottom = 877.0
-custom_minimum_size = Vector2( 500, 100 )
-theme_override_fonts/normal_font = SubResource( 10 )
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("13")
+theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
 text = "[color=#a6b5ff]SCORE: [color=#e6f4ff]"
-meta_underlined = false
-text = "SCORE: "
 scroll_active = false
+meta_underlined = false
 
-[node name="StarSelectRetry" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource( 12 )]
+[node name="StarSelectRetry" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("12")]
 unique_name_in_owner = true
 visible = false
-position = Vector2( 47, 443.6 )
+position = Vector2(47, 443.6)
 
-[node name="StarSelectQuit" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource( 12 )]
+[node name="StarSelectQuit" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("12")]
 unique_name_in_owner = true
 visible = false
-position = Vector2( 82, 534.6 )
+position = Vector2(82, 534.6)
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_right = 1919.0
 offset_bottom = 1080.0
-color = Color( 0, 0, 0, 1 )
+color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-playback_speed = 0.5
-anims/RESET = SubResource( 5 )
-anims/fade_in = SubResource( 6 )
+libraries = {
+&"": SubResource("AnimationLibrary_d3lvf")
+}
 
 [connection signal="focus_entered" from="CanvasLayer/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_focus_entered"]
 [connection signal="focus_exited" from="CanvasLayer/CenterContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_focus_exited"]
