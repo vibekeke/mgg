@@ -79,6 +79,9 @@ func _fire_rate_timer_setup():
 	self.add_child(fire_rate_timer)
 
 func _on_fire_rate_timeout():
+	if parent_node.health_value <= 0:
+		return
+
 	for s in rotator.get_children():
 		var bullet = gunnerfly_bullet.instance()
 		bullet.add_to_group("static_gunnerfly_bullets")

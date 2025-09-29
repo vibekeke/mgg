@@ -8,6 +8,8 @@ onready var star_select_credits = get_node("%StarSelectCredits")
 onready var star_select_room = get_node("%StarSelectRoom")
 onready var star_select_fullscreen = get_node("%StarSelectFullscreen")
 
+onready var winner_crown = get_node("%WinnerCrown")
+
 onready var title_screen_animation = get_node("%TitleScreenAnimation")
 onready var camera = get_node("%Camera2D")
 onready var tween = get_node("%Tween")
@@ -59,8 +61,13 @@ func _ready():
 		room_button.disabled = false
 	AudioManager.play_music("main_menu")
 	credits_menu.visible = false
-	
+	title_screen_animation.connect("animation_finished", self, "_on_characters_appear_finished")
 	title_screen_animation.play("characters_appear")
+
+func _on_characters_appear_finished(anim_name):
+	var real_gamer : bool = SaveFileManager.get_beaten_first_level_before() and SaveFileManager.get_all_dogs_collected()
+	if real_gamer:
+		winner_crown.visible = true
 
 func _process(delta):
 	if (title_screen_animation.is_playing() or tween.is_active() or !camera_timer.is_stopped()) and Input.is_action_just_pressed("ui_accept"):
@@ -140,25 +147,20 @@ func _on_CreditsButton_pressed():
 	credits_menu.visible = true
 	credits_hide_button.grab_focus()
 
-
 func _on_CreditsButton_focus_entered():
 	AudioManager.playSFX("ui_hover")
 	star_select_credits.visible = true
 
-
 func _on_CreditsButton_focus_exited():
 	star_select_credits.visible = false
 
-
 func _on_CreditsButton_mouse_entered():
 	credits_button.grab_focus()
-
 
 func _on_CreditsHideButton_pressed():
 	credits_menu.visible = false
 	delete_save_panel.visible = false
 	credits_button.grab_focus()
-
 
 func activate_cheat_code():
 	if not cheat_code_activated:
@@ -187,19 +189,14 @@ func _input(event):
 		if cheat_code_detection.join("") == successful_cheat_code:
 			activate_cheat_code()
 
-
 func play_sound(sound_key : String, volume : float):
 	AudioManager.playSFX(sound_key, 1.0, volume)
-	
-
 
 func _on_FullscreenCheckbox_toggled(button_pressed):
 	if button_pressed:
 		OS.window_fullscreen = true
 	else:
 		OS.window_fullscreen = false
-
-
 
 ## Delete Save
 func _on_DeleteSaveButton_pressed():
@@ -213,7 +210,6 @@ func _on_DeleteSaveButton_pressed():
 	$"%NoDeleteButton".show()
 
 func _on_YesDeleteButton_pressed():
-	#TODO: Actually delete file lol.
 	SaveFileManager.reset_save_file()
 	AudioManager.playSFX("player_damage")
 	$"%AreYouSureLabel".text ="\nSave Data Deleted."
@@ -224,7 +220,6 @@ func _on_YesDeleteButton_pressed():
 	room_button.disabled = true
 	delete_save_panel.visible = false
 
-
 func _on_NoDeleteButton_pressed():
 	delete_save_panel.visible = false
 
@@ -234,7 +229,6 @@ func _on_YesDeleteButton_focus_entered():
 
 func _on_NoDeleteButton_focus_entered():
 	AudioManager.playSFX("ui_hover")
-
 
 func _on_FullscreenCheckbox_focus_entered():
 	AudioManager.playSFX("ui_hover")
