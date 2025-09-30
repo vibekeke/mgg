@@ -28,7 +28,7 @@ var background_element_speed = 100
 
 var num_background_elements_offscreen = 0
 
-var spawned_element_speed = 600
+var spawned_element_speed = 500
 
 # Timers
 onready var start_event_timer = Timer.new()
